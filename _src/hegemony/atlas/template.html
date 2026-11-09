@@ -1,157 +1,57 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="{{htmlLang}}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>패권의 지도 1492–2010</title>
+<title>{{title}}</title>
+<meta name="description" content="{{metaDesc}}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@600;700&display=swap" rel="stylesheet">
+<link href="{{fontLink}}" rel="stylesheet">
 <style>
-:root{
-  color-scheme: light;
-  --bg:#f6f4ef; --surface:#fcfcfb; --ink:#1b1a18; --ink2:#55534e; --muted:#8a877f; --line:#e2dfd7;
-  --ocean:#e9eef1; --grat:#d9e1e6; --land:#dcd8cf; --land0:#ebe8e1; --border:#ffffff;
-  --gain:#0b7a3b; --loss:#b3362f;
-  --c-blue:#2a78d6; --c-orange:#eb6834; --c-aqua:#1baf7a; --c-yellow:#eda100;
-  --c-magenta:#e87ba4; --c-green:#008300; --c-violet:#6250d6; --c-red:#e34948;
-}
-@media (prefers-color-scheme: dark){
-  :root{
-    color-scheme: dark;
-    --bg:#141413; --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#8f8d85; --line:#2f2e2b;
-    --ocean:#1d2226; --grat:#262d32; --land:#3a3935; --land0:#2d2c29; --border:#1a1a19;
-    --gain:#4cc27e; --loss:#ef7d75;
-    --c-blue:#3987e5; --c-orange:#d95926; --c-aqua:#199e70; --c-yellow:#c98500;
-    --c-magenta:#d55181; --c-green:#008300; --c-violet:#9085e9; --c-red:#e66767;
-  }
-}
-*{box-sizing:border-box}
-html,body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans KR",system-ui,sans-serif;font-size:15px;line-height:1.6;-webkit-text-size-adjust:100%}
-h1,h2,h3{font-family:"Noto Serif KR",serif;margin:0;line-height:1.3}
-a{color:var(--c-blue)}
-.wrap{max-width:1320px;margin:0 auto;padding:16px 14px 40px}
-header{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:12px}
-header h1{font-size:22px}
-header p{margin:0;color:var(--ink2);font-size:13px}
-.layout{display:grid;gap:14px}
-.layout>*{min-width:0}
-@media(min-width:1000px){.layout{grid-template-columns:minmax(0,1.55fr) minmax(360px,1fr);align-items:start}.panel{position:sticky;top:12px;max-height:calc(100vh - 24px);overflow:auto}}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:12px}
-.mapcard{position:relative;overflow:hidden}
-#map{display:block;width:100%;height:auto;touch-action:none;cursor:grab;background:var(--ocean)}
-#map:active{cursor:grabbing}
-.sphere{fill:var(--ocean)}
-.grat{fill:none;stroke:var(--grat);stroke-width:.6;vector-effect:non-scaling-stroke}
-.poly{stroke:var(--border);stroke-width:.35;vector-effect:non-scaling-stroke;transition:fill .35s,opacity .25s}
-.poly.sel{stroke:var(--ink);stroke-width:1.4}
-.lbl{font-family:"Noto Sans KR",sans-serif;font-weight:700;fill:var(--ink);paint-order:stroke;stroke:var(--surface);stroke-width:3px;stroke-linejoin:round;text-anchor:middle;pointer-events:none}
-.zoom{position:absolute;right:10px;top:10px;display:flex;flex-direction:column;gap:6px}
-.zoom button,.ctl button{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;min-width:36px;height:36px;font-size:17px;cursor:pointer}
-.yearbadge{position:absolute;left:12px;top:8px;font-family:"Noto Serif KR",serif;font-size:34px;font-weight:700;color:var(--ink);opacity:.85;pointer-events:none;text-shadow:0 0 6px var(--ocean)}
-.info{position:absolute;left:10px;right:10px;bottom:10px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:9px 12px;font-size:13px;display:none;box-shadow:0 4px 18px rgba(0,0,0,.12)}
-.info b{font-size:14px}
-.info .x{position:absolute;right:6px;top:2px;border:0;background:none;color:var(--muted);font-size:18px;cursor:pointer}
-.info .meta{color:var(--ink2)}
-.info .fix{color:var(--c-orange);margin-top:2px}
-.ctl{display:flex;align-items:center;gap:8px;padding:10px 10px 6px}
-.years{display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;padding:2px 2px 8px;flex:1;scroll-snap-type:x proximity}
-.years button{flex:0 0 auto;scroll-snap-align:center;border:1px solid var(--line);background:transparent;color:var(--ink2);border-radius:999px;padding:4px 11px;font:500 13px "Noto Sans KR",sans-serif;cursor:pointer;min-height:32px}
-.years button.on{background:var(--ink);color:var(--surface);border-color:var(--ink)}
-.legend{display:flex;flex-wrap:wrap;gap:6px;padding:0 10px 12px}
-.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:999px;padding:3px 10px 3px 6px;font-size:13px;background:transparent;color:var(--ink);cursor:pointer;min-height:30px}
-.chip i{width:14px;height:14px;border-radius:4px;display:inline-block}
-.chip.dim{opacity:.4}
-.chip.neutral i{background:var(--land)}
-.hint{color:var(--muted);font-size:12px;padding:0 12px 10px}
-.panel{padding:16px}
-.era{color:var(--muted);font-size:12px;letter-spacing:.04em}
-.panel h2{font-size:21px;margin:2px 0 12px}
-.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);margin-bottom:12px;overflow-x:auto}
-.tabs button{border:0;background:none;color:var(--ink2);font:500 14px "Noto Sans KR",sans-serif;padding:8px 10px;border-bottom:2px solid transparent;cursor:pointer;white-space:nowrap;min-height:40px}
-.tabs button.on{color:var(--ink);border-bottom-color:var(--ink);font-weight:700}
-ul.pts{margin:0;padding-left:18px}
-ul.pts li{margin-bottom:8px}
-.ev{border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin-bottom:10px}
-.ev h3{font-family:"Noto Sans KR",sans-serif;font-size:14.5px;margin-bottom:6px}
-.row{display:grid;grid-template-columns:42px 1fr;gap:6px;font-size:14px;margin-top:3px}
-.tag{font-size:12px;font-weight:700;border-radius:5px;padding:1px 0;text-align:center;height:fit-content}
-.tag.g{color:var(--gain);border:1px solid var(--gain)}
-.tag.l{color:var(--loss);border:1px solid var(--loss)}
-.note{font-size:12.5px;color:var(--ink2);border-top:1px solid var(--line);margin-top:14px;padding-top:10px}
-.note h4{margin:0 0 4px;font-size:13px;color:var(--ink)}
-.note ul{margin:0;padding-left:16px}
-.links a{display:inline-block;margin-right:10px}
-.foot{font-size:12px;color:var(--muted);margin-top:16px;line-height:1.7}
-.yearbadge{font-size:clamp(20px,5vw,34px)}
-.ck{cursor:pointer}
-.ck .dia{stroke:var(--surface);stroke-width:1.6;vector-effect:non-scaling-stroke}
-.ck .ring{fill:none;stroke:var(--ink);stroke-width:1.3;stroke-dasharray:2.5 2;vector-effect:non-scaling-stroke}
-.ck .hit{fill:transparent}
-.cklist{list-style:none;padding:0;margin:6px 0 0}
-.cklist li{display:grid;grid-template-columns:16px 1fr;gap:8px;padding:7px 0;border-top:1px dashed var(--line);font-size:13px;cursor:pointer}
-.cklist li:first-child{border-top:0}
-.cklist .d{width:11px;height:11px;transform:rotate(45deg);margin:5px 0 0 2px;border:1.5px solid var(--surface);outline:1px solid var(--line)}
-.cklist b{font-weight:700}
-.warn{color:var(--loss);font-weight:500}
-.info .warn{margin-top:3px}
-.loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:13px;pointer-events:none}
+{{css}}
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
-    <h1>패권의 지도 1492–2010</h1>
-    <p>연도별 국경 위에, 그 시기의 패권 경쟁 · 사건의 손익 · 기술 · 사상을 겹쳐 봅니다</p>
+    <h1>{{title}}</h1>
+    <p>{{subtitle}}</p>
+    <nav class="langs" aria-label="{{langAria}}">{{langs}}</nav>
   </header>
   <div class="layout">
     <div>
       <div class="card mapcard">
-        <svg id="map" role="img" aria-label="연도별 세계 지도"></svg>
+        <svg id="map" role="img" aria-label="{{mapAria}}"></svg>
         <div class="yearbadge" id="badge"></div>
-        <div class="zoom"><button id="zin" aria-label="확대">+</button><button id="zout" aria-label="축소">−</button><button id="zreset" aria-label="전체 보기" style="font-size:13px">⤢</button></div>
+        <div class="zoom"><button id="zin" aria-label="{{zoomIn}}">+</button><button id="zout" aria-label="{{zoomOut}}">−</button><button id="zreset" aria-label="{{zoomReset}}" style="font-size:13px">⤢</button></div>
         <div class="info" id="info"></div>
-        <div class="loading" id="loading">지도 불러오는 중…</div>
+        <div class="loading" id="loading">{{loading}}</div>
       </div>
       <div class="card" style="margin-top:10px">
         <div class="ctl">
-          <button id="prev" aria-label="이전 시점">‹</button>
+          <button id="prev" aria-label="{{prev}}">‹</button>
           <div class="years" id="years"></div>
-          <button id="next" aria-label="다음 시점">›</button>
-          <button id="play" aria-label="자동 재생" style="font-size:14px">▶</button>
+          <button id="next" aria-label="{{next}}">›</button>
+          <button id="play" aria-label="{{play}}" style="font-size:14px">▶</button>
         </div>
         <div class="legend" id="legend"></div>
-        <div class="hint">색칠된 나라는 이 시점의 패권 경쟁 주역(식민지·속령 포함)입니다. 이름을 누르면 그 나라만 강조되고, 지도의 영역을 누르면 원본 정보가 나옵니다. ◆는 해협·운하·거점 같은 요충지로, 그 시점의 지배 세력을 따로 검증해 표시했습니다. 점선 고리(◌)가 있는 요충지는 지도 색과 실제 지배 세력이 다른 곳입니다.</div>
+        <div class="hint">{{hint}}</div>
       </div>
     </div>
     <aside class="card panel" id="panel"></aside>
   </div>
-  <div class="foot">
-    국경 데이터: <a href="https://github.com/aourednik/historical-basemaps">historical-basemaps</a> (André Ourednik 외, GPL-3.0) — 단순화해 사용했고, 소속 표기의 명백한 오류는 연도별로 보정했습니다(각 시점 ‘데이터 보정’ 참고).
-    원본은 작업 중인 프로젝트이며, 근대 이전 국경은 ‘세력권’ 수준의 근사입니다. 영역 정보의 ‘국경 정밀도’는 원본 값(1 대략 · 2 중간 · 3 정밀)입니다.
-    ◆ 요충지 19곳(해협·운하·거점)은 지도 데이터와 별개로 시점마다 지배 세력을 확인해 표시했고, 지도 색과 어긋나는 곳은 패널의 ‘요충지 점검’에 따로 적었습니다. 시점 사이 간격이 고르지 않으므로, 각 시점의 ‘사건과 손익’은 직전 시점 이후의 주요 사건을 다룹니다.
-  </div>
+  <div class="foot">{{footHtml}}</div>
 </div>
 <script src="lib/d3.min.js"></script>
 <script src="lib/topojson-client.min.js"></script>
 <script>
 (async function(){
+const UI = {{ui}};
 const HUE={gb:'red',fr:'blue',es:'yellow',pt:'green',nl:'orange',ru:'violet',ot:'aqua',cn:'magenta',us:'aqua',de:'yellow',at:'magenta',jp:'orange',it:'green',be:'aqua',mg:'orange'};
 const col=k=>`var(--c-${HUE[k]})`;
-function shortName(k,y){
-  switch(k){
-    case 'gb': return y<1707?'잉글랜드':'영국';
-    case 'es': return y<1516?'카스티야·아라곤':'스페인';
-    case 'ru': return y<1721?'러시아':(y>=1920&&y<1991?(y<1922?'소비에트 러시아':'소련'):'러시아');
-    case 'cn': return y<1644?'명':(y<1912?'청':(y<1949?'중화민국':'중국'));
-    case 'de': return y<1871?'프로이센':'독일';
-    case 'at': return (y>=1867&&y<1918)?'오스트리아-헝가리':'오스트리아';
-    case 'nl': return '네덜란드'; case 'fr': return '프랑스'; case 'pt': return '포르투갈';
-    case 'ot': return '오스만'; case 'us': return '미국'; case 'jp': return '일본';
-    case 'it': return '이탈리아'; case 'be': return '벨기에'; case 'mg': return '무굴';
-  }
-  return k;
-}
+const fmt=(s,o)=>s.replace(/\{(\w+)\}/g,(_,k)=>o[k]);
 const [content, meta] = await Promise.all([fetch('content.json').then(r=>r.json()), fetch('meta.json').then(r=>r.json())]);
+function shortName(k,y){ const L=content.short[k]; if(!L) return k; for(const [until,label] of L) if(y<until) return label; return L[L.length-1][1]; }
 const YEARS = content.years.map(d=>d.year);
 const byYear = Object.fromEntries(content.years.map(d=>[d.year,d]));
 const cache = {};
@@ -187,6 +87,7 @@ d3.select('#zreset').on('click',()=>svg.transition().duration(400).call(zoom.tra
 let year=YEARS[0], tab='power', focus=null, timer=null, selEl=null;
 const h=(location.hash||'').match(/^#y(\d{4})$/); if(h&&byYear[+h[1]]) year=+h[1];
 const info=document.getElementById('info');
+const fixText=id=>content.fixes[id]||'';
 
 function fill(d,rivals){
   const p=d.properties.p;
@@ -194,34 +95,35 @@ function fill(d,rivals){
   return d.properties.n ? 'var(--land)' : 'var(--land0)';
 }
 function esc(s){return String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+function closeBtn(){return `<button class="x" aria-label="${esc(UI.close)}">×</button>`;}
 function showInfo(d){
-  const p=d.properties, prec={1:'대략',2:'중간',3:'정밀'}[p.b]||'정보 없음';
-  info.innerHTML=`<button class="x" aria-label="닫기">×</button><b>${esc(p.n||'이름 없는 지역')}</b>`+
-    `<div class="meta">${p.s?'소속(원본): '+esc(p.s)+' · ':''}${p.p?'분류: '+shortName(p.p,year)+' · ':''}국경 정밀도: ${prec}</div>`+
-    (p.f?`<div class="fix">보정: ${esc(p.f)}</div>`:'');
+  const p=d.properties, prec=UI.precVals[p.b-1]||UI.noInfo;
+  info.innerHTML=closeBtn()+`<b>${esc(p.n||UI.unnamed)}</b>`+
+    `<div class="meta">${p.s?esc(UI.srcSubj)+': '+esc(p.s)+' · ':''}${p.p?esc(UI.cls)+': '+esc(shortName(p.p,year))+' · ':''}${esc(UI.prec)}: ${esc(prec)}</div>`+
+    (p.f?`<div class="fix">${esc(UI.fix)}: ${esc(fixText(p.f))}</div>`:'');
   info.style.display='block';
   info.querySelector('.x').onclick=()=>{info.style.display='none';if(selEl)selEl.classList.remove('sel');};
 }
-
+const ckList=()=>meta.choke[year].map(c=>({...c,...content.choke[c.id][year]}));
 function ckColor(c){return c.k&&byYear[year].rivals.includes(c.k)?col(c.k):'var(--ink2)';}
 function showCk(c){
-  info.innerHTML=`<button class="x" aria-label="닫기">×</button><b>◆ ${esc(c.name)}</b>`+
-   `<div>${year}년 무렵 지배: <b style="font-size:13px">${esc(c.who)}</b></div>`+
+  const mapLabel=c.absent?esc(UI.ckMapNone):`‘${esc(c.mapName||UI.unnamed)}’(${esc(c.mapKey?shortName(c.mapKey,year):UI.otherPower)})`;
+  info.innerHTML=closeBtn()+`<b>◆ ${esc(c.name)}</b>`+
+   `<div>${esc(fmt(UI.ckRuler,{year}))} <b style="font-size:13px">${esc(c.who)}</b></div>`+
    (c.note?`<div class="meta">${esc(c.note)}</div>`:'')+
-   (c.absent?`<div class="meta">원본 국경 데이터에는 이 지점이 그려져 있지 않습니다(작은 섬·거점). 이 표시가 검증된 값입니다.</div>`:'')+
-   (c.vis?`<div class="warn">⚠ 지도 색과 다릅니다. 원본 국경 데이터는 이 지점을 ${c.mapName?`‘${esc(c.mapName)}’(${c.mapKey?shortName(c.mapKey,year):'기타 세력'})`:'표시하지 않은 영역'}으로 그립니다. 거점·해협처럼 작은 지역이라 주변 영역에 묻혔거나 원본 표기가 틀린 경우입니다 — 이 표시가 검증된 값입니다.</div>`:'');
+   (c.absent?`<div class="meta">${esc(UI.ckAbsentLong)}</div>`:'')+
+   (c.vis?`<div class="warn">${esc(UI.ckDiffLong).replace('{map}',mapLabel)}</div>`:'');
   info.style.display='block';
   info.querySelector('.x').onclick=()=>{info.style.display='none';};
 }
 function drawCk(){
-  const list=showCk_on()?meta.choke[year]:[];
+  const list=ckOn?ckList():[];
   const sel=gCk.selectAll('g.ck').data(list,c=>c.id).join(en=>{const a=en.append('g').attr('class','ck');const i=a.append('g').attr('class','inner');i.append('circle').attr('class','hit').attr('r',9);i.append('circle').attr('class','ring').attr('r',7);i.append('path').attr('class','dia').attr('d','M0,-4.6L4.6,0L0,4.6L-4.6,0Z');return a;});
   sel.attr('transform',c=>`translate(${proj(c.ll)})`).on('click',(e,c)=>{e.stopPropagation();if(selEl)selEl.classList.remove('sel');showCk(c);});
   sel.select('g.inner').attr('transform',`scale(${MK()/k})`);
   sel.select('.dia').attr('fill',ckColor);
   sel.select('.ring').attr('display',c=>c.vis?null:'none');
 }
-function showCk_on(){return ckOn;}
 async function drawMap(){
   const feats=await load(year); document.getElementById('loading').style.display='none';
   const c=byYear[year], rivals=c.rivals;
@@ -235,7 +137,6 @@ async function drawMap(){
   const placed=[]; gLbl.selectAll('text').each(function(r){ let [x,y]=proj(L[r]); for(let n=0;n<4&&placed.some(([a,b])=>Math.abs(a-x)<LBL()*3.6&&Math.abs(b-y)<LBL());n++) y+=LBL()*1.1; placed.push([x,y]); d3.select(this).attr('y',y); });
   drawCk();
   document.getElementById('badge').textContent=year;
-  // preload neighbours
   const i=YEARS.indexOf(year); [YEARS[i+1],YEARS[i-1]].forEach(y=>y&&load(y));
 }
 function recolor(){
@@ -253,35 +154,35 @@ function renderYears(){
 function renderLegend(){
   const c=byYear[year];
   const el=document.getElementById('legend');
-  el.innerHTML=c.rivals.map(r=>`<button class="chip ${focus&&focus!==r?'dim':''}" data-k="${r}" aria-pressed="${focus===r}"><i style="background:${col(r)}"></i>${shortName(r,year)}</button>`).join('')+
-    `<span class="chip neutral" style="cursor:default"><i></i>그 밖의 국가·세력</span>`+
-    `<button class="chip ${ckOn?'':'dim'}" id="cktog" aria-pressed="${ckOn}"><span style="font-size:12px">◆</span>요충지 ${ckOn?'표시 중':'숨김'}</button>`;
+  el.innerHTML=c.rivals.map(r=>`<button class="chip ${focus&&focus!==r?'dim':''}" data-k="${r}" aria-pressed="${focus===r}"><i style="background:${col(r)}"></i>${esc(shortName(r,year))}</button>`).join('')+
+    `<span class="chip neutral" style="cursor:default"><i></i>${esc(UI.others)}</span>`+
+    `<button class="chip ${ckOn?'':'dim'}" id="cktog" aria-pressed="${ckOn}"><span style="font-size:12px">◆</span>${esc(ckOn?UI.ckShown:UI.ckHidden)}</button>`;
   el.querySelectorAll('button[data-k]').forEach(b=>b.onclick=()=>{focus=focus===b.dataset.k?null:b.dataset.k;recolor();});
   document.getElementById('cktog').onclick=()=>{ckOn=!ckOn;renderLegend();drawCk();};
 }
-const TABS=[['power','패권 구도'],['events','사건과 손익'],['tech','기술 발전'],['ideas','사상 발전']];
+const TABS=['power','events','tech','ideas'];
+function ckSection(){
+  const L=ckList(), bad=L.filter(c=>c.vis);
+  const ord=[...bad,...L.filter(c=>!c.vis)];
+  return `<div class="note"><h4>${esc(fmt(UI.ckTitle,{n:L.length}))}${esc(bad.length?fmt(UI.ckTitleDiff,{m:bad.length}):UI.ckTitleOk)}</h4><ul class="cklist">`+
+   ord.map(c=>`<li data-id="${c.id}"><span class="d" style="background:${ckColor(c)}"></span><span><b>${esc(c.name)}</b> — ${esc(c.who)}${c.vis?` <span class="warn">${esc(UI.ckDiff)}</span>`:''}${c.absent?` <span style="color:var(--muted)">${esc(UI.ckAbsent)}</span>`:''}${c.note?`<br><span style="color:var(--muted)">${esc(c.note)}</span>`:''}</span></li>`).join('')+`</ul></div>`;
+}
 function renderPanel(){
   const c=byYear[year], i=YEARS.indexOf(year), prevY=YEARS[i-1];
   const fixes=Object.entries(meta.fixes[year]||{});
-  const uniq=[...new Map(fixes.map(([n,f])=>[f,[]])).keys()].map(f=>[f,fixes.filter(x=>x[1]===f).map(x=>x[0])]);
+  const groups=[...new Set(fixes.map(([,f])=>f))].map(f=>[f,fixes.filter(x=>x[1]===f).map(x=>x[0])]);
   let body='';
-  if(tab==='events') body=c.events.map(e=>`<div class="ev"><h3>${esc(e.t)}</h3><div class="row"><span class="tag g">이득</span><span>${esc(e.g)}</span></div><div class="row"><span class="tag l">손실</span><span>${esc(e.l)}</span></div></div>`).join('');
+  if(tab==='events') body=c.events.map(e=>`<div class="ev"><h3>${esc(e.t)}</h3><div class="row"><span class="tag g">${esc(UI.gain)}</span><span>${esc(e.g)}</span></div><div class="row"><span class="tag l">${esc(UI.loss)}</span><span>${esc(e.l)}</span></div></div>`).join('');
   else body=`<ul class="pts">${c[tab].map(t=>`<li>${esc(t)}</li>`).join('')}</ul>`;
   document.getElementById('panel').innerHTML=
-    `<div class="era">${prevY?prevY+' 이후 → ':''}${year}년 무렵</div><h2>${esc(c.title)}</h2>`+
-    `<div class="tabs" role="tablist">${TABS.map(([k2,l])=>`<button role="tab" data-t="${k2}" class="${tab===k2?'on':''}" aria-selected="${tab===k2}">${l}</button>`).join('')}</div>`+
+    `<div class="era">${esc(prevY?fmt(UI.era,{prev:prevY,year}):fmt(UI.eraFirst,{year}))}</div><h2>${esc(c.title)}</h2>`+
+    `<div class="tabs" role="tablist">${TABS.map((k2,j)=>`<button role="tab" data-t="${k2}" class="${tab===k2?'on':''}" aria-selected="${tab===k2}">${esc(UI.tabs[j])}</button>`).join('')}</div>`+
     body+
-    `<div class="note"><h4>더 읽기</h4><div class="links">${c.links.map(([t,u])=>`<a href="${u}" target="_blank" rel="noopener">${esc(t)}</a>`).join('')}</div></div>`+
+    `<div class="note"><h4>${esc(UI.readMore)}</h4><div class="links">${c.links.map(([t,u])=>`<a href="${u}" target="_blank" rel="noopener">${esc(t)}</a>`).join('')}</div></div>`+
     ckSection()+
-    (uniq.length?`<div class="note"><h4>이 시점의 데이터 보정</h4><ul>${uniq.map(([f,ns])=>`<li>${esc(f)} — <span style="color:var(--muted)">${esc(ns.slice(0,8).join(', '))}${ns.length>8?' 외 '+(ns.length-8)+'곳':''}</span></li>`).join('')}</ul></div>`:'');
+    (groups.length?`<div class="note"><h4>${esc(UI.fixesTitle)}</h4><ul>${groups.map(([f,ns])=>`<li>${esc(fixText(f))} — <span style="color:var(--muted)">${esc(ns.slice(0,8).join(', '))}${ns.length>8?esc(fmt(UI.andMore,{n:ns.length-8})):''}</span></li>`).join('')}</ul></div>`:'');
   document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{tab=b.dataset.t;renderPanel();});
-  document.querySelectorAll('.cklist li').forEach(li=>li.onclick=()=>{const c=meta.choke[year].find(x=>x.id===li.dataset.id);showCk(c);const [x,y2]=proj(c.ll);svg.transition().duration(600).call(zoom.transform,d3.zoomIdentity.translate(W/2,H/2).scale(4).translate(-x,-y2));document.querySelector('.mapcard').scrollIntoView({behavior:'smooth',block:'nearest'});});
-}
-function ckSection(){
-  const L=meta.choke[year]||[], bad=L.filter(c=>c.vis);
-  const ord=[...bad,...L.filter(c=>!c.vis)];
-  return `<div class="note"><h4>요충지 점검 — ${L.length}곳${bad.length?`, 지도 색과 다른 곳 ${bad.length}곳`:', 모두 지도와 일치'}</h4><ul class="cklist">`+
-   ord.map(c=>`<li data-id="${c.id}"><span class="d" style="background:${ckColor(c)}"></span><span><b>${esc(c.name)}</b> — ${esc(c.who)}${c.vis?' <span class="warn">⚠ 지도 색과 다름</span>':''}${c.absent?' <span style="color:var(--muted)">(지도에 미표시)</span>':''}${c.note?`<br><span style="color:var(--muted)">${esc(c.note)}</span>`:''}</span></li>`).join('')+`</ul></div>`;
+  document.querySelectorAll('.cklist li').forEach(li=>li.onclick=()=>{const c=ckList().find(x=>x.id===li.dataset.id);showCk(c);const [x,y2]=proj(c.ll);svg.transition().duration(600).call(zoom.transform,d3.zoomIdentity.translate(W/2,H/2).scale(4).translate(-x,-y2));document.querySelector('.mapcard').scrollIntoView({behavior:'smooth',block:'nearest'});});
 }
 async function setYear(y){
   year=y; focus=null; info.style.display='none'; selEl=null;

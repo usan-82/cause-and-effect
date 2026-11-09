@@ -29,6 +29,8 @@
 | 언어 | 파일 | 웹 (GitHub Pages 활성화 후) |
 |---|---|---|
 | 한국어 | [`ko/hegemony/atlas/`](ko/hegemony/atlas/index.html) | https://usan-82.github.io/cause-and-effect/ko/hegemony/atlas/ |
+| English | [`en/hegemony/atlas/`](en/hegemony/atlas/index.html) | https://usan-82.github.io/cause-and-effect/en/hegemony/atlas/ |
+| Bahasa Indonesia | [`id/hegemony/atlas/`](id/hegemony/atlas/index.html) | https://usan-82.github.io/cause-and-effect/id/hegemony/atlas/ |
 
 > 지도·데이터 파일을 불러오는 구조라, 파일을 내려받아 더블클릭으로 열면 지도가 뜨지 않는다. 웹 주소나 로컬 서버(`python3 -m http.server`)로 연다.
 
