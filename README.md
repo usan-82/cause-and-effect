@@ -9,3 +9,8 @@
   - [`03-기존-도서-비교.md`](research/03-기존-도서-비교.md) — 기존 청소년 세계사 책과 차별점
 
 > 조사 자료의 `[미확인]` 표시는 출처로 검증하지 못한 내용이다. 원고에 쓰기 전에 원문 확인이 필요하다.
+
+## 사상의 분기점 (인터랙티브 페이지)
+
+- [`turning-points/index.html`](turning-points/index.html) — 과학혁명부터 AI혁명까지 7개 분기점과 52개 사상(ism)을 정리한 페이지. 분기점별 기준 변화, 사상 흐름도, 시대별 사상그래프(x·y축), 마인드맵, 사상 사전.
+- 웹에서 보기: https://usan-82.github.io/cause-and-effect/turning-points/ (GitHub Pages 활성화 후)

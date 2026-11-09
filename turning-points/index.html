@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>사상의 분기점</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600&family=Noto+Serif+KR:wght@600;700;900&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: 한 장의 연구 노트. 위에서 아래로 분기점 → 흐름도 → 마인드맵 → 사상 사전. 네 영역은 고정 색으로 모든 뷰에서 같은 뜻을 가진다. */
+:root{
+  --paper:#F1F2F5; --surface:#FFFFFF; --ink:#1B2030; --ink-2:#4F566C; --line:#D6D9E2; --accent:#2B3A67;
+  --la:#1C7486; --lb:#B23A48; --lc:#A86C12; --ld:#6B4FA0;
+  --display:"Noto Serif KR","Nanum Myeongjo",Georgia,serif;
+  --body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#11141B; --surface:#1A1E29; --ink:#E6E8EF; --ink-2:#A2A8BA; --line:#2E3445; --accent:#A9B8F2;
+    --la:#56B6C7; --lb:#E5707C; --lc:#E0A64A; --ld:#A98EDD; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#11141B; --surface:#1A1E29; --ink:#E6E8EF; --ink-2:#A2A8BA; --line:#2E3445; --accent:#A9B8F2;
+  --la:#56B6C7; --lb:#E5707C; --lc:#E0A64A; --ld:#A98EDD; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:15.5px;line-height:1.65;-webkit-text-size-adjust:100%}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.3}
+a{color:var(--accent)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 18px}
+header.top{padding:40px 0 22px}
+.eyebrow{font-size:13px;letter-spacing:.08em;color:var(--ink-2);font-weight:600}
+h1{font-size:clamp(34px,7vw,54px);font-weight:900;letter-spacing:-.01em;margin:6px 0 12px}
+.lead{max-width:62ch;color:var(--ink-2);margin:0 0 18px}
+.facts{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:14px;color:var(--ink-2)}
+.facts b{color:var(--ink);font-variant-numeric:tabular-nums}
+nav.jump{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+nav.jump .wrap{display:flex;gap:4px;overflow-x:auto;padding-top:8px;padding-bottom:8px}
+nav.jump a{white-space:nowrap;text-decoration:none;color:var(--ink);font-size:14px;font-weight:500;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface)}
+section{padding:40px 0 10px}
+h2{font-size:clamp(24px,4.4vw,32px);font-weight:700;margin-bottom:8px}
+.sec-lead{color:var(--ink-2);max-width:65ch;margin:0 0 18px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13.5px;color:var(--ink-2);margin:0 0 12px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.sw{width:12px;height:12px;border-radius:3px;display:inline-block}
+.sw.A{background:var(--la)}.sw.B{background:var(--lb)}.sw.C{background:var(--lc)}.sw.D{background:var(--ld)}
+.ln{width:24px;height:0;border-top:2px solid var(--ink-2);display:inline-block}
+.ln.r{border-top-style:dashed}
+
+/* 분기점 카드 */
+.tps{display:grid;gap:14px}
+.tp{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 18px 16px;display:grid;gap:12px}
+.tp-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.tp-no{font-family:var(--display);font-weight:900;font-size:30px;color:var(--accent);line-height:1;min-width:1.2em}
+.tp-head h3{font-size:22px}
+.tp-years{font-size:14px;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.tp-sum{margin:0;font-weight:500}
+.tp-note{margin:0;font-size:14px;color:var(--ink-2);border-left:3px solid var(--line);padding-left:10px}
+.events{display:flex;flex-wrap:wrap;gap:6px;margin:0;padding:0;list-style:none}
+.events li{font-size:13.5px;background:var(--paper);border-radius:6px;padding:3px 9px}
+.events b{font-variant-numeric:tabular-nums;color:var(--accent);margin-right:5px;font-weight:600}
+.shift{display:grid;grid-template-columns:auto 1fr;gap:0;border-top:1px solid var(--line)}
+.shift > div{padding:8px 0;border-bottom:1px solid var(--line)}
+.shift .ax{font-size:13px;font-weight:600;color:var(--ink-2);padding-right:14px;white-space:nowrap}
+.shift .ba{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:start;font-size:14.5px}
+.shift .b{color:var(--ink-2)}
+.shift .arr{color:var(--accent);font-weight:600}
+.shift .a{font-weight:500}
+@media (max-width:560px){
+  .shift{grid-template-columns:1fr}
+  .shift .ax{border-bottom:none;padding-bottom:0}
+  .shift .ba{grid-template-columns:1fr;gap:2px}
+  .shift .arr{display:none}
+  .shift .a::before{content:"→ ";color:var(--accent);font-weight:600}
+}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips .lbl{font-size:13px;color:var(--ink-2);margin-right:2px;align-self:center}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:3px 10px 3px 8px;font-size:13.5px;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.chip:hover{border-color:var(--ink-2)}
+.chip i{width:8px;height:8px;border-radius:50%;display:inline-block}
+
+/* 그래프 공통 */
+.scroller{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:12px;-webkit-overflow-scrolling:touch}
+.scroller svg{display:block}
+.hint{font-size:13px;color:var(--ink-2);margin:8px 2px 0}
+svg text{font-family:var(--body);fill:var(--ink)}
+.colhead .no{font-family:var(--display);font-weight:900;fill:var(--accent);font-size:15px}
+.colhead .nm{font-weight:600;font-size:13px}
+.colhead .yr{font-size:11.5px;fill:var(--ink-2)}
+.bound{stroke:var(--accent);stroke-width:1;stroke-dasharray:3 4;opacity:.55}
+.laneband{fill:var(--paper);opacity:.55}
+.lanetitle{font-size:12px;font-weight:600;letter-spacing:.04em}
+.bar{cursor:pointer}
+.bar rect.body{stroke-width:0}
+.bar text{font-size:12px;font-weight:500;pointer-events:none}
+.bar.dim{opacity:.22}
+.bar.on rect.body{stroke:var(--ink);stroke-width:1.2}
+.lk{fill:none;stroke:var(--ink-2);stroke-width:1;opacity:.16}
+.lk.r{stroke-dasharray:4 3}
+.lk.hl{opacity:.95;stroke-width:1.8}
+.lk.hl.r{stroke:var(--lb)}
+.lk.dim{opacity:.05}
+
+
+/* 시대별 사상그래프 */
+.era-tabs{display:flex;gap:6px;overflow-x:auto;padding:2px 2px 10px}
+.era-tab{white-space:nowrap;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:13.5px;cursor:pointer}
+.era-tab[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:var(--surface);font-weight:600}
+.era-panel{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:18px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px;align-items:start}
+@media (max-width:760px){.era-panel{grid-template-columns:1fr;padding:14px}}
+.era-text{display:grid;gap:10px}
+.era-text h3{font-size:21px}
+.era-why{margin:0;font-size:14.5px}
+.era-axes{margin:0;display:grid;grid-template-columns:auto 1fr;gap:4px 10px;font-size:13.5px}
+.era-axes dt{font-weight:600;color:var(--accent)}
+.era-axes dd{margin:0}
+.dot{width:11px;height:11px;border-radius:50%;display:inline-block;border:2px solid var(--ink-2)}
+.dot.f{background:var(--ink-2)}.dot.h{background:transparent}
+.era-plot svg{width:100%;height:auto;display:block;max-width:560px;margin:0 auto}
+.ax-line{stroke:var(--ink-2);stroke-width:1.2}
+.ax-grid{stroke:var(--line);stroke-width:1}
+.ax-lbl{font-size:12px;font-weight:600;fill:var(--accent)}
+.pt{cursor:pointer}
+.pt text{font-size:12px;font-weight:500;paint-order:stroke;stroke:var(--surface);stroke-width:3px;stroke-linejoin:round}
+.pt:hover text,.pt:focus-visible text{text-decoration:underline}
+
+/* 마인드맵 */
+.mm-link{fill:none;stroke-width:1.4;opacity:.5}
+.mm-pill{cursor:pointer}
+.mm-pill rect{stroke-width:1.2}
+.mm-pill text{font-size:13px;font-weight:600}
+.mm-leaf{cursor:pointer}
+.mm-leaf text{font-size:12.5px}
+.mm-leaf:hover text{text-decoration:underline}
+.mm-shift text{font-size:12px;fill:var(--ink-2)}
+.mm-tools{display:flex;gap:8px;margin:0 0 10px;flex-wrap:wrap}
+.btn{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:6px 12px;font-size:13.5px;cursor:pointer}
+.btn:hover{border-color:var(--ink-2)}
+
+/* 사전 */
+.dict-group{margin:0 0 26px}
+.dict-group h3{font-size:19px;margin:0 0 10px;display:flex;gap:10px;align-items:baseline}
+.dict-group h3 span{font-family:var(--body);font-size:13.5px;font-weight:400;color:var(--ink-2)}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.card{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--lane);border-radius:10px;padding:14px 16px;display:grid;gap:8px;align-content:start}
+.card h4{margin:0;font-family:var(--display);font-size:17.5px}
+.card .en{font-size:12.5px;color:var(--ink-2);display:block;font-family:var(--body);font-weight:400}
+.meta{font-size:12.5px;color:var(--ink-2);display:flex;gap:10px;flex-wrap:wrap}
+.meta .lane{color:var(--lane);font-weight:600}
+.card p{margin:0;font-size:14.5px}
+.prop{font-family:var(--display);font-weight:600;font-size:15px;border-left:2px solid var(--lane);padding-left:10px}
+dl.kv{margin:0;display:grid;grid-template-columns:auto 1fr;gap:3px 10px;font-size:13.5px}
+dl.kv dt{color:var(--ink-2);white-space:nowrap}
+dl.kv dd{margin:0}
+.open{justify-self:start;border:none;background:none;padding:0;color:var(--accent);font-size:13.5px;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+
+/* 상세 시트 */
+.backdrop{position:fixed;inset:0;background:rgba(10,12,20,.42);z-index:40}
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:41;max-height:78vh;overflow-y:auto;background:var(--surface);border-top-left-radius:16px;border-top-right-radius:16px;box-shadow:0 -10px 40px rgba(0,0,0,.25);padding:6px 20px calc(20px + env(safe-area-inset-bottom));max-width:720px;margin:0 auto;border-top:5px solid var(--lane)}
+.sheet[hidden],.backdrop[hidden]{display:none}
+.sheet .grab{width:42px;height:4px;border-radius:2px;background:var(--line);margin:8px auto 10px}
+.sheet .x{position:absolute;top:12px;right:12px;border:1px solid var(--line);background:var(--surface);border-radius:999px;width:34px;height:34px;cursor:pointer;font-size:18px;line-height:1}
+.sheet h3{font-size:24px;padding-right:40px}
+.sheet .body{display:grid;gap:12px;margin-top:8px}
+.sheet .rel{display:grid;gap:6px}
+.sheet .rel .chips{gap:5px}
+footer{padding:30px 0 60px;color:var(--ink-2);font-size:13.5px}
+footer p{max-width:70ch}
+</style>
+</head>
+<body>
+<header class="top wrap">
+  <div class="eyebrow">인류 사상사 연구 노트</div>
+  <h1>사상의 분기점</h1>
+  <p class="lead">과학혁명에서 AI혁명까지, 인류가 진리·권력·인간·삶을 판단하는 기준이 바뀐 일곱 번의 순간을 정리했습니다. 각 분기점 앞뒤의 기준 변화, 그때 태어난 사상(ism), 사상끼리의 계승과 반발을 흐름도와 마인드맵으로 따라갈 수 있습니다.</p>
+  <div class="facts" id="facts"></div>
+</header>
+<nav class="jump" aria-label="섹션 이동"><div class="wrap">
+  <a href="#turning-points">① 분기점 7개</a><a href="#flow">② 사상 흐름도</a><a href="#era-graph">③ 시대별 사상그래프</a><a href="#mindmap">④ 마인드맵</a><a href="#dictionary">⑤ 사상 사전</a>
+</div></nav>
+
+<main class="wrap">
+  <section id="turning-points">
+    <h2>분기점: 무엇이 바뀌었나</h2>
+    <p class="sec-lead">모든 분기점을 같은 네 가지 축으로 비교합니다. <b>진리의 근거</b>(무엇을 참이라 믿는가), <b>권력의 정당성</b>(누가 왜 다스리는가), <b>인간관</b>(인간은 무엇인가), <b>삶의 방식</b>(어떻게 일하고 살아가는가). 아래 사상 이름을 누르면 상세 내용이 열립니다.</p>
+    <div class="tps" id="tps"></div>
+  </section>
+
+  <section id="flow">
+    <h2>사상(ism) 흐름도</h2>
+    <p class="sec-lead">가로축은 분기점 순서, 세로는 네 영역입니다. 막대는 사상이 태어나 힘을 가졌던 구간이고, 끝이 흐려지면 쇠퇴, 화살표면 지금까지 살아 있는 사상입니다. 막대를 누르면 그 사상의 뿌리와 이어진 사상이 강조됩니다.</p>
+    <div class="legend" id="legend-flow"></div>
+    <div class="scroller" id="flow-box"></div>
+    <p class="hint">좌우로 밀어서 시대를 이동할 수 있습니다. 칸 너비는 연대가 아니라 분기점 단위라서, 최근 시대일수록 실제 기간은 짧습니다.</p>
+  </section>
+
+  <section id="era-graph">
+    <h2>시대별 사상그래프</h2>
+    <p class="sec-lead">시대마다 사람들이 다툰 쟁점이 달랐기 때문에, 그래프의 두 축도 시대마다 바꿨습니다. 각 시대의 x축과 y축은 그 분기점에서 가장 크게 갈라선 두 질문입니다. 색칠된 점은 그 시대에 태어난 사상, 속이 빈 점은 이전부터 이어져 그 시대의 논쟁에 참여한 사상입니다.</p>
+    <div class="era-tabs" role="tablist" aria-label="시대 선택" id="era-tabs"></div>
+    <div class="era-panel">
+      <div class="era-text">
+        <h3 id="era-title"></h3>
+        <p class="era-why" id="era-why"></p>
+        <dl class="era-axes" id="era-axes"></dl>
+        <div class="legend"><span><i class="dot f"></i>이 시대에 태어남</span><span><i class="dot h"></i>이전부터 이어짐</span></div>
+      </div>
+      <div class="era-plot" id="era-plot"></div>
+    </div>
+    <p class="hint">좌표는 각 사상의 핵심 주장을 바탕으로 배치한 해석이며 측정값이 아닙니다. 점을 누르면 상세 내용이 열립니다.</p>
+  </section>
+
+  <section id="mindmap">
+    <h2>마인드맵</h2>
+    <p class="sec-lead">중심에서 분기점으로, 분기점에서 그때 태어난 사상으로 뻗어 나갑니다. 분기점을 누르면 접고 펼 수 있고, ‘기준 변화’를 누르면 네 축의 전후 요약이 열립니다.</p>
+    <div class="mm-tools">
+      <button class="btn" id="mm-expand" type="button">기준 변화 모두 펼치기</button>
+      <button class="btn" id="mm-collapse" type="button">사상만 보기</button>
+    </div>
+    <div class="scroller" id="mm-box"></div>
+  </section>
+
+  <section id="dictionary">
+    <h2>사상 사전</h2>
+    <p class="sec-lead">사상마다 핵심 주장, 대표 사상가와 저작, 한 줄 명제를 정리했습니다. 명제 끝의 ‘요지’ 표시는 원문 인용이 아니라 핵심을 풀어 쓴 문장이라는 뜻입니다.</p>
+    <div id="dict"></div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <p><b>읽는 법과 한계.</b> 분기점은 칼로 자르듯 나뉘지 않습니다. 대부분의 사상은 분기점 직전에 싹트고 이후 수십 년에 걸쳐 퍼지며, 산업혁명(1760년대 시작)처럼 순서상 뒤에 둔 사건이 실제로는 앞서 시작된 경우도 있습니다. 이 정리는 서구 근대사를 축으로 삼은 틀이라 이슬람·인도·중국 사상사의 독자적 전환점은 다루지 않았습니다. 한국과 동아시아는 이 사상들을 19세기 말 이후 짧은 기간에 압축적으로 받아들였습니다. AI혁명 항목은 2026년 11월 기준으로 진행 중인 논쟁을 정리한 것입니다.</p>
+</footer>
+
+<div class="backdrop" id="backdrop" hidden></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title" hidden></div>
+
+<script>
+const LANES={A:{n:"인식·과학",v:"--la"},B:{n:"정치·권력",v:"--lb"},C:{n:"경제·노동·생태",v:"--lc"},D:{n:"인간·문화·윤리",v:"--ld"}};
+const AX=["진리의 근거","권력의 정당성","인간관","삶의 방식"];
+const TP=[
+{no:"0",n:"근대 이전",y:"~16세기",origin:true,
+ sum:"출발점. 신이 정한 질서가 진리와 권력, 삶의 기준이던 세계.",
+ ev:[["1265","아퀴나스 『신학대전』 집필 시작"],["1450년경","구텐베르크 활판 인쇄"],["1486","피코 「인간 존엄성에 관한 연설」"],["1517","루터 「95개조 반박문」"]],
+ sh:[["성서·교회·아리스토텔레스의 권위","","권위"],["신이 내린 왕권과 신분 질서","","신의 질서"],["신의 질서 안에 자리가 정해진 피조물","","피조물"],["농촌 공동체, 전통의 반복, 내세 지향","","전통"]]},
+{no:"1",n:"과학혁명",y:"1543–1687",
+ sum:"진리를 ‘누가 말했나’에서 ‘증명할 수 있나’로 바꾼 분기점.",
+ ev:[["1543","코페르니쿠스 『천구의 회전에 관하여』"],["1609","케플러 행성 법칙 · 갈릴레이 망원경 관측"],["1620","베이컨 『신기관』"],["1633","갈릴레이 종교재판"],["1637","데카르트 『방법서설』"],["1687","뉴턴 『프린키피아』"]],
+ sh:[["성서·교회·아리스토텔레스의 권위","관찰·실험·수학적 증명","권위 → 증명"],["신이 정한 위계 질서","자연법과 계약으로 권력을 따지기 시작","신 → 자연법"],["목적이 있는 우주 속 피조물","이성으로 자연을 해석하고 다루는 주체","피조물 → 이성적 주체"],["전통을 되풀이하는 삶","지식이 쌓이며 나아진다는 ‘진보’ 관념","반복 → 진보"]]},
+{no:"2",n:"프랑스혁명",y:"1789–1799",
+ sum:"권력의 출처를 ‘신’에서 ‘국민’으로 옮긴 분기점.",
+ note:"전주곡은 계몽주의와 미국 독립혁명(1776)입니다. 계몽주의가 과학혁명의 방법을 사회와 정치에 적용했고, 프랑스혁명이 그것을 현실 제도로 만들었습니다.",
+ ev:[["1789.7","바스티유 습격"],["1789.8","「인간과 시민의 권리 선언」"],["1791","드 구주 「여성과 여성 시민의 권리 선언」"],["1792","왕정 폐지, 공화국 선포"],["1793","루이 16세 처형, 공포정치"],["1804","나폴레옹 법전"]],
+ sh:[["전통과 계시","공개 토론과 이성의 판단","계시 → 이성"],["신이 내린 왕권, 세습 신분","국민주권, 헌법, 법 앞의 평등","왕권 → 국민주권"],["신분에 속한 신민","천부인권을 지닌 시민","신민 → 시민"],["태어난 신분이 운명","재능에 따른 출세, 국민 교육과 징병, 민족 정체성","신분 → 능력·국민"]]},
+{no:"3",n:"산업혁명",y:"1760년대–1840년대",
+ sum:"부와 삶의 리듬을 ‘땅’에서 ‘기계와 자본’으로 옮긴 분기점.",
+ note:"시작은 프랑스혁명보다 이르지만, 사회와 사상에 미친 충격이 본격화한 것은 19세기여서 세 번째에 두었습니다. 역사가 에릭 홉스봄은 두 혁명을 묶어 ‘이중혁명’이라 불렀습니다. 1870년 이후 전기·화학의 2차 산업혁명이 이어집니다.",
+ ev:[["1769","와트 증기기관 개량 특허"],["1776","스미스 『국부론』"],["1830","리버풀–맨체스터 철도 개통"],["1848","『공산당 선언』, 유럽 1848년 혁명"],["1859","다윈 『종의 기원』"],["1867","마르크스 『자본』 1권"]],
+ sh:[["철학적 사변","실증 과학, 진화론","사변 → 실증"],["지주와 귀족","자본가와 노동계급의 대립, 계급이 정치의 축","토지 → 자본·계급"],["공동체의 일원","노동력이자 ‘경제적 인간’, 진화한 동물","공동체 → 경제적 인간"],["농촌, 해와 계절의 시간","도시와 공장, 시계의 시간, 임금노동과 대량생산","농촌 → 공장"]]},
+{no:"4",n:"세계대전",y:"1914–1945",
+ sum:"‘진보는 필연’이라는 믿음을 무너뜨리고, 인권을 국가 위에 놓은 분기점.",
+ ev:[["1914–18","제1차 세계대전"],["1917","러시아혁명"],["1929","대공황"],["1933","나치 집권"],["1939–45","제2차 세계대전, 홀로코스트"],["1945","원자폭탄 투하, 국제연합 창설"],["1948","세계인권선언"]],
+ sh:[["과학과 이성은 곧 진보","이성과 과학이 대량 살상의 도구도 된다는 회의","진보 → 회의"],["무제한의 국가 주권, 제국","보편 인권과 국제기구가 국가를 제한, 식민지 독립","주권 → 인권"],["진보하는 이성적 주체","부조리 속에서 스스로 의미를 만드는 존재","이성 → 실존"],["자유방임 시장","대중 민주주의, 복지국가, 총력전과 대량 동원","방임 → 복지국가"]]},
+{no:"5",n:"냉전·68혁명·탈냉전",y:"1947–1991",
+ sum:"거대 이념의 시대를 끝내고 ‘개인·정체성·시장’의 시대를 연 분기점.",
+ ev:[["1947","트루먼 독트린, 냉전 시작"],["1962","쿠바 미사일 위기 · 『침묵의 봄』"],["1968","파리 5월 혁명, 프라하의 봄, 반전·민권운동"],["1973","석유파동"],["1979–81","대처·레이건 집권"],["1989","베를린 장벽 붕괴"],["1991","소련 해체"]],
+ sh:[["하나의 보편 진리(거대서사)","다원적이고 구성된 진리, 거대서사 불신","보편 → 다원"],["두 진영의 이념 대결","자유민주주의와 시장 중심의 세계화","이념 대결 → 시장"],["계급과 국민의 일원","젠더·인종·문화 정체성을 스스로 정하는 개인","계급 → 정체성"],["권위적인 가족·학교·직장, 성장 지상주의","자율과 다양성, 소비 사회, 생태 위기 의식","권위 → 자율"]]},
+{no:"6",n:"디지털·인터넷 혁명",y:"1969–2007",
+ sum:"지식과 관계의 구조를 ‘위계’에서 ‘네트워크’로 바꾼 분기점.",
+ ev:[["1969","ARPANET 첫 연결"],["1977–81","개인용 컴퓨터 대중화"],["1989","월드와이드웹 제안 (1991 공개)"],["1998","구글 설립"],["2001","위키백과"],["2004","페이스북"],["2007","아이폰"]],
+ sh:[["언론·출판·학교가 관리하는 희소한 정보","누구나 만들고 퍼뜨리는 정보 과잉, 검색과 알고리즘","희소 → 과잉"],["국가와 대중매체","플랫폼 기업과 네트워크, 탈중앙과 새 독점의 공존","매체 → 플랫폼"],["대중매체의 수용자","연결된 노드, 데이터를 남기는 존재","수용자 → 노드"],["장소에 묶인 일과 관계","언제 어디서나 연결, 원격·플랫폼 노동, 온라인 정체성","장소 → 접속"]]},
+{no:"7",n:"AI혁명",y:"2012–현재",
+ sum:"‘생각하는 존재는 인간뿐’이라는 전제를 흔드는, 아직 진행 중인 분기점.",
+ note:"2026년 9월에는 주요 AI 기업 경영자들 사이에서 AI 개발 속도를 늦춰 안전 역량이 따라잡게 해야 하는지를 두고 공개 논쟁이 벌어졌습니다. AI 안전주의와 가속주의의 대립이 기업과 정책의 현실 쟁점이 된 셈입니다.",
+ ev:[["2012","딥러닝 돌파 (AlexNet)"],["2016","알파고–이세돌 대국"],["2017","트랜스포머 논문"],["2022.11","ChatGPT 공개"],["2024","EU AI 법 발효"],["2026.9","AI 개발 속도 조절 논쟁"]],
+ sh:[["인간 전문가의 판단","데이터와 모델의 예측, 이해하지 못해도 맞히는 지식","전문가 → 모델"],["플랫폼과 데이터 독점","연산 자원과 모델을 가진 기업·국가, AI 거버넌스가 새 쟁점","데이터 → 컴퓨트"],["유일한 지성","여러 지성 가운데 하나일 수 있는 존재, 인간다움의 재정의","유일 → 공존?"],["지적 노동은 인간의 몫","AI와의 협업과 대체, 노동·소득·의미의 재설계","인간 노동 → 협업·대체"]]}
+];
+// s: 태어난 분기점 칸, e: 힘을 가진 마지막 칸, a: 현재까지 살아 있음
+const ISMS=[
+// A 인식·과학
+{id:"scholastic",n:"스콜라철학",en:"Scholasticism",l:"A",s:0,e:0,y:"11~14세기 전성",who:"토마스 아퀴나스, 안셀무스, 윌리엄 오컴",works:"아퀴나스 『신학대전』(1265~1274)",core:"기독교 신앙과 아리스토텔레스 철학을 결합해, 이성은 신앙을 뒷받침하는 도구라고 보았다. 우주는 신이 정한 목적과 위계로 질서 지어져 있고, 진리는 성서·교부·아리스토텔레스의 권위에서 나온다.",prop:"은총은 자연을 파괴하지 않고 완성한다 (아퀴나스)",f:[]},
+{id:"mechanism",n:"기계론적 세계관",en:"Mechanical philosophy",l:"A",s:1,e:3,y:"1543~1687 형성",who:"코페르니쿠스, 갈릴레이, 케플러, 데카르트, 뉴턴",works:"코페르니쿠스 『천구의 회전에 관하여』(1543), 갈릴레이 『두 우주 체계에 관한 대화』(1632), 뉴턴 『프린키피아』(1687)",core:"자연을 신의 목적이 아니라 수학적 법칙대로 움직이는 거대한 기계로 본다. 하늘과 땅이 같은 법칙(만유인력)을 따른다는 발견이 중세 우주의 위계를 무너뜨렸다. 20세기 상대성이론과 양자역학으로 수정되었지만 공학과 기술의 기본 사고로 남았다.",prop:"자연이라는 책은 수학의 언어로 쓰여 있다 (갈릴레이, 요지)",f:[["scholastic","r"]]},
+{id:"rationalism",n:"합리론",en:"Rationalism",l:"A",s:1,e:2,y:"17세기",who:"데카르트, 스피노자, 라이프니츠",works:"데카르트 『방법서설』(1637), 『성찰』(1641), 스피노자 『에티카』(1677)",core:"모든 것을 의심한 뒤에도 남는 이성의 확실성 위에 지식을 다시 세운다. 확실한 지식은 감각이 아니라 이성의 명석판명한 원리에서 연역된다고 보았다.",prop:"나는 생각한다, 그러므로 나는 존재한다 (데카르트)",f:[["scholastic","r"],["mechanism","c"]]},
+{id:"empiricism",n:"경험론",en:"Empiricism",l:"A",s:1,e:2,y:"17~18세기",who:"프랜시스 베이컨, 존 로크, 조지 버클리, 데이비드 흄",works:"베이컨 『신기관』(1620), 로크 『인간지성론』(1689), 흄 『인간 본성론』(1739)",core:"인간의 마음은 태어날 때 백지이며 모든 지식은 경험과 관찰에서 온다고 본다. 귀납과 실험을 과학의 방법으로 세웠고, 흄은 인과 관계조차 습관에서 나온 믿음이라며 이성의 한계를 드러냈다.",prop:"아는 것이 힘이다 (베이컨)",f:[["scholastic","r"]]},
+{id:"enlightenment",n:"계몽주의",en:"The Enlightenment",l:"A",s:1,e:2,y:"1680~1800",who:"볼테르, 몽테스키외, 디드로, 루소, 칸트",works:"디드로·달랑베르 『백과전서』(1751~1772), 칸트 「계몽이란 무엇인가」(1784)",core:"과학혁명의 방법을 종교·사회·정치에 적용해, 전통과 권위를 이성의 법정에 세웠다. 인류는 이성으로 무지와 미신에서 벗어나 진보할 수 있다는 믿음을 퍼뜨렸고, 이 믿음이 프랑스혁명의 사상적 연료가 되었다.",prop:"감히 알려고 하라 (Sapere aude, 칸트)",f:[["rationalism","c"],["empiricism","c"],["mechanism","c"]]},
+{id:"positivism",n:"실증주의",en:"Positivism",l:"A",s:3,e:4,y:"1830년대~",who:"오귀스트 콩트, 존 스튜어트 밀, 에른스트 마흐",works:"콩트 『실증철학 강의』(1830~1842)",core:"관찰과 실험으로 확인되는 사실만이 지식이라고 보고, 사회도 자연과학처럼 연구해야 한다며 ‘사회학’을 세웠다. 산업과 과학이 사회를 진보시킨다는 19세기의 낙관을 대표한다.",prop:"인간 정신은 신학적 → 형이상학적 → 실증적 단계로 발전한다 (콩트의 3단계 법칙, 요지)",f:[["enlightenment","c"],["empiricism","c"]]},
+{id:"darwinism",n:"진화론",en:"Darwinism",l:"A",s:3,e:7,a:1,y:"1859~",who:"찰스 다윈, 앨프리드 러셀 월리스",works:"다윈 『종의 기원』(1859), 『인간의 유래』(1871)",core:"생물종은 따로 창조된 것이 아니라 변이와 자연선택을 통해 공통 조상에서 갈라져 나왔다. 인간도 자연의 일부라는 인식이 종교적 인간관을 뿌리부터 흔들었고, 이후 유전학과 결합해 현대 생물학의 토대가 되었다.",prop:"생명은 설계가 아니라 변이와 자연선택으로 변해 왔다 (요지)",f:[["mechanism","c"]]},
+{id:"logical",n:"논리실증주의·과학철학",sn:"과학철학(논리실증주의)",en:"Logical positivism & philosophy of science",l:"A",s:4,e:5,y:"1920~1960년대",who:"비트겐슈타인, 루돌프 카르납(빈 학파), 칼 포퍼, 토머스 쿤",works:"비트겐슈타인 『논리철학논고』(1921), 포퍼 『과학적 발견의 논리』(1934), 쿤 『과학혁명의 구조』(1962)",core:"검증할 수 있는 명제만 의미가 있다는 논리실증주의에서 출발해, 포퍼는 ‘반증 가능성’을 과학의 기준으로 삼았다. 쿤은 과학이 지식의 누적이 아니라 ‘패러다임 전환’으로 바뀐다고 보아 과학혁명 자체를 새로 해석했다.",prop:"말할 수 없는 것에 대해서는 침묵해야 한다 (비트겐슈타인)",f:[["positivism","c"]]},
+{id:"cybernetics",n:"정보이론·사이버네틱스",en:"Information theory & Cybernetics",l:"A",s:4,e:6,y:"1936~1960년대",who:"앨런 튜링, 클로드 섀넌, 노버트 위너, 존 폰 노이만",works:"튜링 「계산 가능한 수에 관하여」(1936), 섀넌 「통신의 수학적 이론」(1948), 위너 『사이버네틱스』(1948), 튜링 「계산 기계와 지능」(1950)",core:"전쟁 중 암호 해독과 사격 통제 연구에서 자라나, 정보와 피드백을 물질·에너지와 나란한 세계의 기본 요소로 만들었다. 생명·마음·사회를 정보 처리 시스템으로 보는 시각이 컴퓨터와 AI의 사상적 바탕이 되었다.",prop:"기계는 생각할 수 있는가? (튜링)",f:[["mechanism","c"],["logical","c"]]},
+{id:"structuralism",n:"구조주의",en:"Structuralism",l:"A",s:5,e:5,y:"1950~1960년대",who:"페르디낭 드 소쉬르, 클로드 레비스트로스, 자크 라캉, 루이 알튀세르",works:"소쉬르 『일반언어학 강의』(1916), 레비스트로스 『슬픈 열대』(1955), 『야생의 사고』(1962)",core:"언어·친족·신화·무의식 뒤에는 개인이 의식하지 못하는 구조가 있고, 그 구조가 의미를 만든다고 본다. 자유로운 주체를 앞세운 실존주의를 밀어내고 1960년대 프랑스 사상의 중심이 되었다.",prop:"주체가 구조를 만드는 것이 아니라 구조가 주체를 만든다 (요지)",f:[["existentialism","r"],["psychoanalysis","c"]]},
+{id:"postmodern",n:"포스트모더니즘",en:"Postmodernism & Poststructuralism",l:"A",s:5,e:7,a:1,y:"1960년대 말~",who:"미셸 푸코, 자크 데리다, 장프랑수아 리오타르, 장 보드리야르",works:"데리다 『그라마톨로지에 대하여』(1967), 푸코 『감시와 처벌』(1975), 리오타르 『포스트모던의 조건』(1979)",core:"이성·진보·해방 같은 근대의 거대서사가 보편 진리가 아니라 특정한 권력과 담론의 산물이라고 폭로했다. 진리·정체성·지식은 고정되지 않고 맥락 속에서 구성된다고 보며, 오늘날 정체성 정치와 문화 연구에 큰 흔적을 남겼다.",prop:"포스트모던이란 거대서사에 대한 불신이다 (리오타르)",f:[["structuralism","c"],["nihilism","c"],["enlightenment","r"]]},
+{id:"infosociety",n:"정보사회론·미디어론",en:"Information & network society",l:"A",s:6,e:7,a:1,y:"1960년대~",who:"마셜 매클루언, 대니얼 벨, 앨빈 토플러, 마누엘 카스텔",works:"매클루언 『미디어의 이해』(1964), 벨 『탈산업사회의 도래』(1973), 토플러 『제3의 물결』(1980), 카스텔 『네트워크 사회의 도래』(1996)",core:"부의 원천이 토지와 자본에서 지식과 정보로 옮겨 가고, 사회 조직이 위계에서 네트워크로 바뀐다고 진단했다. 미디어의 형식 자체가 인간의 감각과 사회를 바꾼다는 통찰을 남겼다.",prop:"미디어는 메시지다 (매클루언)",f:[["cybernetics","c"]]},
+{id:"dataism",n:"데이터주의",en:"Dataism",l:"A",s:7,e:7,a:1,y:"2010년대~",who:"유발 하라리(개념 정리), 크리스 앤더슨",works:"앤더슨 「이론의 종말」(2008), 하라리 『호모 데우스』(2015)",core:"우주와 생명을 데이터의 흐름으로 보고, 데이터를 가장 많이, 가장 잘 처리하는 시스템이 판단의 권위를 가진다는 관점이다. 신과 인간의 감정이 차지하던 의사결정의 자리를 알고리즘이 넘겨받는 흐름을 가리킨다.",prop:"데이터가 충분하면 숫자가 스스로 말한다 (앤더슨, 요지)",f:[["infosociety","c"],["positivism","c"]]},
+// B 정치·권력
+{id:"divine",n:"왕권신수설·절대왕정",en:"Divine right of kings",l:"B",s:0,e:1,y:"16~18세기",who:"장 보댕, 로버트 필머, 자크 보쉬에, 루이 14세",works:"보댕 『국가론』(1576), 필머 『가부장권론』(1680)",core:"왕의 권력은 백성이 아니라 신에게서 직접 오며, 왕은 신에게만 책임진다고 보았다. 신분 질서와 세습 권력을 신이 정한 자연의 질서로 정당화했다.",prop:"짐이 곧 국가다 (루이 14세의 말로 전해짐)",f:[["scholastic","c"]]},
+{id:"socialcontract",n:"사회계약론",en:"Social contract theory",l:"B",s:1,e:2,y:"1651~1762",who:"토머스 홉스, 존 로크, 장자크 루소",works:"홉스 『리바이어던』(1651), 로크 『통치론』(1689), 루소 『사회계약론』(1762)",core:"국가는 신이 아니라 자연 상태의 개인들이 맺은 계약에서 생겨났다고 본다. 권력의 정당성이 위(신)에서 아래(피치자의 동의)로 옮겨졌고, 로크는 생명·자유·재산을 지키지 못하는 정부에 저항할 권리까지 인정했다.",prop:"인간은 자유롭게 태어났으나 어디서나 쇠사슬에 묶여 있다 (루소)",f:[["divine","r"],["rationalism","c"],["mechanism","c"]]},
+{id:"liberalism",n:"자유주의",en:"Liberalism",l:"B",s:2,e:7,a:1,y:"17세기 말~",who:"존 로크, 몽테스키외, 알렉시 드 토크빌, J. S. 밀",works:"몽테스키외 『법의 정신』(1748), 토크빌 『미국의 민주주의』(1835), 밀 『자유론』(1859)",core:"개인의 권리와 자유를 국가보다 앞에 두고, 권력 분립·법치·언론과 종교의 자유로 권력을 제한한다. 프랑스혁명 이후 근대 국가의 기본 문법이 되었다.",prop:"타인에게 해를 끼치지 않는 한, 개인의 자유는 간섭받지 않아야 한다 (밀의 해악의 원리, 요지)",f:[["socialcontract","c"],["enlightenment","c"]]},
+{id:"republic",n:"공화주의·국민주권",en:"Republicanism & popular sovereignty",l:"B",s:2,e:7,a:1,y:"1776·1789~",who:"루소, 에마뉘엘 시에예스, 로베스피에르, 토머스 제퍼슨",works:"미국 독립선언(1776), 시에예스 『제3신분이란 무엇인가』(1789), 「인간과 시민의 권리 선언」(1789)",core:"주권은 왕이 아니라 국민 전체에 있으며, 법은 일반의지의 표현이라고 보았다. 신민이 시민이 되었고, 자유·평등·박애가 정치의 새 기준이 되었다.",prop:"모든 주권의 원천은 본질적으로 국민에게 있다 (인권선언 제3조, 요지)",f:[["socialcontract","c"],["enlightenment","c"],["divine","r"]]},
+{id:"nationalism",n:"민족주의",en:"Nationalism",l:"B",s:2,e:7,a:1,y:"1789~",who:"요한 고트프리트 헤르더, 요한 고틀리프 피히테, 주세페 마치니",works:"피히테 『독일 국민에게 고함』(1807~1808)",core:"국민주권 이념이 ‘국민은 누구인가’라는 질문과 만나면서, 언어·역사·문화를 공유하는 민족이 국가의 단위가 되어야 한다는 생각이 퍼졌다. 통일과 독립의 힘이 되기도, 배타와 전쟁의 원인이 되기도 했다.",prop:"모든 민족은 스스로의 국가를 이룰 권리가 있다 (요지)",f:[["republic","c"],["romanticism","c"]]},
+{id:"conservatism",n:"보수주의",en:"Conservatism",l:"B",s:2,e:7,a:1,y:"1790~",who:"에드먼드 버크, 조제프 드 메스트르, (20세기) 마이클 오크숏",works:"버크 『프랑스혁명에 관한 성찰』(1790)",core:"추상적 이성으로 사회를 한꺼번에 뜯어고치려는 혁명이 폭력과 혼란을 낳는다고 경고했다. 오랜 세월 검증된 전통·관습·제도에 담긴 지혜를 존중하고, 변화는 점진적이어야 한다고 본다.",prop:"사회는 산 자, 죽은 자, 앞으로 태어날 자 사이의 동반 관계다 (버크, 요지)",f:[["republic","r"],["enlightenment","r"]]},
+{id:"anarchism",n:"무정부주의",en:"Anarchism",l:"B",s:3,e:5,y:"1840년대~",who:"피에르조제프 프루동, 미하일 바쿠닌, 표트르 크로폿킨",works:"프루동 『소유란 무엇인가』(1840), 크로폿킨 『상호부조론』(1902)",core:"국가·자본·교회 같은 모든 강제적 권위를 거부하고, 자발적 결사와 상호부조로 사회를 꾸릴 수 있다고 보았다. 국가 권력 장악을 노린 마르크스주의와 대립했다.",prop:"소유는 도둑질이다 (프루동)",f:[["liberalism","c"],["socialism","c"]]},
+{id:"imperialism",n:"제국주의·사회진화론",en:"Imperialism & Social Darwinism",l:"B",s:3,e:4,y:"1870~1914 절정",who:"허버트 스펜서, 세실 로즈, 러디어드 키플링",works:"스펜서 『생물학 원리』(1864), 키플링 「백인의 짐」(1899)",core:"진화론을 사회에 잘못 적용해, 강한 민족과 인종이 약한 쪽을 지배하는 것이 자연스럽다고 정당화했다. 산업화가 만든 생산력과 무기를 바탕으로 ‘문명화의 사명’을 내세워 식민 지배를 넓혔다.",prop:"적자생존 (스펜서)",f:[["darwinism","c"],["nationalism","c"]]},
+{id:"totalitarian",n:"파시즘·전체주의",en:"Fascism & Totalitarianism",l:"B",s:4,e:4,y:"1919~1945",who:"베니토 무솔리니, 아돌프 히틀러 (분석: 한나 아렌트)",works:"무솔리니·젠틸레 「파시즘 교의」(1932), 아렌트 『전체주의의 기원』(1951, 분석서)",core:"개인의 권리보다 민족과 국가의 의지를 앞세우고, 지도자 숭배·일당 독재·대중 동원으로 사회 전체를 통제했다. 홀로코스트와 침략전쟁으로 이어져, 전후 인권 사상이 생겨난 직접적 반면교사가 되었다.",prop:"모든 것은 국가 안에, 국가 밖에는 아무것도 없다 (무솔리니)",f:[["nationalism","c"],["imperialism","c"],["liberalism","r"],["marxism","r"]]},
+{id:"communism",n:"공산주의 체제",en:"Marxism–Leninism",l:"B",s:4,e:5,y:"1917~1991",who:"블라디미르 레닌, 이오시프 스탈린, 마오쩌둥",works:"레닌 『국가와 혁명』(1917)",core:"전위 정당이 혁명으로 국가를 장악해 생산수단을 국유화하고 계획경제를 운영한다. 러시아혁명으로 현실 체제가 되었고, 냉전기에 자유민주주의와 세계를 양분하다가 1991년 소련 해체와 함께 쇠퇴했다.",prop:"프롤레타리아 독재 (마르크스·레닌)",f:[["marxism","c"]]},
+{id:"humanrights",n:"보편 인권주의",en:"Universal human rights",l:"B",s:4,e:7,a:1,y:"1945~",who:"엘리너 루스벨트, 르네 카생, 라파엘 렘킨",works:"국제연합 헌장(1945), 세계인권선언(1948), 제노사이드 협약(1948)",core:"두 차례 대전과 홀로코스트를 겪은 뒤, 국가가 어떤 이유로도 침해할 수 없는 인간의 존엄과 권리를 국제 기준으로 선언했다. 국가 주권도 인권 앞에서 제한될 수 있다는 생각이 처음으로 제도가 되었다.",prop:"모든 인간은 태어날 때부터 자유롭고, 존엄과 권리에서 평등하다 (세계인권선언 제1조)",f:[["liberalism","c"],["republic","c"],["totalitarian","r"]]},
+{id:"decolonial",n:"탈식민주의",en:"Postcolonialism",l:"B",s:4,e:7,a:1,y:"1940년대~",who:"마하트마 간디, 프란츠 파농, 에드워드 사이드, 가야트리 스피박",works:"파농 『대지의 저주받은 자들』(1961), 사이드 『오리엔탈리즘』(1978)",core:"식민 지배가 끝난 뒤에도 서구 중심의 지식과 문화가 비서구를 ‘미개한 타자’로 그려 지배를 정당화해 왔다고 비판했다. 아시아·아프리카 독립의 사상적 동력이 되었다.",prop:"서구가 그린 ‘동양’은 실재가 아니라 지배를 위한 표상이다 (사이드, 요지)",f:[["nationalism","c"],["humanrights","c"],["imperialism","r"]]},
+{id:"newleft",n:"신좌파·68 반권위주의",sn:"신좌파·68운동",en:"New Left & the spirit of 1968",l:"B",s:5,e:5,y:"1960년대",who:"허버트 마르쿠제, 장폴 사르트르, 다니엘 콘벤디트, 루디 두치케",works:"마르쿠제 『일차원적 인간』(1964)",core:"소련식 공산주의와 서구 소비자본주의를 함께 비판하며, 학교·가족·국가·성에 깃든 일상의 권위에 맞섰다. 정치 혁명보다 삶의 방식과 문화의 해방을 앞세워 반전·민권·여성·생태 운동으로 번졌다.",prop:"상상력에 권력을! (1968년 파리의 구호)",f:[["marxism","c"],["critical","c"],["existentialism","c"],["communism","r"]]},
+{id:"justice",n:"정의론·공동체주의",en:"Theory of justice & Communitarianism",l:"B",s:5,e:7,a:1,y:"1971~",who:"존 롤스, 로버트 노직, 마이클 샌델, 알래스데어 매킨타이어",works:"롤스 『정의론』(1971), 노직 『무정부, 국가, 유토피아』(1974), 매킨타이어 『덕의 상실』(1981), 샌델 『자유주의와 정의의 한계』(1982)",core:"롤스는 자신이 어떤 처지에 놓일지 모르는 ‘무지의 베일’ 뒤에서 합의할 원칙이 정의라고 보고, 가장 불리한 사람에게 이익이 되는 불평등만 허용했다. 이에 개인 소유권을 앞세운 자유지상주의, 공동체의 가치와 덕을 앞세운 공동체주의가 맞섰다.",prop:"정의는 사회 제도의 제1덕목이다 (롤스)",f:[["liberalism","c"],["socialcontract","c"],["utilitarian","r"]]},
+{id:"endhistory",n:"역사의 종언",en:"The End of History",l:"B",s:5,e:6,y:"1989~2000년대",who:"프랜시스 후쿠야마 (반론: 새뮤얼 헌팅턴)",works:"후쿠야마 「역사의 종언?」(1989), 『역사의 종말』(1992), 헌팅턴 『문명의 충돌』(1996)",core:"냉전이 끝나자 자유민주주의와 시장경제가 인류 이념 경쟁의 최종 승자라는 주장이 힘을 얻었다. 이후 테러, 민족·종교 갈등, 권위주의의 부상으로 강한 반론에 부딪혔다.",prop:"자유민주주의는 인류 이념 진화의 종착점일 수 있다 (후쿠야마, 요지)",f:[["liberalism","c"],["communism","r"]]},
+{id:"cyberlib",n:"사이버 자유주의·오픈소스",en:"Cyber-libertarianism & Open source",l:"B",s:6,e:7,a:1,y:"1980년대~",who:"리처드 스톨먼, 에릭 레이먼드, 존 페리 바를로, 로런스 레식",works:"스톨먼 「GNU 선언」(1985), 바를로 「사이버스페이스 독립선언」(1996), 레이먼드 『성당과 시장』(1997), 레식 『코드』(1999)",core:"인터넷을 국가와 기업의 통제 밖에 있는 자유로운 공간으로 보고, 소프트웨어와 지식은 공유되어야 한다고 주장했다. 리눅스·위키백과 같은 협업 생산을 낳았고, 레식은 코드가 곧 법처럼 행동을 규율한다고 경고했다.",prop:"정보는 자유로워지기를 원한다 (스튜어트 브랜드)",f:[["liberalism","c"],["anarchism","c"],["newleft","c"]]},
+{id:"aisafety",n:"AI 안전주의·정렬론",en:"AI safety & alignment",l:"B",s:7,e:7,a:1,y:"2000년대 태동, 2020년대 주류화",who:"닉 보스트롬, 스튜어트 러셀, 제프리 힌턴, 요슈아 벤지오, 엘리저 유드카우스키",works:"보스트롬 『슈퍼인텔리전스』(2014), 러셀 『어떻게 인간과 공존하는 인공지능을 만들 것인가』(2019), CAIS 「AI 위험 성명」(2023)",core:"인간보다 뛰어난 AI가 인간의 가치와 어긋난 목표를 추구하면 되돌릴 수 없는 피해가 생길 수 있다고 본다. 그래서 성능 경쟁보다 정렬 연구·검증·국제 규범을 먼저 갖추자고 주장하며, 2026년에는 주요 AI 기업 경영자들 사이에서도 개발 속도 조절 논쟁이 벌어졌다.",prop:"AI로 인한 멸종 위험을 줄이는 일은 팬데믹·핵전쟁과 같은 전 지구적 우선순위여야 한다 (AI 위험 성명, 요지)",f:[["cybernetics","c"],["ea","c"],["humanrights","c"]]},
+{id:"eacc",n:"효과적 가속주의(e/acc)",sn:"e/acc 가속주의",en:"Effective accelerationism",l:"B",s:7,e:7,a:1,y:"2022~",who:"마크 앤드리슨, ‘베프 제조스’(기욤 베르동), (뿌리: 닉 랜드의 가속주의)",works:"앤드리슨 「AI는 왜 세상을 구할 것인가」(2023), 「테크노옵티미스트 선언」(2023)",core:"기술과 시장의 성장이 인류 번영의 원동력이므로, AI 개발을 규제로 늦추지 말고 오히려 가속해야 한다고 주장한다. 안전론자를 ‘감속론자’라 부르며 맞서고, 그 사이에 비탈릭 부테린의 ‘방어적 가속(d/acc)’ 같은 중간 입장도 나왔다.",prop:"AI를 늦추는 것은 막을 수 있었던 죽음을 방치하는 일이다 (앤드리슨, 요지)",f:[["neoliberal","c"],["transhuman","c"],["cyberlib","c"],["aisafety","r"]]},
+// C 경제·노동·생태
+{id:"mercantilism",n:"중상주의",en:"Mercantilism",l:"C",s:0,e:1,y:"16~18세기",who:"장바티스트 콜베르, 토머스 먼",works:"먼 『외국무역에 의한 잉글랜드의 부』(1664)",core:"국가의 부는 금과 은의 양이며, 수출을 늘리고 수입을 막아 무역 흑자를 쌓아야 한다고 보았다. 절대왕정의 재정과 식민지 경쟁을 뒷받침했다.",prop:"무역 흑자가 곧 국부다 (요지)",f:[["divine","c"]]},
+{id:"classical",n:"고전경제학·자본주의",en:"Classical economics & capitalism",l:"C",s:3,e:4,y:"1776~1929",who:"애덤 스미스, 데이비드 리카도, 토머스 맬서스, J. S. 밀",works:"스미스 『국부론』(1776), 리카도 『정치경제학과 과세의 원리』(1817)",core:"분업과 자유 시장의 경쟁이 ‘보이지 않는 손’처럼 작동해 사회 전체의 부를 늘린다고 보았다. 국부의 원천을 금·은에서 노동과 생산으로 바꾸었고, 산업혁명기 자유방임의 근거가 되었다. 대공황으로 큰 타격을 입었다.",prop:"우리가 저녁을 먹는 것은 정육점 주인의 자비가 아니라 그의 이익 추구 덕분이다 (스미스, 요지)",f:[["mercantilism","r"],["liberalism","c"],["enlightenment","c"]]},
+{id:"socialism",n:"초기 사회주의",en:"Utopian socialism",l:"C",s:3,e:3,y:"1810~1840년대",who:"로버트 오언, 앙리 드 생시몽, 샤를 푸리에",works:"오언 『새로운 사회관』(1813), 푸리에 『네 가지 운동의 이론』(1808)",core:"공장제가 낳은 장시간 노동, 아동 노동, 빈곤을 보고 경쟁 대신 협동과 공동 소유에 기반한 공동체를 제안했다. 마르크스는 이를 ‘공상적 사회주의’라 부르며 넘어서려 했다.",prop:"협동이 경쟁을 대신해야 한다 (요지)",f:[["enlightenment","c"],["classical","r"]]},
+{id:"marxism",n:"마르크스주의",en:"Marxism",l:"C",s:3,e:5,y:"1848~",who:"카를 마르크스, 프리드리히 엥겔스",works:"『공산당 선언』(1848), 『자본』 1권(1867)",core:"역사를 생산력과 생산관계의 변화, 그리고 계급투쟁으로 설명하는 유물론적 역사관이다. 자본주의는 노동자의 잉여가치를 착취하며, 그 모순 때문에 결국 계급 없는 사회로 넘어간다고 예측했다. 체제로서는 쇠퇴했지만 자본주의 비판의 언어로 남았다.",prop:"지금까지 모든 사회의 역사는 계급투쟁의 역사다 (『공산당 선언』)",f:[["socialism","c"],["enlightenment","c"],["classical","r"]]},
+{id:"keynes",n:"케인스주의·복지국가",en:"Keynesianism & the welfare state",l:"C",s:4,e:5,y:"1936~1970년대",who:"존 메이너드 케인스, 윌리엄 베버리지",works:"케인스 『고용, 이자 및 화폐의 일반이론』(1936), 『베버리지 보고서』(1942)",core:"대공황은 시장이 스스로 완전고용에 이르지 못한다는 것을 보여 주었으므로, 정부가 재정 지출로 수요를 만들어야 한다고 보았다. 전후 서구에서 완전고용·사회보험·복지국가의 ‘황금기’를 열었다.",prop:"요람에서 무덤까지 (전후 영국 복지국가의 구호)",f:[["classical","r"],["socialism","c"],["liberalism","c"]]},
+{id:"neoliberal",n:"신자유주의",en:"Neoliberalism",l:"C",s:5,e:7,a:1,y:"1970년대 말~",who:"프리드리히 하이에크, 밀턴 프리드먼, 마거릿 대처, 로널드 레이건",works:"하이에크 『노예의 길』(1944), 프리드먼 『자본주의와 자유』(1962)",core:"1970년대 스태그플레이션 이후 국가 개입과 복지국가를 비효율로 보고, 민영화·규제 완화·자유무역으로 시장의 몫을 넓혔다. 탈냉전과 함께 세계화의 표준 처방이 되었고, 2008년 금융위기 이후 거센 비판을 받고 있다.",prop:"대안은 없다 (There is no alternative, 대처)",f:[["classical","c"],["liberalism","c"],["keynes","r"]]},
+{id:"ecology",n:"생태주의·환경주의",en:"Ecologism & environmentalism",l:"C",s:5,e:7,a:1,y:"1962~",who:"레이첼 카슨, 아르네 네스, 한스 요나스, 로마클럽",works:"카슨 『침묵의 봄』(1962), 로마클럽 『성장의 한계』(1972), 요나스 『책임의 원칙』(1979)",core:"산업 성장이 지구 생태계의 한계를 넘고 있다고 경고하며, 인간을 자연의 지배자가 아닌 일부로 다시 놓았다. 미래 세대에 대한 책임과 지속가능성을 경제의 새 기준으로 제시했다.",prop:"지구의 성장에는 한계가 있다 (로마클럽, 요지)",f:[["romanticism","c"],["newleft","c"],["classical","r"],["mechanism","r"]]},
+{id:"platform",n:"감시·플랫폼 자본주의 비판",sn:"플랫폼 자본주의 비판",en:"Critique of surveillance & platform capitalism",l:"C",s:6,e:7,a:1,y:"2010년대~",who:"쇼샤나 주보프, 닉 서르닉, 엘리 파리저",works:"파리저 『생각 조종자들』(2011), 서르닉 『플랫폼 자본주의』(2016), 주보프 『감시 자본주의 시대』(2019)",core:"검색·SNS·커머스 플랫폼이 사람들의 행동 데이터를 원료 삼아 행동을 예측하고 조종하는 새로운 자본축적 방식을 만들었다고 비판한다. 알고리즘이 보여 주는 것만 보게 되는 필터 버블과 탈진실 문제도 함께 다룬다.",prop:"인간의 경험이 행동 데이터라는 공짜 원료가 된다 (주보프, 요지)",f:[["marxism","c"],["infosociety","c"],["neoliberal","r"]]},
+{id:"basicincome",n:"기본소득·탈노동론",en:"Basic income & post-work",l:"C",s:7,e:7,a:1,y:"2010년대~",who:"필리프 판 파레이스, 가이 스탠딩, 뤼트허르 브레흐만",works:"판 파레이스 『모두에게 실질적 자유를』(1995), 브레흐만 『리얼리스트를 위한 유토피아 플랜』(2016)",core:"자동화와 AI가 일자리를 대체하는 시대에는 노동과 소득을 분리해 모든 사람에게 조건 없는 소득을 보장해야 한다는 구상이다. ‘일이 곧 삶의 의미’라는 산업혁명 이래의 가치관 자체를 묻는다.",prop:"모두에게, 조건 없이, 개인 단위로, 정기적으로 (기본소득의 원칙)",f:[["keynes","c"],["justice","c"],["socialism","c"]]},
+// D 인간·문화·윤리
+{id:"humanism",n:"르네상스 인문주의",en:"Renaissance humanism",l:"D",s:0,e:1,y:"14~16세기",who:"프란체스코 페트라르카, 피코 델라 미란돌라, 에라스뮈스",works:"피코 「인간 존엄성에 관한 연설」(1486), 에라스뮈스 『우신예찬』(1511)",core:"그리스·로마 고전을 되살려, 신에게 쏠려 있던 관심을 인간의 존엄·능력·현세의 삶으로 옮겼다. 과학혁명과 종교개혁의 문화적 토양이 되었다.",prop:"인간은 스스로 자신의 모습을 빚는 존재다 (피코, 요지)",f:[["scholastic","r"]]},
+{id:"deism",n:"이신론",en:"Deism",l:"D",s:1,e:2,y:"17~18세기",who:"존 톨런드, 볼테르, 토머스 페인",works:"톨런드 『신비롭지 않은 기독교』(1696), 페인 『이성의 시대』(1794)",core:"신은 우주를 창조하고 자연법칙을 정했지만 그 뒤로는 개입하지 않는다고 본다. 기적과 계시 대신 이성으로 신을 이해하려 했고, 종교적 관용의 바탕이 되었다.",prop:"신은 시계를 만든 뒤 손을 뗀 시계공이다 (이신론의 비유)",f:[["mechanism","c"],["scholastic","r"]]},
+{id:"romanticism",n:"낭만주의",en:"Romanticism",l:"D",s:2,e:3,y:"1790~1850",who:"루소, 괴테, 프리드리히 슐레겔, 윌리엄 워즈워스",works:"괴테 『젊은 베르테르의 슬픔』(1774), 워즈워스·콜리지 『서정 민요집』(1798)",core:"계몽주의의 차가운 이성과 산업화의 기계화에 맞서 감정·상상력·개성·자연을 앞세웠다. 민족 고유의 언어와 전통을 중시해 민족주의와 손잡았다.",prop:"좋은 시는 강렬한 감정이 저절로 흘러넘친 것이다 (워즈워스, 요지)",f:[["enlightenment","r"],["mechanism","r"]]},
+{id:"feminism1",n:"페미니즘 1물결",en:"First-wave feminism",l:"D",s:2,e:4,y:"1791~1920년대",who:"올랭프 드 구주, 메리 울스턴크래프트, J. S. 밀, 에멀린 팽크허스트",works:"드 구주 「여성과 여성 시민의 권리 선언」(1791), 울스턴크래프트 『여성의 권리 옹호』(1792), 밀 『여성의 종속』(1869)",core:"프랑스혁명의 ‘인간과 시민’에 여성이 빠져 있다고 지적하고, 여성에게도 교육권·재산권·참정권을 요구했다. 20세기 초 여러 나라에서 여성 참정권을 얻어 냈다.",prop:"여성이 단두대에 오를 권리가 있다면, 연단에 오를 권리도 있어야 한다 (드 구주, 요지)",f:[["republic","c"],["enlightenment","c"],["liberalism","c"]]},
+{id:"utilitarian",n:"공리주의",en:"Utilitarianism",l:"D",s:3,e:7,a:1,y:"1789~",who:"제러미 벤담, J. S. 밀, (현대) 피터 싱어",works:"벤담 『도덕과 입법의 원리 서설』(1789), 밀 『공리주의』(1863)",core:"옳은 행위는 영향을 받는 모든 사람의 행복을 최대로 늘리는 행위라고 본다. 신의 명령 대신 결과를 계산하는 세속 윤리로, 법 개혁·공공정책·비용편익 분석의 기초가 되었다.",prop:"최대 다수의 최대 행복 (벤담)",f:[["enlightenment","c"],["empiricism","c"]]},
+{id:"nihilism",n:"니체와 허무주의",en:"Nietzsche & nihilism",l:"D",s:3,e:4,y:"1880년대~",who:"프리드리히 니체, 쇼펜하우어, 키르케고르, 도스토옙스키",works:"니체 『즐거운 학문』(1882), 『차라투스트라는 이렇게 말했다』(1883~1885)",core:"과학과 세속화가 기독교적 가치의 근거를 무너뜨렸다고 진단하고, 그 빈자리를 허무로 남기지 말고 스스로 새 가치를 창조하라고 요구했다. 근대의 이성·진보 신앙에 대한 가장 강력한 내부 비판이었다.",prop:"신은 죽었다 (니체)",f:[["darwinism","c"],["romanticism","c"],["enlightenment","r"]]},
+{id:"psychoanalysis",n:"정신분석",en:"Psychoanalysis",l:"D",s:3,e:5,y:"1899~",who:"지크문트 프로이트, 카를 융, 자크 라캉",works:"프로이트 『꿈의 해석』(1899), 『문명 속의 불만』(1930)",core:"인간의 행동은 의식적 이성보다 억압된 욕망과 무의식에 더 크게 좌우된다고 보았다. 데카르트 이래의 ‘투명한 이성적 주체’라는 인간관을 흔들었다.",prop:"자아는 자기 집의 주인이 아니다 (프로이트)",f:[["darwinism","c"],["rationalism","r"]]},
+{id:"existentialism",n:"실존주의",en:"Existentialism",l:"D",s:4,e:5,y:"1920~1960년대",who:"마르틴 하이데거, 장폴 사르트르, 알베르 카뮈, 시몬 드 보부아르",works:"하이데거 『존재와 시간』(1927), 카뮈 『시지프 신화』(1942), 사르트르 『존재와 무』(1943), 「실존주의는 휴머니즘이다」(1946)",core:"신도, 역사의 진보도, 인간 본성도 삶의 의미를 미리 정해 주지 않는다. 부조리한 세계에 던져진 인간은 자유롭게 선택하고 그 선택에 책임지며 스스로를 만들어 간다.",prop:"실존은 본질에 앞선다 (사르트르)",f:[["nihilism","c"]]},
+{id:"critical",n:"비판이론(프랑크푸르트학파)",sn:"비판이론",en:"Critical theory",l:"D",s:4,e:5,y:"1930~1980년대",who:"막스 호르크하이머, 테오도어 아도르노, 발터 벤야민, (2세대) 위르겐 하버마스",works:"호르크하이머·아도르노 『계몽의 변증법』(1944/1947), 하버마스 『의사소통행위이론』(1981)",core:"인류를 해방하리라던 계몽적 이성이 도구적 이성으로 변해 관료제·문화산업·홀로코스트 같은 지배의 수단이 되었다고 분석했다. 하버마스는 그 대안으로 자유로운 토론에 기반한 ‘의사소통적 이성’을 내놓았다.",prop:"계몽은 신화로 되돌아간다 (『계몽의 변증법』, 요지)",f:[["marxism","c"],["psychoanalysis","c"],["enlightenment","r"],["positivism","r"]]},
+{id:"feminism2",n:"페미니즘 2·3물결",en:"Second & third-wave feminism",l:"D",s:5,e:7,a:1,y:"1949·1960년대~",who:"시몬 드 보부아르, 베티 프리단, 케이트 밀릿, 주디스 버틀러",works:"보부아르 『제2의 성』(1949), 프리단 『여성성의 신화』(1963), 버틀러 『젠더 트러블』(1990)",core:"법적 평등을 넘어 가정·직장·성·문화 속 일상의 불평등을 문제 삼았다. ‘개인적인 것이 정치적인 것’이라는 구호 아래, 성 역할이 자연이 아니라 사회가 만든 것이라는 인식을 넓혔다.",prop:"여자는 태어나는 것이 아니라 만들어지는 것이다 (보부아르)",f:[["feminism1","c"],["existentialism","c"],["newleft","c"]]},
+{id:"transhuman",n:"트랜스휴머니즘·포스트휴머니즘",sn:"트랜스·포스트휴머니즘",en:"Transhumanism & Posthumanism",l:"D",s:6,e:7,a:1,y:"1957 용어 등장, 1980년대~",who:"줄리언 헉슬리, 도나 해러웨이, 레이 커즈와일, 닉 보스트롬, 로지 브라이도티",works:"해러웨이 「사이보그 선언」(1985), 커즈와일 『특이점이 온다』(2005), 브라이도티 『포스트휴먼』(2013)",core:"트랜스휴머니즘은 과학기술로 노화·질병·지능의 한계를 넘어 인간을 개량해야 한다고 본다. 포스트휴머니즘은 인간을 세계의 중심에 둔 근대 휴머니즘 자체를 비판하며 인간·기계·동물의 경계를 다시 묻는다.",prop:"특이점이 온다 (커즈와일)",f:[["darwinism","c"],["cybernetics","c"],["enlightenment","c"],["postmodern","c"]]},
+{id:"ea",n:"효과적 이타주의·장기주의",sn:"효과적 이타주의",en:"Effective altruism & longtermism",l:"D",s:6,e:7,a:1,y:"2009~",who:"피터 싱어, 윌리엄 맥어스킬, 토비 오드",works:"싱어 『물에 빠진 아이 구하기』(2009), 오드 『사피엔스의 멸망』(2020), 맥어스킬 『What We Owe the Future』(2022)",core:"증거와 계산으로 가장 많은 선을 행할 방법을 찾자는 운동으로, 빈곤·보건에서 출발해 AI·팬데믹 같은 인류 존속의 위험으로 관심을 넓혔다. 아직 태어나지 않은 미래 세대도 도덕적으로 중요하다는 장기주의가 AI 안전 담론의 토대가 되었다.",prop:"할 수 있는 한 가장 큰 선을 행하라 (요지)",f:[["utilitarian","c"]]},
+{id:"digitalhum",n:"디지털 휴머니즘·인간 중심 AI",sn:"디지털 휴머니즘",en:"Digital humanism & human-centered AI",l:"D",s:7,e:7,a:1,y:"2019~",who:"「빈 디지털 휴머니즘 선언」 참여 학자들, 페이페이 리, 셰리 터클",works:"터클 『외로워지는 사람들』(2011), 「빈 디지털 휴머니즘 선언」(2019), 리 『The Worlds I See』(2023)",core:"AI와 플랫폼이 인간의 판단·관계·노동을 대신하는 흐름 속에서, 기술은 인간의 존엄·민주주의·자율성에 봉사하도록 설계되고 통제되어야 한다고 본다. EU AI 법 같은 위험 기반 규제와 ‘공공이익 AI’ 논의로 이어지고 있다.",prop:"기술은 인간을 위해 설계되어야 하며, 인간이 기술에 맞춰져서는 안 된다 (요지)",f:[["humanrights","c"],["platform","c"],["eacc","r"]]}
+];
+const BY={};ISMS.forEach(i=>BY[i.id]=i);
+const KIDS={};ISMS.forEach(i=>KIDS[i.id]=[]);
+ISMS.forEach(i=>i.f.forEach(([p,t])=>{if(KIDS[p])KIDS[p].push([i.id,t])}));
+const laneVar=l=>`var(${LANES[l].v})`;
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const NS="http://www.w3.org/2000/svg";
+function el(tag,attrs,parent){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);if(parent)parent.appendChild(e);return e}
+const circled=["0","①","②","③","④","⑤","⑥","⑦"];
+
+// facts
+document.getElementById("facts").innerHTML=`<span>분기점 <b>7</b></span><span>사상 <b>${ISMS.length}</b></span><span>영역 <b>4</b> (인식·과학 / 정치·권력 / 경제·노동·생태 / 인간·문화·윤리)</span><span>기준 <b>2026년 11월</b></span>`;
+
+// legends
+document.getElementById("legend-flow").innerHTML=Object.keys(LANES).map(k=>`<span><i class="sw ${k}"></i>${LANES[k].n}</span>`).join("")+`<span><i class="ln"></i>계승·발전</span><span><i class="ln r"></i>반발·비판</span>`;
+
+function chip(i){return `<button type="button" class="chip" data-ism="${i.id}"><i style="background:${laneVar(i.l)}"></i>${esc(i.n)}</button>`}
+
+// 1. 분기점 카드
+document.getElementById("tps").innerHTML=TP.map((t,c)=>{
+  const born=ISMS.filter(i=>i.s===c);
+  const rows=t.sh.map((s,k)=>`<div class="ax">${AX[k]}</div><div class="ba">${t.origin?`<span class="a" style="grid-column:1/-1">${esc(s[0])}</span>`:`<span class="b">${esc(s[0])}</span><span class="arr">→</span><span class="a">${esc(s[1])}</span>`}</div>`).join("");
+  return `<article class="tp" id="tp-${c}">
+    <div class="tp-head"><span class="tp-no">${t.origin?"0":circled[c]}</span><h3>${esc(t.n)}</h3><span class="tp-years">${esc(t.y)}</span></div>
+    <p class="tp-sum">${esc(t.sum)}</p>
+    ${t.note?`<p class="tp-note">${esc(t.note)}</p>`:""}
+    <ul class="events">${t.ev.map(e=>`<li><b>${esc(e[0])}</b>${esc(e[1])}</li>`).join("")}</ul>
+    <div class="shift">${rows}</div>
+    <div class="chips"><span class="lbl">${t.origin?"이 시기의 사상":"이때 태어난 사상"}</span>${born.map(chip).join("")}</div>
+  </article>`}).join("");
+
+// 2. 흐름도
+const W=150,HEAD=62,LH=24,ROW=30,BAR=22,PX=6,END=8*W+26;
+const pos={};
+let flowSvg;
+function drawFlow(){
+  const box=document.getElementById("flow-box");box.innerHTML="";
+  let y=HEAD;const lanePos=[];
+  for(const l of Object.keys(LANES)){
+    const items=ISMS.filter(i=>i.l===l).sort((a,b)=>a.s-b.s||(b.e-a.e));
+    const rows=[];
+    for(const i of items){
+      const st=i.s, en=i.a?9:i.e+1.4;
+      let r=rows.findIndex(x=>x<=st+0.01); if(r<0){r=rows.length;rows.push(0)} rows[r]=en;
+      i._r=r;
+    }
+    lanePos.push({l,y,h:LH+rows.length*ROW+8});
+    items.forEach(i=>{pos[i.id]={x0:i.s*W+PX,x1:i.a?END:(i.e+1)*W-PX,y:y+LH+i._r*ROW}});
+    y+=LH+rows.length*ROW+8;
+  }
+  const H=y+10, TW=END+14;
+  const svg=el("svg",{width:TW,height:H,viewBox:`0 0 ${TW} ${H}`,role:"img","aria-label":"분기점별 사상 흐름도"},box);flowSvg=svg;
+  const defs=el("defs",{},svg);
+  ["A","B","C","D"].forEach(l=>{
+    const g=el("linearGradient",{id:"fade"+l,x1:"0",x2:"1",y1:"0",y2:"0"},defs);
+    el("stop",{offset:"0","stop-color":`var(${LANES[l].v})`,"stop-opacity":".28"},g);
+    el("stop",{offset:"1","stop-color":`var(${LANES[l].v})`,"stop-opacity":"0"},g);
+  });
+  // lanes
+  lanePos.forEach((p,k)=>{
+    if(k%2===0) el("rect",{x:0,y:p.y,width:TW,height:p.h,class:"laneband"},svg);
+    const t=el("text",{x:8,y:p.y+16,class:"lanetitle",style:`fill:var(${LANES[p.l].v})`},svg);t.textContent="■ "+LANES[p.l].n;
+  });
+  // column heads & boundaries
+  TP.forEach((t,c)=>{
+    const g=el("g",{class:"colhead"},svg);
+    const a=el("text",{x:c*W+10,y:20,class:"no"},g);a.textContent=t.origin?"출발":circled[c];
+    const b=el("text",{x:c*W+10,y:38,class:"nm"},g);b.textContent=t.n.length>9?t.n.replace("·68혁명·","·68·"):t.n;
+    const d=el("text",{x:c*W+10,y:53,class:"yr"},g);d.textContent=t.y;
+    if(c>0) el("line",{x1:c*W,x2:c*W,y1:4,y2:H-4,class:"bound"},svg);
+  });
+  const nowT=el("text",{x:8*W+4,y:20,class:"yr",style:"font-size:11.5px"},svg);nowT.textContent="현재";
+  // links
+  const lg=el("g",{},svg);
+  ISMS.forEach(ch=>ch.f.forEach(([pid,t])=>{
+    const P=pos[pid],C=pos[ch.id];if(!P||!C)return;
+    const cx=C.x0,cy=C.y+BAR/2;
+    const px=Math.min(Math.max(cx-24,P.x0+10),P.x1-10),py=P.y+BAR/2;
+    el("path",{d:`M${px},${py} C${px},${cy} ${cx-16},${cy} ${cx},${cy}`,class:"lk"+(t==="r"?" r":""),"data-p":pid,"data-c":ch.id},lg);
+  }));
+  // bars
+  const bg=el("g",{},svg);
+  ISMS.forEach(i=>{
+    const p=pos[i.id];
+    const g=el("g",{class:"bar",tabindex:"0",role:"button","data-id":i.id,"aria-label":i.n},bg);
+    const col=`var(${LANES[i.l].v})`;
+    if(!i.a) el("rect",{x:p.x1-2,y:p.y,width:46,height:BAR,fill:`url(#fade${i.l})`},g);
+    el("rect",{x:p.x0,y:p.y,width:p.x1-p.x0,height:BAR,rx:4,class:"body",style:`fill:color-mix(in srgb, ${col} 24%, var(--surface))`},g);
+    el("rect",{x:p.x0,y:p.y,width:3,height:BAR,rx:1,style:`fill:${col}`},g);
+    if(i.a) el("path",{d:`M${p.x1},${p.y} l10,${BAR/2} l-10,${BAR/2} z`,style:`fill:color-mix(in srgb, ${col} 55%, var(--surface))`},g);
+    const tx=el("text",{x:p.x0+9,y:p.y+15},g);tx.textContent=i.sn||i.n;
+    for(let k=i.s+3;k<=(i.a?7:i.e);k+=3){const r=el("text",{x:k*W+9,y:p.y+15,style:"opacity:.5"},g);r.textContent=i.sn||i.n}
+    const ti=el("title",{},g);ti.textContent=`${i.n} · ${i.y}`;
+    g.addEventListener("click",()=>openIsm(i.id));
+    g.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openIsm(i.id)}});
+  });
+}
+function highlight(id){
+  if(!flowSvg)return;
+  const rel=new Set([id]);BY[id].f.forEach(([p])=>rel.add(p));KIDS[id].forEach(([c])=>rel.add(c));
+  flowSvg.querySelectorAll(".bar").forEach(b=>{const on=rel.has(b.dataset.id);b.classList.toggle("dim",!on);b.classList.toggle("on",b.dataset.id===id)});
+  flowSvg.querySelectorAll(".lk").forEach(l=>{const h=l.dataset.p===id||l.dataset.c===id;l.classList.toggle("hl",h);l.classList.toggle("dim",!h)});
+}
+function clearHL(){if(!flowSvg)return;flowSvg.querySelectorAll(".bar").forEach(b=>b.classList.remove("dim","on"));flowSvg.querySelectorAll(".lk").forEach(l=>l.classList.remove("hl","dim"))}
+
+// 3. 마인드맵
+const mmState={tp:TP.map(()=>true),sh:TP.map(()=>false)};
+function tw(s,fs){let w=0;for(const ch of s){w+=/[ㄱ-힝①-⑳·]/.test(ch)?fs*1.0:(/[A-Z]/.test(ch)?fs*.66:fs*.56)}return w}
+function drawMM(){
+  const box=document.getElementById("mm-box");box.innerHTML="";
+  const NH=24,X=[8,128,312,470];
+  const root={label:"사상의 분기점",kind:"root",depth:0,kids:[]};
+  TP.forEach((t,c)=>{
+    const n={label:(t.origin?"출발 ":circled[c]+" ")+t.n,kind:"tp",c,depth:1,open:mmState.tp[c],kids:[]};
+    const g={label:`기준 변화 ${mmState.sh[c]?"−":"+"}`,kind:"grp",c,depth:2,open:mmState.sh[c],kids:t.sh.map((s,k)=>({label:`${AX[k].replace("의 ","·").replace("권력·정당성","권력")}: ${s[2]}`,kind:"shift",depth:3,kids:[]}))};
+    n.kids.push(g);
+    ISMS.filter(i=>i.s===c).forEach(i=>n.kids.push({label:i.n,kind:"ism",id:i.id,l:i.l,depth:2,kids:[]}));
+    root.kids.push(n);
+  });
+  let leaf=0;
+  (function lay(n){
+    const vis=(n.kind==="root"||n.open)?n.kids:[];
+    n._vis=vis;
+    if(vis.length){vis.forEach(lay);n.y=(vis[0].y+vis[vis.length-1].y)/2}else{n.y=20+leaf*NH;leaf++}
+    n.x=X[n.depth];
+  })(root);
+  const H=leaf*NH+30;let maxX=0;
+  const all=[];(function walk(n){all.push(n);n._vis.forEach(walk)})(root);
+  all.forEach(n=>{const fs=n.kind==="ism"||n.kind==="shift"?12.5:13;n.w=(n.kind==="root"||n.kind==="tp"||n.kind==="grp")?tw(n.label,fs)+22:tw(n.label,fs)+14;maxX=Math.max(maxX,n.x+n.w+16)});
+  const svg=el("svg",{width:maxX,height:H,viewBox:`0 0 ${maxX} ${H}`,role:"img","aria-label":"사상의 분기점 마인드맵"},box);
+  const lg=el("g",{},svg),ng=el("g",{},svg);
+  all.forEach(n=>n._vis.forEach(k=>{
+    const sx=n.x+n.w,sy=n.y,ex=k.x,ey=k.y,mx=(sx+ex)/2;
+    const color=k.kind==="ism"?laneVar(k.l):(k.kind==="shift"||k.kind==="grp")?"var(--ink-2)":"var(--accent)";
+    el("path",{d:`M${sx},${sy} C${mx},${sy} ${mx},${ey} ${ex},${ey}`,class:"mm-link",style:`stroke:${color}`},lg);
+  }));
+  all.forEach(n=>{
+    if(n.kind==="root"||n.kind==="tp"||n.kind==="grp"){
+      const g=el("g",{class:"mm-pill",tabindex:n.kind==="root"?"-1":"0",role:n.kind==="root"?"presentation":"button"},ng);
+      const strong=n.kind!=="grp";
+      el("rect",{x:n.x,y:n.y-12,width:n.w,height:24,rx:12,style:n.kind==="root"?"fill:var(--accent);stroke:var(--accent)":strong?"fill:var(--surface);stroke:var(--accent)":"fill:var(--paper);stroke:var(--line)"},g);
+      const t=el("text",{x:n.x+11,y:n.y+4.5,style:n.kind==="root"?"fill:var(--surface)":n.kind==="grp"?"fill:var(--ink-2);font-weight:500":""},g);t.textContent=n.label+(n.kind==="tp"&&!n.open?"  +":"");
+      if(n.kind!=="root"){
+        const tog=()=>{if(n.kind==="tp")mmState.tp[n.c]=!mmState.tp[n.c];else mmState.sh[n.c]=!mmState.sh[n.c];drawMM()};
+        g.addEventListener("click",tog);g.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();tog()}});
+      }
+    }else if(n.kind==="ism"){
+      const g=el("g",{class:"mm-leaf",tabindex:"0",role:"button"},ng);
+      el("circle",{cx:n.x+4,cy:n.y,r:4.5,style:`fill:${laneVar(n.l)}`},g);
+      const t=el("text",{x:n.x+13,y:n.y+4.5},g);t.textContent=n.label;
+      g.addEventListener("click",()=>openIsm(n.id));g.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openIsm(n.id)}});
+    }else{
+      const g=el("g",{class:"mm-shift"},ng);
+      el("circle",{cx:n.x+3,cy:n.y,r:2.5,style:"fill:var(--ink-2)"},g);
+      const t=el("text",{x:n.x+11,y:n.y+4},g);t.textContent=n.label;
+    }
+  });
+}
+document.getElementById("mm-expand").addEventListener("click",()=>{mmState.tp=mmState.tp.map(()=>true);mmState.sh=mmState.sh.map(()=>true);drawMM()});
+document.getElementById("mm-collapse").addEventListener("click",()=>{mmState.tp=mmState.tp.map(()=>true);mmState.sh=mmState.sh.map(()=>false);drawMM()});
+
+// 4. 사전
+function kv(i){return `<dl class="kv"><dt>대표 사상가</dt><dd>${esc(i.who)}</dd><dt>대표 저작</dt><dd>${esc(i.works)}</dd></dl>`}
+function tpName(c){return (TP[c].origin?"근대 이전":circled[c]+" "+TP[c].n)}
+document.getElementById("dict").innerHTML=TP.map((t,c)=>{
+  const items=ISMS.filter(i=>i.s===c);
+  return `<div class="dict-group"><h3>${t.origin?"근대 이전":circled[c]+" "+esc(t.n)}<span>${esc(t.y)} · ${items.length}개</span></h3><div class="cards">${items.map(i=>`
+  <article class="card" id="ism-${i.id}" style="--lane:${laneVar(i.l)}">
+    <h4>${esc(i.n)}<span class="en">${esc(i.en)}</span></h4>
+    <div class="meta"><span class="lane">${LANES[i.l].n}</span><span>${esc(i.y)}</span><span>${i.a?"현재까지 영향":"쇠퇴·전환"}</span></div>
+    <p>${esc(i.core)}</p>
+    <p class="prop">${esc(i.prop)}</p>
+    ${kv(i)}
+    <button type="button" class="open" data-ism="${i.id}">계승·반발 관계 보기</button>
+  </article>`).join("")}</div></div>`}).join("");
+
+// 상세 시트
+const sheet=document.getElementById("sheet"),back=document.getElementById("backdrop");let lastFocus=null;
+function openIsm(id){
+  const i=BY[id];if(!i)return;
+  if(sheet.hidden) lastFocus=document.activeElement;
+  const from=i.f.filter(([p])=>BY[p]);
+  const fc=from.filter(x=>x[1]==="c").map(x=>BY[x[0]]),fr=from.filter(x=>x[1]==="r").map(x=>BY[x[0]]);
+  const kc=KIDS[id].filter(x=>x[1]==="c").map(x=>BY[x[0]]),kr=KIDS[id].filter(x=>x[1]==="r").map(x=>BY[x[0]]);
+  const rel=(lbl,arr)=>arr.length?`<div class="chips"><span class="lbl">${lbl}</span>${arr.map(chip).join("")}</div>`:"";
+  sheet.style.setProperty("--lane",laneVar(i.l));
+  sheet.innerHTML=`<div class="grab"></div><button type="button" class="x" id="sheet-x" aria-label="닫기">×</button>
+   <h3 id="sheet-title">${esc(i.n)}</h3><div class="meta" style="--lane:${laneVar(i.l)};margin-top:4px"><span class="lane">${LANES[i.l].n}</span><span>${esc(i.en)}</span></div>
+   <div class="body">
+    <div class="meta"><span>탄생: ${tpName(i.s)}</span><span>시기: ${esc(i.y)}</span><span>${i.a?"현재까지 영향":"쇠퇴·전환"}</span></div>
+    <p style="margin:0">${esc(i.core)}</p>
+    <p class="prop" style="--lane:${laneVar(i.l)};margin:0">${esc(i.prop)}</p>
+    ${kv(i)}
+    <div class="rel">${rel("계승한 사상",fc)}${rel("반발한 사상",fr)}${rel("이어 발전시킨 사상",kc)}${rel("이에 반발한 사상",kr)}${!fc.length&&!fr.length&&!kc.length&&!kr.length?"":""}</div>
+   </div>`;
+  sheet.hidden=false;back.hidden=false;
+  document.getElementById("sheet-x").addEventListener("click",closeSheet);
+  sheet.querySelectorAll("[data-ism]").forEach(b=>b.addEventListener("click",()=>openIsm(b.dataset.ism)));
+  sheet.scrollTop=0;
+  document.getElementById("sheet-x").focus({preventScroll:true});
+  highlight(id);
+}
+function closeSheet(){sheet.hidden=true;back.hidden=true;clearHL();if(lastFocus&&lastFocus.focus)lastFocus.focus({preventScroll:true})}
+back.addEventListener("click",closeSheet);
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!sheet.hidden)closeSheet()});
+document.addEventListener("click",e=>{const b=e.target.closest("[data-ism]");if(b&&!sheet.contains(b)){openIsm(b.dataset.ism)}});
+
+
+// 시대별 사상그래프: x[0]=왼쪽, x[1]=오른쪽, y[0]=아래, y[1]=위. 점: [id, x, y, 라벨방향]
+const ERA=[
+{x:["신 중심","인간 중심"],y:["교회의 보편 권위","세속 군주의 권력"],xq:"세계의 중심은 신인가 인간인가",yq:"교황(교회)과 왕 중 누가 다스리는가",
+ why:"중세 말의 긴장은 둘이었다. 신학이 독점하던 관심이 인간과 현세로 옮겨 가기 시작했고, 보편 교회의 권위가 영토 군주의 권력과 부딪쳤다.",
+ p:[["scholastic",-7,-7,"r"],["divine",-4,6,"r"],["mercantilism",4,7.5,"r"],["humanism",6.5,-2,"l"]]},
+{x:["이성(연역)","경험(관찰·귀납)"],y:["신의 목적이 움직이는 우주","법칙이 움직이는 기계 우주"],xq:"확실한 지식은 어디서 오는가",yq:"우주는 무엇으로 움직이는가",
+ why:"과학혁명은 우주를 신의 목적이 아닌 법칙으로 설명하게 만들었고, 그 법칙을 아는 방법을 두고 이성파와 경험파가 갈렸다. 계몽주의가 둘을 합쳤다.",
+ p:[["scholastic",-3,-8,"r"],["deism",-2,-1,"r"],["rationalism",-7.5,5,"r"],["empiricism",7.5,5,"l"],["mechanism",0.5,8.3,"r"],["enlightenment",1.5,2,"r"]]},
+{x:["개인의 자유","국민 전체의 의지"],y:["전통·질서 유지","혁명·변혁"],xq:"개인과 국민 중 무엇을 앞세우는가",yq:"얼마나, 어떻게 바꿀 것인가",
+ why:"혁명이 던진 질문은 무엇을 우선할 것인가(개인의 권리인가, 국민 전체의 일반의지인가), 그리고 전통을 지킬 것인가 뒤집을 것인가였다. 좌·우라는 말도 이때 의회 좌석에서 생겼다.",
+ p:[["liberalism",-6,3,"r"],["republic",5,6,"l"],["nationalism",7,1.2,"l"],["conservatism",-1,-5,"r"],["romanticism",-2,-2.5,"r"],["feminism1",-8,8.5,"r"],["socialcontract",0,4,"r"],["enlightenment",-3.5,1.3,"r"],["divine",8,-8.5,"l"]]},
+{x:["공동 소유·연대","시장·사적 소유"],y:["국가·위계의 강화","국가 축소·자치"],xq:"생산수단을 누가 가질 것인가",yq:"국가는 얼마나 다스릴 것인가",
+ why:"공장과 자본이 부의 원천이 되자, 생산수단의 소유와 국가의 역할이 사상의 두 축이 되었다. 자본주의, 사회주의, 무정부주의, 제국주의가 이 평면에서 맞섰다.",
+ p:[["classical",8,6,"l"],["socialism",-5,3,"r"],["marxism",-8,-3,"r"],["anarchism",-7,8.5,"r"],["imperialism",5,-7,"l"],["utilitarian",3,1,"r"],["positivism",1,-3.2,"r"],["conservatism",5.5,-2.7,"r"],["liberalism",5,3.6,"r"]]},
+{x:["계획·통제 경제","자유 시장"],y:["국가·민족 우선","개인의 자유·인권"],xq:"경제를 시장에 맡길 것인가 계획할 것인가",yq:"국가를 개인 위에 둘 것인가",
+ why:"대공황과 두 차례 대전 속에서 체제 경쟁이 벌어졌다. 파시즘과 공산주의는 국가를 개인 위에 두었고, 전쟁이 끝난 뒤에는 인권과 복지국가가 새 기준이 되었다.",
+ p:[["totalitarian",-2,-8,"r"],["communism",-8,-6,"r"],["keynes",-2,4,"r"],["humanrights",1,8,"r"],["classical",8,1,"l"],["liberalism",5,6,"l"],["decolonial",-5,-1,"r"],["nationalism",1,-4,"r"],["existentialism",-6.5,7,"r"],["critical",-7.5,2.5,"r"]]},
+{x:["경제 좌: 국가·평등","경제 우: 시장·경쟁"],y:["권위·전통","자율·해방"],xq:"분배는 국가인가 시장인가 (냉전의 축)",yq:"권위인가 자율인가 (68혁명이 더한 축)",
+ why:"냉전은 경제 축의 대결이었고, 68혁명은 여기에 문화 축을 더했다. 오늘날 흔히 쓰는 ‘정치 나침반’의 두 축이 이 시대에 만들어졌고, 탈냉전 뒤에는 오른쪽의 신자유주의가 세계 표준이 되었다.",
+ p:[["communism",-8,-7,"r"],["conservatism",5,-7,"r"],["neoliberal",8,-4.9,"l"],["newleft",-6,8,"r"],["ecology",-4,5,"r"],["feminism2",1,8.5,"r"],["postmodern",-1,3,"r"],["justice",-3,1,"r"],["endhistory",5,-3.3,"r"],["keynes",-5,-2.2,"r"],["liberalism",5.5,5,"r"]]},
+{x:["중앙 집중(국가·플랫폼)","분산(네트워크·개인)"],y:["기술 비판·경계","기술 낙관"],xq:"권력은 흩어지는가 다시 모이는가",yq:"기술은 해방인가 위험인가",
+ why:"인터넷이 열리자 권력이 네트워크로 흩어질지, 새 플랫폼에 다시 모일지가 쟁점이 되었다. 초기의 낙관은 2010년대 들어 감시와 독점에 대한 비판으로 무게가 옮겨 갔다.",
+ p:[["cyberlib",8,6,"l"],["infosociety",1,3,"l"],["platform",5,-6,"l"],["transhuman",-3,9,"r"],["ea",-2,1.2,"r"],["neoliberal",-7,5,"r"],["postmodern",6,-2,"l"]]},
+{x:["감속·규제","가속·자유 개발"],y:["인간 중심","탈인간·기계 지성 수용"],xq:"AI 개발을 늦출 것인가 앞당길 것인가",yq:"인간 중심을 지킬 것인가 넘어설 것인가",
+ why:"AI혁명의 쟁점은 개발 속도와 인간의 위상이다. 2026년 AI 기업 경영자들 사이의 속도 조절 논쟁은 가로축 위에서 벌어지고 있고, 세로축은 노동과 인간다움의 의미를 묻는다.",
+ p:[["aisafety",-7,-2,"r"],["eacc",8,6,"l"],["digitalhum",-5,-8,"r"],["transhuman",6,9,"l"],["ea",-6,3,"r"],["dataism",3,3,"r"],["basicincome",2,-6,"r"],["platform",-8,-4.5,"r"],["neoliberal",6,1.2,"l"]]}
+];
+let eraIdx=1;
+function drawEra(k){
+  eraIdx=k;const E=ERA[k],t=TP[k];
+  document.querySelectorAll(".era-tab").forEach((b,i)=>{b.setAttribute("aria-selected",i===k?"true":"false");b.tabIndex=i===k?0:-1});
+  document.getElementById("era-title").textContent=(t.origin?"근대 이전":circled[k]+" "+t.n)+" · "+t.y;
+  document.getElementById("era-why").textContent=E.why;
+  document.getElementById("era-axes").innerHTML=`<dt>x축</dt><dd>${esc(E.xq)}<br><span style="color:var(--ink-2)">${esc(E.x[0])} ← → ${esc(E.x[1])}</span></dd><dt>y축</dt><dd>${esc(E.yq)}<br><span style="color:var(--ink-2)">${esc(E.y[0])} ↓ ↑ ${esc(E.y[1])}</span></dd>`;
+  const box=document.getElementById("era-plot");box.innerHTML="";
+  const S=440,M=46,P=S-2*M,u=P/20,cx=S/2,cy=S/2;
+  const X=v=>cx+v*u,Y=v=>cy-v*u;
+  const svg=el("svg",{viewBox:`0 0 ${S} ${S}`,role:"img","aria-label":`${t.n} 시대 사상 좌표: x축 ${E.x[0]}–${E.x[1]}, y축 ${E.y[0]}–${E.y[1]}`},box);
+  for(let g=-10;g<=10;g+=5){if(g===0)continue;el("line",{x1:X(g),x2:X(g),y1:M,y2:S-M,class:"ax-grid"},svg);el("line",{x1:M,x2:S-M,y1:Y(g),y2:Y(g),class:"ax-grid"},svg)}
+  el("line",{x1:M-6,x2:S-M+6,y1:cy,y2:cy,class:"ax-line"},svg);el("line",{x1:cx,x2:cx,y1:M-6,y2:S-M+6,class:"ax-line"},svg);
+  el("path",{d:`M${S-M+6},${cy} l-7,-4 v8 z M${M-6},${cy} l7,-4 v8 z M${cx},${M-6} l-4,7 h8 z M${cx},${S-M+6} l-4,-7 h8 z`,style:"fill:var(--ink-2)"},svg);
+  const lb=(x,y,txt,anc)=>{const e=el("text",{x,y,class:"ax-lbl","text-anchor":anc},svg);e.textContent=txt};
+  lb(M-4,cy+20,E.x[0],"start");lb(S-M+4,cy+20,E.x[1],"end");
+  lb(cx,M-14,E.y[1],"middle");lb(cx,S-M+26,E.y[0],"middle");
+  E.p.forEach(([id,x,y,an])=>{
+    const i=BY[id];if(!i)return;const col=laneVar(i.l),born=i.s===k;
+    const g=el("g",{class:"pt",tabindex:"0",role:"button","aria-label":i.n},svg);
+    el("circle",{cx:X(x),cy:Y(y),r:6.5,style:born?`fill:${col};stroke:${col};stroke-width:2`:`fill:var(--surface);stroke:${col};stroke-width:2.2`},g);
+    const tx=el("text",{x:an==="l"?X(x)-10:X(x)+10,y:Y(y)+4,"text-anchor":an==="l"?"end":"start",style:`fill:${born?"var(--ink)":"var(--ink-2)"}`},g);tx.textContent=i.sn||i.n;
+    g.addEventListener("click",()=>openIsm(id));g.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openIsm(id)}});
+  });
+}
+const tabsEl=document.getElementById("era-tabs");
+tabsEl.innerHTML=TP.map((t,c)=>`<button type="button" role="tab" class="era-tab" id="era-tab-${c}" aria-selected="false">${t.origin?"근대 이전":circled[c]+" "+(t.n==="냉전·68혁명·탈냉전"?"냉전·68·탈냉전":t.n)}</button>`).join("");
+tabsEl.querySelectorAll(".era-tab").forEach((b,c)=>{b.addEventListener("click",()=>drawEra(c));b.addEventListener("keydown",e=>{if(e.key==="ArrowRight"||e.key==="ArrowLeft"){e.preventDefault();const n=(eraIdx+(e.key==="ArrowRight"?1:-1)+ERA.length)%ERA.length;drawEra(n);tabsEl.children[n].focus()}})});
+
+drawFlow();drawMM();drawEra(1);
+</script>
+</body>
+</html>
