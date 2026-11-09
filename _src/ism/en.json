@@ -1,0 +1,1043 @@
+{
+ "lanes": {
+  "A": "Knowledge & Science",
+  "B": "Politics & Power",
+  "C": "Economy, Labour & Ecology",
+  "D": "Humanity, Culture & Ethics"
+ },
+ "ax": [
+  "Basis of truth",
+  "Legitimacy of power",
+  "View of the human",
+  "Way of life"
+ ],
+ "axs": [
+  "Truth",
+  "Power",
+  "Human",
+  "Life"
+ ],
+ "tp": [
+  {
+   "n": "Before modernity",
+   "y": "to 16th c.",
+   "sum": "Starting point: a world in which God's order set the standard for truth, power and life.",
+   "ev": [
+    [
+     "1265",
+     "Aquinas begins the Summa Theologiae"
+    ],
+    [
+     "c.1450",
+     "Gutenberg's movable-type press"
+    ],
+    [
+     "1486",
+     "Pico, Oration on the Dignity of Man"
+    ],
+    [
+     "1517",
+     "Luther's Ninety-five Theses"
+    ]
+   ],
+   "sh": [
+    [
+     "The authority of Scripture, the Church and Aristotle",
+     "",
+     "authority"
+    ],
+    [
+     "Kingship granted by God and a fixed order of estates",
+     "",
+     "God's order"
+    ],
+    [
+     "A creature with a fixed place in God's order",
+     "",
+     "creature"
+    ],
+    [
+     "Village community, repeating tradition, eyes on the afterlife",
+     "",
+     "tradition"
+    ]
+   ]
+  },
+  {
+   "n": "Scientific Revolution",
+   "short": "Scientific Rev.",
+   "y": "1543–1687",
+   "sum": "The turning point that changed the test of truth from “who said it?” to “can it be shown?”",
+   "ev": [
+    [
+     "1543",
+     "Copernicus, On the Revolutions of the Heavenly Spheres"
+    ],
+    [
+     "1609",
+     "Kepler's laws of planetary motion · Galileo's telescope"
+    ],
+    [
+     "1620",
+     "Bacon, Novum Organum"
+    ],
+    [
+     "1633",
+     "Trial of Galileo"
+    ],
+    [
+     "1637",
+     "Descartes, Discourse on Method"
+    ],
+    [
+     "1687",
+     "Newton, Principia"
+    ]
+   ],
+   "sh": [
+    [
+     "The authority of Scripture, the Church and Aristotle",
+     "Observation, experiment and mathematical proof",
+     "authority → proof"
+    ],
+    [
+     "A hierarchy ordained by God",
+     "Power begins to be judged by natural law and contract",
+     "God → natural law"
+    ],
+    [
+     "A creature in a purposeful cosmos",
+     "A rational subject who interprets and masters nature",
+     "creature → rational subject"
+    ],
+    [
+     "Repeating what tradition hands down",
+     "The idea of progress through accumulating knowledge",
+     "repetition → progress"
+    ]
+   ]
+  },
+  {
+   "n": "French Revolution",
+   "short": "French Rev.",
+   "y": "1789–1799",
+   "sum": "The turning point that moved the source of power from God to the nation.",
+   "note": "Its prelude was the Enlightenment and the American Revolution (1776). The Enlightenment applied the methods of the Scientific Revolution to society and politics; the French Revolution turned them into real institutions.",
+   "ev": [
+    [
+     "1789.7",
+     "Storming of the Bastille"
+    ],
+    [
+     "1789.8",
+     "Declaration of the Rights of Man and of the Citizen"
+    ],
+    [
+     "1791",
+     "de Gouges, Declaration of the Rights of Woman"
+    ],
+    [
+     "1792",
+     "Monarchy abolished, republic proclaimed"
+    ],
+    [
+     "1793",
+     "Execution of Louis XVI, the Terror"
+    ],
+    [
+     "1804",
+     "Napoleonic Code"
+    ]
+   ],
+   "sh": [
+    [
+     "Tradition and revelation",
+     "Public debate and the judgement of reason",
+     "revelation → reason"
+    ],
+    [
+     "God-given kingship, inherited rank",
+     "Popular sovereignty, constitutions, equality before the law",
+     "crown → nation"
+    ],
+    [
+     "A subject bound to an estate",
+     "A citizen with natural rights",
+     "subject → citizen"
+    ],
+    [
+     "Birth decides your fate",
+     "Careers open to talent, national schooling and conscription, national identity",
+     "rank → merit & nation"
+    ]
+   ]
+  },
+  {
+   "n": "Industrial Revolution",
+   "short": "Industrial Rev.",
+   "y": "1760s–1840s",
+   "sum": "The turning point that moved wealth and the rhythm of life from land to machines and capital.",
+   "note": "It began before the French Revolution, but its full social and intellectual impact came in the 19th century, so it is placed third. The historian Eric Hobsbawm called the two together the “dual revolution”. A second industrial revolution of electricity and chemistry followed after 1870.",
+   "ev": [
+    [
+     "1769",
+     "Watt patents his improved steam engine"
+    ],
+    [
+     "1776",
+     "Smith, The Wealth of Nations"
+    ],
+    [
+     "1830",
+     "Liverpool–Manchester railway opens"
+    ],
+    [
+     "1848",
+     "The Communist Manifesto, revolutions of 1848"
+    ],
+    [
+     "1859",
+     "Darwin, On the Origin of Species"
+    ],
+    [
+     "1867",
+     "Marx, Capital, vol. 1"
+    ]
+   ],
+   "sh": [
+    [
+     "Philosophical speculation",
+     "Positive science and the theory of evolution",
+     "speculation → science"
+    ],
+    [
+     "Landlords and nobility",
+     "Capitalists versus the working class; class becomes the axis of politics",
+     "land → capital & class"
+    ],
+    [
+     "A member of a community",
+     "Labour power, “economic man”, an evolved animal",
+     "community → economic man"
+    ],
+    [
+     "Village life, time set by sun and seasons",
+     "City and factory, clock time, wage labour and mass production",
+     "village → factory"
+    ]
+   ]
+  },
+  {
+   "n": "World Wars",
+   "y": "1914–1945",
+   "sum": "The turning point that broke faith in inevitable progress and placed human rights above the state.",
+   "ev": [
+    [
+     "1914–18",
+     "First World War"
+    ],
+    [
+     "1917",
+     "Russian Revolution"
+    ],
+    [
+     "1929",
+     "Great Depression"
+    ],
+    [
+     "1933",
+     "Nazis take power"
+    ],
+    [
+     "1939–45",
+     "Second World War, the Holocaust"
+    ],
+    [
+     "1945",
+     "Atomic bombs, United Nations founded"
+    ],
+    [
+     "1948",
+     "Universal Declaration of Human Rights"
+    ]
+   ],
+   "sh": [
+    [
+     "Science and reason mean progress",
+     "Doubt: reason and science can also serve mass killing",
+     "progress → doubt"
+    ],
+    [
+     "Unlimited state sovereignty, empire",
+     "Universal rights and international bodies limit the state; colonies win independence",
+     "sovereignty → rights"
+    ],
+    [
+     "A progressing rational subject",
+     "A being who makes meaning amid the absurd",
+     "reason → existence"
+    ],
+    [
+     "Laissez-faire markets",
+     "Mass democracy, the welfare state, total war and mass mobilisation",
+     "laissez-faire → welfare"
+    ]
+   ]
+  },
+  {
+   "n": "Cold War, 1968 & after",
+   "short": "Cold War · 1968",
+   "y": "1947–1991",
+   "sum": "The turning point that closed the age of grand ideologies and opened the age of the individual, identity and the market.",
+   "ev": [
+    [
+     "1947",
+     "Truman Doctrine, Cold War begins"
+    ],
+    [
+     "1962",
+     "Cuban Missile Crisis · Silent Spring"
+    ],
+    [
+     "1968",
+     "May '68 in Paris, Prague Spring, anti-war and civil-rights movements"
+    ],
+    [
+     "1973",
+     "Oil shock"
+    ],
+    [
+     "1979–81",
+     "Thatcher and Reagan take office"
+    ],
+    [
+     "1989",
+     "Fall of the Berlin Wall"
+    ],
+    [
+     "1991",
+     "Dissolution of the Soviet Union"
+    ]
+   ],
+   "sh": [
+    [
+     "One universal truth (grand narratives)",
+     "Plural, constructed truths; distrust of grand narratives",
+     "universal → plural"
+    ],
+    [
+     "Two blocs in an ideological contest",
+     "Liberal democracy and market-led globalisation",
+     "ideology → market"
+    ],
+    [
+     "A member of a class or nation",
+     "An individual who defines their own gender, race and cultural identity",
+     "class → identity"
+    ],
+    [
+     "Authoritarian family, school and workplace; growth above all",
+     "Autonomy and diversity, consumer society, ecological awareness",
+     "authority → autonomy"
+    ]
+   ]
+  },
+  {
+   "n": "Digital & Internet Revolution",
+   "short": "Digital Rev.",
+   "y": "1969–2007",
+   "sum": "The turning point that rebuilt knowledge and relationships from hierarchy into networks.",
+   "ev": [
+    [
+     "1969",
+     "First ARPANET link"
+    ],
+    [
+     "1977–81",
+     "Personal computers go mainstream"
+    ],
+    [
+     "1989",
+     "World Wide Web proposed (public 1991)"
+    ],
+    [
+     "1998",
+     "Google founded"
+    ],
+    [
+     "2001",
+     "Wikipedia"
+    ],
+    [
+     "2004",
+     "Facebook"
+    ],
+    [
+     "2007",
+     "iPhone"
+    ]
+   ],
+   "sh": [
+    [
+     "Scarce information managed by press, publishers and schools",
+     "Information overload that anyone can create and spread; search and algorithms",
+     "scarcity → overload"
+    ],
+    [
+     "States and mass media",
+     "Platform companies and networks: decentralisation alongside new monopolies",
+     "media → platforms"
+    ],
+    [
+     "An audience of mass media",
+     "A connected node who leaves data behind",
+     "audience → node"
+    ],
+    [
+     "Work and relationships tied to place",
+     "Always connected; remote and platform work, online identities",
+     "place → connection"
+    ]
+   ]
+  },
+  {
+   "n": "AI Revolution",
+   "y": "2012–now",
+   "sum": "A turning point still under way, shaking the assumption that only humans think.",
+   "note": "In September 2026 leaders of major AI companies publicly debated whether AI development should slow down so that safety capabilities can catch up. The clash between AI safety and accelerationism has become a live issue for companies and policy.",
+   "ev": [
+    [
+     "2012",
+     "Deep-learning breakthrough (AlexNet)"
+    ],
+    [
+     "2016",
+     "AlphaGo vs Lee Sedol"
+    ],
+    [
+     "2017",
+     "Transformer paper"
+    ],
+    [
+     "2022.11",
+     "ChatGPT released"
+    ],
+    [
+     "2024",
+     "EU AI Act enters into force"
+    ],
+    [
+     "2026.9",
+     "Debate over slowing AI development"
+    ]
+   ],
+   "sh": [
+    [
+     "The judgement of human experts",
+     "Predictions from data and models; knowledge that is right without understanding",
+     "experts → models"
+    ],
+    [
+     "Platforms and data monopolies",
+     "Firms and states that own compute and models; AI governance as a new issue",
+     "data → compute"
+    ],
+    [
+     "The only intelligence",
+     "Possibly one intelligence among several; humanness redefined",
+     "unique → coexisting?"
+    ],
+    [
+     "Intellectual work belongs to humans",
+     "Collaboration with and replacement by AI; work, income and meaning redesigned",
+     "human work → shared work"
+    ]
+   ]
+  }
+ ],
+ "isms": {
+  "scholastic": {
+   "n": "Scholasticism",
+   "y": "peak 11th–14th c.",
+   "who": "Thomas Aquinas, Anselm, William of Ockham",
+   "works": "Aquinas, Summa Theologiae (1265–1274)",
+   "core": "Joined Christian faith with Aristotle's philosophy, treating reason as a tool that supports faith. The cosmos is ordered by purposes and ranks set by God, and truth comes from the authority of Scripture, the Church Fathers and Aristotle.",
+   "prop": "Grace does not destroy nature but perfects it (Aquinas)"
+  },
+  "mechanism": {
+   "n": "Mechanical philosophy",
+   "sn": "Mechanism",
+   "y": "formed 1543–1687",
+   "who": "Copernicus, Galileo, Kepler, Descartes, Newton",
+   "works": "Copernicus, De revolutionibus (1543); Galileo, Dialogue Concerning the Two Chief World Systems (1632); Newton, Principia (1687)",
+   "core": "Sees nature not as moved by God's purposes but as a vast machine running on mathematical laws. The discovery that heaven and earth obey the same law of gravitation demolished the medieval hierarchy of the cosmos. Relativity and quantum mechanics revised it in the 20th century, but it remains the working outlook of engineering and technology.",
+   "prop": "The book of nature is written in the language of mathematics (Galileo, paraphrase)"
+  },
+  "rationalism": {
+   "n": "Rationalism",
+   "y": "17th c.",
+   "who": "Descartes, Spinoza, Leibniz",
+   "works": "Descartes, Discourse on Method (1637), Meditations (1641); Spinoza, Ethics (1677)",
+   "core": "Rebuilds knowledge on the certainty of reason that remains after everything else has been doubted. Certain knowledge is deduced from clear and distinct principles of reason, not from the senses.",
+   "prop": "I think, therefore I am (Descartes)"
+  },
+  "empiricism": {
+   "n": "Empiricism",
+   "y": "17th–18th c.",
+   "who": "Francis Bacon, John Locke, George Berkeley, David Hume",
+   "works": "Bacon, Novum Organum (1620); Locke, Essay Concerning Human Understanding (1689); Hume, A Treatise of Human Nature (1739)",
+   "core": "The mind is a blank slate at birth and all knowledge comes from experience and observation. It made induction and experiment the method of science, and Hume exposed the limits of reason by arguing that even causation is a belief born of habit.",
+   "prop": "Knowledge is power (Bacon)"
+  },
+  "enlightenment": {
+   "n": "The Enlightenment",
+   "sn": "Enlightenment",
+   "y": "1680–1800",
+   "who": "Voltaire, Montesquieu, Diderot, Rousseau, Kant",
+   "works": "Diderot & d'Alembert, Encyclopédie (1751–1772); Kant, “What Is Enlightenment?” (1784)",
+   "core": "Applied the methods of the Scientific Revolution to religion, society and politics, putting tradition and authority on trial before reason. It spread the belief that humanity can use reason to escape ignorance and superstition and make progress, and that belief fuelled the French Revolution.",
+   "prop": "Dare to know (Sapere aude, Kant)"
+  },
+  "positivism": {
+   "n": "Positivism",
+   "y": "1830s on",
+   "who": "Auguste Comte, John Stuart Mill, Ernst Mach",
+   "works": "Comte, Course of Positive Philosophy (1830–1842)",
+   "core": "Holds that only facts confirmed by observation and experiment count as knowledge, and founded “sociology” on the idea that society should be studied like nature. It embodies the 19th-century optimism that industry and science drive social progress.",
+   "prop": "The mind advances from theological to metaphysical to positive thinking (Comte's law of three stages, paraphrase)"
+  },
+  "darwinism": {
+   "n": "Theory of evolution",
+   "sn": "Evolution",
+   "y": "1859 on",
+   "who": "Charles Darwin, Alfred Russel Wallace",
+   "works": "Darwin, On the Origin of Species (1859), The Descent of Man (1871)",
+   "core": "Species were not created one by one but branched from common ancestors through variation and natural selection. Seeing humans as part of nature shook the religious view of humanity to its roots; joined with genetics, it became the foundation of modern biology.",
+   "prop": "Life has changed through variation and natural selection, not design (paraphrase)"
+  },
+  "logical": {
+   "n": "Logical positivism & philosophy of science",
+   "sn": "Philosophy of science",
+   "y": "1920s–1960s",
+   "who": "Wittgenstein, Rudolf Carnap (Vienna Circle), Karl Popper, Thomas Kuhn",
+   "works": "Wittgenstein, Tractatus Logico-Philosophicus (1921); Popper, The Logic of Scientific Discovery (1934); Kuhn, The Structure of Scientific Revolutions (1962)",
+   "core": "Started from the logical-positivist claim that only verifiable statements have meaning; Popper then made falsifiability the mark of science. Kuhn argued that science changes through paradigm shifts rather than steady accumulation, reinterpreting the Scientific Revolution itself.",
+   "prop": "Whereof one cannot speak, thereof one must be silent (Wittgenstein)"
+  },
+  "cybernetics": {
+   "n": "Information theory & cybernetics",
+   "sn": "Cybernetics",
+   "y": "1936–1960s",
+   "who": "Alan Turing, Claude Shannon, Norbert Wiener, John von Neumann",
+   "works": "Turing, “On Computable Numbers” (1936); Shannon, “A Mathematical Theory of Communication” (1948); Wiener, Cybernetics (1948); Turing, “Computing Machinery and Intelligence” (1950)",
+   "core": "Grew out of wartime code-breaking and fire-control research and made information and feedback basic ingredients of the world alongside matter and energy. Seeing life, mind and society as information-processing systems became the intellectual ground of computers and AI.",
+   "prop": "Can machines think? (Turing)"
+  },
+  "structuralism": {
+   "n": "Structuralism",
+   "y": "1950s–1960s",
+   "who": "Ferdinand de Saussure, Claude Lévi-Strauss, Jacques Lacan, Louis Althusser",
+   "works": "Saussure, Course in General Linguistics (1916); Lévi-Strauss, Tristes Tropiques (1955), The Savage Mind (1962)",
+   "core": "Behind language, kinship, myth and the unconscious lie structures individuals are not aware of, and those structures produce meaning. It displaced existentialism's free subject and became the centre of French thought in the 1960s.",
+   "prop": "Structures make the subject, not the other way round (paraphrase)"
+  },
+  "postmodern": {
+   "n": "Postmodernism",
+   "y": "late 1960s on",
+   "who": "Michel Foucault, Jacques Derrida, Jean-François Lyotard, Jean Baudrillard",
+   "works": "Derrida, Of Grammatology (1967); Foucault, Discipline and Punish (1975); Lyotard, The Postmodern Condition (1979)",
+   "core": "Exposed modernity's grand narratives of reason, progress and emancipation as products of particular powers and discourses rather than universal truths. Truth, identity and knowledge are seen as constructed in context; it left a large mark on identity politics and cultural studies.",
+   "prop": "Postmodern means incredulity toward metanarratives (Lyotard)"
+  },
+  "infosociety": {
+   "n": "Information society & media theory",
+   "sn": "Information society",
+   "y": "1960s on",
+   "who": "Marshall McLuhan, Daniel Bell, Alvin Toffler, Manuel Castells",
+   "works": "McLuhan, Understanding Media (1964); Bell, The Coming of Post-Industrial Society (1973); Toffler, The Third Wave (1980); Castells, The Rise of the Network Society (1996)",
+   "core": "Diagnosed a shift of wealth from land and capital to knowledge and information, and of social organisation from hierarchies to networks. It left the insight that the form of a medium itself reshapes human senses and society.",
+   "prop": "The medium is the message (McLuhan)"
+  },
+  "dataism": {
+   "n": "Dataism",
+   "y": "2010s on",
+   "who": "Yuval Noah Harari (who named it), Chris Anderson",
+   "works": "Anderson, “The End of Theory” (2008); Harari, Homo Deus (2015)",
+   "core": "Views the universe and life as flows of data and gives decision-making authority to whatever system processes the most data best. It names the trend of algorithms taking over the seat of judgement once held by God and by human feeling.",
+   "prop": "With enough data, the numbers speak for themselves (Anderson, paraphrase)"
+  },
+  "divine": {
+   "n": "Divine right & absolutism",
+   "sn": "Divine right",
+   "y": "16th–18th c.",
+   "who": "Jean Bodin, Robert Filmer, Jacques-Bénigne Bossuet, Louis XIV",
+   "works": "Bodin, Six Books of the Commonwealth (1576); Filmer, Patriarcha (1680)",
+   "core": "Held that the king's power comes straight from God, not the people, and that the king answers only to God. It justified ranks and hereditary rule as the natural order fixed by God.",
+   "prop": "I am the state (attributed to Louis XIV)"
+  },
+  "socialcontract": {
+   "n": "Social contract theory",
+   "sn": "Social contract",
+   "y": "1651–1762",
+   "who": "Thomas Hobbes, John Locke, Jean-Jacques Rousseau",
+   "works": "Hobbes, Leviathan (1651); Locke, Two Treatises of Government (1689); Rousseau, The Social Contract (1762)",
+   "core": "The state arises not from God but from a contract among individuals in a state of nature. Legitimacy moved from above (God) to below (the consent of the governed), and Locke even granted a right to resist governments that fail to protect life, liberty and property.",
+   "prop": "Man is born free, and everywhere he is in chains (Rousseau)"
+  },
+  "liberalism": {
+   "n": "Liberalism",
+   "y": "late 17th c. on",
+   "who": "John Locke, Montesquieu, Alexis de Tocqueville, J. S. Mill",
+   "works": "Montesquieu, The Spirit of the Laws (1748); Tocqueville, Democracy in America (1835); Mill, On Liberty (1859)",
+   "core": "Puts individual rights and freedoms ahead of the state and limits power through the separation of powers, the rule of law and freedom of speech and religion. After the French Revolution it became the basic grammar of the modern state.",
+   "prop": "Individual liberty may be limited only to prevent harm to others (Mill's harm principle, paraphrase)"
+  },
+  "republic": {
+   "n": "Republicanism & popular sovereignty",
+   "sn": "Republicanism",
+   "y": "1776 · 1789 on",
+   "who": "Rousseau, Emmanuel Sieyès, Robespierre, Thomas Jefferson",
+   "works": "US Declaration of Independence (1776); Sieyès, What Is the Third Estate? (1789); Declaration of the Rights of Man and of the Citizen (1789)",
+   "core": "Sovereignty lies with the whole nation, not the king, and law expresses the general will. Subjects became citizens, and liberty, equality and fraternity became the new standards of politics.",
+   "prop": "The source of all sovereignty lies essentially in the nation (Declaration, art. 3, paraphrase)"
+  },
+  "nationalism": {
+   "n": "Nationalism",
+   "y": "1789 on",
+   "who": "Johann Gottfried Herder, Johann Gottlieb Fichte, Giuseppe Mazzini",
+   "works": "Fichte, Addresses to the German Nation (1807–1808)",
+   "core": "When popular sovereignty met the question “who is the people?”, the idea spread that a nation sharing language, history and culture should be the unit of the state. It powered unification and independence, and also exclusion and war.",
+   "prop": "Every nation has the right to its own state (paraphrase)"
+  },
+  "conservatism": {
+   "n": "Conservatism",
+   "y": "1790 on",
+   "who": "Edmund Burke, Joseph de Maistre, (20th c.) Michael Oakeshott",
+   "works": "Burke, Reflections on the Revolution in France (1790)",
+   "core": "Warned that revolutions which try to remake society all at once by abstract reason bring violence and chaos. It respects the wisdom stored in long-tested traditions, customs and institutions and holds that change should be gradual.",
+   "prop": "Society is a partnership between the living, the dead and those yet to be born (Burke, paraphrase)"
+  },
+  "anarchism": {
+   "n": "Anarchism",
+   "y": "1840s on",
+   "who": "Pierre-Joseph Proudhon, Mikhail Bakunin, Peter Kropotkin",
+   "works": "Proudhon, What Is Property? (1840); Kropotkin, Mutual Aid (1902)",
+   "core": "Rejects every coercive authority, from state and capital to church, and believes society can run on voluntary association and mutual aid. It clashed with Marxism, which aimed to seize state power.",
+   "prop": "Property is theft (Proudhon)"
+  },
+  "imperialism": {
+   "n": "Imperialism & Social Darwinism",
+   "sn": "Imperialism",
+   "y": "peak 1870–1914",
+   "who": "Herbert Spencer, Cecil Rhodes, Rudyard Kipling",
+   "works": "Spencer, Principles of Biology (1864); Kipling, “The White Man's Burden” (1899)",
+   "core": "Misapplied evolutionary theory to society to justify the rule of “strong” nations and races over “weak” ones. Backed by industrial output and weapons, it expanded colonial rule in the name of a “civilising mission”.",
+   "prop": "Survival of the fittest (Spencer)"
+  },
+  "totalitarian": {
+   "n": "Fascism & totalitarianism",
+   "sn": "Fascism",
+   "y": "1919–1945",
+   "who": "Benito Mussolini, Adolf Hitler (analysed by Hannah Arendt)",
+   "works": "Mussolini & Gentile, “The Doctrine of Fascism” (1932); Arendt, The Origins of Totalitarianism (1951, analysis)",
+   "core": "Placed the will of nation and state above individual rights and controlled all of society through a cult of the leader, one-party dictatorship and mass mobilisation. It led to the Holocaust and wars of aggression and became the direct negative lesson behind post-war human rights.",
+   "prop": "Everything within the state, nothing outside the state (Mussolini)"
+  },
+  "communism": {
+   "n": "Communist state (Marxism–Leninism)",
+   "sn": "Communist state",
+   "y": "1917–1991",
+   "who": "Vladimir Lenin, Joseph Stalin, Mao Zedong",
+   "works": "Lenin, The State and Revolution (1917)",
+   "core": "A vanguard party seizes the state through revolution, nationalises the means of production and runs a planned economy. It became a real system with the Russian Revolution, split the world with liberal democracy during the Cold War and declined with the Soviet collapse in 1991.",
+   "prop": "Dictatorship of the proletariat (Marx, Lenin)"
+  },
+  "humanrights": {
+   "n": "Universal human rights",
+   "sn": "Human rights",
+   "y": "1945 on",
+   "who": "Eleanor Roosevelt, René Cassin, Raphael Lemkin",
+   "works": "UN Charter (1945); Universal Declaration of Human Rights (1948); Genocide Convention (1948)",
+   "core": "After two world wars and the Holocaust, declared as an international standard a human dignity and rights that no state may violate for any reason. For the first time, the idea that sovereignty can be limited by human rights became an institution.",
+   "prop": "All human beings are born free and equal in dignity and rights (UDHR, art. 1)"
+  },
+  "decolonial": {
+   "n": "Postcolonialism",
+   "y": "1940s on",
+   "who": "Mahatma Gandhi, Frantz Fanon, Edward Said, Gayatri Spivak",
+   "works": "Fanon, The Wretched of the Earth (1961); Said, Orientalism (1978)",
+   "core": "Criticised how Western-centred knowledge and culture, even after colonial rule, kept portraying the non-West as an “uncivilised other” to justify domination. It was an intellectual engine of independence in Asia and Africa.",
+   "prop": "The “Orient” drawn by the West is a representation for domination, not reality (Said, paraphrase)"
+  },
+  "newleft": {
+   "n": "New Left & the spirit of 1968",
+   "sn": "New Left · 1968",
+   "y": "1960s",
+   "who": "Herbert Marcuse, Jean-Paul Sartre, Daniel Cohn-Bendit, Rudi Dutschke",
+   "works": "Marcuse, One-Dimensional Man (1964)",
+   "core": "Criticised both Soviet communism and Western consumer capitalism and challenged everyday authority in school, family, state and sexuality. Putting liberation of lifestyle and culture ahead of political revolution, it spread into anti-war, civil-rights, women's and ecological movements.",
+   "prop": "All power to the imagination! (Paris slogan, 1968)"
+  },
+  "justice": {
+   "n": "Theories of justice & communitarianism",
+   "sn": "Justice debate",
+   "y": "1971 on",
+   "who": "John Rawls, Robert Nozick, Michael Sandel, Alasdair MacIntyre",
+   "works": "Rawls, A Theory of Justice (1971); Nozick, Anarchy, State, and Utopia (1974); MacIntyre, After Virtue (1981); Sandel, Liberalism and the Limits of Justice (1982)",
+   "core": "Rawls defined justice as the principles people would agree to behind a “veil of ignorance” about their own position, allowing only inequalities that benefit the least advantaged. Libertarians stressing property rights and communitarians stressing community values and virtue pushed back.",
+   "prop": "Justice is the first virtue of social institutions (Rawls)"
+  },
+  "endhistory": {
+   "n": "The End of History",
+   "sn": "End of History",
+   "y": "1989–2000s",
+   "who": "Francis Fukuyama (rebutted by Samuel Huntington)",
+   "works": "Fukuyama, “The End of History?” (1989), The End of History and the Last Man (1992); Huntington, The Clash of Civilizations (1996)",
+   "core": "As the Cold War ended, the claim gained ground that liberal democracy and the market economy were the final winners of humanity's contest of ideas. Terrorism, ethnic and religious conflict and the rise of authoritarianism later met it with strong objections.",
+   "prop": "Liberal democracy may be the end point of humanity's ideological evolution (Fukuyama, paraphrase)"
+  },
+  "cyberlib": {
+   "n": "Cyber-libertarianism & open source",
+   "sn": "Open source & cyberlib.",
+   "y": "1980s on",
+   "who": "Richard Stallman, Eric Raymond, John Perry Barlow, Lawrence Lessig",
+   "works": "Stallman, “The GNU Manifesto” (1985); Barlow, “A Declaration of the Independence of Cyberspace” (1996); Raymond, The Cathedral and the Bazaar (1997); Lessig, Code (1999)",
+   "core": "Saw the internet as a free space beyond the control of states and companies and argued that software and knowledge should be shared. It produced collaborative models such as Linux and Wikipedia, and Lessig warned that code governs behaviour much as law does.",
+   "prop": "Information wants to be free (Stewart Brand)"
+  },
+  "aisafety": {
+   "n": "AI safety & alignment",
+   "sn": "AI safety",
+   "y": "emerging 2000s, mainstream 2020s",
+   "who": "Nick Bostrom, Stuart Russell, Geoffrey Hinton, Yoshua Bengio, Eliezer Yudkowsky",
+   "works": "Bostrom, Superintelligence (2014); Russell, Human Compatible (2019); CAIS “Statement on AI Risk” (2023)",
+   "core": "Holds that an AI smarter than humans pursuing goals misaligned with human values could cause irreversible harm. It argues for alignment research, verification and international norms before the race for capability, and in 2026 a debate over slowing development broke out even among leaders of major AI companies.",
+   "prop": "Mitigating the risk of extinction from AI should be a global priority alongside pandemics and nuclear war (Statement on AI Risk, paraphrase)"
+  },
+  "eacc": {
+   "n": "Effective accelerationism (e/acc)",
+   "sn": "e/acc",
+   "y": "2022 on",
+   "who": "Marc Andreessen, “Beff Jezos” (Guillaume Verdon); roots in Nick Land's accelerationism",
+   "works": "Andreessen, “Why AI Will Save the World” (2023), “The Techno-Optimist Manifesto” (2023)",
+   "core": "Argues that technological and market growth drives human flourishing, so AI development should be accelerated rather than slowed by regulation. It labels safety advocates “decels”; middle positions such as Vitalik Buterin's defensive accelerationism (d/acc) have appeared in between.",
+   "prop": "Slowing AI means letting preventable deaths happen (Andreessen, paraphrase)"
+  },
+  "mercantilism": {
+   "n": "Mercantilism",
+   "y": "16th–18th c.",
+   "who": "Jean-Baptiste Colbert, Thomas Mun",
+   "works": "Mun, England's Treasure by Forraign Trade (1664)",
+   "core": "Held that a nation's wealth is its stock of gold and silver, to be built up through trade surpluses by boosting exports and blocking imports. It financed absolute monarchies and their colonial rivalry.",
+   "prop": "A trade surplus is the wealth of the nation (paraphrase)"
+  },
+  "classical": {
+   "n": "Classical economics & capitalism",
+   "sn": "Classical economics",
+   "y": "1776–1929",
+   "who": "Adam Smith, David Ricardo, Thomas Malthus, J. S. Mill",
+   "works": "Smith, The Wealth of Nations (1776); Ricardo, Principles of Political Economy and Taxation (1817)",
+   "core": "Held that the division of labour and free competition work like an “invisible hand” to increase the wealth of society. It moved the source of wealth from gold and silver to labour and production and justified laissez-faire during industrialisation, until the Great Depression dealt it a heavy blow.",
+   "prop": "We owe our dinner not to the butcher's benevolence but to his regard for his own interest (Smith, paraphrase)"
+  },
+  "socialism": {
+   "n": "Utopian socialism",
+   "sn": "Early socialism",
+   "y": "1810s–1840s",
+   "who": "Robert Owen, Henri de Saint-Simon, Charles Fourier",
+   "works": "Owen, A New View of Society (1813); Fourier, Theory of the Four Movements (1808)",
+   "core": "Faced with the long hours, child labour and poverty of the factory system, proposed communities based on cooperation and common ownership instead of competition. Marx called it “utopian socialism” and set out to go beyond it.",
+   "prop": "Cooperation must replace competition (paraphrase)"
+  },
+  "marxism": {
+   "n": "Marxism",
+   "y": "1848 on",
+   "who": "Karl Marx, Friedrich Engels",
+   "works": "The Communist Manifesto (1848); Capital, vol. 1 (1867)",
+   "core": "A materialist view of history explained by changes in productive forces and relations and by class struggle. It argued that capitalism exploits workers' surplus value and that its contradictions would lead to a classless society. As a system it declined, but it survives as a language for criticising capitalism.",
+   "prop": "The history of all hitherto existing society is the history of class struggles (The Communist Manifesto)"
+  },
+  "keynes": {
+   "n": "Keynesianism & the welfare state",
+   "sn": "Keynesianism",
+   "y": "1936–1970s",
+   "who": "John Maynard Keynes, William Beveridge",
+   "works": "Keynes, The General Theory of Employment, Interest and Money (1936); The Beveridge Report (1942)",
+   "core": "The Great Depression showed that markets do not reach full employment on their own, so government should create demand through spending. It opened the post-war “golden age” of full employment, social insurance and the welfare state in the West.",
+   "prop": "From the cradle to the grave (slogan of Britain's post-war welfare state)"
+  },
+  "neoliberal": {
+   "n": "Neoliberalism",
+   "y": "late 1970s on",
+   "who": "Friedrich Hayek, Milton Friedman, Margaret Thatcher, Ronald Reagan",
+   "works": "Hayek, The Road to Serfdom (1944); Friedman, Capitalism and Freedom (1962)",
+   "core": "After the stagflation of the 1970s it treated state intervention and the welfare state as inefficient and widened the role of markets through privatisation, deregulation and free trade. With the end of the Cold War it became the standard prescription of globalisation, and it has faced fierce criticism since the 2008 financial crisis.",
+   "prop": "There is no alternative (Thatcher)"
+  },
+  "ecology": {
+   "n": "Ecologism & environmentalism",
+   "sn": "Ecologism",
+   "y": "1962 on",
+   "who": "Rachel Carson, Arne Næss, Hans Jonas, the Club of Rome",
+   "works": "Carson, Silent Spring (1962); Club of Rome, The Limits to Growth (1972); Jonas, The Imperative of Responsibility (1979)",
+   "core": "Warned that industrial growth is overshooting the limits of Earth's ecosystems and put humans back as part of nature rather than its master. It offered responsibility to future generations and sustainability as new standards for the economy.",
+   "prop": "There are limits to growth on a finite planet (Club of Rome, paraphrase)"
+  },
+  "platform": {
+   "n": "Critique of surveillance & platform capitalism",
+   "sn": "Platform critique",
+   "y": "2010s on",
+   "who": "Shoshana Zuboff, Nick Srnicek, Eli Pariser",
+   "works": "Pariser, The Filter Bubble (2011); Srnicek, Platform Capitalism (2016); Zuboff, The Age of Surveillance Capitalism (2019)",
+   "core": "Criticises search, social-media and commerce platforms for creating a new form of accumulation that uses people's behavioural data as raw material to predict and steer behaviour. It also addresses filter bubbles, where algorithms show us only what fits, and post-truth politics.",
+   "prop": "Human experience becomes free raw material in the form of behavioural data (Zuboff, paraphrase)"
+  },
+  "basicincome": {
+   "n": "Basic income & post-work",
+   "sn": "Basic income",
+   "y": "2010s on",
+   "who": "Philippe Van Parijs, Guy Standing, Rutger Bregman",
+   "works": "Van Parijs, Real Freedom for All (1995); Bregman, Utopia for Realists (2016)",
+   "core": "Proposes that in an age when automation and AI replace jobs, income should be separated from work and everyone guaranteed an unconditional income. It questions the value, inherited from the Industrial Revolution, that work is what gives life meaning.",
+   "prop": "For everyone, unconditionally, individually, regularly (principles of basic income)"
+  },
+  "humanism": {
+   "n": "Renaissance humanism",
+   "sn": "Humanism",
+   "y": "14th–16th c.",
+   "who": "Francesco Petrarca, Pico della Mirandola, Erasmus",
+   "works": "Pico, Oration on the Dignity of Man (1486); Erasmus, In Praise of Folly (1511)",
+   "core": "Revived Greek and Roman classics and shifted attention from God to human dignity, ability and life in this world. It prepared the cultural soil for the Scientific Revolution and the Reformation.",
+   "prop": "Humans shape their own form (Pico, paraphrase)"
+  },
+  "deism": {
+   "n": "Deism",
+   "y": "17th–18th c.",
+   "who": "John Toland, Voltaire, Thomas Paine",
+   "works": "Toland, Christianity Not Mysterious (1696); Paine, The Age of Reason (1794)",
+   "core": "God created the universe and set its laws but does not intervene afterwards. It sought to understand God through reason rather than miracles and revelation, and underpinned religious tolerance.",
+   "prop": "God is a watchmaker who made the clock and let it run (deist image)"
+  },
+  "romanticism": {
+   "n": "Romanticism",
+   "y": "1790–1850",
+   "who": "Rousseau, Goethe, Friedrich Schlegel, William Wordsworth",
+   "works": "Goethe, The Sorrows of Young Werther (1774); Wordsworth & Coleridge, Lyrical Ballads (1798)",
+   "core": "Set feeling, imagination, individuality and nature against the cold reason of the Enlightenment and the mechanisation of industry. Valuing each people's own language and traditions, it allied with nationalism.",
+   "prop": "Good poetry is the spontaneous overflow of powerful feelings (Wordsworth)"
+  },
+  "feminism1": {
+   "n": "First-wave feminism",
+   "y": "1791–1920s",
+   "who": "Olympe de Gouges, Mary Wollstonecraft, J. S. Mill, Emmeline Pankhurst",
+   "works": "de Gouges, Declaration of the Rights of Woman and of the Female Citizen (1791); Wollstonecraft, A Vindication of the Rights of Woman (1792); Mill, The Subjection of Women (1869)",
+   "core": "Pointed out that women were missing from the Revolution's “man and citizen” and demanded education, property rights and the vote for women. In the early 20th century it won women's suffrage in many countries.",
+   "prop": "If woman has the right to mount the scaffold, she must also have the right to mount the rostrum (de Gouges)"
+  },
+  "utilitarian": {
+   "n": "Utilitarianism",
+   "y": "1789 on",
+   "who": "Jeremy Bentham, J. S. Mill, (today) Peter Singer",
+   "works": "Bentham, An Introduction to the Principles of Morals and Legislation (1789); Mill, Utilitarianism (1863)",
+   "core": "The right action is the one that maximises the happiness of everyone affected. A secular ethics that calculates consequences instead of following divine command, it became the basis of legal reform, public policy and cost-benefit analysis.",
+   "prop": "The greatest happiness of the greatest number (Bentham)"
+  },
+  "nihilism": {
+   "n": "Nietzsche & nihilism",
+   "sn": "Nihilism",
+   "y": "1880s on",
+   "who": "Friedrich Nietzsche, Schopenhauer, Kierkegaard, Dostoevsky",
+   "works": "Nietzsche, The Gay Science (1882), Thus Spoke Zarathustra (1883–1885)",
+   "core": "Diagnosed that science and secularisation had destroyed the foundations of Christian values, and demanded that people create new values rather than leave a void. It was the most powerful internal critique of modern faith in reason and progress.",
+   "prop": "God is dead (Nietzsche)"
+  },
+  "psychoanalysis": {
+   "n": "Psychoanalysis",
+   "y": "1899 on",
+   "who": "Sigmund Freud, Carl Jung, Jacques Lacan",
+   "works": "Freud, The Interpretation of Dreams (1899), Civilization and Its Discontents (1930)",
+   "core": "Human behaviour is driven more by repressed desires and the unconscious than by conscious reason. It shook the picture, dominant since Descartes, of a transparent rational subject.",
+   "prop": "The ego is not master in its own house (Freud)"
+  },
+  "existentialism": {
+   "n": "Existentialism",
+   "y": "1920s–1960s",
+   "who": "Martin Heidegger, Jean-Paul Sartre, Albert Camus, Simone de Beauvoir",
+   "works": "Heidegger, Being and Time (1927); Camus, The Myth of Sisyphus (1942); Sartre, Being and Nothingness (1943), “Existentialism Is a Humanism” (1946)",
+   "core": "Neither God, nor historical progress, nor human nature gives life a meaning in advance. Thrown into an absurd world, people choose freely, take responsibility for their choices and make themselves.",
+   "prop": "Existence precedes essence (Sartre)"
+  },
+  "critical": {
+   "n": "Critical theory (Frankfurt School)",
+   "sn": "Critical theory",
+   "y": "1930s–1980s",
+   "who": "Max Horkheimer, Theodor Adorno, Walter Benjamin, (2nd gen.) Jürgen Habermas",
+   "works": "Horkheimer & Adorno, Dialectic of Enlightenment (1944/1947); Habermas, The Theory of Communicative Action (1981)",
+   "core": "Analysed how Enlightenment reason, meant to liberate humanity, turned into instrumental reason and became a means of domination through bureaucracy, the culture industry and the Holocaust. Habermas proposed “communicative reason”, based on free discussion, as a way beyond it.",
+   "prop": "Enlightenment reverts to mythology (Dialectic of Enlightenment, paraphrase)"
+  },
+  "feminism2": {
+   "n": "Second & third-wave feminism",
+   "sn": "2nd/3rd-wave feminism",
+   "y": "1949 · 1960s on",
+   "who": "Simone de Beauvoir, Betty Friedan, Kate Millett, Judith Butler",
+   "works": "Beauvoir, The Second Sex (1949); Friedan, The Feminine Mystique (1963); Butler, Gender Trouble (1990)",
+   "core": "Went beyond legal equality to challenge everyday inequality in home, work, sexuality and culture. Under the slogan “the personal is political” it spread the understanding that gender roles are made by society, not nature.",
+   "prop": "One is not born, but rather becomes, a woman (Beauvoir)"
+  },
+  "transhuman": {
+   "n": "Transhumanism & posthumanism",
+   "sn": "Trans-/posthumanism",
+   "y": "term 1957; 1980s on",
+   "who": "Julian Huxley, Donna Haraway, Ray Kurzweil, Nick Bostrom, Rosi Braidotti",
+   "works": "Haraway, “A Cyborg Manifesto” (1985); Kurzweil, The Singularity Is Near (2005); Braidotti, The Posthuman (2013)",
+   "core": "Transhumanism wants science and technology to overcome the limits of ageing, disease and intelligence and improve humans. Posthumanism criticises modern humanism's placing of humans at the centre of the world and re-examines the borders between human, machine and animal.",
+   "prop": "The singularity is near (Kurzweil)"
+  },
+  "ea": {
+   "n": "Effective altruism & longtermism",
+   "sn": "Effective altruism",
+   "y": "2009 on",
+   "who": "Peter Singer, William MacAskill, Toby Ord",
+   "works": "Singer, The Life You Can Save (2009); Ord, The Precipice (2020); MacAskill, What We Owe the Future (2022)",
+   "core": "A movement to find, with evidence and calculation, how to do the most good; it began with poverty and health and widened to risks to humanity's survival such as AI and pandemics. Its longtermism, which holds that future generations matter morally, laid the ground for AI safety thinking.",
+   "prop": "Do the most good you can (paraphrase)"
+  },
+  "digitalhum": {
+   "n": "Digital humanism & human-centred AI",
+   "sn": "Digital humanism",
+   "y": "2019 on",
+   "who": "Signatories of the Vienna Manifesto on Digital Humanism, Fei-Fei Li, Sherry Turkle",
+   "works": "Turkle, Alone Together (2011); Vienna Manifesto on Digital Humanism (2019); Li, The Worlds I See (2023)",
+   "core": "As AI and platforms take over human judgement, relationships and work, it holds that technology must be designed and governed to serve human dignity, democracy and autonomy. It feeds into risk-based regulation such as the EU AI Act and debates on public-interest AI.",
+   "prop": "Technology should be shaped for people, not people for technology (paraphrase)"
+  }
+ },
+ "era": [
+  {
+   "x": [
+    "God-centred",
+    "Human-centred"
+   ],
+   "y": [
+    "Universal Church",
+    "Secular rulers"
+   ],
+   "xq": "Is God or humanity the centre of the world?",
+   "yq": "Who rules: the Pope (Church) or the king?",
+   "why": "Two tensions marked the late Middle Ages. Attention began to move from theology to humans and this world, and the universal authority of the Church collided with the power of territorial rulers."
+  },
+  {
+   "x": [
+    "Reason (deduction)",
+    "Experience (induction)"
+   ],
+   "y": [
+    "Cosmos moved by God's purpose",
+    "Cosmos as a law-bound machine"
+   ],
+   "xq": "Where does certain knowledge come from?",
+   "yq": "What makes the universe move?",
+   "why": "The Scientific Revolution explained the universe by laws instead of God's purposes, and rationalists and empiricists split over how those laws can be known. The Enlightenment brought the two together.",
+   "pos": {
+    "empiricism": [
+     7.5,
+     5.8,
+     "l"
+    ]
+   }
+  },
+  {
+   "x": [
+    "Individual liberty",
+    "Will of the nation"
+   ],
+   "y": [
+    "Keep tradition & order",
+    "Revolution & change"
+   ],
+   "xq": "Individual or nation: which comes first?",
+   "yq": "How much should change, and how?",
+   "why": "The Revolution asked what comes first (individual rights or the general will of the nation) and whether to keep or overturn tradition. Even the terms left and right were born then, from seating in the Assembly."
+  },
+  {
+   "x": [
+    "Common ownership",
+    "Market & private property"
+   ],
+   "y": [
+    "Stronger state & hierarchy",
+    "Smaller state & self-rule"
+   ],
+   "xq": "Who should own the means of production?",
+   "yq": "How much should the state rule?",
+   "why": "Once factories and capital became the source of wealth, ownership of the means of production and the role of the state became the two axes of thought. Capitalism, socialism, anarchism and imperialism faced off on this plane.",
+   "pos": {
+    "positivism": [
+     0.8,
+     -4.4,
+     "r"
+    ]
+   }
+  },
+  {
+   "x": [
+    "Planned economy",
+    "Free market"
+   ],
+   "y": [
+    "State & nation first",
+    "Individual liberty & rights"
+   ],
+   "xq": "Leave the economy to markets or plan it?",
+   "yq": "Put the state above the individual?",
+   "why": "Depression and two world wars produced a contest of systems. Fascism and communism set the state above the individual; after the war, human rights and the welfare state became the new standards.",
+   "pos": {
+    "decolonial": [
+     -4.5,
+     -2.8,
+     "r"
+    ]
+   }
+  },
+  {
+   "x": [
+    "Econ. left: state & equality",
+    "Econ. right: market"
+   ],
+   "y": [
+    "Authority & tradition",
+    "Autonomy & liberation"
+   ],
+   "xq": "State or market for distribution? (the Cold War axis)",
+   "yq": "Authority or autonomy? (the axis 1968 added)",
+   "why": "The Cold War was a contest on the economic axis, and 1968 added a cultural axis. The two axes of today's familiar “political compass” were made in this era, and after the Cold War neoliberalism on the right became the global standard."
+  },
+  {
+   "x": [
+    "Centralised (state, platforms)",
+    "Distributed (networks)"
+   ],
+   "y": [
+    "Tech-critical",
+    "Tech-optimistic"
+   ],
+   "xq": "Does power disperse or gather again?",
+   "yq": "Is technology liberation or danger?",
+   "why": "When the internet opened, the question became whether power would scatter into networks or gather again in new platforms. Early optimism shifted in the 2010s toward criticism of surveillance and monopoly."
+  },
+  {
+   "x": [
+    "Slow down & regulate",
+    "Accelerate"
+   ],
+   "y": [
+    "Human-centred",
+    "Post-human, machine minds"
+   ],
+   "xq": "Slow AI development down or speed it up?",
+   "yq": "Keep humans at the centre or go beyond?",
+   "why": "The AI Revolution turns on the speed of development and the standing of humans. The 2026 debate among AI company leaders over slowing down is fought along the horizontal axis; the vertical axis asks what work and being human mean."
+  }
+ ]
+}

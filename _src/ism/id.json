@@ -1,0 +1,1107 @@
+{
+ "lanes": {
+  "A": "Pengetahuan & Sains",
+  "B": "Politik & Kekuasaan",
+  "C": "Ekonomi, Kerja & Ekologi",
+  "D": "Manusia, Budaya & Etika"
+ },
+ "ax": [
+  "Dasar kebenaran",
+  "Legitimasi kekuasaan",
+  "Pandangan tentang manusia",
+  "Cara hidup"
+ ],
+ "axs": [
+  "Kebenaran",
+  "Kekuasaan",
+  "Manusia",
+  "Hidup"
+ ],
+ "tp": [
+  {
+   "n": "Sebelum zaman modern",
+   "short": "Pra-modern",
+   "y": "s.d. abad ke-16",
+   "sum": "Titik awal: dunia tempat tatanan Tuhan menjadi ukuran kebenaran, kekuasaan, dan kehidupan.",
+   "ev": [
+    [
+     "1265",
+     "Aquinas mulai menulis Summa Theologiae"
+    ],
+    [
+     "± 1450",
+     "Mesin cetak huruf lepas Gutenberg"
+    ],
+    [
+     "1486",
+     "Pico, Orasi tentang Martabat Manusia"
+    ],
+    [
+     "1517",
+     "95 Dalil Luther"
+    ]
+   ],
+   "sh": [
+    [
+     "Otoritas Kitab Suci, Gereja, dan Aristoteles",
+     "",
+     "otoritas"
+    ],
+    [
+     "Kekuasaan raja dari Tuhan dan tatanan golongan yang tetap",
+     "",
+     "tatanan Tuhan"
+    ],
+    [
+     "Ciptaan dengan tempat yang sudah ditentukan dalam tatanan Tuhan",
+     "",
+     "ciptaan"
+    ],
+    [
+     "Komunitas desa, tradisi yang berulang, berorientasi pada akhirat",
+     "",
+     "tradisi"
+    ]
+   ]
+  },
+  {
+   "n": "Revolusi Ilmiah",
+   "y": "1543–1687",
+   "sum": "Titik balik yang mengubah ukuran kebenaran dari “siapa yang mengatakannya?” menjadi “dapatkah dibuktikan?”",
+   "ev": [
+    [
+     "1543",
+     "Copernicus, De revolutionibus"
+    ],
+    [
+     "1609",
+     "Hukum gerak planet Kepler · teleskop Galileo"
+    ],
+    [
+     "1620",
+     "Bacon, Novum Organum"
+    ],
+    [
+     "1633",
+     "Pengadilan Galileo"
+    ],
+    [
+     "1637",
+     "Descartes, Discours de la méthode"
+    ],
+    [
+     "1687",
+     "Newton, Principia"
+    ]
+   ],
+   "sh": [
+    [
+     "Otoritas Kitab Suci, Gereja, dan Aristoteles",
+     "Pengamatan, eksperimen, dan pembuktian matematis",
+     "otoritas → bukti"
+    ],
+    [
+     "Hierarki yang ditetapkan Tuhan",
+     "Kekuasaan mulai dinilai lewat hukum alam dan kontrak",
+     "Tuhan → hukum alam"
+    ],
+    [
+     "Ciptaan dalam kosmos yang bertujuan",
+     "Subjek rasional yang menafsirkan dan menguasai alam",
+     "ciptaan → subjek rasional"
+    ],
+    [
+     "Mengulang warisan tradisi",
+     "Gagasan kemajuan lewat akumulasi pengetahuan",
+     "pengulangan → kemajuan"
+    ]
+   ]
+  },
+  {
+   "n": "Revolusi Prancis",
+   "y": "1789–1799",
+   "sum": "Titik balik yang memindahkan sumber kekuasaan dari Tuhan kepada bangsa.",
+   "note": "Pendahulunya adalah Pencerahan dan Revolusi Amerika (1776). Pencerahan menerapkan metode Revolusi Ilmiah pada masyarakat dan politik; Revolusi Prancis mewujudkannya menjadi lembaga nyata.",
+   "ev": [
+    [
+     "1789.7",
+     "Penyerbuan Bastille"
+    ],
+    [
+     "1789.8",
+     "Deklarasi Hak Asasi Manusia dan Warga Negara"
+    ],
+    [
+     "1791",
+     "de Gouges, Deklarasi Hak Perempuan"
+    ],
+    [
+     "1792",
+     "Monarki dihapus, republik diproklamasikan"
+    ],
+    [
+     "1793",
+     "Eksekusi Louis XVI, masa Teror"
+    ],
+    [
+     "1804",
+     "Kode Napoleon"
+    ]
+   ],
+   "sh": [
+    [
+     "Tradisi dan wahyu",
+     "Debat publik dan penilaian akal",
+     "wahyu → akal"
+    ],
+    [
+     "Kekuasaan raja dari Tuhan, golongan turun-temurun",
+     "Kedaulatan rakyat, konstitusi, kesetaraan di depan hukum",
+     "raja → bangsa"
+    ],
+    [
+     "Kawula yang terikat pada golongannya",
+     "Warga negara dengan hak kodrati",
+     "kawula → warga"
+    ],
+    [
+     "Kelahiran menentukan nasib",
+     "Karier terbuka bagi bakat, pendidikan nasional dan wajib militer, identitas bangsa",
+     "golongan → prestasi & bangsa"
+    ]
+   ]
+  },
+  {
+   "n": "Revolusi Industri",
+   "y": "1760-an–1840-an",
+   "sum": "Titik balik yang memindahkan kekayaan dan irama hidup dari tanah ke mesin dan modal.",
+   "note": "Revolusi ini dimulai sebelum Revolusi Prancis, tetapi dampak sosial dan intelektualnya baru terasa penuh pada abad ke-19, sehingga ditempatkan ketiga. Sejarawan Eric Hobsbawm menyebut keduanya “revolusi ganda”. Setelah 1870 menyusul revolusi industri kedua: listrik dan kimia.",
+   "ev": [
+    [
+     "1769",
+     "Paten mesin uap Watt yang disempurnakan"
+    ],
+    [
+     "1776",
+     "Smith, The Wealth of Nations"
+    ],
+    [
+     "1830",
+     "Jalur kereta Liverpool–Manchester dibuka"
+    ],
+    [
+     "1848",
+     "Manifesto Komunis, revolusi 1848"
+    ],
+    [
+     "1859",
+     "Darwin, On the Origin of Species"
+    ],
+    [
+     "1867",
+     "Marx, Das Kapital jilid 1"
+    ]
+   ],
+   "sh": [
+    [
+     "Spekulasi filsafat",
+     "Ilmu positif dan teori evolusi",
+     "spekulasi → sains"
+    ],
+    [
+     "Tuan tanah dan bangsawan",
+     "Kapitalis lawan kelas pekerja; kelas menjadi poros politik",
+     "tanah → modal & kelas"
+    ],
+    [
+     "Anggota sebuah komunitas",
+     "Tenaga kerja, “manusia ekonomi”, hewan hasil evolusi",
+     "komunitas → manusia ekonomi"
+    ],
+    [
+     "Desa, waktu mengikuti matahari dan musim",
+     "Kota dan pabrik, waktu jam, kerja upahan dan produksi massal",
+     "desa → pabrik"
+    ]
+   ]
+  },
+  {
+   "n": "Perang Dunia",
+   "y": "1914–1945",
+   "sum": "Titik balik yang meruntuhkan keyakinan bahwa kemajuan pasti terjadi dan menempatkan hak asasi di atas negara.",
+   "ev": [
+    [
+     "1914–18",
+     "Perang Dunia I"
+    ],
+    [
+     "1917",
+     "Revolusi Rusia"
+    ],
+    [
+     "1929",
+     "Depresi Besar"
+    ],
+    [
+     "1933",
+     "Nazi berkuasa"
+    ],
+    [
+     "1939–45",
+     "Perang Dunia II, Holocaust"
+    ],
+    [
+     "1945",
+     "Bom atom, berdirinya PBB"
+    ],
+    [
+     "1948",
+     "Deklarasi Universal Hak Asasi Manusia"
+    ]
+   ],
+   "sh": [
+    [
+     "Sains dan akal berarti kemajuan",
+     "Keraguan: akal dan sains juga bisa menjadi alat pembunuhan massal",
+     "kemajuan → keraguan"
+    ],
+    [
+     "Kedaulatan negara tanpa batas, imperium",
+     "Hak universal dan lembaga internasional membatasi negara; koloni merdeka",
+     "kedaulatan → hak"
+    ],
+    [
+     "Subjek rasional yang terus maju",
+     "Makhluk yang menciptakan makna di tengah absurditas",
+     "akal → eksistensi"
+    ],
+    [
+     "Pasar laissez-faire",
+     "Demokrasi massa, negara kesejahteraan, perang total dan mobilisasi massa",
+     "laissez-faire → kesejahteraan"
+    ]
+   ]
+  },
+  {
+   "n": "Perang Dingin, 1968 & sesudahnya",
+   "short": "Perang Dingin · 1968",
+   "y": "1947–1991",
+   "sum": "Titik balik yang menutup zaman ideologi besar dan membuka zaman individu, identitas, dan pasar.",
+   "ev": [
+    [
+     "1947",
+     "Doktrin Truman, awal Perang Dingin"
+    ],
+    [
+     "1962",
+     "Krisis Rudal Kuba · Silent Spring"
+    ],
+    [
+     "1968",
+     "Mei 68 di Paris, Musim Semi Praha, gerakan antiperang dan hak sipil"
+    ],
+    [
+     "1973",
+     "Krisis minyak"
+    ],
+    [
+     "1979–81",
+     "Thatcher dan Reagan berkuasa"
+    ],
+    [
+     "1989",
+     "Runtuhnya Tembok Berlin"
+    ],
+    [
+     "1991",
+     "Bubarnya Uni Soviet"
+    ]
+   ],
+   "sh": [
+    [
+     "Satu kebenaran universal (narasi besar)",
+     "Kebenaran yang plural dan dikonstruksi; ketidakpercayaan pada narasi besar",
+     "universal → plural"
+    ],
+    [
+     "Dua blok dalam persaingan ideologi",
+     "Demokrasi liberal dan globalisasi berbasis pasar",
+     "ideologi → pasar"
+    ],
+    [
+     "Anggota kelas atau bangsa",
+     "Individu yang menentukan sendiri identitas gender, ras, dan budayanya",
+     "kelas → identitas"
+    ],
+    [
+     "Keluarga, sekolah, dan kantor yang otoriter; pertumbuhan di atas segalanya",
+     "Otonomi dan keragaman, masyarakat konsumen, kesadaran krisis ekologi",
+     "otoritas → otonomi"
+    ]
+   ]
+  },
+  {
+   "n": "Revolusi Digital & Internet",
+   "short": "Revolusi Digital",
+   "y": "1969–2007",
+   "sum": "Titik balik yang mengubah struktur pengetahuan dan hubungan dari hierarki menjadi jaringan.",
+   "ev": [
+    [
+     "1969",
+     "Sambungan pertama ARPANET"
+    ],
+    [
+     "1977–81",
+     "Komputer pribadi memasyarakat"
+    ],
+    [
+     "1989",
+     "World Wide Web diusulkan (dibuka 1991)"
+    ],
+    [
+     "1998",
+     "Google berdiri"
+    ],
+    [
+     "2001",
+     "Wikipedia"
+    ],
+    [
+     "2004",
+     "Facebook"
+    ],
+    [
+     "2007",
+     "iPhone"
+    ]
+   ],
+   "sh": [
+    [
+     "Informasi langka yang dikelola pers, penerbit, dan sekolah",
+     "Banjir informasi yang bisa dibuat dan disebarkan siapa saja; mesin pencari dan algoritma",
+     "langka → melimpah"
+    ],
+    [
+     "Negara dan media massa",
+     "Perusahaan platform dan jaringan: desentralisasi sekaligus monopoli baru",
+     "media → platform"
+    ],
+    [
+     "Penonton media massa",
+     "Simpul yang terhubung dan meninggalkan jejak data",
+     "penonton → simpul"
+    ],
+    [
+     "Kerja dan hubungan terikat tempat",
+     "Selalu terhubung; kerja jarak jauh dan kerja platform, identitas daring",
+     "tempat → koneksi"
+    ]
+   ]
+  },
+  {
+   "n": "Revolusi AI",
+   "y": "2012–kini",
+   "sum": "Titik balik yang masih berlangsung, mengguncang anggapan bahwa hanya manusia yang berpikir.",
+   "note": "Pada September 2026 para pemimpin perusahaan AI besar berdebat secara terbuka tentang perlu tidaknya memperlambat pengembangan AI agar kemampuan keselamatan bisa menyusul. Pertarungan antara gerakan keselamatan AI dan akselerasionisme kini menjadi isu nyata bagi industri dan kebijakan.",
+   "ev": [
+    [
+     "2012",
+     "Terobosan deep learning (AlexNet)"
+    ],
+    [
+     "2016",
+     "AlphaGo lawan Lee Sedol"
+    ],
+    [
+     "2017",
+     "Makalah Transformer"
+    ],
+    [
+     "2022.11",
+     "ChatGPT dirilis"
+    ],
+    [
+     "2024",
+     "UU AI Uni Eropa berlaku"
+    ],
+    [
+     "2026.9",
+     "Debat perlambatan pengembangan AI"
+    ]
+   ],
+   "sh": [
+    [
+     "Penilaian pakar manusia",
+     "Prediksi dari data dan model; pengetahuan yang tepat tanpa pemahaman",
+     "pakar → model"
+    ],
+    [
+     "Platform dan monopoli data",
+     "Perusahaan dan negara pemilik daya komputasi dan model; tata kelola AI jadi isu baru",
+     "data → komputasi"
+    ],
+    [
+     "Satu-satunya kecerdasan",
+     "Mungkin satu kecerdasan di antara beberapa; makna menjadi manusia didefinisikan ulang",
+     "tunggal → berdampingan?"
+    ],
+    [
+     "Kerja intelektual milik manusia",
+     "Kolaborasi dengan dan penggantian oleh AI; kerja, pendapatan, dan makna dirancang ulang",
+     "kerja manusia → kerja bersama"
+    ]
+   ]
+  }
+ ],
+ "isms": {
+  "scholastic": {
+   "n": "Skolastisisme",
+   "alt": "Scholasticism",
+   "y": "puncak abad ke-11–14",
+   "who": "Thomas Aquinas, Anselmus, William dari Ockham",
+   "works": "Aquinas, Summa Theologiae (1265–1274)",
+   "core": "Memadukan iman Kristen dengan filsafat Aristoteles dan memandang akal sebagai alat penopang iman. Kosmos diatur oleh tujuan dan tingkatan yang ditetapkan Tuhan, dan kebenaran berasal dari otoritas Kitab Suci, para Bapa Gereja, dan Aristoteles.",
+   "prop": "Rahmat tidak menghancurkan kodrat, melainkan menyempurnakannya (Aquinas)"
+  },
+  "mechanism": {
+   "n": "Filsafat mekanistik",
+   "sn": "Mekanisme",
+   "alt": "Mechanical philosophy",
+   "y": "terbentuk 1543–1687",
+   "who": "Copernicus, Galileo, Kepler, Descartes, Newton",
+   "works": "Copernicus, De revolutionibus (1543); Galileo, Dialogo (1632); Newton, Principia (1687)",
+   "core": "Memandang alam bukan sebagai sesuatu yang digerakkan tujuan Tuhan, melainkan mesin raksasa yang berjalan menurut hukum matematika. Penemuan bahwa langit dan bumi tunduk pada hukum gravitasi yang sama meruntuhkan hierarki kosmos abad pertengahan. Relativitas dan mekanika kuantum merevisinya pada abad ke-20, tetapi ia tetap menjadi cara pikir dasar teknik dan teknologi.",
+   "prop": "Kitab alam ditulis dalam bahasa matematika (Galileo, intisari)"
+  },
+  "rationalism": {
+   "n": "Rasionalisme",
+   "alt": "Rationalism",
+   "y": "abad ke-17",
+   "who": "Descartes, Spinoza, Leibniz",
+   "works": "Descartes, Discours de la méthode (1637), Meditationes (1641); Spinoza, Ethica (1677)",
+   "core": "Membangun kembali pengetahuan di atas kepastian akal yang tersisa setelah segala hal diragukan. Pengetahuan yang pasti diturunkan dari prinsip akal yang jelas dan terpilah, bukan dari indra.",
+   "prop": "Aku berpikir, maka aku ada (Descartes)"
+  },
+  "empiricism": {
+   "n": "Empirisme",
+   "alt": "Empiricism",
+   "y": "abad ke-17–18",
+   "who": "Francis Bacon, John Locke, George Berkeley, David Hume",
+   "works": "Bacon, Novum Organum (1620); Locke, An Essay Concerning Human Understanding (1689); Hume, A Treatise of Human Nature (1739)",
+   "core": "Pikiran manusia adalah kertas kosong saat lahir dan semua pengetahuan berasal dari pengalaman dan pengamatan. Empirisme menjadikan induksi dan eksperimen sebagai metode sains, dan Hume menunjukkan batas akal dengan menyatakan bahwa sebab-akibat pun hanyalah keyakinan yang lahir dari kebiasaan.",
+   "prop": "Pengetahuan adalah kekuatan (Bacon)"
+  },
+  "enlightenment": {
+   "n": "Pencerahan",
+   "alt": "The Enlightenment",
+   "y": "1680–1800",
+   "who": "Voltaire, Montesquieu, Diderot, Rousseau, Kant",
+   "works": "Diderot & d'Alembert, Encyclopédie (1751–1772); Kant, “Apa itu Pencerahan?” (1784)",
+   "core": "Menerapkan metode Revolusi Ilmiah pada agama, masyarakat, dan politik, serta mengadili tradisi dan otoritas di hadapan akal. Pencerahan menyebarkan keyakinan bahwa manusia dapat lepas dari kebodohan dan takhayul lewat akal lalu terus maju, dan keyakinan itu menjadi bahan bakar Revolusi Prancis.",
+   "prop": "Beranilah berpikir sendiri (Sapere aude, Kant)"
+  },
+  "positivism": {
+   "n": "Positivisme",
+   "alt": "Positivism",
+   "y": "1830-an dst.",
+   "who": "Auguste Comte, John Stuart Mill, Ernst Mach",
+   "works": "Comte, Cours de philosophie positive (1830–1842)",
+   "core": "Hanya fakta yang dapat dipastikan lewat pengamatan dan eksperimen yang dianggap pengetahuan, dan masyarakat harus diteliti seperti alam; dari sini Comte mendirikan “sosiologi”. Positivisme mewakili optimisme abad ke-19 bahwa industri dan sains memajukan masyarakat.",
+   "prop": "Pikiran manusia berkembang dari tahap teologis ke metafisis lalu positif (hukum tiga tahap Comte, intisari)"
+  },
+  "darwinism": {
+   "n": "Teori evolusi",
+   "sn": "Evolusi",
+   "alt": "Darwinism",
+   "y": "1859 dst.",
+   "who": "Charles Darwin, Alfred Russel Wallace",
+   "works": "Darwin, On the Origin of Species (1859), The Descent of Man (1871)",
+   "core": "Spesies tidak diciptakan satu per satu, tetapi bercabang dari nenek moyang bersama melalui variasi dan seleksi alam. Pandangan bahwa manusia adalah bagian dari alam mengguncang pandangan religius tentang manusia sampai ke akarnya; bersama genetika, teori ini menjadi fondasi biologi modern.",
+   "prop": "Kehidupan berubah melalui variasi dan seleksi alam, bukan rancangan (intisari)"
+  },
+  "logical": {
+   "n": "Positivisme logis & filsafat ilmu",
+   "sn": "Filsafat ilmu",
+   "alt": "Logical positivism & philosophy of science",
+   "y": "1920-an–1960-an",
+   "who": "Wittgenstein, Rudolf Carnap (Lingkaran Wina), Karl Popper, Thomas Kuhn",
+   "works": "Wittgenstein, Tractatus Logico-Philosophicus (1921); Popper, Logik der Forschung (1934); Kuhn, The Structure of Scientific Revolutions (1962)",
+   "core": "Bermula dari klaim positivisme logis bahwa hanya pernyataan yang dapat diverifikasi yang bermakna; Popper lalu menjadikan falsifiabilitas sebagai ciri sains. Kuhn berpendapat bahwa sains berubah lewat pergeseran paradigma, bukan akumulasi, sehingga Revolusi Ilmiah sendiri ditafsirkan ulang.",
+   "prop": "Tentang apa yang tak dapat dibicarakan, kita harus diam (Wittgenstein)"
+  },
+  "cybernetics": {
+   "n": "Teori informasi & sibernetika",
+   "sn": "Sibernetika",
+   "alt": "Information theory & cybernetics",
+   "y": "1936–1960-an",
+   "who": "Alan Turing, Claude Shannon, Norbert Wiener, John von Neumann",
+   "works": "Turing, “On Computable Numbers” (1936); Shannon, “A Mathematical Theory of Communication” (1948); Wiener, Cybernetics (1948); Turing, “Computing Machinery and Intelligence” (1950)",
+   "core": "Tumbuh dari riset pemecahan sandi dan kendali tembakan pada masa perang, lalu menjadikan informasi dan umpan balik sebagai unsur dasar dunia di samping materi dan energi. Cara pandang yang melihat kehidupan, pikiran, dan masyarakat sebagai sistem pengolah informasi menjadi landasan pemikiran komputer dan AI.",
+   "prop": "Dapatkah mesin berpikir? (Turing)"
+  },
+  "structuralism": {
+   "n": "Strukturalisme",
+   "alt": "Structuralism",
+   "y": "1950-an–1960-an",
+   "who": "Ferdinand de Saussure, Claude Lévi-Strauss, Jacques Lacan, Louis Althusser",
+   "works": "Saussure, Cours de linguistique générale (1916); Lévi-Strauss, Tristes Tropiques (1955), La Pensée sauvage (1962)",
+   "core": "Di balik bahasa, kekerabatan, mitos, dan alam bawah sadar ada struktur yang tidak disadari individu, dan struktur itulah yang menghasilkan makna. Strukturalisme menggeser subjek bebas eksistensialisme dan menjadi pusat pemikiran Prancis pada 1960-an.",
+   "prop": "Strukturlah yang membentuk subjek, bukan sebaliknya (intisari)"
+  },
+  "postmodern": {
+   "n": "Postmodernisme",
+   "alt": "Postmodernism & poststructuralism",
+   "y": "akhir 1960-an dst.",
+   "who": "Michel Foucault, Jacques Derrida, Jean-François Lyotard, Jean Baudrillard",
+   "works": "Derrida, De la grammatologie (1967); Foucault, Surveiller et punir (1975); Lyotard, La Condition postmoderne (1979)",
+   "core": "Membongkar narasi besar modernitas tentang akal, kemajuan, dan emansipasi sebagai produk kekuasaan dan wacana tertentu, bukan kebenaran universal. Kebenaran, identitas, dan pengetahuan dipandang dikonstruksi dalam konteks; jejaknya besar pada politik identitas dan kajian budaya.",
+   "prop": "Postmodern berarti ketidakpercayaan terhadap narasi besar (Lyotard)"
+  },
+  "infosociety": {
+   "n": "Masyarakat informasi & teori media",
+   "sn": "Masyarakat informasi",
+   "alt": "Information & network society",
+   "y": "1960-an dst.",
+   "who": "Marshall McLuhan, Daniel Bell, Alvin Toffler, Manuel Castells",
+   "works": "McLuhan, Understanding Media (1964); Bell, The Coming of Post-Industrial Society (1973); Toffler, The Third Wave (1980); Castells, The Rise of the Network Society (1996)",
+   "core": "Mendiagnosis pergeseran sumber kekayaan dari tanah dan modal ke pengetahuan dan informasi, serta organisasi sosial dari hierarki ke jaringan. Ia mewariskan wawasan bahwa bentuk media itu sendiri mengubah indra manusia dan masyarakat.",
+   "prop": "Medium adalah pesan (McLuhan)"
+  },
+  "dataism": {
+   "n": "Dataisme",
+   "alt": "Dataism",
+   "y": "2010-an dst.",
+   "who": "Yuval Noah Harari (yang menamainya), Chris Anderson",
+   "works": "Anderson, “The End of Theory” (2008); Harari, Homo Deus (2015)",
+   "core": "Memandang alam semesta dan kehidupan sebagai aliran data, dan memberi wewenang mengambil keputusan kepada sistem yang paling banyak dan paling baik mengolah data. Istilah ini menunjuk kecenderungan algoritma mengambil alih kursi penilaian yang dulu ditempati Tuhan dan perasaan manusia.",
+   "prop": "Dengan data yang cukup, angka akan berbicara sendiri (Anderson, intisari)"
+  },
+  "divine": {
+   "n": "Hak ilahi raja & absolutisme",
+   "sn": "Hak ilahi raja",
+   "alt": "Divine right of kings",
+   "y": "abad ke-16–18",
+   "who": "Jean Bodin, Robert Filmer, Jacques-Bénigne Bossuet, Louis XIV",
+   "works": "Bodin, Les Six Livres de la République (1576); Filmer, Patriarcha (1680)",
+   "core": "Kekuasaan raja datang langsung dari Tuhan, bukan dari rakyat, dan raja hanya bertanggung jawab kepada Tuhan. Paham ini membenarkan tatanan golongan dan kekuasaan turun-temurun sebagai tatanan alam yang ditetapkan Tuhan.",
+   "prop": "Negara adalah aku (dikaitkan dengan Louis XIV)"
+  },
+  "socialcontract": {
+   "n": "Teori kontrak sosial",
+   "sn": "Kontrak sosial",
+   "alt": "Social contract theory",
+   "y": "1651–1762",
+   "who": "Thomas Hobbes, John Locke, Jean-Jacques Rousseau",
+   "works": "Hobbes, Leviathan (1651); Locke, Two Treatises of Government (1689); Rousseau, Du contrat social (1762)",
+   "core": "Negara lahir bukan dari Tuhan, melainkan dari kontrak antara individu-individu dalam keadaan alamiah. Legitimasi berpindah dari atas (Tuhan) ke bawah (persetujuan yang diperintah), dan Locke bahkan mengakui hak melawan pemerintah yang gagal melindungi hidup, kebebasan, dan harta.",
+   "prop": "Manusia lahir bebas, tetapi di mana-mana ia terbelenggu (Rousseau)"
+  },
+  "liberalism": {
+   "n": "Liberalisme",
+   "alt": "Liberalism",
+   "y": "akhir abad ke-17 dst.",
+   "who": "John Locke, Montesquieu, Alexis de Tocqueville, J. S. Mill",
+   "works": "Montesquieu, De l'esprit des lois (1748); Tocqueville, De la démocratie en Amérique (1835); Mill, On Liberty (1859)",
+   "core": "Mendahulukan hak dan kebebasan individu di atas negara, serta membatasi kekuasaan lewat pemisahan kekuasaan, supremasi hukum, dan kebebasan berpendapat serta beragama. Setelah Revolusi Prancis, liberalisme menjadi tata bahasa dasar negara modern.",
+   "prop": "Kebebasan individu hanya boleh dibatasi untuk mencegah kerugian bagi orang lain (prinsip kerugian Mill, intisari)"
+  },
+  "republic": {
+   "n": "Republikanisme & kedaulatan rakyat",
+   "sn": "Republikanisme",
+   "alt": "Republicanism & popular sovereignty",
+   "y": "1776 · 1789 dst.",
+   "who": "Rousseau, Emmanuel Sieyès, Robespierre, Thomas Jefferson",
+   "works": "Deklarasi Kemerdekaan AS (1776); Sieyès, Qu'est-ce que le tiers-état ? (1789); Deklarasi Hak Asasi Manusia dan Warga Negara (1789)",
+   "core": "Kedaulatan ada pada seluruh bangsa, bukan raja, dan hukum adalah ungkapan kehendak umum. Kawula menjadi warga negara, dan kebebasan, kesetaraan, serta persaudaraan menjadi ukuran baru politik.",
+   "prop": "Sumber segala kedaulatan pada hakikatnya ada pada bangsa (Deklarasi, pasal 3, intisari)"
+  },
+  "nationalism": {
+   "n": "Nasionalisme",
+   "alt": "Nationalism",
+   "y": "1789 dst.",
+   "who": "Johann Gottfried Herder, Johann Gottlieb Fichte, Giuseppe Mazzini",
+   "works": "Fichte, Reden an die deutsche Nation (1807–1808)",
+   "core": "Ketika kedaulatan rakyat bertemu pertanyaan “siapakah rakyat itu?”, menyebar gagasan bahwa bangsa yang berbagi bahasa, sejarah, dan budaya harus menjadi satuan negara. Nasionalisme menggerakkan penyatuan dan kemerdekaan, tetapi juga eksklusi dan perang.",
+   "prop": "Setiap bangsa berhak atas negaranya sendiri (intisari)"
+  },
+  "conservatism": {
+   "n": "Konservatisme",
+   "alt": "Conservatism",
+   "y": "1790 dst.",
+   "who": "Edmund Burke, Joseph de Maistre, (abad ke-20) Michael Oakeshott",
+   "works": "Burke, Reflections on the Revolution in France (1790)",
+   "core": "Memperingatkan bahwa revolusi yang hendak merombak masyarakat sekaligus dengan akal abstrak akan melahirkan kekerasan dan kekacauan. Konservatisme menghargai kearifan yang tersimpan dalam tradisi, adat, dan lembaga yang telah teruji lama, dan berpendapat bahwa perubahan harus bertahap.",
+   "prop": "Masyarakat adalah persekutuan antara yang hidup, yang telah mati, dan yang belum lahir (Burke, intisari)"
+  },
+  "anarchism": {
+   "n": "Anarkisme",
+   "alt": "Anarchism",
+   "y": "1840-an dst.",
+   "who": "Pierre-Joseph Proudhon, Mikhail Bakunin, Peter Kropotkin",
+   "works": "Proudhon, Qu'est-ce que la propriété ? (1840); Kropotkin, Mutual Aid (1902)",
+   "core": "Menolak semua otoritas yang memaksa, dari negara dan modal hingga gereja, dan yakin masyarakat dapat diatur lewat perkumpulan sukarela dan saling bantu. Anarkisme berbenturan dengan Marxisme yang ingin merebut kekuasaan negara.",
+   "prop": "Hak milik adalah pencurian (Proudhon)"
+  },
+  "imperialism": {
+   "n": "Imperialisme & Darwinisme sosial",
+   "sn": "Imperialisme",
+   "alt": "Imperialism & Social Darwinism",
+   "y": "puncak 1870–1914",
+   "who": "Herbert Spencer, Cecil Rhodes, Rudyard Kipling",
+   "works": "Spencer, Principles of Biology (1864); Kipling, “The White Man's Burden” (1899)",
+   "core": "Salah menerapkan teori evolusi pada masyarakat untuk membenarkan kekuasaan bangsa dan ras yang “kuat” atas yang “lemah”. Didukung hasil industri dan senjata, ia memperluas penjajahan atas nama “misi pemberadaban”.",
+   "prop": "Yang terkuat yang bertahan (survival of the fittest, Spencer)"
+  },
+  "totalitarian": {
+   "n": "Fasisme & totalitarianisme",
+   "sn": "Fasisme",
+   "alt": "Fascism & totalitarianism",
+   "y": "1919–1945",
+   "who": "Benito Mussolini, Adolf Hitler (dianalisis oleh Hannah Arendt)",
+   "works": "Mussolini & Gentile, “La dottrina del fascismo” (1932); Arendt, The Origins of Totalitarianism (1951, analisis)",
+   "core": "Menempatkan kehendak bangsa dan negara di atas hak individu, lalu mengendalikan seluruh masyarakat lewat kultus pemimpin, kediktatoran satu partai, dan mobilisasi massa. Ia berujung pada Holocaust dan perang agresi, dan menjadi pelajaran pahit langsung di balik gagasan hak asasi pascaperang.",
+   "prop": "Semua di dalam negara, tidak ada yang di luar negara (Mussolini)"
+  },
+  "communism": {
+   "n": "Negara komunis (Marxisme–Leninisme)",
+   "sn": "Negara komunis",
+   "alt": "Marxism–Leninism",
+   "y": "1917–1991",
+   "who": "Vladimir Lenin, Joseph Stalin, Mao Zedong",
+   "works": "Lenin, Negara dan Revolusi (1917)",
+   "core": "Partai pelopor merebut negara lewat revolusi, menasionalisasi alat produksi, dan menjalankan ekonomi terencana. Paham ini menjadi sistem nyata lewat Revolusi Rusia, membagi dunia bersama demokrasi liberal selama Perang Dingin, lalu surut seiring runtuhnya Uni Soviet pada 1991.",
+   "prop": "Kediktatoran proletariat (Marx, Lenin)"
+  },
+  "humanrights": {
+   "n": "Hak asasi manusia universal",
+   "sn": "HAM universal",
+   "alt": "Universal human rights",
+   "y": "1945 dst.",
+   "who": "Eleanor Roosevelt, René Cassin, Raphael Lemkin",
+   "works": "Piagam PBB (1945); Deklarasi Universal Hak Asasi Manusia (1948); Konvensi Genosida (1948)",
+   "core": "Setelah dua perang dunia dan Holocaust, martabat dan hak manusia yang tidak boleh dilanggar negara dengan alasan apa pun dinyatakan sebagai standar internasional. Untuk pertama kalinya, gagasan bahwa kedaulatan negara pun dapat dibatasi oleh hak asasi dilembagakan.",
+   "prop": "Semua manusia dilahirkan bebas dan setara dalam martabat dan hak (DUHAM, pasal 1)"
+  },
+  "decolonial": {
+   "n": "Pascakolonialisme",
+   "alt": "Postcolonialism",
+   "y": "1940-an dst.",
+   "who": "Mahatma Gandhi, Frantz Fanon, Edward Said, Gayatri Spivak",
+   "works": "Fanon, Les Damnés de la Terre (1961); Said, Orientalism (1978)",
+   "core": "Mengkritik pengetahuan dan budaya yang berpusat pada Barat, yang bahkan setelah penjajahan berakhir terus menggambarkan dunia non-Barat sebagai “liyan yang tak beradab” demi membenarkan dominasi. Pascakolonialisme menjadi mesin pemikiran bagi kemerdekaan Asia dan Afrika.",
+   "prop": "“Timur” yang digambar Barat adalah representasi untuk berkuasa, bukan kenyataan (Said, intisari)"
+  },
+  "newleft": {
+   "n": "Kiri Baru & semangat 1968",
+   "sn": "Kiri Baru · 1968",
+   "alt": "New Left & the spirit of 1968",
+   "y": "1960-an",
+   "who": "Herbert Marcuse, Jean-Paul Sartre, Daniel Cohn-Bendit, Rudi Dutschke",
+   "works": "Marcuse, One-Dimensional Man (1964)",
+   "core": "Mengkritik sekaligus komunisme ala Soviet dan kapitalisme konsumen Barat, serta melawan otoritas sehari-hari di sekolah, keluarga, negara, dan seksualitas. Dengan mendahulukan pembebasan gaya hidup dan budaya ketimbang revolusi politik, ia menyebar ke gerakan antiperang, hak sipil, perempuan, dan ekologi.",
+   "prop": "Kekuasaan bagi imajinasi! (slogan Paris 1968)"
+  },
+  "justice": {
+   "n": "Teori keadilan & komunitarianisme",
+   "sn": "Debat keadilan",
+   "alt": "Theory of justice & communitarianism",
+   "y": "1971 dst.",
+   "who": "John Rawls, Robert Nozick, Michael Sandel, Alasdair MacIntyre",
+   "works": "Rawls, A Theory of Justice (1971); Nozick, Anarchy, State, and Utopia (1974); MacIntyre, After Virtue (1981); Sandel, Liberalism and the Limits of Justice (1982)",
+   "core": "Rawls mendefinisikan keadilan sebagai prinsip yang akan disepakati orang di balik “selubung ketidaktahuan” tentang posisinya sendiri, dan hanya membolehkan ketimpangan yang menguntungkan pihak paling lemah. Kaum libertarian yang menekankan hak milik dan kaum komunitarian yang menekankan nilai dan kebajikan komunitas menentangnya.",
+   "prop": "Keadilan adalah kebajikan pertama lembaga sosial (Rawls)"
+  },
+  "endhistory": {
+   "n": "Akhir Sejarah",
+   "alt": "The End of History",
+   "y": "1989–2000-an",
+   "who": "Francis Fukuyama (dibantah Samuel Huntington)",
+   "works": "Fukuyama, “The End of History?” (1989), The End of History and the Last Man (1992); Huntington, The Clash of Civilizations (1996)",
+   "core": "Ketika Perang Dingin berakhir, menguat klaim bahwa demokrasi liberal dan ekonomi pasar adalah pemenang akhir persaingan gagasan umat manusia. Terorisme, konflik etnis dan agama, serta bangkitnya otoritarianisme kemudian membantahnya dengan keras.",
+   "prop": "Demokrasi liberal mungkin titik akhir evolusi ideologis umat manusia (Fukuyama, intisari)"
+  },
+  "cyberlib": {
+   "n": "Libertarianisme siber & sumber terbuka",
+   "sn": "Sumber terbuka",
+   "alt": "Cyber-libertarianism & open source",
+   "y": "1980-an dst.",
+   "who": "Richard Stallman, Eric Raymond, John Perry Barlow, Lawrence Lessig",
+   "works": "Stallman, “The GNU Manifesto” (1985); Barlow, “A Declaration of the Independence of Cyberspace” (1996); Raymond, The Cathedral and the Bazaar (1997); Lessig, Code (1999)",
+   "core": "Memandang internet sebagai ruang bebas di luar kendali negara dan perusahaan, dan berpendapat bahwa perangkat lunak serta pengetahuan harus dibagi. Ia melahirkan model kolaborasi seperti Linux dan Wikipedia, dan Lessig memperingatkan bahwa kode mengatur perilaku layaknya hukum.",
+   "prop": "Informasi ingin bebas (Stewart Brand)"
+  },
+  "aisafety": {
+   "n": "Keselamatan & penyelarasan AI",
+   "sn": "Keselamatan AI",
+   "alt": "AI safety & alignment",
+   "y": "muncul 2000-an, arus utama 2020-an",
+   "who": "Nick Bostrom, Stuart Russell, Geoffrey Hinton, Yoshua Bengio, Eliezer Yudkowsky",
+   "works": "Bostrom, Superintelligence (2014); Russell, Human Compatible (2019); “Statement on AI Risk” CAIS (2023)",
+   "core": "Berpandangan bahwa AI yang lebih cerdas dari manusia dan mengejar tujuan yang tidak selaras dengan nilai manusia dapat menimbulkan kerusakan yang tak dapat dipulihkan. Karena itu riset penyelarasan, verifikasi, dan norma internasional harus didahulukan dari perlombaan kemampuan; pada 2026 debat perlambatan pengembangan bahkan pecah di antara para pemimpin perusahaan AI besar.",
+   "prop": "Mengurangi risiko kepunahan akibat AI harus menjadi prioritas global setara pandemi dan perang nuklir (Statement on AI Risk, intisari)"
+  },
+  "eacc": {
+   "n": "Akselerasionisme efektif (e/acc)",
+   "sn": "e/acc",
+   "alt": "Effective accelerationism",
+   "y": "2022 dst.",
+   "who": "Marc Andreessen, “Beff Jezos” (Guillaume Verdon); akarnya pada akselerasionisme Nick Land",
+   "works": "Andreessen, “Why AI Will Save the World” (2023), “The Techno-Optimist Manifesto” (2023)",
+   "core": "Berpendapat bahwa pertumbuhan teknologi dan pasar adalah penggerak kemakmuran manusia, sehingga pengembangan AI harus dipercepat, bukan diperlambat dengan regulasi. Kelompok keselamatan dijuluki “decel”; posisi tengah seperti akselerasi defensif (d/acc) Vitalik Buterin pun muncul di antara keduanya.",
+   "prop": "Memperlambat AI berarti membiarkan kematian yang bisa dicegah (Andreessen, intisari)"
+  },
+  "mercantilism": {
+   "n": "Merkantilisme",
+   "alt": "Mercantilism",
+   "y": "abad ke-16–18",
+   "who": "Jean-Baptiste Colbert, Thomas Mun",
+   "works": "Mun, England's Treasure by Forraign Trade (1664)",
+   "core": "Kekayaan negara adalah persediaan emas dan peraknya, yang dikumpulkan lewat surplus perdagangan dengan mendorong ekspor dan menghambat impor. Merkantilisme membiayai monarki absolut dan persaingan kolonialnya.",
+   "prop": "Surplus perdagangan adalah kekayaan bangsa (intisari)"
+  },
+  "classical": {
+   "n": "Ekonomi klasik & kapitalisme",
+   "sn": "Ekonomi klasik",
+   "alt": "Classical economics & capitalism",
+   "y": "1776–1929",
+   "who": "Adam Smith, David Ricardo, Thomas Malthus, J. S. Mill",
+   "works": "Smith, The Wealth of Nations (1776); Ricardo, Principles of Political Economy and Taxation (1817)",
+   "core": "Pembagian kerja dan persaingan bebas bekerja seperti “tangan tak terlihat” yang menambah kekayaan seluruh masyarakat. Sumber kekayaan dipindahkan dari emas dan perak ke kerja dan produksi, dan paham ini membenarkan laissez-faire pada masa industrialisasi hingga Depresi Besar memukulnya keras.",
+   "prop": "Makan malam kita bukan berkat kemurahan hati tukang daging, melainkan kepentingan dirinya sendiri (Smith, intisari)"
+  },
+  "socialism": {
+   "n": "Sosialisme utopis",
+   "sn": "Sosialisme awal",
+   "alt": "Utopian socialism",
+   "y": "1810-an–1840-an",
+   "who": "Robert Owen, Henri de Saint-Simon, Charles Fourier",
+   "works": "Owen, A New View of Society (1813); Fourier, Théorie des quatre mouvements (1808)",
+   "core": "Melihat jam kerja panjang, pekerja anak, dan kemiskinan akibat sistem pabrik, paham ini mengusulkan komunitas berdasarkan kerja sama dan kepemilikan bersama, bukan persaingan. Marx menyebutnya “sosialisme utopis” dan berusaha melampauinya.",
+   "prop": "Kerja sama harus menggantikan persaingan (intisari)"
+  },
+  "marxism": {
+   "n": "Marxisme",
+   "alt": "Marxism",
+   "y": "1848 dst.",
+   "who": "Karl Marx, Friedrich Engels",
+   "works": "Manifesto Komunis (1848); Das Kapital jilid 1 (1867)",
+   "core": "Pandangan sejarah materialis yang menjelaskan sejarah lewat perubahan kekuatan dan hubungan produksi serta perjuangan kelas. Kapitalisme dinilai mengeksploitasi nilai lebih kaum pekerja, dan kontradiksinya diramalkan akan membawa ke masyarakat tanpa kelas. Sebagai sistem ia surut, tetapi tetap hidup sebagai bahasa kritik terhadap kapitalisme.",
+   "prop": "Sejarah semua masyarakat hingga kini adalah sejarah perjuangan kelas (Manifesto Komunis)"
+  },
+  "keynes": {
+   "n": "Keynesianisme & negara kesejahteraan",
+   "sn": "Keynesianisme",
+   "alt": "Keynesianism & the welfare state",
+   "y": "1936–1970-an",
+   "who": "John Maynard Keynes, William Beveridge",
+   "works": "Keynes, The General Theory of Employment, Interest and Money (1936); Laporan Beveridge (1942)",
+   "core": "Depresi Besar membuktikan bahwa pasar tidak mencapai lapangan kerja penuh dengan sendirinya, sehingga pemerintah harus menciptakan permintaan lewat belanja negara. Paham ini membuka “masa keemasan” pascaperang di Barat: lapangan kerja penuh, jaminan sosial, dan negara kesejahteraan.",
+   "prop": "Dari buaian sampai liang lahat (slogan negara kesejahteraan Inggris pascaperang)"
+  },
+  "neoliberal": {
+   "n": "Neoliberalisme",
+   "alt": "Neoliberalism",
+   "y": "akhir 1970-an dst.",
+   "who": "Friedrich Hayek, Milton Friedman, Margaret Thatcher, Ronald Reagan",
+   "works": "Hayek, The Road to Serfdom (1944); Friedman, Capitalism and Freedom (1962)",
+   "core": "Setelah stagflasi 1970-an, campur tangan negara dan negara kesejahteraan dianggap tidak efisien, dan peran pasar diperluas lewat privatisasi, deregulasi, dan perdagangan bebas. Seiring berakhirnya Perang Dingin ia menjadi resep baku globalisasi, dan sejak krisis keuangan 2008 menuai kritik tajam.",
+   "prop": "Tidak ada alternatif (There is no alternative, Thatcher)"
+  },
+  "ecology": {
+   "n": "Ekologisme & environmentalisme",
+   "sn": "Ekologisme",
+   "alt": "Ecologism & environmentalism",
+   "y": "1962 dst.",
+   "who": "Rachel Carson, Arne Næss, Hans Jonas, Klub Roma",
+   "works": "Carson, Silent Spring (1962); Klub Roma, The Limits to Growth (1972); Jonas, Das Prinzip Verantwortung (1979)",
+   "core": "Memperingatkan bahwa pertumbuhan industri melampaui batas ekosistem bumi, dan menempatkan kembali manusia sebagai bagian dari alam, bukan penguasanya. Paham ini menawarkan tanggung jawab kepada generasi mendatang dan keberlanjutan sebagai ukuran baru ekonomi.",
+   "prop": "Pertumbuhan di planet yang terbatas punya batas (Klub Roma, intisari)"
+  },
+  "platform": {
+   "n": "Kritik kapitalisme pengawasan & platform",
+   "sn": "Kritik platform",
+   "alt": "Critique of surveillance & platform capitalism",
+   "y": "2010-an dst.",
+   "who": "Shoshana Zuboff, Nick Srnicek, Eli Pariser",
+   "works": "Pariser, The Filter Bubble (2011); Srnicek, Platform Capitalism (2016); Zuboff, The Age of Surveillance Capitalism (2019)",
+   "core": "Mengkritik platform mesin pencari, media sosial, dan niaga yang menciptakan cara akumulasi baru dengan menjadikan data perilaku manusia sebagai bahan mentah untuk memprediksi dan mengarahkan perilaku. Kritik ini juga membahas gelembung filter, yakni algoritma yang hanya menampilkan apa yang cocok bagi kita, dan politik pascakebenaran.",
+   "prop": "Pengalaman manusia menjadi bahan mentah gratis berupa data perilaku (Zuboff, intisari)"
+  },
+  "basicincome": {
+   "n": "Pendapatan dasar & pasca-kerja",
+   "sn": "Pendapatan dasar",
+   "alt": "Basic income & post-work",
+   "y": "2010-an dst.",
+   "who": "Philippe Van Parijs, Guy Standing, Rutger Bregman",
+   "works": "Van Parijs, Real Freedom for All (1995); Bregman, Utopia for Realists (2016)",
+   "core": "Gagasan bahwa di zaman ketika otomatisasi dan AI menggantikan pekerjaan, pendapatan harus dipisahkan dari kerja dan setiap orang dijamin pendapatan tanpa syarat. Ia mempertanyakan nilai warisan Revolusi Industri bahwa kerja adalah makna hidup.",
+   "prop": "Untuk semua, tanpa syarat, per individu, secara berkala (prinsip pendapatan dasar)"
+  },
+  "humanism": {
+   "n": "Humanisme Renaisans",
+   "sn": "Humanisme",
+   "alt": "Renaissance humanism",
+   "y": "abad ke-14–16",
+   "who": "Francesco Petrarca, Pico della Mirandola, Erasmus",
+   "works": "Pico, Orasi tentang Martabat Manusia (1486); Erasmus, Pujian bagi Kebodohan (1511)",
+   "core": "Menghidupkan kembali karya klasik Yunani dan Romawi serta memindahkan perhatian dari Tuhan ke martabat, kemampuan, dan kehidupan manusia di dunia ini. Humanisme menyiapkan lahan budaya bagi Revolusi Ilmiah dan Reformasi.",
+   "prop": "Manusia membentuk rupa dirinya sendiri (Pico, intisari)"
+  },
+  "deism": {
+   "n": "Deisme",
+   "alt": "Deism",
+   "y": "abad ke-17–18",
+   "who": "John Toland, Voltaire, Thomas Paine",
+   "works": "Toland, Christianity Not Mysterious (1696); Paine, The Age of Reason (1794)",
+   "core": "Tuhan menciptakan alam semesta dan menetapkan hukumnya, tetapi tidak lagi campur tangan sesudahnya. Deisme berusaha memahami Tuhan lewat akal, bukan mukjizat dan wahyu, dan menjadi landasan toleransi beragama.",
+   "prop": "Tuhan adalah pembuat jam yang membiarkan jamnya berjalan sendiri (kiasan deisme)"
+  },
+  "romanticism": {
+   "n": "Romantisisme",
+   "alt": "Romanticism",
+   "y": "1790–1850",
+   "who": "Rousseau, Goethe, Friedrich Schlegel, William Wordsworth",
+   "works": "Goethe, Penderitaan Werther Muda (1774); Wordsworth & Coleridge, Lyrical Ballads (1798)",
+   "core": "Mengedepankan perasaan, imajinasi, keunikan pribadi, dan alam untuk melawan akal dingin Pencerahan dan mekanisasi industri. Karena menghargai bahasa dan tradisi khas tiap bangsa, ia bersekutu dengan nasionalisme.",
+   "prop": "Puisi yang baik adalah luapan spontan perasaan yang kuat (Wordsworth)"
+  },
+  "feminism1": {
+   "n": "Feminisme gelombang pertama",
+   "sn": "Feminisme gel. 1",
+   "alt": "First-wave feminism",
+   "y": "1791–1920-an",
+   "who": "Olympe de Gouges, Mary Wollstonecraft, J. S. Mill, Emmeline Pankhurst",
+   "works": "de Gouges, Deklarasi Hak Perempuan dan Warga Negara Perempuan (1791); Wollstonecraft, A Vindication of the Rights of Woman (1792); Mill, The Subjection of Women (1869)",
+   "core": "Menunjukkan bahwa perempuan tidak termasuk dalam “manusia dan warga negara” versi Revolusi, lalu menuntut hak pendidikan, hak milik, dan hak pilih bagi perempuan. Pada awal abad ke-20 gerakan ini memenangkan hak pilih perempuan di banyak negara.",
+   "prop": "Jika perempuan berhak naik ke tiang gantungan, ia juga harus berhak naik ke mimbar (de Gouges)"
+  },
+  "utilitarian": {
+   "n": "Utilitarianisme",
+   "alt": "Utilitarianism",
+   "y": "1789 dst.",
+   "who": "Jeremy Bentham, J. S. Mill, (kini) Peter Singer",
+   "works": "Bentham, An Introduction to the Principles of Morals and Legislation (1789); Mill, Utilitarianism (1863)",
+   "core": "Tindakan yang benar adalah yang memaksimalkan kebahagiaan semua orang yang terdampak. Sebagai etika sekuler yang menghitung akibat, bukan mengikuti perintah ilahi, ia menjadi dasar reformasi hukum, kebijakan publik, dan analisis biaya-manfaat.",
+   "prop": "Kebahagiaan terbesar bagi jumlah terbesar (Bentham)"
+  },
+  "nihilism": {
+   "n": "Nietzsche & nihilisme",
+   "sn": "Nihilisme",
+   "alt": "Nietzsche & nihilism",
+   "y": "1880-an dst.",
+   "who": "Friedrich Nietzsche, Schopenhauer, Kierkegaard, Dostoyevsky",
+   "works": "Nietzsche, Die fröhliche Wissenschaft (1882), Also sprach Zarathustra (1883–1885)",
+   "core": "Mendiagnosis bahwa sains dan sekularisasi telah meruntuhkan dasar nilai-nilai Kristen, dan menuntut manusia menciptakan nilai baru alih-alih membiarkan kekosongan. Inilah kritik internal paling kuat terhadap iman modern pada akal dan kemajuan.",
+   "prop": "Tuhan telah mati (Nietzsche)"
+  },
+  "psychoanalysis": {
+   "n": "Psikoanalisis",
+   "alt": "Psychoanalysis",
+   "y": "1899 dst.",
+   "who": "Sigmund Freud, Carl Jung, Jacques Lacan",
+   "works": "Freud, Die Traumdeutung (1899), Das Unbehagen in der Kultur (1930)",
+   "core": "Perilaku manusia lebih banyak digerakkan hasrat yang ditekan dan alam bawah sadar daripada akal yang sadar. Psikoanalisis mengguncang gambaran subjek rasional yang transparan, yang dominan sejak Descartes.",
+   "prop": "Ego bukan tuan di rumahnya sendiri (Freud)"
+  },
+  "existentialism": {
+   "n": "Eksistensialisme",
+   "alt": "Existentialism",
+   "y": "1920-an–1960-an",
+   "who": "Martin Heidegger, Jean-Paul Sartre, Albert Camus, Simone de Beauvoir",
+   "works": "Heidegger, Sein und Zeit (1927); Camus, Le Mythe de Sisyphe (1942); Sartre, L'Être et le néant (1943), “L'existentialisme est un humanisme” (1946)",
+   "core": "Baik Tuhan, kemajuan sejarah, maupun kodrat manusia tidak menetapkan makna hidup sebelumnya. Terlempar ke dunia yang absurd, manusia memilih dengan bebas, bertanggung jawab atas pilihannya, dan membentuk dirinya sendiri.",
+   "prop": "Eksistensi mendahului esensi (Sartre)"
+  },
+  "critical": {
+   "n": "Teori kritis (Mazhab Frankfurt)",
+   "sn": "Teori kritis",
+   "alt": "Critical theory",
+   "y": "1930-an–1980-an",
+   "who": "Max Horkheimer, Theodor Adorno, Walter Benjamin, (generasi ke-2) Jürgen Habermas",
+   "works": "Horkheimer & Adorno, Dialektik der Aufklärung (1944/1947); Habermas, Theorie des kommunikativen Handelns (1981)",
+   "core": "Menganalisis bagaimana akal Pencerahan, yang semestinya membebaskan manusia, berubah menjadi akal instrumental dan alat dominasi lewat birokrasi, industri budaya, dan Holocaust. Habermas menawarkan “akal komunikatif” yang berdasar diskusi bebas sebagai jalan keluarnya.",
+   "prop": "Pencerahan berbalik menjadi mitos (Dialektika Pencerahan, intisari)"
+  },
+  "feminism2": {
+   "n": "Feminisme gelombang kedua & ketiga",
+   "sn": "Feminisme gel. 2·3",
+   "alt": "Second & third-wave feminism",
+   "y": "1949 · 1960-an dst.",
+   "who": "Simone de Beauvoir, Betty Friedan, Kate Millett, Judith Butler",
+   "works": "Beauvoir, Le Deuxième Sexe (1949); Friedan, The Feminine Mystique (1963); Butler, Gender Trouble (1990)",
+   "core": "Melampaui kesetaraan hukum untuk menggugat ketimpangan sehari-hari di rumah, tempat kerja, seksualitas, dan budaya. Dengan slogan “yang pribadi adalah politis”, gerakan ini menyebarkan pemahaman bahwa peran gender dibentuk masyarakat, bukan alam.",
+   "prop": "Seseorang tidak dilahirkan sebagai perempuan, melainkan menjadi perempuan (Beauvoir)"
+  },
+  "transhuman": {
+   "n": "Transhumanisme & pascahumanisme",
+   "sn": "Trans-/pascahumanisme",
+   "alt": "Transhumanism & posthumanism",
+   "y": "istilah 1957; 1980-an dst.",
+   "who": "Julian Huxley, Donna Haraway, Ray Kurzweil, Nick Bostrom, Rosi Braidotti",
+   "works": "Haraway, “A Cyborg Manifesto” (1985); Kurzweil, The Singularity Is Near (2005); Braidotti, The Posthuman (2013)",
+   "core": "Transhumanisme ingin sains dan teknologi mengatasi batas penuaan, penyakit, dan kecerdasan untuk menyempurnakan manusia. Pascahumanisme mengkritik humanisme modern yang menempatkan manusia di pusat dunia dan meninjau ulang batas antara manusia, mesin, dan hewan.",
+   "prop": "Singularitas sudah dekat (Kurzweil)"
+  },
+  "ea": {
+   "n": "Altruisme efektif & longtermisme",
+   "sn": "Altruisme efektif",
+   "alt": "Effective altruism & longtermism",
+   "y": "2009 dst.",
+   "who": "Peter Singer, William MacAskill, Toby Ord",
+   "works": "Singer, The Life You Can Save (2009); Ord, The Precipice (2020); MacAskill, What We Owe the Future (2022)",
+   "core": "Gerakan untuk mencari, dengan bukti dan perhitungan, cara berbuat kebaikan sebesar-besarnya; berawal dari kemiskinan dan kesehatan lalu meluas ke risiko bagi kelangsungan umat manusia seperti AI dan pandemi. Longtermisme-nya, yang menganggap generasi mendatang penting secara moral, menjadi landasan pemikiran keselamatan AI.",
+   "prop": "Lakukan kebaikan sebesar mungkin yang kamu bisa (intisari)"
+  },
+  "digitalhum": {
+   "n": "Humanisme digital & AI berpusat pada manusia",
+   "sn": "Humanisme digital",
+   "alt": "Digital humanism & human-centred AI",
+   "y": "2019 dst.",
+   "who": "Penanda tangan Manifesto Wina tentang Humanisme Digital, Fei-Fei Li, Sherry Turkle",
+   "works": "Turkle, Alone Together (2011); Manifesto Wina tentang Humanisme Digital (2019); Li, The Worlds I See (2023)",
+   "core": "Ketika AI dan platform mengambil alih penilaian, hubungan, dan kerja manusia, paham ini berpendapat bahwa teknologi harus dirancang dan diatur untuk melayani martabat manusia, demokrasi, dan otonomi. Ia mengalir ke regulasi berbasis risiko seperti UU AI Uni Eropa dan perdebatan tentang AI untuk kepentingan publik.",
+   "prop": "Teknologi harus dibentuk untuk manusia, bukan manusia untuk teknologi (intisari)"
+  }
+ },
+ "era": [
+  {
+   "x": [
+    "Berpusat pada Tuhan",
+    "Berpusat pada manusia"
+   ],
+   "y": [
+    "Gereja universal",
+    "Penguasa duniawi"
+   ],
+   "xq": "Tuhan atau manusia: mana pusat dunia?",
+   "yq": "Siapa yang memerintah: Paus (Gereja) atau raja?",
+   "why": "Akhir Abad Pertengahan ditandai dua ketegangan. Perhatian mulai bergeser dari teologi ke manusia dan dunia ini, dan otoritas universal Gereja berbenturan dengan kekuasaan raja-raja teritorial.",
+   "pos": {
+    "humanism": [
+     6.5,
+     -2.5,
+     "l"
+    ]
+   }
+  },
+  {
+   "x": [
+    "Akal (deduksi)",
+    "Pengalaman (induksi)"
+   ],
+   "y": [
+    "Kosmos digerakkan tujuan Tuhan",
+    "Kosmos sebagai mesin berhukum"
+   ],
+   "xq": "Dari mana pengetahuan yang pasti berasal?",
+   "yq": "Apa yang menggerakkan alam semesta?",
+   "why": "Revolusi Ilmiah menjelaskan alam semesta dengan hukum alih-alih tujuan Tuhan, dan kaum rasionalis serta empiris berselisih tentang cara mengetahui hukum itu. Pencerahan menyatukan keduanya.",
+   "pos": {
+    "empiricism": [
+     7.5,
+     5.8,
+     "l"
+    ]
+   }
+  },
+  {
+   "x": [
+    "Kebebasan individu",
+    "Kehendak bangsa"
+   ],
+   "y": [
+    "Jaga tradisi & tatanan",
+    "Revolusi & perubahan"
+   ],
+   "xq": "Individu atau bangsa: mana yang didahulukan?",
+   "yq": "Seberapa banyak dan bagaimana harus berubah?",
+   "why": "Revolusi bertanya apa yang didahulukan (hak individu atau kehendak umum bangsa) dan apakah tradisi dipertahankan atau dijungkirbalikkan. Istilah kiri dan kanan pun lahir saat itu, dari posisi duduk di Majelis."
+  },
+  {
+   "x": [
+    "Kepemilikan bersama",
+    "Pasar & milik pribadi"
+   ],
+   "y": [
+    "Negara & hierarki menguat",
+    "Negara mengecil & swakelola"
+   ],
+   "xq": "Siapa yang harus memiliki alat produksi?",
+   "yq": "Seberapa jauh negara harus memerintah?",
+   "why": "Ketika pabrik dan modal menjadi sumber kekayaan, kepemilikan alat produksi dan peran negara menjadi dua poros pemikiran. Kapitalisme, sosialisme, anarkisme, dan imperialisme berhadapan di bidang ini.",
+   "pos": {
+    "positivism": [
+     0.8,
+     -4.4,
+     "r"
+    ]
+   }
+  },
+  {
+   "x": [
+    "Ekonomi terencana",
+    "Pasar bebas"
+   ],
+   "y": [
+    "Negara & bangsa dulu",
+    "Kebebasan individu & HAM"
+   ],
+   "xq": "Serahkan ekonomi pada pasar atau rencanakan?",
+   "yq": "Tempatkan negara di atas individu?",
+   "why": "Depresi dan dua perang dunia melahirkan persaingan sistem. Fasisme dan komunisme menempatkan negara di atas individu; setelah perang, hak asasi dan negara kesejahteraan menjadi ukuran baru.",
+   "pos": {
+    "decolonial": [
+     -4.5,
+     -2.8,
+     "r"
+    ]
+   }
+  },
+  {
+   "x": [
+    "Kiri ekonomi: negara & setara",
+    "Kanan ekonomi: pasar"
+   ],
+   "y": [
+    "Otoritas & tradisi",
+    "Otonomi & pembebasan"
+   ],
+   "xq": "Negara atau pasar untuk distribusi? (poros Perang Dingin)",
+   "yq": "Otoritas atau otonomi? (poros yang ditambahkan 1968)",
+   "why": "Perang Dingin adalah pertarungan di poros ekonomi, dan 1968 menambahkan poros budaya. Dua poros “kompas politik” yang kini akrab dibentuk pada zaman ini, dan setelah Perang Dingin neoliberalisme di sisi kanan menjadi standar global."
+  },
+  {
+   "x": [
+    "Terpusat (negara, platform)",
+    "Tersebar (jaringan)"
+   ],
+   "y": [
+    "Kritis pada teknologi",
+    "Optimis pada teknologi"
+   ],
+   "xq": "Kekuasaan menyebar atau berkumpul lagi?",
+   "yq": "Teknologi itu pembebasan atau bahaya?",
+   "why": "Ketika internet terbuka, pertanyaannya menjadi apakah kekuasaan akan tersebar ke jaringan atau berkumpul lagi di platform baru. Optimisme awal bergeser pada 2010-an ke arah kritik terhadap pengawasan dan monopoli."
+  },
+  {
+   "x": [
+    "Perlambat & atur",
+    "Percepat"
+   ],
+   "y": [
+    "Berpusat pada manusia",
+    "Pascamanusia, pikiran mesin"
+   ],
+   "xq": "Perlambat atau percepat pengembangan AI?",
+   "yq": "Pertahankan manusia sebagai pusat atau melampauinya?",
+   "why": "Revolusi AI berputar pada kecepatan pengembangan dan kedudukan manusia. Debat 2026 di antara pemimpin perusahaan AI soal perlambatan berlangsung di sepanjang poros horizontal; poros vertikal bertanya apa arti kerja dan menjadi manusia.",
+   "pos": {
+    "ea": [
+     -7.5,
+     3,
+     "r"
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,1426 @@
+{
+ "isms": [
+  {
+   "id": "scholastic",
+   "l": "A",
+   "s": 0,
+   "e": 0,
+   "a": false,
+   "f": []
+  },
+  {
+   "id": "mechanism",
+   "l": "A",
+   "s": 1,
+   "e": 3,
+   "a": false,
+   "f": [
+    [
+     "scholastic",
+     "r"
+    ]
+   ]
+  },
+  {
+   "id": "rationalism",
+   "l": "A",
+   "s": 1,
+   "e": 2,
+   "a": false,
+   "f": [
+    [
+     "scholastic",
+     "r"
+    ],
+    [
+     "mechanism",
+     "c"
+    ]
+   ]
+  },
+  {
+   "id": "empiricism",
+   "l": "A",
+   "s": 1,
+   "e": 2,
+   "a": false,
+   "f": [
+    [
+     "scholastic",
+     "r"
+    ]
+   ]
+  },
+  {
+   "id": "enlightenment",
+   "l": "A",
+   "s": 1,
+   "e": 2,
+   "a": false,
+   "f": [
+    [
+     "rationalism",
+     "c"
+    ],
+    [
+     "empiricism",
+     "c"
+    ],
+    [
+     "mechanism",
+     "c"
+    ]
+   ]
+  },
+  {
+   "id": "positivism",
+   "l": "A",
+   "s": 3,
+   "e": 4,
+   "a": false,
+   "f": [
+    [
+     "enlightenment",
+     "c"
+    ],
+    [
+     "empiricism",
+     "c"
+    ]
+   ]
+  },
+  {
+   "id": "darwinism",
+   "l": "A",
+   "s": 3,
+   "e": 7,
+   "a": true,
+   "f": [
+    [
+     "mechanism",
+     "c"
+    ]
+   ]
+  },
+  {
+   "id": "logical",
+   "l": "A",
+   "s": 4,
+   "e": 5,
+   "a": false,
+   "f": [
+    [
+     "positivism",
+     "c"
+    ]
+   ]
+  },
+  {
+   "id": "cybernetics",
+   "l": "A",
+   "s": 4,
+   "e": 6,
+   "a": false,
+   "f": [
+    [
+     "mechanism",
+     "c"
+    ],
+    [
+     "logical",
+     "c"
+    ]
+   ]
+  },
+  {
+   "id": "structuralism",
+   "l": "A",
+   "s": 5,
+   "e": 5,
+   "a": false,
+   "f": [
+    [
+     "existentialism",
+     "r"
+    ],
+    [
+     "psychoanalysis",
+     "c"
+    ]
+   ]
+  },
+  {
+   "id": "postmodern",
+   "l": "A",
+   "s": 5,
+   "e": 7,
+   "a": true,
+   "f": [
+    [
+     "structuralism",
+     "c"
+    ],
+    [
+     "nihilism",
+     "c"
+    ],
+    [
+     "enlightenment",
+     "r"
+    ]
+   ]
+  },
+  {
+   "id": "infosociety",
+   "l": "A",
+   "s": 6,
+   "e": 7,
+   "a": true,
+   "f": [
+    [
+     "cybernetics",
+     "c"
+    ]
+   ]
+  },
+  {
+   "id": "dataism",
+   "l": "A",
+   "s": 7,
+   "e": 7,
+   "a": true,
+   "f": [
+    [
+     "infosociety",
+     "c"
+    ],
+    [
+     "positivism",
+     "c"
+    ]
+   ]
+  },
+  {
+   "id": "divine",
+   "l": "B",
+   "s": 0,
+   "e": 1,
+   "a": false,
+   "f": [
+    [
+     "scholastic",
+     "c"
+    ]
+   ]
+  },
+  {
+   "id": "socialcontract",
+   "l": "B",
+   "s": 1,
+   "e": 2,
+   "a": false,
+   "f": [
+    [
+     "divine",
+     "r"
+    ],
+    [
+     "rationalism",
+     "c"
+    ],
+    [
+     "mechanism",
+     "c"
+    ]
+   ]
+  },
+  {
+   "id": "liberalism",
+   "l": "B",
+   "s": 2,
+   "e": 7,
+   "a": true,
+   "f": [
+    [
+     "socialcontract",
+     "c"
+    ],
+    [
+     "enlightenment",
+     "c"
+    ]
+   ]
+  },
+  {
+   "id": "republic",
+   "l": "B",
+   "s": 2,
+   "e": 7,
+   "a": true,
+   "f": [
+    [
+     "socialcontract",
+     "c"
+    ],
+    [
+     "enlightenment",
+     "c"
+    ],
+    [
+     "divine",
+     "r"
+    ]
+   ]
+  },
+  {
+   "id": "nationalism",
+   "l": "B",
+   "s": 2,
+   "e": 7,
+   "a": true,
+   "f": [
+    [
+     "republic",
+     "c"
+    ],
+    [
+     "romanticism",
+     "c"
+    ]
+   ]
+  },
+  {
+   "id": "conservatism",
+   "l": "B",
+   "s": 2,
+   "e": 7,
+   "a": true,
+   "f": [
+    [
+     "republic",
+     "r"
+    ],
+    [
+     "enlightenment",
+     "r"
+    ]
+   ]
+  },
+  {
+   "id": "anarchism",
+   "l": "B",
+   "s": 3,
+   "e": 5,
+   "a": false,
+   "f": [
+    [
+     "liberalism",
+     "c"
+    ],
+    [
+     "socialism",
+     "c"
+    ]
+   ]
+  },
+  {
+   "id": "imperialism",
+   "l": "B",
+   "s": 3,
+   "e": 4,
+   "a": false,
+   "f": [
+    [
+     "darwinism",
+     "c"
+    ],
+    [
+     "nationalism",
+     "c"
+    ]
+   ]
+  },
+  {
+   "id": "totalitarian",
+   "l": "B",
+   "s": 4,
+   "e": 4,
+   "a": false,
+   "f": [
+    [
+     "nationalism",
+     "c"
+    ],
+    [
+     "imperialism",
+     "c"
+    ],
+    [
+     "liberalism",
+     "r"
+    ],
+    [
+     "marxism",
+     "r"
+    ]
+   ]
+  },
+  {
+   "id": "communism",
+   "l": "B",
+   "s": 4,
+   "e": 5,
+   "a": false,
+   "f": [
+    [
+     "marxism",
+     "c"
+    ]
+   ]
+  },
+  {
+   "id": "humanrights",
+   "l": "B",
+   "s": 4,
+   "e": 7,
+   "a": true,
+   "f": [
+    [
+     "liberalism",
+     "c"
+    ],
+    [
+     "republic",
+     "c"
+    ],
+    [
+     "totalitarian",
+     "r"
+    ]
+   ]
+  },
+  {
+   "id": "decolonial",
+   "l": "B",
+   "s": 4,
+   "e": 7,
+   "a": true,
+   "f": [
+    [
+     "nationalism",
+     "c"
+    ],
+    [
+     "humanrights",
+     "c"
+    ],
+    [
+     "imperialism",
+     "r"
+    ]
+   ]
+  },
+  {
+   "id": "newleft",
+   "l": "B",
+   "s": 5,
+   "e": 5,
+   "a": false,
+   "f": [
+    [
+     "marxism",
+     "c"
+    ],
+    [
+     "critical",
+     "c"
+    ],
+    [
+     "existentialism",
+     "c"
+    ],
+    [
+     "communism",
+     "r"
+    ]
+   ]
+  },
+  {
+   "id": "justice",
+   "l": "B",
+   "s": 5,
+   "e": 7,
+   "a": true,
+   "f": [
+    [
+     "liberalism",
+     "c"
+    ],
+    [
+     "socialcontract",
+     "c"
+    ],
+    [
+     "utilitarian",
+     "r"
+    ]
+   ]
+  },
+  {
+   "id": "endhistory",
+   "l": "B",
+   "s": 5,
+   "e": 6,
+   "a": false,
+   "f": [
+    [
+     "liberalism",
+     "c"
+    ],
+    [
+     "communism",
+     "r"
+    ]
+   ]
+  },
+  {
+   "id": "cyberlib",
+   "l": "B",
+   "s": 6,
+   "e": 7,
+   "a": true,
+   "f": [
+    [
+     "liberalism",
+     "c"
+    ],
+    [
+     "anarchism",
+     "c"
+    ],
+    [
+     "newleft",
+     "c"
+    ]
+   ]
+  },
+  {
+   "id": "aisafety",
+   "l": "B",
+   "s": 7,
+   "e": 7,
+   "a": true,
+   "f": [
+    [
+     "cybernetics",
+     "c"
+    ],
+    [
+     "ea",
+     "c"
+    ],
+    [
+     "humanrights",
+     "c"
+    ]
+   ]
+  },
+  {
+   "id": "eacc",
+   "l": "B",
+   "s": 7,
+   "e": 7,
+   "a": true,
+   "f": [
+    [
+     "neoliberal",
+     "c"
+    ],
+    [
+     "transhuman",
+     "c"
+    ],
+    [
+     "cyberlib",
+     "c"
+    ],
+    [
+     "aisafety",
+     "r"
+    ]
+   ]
+  },
+  {
+   "id": "mercantilism",
+   "l": "C",
+   "s": 0,
+   "e": 1,
+   "a": false,
+   "f": [
+    [
+     "divine",
+     "c"
+    ]
+   ]
+  },
+  {
+   "id": "classical",
+   "l": "C",
+   "s": 3,
+   "e": 4,
+   "a": false,
+   "f": [
+    [
+     "mercantilism",
+     "r"
+    ],
+    [
+     "liberalism",
+     "c"
+    ],
+    [
+     "enlightenment",
+     "c"
+    ]
+   ]
+  },
+  {
+   "id": "socialism",
+   "l": "C",
+   "s": 3,
+   "e": 3,
+   "a": false,
+   "f": [
+    [
+     "enlightenment",
+     "c"
+    ],
+    [
+     "classical",
+     "r"
+    ]
+   ]
+  },
+  {
+   "id": "marxism",
+   "l": "C",
+   "s": 3,
+   "e": 5,
+   "a": false,
+   "f": [
+    [
+     "socialism",
+     "c"
+    ],
+    [
+     "enlightenment",
+     "c"
+    ],
+    [
+     "classical",
+     "r"
+    ]
+   ]
+  },
+  {
+   "id": "keynes",
+   "l": "C",
+   "s": 4,
+   "e": 5,
+   "a": false,
+   "f": [
+    [
+     "classical",
+     "r"
+    ],
+    [
+     "socialism",
+     "c"
+    ],
+    [
+     "liberalism",
+     "c"
+    ]
+   ]
+  },
+  {
+   "id": "neoliberal",
+   "l": "C",
+   "s": 5,
+   "e": 7,
+   "a": true,
+   "f": [
+    [
+     "classical",
+     "c"
+    ],
+    [
+     "liberalism",
+     "c"
+    ],
+    [
+     "keynes",
+     "r"
+    ]
+   ]
+  },
+  {
+   "id": "ecology",
+   "l": "C",
+   "s": 5,
+   "e": 7,
+   "a": true,
+   "f": [
+    [
+     "romanticism",
+     "c"
+    ],
+    [
+     "newleft",
+     "c"
+    ],
+    [
+     "classical",
+     "r"
+    ],
+    [
+     "mechanism",
+     "r"
+    ]
+   ]
+  },
+  {
+   "id": "platform",
+   "l": "C",
+   "s": 6,
+   "e": 7,
+   "a": true,
+   "f": [
+    [
+     "marxism",
+     "c"
+    ],
+    [
+     "infosociety",
+     "c"
+    ],
+    [
+     "neoliberal",
+     "r"
+    ]
+   ]
+  },
+  {
+   "id": "basicincome",
+   "l": "C",
+   "s": 7,
+   "e": 7,
+   "a": true,
+   "f": [
+    [
+     "keynes",
+     "c"
+    ],
+    [
+     "justice",
+     "c"
+    ],
+    [
+     "socialism",
+     "c"
+    ]
+   ]
+  },
+  {
+   "id": "humanism",
+   "l": "D",
+   "s": 0,
+   "e": 1,
+   "a": false,
+   "f": [
+    [
+     "scholastic",
+     "r"
+    ]
+   ]
+  },
+  {
+   "id": "deism",
+   "l": "D",
+   "s": 1,
+   "e": 2,
+   "a": false,
+   "f": [
+    [
+     "mechanism",
+     "c"
+    ],
+    [
+     "scholastic",
+     "r"
+    ]
+   ]
+  },
+  {
+   "id": "romanticism",
+   "l": "D",
+   "s": 2,
+   "e": 3,
+   "a": false,
+   "f": [
+    [
+     "enlightenment",
+     "r"
+    ],
+    [
+     "mechanism",
+     "r"
+    ]
+   ]
+  },
+  {
+   "id": "feminism1",
+   "l": "D",
+   "s": 2,
+   "e": 4,
+   "a": false,
+   "f": [
+    [
+     "republic",
+     "c"
+    ],
+    [
+     "enlightenment",
+     "c"
+    ],
+    [
+     "liberalism",
+     "c"
+    ]
+   ]
+  },
+  {
+   "id": "utilitarian",
+   "l": "D",
+   "s": 3,
+   "e": 7,
+   "a": true,
+   "f": [
+    [
+     "enlightenment",
+     "c"
+    ],
+    [
+     "empiricism",
+     "c"
+    ]
+   ]
+  },
+  {
+   "id": "nihilism",
+   "l": "D",
+   "s": 3,
+   "e": 4,
+   "a": false,
+   "f": [
+    [
+     "darwinism",
+     "c"
+    ],
+    [
+     "romanticism",
+     "c"
+    ],
+    [
+     "enlightenment",
+     "r"
+    ]
+   ]
+  },
+  {
+   "id": "psychoanalysis",
+   "l": "D",
+   "s": 3,
+   "e": 5,
+   "a": false,
+   "f": [
+    [
+     "darwinism",
+     "c"
+    ],
+    [
+     "rationalism",
+     "r"
+    ]
+   ]
+  },
+  {
+   "id": "existentialism",
+   "l": "D",
+   "s": 4,
+   "e": 5,
+   "a": false,
+   "f": [
+    [
+     "nihilism",
+     "c"
+    ]
+   ]
+  },
+  {
+   "id": "critical",
+   "l": "D",
+   "s": 4,
+   "e": 5,
+   "a": false,
+   "f": [
+    [
+     "marxism",
+     "c"
+    ],
+    [
+     "psychoanalysis",
+     "c"
+    ],
+    [
+     "enlightenment",
+     "r"
+    ],
+    [
+     "positivism",
+     "r"
+    ]
+   ]
+  },
+  {
+   "id": "feminism2",
+   "l": "D",
+   "s": 5,
+   "e": 7,
+   "a": true,
+   "f": [
+    [
+     "feminism1",
+     "c"
+    ],
+    [
+     "existentialism",
+     "c"
+    ],
+    [
+     "newleft",
+     "c"
+    ]
+   ]
+  },
+  {
+   "id": "transhuman",
+   "l": "D",
+   "s": 6,
+   "e": 7,
+   "a": true,
+   "f": [
+    [
+     "darwinism",
+     "c"
+    ],
+    [
+     "cybernetics",
+     "c"
+    ],
+    [
+     "enlightenment",
+     "c"
+    ],
+    [
+     "postmodern",
+     "c"
+    ]
+   ]
+  },
+  {
+   "id": "ea",
+   "l": "D",
+   "s": 6,
+   "e": 7,
+   "a": true,
+   "f": [
+    [
+     "utilitarian",
+     "c"
+    ]
+   ]
+  },
+  {
+   "id": "digitalhum",
+   "l": "D",
+   "s": 7,
+   "e": 7,
+   "a": true,
+   "f": [
+    [
+     "humanrights",
+     "c"
+    ],
+    [
+     "platform",
+     "c"
+    ],
+    [
+     "eacc",
+     "r"
+    ]
+   ]
+  }
+ ],
+ "era": [
+  {
+   "p": [
+    [
+     "scholastic",
+     -7,
+     -7,
+     "r"
+    ],
+    [
+     "divine",
+     -4,
+     6,
+     "r"
+    ],
+    [
+     "mercantilism",
+     4,
+     7.5,
+     "r"
+    ],
+    [
+     "humanism",
+     6.5,
+     -2,
+     "l"
+    ]
+   ]
+  },
+  {
+   "p": [
+    [
+     "scholastic",
+     -3,
+     -8,
+     "r"
+    ],
+    [
+     "deism",
+     -2,
+     -1,
+     "r"
+    ],
+    [
+     "rationalism",
+     -7.5,
+     5,
+     "r"
+    ],
+    [
+     "empiricism",
+     7.5,
+     5,
+     "l"
+    ],
+    [
+     "mechanism",
+     0.5,
+     8.3,
+     "r"
+    ],
+    [
+     "enlightenment",
+     1.5,
+     2,
+     "r"
+    ]
+   ]
+  },
+  {
+   "p": [
+    [
+     "liberalism",
+     -6,
+     3,
+     "r"
+    ],
+    [
+     "republic",
+     5,
+     6,
+     "l"
+    ],
+    [
+     "nationalism",
+     7,
+     1.2,
+     "l"
+    ],
+    [
+     "conservatism",
+     -1,
+     -5,
+     "r"
+    ],
+    [
+     "romanticism",
+     -2,
+     -2.5,
+     "r"
+    ],
+    [
+     "feminism1",
+     -8,
+     8.5,
+     "r"
+    ],
+    [
+     "socialcontract",
+     0,
+     4,
+     "r"
+    ],
+    [
+     "enlightenment",
+     -3.5,
+     1.3,
+     "r"
+    ],
+    [
+     "divine",
+     8,
+     -8.5,
+     "l"
+    ]
+   ]
+  },
+  {
+   "p": [
+    [
+     "classical",
+     8,
+     6,
+     "l"
+    ],
+    [
+     "socialism",
+     -5,
+     3,
+     "r"
+    ],
+    [
+     "marxism",
+     -8,
+     -3,
+     "r"
+    ],
+    [
+     "anarchism",
+     -7,
+     8.5,
+     "r"
+    ],
+    [
+     "imperialism",
+     5,
+     -7,
+     "l"
+    ],
+    [
+     "utilitarian",
+     3,
+     1,
+     "r"
+    ],
+    [
+     "positivism",
+     1,
+     -3.2,
+     "r"
+    ],
+    [
+     "conservatism",
+     5.5,
+     -2.7,
+     "r"
+    ],
+    [
+     "liberalism",
+     5,
+     3.6,
+     "r"
+    ]
+   ]
+  },
+  {
+   "p": [
+    [
+     "totalitarian",
+     -2,
+     -8,
+     "r"
+    ],
+    [
+     "communism",
+     -8,
+     -6,
+     "r"
+    ],
+    [
+     "keynes",
+     -2,
+     4,
+     "r"
+    ],
+    [
+     "humanrights",
+     1,
+     8,
+     "r"
+    ],
+    [
+     "classical",
+     8,
+     1,
+     "l"
+    ],
+    [
+     "liberalism",
+     5,
+     6,
+     "l"
+    ],
+    [
+     "decolonial",
+     -5,
+     -1,
+     "r"
+    ],
+    [
+     "nationalism",
+     1,
+     -4,
+     "r"
+    ],
+    [
+     "existentialism",
+     -6.5,
+     7,
+     "r"
+    ],
+    [
+     "critical",
+     -7.5,
+     2.5,
+     "r"
+    ]
+   ]
+  },
+  {
+   "p": [
+    [
+     "communism",
+     -8,
+     -7,
+     "r"
+    ],
+    [
+     "conservatism",
+     5,
+     -7,
+     "r"
+    ],
+    [
+     "neoliberal",
+     8,
+     -4.9,
+     "l"
+    ],
+    [
+     "newleft",
+     -6,
+     8,
+     "r"
+    ],
+    [
+     "ecology",
+     -4,
+     5,
+     "r"
+    ],
+    [
+     "feminism2",
+     1,
+     8.5,
+     "r"
+    ],
+    [
+     "postmodern",
+     -1,
+     3,
+     "r"
+    ],
+    [
+     "justice",
+     -3,
+     1,
+     "r"
+    ],
+    [
+     "endhistory",
+     5,
+     -3.3,
+     "r"
+    ],
+    [
+     "keynes",
+     -5,
+     -2.2,
+     "r"
+    ],
+    [
+     "liberalism",
+     5.5,
+     5,
+     "r"
+    ]
+   ]
+  },
+  {
+   "p": [
+    [
+     "cyberlib",
+     8,
+     6,
+     "l"
+    ],
+    [
+     "infosociety",
+     1,
+     3,
+     "l"
+    ],
+    [
+     "platform",
+     5,
+     -6,
+     "l"
+    ],
+    [
+     "transhuman",
+     -3,
+     9,
+     "r"
+    ],
+    [
+     "ea",
+     -2,
+     1.2,
+     "r"
+    ],
+    [
+     "neoliberal",
+     -7,
+     5,
+     "r"
+    ],
+    [
+     "postmodern",
+     6,
+     -2,
+     "l"
+    ]
+   ]
+  },
+  {
+   "p": [
+    [
+     "aisafety",
+     -7,
+     -2,
+     "r"
+    ],
+    [
+     "eacc",
+     8,
+     6,
+     "l"
+    ],
+    [
+     "digitalhum",
+     -5,
+     -8,
+     "r"
+    ],
+    [
+     "transhuman",
+     6,
+     9,
+     "l"
+    ],
+    [
+     "ea",
+     -6,
+     3,
+     "r"
+    ],
+    [
+     "dataism",
+     3,
+     3,
+     "r"
+    ],
+    [
+     "basicincome",
+     2,
+     -6,
+     "r"
+    ],
+    [
+     "platform",
+     -8,
+     -4.5,
+     "r"
+    ],
+    [
+     "neoliberal",
+     6,
+     1.2,
+     "l"
+    ]
+   ]
+  }
+ ],
+ "tp": [
+  {
+   "origin": true
+  },
+  {
+   "origin": false
+  },
+  {
+   "origin": false
+  },
+  {
+   "origin": false
+  },
+  {
+   "origin": false
+  },
+  {
+   "origin": false
+  },
+  {
+   "origin": false
+  },
+  {
+   "origin": false
+  }
+ ]
+}

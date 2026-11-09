@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Turning Points of Thought</title>
+<meta name="description" content="From the Scientific Revolution to the AI Revolution: seven turning points that changed humanity&#x27;s standards, and the isms they produced, in flow charts, era-by-era graphs and a mind map.">
+<link rel="alternate" hreflang="ko" href="../../ko/ism/">
+<link rel="alternate" hreflang="en" href="../../en/ism/">
+<link rel="alternate" hreflang="id" href="../../id/ism/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600&family=Noto+Serif+KR:wght@600;700;900&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: 한 장의 연구 노트. 위에서 아래로 분기점 → 흐름도 → 마인드맵 → 사상 사전. 네 영역은 고정 색으로 모든 뷰에서 같은 뜻을 가진다. */
+:root{
+  --paper:#F1F2F5; --surface:#FFFFFF; --ink:#1B2030; --ink-2:#4F566C; --line:#D6D9E2; --accent:#2B3A67;
+  --la:#1C7486; --lb:#B23A48; --lc:#A86C12; --ld:#6B4FA0;
+  --display:"Noto Serif KR","Nanum Myeongjo",Georgia,serif;
+  --body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#11141B; --surface:#1A1E29; --ink:#E6E8EF; --ink-2:#A2A8BA; --line:#2E3445; --accent:#A9B8F2;
+    --la:#56B6C7; --lb:#E5707C; --lc:#E0A64A; --ld:#A98EDD; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#11141B; --surface:#1A1E29; --ink:#E6E8EF; --ink-2:#A2A8BA; --line:#2E3445; --accent:#A9B8F2;
+  --la:#56B6C7; --lb:#E5707C; --lc:#E0A64A; --ld:#A98EDD; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:15.5px;line-height:1.65;-webkit-text-size-adjust:100%}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.3}
+a{color:var(--accent)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 18px}
+header.top{padding:40px 0 22px}
+.eyebrow{font-size:13px;letter-spacing:.08em;color:var(--ink-2);font-weight:600}
+h1{font-size:clamp(34px,7vw,54px);font-weight:900;letter-spacing:-.01em;margin:6px 0 12px}
+.lead{max-width:62ch;color:var(--ink-2);margin:0 0 18px}
+.facts{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:14px;color:var(--ink-2)}
+.facts b{color:var(--ink);font-variant-numeric:tabular-nums}
+nav.jump{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+nav.jump .wrap{display:flex;gap:4px;overflow-x:auto;padding-top:8px;padding-bottom:8px}
+nav.jump a{white-space:nowrap;text-decoration:none;color:var(--ink);font-size:14px;font-weight:500;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface)}
+section{padding:40px 0 10px}
+h2{font-size:clamp(24px,4.4vw,32px);font-weight:700;margin-bottom:8px}
+.sec-lead{color:var(--ink-2);max-width:65ch;margin:0 0 18px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13.5px;color:var(--ink-2);margin:0 0 12px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.sw{width:12px;height:12px;border-radius:3px;display:inline-block}
+.sw.A{background:var(--la)}.sw.B{background:var(--lb)}.sw.C{background:var(--lc)}.sw.D{background:var(--ld)}
+.ln{width:24px;height:0;border-top:2px solid var(--ink-2);display:inline-block}
+.ln.r{border-top-style:dashed}
+
+/* 분기점 카드 */
+.tps{display:grid;gap:14px}
+.tp{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 18px 16px;display:grid;gap:12px}
+.tp-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.tp-no{font-family:var(--display);font-weight:900;font-size:30px;color:var(--accent);line-height:1;min-width:1.2em}
+.tp-head h3{font-size:22px}
+.tp-years{font-size:14px;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.tp-sum{margin:0;font-weight:500}
+.tp-note{margin:0;font-size:14px;color:var(--ink-2);border-left:3px solid var(--line);padding-left:10px}
+.events{display:flex;flex-wrap:wrap;gap:6px;margin:0;padding:0;list-style:none}
+.events li{font-size:13.5px;background:var(--paper);border-radius:6px;padding:3px 9px}
+.events b{font-variant-numeric:tabular-nums;color:var(--accent);margin-right:5px;font-weight:600}
+.shift{display:grid;grid-template-columns:auto 1fr;gap:0;border-top:1px solid var(--line)}
+.shift > div{padding:8px 0;border-bottom:1px solid var(--line)}
+.shift .ax{font-size:13px;font-weight:600;color:var(--ink-2);padding-right:14px;white-space:nowrap}
+.shift .ba{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:start;font-size:14.5px}
+.shift .b{color:var(--ink-2)}
+.shift .arr{color:var(--accent);font-weight:600}
+.shift .a{font-weight:500}
+@media (max-width:560px){
+  .shift{grid-template-columns:1fr}
+  .shift .ax{border-bottom:none;padding-bottom:0}
+  .shift .ba{grid-template-columns:1fr;gap:2px}
+  .shift .arr{display:none}
+  .shift .a::before{content:"→ ";color:var(--accent);font-weight:600}
+}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips .lbl{font-size:13px;color:var(--ink-2);margin-right:2px;align-self:center}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:3px 10px 3px 8px;font-size:13.5px;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.chip:hover{border-color:var(--ink-2)}
+.chip i{width:8px;height:8px;border-radius:50%;display:inline-block}
+
+/* 그래프 공통 */
+.scroller{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:12px;-webkit-overflow-scrolling:touch}
+.scroller svg{display:block}
+.hint{font-size:13px;color:var(--ink-2);margin:8px 2px 0}
+svg text{font-family:var(--body);fill:var(--ink)}
+.colhead .no{font-family:var(--display);font-weight:900;fill:var(--accent);font-size:15px}
+.colhead .nm{font-weight:600;font-size:13px}
+.colhead .yr{font-size:11.5px;fill:var(--ink-2)}
+.bound{stroke:var(--accent);stroke-width:1;stroke-dasharray:3 4;opacity:.55}
+.laneband{fill:var(--paper);opacity:.55}
+.lanetitle{font-size:12px;font-weight:600;letter-spacing:.04em}
+.bar{cursor:pointer}
+.bar rect.body{stroke-width:0}
+.bar text{font-size:12px;font-weight:500;pointer-events:none}
+.bar.dim{opacity:.22}
+.bar.on rect.body{stroke:var(--ink);stroke-width:1.2}
+.lk{fill:none;stroke:var(--ink-2);stroke-width:1;opacity:.16}
+.lk.r{stroke-dasharray:4 3}
+.lk.hl{opacity:.95;stroke-width:1.8}
+.lk.hl.r{stroke:var(--lb)}
+.lk.dim{opacity:.05}
+
+
+/* 시대별 사상그래프 */
+.era-tabs{display:flex;gap:6px;overflow-x:auto;padding:2px 2px 10px}
+.era-tab{white-space:nowrap;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:13.5px;cursor:pointer}
+.era-tab[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:var(--surface);font-weight:600}
+.era-panel{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:18px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px;align-items:start}
+@media (max-width:760px){.era-panel{grid-template-columns:1fr;padding:14px}}
+.era-text{display:grid;gap:10px}
+.era-text h3{font-size:21px}
+.era-why{margin:0;font-size:14.5px}
+.era-axes{margin:0;display:grid;grid-template-columns:auto 1fr;gap:4px 10px;font-size:13.5px}
+.era-axes dt{font-weight:600;color:var(--accent)}
+.era-axes dd{margin:0}
+.dot{width:11px;height:11px;border-radius:50%;display:inline-block;border:2px solid var(--ink-2)}
+.dot.f{background:var(--ink-2)}.dot.h{background:transparent}
+.era-plot svg{width:100%;height:auto;display:block;max-width:560px;margin:0 auto}
+.ax-line{stroke:var(--ink-2);stroke-width:1.2}
+.ax-grid{stroke:var(--line);stroke-width:1}
+.ax-lbl{font-size:12px;font-weight:600;fill:var(--accent)}
+.pt{cursor:pointer}
+.pt text{font-size:12px;font-weight:500;paint-order:stroke;stroke:var(--surface);stroke-width:3px;stroke-linejoin:round}
+.pt:hover text,.pt:focus-visible text{text-decoration:underline}
+
+/* 마인드맵 */
+.mm-link{fill:none;stroke-width:1.4;opacity:.5}
+.mm-pill{cursor:pointer}
+.mm-pill rect{stroke-width:1.2}
+.mm-pill text{font-size:13px;font-weight:600}
+.mm-leaf{cursor:pointer}
+.mm-leaf text{font-size:12.5px}
+.mm-leaf:hover text{text-decoration:underline}
+.mm-shift text{font-size:12px;fill:var(--ink-2)}
+.mm-tools{display:flex;gap:8px;margin:0 0 10px;flex-wrap:wrap}
+.btn{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:6px 12px;font-size:13.5px;cursor:pointer}
+.btn:hover{border-color:var(--ink-2)}
+
+/* 사전 */
+.dict-group{margin:0 0 26px}
+.dict-group h3{font-size:19px;margin:0 0 10px;display:flex;gap:10px;align-items:baseline}
+.dict-group h3 span{font-family:var(--body);font-size:13.5px;font-weight:400;color:var(--ink-2)}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.card{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--lane);border-radius:10px;padding:14px 16px;display:grid;gap:8px;align-content:start}
+.card h4{margin:0;font-family:var(--display);font-size:17.5px}
+.card .en{font-size:12.5px;color:var(--ink-2);display:block;font-family:var(--body);font-weight:400}
+.meta{font-size:12.5px;color:var(--ink-2);display:flex;gap:10px;flex-wrap:wrap}
+.meta .lane{color:var(--lane);font-weight:600}
+.card p{margin:0;font-size:14.5px}
+.prop{font-family:var(--display);font-weight:600;font-size:15px;border-left:2px solid var(--lane);padding-left:10px}
+dl.kv{margin:0;display:grid;grid-template-columns:auto 1fr;gap:3px 10px;font-size:13.5px}
+dl.kv dt{color:var(--ink-2);white-space:nowrap}
+dl.kv dd{margin:0}
+.open{justify-self:start;border:none;background:none;padding:0;color:var(--accent);font-size:13.5px;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+
+/* 상세 시트 */
+.backdrop{position:fixed;inset:0;background:rgba(10,12,20,.42);z-index:40}
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:41;max-height:78vh;overflow-y:auto;background:var(--surface);border-top-left-radius:16px;border-top-right-radius:16px;box-shadow:0 -10px 40px rgba(0,0,0,.25);padding:6px 20px calc(20px + env(safe-area-inset-bottom));max-width:720px;margin:0 auto;border-top:5px solid var(--lane)}
+.sheet[hidden],.backdrop[hidden]{display:none}
+.sheet .grab{width:42px;height:4px;border-radius:2px;background:var(--line);margin:8px auto 10px}
+.sheet .x{position:absolute;top:12px;right:12px;border:1px solid var(--line);background:var(--surface);border-radius:999px;width:34px;height:34px;cursor:pointer;font-size:18px;line-height:1}
+.sheet h3{font-size:24px;padding-right:40px}
+.sheet .body{display:grid;gap:12px;margin-top:8px}
+.sheet .rel{display:grid;gap:6px}
+.sheet .rel .chips{gap:5px}
+footer{padding:30px 0 60px;color:var(--ink-2);font-size:13.5px}
+footer p{max-width:70ch}
+
+.langs{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 14px;font-size:13.5px}
+.langs a,.langs span{padding:3px 10px;border-radius:999px;border:1px solid var(--line);text-decoration:none;color:var(--ink);background:var(--surface)}
+.langs span{background:var(--accent);border-color:var(--accent);color:var(--surface);font-weight:600}
+</style>
+</head>
+<body>
+<header class="top wrap">
+  <nav class="langs" aria-label="Language"><a href="../../ko/ism/" hreflang="ko" lang="ko">한국어</a><span aria-current="page">English</span><a href="../../id/ism/" hreflang="id" lang="id">Bahasa Indonesia</a></nav>
+  <div class="eyebrow">Research notes on the history of ideas</div>
+  <h1>Turning Points of Thought</h1>
+  <p class="lead">Seven moments, from the Scientific Revolution to the AI Revolution, when the standards humanity uses to judge truth, power, the human and the good life changed. Follow how standards shifted before and after each turning point, which isms were born, and how they inherited from or reacted against one another.</p>
+  <div class="facts" id="facts"></div>
+</header>
+<nav class="jump" aria-label="Jump to section"><div class="wrap">
+  <a href="#turning-points">① 7 turning points</a><a href="#flow">② Ism flow chart</a><a href="#era-graph">③ Era graphs</a><a href="#mindmap">④ Mind map</a><a href="#dictionary">⑤ Ism dictionary</a>
+</div></nav>
+
+<main class="wrap">
+  <section id="turning-points">
+    <h2>Turning points: what changed</h2>
+    <p class="sec-lead">Every turning point is compared on the same four axes: the basis of truth (what we take to be true), the legitimacy of power (who rules and why), the view of the human (what a person is) and the way of life (how we work and live). Tap an ism to open its details.</p>
+    <div class="tps" id="tps"></div>
+  </section>
+
+  <section id="flow">
+    <h2>Ism flow chart</h2>
+    <p class="sec-lead">Columns follow the turning points; rows are the four domains. A bar shows when an ism was born and held influence; a fading end means decline, an arrow means it is still alive. Tap a bar to highlight its roots and descendants.</p>
+    <div class="legend" id="legend-flow"></div>
+    <div class="scroller" id="flow-box"></div>
+    <p class="hint">Swipe sideways to move through the eras. Columns are turning points, not equal spans of years, so recent columns cover shorter periods.</p>
+  </section>
+
+  <section id="era-graph">
+    <h2>Era-by-era graphs</h2>
+    <p class="sec-lead">Each era argued about different things, so each graph has its own two axes: the two questions on which that turning point split most sharply. Filled dots are isms born in that era; hollow dots are older isms that took part in its debates.</p>
+    <div class="era-tabs" role="tablist" aria-label="Choose an era" id="era-tabs"></div>
+    <div class="era-panel">
+      <div class="era-text">
+        <h3 id="era-title"></h3>
+        <p class="era-why" id="era-why"></p>
+        <dl class="era-axes" id="era-axes"></dl>
+        <div class="legend"><span><i class="dot f"></i>Born in this era</span><span><i class="dot h"></i>Carried over</span></div>
+      </div>
+      <div class="era-plot" id="era-plot"></div>
+    </div>
+    <p class="hint">Positions are interpretations based on each ism&#x27;s core claims, not measurements. Tap a dot to open its details.</p>
+  </section>
+
+  <section id="mindmap">
+    <h2>Mind map</h2>
+    <p class="sec-lead">Branches run from the centre to each turning point, then to the isms born there. Tap a turning point to fold or unfold it, and tap “Shifts” to see the before-and-after summary on the four axes.</p>
+    <div class="mm-tools">
+      <button class="btn" id="mm-expand" type="button">Expand all shifts</button>
+      <button class="btn" id="mm-collapse" type="button">Isms only</button>
+    </div>
+    <div class="scroller" id="mm-box"></div>
+  </section>
+
+  <section id="dictionary">
+    <h2>Ism dictionary</h2>
+    <p class="sec-lead">Each ism with its core claims, key thinkers and works, and a one-line thesis. “Paraphrase” marks a sentence that restates the core idea rather than quoting the original.</p>
+    <div id="dict"></div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <p><b>How to read this, and its limits.</b> Turning points are not clean cuts. Most ideas sprout just before a turning point and spread over the following decades, and some events placed later in the sequence, such as the Industrial Revolution (from the 1760s), actually began earlier. This framework is built around modern Western history and does not cover the independent turning points of Islamic, Indian or Chinese thought. Korea and East Asia absorbed these ideas in a compressed span from the late 19th century. The AI Revolution entries summarise debates still under way as of November 2026.</p>
+</footer>
+
+<div class="backdrop" id="backdrop" hidden></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title" hidden></div>
+
+<script>
+const D={"lanes": {"A": "Knowledge & Science", "B": "Politics & Power", "C": "Economy, Labour & Ecology", "D": "Humanity, Culture & Ethics"}, "ax": ["Basis of truth", "Legitimacy of power", "View of the human", "Way of life"], "axs": ["Truth", "Power", "Human", "Life"], "tp": [{"origin": true, "n": "Before modernity", "y": "to 16th c.", "sum": "Starting point: a world in which God's order set the standard for truth, power and life.", "ev": [["1265", "Aquinas begins the Summa Theologiae"], ["c.1450", "Gutenberg's movable-type press"], ["1486", "Pico, Oration on the Dignity of Man"], ["1517", "Luther's Ninety-five Theses"]], "sh": [["The authority of Scripture, the Church and Aristotle", "", "authority"], ["Kingship granted by God and a fixed order of estates", "", "God's order"], ["A creature with a fixed place in God's order", "", "creature"], ["Village community, repeating tradition, eyes on the afterlife", "", "tradition"]]}, {"origin": false, "n": "Scientific Revolution", "short": "Scientific Rev.", "y": "1543–1687", "sum": "The turning point that changed the test of truth from “who said it?” to “can it be shown?”", "ev": [["1543", "Copernicus, On the Revolutions of the Heavenly Spheres"], ["1609", "Kepler's laws of planetary motion · Galileo's telescope"], ["1620", "Bacon, Novum Organum"], ["1633", "Trial of Galileo"], ["1637", "Descartes, Discourse on Method"], ["1687", "Newton, Principia"]], "sh": [["The authority of Scripture, the Church and Aristotle", "Observation, experiment and mathematical proof", "authority → proof"], ["A hierarchy ordained by God", "Power begins to be judged by natural law and contract", "God → natural law"], ["A creature in a purposeful cosmos", "A rational subject who interprets and masters nature", "creature → rational subject"], ["Repeating what tradition hands down", "The idea of progress through accumulating knowledge", "repetition → progress"]]}, {"origin": false, "n": "French Revolution", "short": "French Rev.", "y": "1789–1799", "sum": "The turning point that moved the source of power from God to the nation.", "note": "Its prelude was the Enlightenment and the American Revolution (1776). The Enlightenment applied the methods of the Scientific Revolution to society and politics; the French Revolution turned them into real institutions.", "ev": [["1789.7", "Storming of the Bastille"], ["1789.8", "Declaration of the Rights of Man and of the Citizen"], ["1791", "de Gouges, Declaration of the Rights of Woman"], ["1792", "Monarchy abolished, republic proclaimed"], ["1793", "Execution of Louis XVI, the Terror"], ["1804", "Napoleonic Code"]], "sh": [["Tradition and revelation", "Public debate and the judgement of reason", "revelation → reason"], ["God-given kingship, inherited rank", "Popular sovereignty, constitutions, equality before the law", "crown → nation"], ["A subject bound to an estate", "A citizen with natural rights", "subject → citizen"], ["Birth decides your fate", "Careers open to talent, national schooling and conscription, national identity", "rank → merit & nation"]]}, {"origin": false, "n": "Industrial Revolution", "short": "Industrial Rev.", "y": "1760s–1840s", "sum": "The turning point that moved wealth and the rhythm of life from land to machines and capital.", "note": "It began before the French Revolution, but its full social and intellectual impact came in the 19th century, so it is placed third. The historian Eric Hobsbawm called the two together the “dual revolution”. A second industrial revolution of electricity and chemistry followed after 1870.", "ev": [["1769", "Watt patents his improved steam engine"], ["1776", "Smith, The Wealth of Nations"], ["1830", "Liverpool–Manchester railway opens"], ["1848", "The Communist Manifesto, revolutions of 1848"], ["1859", "Darwin, On the Origin of Species"], ["1867", "Marx, Capital, vol. 1"]], "sh": [["Philosophical speculation", "Positive science and the theory of evolution", "speculation → science"], ["Landlords and nobility", "Capitalists versus the working class; class becomes the axis of politics", "land → capital & class"], ["A member of a community", "Labour power, “economic man”, an evolved animal", "community → economic man"], ["Village life, time set by sun and seasons", "City and factory, clock time, wage labour and mass production", "village → factory"]]}, {"origin": false, "n": "World Wars", "y": "1914–1945", "sum": "The turning point that broke faith in inevitable progress and placed human rights above the state.", "ev": [["1914–18", "First World War"], ["1917", "Russian Revolution"], ["1929", "Great Depression"], ["1933", "Nazis take power"], ["1939–45", "Second World War, the Holocaust"], ["1945", "Atomic bombs, United Nations founded"], ["1948", "Universal Declaration of Human Rights"]], "sh": [["Science and reason mean progress", "Doubt: reason and science can also serve mass killing", "progress → doubt"], ["Unlimited state sovereignty, empire", "Universal rights and international bodies limit the state; colonies win independence", "sovereignty → rights"], ["A progressing rational subject", "A being who makes meaning amid the absurd", "reason → existence"], ["Laissez-faire markets", "Mass democracy, the welfare state, total war and mass mobilisation", "laissez-faire → welfare"]]}, {"origin": false, "n": "Cold War, 1968 & after", "short": "Cold War · 1968", "y": "1947–1991", "sum": "The turning point that closed the age of grand ideologies and opened the age of the individual, identity and the market.", "ev": [["1947", "Truman Doctrine, Cold War begins"], ["1962", "Cuban Missile Crisis · Silent Spring"], ["1968", "May '68 in Paris, Prague Spring, anti-war and civil-rights movements"], ["1973", "Oil shock"], ["1979–81", "Thatcher and Reagan take office"], ["1989", "Fall of the Berlin Wall"], ["1991", "Dissolution of the Soviet Union"]], "sh": [["One universal truth (grand narratives)", "Plural, constructed truths; distrust of grand narratives", "universal → plural"], ["Two blocs in an ideological contest", "Liberal democracy and market-led globalisation", "ideology → market"], ["A member of a class or nation", "An individual who defines their own gender, race and cultural identity", "class → identity"], ["Authoritarian family, school and workplace; growth above all", "Autonomy and diversity, consumer society, ecological awareness", "authority → autonomy"]]}, {"origin": false, "n": "Digital & Internet Revolution", "short": "Digital Rev.", "y": "1969–2007", "sum": "The turning point that rebuilt knowledge and relationships from hierarchy into networks.", "ev": [["1969", "First ARPANET link"], ["1977–81", "Personal computers go mainstream"], ["1989", "World Wide Web proposed (public 1991)"], ["1998", "Google founded"], ["2001", "Wikipedia"], ["2004", "Facebook"], ["2007", "iPhone"]], "sh": [["Scarce information managed by press, publishers and schools", "Information overload that anyone can create and spread; search and algorithms", "scarcity → overload"], ["States and mass media", "Platform companies and networks: decentralisation alongside new monopolies", "media → platforms"], ["An audience of mass media", "A connected node who leaves data behind", "audience → node"], ["Work and relationships tied to place", "Always connected; remote and platform work, online identities", "place → connection"]]}, {"origin": false, "n": "AI Revolution", "y": "2012–now", "sum": "A turning point still under way, shaking the assumption that only humans think.", "note": "In September 2026 leaders of major AI companies publicly debated whether AI development should slow down so that safety capabilities can catch up. The clash between AI safety and accelerationism has become a live issue for companies and policy.", "ev": [["2012", "Deep-learning breakthrough (AlexNet)"], ["2016", "AlphaGo vs Lee Sedol"], ["2017", "Transformer paper"], ["2022.11", "ChatGPT released"], ["2024", "EU AI Act enters into force"], ["2026.9", "Debate over slowing AI development"]], "sh": [["The judgement of human experts", "Predictions from data and models; knowledge that is right without understanding", "experts → models"], ["Platforms and data monopolies", "Firms and states that own compute and models; AI governance as a new issue", "data → compute"], ["The only intelligence", "Possibly one intelligence among several; humanness redefined", "unique → coexisting?"], ["Intellectual work belongs to humans", "Collaboration with and replacement by AI; work, income and meaning redesigned", "human work → shared work"]]}], "isms": [{"id": "scholastic", "l": "A", "s": 0, "e": 0, "a": false, "f": [], "n": "Scholasticism", "y": "peak 11th–14th c.", "who": "Thomas Aquinas, Anselm, William of Ockham", "works": "Aquinas, Summa Theologiae (1265–1274)", "core": "Joined Christian faith with Aristotle's philosophy, treating reason as a tool that supports faith. The cosmos is ordered by purposes and ranks set by God, and truth comes from the authority of Scripture, the Church Fathers and Aristotle.", "prop": "Grace does not destroy nature but perfects it (Aquinas)"}, {"id": "mechanism", "l": "A", "s": 1, "e": 3, "a": false, "f": [["scholastic", "r"]], "n": "Mechanical philosophy", "sn": "Mechanism", "y": "formed 1543–1687", "who": "Copernicus, Galileo, Kepler, Descartes, Newton", "works": "Copernicus, De revolutionibus (1543); Galileo, Dialogue Concerning the Two Chief World Systems (1632); Newton, Principia (1687)", "core": "Sees nature not as moved by God's purposes but as a vast machine running on mathematical laws. The discovery that heaven and earth obey the same law of gravitation demolished the medieval hierarchy of the cosmos. Relativity and quantum mechanics revised it in the 20th century, but it remains the working outlook of engineering and technology.", "prop": "The book of nature is written in the language of mathematics (Galileo, paraphrase)"}, {"id": "rationalism", "l": "A", "s": 1, "e": 2, "a": false, "f": [["scholastic", "r"], ["mechanism", "c"]], "n": "Rationalism", "y": "17th c.", "who": "Descartes, Spinoza, Leibniz", "works": "Descartes, Discourse on Method (1637), Meditations (1641); Spinoza, Ethics (1677)", "core": "Rebuilds knowledge on the certainty of reason that remains after everything else has been doubted. Certain knowledge is deduced from clear and distinct principles of reason, not from the senses.", "prop": "I think, therefore I am (Descartes)"}, {"id": "empiricism", "l": "A", "s": 1, "e": 2, "a": false, "f": [["scholastic", "r"]], "n": "Empiricism", "y": "17th–18th c.", "who": "Francis Bacon, John Locke, George Berkeley, David Hume", "works": "Bacon, Novum Organum (1620); Locke, Essay Concerning Human Understanding (1689); Hume, A Treatise of Human Nature (1739)", "core": "The mind is a blank slate at birth and all knowledge comes from experience and observation. It made induction and experiment the method of science, and Hume exposed the limits of reason by arguing that even causation is a belief born of habit.", "prop": "Knowledge is power (Bacon)"}, {"id": "enlightenment", "l": "A", "s": 1, "e": 2, "a": false, "f": [["rationalism", "c"], ["empiricism", "c"], ["mechanism", "c"]], "n": "The Enlightenment", "sn": "Enlightenment", "y": "1680–1800", "who": "Voltaire, Montesquieu, Diderot, Rousseau, Kant", "works": "Diderot & d'Alembert, Encyclopédie (1751–1772); Kant, “What Is Enlightenment?” (1784)", "core": "Applied the methods of the Scientific Revolution to religion, society and politics, putting tradition and authority on trial before reason. It spread the belief that humanity can use reason to escape ignorance and superstition and make progress, and that belief fuelled the French Revolution.", "prop": "Dare to know (Sapere aude, Kant)"}, {"id": "positivism", "l": "A", "s": 3, "e": 4, "a": false, "f": [["enlightenment", "c"], ["empiricism", "c"]], "n": "Positivism", "y": "1830s on", "who": "Auguste Comte, John Stuart Mill, Ernst Mach", "works": "Comte, Course of Positive Philosophy (1830–1842)", "core": "Holds that only facts confirmed by observation and experiment count as knowledge, and founded “sociology” on the idea that society should be studied like nature. It embodies the 19th-century optimism that industry and science drive social progress.", "prop": "The mind advances from theological to metaphysical to positive thinking (Comte's law of three stages, paraphrase)"}, {"id": "darwinism", "l": "A", "s": 3, "e": 7, "a": true, "f": [["mechanism", "c"]], "n": "Theory of evolution", "sn": "Evolution", "y": "1859 on", "who": "Charles Darwin, Alfred Russel Wallace", "works": "Darwin, On the Origin of Species (1859), The Descent of Man (1871)", "core": "Species were not created one by one but branched from common ancestors through variation and natural selection. Seeing humans as part of nature shook the religious view of humanity to its roots; joined with genetics, it became the foundation of modern biology.", "prop": "Life has changed through variation and natural selection, not design (paraphrase)"}, {"id": "logical", "l": "A", "s": 4, "e": 5, "a": false, "f": [["positivism", "c"]], "n": "Logical positivism & philosophy of science", "sn": "Philosophy of science", "y": "1920s–1960s", "who": "Wittgenstein, Rudolf Carnap (Vienna Circle), Karl Popper, Thomas Kuhn", "works": "Wittgenstein, Tractatus Logico-Philosophicus (1921); Popper, The Logic of Scientific Discovery (1934); Kuhn, The Structure of Scientific Revolutions (1962)", "core": "Started from the logical-positivist claim that only verifiable statements have meaning; Popper then made falsifiability the mark of science. Kuhn argued that science changes through paradigm shifts rather than steady accumulation, reinterpreting the Scientific Revolution itself.", "prop": "Whereof one cannot speak, thereof one must be silent (Wittgenstein)"}, {"id": "cybernetics", "l": "A", "s": 4, "e": 6, "a": false, "f": [["mechanism", "c"], ["logical", "c"]], "n": "Information theory & cybernetics", "sn": "Cybernetics", "y": "1936–1960s", "who": "Alan Turing, Claude Shannon, Norbert Wiener, John von Neumann", "works": "Turing, “On Computable Numbers” (1936); Shannon, “A Mathematical Theory of Communication” (1948); Wiener, Cybernetics (1948); Turing, “Computing Machinery and Intelligence” (1950)", "core": "Grew out of wartime code-breaking and fire-control research and made information and feedback basic ingredients of the world alongside matter and energy. Seeing life, mind and society as information-processing systems became the intellectual ground of computers and AI.", "prop": "Can machines think? (Turing)"}, {"id": "structuralism", "l": "A", "s": 5, "e": 5, "a": false, "f": [["existentialism", "r"], ["psychoanalysis", "c"]], "n": "Structuralism", "y": "1950s–1960s", "who": "Ferdinand de Saussure, Claude Lévi-Strauss, Jacques Lacan, Louis Althusser", "works": "Saussure, Course in General Linguistics (1916); Lévi-Strauss, Tristes Tropiques (1955), The Savage Mind (1962)", "core": "Behind language, kinship, myth and the unconscious lie structures individuals are not aware of, and those structures produce meaning. It displaced existentialism's free subject and became the centre of French thought in the 1960s.", "prop": "Structures make the subject, not the other way round (paraphrase)"}, {"id": "postmodern", "l": "A", "s": 5, "e": 7, "a": true, "f": [["structuralism", "c"], ["nihilism", "c"], ["enlightenment", "r"]], "n": "Postmodernism", "y": "late 1960s on", "who": "Michel Foucault, Jacques Derrida, Jean-François Lyotard, Jean Baudrillard", "works": "Derrida, Of Grammatology (1967); Foucault, Discipline and Punish (1975); Lyotard, The Postmodern Condition (1979)", "core": "Exposed modernity's grand narratives of reason, progress and emancipation as products of particular powers and discourses rather than universal truths. Truth, identity and knowledge are seen as constructed in context; it left a large mark on identity politics and cultural studies.", "prop": "Postmodern means incredulity toward metanarratives (Lyotard)"}, {"id": "infosociety", "l": "A", "s": 6, "e": 7, "a": true, "f": [["cybernetics", "c"]], "n": "Information society & media theory", "sn": "Information society", "y": "1960s on", "who": "Marshall McLuhan, Daniel Bell, Alvin Toffler, Manuel Castells", "works": "McLuhan, Understanding Media (1964); Bell, The Coming of Post-Industrial Society (1973); Toffler, The Third Wave (1980); Castells, The Rise of the Network Society (1996)", "core": "Diagnosed a shift of wealth from land and capital to knowledge and information, and of social organisation from hierarchies to networks. It left the insight that the form of a medium itself reshapes human senses and society.", "prop": "The medium is the message (McLuhan)"}, {"id": "dataism", "l": "A", "s": 7, "e": 7, "a": true, "f": [["infosociety", "c"], ["positivism", "c"]], "n": "Dataism", "y": "2010s on", "who": "Yuval Noah Harari (who named it), Chris Anderson", "works": "Anderson, “The End of Theory” (2008); Harari, Homo Deus (2015)", "core": "Views the universe and life as flows of data and gives decision-making authority to whatever system processes the most data best. It names the trend of algorithms taking over the seat of judgement once held by God and by human feeling.", "prop": "With enough data, the numbers speak for themselves (Anderson, paraphrase)"}, {"id": "divine", "l": "B", "s": 0, "e": 1, "a": false, "f": [["scholastic", "c"]], "n": "Divine right & absolutism", "sn": "Divine right", "y": "16th–18th c.", "who": "Jean Bodin, Robert Filmer, Jacques-Bénigne Bossuet, Louis XIV", "works": "Bodin, Six Books of the Commonwealth (1576); Filmer, Patriarcha (1680)", "core": "Held that the king's power comes straight from God, not the people, and that the king answers only to God. It justified ranks and hereditary rule as the natural order fixed by God.", "prop": "I am the state (attributed to Louis XIV)"}, {"id": "socialcontract", "l": "B", "s": 1, "e": 2, "a": false, "f": [["divine", "r"], ["rationalism", "c"], ["mechanism", "c"]], "n": "Social contract theory", "sn": "Social contract", "y": "1651–1762", "who": "Thomas Hobbes, John Locke, Jean-Jacques Rousseau", "works": "Hobbes, Leviathan (1651); Locke, Two Treatises of Government (1689); Rousseau, The Social Contract (1762)", "core": "The state arises not from God but from a contract among individuals in a state of nature. Legitimacy moved from above (God) to below (the consent of the governed), and Locke even granted a right to resist governments that fail to protect life, liberty and property.", "prop": "Man is born free, and everywhere he is in chains (Rousseau)"}, {"id": "liberalism", "l": "B", "s": 2, "e": 7, "a": true, "f": [["socialcontract", "c"], ["enlightenment", "c"]], "n": "Liberalism", "y": "late 17th c. on", "who": "John Locke, Montesquieu, Alexis de Tocqueville, J. S. Mill", "works": "Montesquieu, The Spirit of the Laws (1748); Tocqueville, Democracy in America (1835); Mill, On Liberty (1859)", "core": "Puts individual rights and freedoms ahead of the state and limits power through the separation of powers, the rule of law and freedom of speech and religion. After the French Revolution it became the basic grammar of the modern state.", "prop": "Individual liberty may be limited only to prevent harm to others (Mill's harm principle, paraphrase)"}, {"id": "republic", "l": "B", "s": 2, "e": 7, "a": true, "f": [["socialcontract", "c"], ["enlightenment", "c"], ["divine", "r"]], "n": "Republicanism & popular sovereignty", "sn": "Republicanism", "y": "1776 · 1789 on", "who": "Rousseau, Emmanuel Sieyès, Robespierre, Thomas Jefferson", "works": "US Declaration of Independence (1776); Sieyès, What Is the Third Estate? (1789); Declaration of the Rights of Man and of the Citizen (1789)", "core": "Sovereignty lies with the whole nation, not the king, and law expresses the general will. Subjects became citizens, and liberty, equality and fraternity became the new standards of politics.", "prop": "The source of all sovereignty lies essentially in the nation (Declaration, art. 3, paraphrase)"}, {"id": "nationalism", "l": "B", "s": 2, "e": 7, "a": true, "f": [["republic", "c"], ["romanticism", "c"]], "n": "Nationalism", "y": "1789 on", "who": "Johann Gottfried Herder, Johann Gottlieb Fichte, Giuseppe Mazzini", "works": "Fichte, Addresses to the German Nation (1807–1808)", "core": "When popular sovereignty met the question “who is the people?”, the idea spread that a nation sharing language, history and culture should be the unit of the state. It powered unification and independence, and also exclusion and war.", "prop": "Every nation has the right to its own state (paraphrase)"}, {"id": "conservatism", "l": "B", "s": 2, "e": 7, "a": true, "f": [["republic", "r"], ["enlightenment", "r"]], "n": "Conservatism", "y": "1790 on", "who": "Edmund Burke, Joseph de Maistre, (20th c.) Michael Oakeshott", "works": "Burke, Reflections on the Revolution in France (1790)", "core": "Warned that revolutions which try to remake society all at once by abstract reason bring violence and chaos. It respects the wisdom stored in long-tested traditions, customs and institutions and holds that change should be gradual.", "prop": "Society is a partnership between the living, the dead and those yet to be born (Burke, paraphrase)"}, {"id": "anarchism", "l": "B", "s": 3, "e": 5, "a": false, "f": [["liberalism", "c"], ["socialism", "c"]], "n": "Anarchism", "y": "1840s on", "who": "Pierre-Joseph Proudhon, Mikhail Bakunin, Peter Kropotkin", "works": "Proudhon, What Is Property? (1840); Kropotkin, Mutual Aid (1902)", "core": "Rejects every coercive authority, from state and capital to church, and believes society can run on voluntary association and mutual aid. It clashed with Marxism, which aimed to seize state power.", "prop": "Property is theft (Proudhon)"}, {"id": "imperialism", "l": "B", "s": 3, "e": 4, "a": false, "f": [["darwinism", "c"], ["nationalism", "c"]], "n": "Imperialism & Social Darwinism", "sn": "Imperialism", "y": "peak 1870–1914", "who": "Herbert Spencer, Cecil Rhodes, Rudyard Kipling", "works": "Spencer, Principles of Biology (1864); Kipling, “The White Man's Burden” (1899)", "core": "Misapplied evolutionary theory to society to justify the rule of “strong” nations and races over “weak” ones. Backed by industrial output and weapons, it expanded colonial rule in the name of a “civilising mission”.", "prop": "Survival of the fittest (Spencer)"}, {"id": "totalitarian", "l": "B", "s": 4, "e": 4, "a": false, "f": [["nationalism", "c"], ["imperialism", "c"], ["liberalism", "r"], ["marxism", "r"]], "n": "Fascism & totalitarianism", "sn": "Fascism", "y": "1919–1945", "who": "Benito Mussolini, Adolf Hitler (analysed by Hannah Arendt)", "works": "Mussolini & Gentile, “The Doctrine of Fascism” (1932); Arendt, The Origins of Totalitarianism (1951, analysis)", "core": "Placed the will of nation and state above individual rights and controlled all of society through a cult of the leader, one-party dictatorship and mass mobilisation. It led to the Holocaust and wars of aggression and became the direct negative lesson behind post-war human rights.", "prop": "Everything within the state, nothing outside the state (Mussolini)"}, {"id": "communism", "l": "B", "s": 4, "e": 5, "a": false, "f": [["marxism", "c"]], "n": "Communist state (Marxism–Leninism)", "sn": "Communist state", "y": "1917–1991", "who": "Vladimir Lenin, Joseph Stalin, Mao Zedong", "works": "Lenin, The State and Revolution (1917)", "core": "A vanguard party seizes the state through revolution, nationalises the means of production and runs a planned economy. It became a real system with the Russian Revolution, split the world with liberal democracy during the Cold War and declined with the Soviet collapse in 1991.", "prop": "Dictatorship of the proletariat (Marx, Lenin)"}, {"id": "humanrights", "l": "B", "s": 4, "e": 7, "a": true, "f": [["liberalism", "c"], ["republic", "c"], ["totalitarian", "r"]], "n": "Universal human rights", "sn": "Human rights", "y": "1945 on", "who": "Eleanor Roosevelt, René Cassin, Raphael Lemkin", "works": "UN Charter (1945); Universal Declaration of Human Rights (1948); Genocide Convention (1948)", "core": "After two world wars and the Holocaust, declared as an international standard a human dignity and rights that no state may violate for any reason. For the first time, the idea that sovereignty can be limited by human rights became an institution.", "prop": "All human beings are born free and equal in dignity and rights (UDHR, art. 1)"}, {"id": "decolonial", "l": "B", "s": 4, "e": 7, "a": true, "f": [["nationalism", "c"], ["humanrights", "c"], ["imperialism", "r"]], "n": "Postcolonialism", "y": "1940s on", "who": "Mahatma Gandhi, Frantz Fanon, Edward Said, Gayatri Spivak", "works": "Fanon, The Wretched of the Earth (1961); Said, Orientalism (1978)", "core": "Criticised how Western-centred knowledge and culture, even after colonial rule, kept portraying the non-West as an “uncivilised other” to justify domination. It was an intellectual engine of independence in Asia and Africa.", "prop": "The “Orient” drawn by the West is a representation for domination, not reality (Said, paraphrase)"}, {"id": "newleft", "l": "B", "s": 5, "e": 5, "a": false, "f": [["marxism", "c"], ["critical", "c"], ["existentialism", "c"], ["communism", "r"]], "n": "New Left & the spirit of 1968", "sn": "New Left · 1968", "y": "1960s", "who": "Herbert Marcuse, Jean-Paul Sartre, Daniel Cohn-Bendit, Rudi Dutschke", "works": "Marcuse, One-Dimensional Man (1964)", "core": "Criticised both Soviet communism and Western consumer capitalism and challenged everyday authority in school, family, state and sexuality. Putting liberation of lifestyle and culture ahead of political revolution, it spread into anti-war, civil-rights, women's and ecological movements.", "prop": "All power to the imagination! (Paris slogan, 1968)"}, {"id": "justice", "l": "B", "s": 5, "e": 7, "a": true, "f": [["liberalism", "c"], ["socialcontract", "c"], ["utilitarian", "r"]], "n": "Theories of justice & communitarianism", "sn": "Justice debate", "y": "1971 on", "who": "John Rawls, Robert Nozick, Michael Sandel, Alasdair MacIntyre", "works": "Rawls, A Theory of Justice (1971); Nozick, Anarchy, State, and Utopia (1974); MacIntyre, After Virtue (1981); Sandel, Liberalism and the Limits of Justice (1982)", "core": "Rawls defined justice as the principles people would agree to behind a “veil of ignorance” about their own position, allowing only inequalities that benefit the least advantaged. Libertarians stressing property rights and communitarians stressing community values and virtue pushed back.", "prop": "Justice is the first virtue of social institutions (Rawls)"}, {"id": "endhistory", "l": "B", "s": 5, "e": 6, "a": false, "f": [["liberalism", "c"], ["communism", "r"]], "n": "The End of History", "sn": "End of History", "y": "1989–2000s", "who": "Francis Fukuyama (rebutted by Samuel Huntington)", "works": "Fukuyama, “The End of History?” (1989), The End of History and the Last Man (1992); Huntington, The Clash of Civilizations (1996)", "core": "As the Cold War ended, the claim gained ground that liberal democracy and the market economy were the final winners of humanity's contest of ideas. Terrorism, ethnic and religious conflict and the rise of authoritarianism later met it with strong objections.", "prop": "Liberal democracy may be the end point of humanity's ideological evolution (Fukuyama, paraphrase)"}, {"id": "cyberlib", "l": "B", "s": 6, "e": 7, "a": true, "f": [["liberalism", "c"], ["anarchism", "c"], ["newleft", "c"]], "n": "Cyber-libertarianism & open source", "sn": "Open source & cyberlib.", "y": "1980s on", "who": "Richard Stallman, Eric Raymond, John Perry Barlow, Lawrence Lessig", "works": "Stallman, “The GNU Manifesto” (1985); Barlow, “A Declaration of the Independence of Cyberspace” (1996); Raymond, The Cathedral and the Bazaar (1997); Lessig, Code (1999)", "core": "Saw the internet as a free space beyond the control of states and companies and argued that software and knowledge should be shared. It produced collaborative models such as Linux and Wikipedia, and Lessig warned that code governs behaviour much as law does.", "prop": "Information wants to be free (Stewart Brand)"}, {"id": "aisafety", "l": "B", "s": 7, "e": 7, "a": true, "f": [["cybernetics", "c"], ["ea", "c"], ["humanrights", "c"]], "n": "AI safety & alignment", "sn": "AI safety", "y": "emerging 2000s, mainstream 2020s", "who": "Nick Bostrom, Stuart Russell, Geoffrey Hinton, Yoshua Bengio, Eliezer Yudkowsky", "works": "Bostrom, Superintelligence (2014); Russell, Human Compatible (2019); CAIS “Statement on AI Risk” (2023)", "core": "Holds that an AI smarter than humans pursuing goals misaligned with human values could cause irreversible harm. It argues for alignment research, verification and international norms before the race for capability, and in 2026 a debate over slowing development broke out even among leaders of major AI companies.", "prop": "Mitigating the risk of extinction from AI should be a global priority alongside pandemics and nuclear war (Statement on AI Risk, paraphrase)"}, {"id": "eacc", "l": "B", "s": 7, "e": 7, "a": true, "f": [["neoliberal", "c"], ["transhuman", "c"], ["cyberlib", "c"], ["aisafety", "r"]], "n": "Effective accelerationism (e/acc)", "sn": "e/acc", "y": "2022 on", "who": "Marc Andreessen, “Beff Jezos” (Guillaume Verdon); roots in Nick Land's accelerationism", "works": "Andreessen, “Why AI Will Save the World” (2023), “The Techno-Optimist Manifesto” (2023)", "core": "Argues that technological and market growth drives human flourishing, so AI development should be accelerated rather than slowed by regulation. It labels safety advocates “decels”; middle positions such as Vitalik Buterin's defensive accelerationism (d/acc) have appeared in between.", "prop": "Slowing AI means letting preventable deaths happen (Andreessen, paraphrase)"}, {"id": "mercantilism", "l": "C", "s": 0, "e": 1, "a": false, "f": [["divine", "c"]], "n": "Mercantilism", "y": "16th–18th c.", "who": "Jean-Baptiste Colbert, Thomas Mun", "works": "Mun, England's Treasure by Forraign Trade (1664)", "core": "Held that a nation's wealth is its stock of gold and silver, to be built up through trade surpluses by boosting exports and blocking imports. It financed absolute monarchies and their colonial rivalry.", "prop": "A trade surplus is the wealth of the nation (paraphrase)"}, {"id": "classical", "l": "C", "s": 3, "e": 4, "a": false, "f": [["mercantilism", "r"], ["liberalism", "c"], ["enlightenment", "c"]], "n": "Classical economics & capitalism", "sn": "Classical economics", "y": "1776–1929", "who": "Adam Smith, David Ricardo, Thomas Malthus, J. S. Mill", "works": "Smith, The Wealth of Nations (1776); Ricardo, Principles of Political Economy and Taxation (1817)", "core": "Held that the division of labour and free competition work like an “invisible hand” to increase the wealth of society. It moved the source of wealth from gold and silver to labour and production and justified laissez-faire during industrialisation, until the Great Depression dealt it a heavy blow.", "prop": "We owe our dinner not to the butcher's benevolence but to his regard for his own interest (Smith, paraphrase)"}, {"id": "socialism", "l": "C", "s": 3, "e": 3, "a": false, "f": [["enlightenment", "c"], ["classical", "r"]], "n": "Utopian socialism", "sn": "Early socialism", "y": "1810s–1840s", "who": "Robert Owen, Henri de Saint-Simon, Charles Fourier", "works": "Owen, A New View of Society (1813); Fourier, Theory of the Four Movements (1808)", "core": "Faced with the long hours, child labour and poverty of the factory system, proposed communities based on cooperation and common ownership instead of competition. Marx called it “utopian socialism” and set out to go beyond it.", "prop": "Cooperation must replace competition (paraphrase)"}, {"id": "marxism", "l": "C", "s": 3, "e": 5, "a": false, "f": [["socialism", "c"], ["enlightenment", "c"], ["classical", "r"]], "n": "Marxism", "y": "1848 on", "who": "Karl Marx, Friedrich Engels", "works": "The Communist Manifesto (1848); Capital, vol. 1 (1867)", "core": "A materialist view of history explained by changes in productive forces and relations and by class struggle. It argued that capitalism exploits workers' surplus value and that its contradictions would lead to a classless society. As a system it declined, but it survives as a language for criticising capitalism.", "prop": "The history of all hitherto existing society is the history of class struggles (The Communist Manifesto)"}, {"id": "keynes", "l": "C", "s": 4, "e": 5, "a": false, "f": [["classical", "r"], ["socialism", "c"], ["liberalism", "c"]], "n": "Keynesianism & the welfare state", "sn": "Keynesianism", "y": "1936–1970s", "who": "John Maynard Keynes, William Beveridge", "works": "Keynes, The General Theory of Employment, Interest and Money (1936); The Beveridge Report (1942)", "core": "The Great Depression showed that markets do not reach full employment on their own, so government should create demand through spending. It opened the post-war “golden age” of full employment, social insurance and the welfare state in the West.", "prop": "From the cradle to the grave (slogan of Britain's post-war welfare state)"}, {"id": "neoliberal", "l": "C", "s": 5, "e": 7, "a": true, "f": [["classical", "c"], ["liberalism", "c"], ["keynes", "r"]], "n": "Neoliberalism", "y": "late 1970s on", "who": "Friedrich Hayek, Milton Friedman, Margaret Thatcher, Ronald Reagan", "works": "Hayek, The Road to Serfdom (1944); Friedman, Capitalism and Freedom (1962)", "core": "After the stagflation of the 1970s it treated state intervention and the welfare state as inefficient and widened the role of markets through privatisation, deregulation and free trade. With the end of the Cold War it became the standard prescription of globalisation, and it has faced fierce criticism since the 2008 financial crisis.", "prop": "There is no alternative (Thatcher)"}, {"id": "ecology", "l": "C", "s": 5, "e": 7, "a": true, "f": [["romanticism", "c"], ["newleft", "c"], ["classical", "r"], ["mechanism", "r"]], "n": "Ecologism & environmentalism", "sn": "Ecologism", "y": "1962 on", "who": "Rachel Carson, Arne Næss, Hans Jonas, the Club of Rome", "works": "Carson, Silent Spring (1962); Club of Rome, The Limits to Growth (1972); Jonas, The Imperative of Responsibility (1979)", "core": "Warned that industrial growth is overshooting the limits of Earth's ecosystems and put humans back as part of nature rather than its master. It offered responsibility to future generations and sustainability as new standards for the economy.", "prop": "There are limits to growth on a finite planet (Club of Rome, paraphrase)"}, {"id": "platform", "l": "C", "s": 6, "e": 7, "a": true, "f": [["marxism", "c"], ["infosociety", "c"], ["neoliberal", "r"]], "n": "Critique of surveillance & platform capitalism", "sn": "Platform critique", "y": "2010s on", "who": "Shoshana Zuboff, Nick Srnicek, Eli Pariser", "works": "Pariser, The Filter Bubble (2011); Srnicek, Platform Capitalism (2016); Zuboff, The Age of Surveillance Capitalism (2019)", "core": "Criticises search, social-media and commerce platforms for creating a new form of accumulation that uses people's behavioural data as raw material to predict and steer behaviour. It also addresses filter bubbles, where algorithms show us only what fits, and post-truth politics.", "prop": "Human experience becomes free raw material in the form of behavioural data (Zuboff, paraphrase)"}, {"id": "basicincome", "l": "C", "s": 7, "e": 7, "a": true, "f": [["keynes", "c"], ["justice", "c"], ["socialism", "c"]], "n": "Basic income & post-work", "sn": "Basic income", "y": "2010s on", "who": "Philippe Van Parijs, Guy Standing, Rutger Bregman", "works": "Van Parijs, Real Freedom for All (1995); Bregman, Utopia for Realists (2016)", "core": "Proposes that in an age when automation and AI replace jobs, income should be separated from work and everyone guaranteed an unconditional income. It questions the value, inherited from the Industrial Revolution, that work is what gives life meaning.", "prop": "For everyone, unconditionally, individually, regularly (principles of basic income)"}, {"id": "humanism", "l": "D", "s": 0, "e": 1, "a": false, "f": [["scholastic", "r"]], "n": "Renaissance humanism", "sn": "Humanism", "y": "14th–16th c.", "who": "Francesco Petrarca, Pico della Mirandola, Erasmus", "works": "Pico, Oration on the Dignity of Man (1486); Erasmus, In Praise of Folly (1511)", "core": "Revived Greek and Roman classics and shifted attention from God to human dignity, ability and life in this world. It prepared the cultural soil for the Scientific Revolution and the Reformation.", "prop": "Humans shape their own form (Pico, paraphrase)"}, {"id": "deism", "l": "D", "s": 1, "e": 2, "a": false, "f": [["mechanism", "c"], ["scholastic", "r"]], "n": "Deism", "y": "17th–18th c.", "who": "John Toland, Voltaire, Thomas Paine", "works": "Toland, Christianity Not Mysterious (1696); Paine, The Age of Reason (1794)", "core": "God created the universe and set its laws but does not intervene afterwards. It sought to understand God through reason rather than miracles and revelation, and underpinned religious tolerance.", "prop": "God is a watchmaker who made the clock and let it run (deist image)"}, {"id": "romanticism", "l": "D", "s": 2, "e": 3, "a": false, "f": [["enlightenment", "r"], ["mechanism", "r"]], "n": "Romanticism", "y": "1790–1850", "who": "Rousseau, Goethe, Friedrich Schlegel, William Wordsworth", "works": "Goethe, The Sorrows of Young Werther (1774); Wordsworth & Coleridge, Lyrical Ballads (1798)", "core": "Set feeling, imagination, individuality and nature against the cold reason of the Enlightenment and the mechanisation of industry. Valuing each people's own language and traditions, it allied with nationalism.", "prop": "Good poetry is the spontaneous overflow of powerful feelings (Wordsworth)"}, {"id": "feminism1", "l": "D", "s": 2, "e": 4, "a": false, "f": [["republic", "c"], ["enlightenment", "c"], ["liberalism", "c"]], "n": "First-wave feminism", "y": "1791–1920s", "who": "Olympe de Gouges, Mary Wollstonecraft, J. S. Mill, Emmeline Pankhurst", "works": "de Gouges, Declaration of the Rights of Woman and of the Female Citizen (1791); Wollstonecraft, A Vindication of the Rights of Woman (1792); Mill, The Subjection of Women (1869)", "core": "Pointed out that women were missing from the Revolution's “man and citizen” and demanded education, property rights and the vote for women. In the early 20th century it won women's suffrage in many countries.", "prop": "If woman has the right to mount the scaffold, she must also have the right to mount the rostrum (de Gouges)"}, {"id": "utilitarian", "l": "D", "s": 3, "e": 7, "a": true, "f": [["enlightenment", "c"], ["empiricism", "c"]], "n": "Utilitarianism", "y": "1789 on", "who": "Jeremy Bentham, J. S. Mill, (today) Peter Singer", "works": "Bentham, An Introduction to the Principles of Morals and Legislation (1789); Mill, Utilitarianism (1863)", "core": "The right action is the one that maximises the happiness of everyone affected. A secular ethics that calculates consequences instead of following divine command, it became the basis of legal reform, public policy and cost-benefit analysis.", "prop": "The greatest happiness of the greatest number (Bentham)"}, {"id": "nihilism", "l": "D", "s": 3, "e": 4, "a": false, "f": [["darwinism", "c"], ["romanticism", "c"], ["enlightenment", "r"]], "n": "Nietzsche & nihilism", "sn": "Nihilism", "y": "1880s on", "who": "Friedrich Nietzsche, Schopenhauer, Kierkegaard, Dostoevsky", "works": "Nietzsche, The Gay Science (1882), Thus Spoke Zarathustra (1883–1885)", "core": "Diagnosed that science and secularisation had destroyed the foundations of Christian values, and demanded that people create new values rather than leave a void. It was the most powerful internal critique of modern faith in reason and progress.", "prop": "God is dead (Nietzsche)"}, {"id": "psychoanalysis", "l": "D", "s": 3, "e": 5, "a": false, "f": [["darwinism", "c"], ["rationalism", "r"]], "n": "Psychoanalysis", "y": "1899 on", "who": "Sigmund Freud, Carl Jung, Jacques Lacan", "works": "Freud, The Interpretation of Dreams (1899), Civilization and Its Discontents (1930)", "core": "Human behaviour is driven more by repressed desires and the unconscious than by conscious reason. It shook the picture, dominant since Descartes, of a transparent rational subject.", "prop": "The ego is not master in its own house (Freud)"}, {"id": "existentialism", "l": "D", "s": 4, "e": 5, "a": false, "f": [["nihilism", "c"]], "n": "Existentialism", "y": "1920s–1960s", "who": "Martin Heidegger, Jean-Paul Sartre, Albert Camus, Simone de Beauvoir", "works": "Heidegger, Being and Time (1927); Camus, The Myth of Sisyphus (1942); Sartre, Being and Nothingness (1943), “Existentialism Is a Humanism” (1946)", "core": "Neither God, nor historical progress, nor human nature gives life a meaning in advance. Thrown into an absurd world, people choose freely, take responsibility for their choices and make themselves.", "prop": "Existence precedes essence (Sartre)"}, {"id": "critical", "l": "D", "s": 4, "e": 5, "a": false, "f": [["marxism", "c"], ["psychoanalysis", "c"], ["enlightenment", "r"], ["positivism", "r"]], "n": "Critical theory (Frankfurt School)", "sn": "Critical theory", "y": "1930s–1980s", "who": "Max Horkheimer, Theodor Adorno, Walter Benjamin, (2nd gen.) Jürgen Habermas", "works": "Horkheimer & Adorno, Dialectic of Enlightenment (1944/1947); Habermas, The Theory of Communicative Action (1981)", "core": "Analysed how Enlightenment reason, meant to liberate humanity, turned into instrumental reason and became a means of domination through bureaucracy, the culture industry and the Holocaust. Habermas proposed “communicative reason”, based on free discussion, as a way beyond it.", "prop": "Enlightenment reverts to mythology (Dialectic of Enlightenment, paraphrase)"}, {"id": "feminism2", "l": "D", "s": 5, "e": 7, "a": true, "f": [["feminism1", "c"], ["existentialism", "c"], ["newleft", "c"]], "n": "Second & third-wave feminism", "sn": "2nd/3rd-wave feminism", "y": "1949 · 1960s on", "who": "Simone de Beauvoir, Betty Friedan, Kate Millett, Judith Butler", "works": "Beauvoir, The Second Sex (1949); Friedan, The Feminine Mystique (1963); Butler, Gender Trouble (1990)", "core": "Went beyond legal equality to challenge everyday inequality in home, work, sexuality and culture. Under the slogan “the personal is political” it spread the understanding that gender roles are made by society, not nature.", "prop": "One is not born, but rather becomes, a woman (Beauvoir)"}, {"id": "transhuman", "l": "D", "s": 6, "e": 7, "a": true, "f": [["darwinism", "c"], ["cybernetics", "c"], ["enlightenment", "c"], ["postmodern", "c"]], "n": "Transhumanism & posthumanism", "sn": "Trans-/posthumanism", "y": "term 1957; 1980s on", "who": "Julian Huxley, Donna Haraway, Ray Kurzweil, Nick Bostrom, Rosi Braidotti", "works": "Haraway, “A Cyborg Manifesto” (1985); Kurzweil, The Singularity Is Near (2005); Braidotti, The Posthuman (2013)", "core": "Transhumanism wants science and technology to overcome the limits of ageing, disease and intelligence and improve humans. Posthumanism criticises modern humanism's placing of humans at the centre of the world and re-examines the borders between human, machine and animal.", "prop": "The singularity is near (Kurzweil)"}, {"id": "ea", "l": "D", "s": 6, "e": 7, "a": true, "f": [["utilitarian", "c"]], "n": "Effective altruism & longtermism", "sn": "Effective altruism", "y": "2009 on", "who": "Peter Singer, William MacAskill, Toby Ord", "works": "Singer, The Life You Can Save (2009); Ord, The Precipice (2020); MacAskill, What We Owe the Future (2022)", "core": "A movement to find, with evidence and calculation, how to do the most good; it began with poverty and health and widened to risks to humanity's survival such as AI and pandemics. Its longtermism, which holds that future generations matter morally, laid the ground for AI safety thinking.", "prop": "Do the most good you can (paraphrase)"}, {"id": "digitalhum", "l": "D", "s": 7, "e": 7, "a": true, "f": [["humanrights", "c"], ["platform", "c"], ["eacc", "r"]], "n": "Digital humanism & human-centred AI", "sn": "Digital humanism", "y": "2019 on", "who": "Signatories of the Vienna Manifesto on Digital Humanism, Fei-Fei Li, Sherry Turkle", "works": "Turkle, Alone Together (2011); Vienna Manifesto on Digital Humanism (2019); Li, The Worlds I See (2023)", "core": "As AI and platforms take over human judgement, relationships and work, it holds that technology must be designed and governed to serve human dignity, democracy and autonomy. It feeds into risk-based regulation such as the EU AI Act and debates on public-interest AI.", "prop": "Technology should be shaped for people, not people for technology (paraphrase)"}], "era": [{"p": [["scholastic", -7, -7, "r"], ["divine", -4, 6, "r"], ["mercantilism", 4, 7.5, "r"], ["humanism", 6.5, -2, "l"]], "x": ["God-centred", "Human-centred"], "y": ["Universal Church", "Secular rulers"], "xq": "Is God or humanity the centre of the world?", "yq": "Who rules: the Pope (Church) or the king?", "why": "Two tensions marked the late Middle Ages. Attention began to move from theology to humans and this world, and the universal authority of the Church collided with the power of territorial rulers."}, {"p": [["scholastic", -3, -8, "r"], ["deism", -2, -1, "r"], ["rationalism", -7.5, 5, "r"], ["empiricism", 7.5, 5.8, "l"], ["mechanism", 0.5, 8.3, "r"], ["enlightenment", 1.5, 2, "r"]], "x": ["Reason (deduction)", "Experience (induction)"], "y": ["Cosmos moved by God's purpose", "Cosmos as a law-bound machine"], "xq": "Where does certain knowledge come from?", "yq": "What makes the universe move?", "why": "The Scientific Revolution explained the universe by laws instead of God's purposes, and rationalists and empiricists split over how those laws can be known. The Enlightenment brought the two together."}, {"p": [["liberalism", -6, 3, "r"], ["republic", 5, 6, "l"], ["nationalism", 7, 1.2, "l"], ["conservatism", -1, -5, "r"], ["romanticism", -2, -2.5, "r"], ["feminism1", -8, 8.5, "r"], ["socialcontract", 0, 4, "r"], ["enlightenment", -3.5, 1.3, "r"], ["divine", 8, -8.5, "l"]], "x": ["Individual liberty", "Will of the nation"], "y": ["Keep tradition & order", "Revolution & change"], "xq": "Individual or nation: which comes first?", "yq": "How much should change, and how?", "why": "The Revolution asked what comes first (individual rights or the general will of the nation) and whether to keep or overturn tradition. Even the terms left and right were born then, from seating in the Assembly."}, {"p": [["classical", 8, 6, "l"], ["socialism", -5, 3, "r"], ["marxism", -8, -3, "r"], ["anarchism", -7, 8.5, "r"], ["imperialism", 5, -7, "l"], ["utilitarian", 3, 1, "r"], ["positivism", 0.8, -4.4, "r"], ["conservatism", 5.5, -2.7, "r"], ["liberalism", 5, 3.6, "r"]], "x": ["Common ownership", "Market & private property"], "y": ["Stronger state & hierarchy", "Smaller state & self-rule"], "xq": "Who should own the means of production?", "yq": "How much should the state rule?", "why": "Once factories and capital became the source of wealth, ownership of the means of production and the role of the state became the two axes of thought. Capitalism, socialism, anarchism and imperialism faced off on this plane."}, {"p": [["totalitarian", -2, -8, "r"], ["communism", -8, -6, "r"], ["keynes", -2, 4, "r"], ["humanrights", 1, 8, "r"], ["classical", 8, 1, "l"], ["liberalism", 5, 6, "l"], ["decolonial", -4.5, -2.8, "r"], ["nationalism", 1, -4, "r"], ["existentialism", -6.5, 7, "r"], ["critical", -7.5, 2.5, "r"]], "x": ["Planned economy", "Free market"], "y": ["State & nation first", "Individual liberty & rights"], "xq": "Leave the economy to markets or plan it?", "yq": "Put the state above the individual?", "why": "Depression and two world wars produced a contest of systems. Fascism and communism set the state above the individual; after the war, human rights and the welfare state became the new standards."}, {"p": [["communism", -8, -7, "r"], ["conservatism", 5, -7, "r"], ["neoliberal", 8, -4.9, "l"], ["newleft", -6, 8, "r"], ["ecology", -4, 5, "r"], ["feminism2", 1, 8.5, "r"], ["postmodern", -1, 3, "r"], ["justice", -3, 1, "r"], ["endhistory", 5, -3.3, "r"], ["keynes", -5, -2.2, "r"], ["liberalism", 5.5, 5, "r"]], "x": ["Econ. left: state & equality", "Econ. right: market"], "y": ["Authority & tradition", "Autonomy & liberation"], "xq": "State or market for distribution? (the Cold War axis)", "yq": "Authority or autonomy? (the axis 1968 added)", "why": "The Cold War was a contest on the economic axis, and 1968 added a cultural axis. The two axes of today's familiar “political compass” were made in this era, and after the Cold War neoliberalism on the right became the global standard."}, {"p": [["cyberlib", 8, 6, "l"], ["infosociety", 1, 3, "l"], ["platform", 5, -6, "l"], ["transhuman", -3, 9, "r"], ["ea", -2, 1.2, "r"], ["neoliberal", -7, 5, "r"], ["postmodern", 6, -2, "l"]], "x": ["Centralised (state, platforms)", "Distributed (networks)"], "y": ["Tech-critical", "Tech-optimistic"], "xq": "Does power disperse or gather again?", "yq": "Is technology liberation or danger?", "why": "When the internet opened, the question became whether power would scatter into networks or gather again in new platforms. Early optimism shifted in the 2010s toward criticism of surveillance and monopoly."}, {"p": [["aisafety", -7, -2, "r"], ["eacc", 8, 6, "l"], ["digitalhum", -5, -8, "r"], ["transhuman", 6, 9, "l"], ["ea", -6, 3, "r"], ["dataism", 3, 3, "r"], ["basicincome", 2, -6, "r"], ["platform", -8, -4.5, "r"], ["neoliberal", 6, 1.2, "l"]], "x": ["Slow down & regulate", "Accelerate"], "y": ["Human-centred", "Post-human, machine minds"], "xq": "Slow AI development down or speed it up?", "yq": "Keep humans at the centre or go beyond?", "why": "The AI Revolution turns on the speed of development and the standing of humans. The 2026 debate among AI company leaders over slowing down is fought along the horizontal axis; the vertical axis asks what work and being human mean."}], "ui": {"facts": "<span>Turning points <b>7<\/b><\/span><span>Isms <b>{n}<\/b><\/span><span>Domains <b>4<\/b> (knowledge & science / politics & power / economy, labour & ecology / humanity, culture & ethics)<\/span><span>As of <b>November 2026<\/b><\/span>", "cont": "Continues / develops", "react": "Reacts / criticises", "periodIsms": "Isms of this period", "bornIsms": "Isms born here", "flowAria": "Flow chart of isms across turning points", "start": "Start", "now": "Now", "xAxis": "x-axis", "yAxis": "y-axis", "eraAria": "Isms of the {era}: x-axis {x0} to {x1}, y-axis {y0} to {y1}", "mmGroup": "Shifts", "mmAria": "Mind map of the turning points of thought", "thinkers": "Key thinkers", "works": "Key works", "count": "{n} isms", "alive": "Still influential", "waned": "Declined / transformed", "showRel": "Show inheritance and reactions", "close": "Close", "born": "Born", "period": "Period", "relFromC": "Builds on", "relFromR": "Reacts against", "relToC": "Developed further by", "relToR": "Opposed by"}, "mmRoot": "Turning Points of Thought"};
+const U=D.ui;
+const LANES={};for(const k of ["A","B","C","D"])LANES[k]={n:D.lanes[k],v:"--l"+k.toLowerCase()};
+const AX=D.ax,AXS=D.axs;
+const TP=D.tp;
+const ISMS=D.isms;
+const ERA=D.era;
+const BY={};ISMS.forEach(i=>BY[i.id]=i);
+const KIDS={};ISMS.forEach(i=>KIDS[i.id]=[]);
+ISMS.forEach(i=>i.f.forEach(([p,t])=>{if(KIDS[p])KIDS[p].push([i.id,t])}));
+const laneVar=l=>`var(${LANES[l].v})`;
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmt=(s,o)=>s.replace(/\{(\w+)\}/g,(m,k)=>o[k]);
+const NS="http://www.w3.org/2000/svg";
+function el(tag,attrs,parent){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);if(parent)parent.appendChild(e);return e}
+const circled=["0","①","②","③","④","⑤","⑥","⑦"];
+const tpLabel=(c,short)=>TP[c].origin?TP[c].n:circled[c]+" "+(short&&TP[c].short?TP[c].short:TP[c].n);
+const status=i=>i.a?U.alive:U.waned;
+const nm=i=>i.sn||i.n;
+
+document.getElementById("facts").innerHTML=fmt(U.facts,{n:ISMS.length});
+document.getElementById("legend-flow").innerHTML=Object.keys(LANES).map(k=>`<span><i class="sw ${k}"></i>${esc(LANES[k].n)}</span>`).join("")+`<span><i class="ln"></i>${esc(U.cont)}</span><span><i class="ln r"></i>${esc(U.react)}</span>`;
+function chip(i){return `<button type="button" class="chip" data-ism="${i.id}"><i style="background:${laneVar(i.l)}"></i>${esc(i.n)}</button>`}
+
+// 1. turning points
+document.getElementById("tps").innerHTML=TP.map((t,c)=>{
+  const born=ISMS.filter(i=>i.s===c);
+  const rows=t.sh.map((s,k)=>`<div class="ax">${esc(AX[k])}</div><div class="ba">${t.origin?`<span class="a" style="grid-column:1/-1">${esc(s[0])}</span>`:`<span class="b">${esc(s[0])}</span><span class="arr">→</span><span class="a">${esc(s[1])}</span>`}</div>`).join("");
+  return `<article class="tp" id="tp-${c}">
+    <div class="tp-head"><span class="tp-no">${t.origin?"0":circled[c]}</span><h3>${esc(t.n)}</h3><span class="tp-years">${esc(t.y)}</span></div>
+    <p class="tp-sum">${esc(t.sum)}</p>
+    ${t.note?`<p class="tp-note">${esc(t.note)}</p>`:""}
+    <ul class="events">${t.ev.map(e=>`<li><b>${esc(e[0])}</b>${esc(e[1])}</li>`).join("")}</ul>
+    <div class="shift">${rows}</div>
+    <div class="chips"><span class="lbl">${esc(t.origin?U.periodIsms:U.bornIsms)}</span>${born.map(chip).join("")}</div>
+  </article>`}).join("");
+
+// 2. flow
+const W=150,HEAD=62,LH=24,ROW=30,BAR=22,PX=6,END=8*W+26;
+const pos={};let flowSvg;
+function drawFlow(){
+  const box=document.getElementById("flow-box");box.innerHTML="";
+  let y=HEAD;const lanePos=[];
+  for(const l of Object.keys(LANES)){
+    const items=ISMS.filter(i=>i.l===l).sort((a,b)=>a.s-b.s||(b.e-a.e));
+    const rows=[];
+    for(const i of items){const st=i.s,en=i.a?9:i.e+1.4;let r=rows.findIndex(x=>x<=st+0.01);if(r<0){r=rows.length;rows.push(0)}rows[r]=en;i._r=r}
+    lanePos.push({l,y,h:LH+rows.length*ROW+8});
+    items.forEach(i=>{pos[i.id]={x0:i.s*W+PX,x1:i.a?END:(i.e+1)*W-PX,y:y+LH+i._r*ROW}});
+    y+=LH+rows.length*ROW+8;
+  }
+  const H=y+10,TW=END+14;
+  const svg=el("svg",{width:TW,height:H,viewBox:`0 0 ${TW} ${H}`,role:"img","aria-label":U.flowAria},box);flowSvg=svg;
+  const defs=el("defs",{},svg);
+  ["A","B","C","D"].forEach(l=>{const g=el("linearGradient",{id:"fade"+l,x1:"0",x2:"1",y1:"0",y2:"0"},defs);el("stop",{offset:"0","stop-color":`var(${LANES[l].v})`,"stop-opacity":".28"},g);el("stop",{offset:"1","stop-color":`var(${LANES[l].v})`,"stop-opacity":"0"},g)});
+  lanePos.forEach((p,k)=>{if(k%2===0)el("rect",{x:0,y:p.y,width:TW,height:p.h,class:"laneband"},svg);const t=el("text",{x:8,y:p.y+16,class:"lanetitle",style:`fill:var(${LANES[p.l].v})`},svg);t.textContent="■ "+LANES[p.l].n});
+  TP.forEach((t,c)=>{
+    const g=el("g",{class:"colhead"},svg);
+    const a=el("text",{x:c*W+10,y:20,class:"no"},g);a.textContent=t.origin?U.start:circled[c];
+    const b=el("text",{x:c*W+10,y:38,class:"nm"},g);b.textContent=t.short||t.n;
+    const d=el("text",{x:c*W+10,y:53,class:"yr"},g);d.textContent=t.y;
+    if(c>0)el("line",{x1:c*W,x2:c*W,y1:4,y2:H-4,class:"bound"},svg);
+  });
+  const nowT=el("text",{x:8*W+4,y:20,class:"yr",style:"font-size:11.5px"},svg);nowT.textContent=U.now;
+  const lg=el("g",{},svg);
+  ISMS.forEach(ch=>ch.f.forEach(([pid,t])=>{const P=pos[pid],C=pos[ch.id];if(!P||!C)return;const cx=C.x0,cy=C.y+BAR/2;const px=Math.min(Math.max(cx-24,P.x0+10),P.x1-10),py=P.y+BAR/2;el("path",{d:`M${px},${py} C${px},${cy} ${cx-16},${cy} ${cx},${cy}`,class:"lk"+(t==="r"?" r":""),"data-p":pid,"data-c":ch.id},lg)}));
+  const bg=el("g",{},svg);
+  ISMS.forEach(i=>{
+    const p=pos[i.id];
+    const g=el("g",{class:"bar",tabindex:"0",role:"button","data-id":i.id,"aria-label":i.n},bg);
+    const col=`var(${LANES[i.l].v})`;
+    if(!i.a)el("rect",{x:p.x1-2,y:p.y,width:46,height:BAR,fill:`url(#fade${i.l})`},g);
+    el("rect",{x:p.x0,y:p.y,width:p.x1-p.x0,height:BAR,rx:4,class:"body",style:`fill:color-mix(in srgb, ${col} 24%, var(--surface))`},g);
+    el("rect",{x:p.x0,y:p.y,width:3,height:BAR,rx:1,style:`fill:${col}`},g);
+    if(i.a)el("path",{d:`M${p.x1},${p.y} l10,${BAR/2} l-10,${BAR/2} z`,style:`fill:color-mix(in srgb, ${col} 55%, var(--surface))`},g);
+    const tx=el("text",{x:p.x0+9,y:p.y+15},g);tx.textContent=nm(i);
+    for(let k=i.s+3;k<=(i.a?7:i.e);k+=3){const r=el("text",{x:k*W+9,y:p.y+15,style:"opacity:.5"},g);r.textContent=nm(i)}
+    const ti=el("title",{},g);ti.textContent=`${i.n} · ${i.y}`;
+    g.addEventListener("click",()=>openIsm(i.id));
+    g.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openIsm(i.id)}});
+  });
+}
+function highlight(id){
+  if(!flowSvg)return;
+  const rel=new Set([id]);BY[id].f.forEach(([p])=>rel.add(p));KIDS[id].forEach(([c])=>rel.add(c));
+  flowSvg.querySelectorAll(".bar").forEach(b=>{const on=rel.has(b.dataset.id);b.classList.toggle("dim",!on);b.classList.toggle("on",b.dataset.id===id)});
+  flowSvg.querySelectorAll(".lk").forEach(l=>{const h=l.dataset.p===id||l.dataset.c===id;l.classList.toggle("hl",h);l.classList.toggle("dim",!h)});
+}
+function clearHL(){if(!flowSvg)return;flowSvg.querySelectorAll(".bar").forEach(b=>b.classList.remove("dim","on"));flowSvg.querySelectorAll(".lk").forEach(l=>l.classList.remove("hl","dim"))}
+
+// 3. era graphs
+let eraIdx=1;
+function drawEra(k){
+  eraIdx=k;const E=ERA[k],t=TP[k];
+  document.querySelectorAll(".era-tab").forEach((b,i)=>{b.setAttribute("aria-selected",i===k?"true":"false");b.tabIndex=i===k?0:-1});
+  document.getElementById("era-title").textContent=tpLabel(k)+" · "+t.y;
+  document.getElementById("era-why").textContent=E.why;
+  document.getElementById("era-axes").innerHTML=`<dt>${esc(U.xAxis)}</dt><dd>${esc(E.xq)}<br><span style="color:var(--ink-2)">${esc(E.x[0])} ← → ${esc(E.x[1])}</span></dd><dt>${esc(U.yAxis)}</dt><dd>${esc(E.yq)}<br><span style="color:var(--ink-2)">${esc(E.y[0])} ↓ ↑ ${esc(E.y[1])}</span></dd>`;
+  const box=document.getElementById("era-plot");box.innerHTML="";
+  const S=440,M=46,P=S-2*M,u=P/20,cx=S/2,cy=S/2;
+  const X=v=>cx+v*u,Y=v=>cy-v*u;
+  const svg=el("svg",{viewBox:`0 0 ${S} ${S}`,role:"img","aria-label":fmt(U.eraAria,{era:t.n,x0:E.x[0],x1:E.x[1],y0:E.y[0],y1:E.y[1]})},box);
+  for(let g=-10;g<=10;g+=5){if(g===0)continue;el("line",{x1:X(g),x2:X(g),y1:M,y2:S-M,class:"ax-grid"},svg);el("line",{x1:M,x2:S-M,y1:Y(g),y2:Y(g),class:"ax-grid"},svg)}
+  el("line",{x1:M-6,x2:S-M+6,y1:cy,y2:cy,class:"ax-line"},svg);el("line",{x1:cx,x2:cx,y1:M-6,y2:S-M+6,class:"ax-line"},svg);
+  el("path",{d:`M${S-M+6},${cy} l-7,-4 v8 z M${M-6},${cy} l7,-4 v8 z M${cx},${M-6} l-4,7 h8 z M${cx},${S-M+6} l-4,-7 h8 z`,style:"fill:var(--ink-2)"},svg);
+  const lb=(x,y,txt,anc)=>{const e=el("text",{x,y,class:"ax-lbl","text-anchor":anc},svg);e.textContent=txt};
+  lb(M-4,cy+20,E.x[0],"start");lb(S-M+4,cy+20,E.x[1],"end");lb(cx,M-14,E.y[1],"middle");lb(cx,S-M+26,E.y[0],"middle");
+  E.p.forEach(([id,x,y,an])=>{
+    const i=BY[id];if(!i)return;const col=laneVar(i.l),born=i.s===k;
+    const g=el("g",{class:"pt",tabindex:"0",role:"button","aria-label":i.n},svg);
+    el("circle",{cx:X(x),cy:Y(y),r:6.5,style:born?`fill:${col};stroke:${col};stroke-width:2`:`fill:var(--surface);stroke:${col};stroke-width:2.2`},g);
+    const tx=el("text",{x:an==="l"?X(x)-10:X(x)+10,y:Y(y)+4,"text-anchor":an==="l"?"end":"start",style:`fill:${born?"var(--ink)":"var(--ink-2)"}`},g);tx.textContent=nm(i);
+    g.addEventListener("click",()=>openIsm(id));g.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openIsm(id)}});
+  });
+}
+const tabsEl=document.getElementById("era-tabs");
+tabsEl.innerHTML=TP.map((t,c)=>`<button type="button" role="tab" class="era-tab" id="era-tab-${c}" aria-selected="false">${esc(tpLabel(c,true))}</button>`).join("");
+tabsEl.querySelectorAll(".era-tab").forEach((b,c)=>{b.addEventListener("click",()=>drawEra(c));b.addEventListener("keydown",e=>{if(e.key==="ArrowRight"||e.key==="ArrowLeft"){e.preventDefault();const n=(eraIdx+(e.key==="ArrowRight"?1:-1)+ERA.length)%ERA.length;drawEra(n);tabsEl.children[n].focus()}})});
+
+// 4. mind map
+const mmState={tp:TP.map(()=>true),sh:TP.map(()=>false)};
+function tw(s,fs){let w=0;for(const ch of s){w+=/[ㄱ-힝①-⑳]/.test(ch)?fs*1.0:(/[A-Z]/.test(ch)?fs*.68:(/[mw]/.test(ch)?fs*.8:(/[il.,·'’ ]/.test(ch)?fs*.32:fs*.56)))}return w}
+function drawMM(){
+  const box=document.getElementById("mm-box");box.innerHTML="";
+  const NH=24;
+  const tpW=Math.max(...TP.map((t,c)=>tw(tpLabel(c),13)+22));
+  const rootW=tw(D.mmRoot,13)+22;
+  const X=[8,8+rootW+40,8+rootW+40+tpW+40,0];
+  const grpW=Math.max(...TP.map(()=>tw(U.mmGroup+" +",13)+22));X[3]=X[2]+grpW+30;
+  const root={label:D.mmRoot,kind:"root",depth:0,kids:[]};
+  TP.forEach((t,c)=>{
+    const n={label:tpLabel(c),kind:"tp",c,depth:1,open:mmState.tp[c],kids:[]};
+    const g={label:`${U.mmGroup} ${mmState.sh[c]?"−":"+"}`,kind:"grp",c,depth:2,open:mmState.sh[c],kids:t.sh.map((s,k)=>({label:`${AXS[k]}: ${s[2]}`,kind:"shift",depth:3,kids:[]}))};
+    n.kids.push(g);
+    ISMS.filter(i=>i.s===c).forEach(i=>n.kids.push({label:i.n,kind:"ism",id:i.id,l:i.l,depth:2,kids:[]}));
+    root.kids.push(n);
+  });
+  let leaf=0;
+  (function lay(n){const vis=(n.kind==="root"||n.open)?n.kids:[];n._vis=vis;if(vis.length){vis.forEach(lay);n.y=(vis[0].y+vis[vis.length-1].y)/2}else{n.y=20+leaf*NH;leaf++}n.x=X[n.depth]})(root);
+  const H=leaf*NH+30;let maxX=0;
+  const all=[];(function walk(n){all.push(n);n._vis.forEach(walk)})(root);
+  all.forEach(n=>{const fs=n.kind==="ism"||n.kind==="shift"?12.5:13;n.w=(n.kind==="root"||n.kind==="tp"||n.kind==="grp")?tw(n.label,fs)+22:tw(n.label,fs)+14;maxX=Math.max(maxX,n.x+n.w+16)});
+  const svg=el("svg",{width:maxX,height:H,viewBox:`0 0 ${maxX} ${H}`,role:"img","aria-label":U.mmAria},box);
+  const lg=el("g",{},svg),ng=el("g",{},svg);
+  all.forEach(n=>n._vis.forEach(k=>{const sx=n.x+n.w,sy=n.y,ex=k.x,ey=k.y,mx=(sx+ex)/2;const color=k.kind==="ism"?laneVar(k.l):(k.kind==="shift"||k.kind==="grp")?"var(--ink-2)":"var(--accent)";el("path",{d:`M${sx},${sy} C${mx},${sy} ${mx},${ey} ${ex},${ey}`,class:"mm-link",style:`stroke:${color}`},lg)}));
+  all.forEach(n=>{
+    if(n.kind==="root"||n.kind==="tp"||n.kind==="grp"){
+      const g=el("g",{class:"mm-pill",tabindex:n.kind==="root"?"-1":"0",role:n.kind==="root"?"presentation":"button"},ng);
+      el("rect",{x:n.x,y:n.y-12,width:n.w,height:24,rx:12,style:n.kind==="root"?"fill:var(--accent);stroke:var(--accent)":n.kind==="tp"?"fill:var(--surface);stroke:var(--accent)":"fill:var(--paper);stroke:var(--line)"},g);
+      const t=el("text",{x:n.x+11,y:n.y+4.5,style:n.kind==="root"?"fill:var(--surface)":n.kind==="grp"?"fill:var(--ink-2);font-weight:500":""},g);t.textContent=n.label+(n.kind==="tp"&&!n.open?"  +":"");
+      if(n.kind!=="root"){const tog=()=>{if(n.kind==="tp")mmState.tp[n.c]=!mmState.tp[n.c];else mmState.sh[n.c]=!mmState.sh[n.c];drawMM()};g.addEventListener("click",tog);g.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();tog()}})}
+    }else if(n.kind==="ism"){
+      const g=el("g",{class:"mm-leaf",tabindex:"0",role:"button"},ng);
+      el("circle",{cx:n.x+4,cy:n.y,r:4.5,style:`fill:${laneVar(n.l)}`},g);
+      const t=el("text",{x:n.x+13,y:n.y+4.5},g);t.textContent=n.label;
+      g.addEventListener("click",()=>openIsm(n.id));g.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openIsm(n.id)}});
+    }else{
+      const g=el("g",{class:"mm-shift"},ng);el("circle",{cx:n.x+3,cy:n.y,r:2.5,style:"fill:var(--ink-2)"},g);const t=el("text",{x:n.x+11,y:n.y+4},g);t.textContent=n.label;
+    }
+  });
+}
+document.getElementById("mm-expand").addEventListener("click",()=>{mmState.tp=mmState.tp.map(()=>true);mmState.sh=mmState.sh.map(()=>true);drawMM()});
+document.getElementById("mm-collapse").addEventListener("click",()=>{mmState.tp=mmState.tp.map(()=>true);mmState.sh=mmState.sh.map(()=>false);drawMM()});
+
+// 5. dictionary
+function kv(i){return `<dl class="kv"><dt>${esc(U.thinkers)}</dt><dd>${esc(i.who)}</dd><dt>${esc(U.works)}</dt><dd>${esc(i.works)}</dd></dl>`}
+document.getElementById("dict").innerHTML=TP.map((t,c)=>{
+  const items=ISMS.filter(i=>i.s===c);
+  return `<div class="dict-group"><h3>${esc(tpLabel(c))}<span>${esc(t.y)} · ${esc(fmt(U.count,{n:items.length}))}</span></h3><div class="cards">${items.map(i=>`
+  <article class="card" id="ism-${i.id}" style="--lane:${laneVar(i.l)}">
+    <h4>${esc(i.n)}${i.alt?`<span class="en">${esc(i.alt)}</span>`:""}</h4>
+    <div class="meta"><span class="lane">${esc(LANES[i.l].n)}</span><span>${esc(i.y)}</span><span>${esc(status(i))}</span></div>
+    <p>${esc(i.core)}</p>
+    <p class="prop">${esc(i.prop)}</p>
+    ${kv(i)}
+    <button type="button" class="open" data-ism="${i.id}">${esc(U.showRel)}</button>
+  </article>`).join("")}</div></div>`}).join("");
+
+// detail sheet
+const sheet=document.getElementById("sheet"),back=document.getElementById("backdrop");let lastFocus=null;
+function openIsm(id){
+  const i=BY[id];if(!i)return;
+  if(sheet.hidden)lastFocus=document.activeElement;
+  const from=i.f.filter(([p])=>BY[p]);
+  const fc=from.filter(x=>x[1]==="c").map(x=>BY[x[0]]),fr=from.filter(x=>x[1]==="r").map(x=>BY[x[0]]);
+  const kc=KIDS[id].filter(x=>x[1]==="c").map(x=>BY[x[0]]),kr=KIDS[id].filter(x=>x[1]==="r").map(x=>BY[x[0]]);
+  const rel=(lbl,arr)=>arr.length?`<div class="chips"><span class="lbl">${esc(lbl)}</span>${arr.map(chip).join("")}</div>`:"";
+  sheet.style.setProperty("--lane",laneVar(i.l));
+  sheet.innerHTML=`<div class="grab"></div><button type="button" class="x" id="sheet-x" aria-label="${esc(U.close)}">×</button>
+   <h3 id="sheet-title">${esc(i.n)}</h3><div class="meta" style="--lane:${laneVar(i.l)};margin-top:4px"><span class="lane">${esc(LANES[i.l].n)}</span>${i.alt?`<span>${esc(i.alt)}</span>`:""}</div>
+   <div class="body">
+    <div class="meta"><span>${esc(U.born)}: ${esc(tpLabel(i.s))}</span><span>${esc(U.period)}: ${esc(i.y)}</span><span>${esc(status(i))}</span></div>
+    <p style="margin:0">${esc(i.core)}</p>
+    <p class="prop" style="--lane:${laneVar(i.l)};margin:0">${esc(i.prop)}</p>
+    ${kv(i)}
+    <div class="rel">${rel(U.relFromC,fc)}${rel(U.relFromR,fr)}${rel(U.relToC,kc)}${rel(U.relToR,kr)}</div>
+   </div>`;
+  sheet.hidden=false;back.hidden=false;
+  document.getElementById("sheet-x").addEventListener("click",closeSheet);
+  sheet.querySelectorAll("[data-ism]").forEach(b=>b.addEventListener("click",()=>openIsm(b.dataset.ism)));
+  sheet.scrollTop=0;
+  document.getElementById("sheet-x").focus({preventScroll:true});
+  highlight(id);
+}
+function closeSheet(){sheet.hidden=true;back.hidden=true;clearHL();if(lastFocus&&lastFocus.focus)lastFocus.focus({preventScroll:true})}
+back.addEventListener("click",closeSheet);
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!sheet.hidden)closeSheet()});
+document.addEventListener("click",e=>{const b=e.target.closest("[data-ism]");if(b&&!sheet.contains(b))openIsm(b.dataset.ism)});
+
+drawFlow();drawEra(1);drawMM();
+</script>
+</body>
+</html>

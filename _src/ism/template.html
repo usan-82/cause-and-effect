@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="{{htmlLang}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{title}}</title>
+<meta name="description" content="{{metaDesc}}">
+<link rel="alternate" hreflang="ko" href="../../ko/ism/">
+<link rel="alternate" hreflang="en" href="../../en/ism/">
+<link rel="alternate" hreflang="id" href="../../id/ism/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600&family=Noto+Serif+KR:wght@600;700;900&display=swap" rel="stylesheet">
+<style>{{css}}</style>
+</head>
+<body>
+<header class="top wrap">
+  <nav class="langs" aria-label="Language">{{langs}}</nav>
+  <div class="eyebrow">{{eyebrow}}</div>
+  <h1>{{title}}</h1>
+  <p class="lead">{{lead}}</p>
+  <div class="facts" id="facts"></div>
+</header>
+<nav class="jump" aria-label="{{navAria}}"><div class="wrap">
+  <a href="#turning-points">① {{nav1}}</a><a href="#flow">② {{nav2}}</a><a href="#era-graph">③ {{nav3}}</a><a href="#mindmap">④ {{nav4}}</a><a href="#dictionary">⑤ {{nav5}}</a>
+</div></nav>
+
+<main class="wrap">
+  <section id="turning-points">
+    <h2>{{tpTitle}}</h2>
+    <p class="sec-lead">{{tpLead}}</p>
+    <div class="tps" id="tps"></div>
+  </section>
+
+  <section id="flow">
+    <h2>{{flowTitle}}</h2>
+    <p class="sec-lead">{{flowLead}}</p>
+    <div class="legend" id="legend-flow"></div>
+    <div class="scroller" id="flow-box"></div>
+    <p class="hint">{{flowHint}}</p>
+  </section>
+
+  <section id="era-graph">
+    <h2>{{eraTitle}}</h2>
+    <p class="sec-lead">{{eraLead}}</p>
+    <div class="era-tabs" role="tablist" aria-label="{{eraTabsAria}}" id="era-tabs"></div>
+    <div class="era-panel">
+      <div class="era-text">
+        <h3 id="era-title"></h3>
+        <p class="era-why" id="era-why"></p>
+        <dl class="era-axes" id="era-axes"></dl>
+        <div class="legend"><span><i class="dot f"></i>{{eraBorn}}</span><span><i class="dot h"></i>{{eraCarried}}</span></div>
+      </div>
+      <div class="era-plot" id="era-plot"></div>
+    </div>
+    <p class="hint">{{eraHint}}</p>
+  </section>
+
+  <section id="mindmap">
+    <h2>{{mmTitle}}</h2>
+    <p class="sec-lead">{{mmLead}}</p>
+    <div class="mm-tools">
+      <button class="btn" id="mm-expand" type="button">{{mmExpand}}</button>
+      <button class="btn" id="mm-collapse" type="button">{{mmCollapse}}</button>
+    </div>
+    <div class="scroller" id="mm-box"></div>
+  </section>
+
+  <section id="dictionary">
+    <h2>{{dictTitle}}</h2>
+    <p class="sec-lead">{{dictLead}}</p>
+    <div id="dict"></div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <p><b>{{footHead}}</b> {{footBody}}</p>
+</footer>
+
+<div class="backdrop" id="backdrop" hidden></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title" hidden></div>
+
+<script>
+const D={{data}};
+const U=D.ui;
+const LANES={};for(const k of ["A","B","C","D"])LANES[k]={n:D.lanes[k],v:"--l"+k.toLowerCase()};
+const AX=D.ax,AXS=D.axs;
+const TP=D.tp;
+const ISMS=D.isms;
+const ERA=D.era;
+const BY={};ISMS.forEach(i=>BY[i.id]=i);
+const KIDS={};ISMS.forEach(i=>KIDS[i.id]=[]);
+ISMS.forEach(i=>i.f.forEach(([p,t])=>{if(KIDS[p])KIDS[p].push([i.id,t])}));
+const laneVar=l=>`var(${LANES[l].v})`;
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmt=(s,o)=>s.replace(/\{(\w+)\}/g,(m,k)=>o[k]);
+const NS="http://www.w3.org/2000/svg";
+function el(tag,attrs,parent){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);if(parent)parent.appendChild(e);return e}
+const circled=["0","①","②","③","④","⑤","⑥","⑦"];
+const tpLabel=(c,short)=>TP[c].origin?TP[c].n:circled[c]+" "+(short&&TP[c].short?TP[c].short:TP[c].n);
+const status=i=>i.a?U.alive:U.waned;
+const nm=i=>i.sn||i.n;
+
+document.getElementById("facts").innerHTML=fmt(U.facts,{n:ISMS.length});
+document.getElementById("legend-flow").innerHTML=Object.keys(LANES).map(k=>`<span><i class="sw ${k}"></i>${esc(LANES[k].n)}</span>`).join("")+`<span><i class="ln"></i>${esc(U.cont)}</span><span><i class="ln r"></i>${esc(U.react)}</span>`;
+function chip(i){return `<button type="button" class="chip" data-ism="${i.id}"><i style="background:${laneVar(i.l)}"></i>${esc(i.n)}</button>`}
+
+// 1. turning points
+document.getElementById("tps").innerHTML=TP.map((t,c)=>{
+  const born=ISMS.filter(i=>i.s===c);
+  const rows=t.sh.map((s,k)=>`<div class="ax">${esc(AX[k])}</div><div class="ba">${t.origin?`<span class="a" style="grid-column:1/-1">${esc(s[0])}</span>`:`<span class="b">${esc(s[0])}</span><span class="arr">→</span><span class="a">${esc(s[1])}</span>`}</div>`).join("");
+  return `<article class="tp" id="tp-${c}">
+    <div class="tp-head"><span class="tp-no">${t.origin?"0":circled[c]}</span><h3>${esc(t.n)}</h3><span class="tp-years">${esc(t.y)}</span></div>
+    <p class="tp-sum">${esc(t.sum)}</p>
+    ${t.note?`<p class="tp-note">${esc(t.note)}</p>`:""}
+    <ul class="events">${t.ev.map(e=>`<li><b>${esc(e[0])}</b>${esc(e[1])}</li>`).join("")}</ul>
+    <div class="shift">${rows}</div>
+    <div class="chips"><span class="lbl">${esc(t.origin?U.periodIsms:U.bornIsms)}</span>${born.map(chip).join("")}</div>
+  </article>`}).join("");
+
+// 2. flow
+const W=150,HEAD=62,LH=24,ROW=30,BAR=22,PX=6,END=8*W+26;
+const pos={};let flowSvg;
+function drawFlow(){
+  const box=document.getElementById("flow-box");box.innerHTML="";
+  let y=HEAD;const lanePos=[];
+  for(const l of Object.keys(LANES)){
+    const items=ISMS.filter(i=>i.l===l).sort((a,b)=>a.s-b.s||(b.e-a.e));
+    const rows=[];
+    for(const i of items){const st=i.s,en=i.a?9:i.e+1.4;let r=rows.findIndex(x=>x<=st+0.01);if(r<0){r=rows.length;rows.push(0)}rows[r]=en;i._r=r}
+    lanePos.push({l,y,h:LH+rows.length*ROW+8});
+    items.forEach(i=>{pos[i.id]={x0:i.s*W+PX,x1:i.a?END:(i.e+1)*W-PX,y:y+LH+i._r*ROW}});
+    y+=LH+rows.length*ROW+8;
+  }
+  const H=y+10,TW=END+14;
+  const svg=el("svg",{width:TW,height:H,viewBox:`0 0 ${TW} ${H}`,role:"img","aria-label":U.flowAria},box);flowSvg=svg;
+  const defs=el("defs",{},svg);
+  ["A","B","C","D"].forEach(l=>{const g=el("linearGradient",{id:"fade"+l,x1:"0",x2:"1",y1:"0",y2:"0"},defs);el("stop",{offset:"0","stop-color":`var(${LANES[l].v})`,"stop-opacity":".28"},g);el("stop",{offset:"1","stop-color":`var(${LANES[l].v})`,"stop-opacity":"0"},g)});
+  lanePos.forEach((p,k)=>{if(k%2===0)el("rect",{x:0,y:p.y,width:TW,height:p.h,class:"laneband"},svg);const t=el("text",{x:8,y:p.y+16,class:"lanetitle",style:`fill:var(${LANES[p.l].v})`},svg);t.textContent="■ "+LANES[p.l].n});
+  TP.forEach((t,c)=>{
+    const g=el("g",{class:"colhead"},svg);
+    const a=el("text",{x:c*W+10,y:20,class:"no"},g);a.textContent=t.origin?U.start:circled[c];
+    const b=el("text",{x:c*W+10,y:38,class:"nm"},g);b.textContent=t.short||t.n;
+    const d=el("text",{x:c*W+10,y:53,class:"yr"},g);d.textContent=t.y;
+    if(c>0)el("line",{x1:c*W,x2:c*W,y1:4,y2:H-4,class:"bound"},svg);
+  });
+  const nowT=el("text",{x:8*W+4,y:20,class:"yr",style:"font-size:11.5px"},svg);nowT.textContent=U.now;
+  const lg=el("g",{},svg);
+  ISMS.forEach(ch=>ch.f.forEach(([pid,t])=>{const P=pos[pid],C=pos[ch.id];if(!P||!C)return;const cx=C.x0,cy=C.y+BAR/2;const px=Math.min(Math.max(cx-24,P.x0+10),P.x1-10),py=P.y+BAR/2;el("path",{d:`M${px},${py} C${px},${cy} ${cx-16},${cy} ${cx},${cy}`,class:"lk"+(t==="r"?" r":""),"data-p":pid,"data-c":ch.id},lg)}));
+  const bg=el("g",{},svg);
+  ISMS.forEach(i=>{
+    const p=pos[i.id];
+    const g=el("g",{class:"bar",tabindex:"0",role:"button","data-id":i.id,"aria-label":i.n},bg);
+    const col=`var(${LANES[i.l].v})`;
+    if(!i.a)el("rect",{x:p.x1-2,y:p.y,width:46,height:BAR,fill:`url(#fade${i.l})`},g);
+    el("rect",{x:p.x0,y:p.y,width:p.x1-p.x0,height:BAR,rx:4,class:"body",style:`fill:color-mix(in srgb, ${col} 24%, var(--surface))`},g);
+    el("rect",{x:p.x0,y:p.y,width:3,height:BAR,rx:1,style:`fill:${col}`},g);
+    if(i.a)el("path",{d:`M${p.x1},${p.y} l10,${BAR/2} l-10,${BAR/2} z`,style:`fill:color-mix(in srgb, ${col} 55%, var(--surface))`},g);
+    const tx=el("text",{x:p.x0+9,y:p.y+15},g);tx.textContent=nm(i);
+    for(let k=i.s+3;k<=(i.a?7:i.e);k+=3){const r=el("text",{x:k*W+9,y:p.y+15,style:"opacity:.5"},g);r.textContent=nm(i)}
+    const ti=el("title",{},g);ti.textContent=`${i.n} · ${i.y}`;
+    g.addEventListener("click",()=>openIsm(i.id));
+    g.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openIsm(i.id)}});
+  });
+}
+function highlight(id){
+  if(!flowSvg)return;
+  const rel=new Set([id]);BY[id].f.forEach(([p])=>rel.add(p));KIDS[id].forEach(([c])=>rel.add(c));
+  flowSvg.querySelectorAll(".bar").forEach(b=>{const on=rel.has(b.dataset.id);b.classList.toggle("dim",!on);b.classList.toggle("on",b.dataset.id===id)});
+  flowSvg.querySelectorAll(".lk").forEach(l=>{const h=l.dataset.p===id||l.dataset.c===id;l.classList.toggle("hl",h);l.classList.toggle("dim",!h)});
+}
+function clearHL(){if(!flowSvg)return;flowSvg.querySelectorAll(".bar").forEach(b=>b.classList.remove("dim","on"));flowSvg.querySelectorAll(".lk").forEach(l=>l.classList.remove("hl","dim"))}
+
+// 3. era graphs
+let eraIdx=1;
+function drawEra(k){
+  eraIdx=k;const E=ERA[k],t=TP[k];
+  document.querySelectorAll(".era-tab").forEach((b,i)=>{b.setAttribute("aria-selected",i===k?"true":"false");b.tabIndex=i===k?0:-1});
+  document.getElementById("era-title").textContent=tpLabel(k)+" · "+t.y;
+  document.getElementById("era-why").textContent=E.why;
+  document.getElementById("era-axes").innerHTML=`<dt>${esc(U.xAxis)}</dt><dd>${esc(E.xq)}<br><span style="color:var(--ink-2)">${esc(E.x[0])} ← → ${esc(E.x[1])}</span></dd><dt>${esc(U.yAxis)}</dt><dd>${esc(E.yq)}<br><span style="color:var(--ink-2)">${esc(E.y[0])} ↓ ↑ ${esc(E.y[1])}</span></dd>`;
+  const box=document.getElementById("era-plot");box.innerHTML="";
+  const S=440,M=46,P=S-2*M,u=P/20,cx=S/2,cy=S/2;
+  const X=v=>cx+v*u,Y=v=>cy-v*u;
+  const svg=el("svg",{viewBox:`0 0 ${S} ${S}`,role:"img","aria-label":fmt(U.eraAria,{era:t.n,x0:E.x[0],x1:E.x[1],y0:E.y[0],y1:E.y[1]})},box);
+  for(let g=-10;g<=10;g+=5){if(g===0)continue;el("line",{x1:X(g),x2:X(g),y1:M,y2:S-M,class:"ax-grid"},svg);el("line",{x1:M,x2:S-M,y1:Y(g),y2:Y(g),class:"ax-grid"},svg)}
+  el("line",{x1:M-6,x2:S-M+6,y1:cy,y2:cy,class:"ax-line"},svg);el("line",{x1:cx,x2:cx,y1:M-6,y2:S-M+6,class:"ax-line"},svg);
+  el("path",{d:`M${S-M+6},${cy} l-7,-4 v8 z M${M-6},${cy} l7,-4 v8 z M${cx},${M-6} l-4,7 h8 z M${cx},${S-M+6} l-4,-7 h8 z`,style:"fill:var(--ink-2)"},svg);
+  const lb=(x,y,txt,anc)=>{const e=el("text",{x,y,class:"ax-lbl","text-anchor":anc},svg);e.textContent=txt};
+  lb(M-4,cy+20,E.x[0],"start");lb(S-M+4,cy+20,E.x[1],"end");lb(cx,M-14,E.y[1],"middle");lb(cx,S-M+26,E.y[0],"middle");
+  E.p.forEach(([id,x,y,an])=>{
+    const i=BY[id];if(!i)return;const col=laneVar(i.l),born=i.s===k;
+    const g=el("g",{class:"pt",tabindex:"0",role:"button","aria-label":i.n},svg);
+    el("circle",{cx:X(x),cy:Y(y),r:6.5,style:born?`fill:${col};stroke:${col};stroke-width:2`:`fill:var(--surface);stroke:${col};stroke-width:2.2`},g);
+    const tx=el("text",{x:an==="l"?X(x)-10:X(x)+10,y:Y(y)+4,"text-anchor":an==="l"?"end":"start",style:`fill:${born?"var(--ink)":"var(--ink-2)"}`},g);tx.textContent=nm(i);
+    g.addEventListener("click",()=>openIsm(id));g.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openIsm(id)}});
+  });
+}
+const tabsEl=document.getElementById("era-tabs");
+tabsEl.innerHTML=TP.map((t,c)=>`<button type="button" role="tab" class="era-tab" id="era-tab-${c}" aria-selected="false">${esc(tpLabel(c,true))}</button>`).join("");
+tabsEl.querySelectorAll(".era-tab").forEach((b,c)=>{b.addEventListener("click",()=>drawEra(c));b.addEventListener("keydown",e=>{if(e.key==="ArrowRight"||e.key==="ArrowLeft"){e.preventDefault();const n=(eraIdx+(e.key==="ArrowRight"?1:-1)+ERA.length)%ERA.length;drawEra(n);tabsEl.children[n].focus()}})});
+
+// 4. mind map
+const mmState={tp:TP.map(()=>true),sh:TP.map(()=>false)};
+function tw(s,fs){let w=0;for(const ch of s){w+=/[ㄱ-힝①-⑳]/.test(ch)?fs*1.0:(/[A-Z]/.test(ch)?fs*.68:(/[mw]/.test(ch)?fs*.8:(/[il.,·'’ ]/.test(ch)?fs*.32:fs*.56)))}return w}
+function drawMM(){
+  const box=document.getElementById("mm-box");box.innerHTML="";
+  const NH=24;
+  const tpW=Math.max(...TP.map((t,c)=>tw(tpLabel(c),13)+22));
+  const rootW=tw(D.mmRoot,13)+22;
+  const X=[8,8+rootW+40,8+rootW+40+tpW+40,0];
+  const grpW=Math.max(...TP.map(()=>tw(U.mmGroup+" +",13)+22));X[3]=X[2]+grpW+30;
+  const root={label:D.mmRoot,kind:"root",depth:0,kids:[]};
+  TP.forEach((t,c)=>{
+    const n={label:tpLabel(c),kind:"tp",c,depth:1,open:mmState.tp[c],kids:[]};
+    const g={label:`${U.mmGroup} ${mmState.sh[c]?"−":"+"}`,kind:"grp",c,depth:2,open:mmState.sh[c],kids:t.sh.map((s,k)=>({label:`${AXS[k]}: ${s[2]}`,kind:"shift",depth:3,kids:[]}))};
+    n.kids.push(g);
+    ISMS.filter(i=>i.s===c).forEach(i=>n.kids.push({label:i.n,kind:"ism",id:i.id,l:i.l,depth:2,kids:[]}));
+    root.kids.push(n);
+  });
+  let leaf=0;
+  (function lay(n){const vis=(n.kind==="root"||n.open)?n.kids:[];n._vis=vis;if(vis.length){vis.forEach(lay);n.y=(vis[0].y+vis[vis.length-1].y)/2}else{n.y=20+leaf*NH;leaf++}n.x=X[n.depth]})(root);
+  const H=leaf*NH+30;let maxX=0;
+  const all=[];(function walk(n){all.push(n);n._vis.forEach(walk)})(root);
+  all.forEach(n=>{const fs=n.kind==="ism"||n.kind==="shift"?12.5:13;n.w=(n.kind==="root"||n.kind==="tp"||n.kind==="grp")?tw(n.label,fs)+22:tw(n.label,fs)+14;maxX=Math.max(maxX,n.x+n.w+16)});
+  const svg=el("svg",{width:maxX,height:H,viewBox:`0 0 ${maxX} ${H}`,role:"img","aria-label":U.mmAria},box);
+  const lg=el("g",{},svg),ng=el("g",{},svg);
+  all.forEach(n=>n._vis.forEach(k=>{const sx=n.x+n.w,sy=n.y,ex=k.x,ey=k.y,mx=(sx+ex)/2;const color=k.kind==="ism"?laneVar(k.l):(k.kind==="shift"||k.kind==="grp")?"var(--ink-2)":"var(--accent)";el("path",{d:`M${sx},${sy} C${mx},${sy} ${mx},${ey} ${ex},${ey}`,class:"mm-link",style:`stroke:${color}`},lg)}));
+  all.forEach(n=>{
+    if(n.kind==="root"||n.kind==="tp"||n.kind==="grp"){
+      const g=el("g",{class:"mm-pill",tabindex:n.kind==="root"?"-1":"0",role:n.kind==="root"?"presentation":"button"},ng);
+      el("rect",{x:n.x,y:n.y-12,width:n.w,height:24,rx:12,style:n.kind==="root"?"fill:var(--accent);stroke:var(--accent)":n.kind==="tp"?"fill:var(--surface);stroke:var(--accent)":"fill:var(--paper);stroke:var(--line)"},g);
+      const t=el("text",{x:n.x+11,y:n.y+4.5,style:n.kind==="root"?"fill:var(--surface)":n.kind==="grp"?"fill:var(--ink-2);font-weight:500":""},g);t.textContent=n.label+(n.kind==="tp"&&!n.open?"  +":"");
+      if(n.kind!=="root"){const tog=()=>{if(n.kind==="tp")mmState.tp[n.c]=!mmState.tp[n.c];else mmState.sh[n.c]=!mmState.sh[n.c];drawMM()};g.addEventListener("click",tog);g.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();tog()}})}
+    }else if(n.kind==="ism"){
+      const g=el("g",{class:"mm-leaf",tabindex:"0",role:"button"},ng);
+      el("circle",{cx:n.x+4,cy:n.y,r:4.5,style:`fill:${laneVar(n.l)}`},g);
+      const t=el("text",{x:n.x+13,y:n.y+4.5},g);t.textContent=n.label;
+      g.addEventListener("click",()=>openIsm(n.id));g.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openIsm(n.id)}});
+    }else{
+      const g=el("g",{class:"mm-shift"},ng);el("circle",{cx:n.x+3,cy:n.y,r:2.5,style:"fill:var(--ink-2)"},g);const t=el("text",{x:n.x+11,y:n.y+4},g);t.textContent=n.label;
+    }
+  });
+}
+document.getElementById("mm-expand").addEventListener("click",()=>{mmState.tp=mmState.tp.map(()=>true);mmState.sh=mmState.sh.map(()=>true);drawMM()});
+document.getElementById("mm-collapse").addEventListener("click",()=>{mmState.tp=mmState.tp.map(()=>true);mmState.sh=mmState.sh.map(()=>false);drawMM()});
+
+// 5. dictionary
+function kv(i){return `<dl class="kv"><dt>${esc(U.thinkers)}</dt><dd>${esc(i.who)}</dd><dt>${esc(U.works)}</dt><dd>${esc(i.works)}</dd></dl>`}
+document.getElementById("dict").innerHTML=TP.map((t,c)=>{
+  const items=ISMS.filter(i=>i.s===c);
+  return `<div class="dict-group"><h3>${esc(tpLabel(c))}<span>${esc(t.y)} · ${esc(fmt(U.count,{n:items.length}))}</span></h3><div class="cards">${items.map(i=>`
+  <article class="card" id="ism-${i.id}" style="--lane:${laneVar(i.l)}">
+    <h4>${esc(i.n)}${i.alt?`<span class="en">${esc(i.alt)}</span>`:""}</h4>
+    <div class="meta"><span class="lane">${esc(LANES[i.l].n)}</span><span>${esc(i.y)}</span><span>${esc(status(i))}</span></div>
+    <p>${esc(i.core)}</p>
+    <p class="prop">${esc(i.prop)}</p>
+    ${kv(i)}
+    <button type="button" class="open" data-ism="${i.id}">${esc(U.showRel)}</button>
+  </article>`).join("")}</div></div>`}).join("");
+
+// detail sheet
+const sheet=document.getElementById("sheet"),back=document.getElementById("backdrop");let lastFocus=null;
+function openIsm(id){
+  const i=BY[id];if(!i)return;
+  if(sheet.hidden)lastFocus=document.activeElement;
+  const from=i.f.filter(([p])=>BY[p]);
+  const fc=from.filter(x=>x[1]==="c").map(x=>BY[x[0]]),fr=from.filter(x=>x[1]==="r").map(x=>BY[x[0]]);
+  const kc=KIDS[id].filter(x=>x[1]==="c").map(x=>BY[x[0]]),kr=KIDS[id].filter(x=>x[1]==="r").map(x=>BY[x[0]]);
+  const rel=(lbl,arr)=>arr.length?`<div class="chips"><span class="lbl">${esc(lbl)}</span>${arr.map(chip).join("")}</div>`:"";
+  sheet.style.setProperty("--lane",laneVar(i.l));
+  sheet.innerHTML=`<div class="grab"></div><button type="button" class="x" id="sheet-x" aria-label="${esc(U.close)}">×</button>
+   <h3 id="sheet-title">${esc(i.n)}</h3><div class="meta" style="--lane:${laneVar(i.l)};margin-top:4px"><span class="lane">${esc(LANES[i.l].n)}</span>${i.alt?`<span>${esc(i.alt)}</span>`:""}</div>
+   <div class="body">
+    <div class="meta"><span>${esc(U.born)}: ${esc(tpLabel(i.s))}</span><span>${esc(U.period)}: ${esc(i.y)}</span><span>${esc(status(i))}</span></div>
+    <p style="margin:0">${esc(i.core)}</p>
+    <p class="prop" style="--lane:${laneVar(i.l)};margin:0">${esc(i.prop)}</p>
+    ${kv(i)}
+    <div class="rel">${rel(U.relFromC,fc)}${rel(U.relFromR,fr)}${rel(U.relToC,kc)}${rel(U.relToR,kr)}</div>
+   </div>`;
+  sheet.hidden=false;back.hidden=false;
+  document.getElementById("sheet-x").addEventListener("click",closeSheet);
+  sheet.querySelectorAll("[data-ism]").forEach(b=>b.addEventListener("click",()=>openIsm(b.dataset.ism)));
+  sheet.scrollTop=0;
+  document.getElementById("sheet-x").focus({preventScroll:true});
+  highlight(id);
+}
+function closeSheet(){sheet.hidden=true;back.hidden=true;clearHL();if(lastFocus&&lastFocus.focus)lastFocus.focus({preventScroll:true})}
+back.addEventListener("click",closeSheet);
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!sheet.hidden)closeSheet()});
+document.addEventListener("click",e=>{const b=e.target.closest("[data-ism]");if(b&&!sheet.contains(b))openIsm(b.dataset.ism)});
+
+drawFlow();drawEra(1);drawMM();
+</script>
+</body>
+</html>

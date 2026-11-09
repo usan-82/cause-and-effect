@@ -10,7 +10,14 @@
 
 > 조사 자료의 `[미확인]` 표시는 출처로 검증하지 못한 내용이다. 원고에 쓰기 전에 원문 확인이 필요하다.
 
-## 사상의 분기점 (인터랙티브 페이지)
+## 사상의 분기점 / ism (인터랙티브 페이지)
 
-- [`turning-points/index.html`](turning-points/index.html) — 과학혁명부터 AI혁명까지 7개 분기점과 52개 사상(ism)을 정리한 페이지. 분기점별 기준 변화, 사상 흐름도, 시대별 사상그래프(x·y축), 마인드맵, 사상 사전.
-- 웹에서 보기: https://usan-82.github.io/cause-and-effect/turning-points/ (GitHub Pages 활성화 후)
+과학혁명부터 AI혁명까지 7개 분기점과 53개 사상(ism)을 정리한 페이지. 분기점별 기준 변화, 사상 흐름도, 시대별 사상그래프(x·y축), 마인드맵, 사상 사전.
+
+| 언어 | 파일 | 웹 (GitHub Pages 활성화 후) |
+|---|---|---|
+| 한국어 | [`ko/ism/`](ko/ism/index.html) | https://usan-82.github.io/cause-and-effect/ko/ism/ |
+| English | [`en/ism/`](en/ism/index.html) | https://usan-82.github.io/cause-and-effect/en/ism/ |
+| Bahasa Indonesia | [`id/ism/`](id/ism/index.html) | https://usan-82.github.io/cause-and-effect/id/ism/ |
+
+소스와 빌드 방법은 [`_src/ism/`](_src/ism/README.md).
