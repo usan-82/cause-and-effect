@@ -21,3 +21,15 @@
 | Bahasa Indonesia | [`id/ism/`](id/ism/index.html) | https://usan-82.github.io/cause-and-effect/id/ism/ |
 
 소스와 빌드 방법은 [`_src/ism/`](_src/ism/README.md).
+
+## 패권의 지도 / hegemony/atlas (인터랙티브 지도)
+
+1492~2010년 16개 시점의 세계 국경 위에 패권 경쟁 주역을 칠하고, 시점마다 패권 구도 · 사건과 손익 · 기술 발전 · 사상 발전을 정리한 페이지. 해협·운하·거점 같은 요충지 19곳은 지배 세력을 따로 확인해 표시했다.
+
+| 언어 | 파일 | 웹 (GitHub Pages 활성화 후) |
+|---|---|---|
+| 한국어 | [`ko/hegemony/atlas/`](ko/hegemony/atlas/index.html) | https://usan-82.github.io/cause-and-effect/ko/hegemony/atlas/ |
+
+> 지도·데이터 파일을 불러오는 구조라, 파일을 내려받아 더블클릭으로 열면 지도가 뜨지 않는다. 웹 주소나 로컬 서버(`python3 -m http.server`)로 연다.
+
+소스와 빌드 방법은 [`_src/hegemony/atlas/`](_src/hegemony/atlas/README.md).
