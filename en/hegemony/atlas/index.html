@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atlas of Hegemony 1492–2010</title>
+<meta name="description" content="An interactive world map of 16 moments from 1492 to 2010, layering the struggle for hegemony, who gained and lost from key events, and developments in technology and ideas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&family=Noto+Serif:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sans:"Noto Sans"; --serif:"Noto Serif";
+  color-scheme: light;
+  --bg:#f6f4ef; --surface:#fcfcfb; --ink:#1b1a18; --ink2:#55534e; --muted:#8a877f; --line:#e2dfd7;
+  --ocean:#e9eef1; --grat:#d9e1e6; --land:#dcd8cf; --land0:#ebe8e1; --border:#ffffff;
+  --gain:#0b7a3b; --loss:#b3362f;
+  --c-blue:#2a78d6; --c-orange:#eb6834; --c-aqua:#1baf7a; --c-yellow:#eda100;
+  --c-magenta:#e87ba4; --c-green:#008300; --c-violet:#6250d6; --c-red:#e34948;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    color-scheme: dark;
+    --bg:#141413; --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#8f8d85; --line:#2f2e2b;
+    --ocean:#1d2226; --grat:#262d32; --land:#3a3935; --land0:#2d2c29; --border:#1a1a19;
+    --gain:#4cc27e; --loss:#ef7d75;
+    --c-blue:#3987e5; --c-orange:#d95926; --c-aqua:#199e70; --c-yellow:#c98500;
+    --c-magenta:#d55181; --c-green:#008300; --c-violet:#9085e9; --c-red:#e66767;
+  }
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans),system-ui,sans-serif;font-size:15px;line-height:1.6;-webkit-text-size-adjust:100%}
+h1,h2,h3{font-family:var(--serif),serif;margin:0;line-height:1.3}
+a{color:var(--c-blue)}
+.wrap{max-width:1320px;margin:0 auto;padding:16px 14px 40px}
+header{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+header h1{font-size:22px}
+header p{margin:0;color:var(--ink2);font-size:13px}
+.layout{display:grid;gap:14px}
+.layout>*{min-width:0}
+@media(min-width:1000px){.layout{grid-template-columns:minmax(0,1.55fr) minmax(360px,1fr);align-items:start}.panel{position:sticky;top:12px;max-height:calc(100vh - 24px);overflow:auto}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px}
+.mapcard{position:relative;overflow:hidden}
+#map{display:block;width:100%;height:auto;touch-action:none;cursor:grab;background:var(--ocean)}
+#map:active{cursor:grabbing}
+.sphere{fill:var(--ocean)}
+.grat{fill:none;stroke:var(--grat);stroke-width:.6;vector-effect:non-scaling-stroke}
+.poly{stroke:var(--border);stroke-width:.35;vector-effect:non-scaling-stroke;transition:fill .35s,opacity .25s}
+.poly.sel{stroke:var(--ink);stroke-width:1.4}
+.lbl{font-family:var(--sans),sans-serif;font-weight:700;fill:var(--ink);paint-order:stroke;stroke:var(--surface);stroke-width:3px;stroke-linejoin:round;text-anchor:middle;pointer-events:none}
+.zoom{position:absolute;right:10px;top:10px;display:flex;flex-direction:column;gap:6px}
+.zoom button,.ctl button{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;min-width:36px;height:36px;font-size:17px;cursor:pointer}
+.yearbadge{position:absolute;left:12px;top:8px;font-family:var(--serif),serif;font-size:34px;font-weight:700;color:var(--ink);opacity:.85;pointer-events:none;text-shadow:0 0 6px var(--ocean)}
+.info{position:absolute;left:10px;right:10px;bottom:10px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:9px 12px;font-size:13px;display:none;box-shadow:0 4px 18px rgba(0,0,0,.12)}
+.info b{font-size:14px}
+.info .x{position:absolute;right:6px;top:2px;border:0;background:none;color:var(--muted);font-size:18px;cursor:pointer}
+.info .meta{color:var(--ink2)}
+.info .fix{color:var(--c-orange);margin-top:2px}
+.ctl{display:flex;align-items:center;gap:8px;padding:10px 10px 6px}
+.years{display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;padding:2px 2px 8px;flex:1;scroll-snap-type:x proximity}
+.years button{flex:0 0 auto;scroll-snap-align:center;border:1px solid var(--line);background:transparent;color:var(--ink2);border-radius:999px;padding:4px 11px;font:500 13px var(--sans),sans-serif;cursor:pointer;min-height:32px}
+.years button.on{background:var(--ink);color:var(--surface);border-color:var(--ink)}
+.legend{display:flex;flex-wrap:wrap;gap:6px;padding:0 10px 12px}
+.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:999px;padding:3px 10px 3px 6px;font-size:13px;background:transparent;color:var(--ink);cursor:pointer;min-height:30px}
+.chip i{width:14px;height:14px;border-radius:4px;display:inline-block}
+.chip.dim{opacity:.4}
+.chip.neutral i{background:var(--land)}
+.hint{color:var(--muted);font-size:12px;padding:0 12px 10px}
+.panel{padding:16px}
+.era{color:var(--muted);font-size:12px;letter-spacing:.04em}
+.panel h2{font-size:21px;margin:2px 0 12px}
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);margin-bottom:12px;overflow-x:auto}
+.tabs button{border:0;background:none;color:var(--ink2);font:500 14px var(--sans),sans-serif;padding:8px 10px;border-bottom:2px solid transparent;cursor:pointer;white-space:nowrap;min-height:40px}
+.tabs button.on{color:var(--ink);border-bottom-color:var(--ink);font-weight:700}
+ul.pts{margin:0;padding-left:18px}
+ul.pts li{margin-bottom:8px}
+.ev{border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin-bottom:10px}
+.ev h3{font-family:var(--sans),sans-serif;font-size:14.5px;margin-bottom:6px}
+.row{display:grid;grid-template-columns:42px 1fr;gap:6px;font-size:14px;margin-top:3px}
+.tag{font-size:12px;font-weight:700;border-radius:5px;padding:1px 0;text-align:center;height:fit-content}
+.tag.g{color:var(--gain);border:1px solid var(--gain)}
+.tag.l{color:var(--loss);border:1px solid var(--loss)}
+.note{font-size:12.5px;color:var(--ink2);border-top:1px solid var(--line);margin-top:14px;padding-top:10px}
+.note h4{margin:0 0 4px;font-size:13px;color:var(--ink)}
+.note ul{margin:0;padding-left:16px}
+.links a{display:inline-block;margin-right:10px}
+.foot{font-size:12px;color:var(--muted);margin-top:16px;line-height:1.7}
+.yearbadge{font-size:clamp(20px,5vw,34px)}
+.ck{cursor:pointer}
+.ck .dia{stroke:var(--surface);stroke-width:1.6;vector-effect:non-scaling-stroke}
+.ck .ring{fill:none;stroke:var(--ink);stroke-width:1.3;stroke-dasharray:2.5 2;vector-effect:non-scaling-stroke}
+.ck .hit{fill:transparent}
+.cklist{list-style:none;padding:0;margin:6px 0 0}
+.cklist li{display:grid;grid-template-columns:16px 1fr;gap:8px;padding:7px 0;border-top:1px dashed var(--line);font-size:13px;cursor:pointer}
+.cklist li:first-child{border-top:0}
+.cklist .d{width:11px;height:11px;transform:rotate(45deg);margin:5px 0 0 2px;border:1.5px solid var(--surface);outline:1px solid var(--line)}
+.cklist b{font-weight:700}
+.warn{color:var(--loss);font-weight:500}
+.info .warn{margin-top:3px}
+.loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:13px;pointer-events:none}
+.langs{display:flex;gap:10px;font-size:13px;margin-left:auto}
+.langs span{font-weight:700}
+.langs a{color:var(--ink2);text-decoration:none}
+.langs a:hover{text-decoration:underline}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Atlas of Hegemony 1492–2010</h1>
+    <p>Over each year's borders: the struggle for hegemony · gains and losses · technology · ideas</p>
+    <nav class="langs" aria-label="Language"><a href="../../../ko/hegemony/atlas/" hreflang="ko" lang="ko">한국어</a><span aria-current="page">English</span><a href="../../../id/hegemony/atlas/" hreflang="id" lang="id">Bahasa Indonesia</a></nav>
+  </header>
+  <div class="layout">
+    <div>
+      <div class="card mapcard">
+        <svg id="map" role="img" aria-label="World map by year"></svg>
+        <div class="yearbadge" id="badge"></div>
+        <div class="zoom"><button id="zin" aria-label="Zoom in">+</button><button id="zout" aria-label="Zoom out">−</button><button id="zreset" aria-label="Show whole map" style="font-size:13px">⤢</button></div>
+        <div class="info" id="info"></div>
+        <div class="loading" id="loading">Loading map…</div>
+      </div>
+      <div class="card" style="margin-top:10px">
+        <div class="ctl">
+          <button id="prev" aria-label="Previous year">‹</button>
+          <div class="years" id="years"></div>
+          <button id="next" aria-label="Next year">›</button>
+          <button id="play" aria-label="Play" style="font-size:14px">▶</button>
+        </div>
+        <div class="legend" id="legend"></div>
+        <div class="hint">Coloured countries are the main contenders for hegemony at this point (colonies and dependencies included). Tap a name to highlight only that country; tap an area of the map for its source data. ◆ marks a strategic point such as a strait, canal or base, whose ruler at this time was checked separately. A dotted ring (◌) means the map colour differs from who actually ruled it.</div>
+      </div>
+    </div>
+    <aside class="card panel" id="panel"></aside>
+  </div>
+  <div class="foot">Border data: <a href="https://github.com/aourednik/historical-basemaps">historical-basemaps</a> (André Ourednik et al., GPL-3.0) — simplified, with clear errors in sovereignty labels corrected year by year (see ‘Data corrections’ for each year). The source is a work in progress, and borders before the modern era are approximations of spheres of influence. ‘Border precision’ in the area details is the source's own value (1 rough · 2 medium · 3 precise). The rulers of the 19 ◆ strategic points (straits, canals, bases) were checked year by year independently of the map data; where they disagree with the map colour, this is listed under ‘Strategic points’ in the panel. Because the gaps between years are uneven, ‘Gains and losses’ covers the main events since the previous year shown.</div>
+</div>
+<script src="lib/d3.min.js"></script>
+<script src="lib/topojson-client.min.js"></script>
+<script>
+(async function(){
+const UI = {"tabs":["Balance of power","Gains and losses","Technology","Ideas"],"era":"{prev} → c. {year}","eraFirst":"c. {year}","gain":"Gain","loss":"Loss","readMore":"Read more","fixesTitle":"Data corrections for this year","andMore":" and {n} more","others":"Other states and powers","ckShown":"Strategic points on","ckHidden":"Strategic points off","ckTitle":"Strategic points — {n}","ckTitleDiff":", {m} differ from the map colour","ckTitleOk":", all match the map","ckDiff":"⚠ differs from map colour","ckAbsent":"(not drawn on map)","ckRuler":"Ruler c. {year}:","ckAbsentLong":"The source border data does not draw this point (a small island or base). This marker is the checked value.","ckDiffLong":"⚠ This differs from the map colour. The source border data draws this point as {map}. Small places such as bases and straits get swallowed by the surrounding area, or the source label is wrong — this marker is the checked value.","ckMapNone":"an area it does not draw","otherPower":"other power","unnamed":"Unnamed area","srcSubj":"Sovereign (source)","cls":"Group","prec":"Border precision","precVals":["rough","medium","precise"],"noInfo":"no data","fix":"Correction","close":"Close"};
+const HUE={gb:'red',fr:'blue',es:'yellow',pt:'green',nl:'orange',ru:'violet',ot:'aqua',cn:'magenta',us:'aqua',de:'yellow',at:'magenta',jp:'orange',it:'green',be:'aqua',mg:'orange'};
+const col=k=>`var(--c-${HUE[k]})`;
+const fmt=(s,o)=>s.replace(/\{(\w+)\}/g,(_,k)=>o[k]);
+const [content, meta] = await Promise.all([fetch('content.json').then(r=>r.json()), fetch('meta.json').then(r=>r.json())]);
+function shortName(k,y){ const L=content.short[k]; if(!L) return k; for(const [until,label] of L) if(y<until) return label; return L[L.length-1][1]; }
+const YEARS = content.years.map(d=>d.year);
+const byYear = Object.fromEntries(content.years.map(d=>[d.year,d]));
+const cache = {};
+// 뒤집힌 고리(지구 전체를 덮는 폴리곤)를 바로잡는다
+function rewind(f){
+  const gm=f.geometry; if(!gm) return f;
+  const polys=gm.type==='Polygon'?[gm.coordinates]:gm.type==='MultiPolygon'?gm.coordinates:[];
+  for(const poly of polys){ for(let i=0;i<poly.length;i++){ const ring={type:'Polygon',coordinates:[poly[i]]}; if(d3.geoArea(ring)>2*Math.PI) poly[i]=poly[i].slice().reverse(); } }
+  return f;
+}
+const load = y => cache[y] ||= fetch(`data/${y}.json`).then(r=>r.json()).then(t=>topojson.feature(t,t.objects.w).features.map(rewind).filter(f=>f.geometry));
+
+// ---- map setup
+const W=960,H=500;
+const svg=d3.select('#map').attr('viewBox',`0 0 ${W} ${H}`);
+const proj=d3.geoNaturalEarth1().fitExtent([[6,6],[W-6,H-6]],{type:'Sphere'});
+const path=d3.geoPath(proj);
+const g=svg.append('g');
+g.append('path').attr('class','sphere').attr('d',path({type:'Sphere'}));
+g.append('path').attr('class','grat').attr('d',path(d3.geoGraticule10()));
+const gPoly=g.append('g'), gCk=g.append('g'), gLbl=g.append('g');
+let ckOn=true;
+const MK=()=>document.getElementById('map').clientWidth<640?2:1;
+let k=1;
+const LBL=()=>document.getElementById('map').clientWidth<640?24:13;
+const zoom=d3.zoom().scaleExtent([1,12]).translateExtent([[0,0],[W,H]]).on('zoom',e=>{k=e.transform.k;g.attr('transform',e.transform);gLbl.selectAll('text').attr('font-size',LBL()/Math.sqrt(k)).style('stroke-width',3/k+'px');gCk.selectAll('g.inner').attr('transform',`scale(${MK()/k})`);});
+svg.call(zoom).on('dblclick.zoom',null);
+d3.select('#zin').on('click',()=>svg.transition().duration(300).call(zoom.scaleBy,1.6));
+d3.select('#zout').on('click',()=>svg.transition().duration(300).call(zoom.scaleBy,1/1.6));
+d3.select('#zreset').on('click',()=>svg.transition().duration(400).call(zoom.transform,d3.zoomIdentity));
+
+// ---- state
+let year=YEARS[0], tab='power', focus=null, timer=null, selEl=null;
+const h=(location.hash||'').match(/^#y(\d{4})$/); if(h&&byYear[+h[1]]) year=+h[1];
+const info=document.getElementById('info');
+const fixText=id=>content.fixes[id]||'';
+
+function fill(d,rivals){
+  const p=d.properties.p;
+  if(p && rivals.includes(p)) return (focus && focus!==p) ? 'var(--land)' : col(p);
+  return d.properties.n ? 'var(--land)' : 'var(--land0)';
+}
+function esc(s){return String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+function closeBtn(){return `<button class="x" aria-label="${esc(UI.close)}">×</button>`;}
+function showInfo(d){
+  const p=d.properties, prec=UI.precVals[p.b-1]||UI.noInfo;
+  info.innerHTML=closeBtn()+`<b>${esc(p.n||UI.unnamed)}</b>`+
+    `<div class="meta">${p.s?esc(UI.srcSubj)+': '+esc(p.s)+' · ':''}${p.p?esc(UI.cls)+': '+esc(shortName(p.p,year))+' · ':''}${esc(UI.prec)}: ${esc(prec)}</div>`+
+    (p.f?`<div class="fix">${esc(UI.fix)}: ${esc(fixText(p.f))}</div>`:'');
+  info.style.display='block';
+  info.querySelector('.x').onclick=()=>{info.style.display='none';if(selEl)selEl.classList.remove('sel');};
+}
+const ckList=()=>meta.choke[year].map(c=>({...c,...content.choke[c.id][year]}));
+function ckColor(c){return c.k&&byYear[year].rivals.includes(c.k)?col(c.k):'var(--ink2)';}
+function showCk(c){
+  const mapLabel=c.absent?esc(UI.ckMapNone):`‘${esc(c.mapName||UI.unnamed)}’(${esc(c.mapKey?shortName(c.mapKey,year):UI.otherPower)})`;
+  info.innerHTML=closeBtn()+`<b>◆ ${esc(c.name)}</b>`+
+   `<div>${esc(fmt(UI.ckRuler,{year}))} <b style="font-size:13px">${esc(c.who)}</b></div>`+
+   (c.note?`<div class="meta">${esc(c.note)}</div>`:'')+
+   (c.absent?`<div class="meta">${esc(UI.ckAbsentLong)}</div>`:'')+
+   (c.vis?`<div class="warn">${esc(UI.ckDiffLong).replace('{map}',mapLabel)}</div>`:'');
+  info.style.display='block';
+  info.querySelector('.x').onclick=()=>{info.style.display='none';};
+}
+function drawCk(){
+  const list=ckOn?ckList():[];
+  const sel=gCk.selectAll('g.ck').data(list,c=>c.id).join(en=>{const a=en.append('g').attr('class','ck');const i=a.append('g').attr('class','inner');i.append('circle').attr('class','hit').attr('r',9);i.append('circle').attr('class','ring').attr('r',7);i.append('path').attr('class','dia').attr('d','M0,-4.6L4.6,0L0,4.6L-4.6,0Z');return a;});
+  sel.attr('transform',c=>`translate(${proj(c.ll)})`).on('click',(e,c)=>{e.stopPropagation();if(selEl)selEl.classList.remove('sel');showCk(c);});
+  sel.select('g.inner').attr('transform',`scale(${MK()/k})`);
+  sel.select('.dia').attr('fill',ckColor);
+  sel.select('.ring').attr('display',c=>c.vis?null:'none');
+}
+async function drawMap(){
+  const feats=await load(year); document.getElementById('loading').style.display='none';
+  const c=byYear[year], rivals=c.rivals;
+  gPoly.selectAll('path').data(feats,(d,i)=>year+'-'+i).join('path')
+    .attr('class','poly').attr('d',path).attr('fill',d=>fill(d,rivals))
+    .on('click',function(e,d){ if(selEl) selEl.classList.remove('sel'); selEl=this; this.classList.add('sel'); showInfo(d); });
+  const L=meta.labels[year]||{};
+  gLbl.selectAll('text').data(rivals.filter(r=>L[r]),r=>r).join('text').attr('class','lbl')
+    .attr('x',r=>proj(L[r])[0]).attr('y',r=>proj(L[r])[1]).attr('font-size',LBL()/Math.sqrt(k)).style('stroke-width',3/k+'px')
+    .attr('opacity',r=>focus&&focus!==r?.25:1).text(r=>shortName(r,year));
+  const placed=[]; gLbl.selectAll('text').each(function(r){ let [x,y]=proj(L[r]); for(let n=0;n<4&&placed.some(([a,b])=>Math.abs(a-x)<LBL()*3.6&&Math.abs(b-y)<LBL());n++) y+=LBL()*1.1; placed.push([x,y]); d3.select(this).attr('y',y); });
+  drawCk();
+  document.getElementById('badge').textContent=year;
+  const i=YEARS.indexOf(year); [YEARS[i+1],YEARS[i-1]].forEach(y=>y&&load(y));
+}
+function recolor(){
+  const rivals=byYear[year].rivals;
+  gPoly.selectAll('path').attr('fill',d=>fill(d,rivals));
+  gLbl.selectAll('text').attr('opacity',r=>focus&&focus!==r?.25:1);
+  renderLegend(); drawCk();
+}
+function renderYears(){
+  const box=document.getElementById('years');
+  box.innerHTML=YEARS.map(y=>`<button data-y="${y}" class="${y===year?'on':''}">${y}</button>`).join('');
+  box.querySelectorAll('button').forEach(b=>b.onclick=()=>setYear(+b.dataset.y));
+  const on=box.querySelector('.on'); if(on) on.scrollIntoView({inline:'center',block:'nearest',behavior:'smooth'});
+}
+function renderLegend(){
+  const c=byYear[year];
+  const el=document.getElementById('legend');
+  el.innerHTML=c.rivals.map(r=>`<button class="chip ${focus&&focus!==r?'dim':''}" data-k="${r}" aria-pressed="${focus===r}"><i style="background:${col(r)}"></i>${esc(shortName(r,year))}</button>`).join('')+
+    `<span class="chip neutral" style="cursor:default"><i></i>${esc(UI.others)}</span>`+
+    `<button class="chip ${ckOn?'':'dim'}" id="cktog" aria-pressed="${ckOn}"><span style="font-size:12px">◆</span>${esc(ckOn?UI.ckShown:UI.ckHidden)}</button>`;
+  el.querySelectorAll('button[data-k]').forEach(b=>b.onclick=()=>{focus=focus===b.dataset.k?null:b.dataset.k;recolor();});
+  document.getElementById('cktog').onclick=()=>{ckOn=!ckOn;renderLegend();drawCk();};
+}
+const TABS=['power','events','tech','ideas'];
+function ckSection(){
+  const L=ckList(), bad=L.filter(c=>c.vis);
+  const ord=[...bad,...L.filter(c=>!c.vis)];
+  return `<div class="note"><h4>${esc(fmt(UI.ckTitle,{n:L.length}))}${esc(bad.length?fmt(UI.ckTitleDiff,{m:bad.length}):UI.ckTitleOk)}</h4><ul class="cklist">`+
+   ord.map(c=>`<li data-id="${c.id}"><span class="d" style="background:${ckColor(c)}"></span><span><b>${esc(c.name)}</b> — ${esc(c.who)}${c.vis?` <span class="warn">${esc(UI.ckDiff)}</span>`:''}${c.absent?` <span style="color:var(--muted)">${esc(UI.ckAbsent)}</span>`:''}${c.note?`<br><span style="color:var(--muted)">${esc(c.note)}</span>`:''}</span></li>`).join('')+`</ul></div>`;
+}
+function renderPanel(){
+  const c=byYear[year], i=YEARS.indexOf(year), prevY=YEARS[i-1];
+  const fixes=Object.entries(meta.fixes[year]||{});
+  const groups=[...new Set(fixes.map(([,f])=>f))].map(f=>[f,fixes.filter(x=>x[1]===f).map(x=>x[0])]);
+  let body='';
+  if(tab==='events') body=c.events.map(e=>`<div class="ev"><h3>${esc(e.t)}</h3><div class="row"><span class="tag g">${esc(UI.gain)}</span><span>${esc(e.g)}</span></div><div class="row"><span class="tag l">${esc(UI.loss)}</span><span>${esc(e.l)}</span></div></div>`).join('');
+  else body=`<ul class="pts">${c[tab].map(t=>`<li>${esc(t)}</li>`).join('')}</ul>`;
+  document.getElementById('panel').innerHTML=
+    `<div class="era">${esc(prevY?fmt(UI.era,{prev:prevY,year}):fmt(UI.eraFirst,{year}))}</div><h2>${esc(c.title)}</h2>`+
+    `<div class="tabs" role="tablist">${TABS.map((k2,j)=>`<button role="tab" data-t="${k2}" class="${tab===k2?'on':''}" aria-selected="${tab===k2}">${esc(UI.tabs[j])}</button>`).join('')}</div>`+
+    body+
+    `<div class="note"><h4>${esc(UI.readMore)}</h4><div class="links">${c.links.map(([t,u])=>`<a href="${u}" target="_blank" rel="noopener">${esc(t)}</a>`).join('')}</div></div>`+
+    ckSection()+
+    (groups.length?`<div class="note"><h4>${esc(UI.fixesTitle)}</h4><ul>${groups.map(([f,ns])=>`<li>${esc(fixText(f))} — <span style="color:var(--muted)">${esc(ns.slice(0,8).join(', '))}${ns.length>8?esc(fmt(UI.andMore,{n:ns.length-8})):''}</span></li>`).join('')}</ul></div>`:'');
+  document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{tab=b.dataset.t;renderPanel();});
+  document.querySelectorAll('.cklist li').forEach(li=>li.onclick=()=>{const c=ckList().find(x=>x.id===li.dataset.id);showCk(c);const [x,y2]=proj(c.ll);svg.transition().duration(600).call(zoom.transform,d3.zoomIdentity.translate(W/2,H/2).scale(4).translate(-x,-y2));document.querySelector('.mapcard').scrollIntoView({behavior:'smooth',block:'nearest'});});
+}
+async function setYear(y){
+  year=y; focus=null; info.style.display='none'; selEl=null;
+  try{ if(location.hash!=='#y'+y) history.replaceState(null,'','#y'+y);}catch(e){}
+  renderYears(); renderLegend(); renderPanel(); await drawMap();
+}
+const step=dlt=>{const i=YEARS.indexOf(year)+dlt; if(i>=0&&i<YEARS.length) setYear(YEARS[i]);};
+document.getElementById('prev').onclick=()=>step(-1);
+document.getElementById('next').onclick=()=>step(1);
+document.getElementById('play').onclick=function(){
+  if(timer){clearInterval(timer);timer=null;this.textContent='▶';return;}
+  this.textContent='❚❚'; if(year===YEARS[YEARS.length-1]) setYear(YEARS[0]);
+  timer=setInterval(()=>{ if(year===YEARS[YEARS.length-1]){clearInterval(timer);timer=null;document.getElementById('play').textContent='▶';return;} step(1);},3200);
+};
+window.addEventListener('keydown',e=>{if(e.key==='ArrowRight')step(1);if(e.key==='ArrowLeft')step(-1);});
+window.addEventListener('hashchange',()=>{const m=location.hash.match(/^#y(\d{4})$/);if(m&&byYear[+m[1]]&&+m[1]!==year)setYear(+m[1]);});
+setYear(year);
+})();
+</script>
+</body>
+</html>

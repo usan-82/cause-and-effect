@@ -1,0 +1,1025 @@
+{
+ "years": [
+  {
+   "year": 1492,
+   "rivals": [
+    "es",
+    "pt",
+    "ot",
+    "cn"
+   ],
+   "links": [
+    [
+     "Fall of Constantinople",
+     "https://en.wikipedia.org/wiki/Fall_of_Constantinople"
+    ],
+    [
+     "Voyages of Christopher Columbus",
+     "https://en.wikipedia.org/wiki/Voyages_of_Christopher_Columbus"
+    ]
+   ]
+  },
+  {
+   "year": 1530,
+   "rivals": [
+    "es",
+    "at",
+    "fr",
+    "ot",
+    "pt"
+   ],
+   "links": [
+    [
+     "Treaty of Tordesillas",
+     "https://en.wikipedia.org/wiki/Treaty_of_Tordesillas"
+    ],
+    [
+     "Battle of Mohács",
+     "https://en.wikipedia.org/wiki/Battle_of_Moh%C3%A1cs"
+    ],
+    [
+     "Italian Wars",
+     "https://en.wikipedia.org/wiki/Italian_Wars"
+    ]
+   ]
+  },
+  {
+   "year": 1600,
+   "rivals": [
+    "es",
+    "pt",
+    "nl",
+    "gb",
+    "ot"
+   ],
+   "links": [
+    [
+     "Spanish Armada",
+     "https://en.wikipedia.org/wiki/Spanish_Armada"
+    ],
+    [
+     "Imjin War",
+     "https://en.wikipedia.org/wiki/Imjin_War"
+    ],
+    [
+     "Manila galleon",
+     "https://en.wikipedia.org/wiki/Manila_galleon"
+    ]
+   ]
+  },
+  {
+   "year": 1650,
+   "rivals": [
+    "nl",
+    "es",
+    "fr",
+    "gb"
+   ],
+   "links": [
+    [
+     "Peace of Westphalia",
+     "https://en.wikipedia.org/wiki/Peace_of_Westphalia"
+    ],
+    [
+     "Dutch East India Company",
+     "https://en.wikipedia.org/wiki/Dutch_East_India_Company"
+    ],
+    [
+     "Transition from Ming to Qing",
+     "https://en.wikipedia.org/wiki/Transition_from_Ming_to_Qing"
+    ]
+   ]
+  },
+  {
+   "year": 1700,
+   "rivals": [
+    "fr",
+    "gb",
+    "nl",
+    "at",
+    "ru"
+   ],
+   "links": [
+    [
+     "Treaty of Karlowitz",
+     "https://en.wikipedia.org/wiki/Treaty_of_Karlowitz"
+    ],
+    [
+     "Glorious Revolution",
+     "https://en.wikipedia.org/wiki/Glorious_Revolution"
+    ],
+    [
+     "Treaty of Nerchinsk",
+     "https://en.wikipedia.org/wiki/Treaty_of_Nerchinsk"
+    ]
+   ]
+  },
+  {
+   "year": 1715,
+   "rivals": [
+    "gb",
+    "fr",
+    "es",
+    "at"
+   ],
+   "links": [
+    [
+     "Peace of Utrecht",
+     "https://en.wikipedia.org/wiki/Peace_of_Utrecht"
+    ],
+    [
+     "Battle of Poltava",
+     "https://en.wikipedia.org/wiki/Battle_of_Poltava"
+    ]
+   ]
+  },
+  {
+   "year": 1783,
+   "rivals": [
+    "gb",
+    "fr",
+    "es",
+    "us",
+    "ru"
+   ],
+   "links": [
+    [
+     "Seven Years' War",
+     "https://en.wikipedia.org/wiki/Seven_Years%27_War"
+    ],
+    [
+     "Treaty of Paris (1783)",
+     "https://en.wikipedia.org/wiki/Treaty_of_Paris_(1783)"
+    ],
+    [
+     "Industrial Revolution",
+     "https://en.wikipedia.org/wiki/Industrial_Revolution"
+    ]
+   ]
+  },
+  {
+   "year": 1815,
+   "rivals": [
+    "gb",
+    "fr",
+    "ru",
+    "at",
+    "de"
+   ],
+   "links": [
+    [
+     "Congress of Vienna",
+     "https://en.wikipedia.org/wiki/Congress_of_Vienna"
+    ],
+    [
+     "Louisiana Purchase",
+     "https://en.wikipedia.org/wiki/Louisiana_Purchase"
+    ],
+    [
+     "Haitian Revolution",
+     "https://en.wikipedia.org/wiki/Haitian_Revolution"
+    ]
+   ]
+  },
+  {
+   "year": 1880,
+   "rivals": [
+    "gb",
+    "fr",
+    "ru",
+    "de",
+    "us"
+   ],
+   "links": [
+    [
+     "Opium Wars",
+     "https://en.wikipedia.org/wiki/Opium_Wars"
+    ],
+    [
+     "Franco-Prussian War",
+     "https://en.wikipedia.org/wiki/Franco-Prussian_War"
+    ],
+    [
+     "Congress of Berlin",
+     "https://en.wikipedia.org/wiki/Congress_of_Berlin"
+    ]
+   ]
+  },
+  {
+   "year": 1914,
+   "rivals": [
+    "gb",
+    "de",
+    "fr",
+    "ru",
+    "jp"
+   ],
+   "links": [
+    [
+     "Scramble for Africa",
+     "https://en.wikipedia.org/wiki/Scramble_for_Africa"
+    ],
+    [
+     "Russo-Japanese War",
+     "https://en.wikipedia.org/wiki/Russo-Japanese_War"
+    ],
+    [
+     "July Crisis",
+     "https://en.wikipedia.org/wiki/July_Crisis"
+    ]
+   ]
+  },
+  {
+   "year": 1920,
+   "rivals": [
+    "gb",
+    "fr",
+    "us",
+    "ru",
+    "jp"
+   ],
+   "links": [
+    [
+     "Treaty of Versailles",
+     "https://en.wikipedia.org/wiki/Treaty_of_Versailles"
+    ],
+    [
+     "League of Nations mandate",
+     "https://en.wikipedia.org/wiki/League_of_Nations_mandate"
+    ],
+    [
+     "March 1st Movement",
+     "https://en.wikipedia.org/wiki/March_1st_Movement"
+    ]
+   ]
+  },
+  {
+   "year": 1938,
+   "rivals": [
+    "de",
+    "jp",
+    "it",
+    "gb",
+    "ru"
+   ],
+   "links": [
+    [
+     "Munich Agreement",
+     "https://en.wikipedia.org/wiki/Munich_Agreement"
+    ],
+    [
+     "Mukden Incident",
+     "https://en.wikipedia.org/wiki/Mukden_incident"
+    ],
+    [
+     "Discovery of nuclear fission",
+     "https://en.wikipedia.org/wiki/Discovery_of_nuclear_fission"
+    ]
+   ]
+  },
+  {
+   "year": 1945,
+   "rivals": [
+    "us",
+    "ru",
+    "gb",
+    "fr"
+   ],
+   "links": [
+    [
+     "Yalta Conference",
+     "https://en.wikipedia.org/wiki/Yalta_Conference"
+    ],
+    [
+     "Division of Korea",
+     "https://en.wikipedia.org/wiki/Division_of_Korea"
+    ],
+    [
+     "Bretton Woods system",
+     "https://en.wikipedia.org/wiki/Bretton_Woods_system"
+    ]
+   ]
+  },
+  {
+   "year": 1960,
+   "rivals": [
+    "us",
+    "ru",
+    "cn",
+    "gb",
+    "fr"
+   ],
+   "links": [
+    [
+     "Year of Africa",
+     "https://en.wikipedia.org/wiki/Year_of_Africa"
+    ],
+    [
+     "Suez Crisis",
+     "https://en.wikipedia.org/wiki/Suez_Crisis"
+    ],
+    [
+     "Sino-Soviet split",
+     "https://en.wikipedia.org/wiki/Sino-Soviet_split"
+    ]
+   ]
+  },
+  {
+   "year": 1994,
+   "rivals": [
+    "us",
+    "ru",
+    "cn"
+   ],
+   "links": [
+    [
+     "Dissolution of the Soviet Union",
+     "https://en.wikipedia.org/wiki/Dissolution_of_the_Soviet_Union"
+    ],
+    [
+     "Gulf War",
+     "https://en.wikipedia.org/wiki/Gulf_War"
+    ],
+    [
+     "Southern Tour (Deng Xiaoping)",
+     "https://en.wikipedia.org/wiki/Deng_Xiaoping%27s_southern_tour"
+    ]
+   ]
+  },
+  {
+   "year": 2010,
+   "rivals": [
+    "us",
+    "cn",
+    "ru"
+   ],
+   "links": [
+    [
+     "2008 financial crisis",
+     "https://en.wikipedia.org/wiki/2008_financial_crisis"
+    ],
+    [
+     "China and the WTO",
+     "https://en.wikipedia.org/wiki/China_and_the_World_Trade_Organization"
+    ],
+    [
+     "Russo-Georgian War",
+     "https://en.wikipedia.org/wiki/Russo-Georgian_War"
+    ]
+   ]
+  }
+ ],
+ "choke": [
+  {
+   "id": "gibraltar",
+   "ll": [
+    -5.35,
+    36.14
+   ],
+   "r": [
+    [
+     1492,
+     1700,
+     "es"
+    ],
+    [
+     1715,
+     2010,
+     "gb"
+    ]
+   ]
+  },
+  {
+   "id": "bosporus",
+   "ll": [
+    28.98,
+    41.02
+   ],
+   "r": [
+    [
+     1492,
+     1914,
+     "ot"
+    ],
+    [
+     1920,
+     1920,
+     "ot"
+    ],
+    [
+     1938,
+     2010,
+     null
+    ]
+   ]
+  },
+  {
+   "id": "suez",
+   "ll": [
+    32.3,
+    30.6
+   ],
+   "r": [
+    [
+     1492,
+     1492,
+     null
+    ],
+    [
+     1530,
+     1783,
+     "ot"
+    ],
+    [
+     1815,
+     1815,
+     "ot"
+    ],
+    [
+     1880,
+     1880,
+     "ot"
+    ],
+    [
+     1914,
+     1920,
+     "gb"
+    ],
+    [
+     1938,
+     1945,
+     null
+    ],
+    [
+     1960,
+     2010,
+     null
+    ]
+   ]
+  },
+  {
+   "id": "malacca",
+   "ll": [
+    102.25,
+    2.2
+   ],
+   "r": [
+    [
+     1492,
+     1492,
+     null
+    ],
+    [
+     1530,
+     1600,
+     "pt"
+    ],
+    [
+     1650,
+     1783,
+     "nl"
+    ],
+    [
+     1815,
+     1815,
+     "gb"
+    ],
+    [
+     1880,
+     1938,
+     "gb"
+    ],
+    [
+     1945,
+     1945,
+     "gb"
+    ],
+    [
+     1960,
+     2010,
+     null
+    ]
+   ]
+  },
+  {
+   "id": "singapore",
+   "ll": [
+    103.85,
+    1.32
+   ],
+   "r": [
+    [
+     1492,
+     1783,
+     null
+    ],
+    [
+     1815,
+     1815,
+     null
+    ],
+    [
+     1880,
+     1938,
+     "gb"
+    ],
+    [
+     1945,
+     1945,
+     "gb"
+    ],
+    [
+     1960,
+     1960,
+     "gb"
+    ],
+    [
+     1994,
+     2010,
+     null
+    ]
+   ]
+  },
+  {
+   "id": "hormuz",
+   "ll": [
+    56.46,
+    27.08
+   ],
+   "r": [
+    [
+     1492,
+     1492,
+     null
+    ],
+    [
+     1530,
+     1600,
+     "pt"
+    ],
+    [
+     1650,
+     2010,
+     null
+    ]
+   ]
+  },
+  {
+   "id": "cape",
+   "ll": [
+    18.42,
+    -33.92
+   ],
+   "r": [
+    [
+     1492,
+     1650,
+     null
+    ],
+    [
+     1700,
+     1783,
+     "nl"
+    ],
+    [
+     1815,
+     1880,
+     "gb"
+    ],
+    [
+     1914,
+     1938,
+     "gb"
+    ],
+    [
+     1945,
+     2010,
+     null
+    ]
+   ]
+  },
+  {
+   "id": "aden",
+   "ll": [
+    45.03,
+    12.8
+   ],
+   "r": [
+    [
+     1492,
+     1530,
+     null
+    ],
+    [
+     1600,
+     1600,
+     "ot"
+    ],
+    [
+     1650,
+     1815,
+     null
+    ],
+    [
+     1880,
+     1945,
+     "gb"
+    ],
+    [
+     1960,
+     1960,
+     "gb"
+    ],
+    [
+     1994,
+     2010,
+     null
+    ]
+   ]
+  },
+  {
+   "id": "malta",
+   "ll": [
+    14.45,
+    35.9
+   ],
+   "r": [
+    [
+     1492,
+     1492,
+     "es"
+    ],
+    [
+     1530,
+     1783,
+     null
+    ],
+    [
+     1815,
+     1945,
+     "gb"
+    ],
+    [
+     1960,
+     1960,
+     "gb"
+    ],
+    [
+     1994,
+     2010,
+     null
+    ]
+   ]
+  },
+  {
+   "id": "panama",
+   "ll": [
+    -79.68,
+    9.08
+   ],
+   "r": [
+    [
+     1492,
+     1492,
+     null
+    ],
+    [
+     1530,
+     1815,
+     "es"
+    ],
+    [
+     1880,
+     1880,
+     null
+    ],
+    [
+     1914,
+     1960,
+     "us"
+    ],
+    [
+     1994,
+     1994,
+     null
+    ],
+    [
+     2010,
+     2010,
+     null
+    ]
+   ]
+  },
+  {
+   "id": "hongkong",
+   "ll": [
+    114.17,
+    22.3
+   ],
+   "r": [
+    [
+     1492,
+     1815,
+     "cn"
+    ],
+    [
+     1880,
+     1880,
+     "gb"
+    ],
+    [
+     1914,
+     1938,
+     "gb"
+    ],
+    [
+     1945,
+     1945,
+     "gb"
+    ],
+    [
+     1960,
+     1960,
+     "gb"
+    ],
+    [
+     1994,
+     1994,
+     "gb"
+    ],
+    [
+     2010,
+     2010,
+     "cn"
+    ]
+   ]
+  },
+  {
+   "id": "crimea",
+   "ll": [
+    33.52,
+    44.6
+   ],
+   "r": [
+    [
+     1492,
+     1715,
+     "ot"
+    ],
+    [
+     1783,
+     1914,
+     "ru"
+    ],
+    [
+     1920,
+     1920,
+     "ru"
+    ],
+    [
+     1938,
+     1938,
+     "ru"
+    ],
+    [
+     1945,
+     1945,
+     "ru"
+    ],
+    [
+     1960,
+     1960,
+     "ru"
+    ],
+    [
+     1994,
+     2010,
+     null
+    ]
+   ]
+  },
+  {
+   "id": "taiwan",
+   "ll": [
+    121.0,
+    23.7
+   ],
+   "r": [
+    [
+     1492,
+     1600,
+     null
+    ],
+    [
+     1650,
+     1650,
+     "nl"
+    ],
+    [
+     1700,
+     1880,
+     "cn"
+    ],
+    [
+     1914,
+     1938,
+     "jp"
+    ],
+    [
+     1945,
+     1945,
+     "cn"
+    ],
+    [
+     1960,
+     2010,
+     null
+    ]
+   ]
+  },
+  {
+   "id": "manila",
+   "ll": [
+    120.98,
+    14.6
+   ],
+   "r": [
+    [
+     1492,
+     1530,
+     null
+    ],
+    [
+     1600,
+     1880,
+     "es"
+    ],
+    [
+     1914,
+     1938,
+     "us"
+    ],
+    [
+     1945,
+     1945,
+     "us"
+    ],
+    [
+     1960,
+     2010,
+     null
+    ]
+   ]
+  },
+  {
+   "id": "goa",
+   "ll": [
+    73.83,
+    15.5
+   ],
+   "r": [
+    [
+     1492,
+     1492,
+     null
+    ],
+    [
+     1530,
+     1945,
+     "pt"
+    ],
+    [
+     1960,
+     1960,
+     "pt"
+    ],
+    [
+     1994,
+     2010,
+     null
+    ]
+   ]
+  },
+  {
+   "id": "colombo",
+   "ll": [
+    79.85,
+    6.93
+   ],
+   "r": [
+    [
+     1492,
+     1530,
+     null
+    ],
+    [
+     1600,
+     1650,
+     "pt"
+    ],
+    [
+     1700,
+     1783,
+     "nl"
+    ],
+    [
+     1815,
+     1945,
+     "gb"
+    ],
+    [
+     1960,
+     2010,
+     null
+    ]
+   ]
+  },
+  {
+   "id": "quebec",
+   "ll": [
+    -71.21,
+    46.81
+   ],
+   "r": [
+    [
+     1492,
+     1600,
+     null
+    ],
+    [
+     1650,
+     1715,
+     "fr"
+    ],
+    [
+     1783,
+     1815,
+     "gb"
+    ],
+    [
+     1880,
+     1880,
+     "gb"
+    ],
+    [
+     1914,
+     1938,
+     "gb"
+    ],
+    [
+     1945,
+     2010,
+     null
+    ]
+   ]
+  },
+  {
+   "id": "oresund",
+   "ll": [
+    12.65,
+    55.95
+   ],
+   "r": [
+    [
+     1492,
+     1650,
+     null
+    ],
+    [
+     1700,
+     2010,
+     null
+    ]
+   ]
+  },
+  {
+   "id": "korea",
+   "ll": [
+    126.98,
+    37.57
+   ],
+   "r": [
+    [
+     1492,
+     1880,
+     null
+    ],
+    [
+     1914,
+     1938,
+     "jp"
+    ],
+    [
+     1945,
+     1945,
+     "us"
+    ],
+    [
+     1960,
+     2010,
+     null
+    ]
+   ]
+  }
+ ]
+}
