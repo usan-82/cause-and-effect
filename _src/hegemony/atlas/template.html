@@ -23,7 +23,7 @@
       <div class="card mapcard">
         <svg id="map" role="img" aria-label="{{mapAria}}"></svg>
         <div class="yearbadge" id="badge"></div>
-        <div class="zoom"><button id="zin" aria-label="{{zoomIn}}">+</button><button id="zout" aria-label="{{zoomOut}}">−</button><button id="zreset" aria-label="{{zoomReset}}" style="font-size:13px">⤢</button></div>
+        <div class="zoom"><button id="zin" aria-label="{{zoomIn}}" title="{{zoomIn}}">+</button><button id="zout" aria-label="{{zoomOut}}" title="{{zoomOut}}">−</button><button id="zreset" aria-label="{{zoomReset}}" title="{{zoomReset}}" class="txt">{{zoomResetShort}}</button><button id="zbig" aria-label="{{bigView}}" title="{{bigView}}" class="txt">{{bigViewShort}}</button></div>
         <div class="info" id="info"></div>
         <div class="loading" id="loading">{{loading}}</div>
       </div>
@@ -32,7 +32,6 @@
           <button id="prev" aria-label="{{prev}}">‹</button>
           <div class="years" id="years"></div>
           <button id="next" aria-label="{{next}}">›</button>
-          <button id="play" aria-label="{{play}}" style="font-size:14px">▶</button>
         </div>
         <div class="legend" id="legend"></div>
         <div class="hint">{{hint}}</div>
@@ -47,15 +46,17 @@
 <script>
 (async function(){
 const UI = {{ui}};
-const HUE={gb:'red',fr:'blue',es:'yellow',pt:'green',nl:'orange',ru:'violet',ot:'aqua',cn:'magenta',us:'aqua',de:'yellow',at:'magenta',jp:'orange',it:'green',be:'aqua',mg:'orange'};
-const col=k=>`var(--c-${HUE[k]})`;
+const KEYS=['gb','fr','es','pt','nl','ru','ot','cn','us','de','at','jp','it','be','mg'];
+const ORDER={peak:0,rise:1,hold:2,decline:3,exit:4,end:5};
+const pc=k=>`var(--p-${k})`;
 const fmt=(s,o)=>s.replace(/\{(\w+)\}/g,(_,k)=>o[k]);
 const [content, meta] = await Promise.all([fetch('content.json').then(r=>r.json()), fetch('meta.json').then(r=>r.json())]);
 function shortName(k,y){ const L=content.short[k]; if(!L) return k; for(const [until,label] of L) if(y<until) return label; return L[L.length-1][1]; }
 const YEARS = content.years.map(d=>d.year);
 const byYear = Object.fromEntries(content.years.map(d=>[d.year,d]));
+const statusOf=(k,y)=>content.powers[k]?.st[y]||null;
+const alive=(k,y)=>{const s=statusOf(k,y);return s&&s!=='end';};
 const cache = {};
-// 뒤집힌 고리(지구 전체를 덮는 폴리곤)를 바로잡는다
 function rewind(f){
   const gm=f.geometry; if(!gm) return f;
   const polys=gm.type==='Polygon'?[gm.coordinates]:gm.type==='MultiPolygon'?gm.coordinates:[];
@@ -64,55 +65,98 @@ function rewind(f){
 }
 const load = y => cache[y] ||= fetch(`data/${y}.json`).then(r=>r.json()).then(t=>topojson.feature(t,t.objects.w).features.map(rewind).filter(f=>f.geometry));
 
+// ---- 지배력 표현: 공고(진함) · 유지(중간) · 쇠퇴·흔들림(빗금) · 패권 퇴장(아주 옅음)
+const tierOf=st=>st==='peak'||st==='rise'?'solid':st==='hold'?'hold':st==='decline'?'hatch':st==='exit'?'exit':null;
+function tierFill(k,tier){
+  if(tier==='solid') return pc(k);
+  if(tier==='hold') return `color-mix(in srgb, ${pc(k)} 72%, var(--land))`;
+  if(tier==='exit') return `color-mix(in srgb, ${pc(k)} 30%, var(--land))`;
+  if(tier==='hatch') return `url(#hp-${k})`;
+  return 'var(--land)';
+}
+function tierCss(color,tier){
+  if(tier==='solid') return `background:${color}`;
+  if(tier==='hold') return `background:color-mix(in srgb, ${color} 72%, var(--land))`;
+  if(tier==='exit') return `background:color-mix(in srgb, ${color} 30%, var(--land))`;
+  if(tier==='hatch') return `background:repeating-linear-gradient(45deg, ${color} 0 2px, color-mix(in srgb, ${color} 45%, var(--land)) 2px 5px)`;
+  return 'background:var(--land)';
+}
+
 // ---- map setup
 const W=960,H=500;
 const svg=d3.select('#map').attr('viewBox',`0 0 ${W} ${H}`);
+const defs=svg.append('defs');
+for(const k of KEYS){
+  const p=defs.append('pattern').attr('id','hp-'+k).attr('patternUnits','userSpaceOnUse').attr('width',4).attr('height',4).attr('patternTransform','rotate(45)');
+  p.append('rect').attr('width',4).attr('height',4).style('fill',`color-mix(in srgb, ${pc(k)} 45%, var(--land))`);
+  p.append('rect').attr('width',1.6).attr('height',4).style('fill',pc(k));
+}
 const proj=d3.geoNaturalEarth1().fitExtent([[6,6],[W-6,H-6]],{type:'Sphere'});
 const path=d3.geoPath(proj);
 const g=svg.append('g');
 g.append('path').attr('class','sphere').attr('d',path({type:'Sphere'}));
 g.append('path').attr('class','grat').attr('d',path(d3.geoGraticule10()));
-const gPoly=g.append('g'), gCk=g.append('g'), gLbl=g.append('g');
+const gPoly=g.append('g'), gCk=g.append('g');
 let ckOn=true;
 const MK=()=>document.getElementById('map').clientWidth<640?2:1;
 let k=1;
-const LBL=()=>document.getElementById('map').clientWidth<640?24:13;
-const zoom=d3.zoom().scaleExtent([1,12]).translateExtent([[0,0],[W,H]]).on('zoom',e=>{k=e.transform.k;g.attr('transform',e.transform);gLbl.selectAll('text').attr('font-size',LBL()/Math.sqrt(k)).style('stroke-width',3/k+'px');gCk.selectAll('g.inner').attr('transform',`scale(${MK()/k})`);});
+const zoom=d3.zoom().scaleExtent([1,12]).translateExtent([[0,0],[W,H]]).on('zoom',e=>{k=e.transform.k;g.attr('transform',e.transform);gCk.selectAll('g.inner').attr('transform',`scale(${MK()/k})`);});
 svg.call(zoom).on('dblclick.zoom',null);
-d3.select('#zin').on('click',()=>svg.transition().duration(300).call(zoom.scaleBy,1.6));
-d3.select('#zout').on('click',()=>svg.transition().duration(300).call(zoom.scaleBy,1/1.6));
-d3.select('#zreset').on('click',()=>svg.transition().duration(400).call(zoom.transform,d3.zoomIdentity));
+const zby=f=>{ try{ svg.transition().duration(250).call(zoom.scaleBy,f); }catch(e){ svg.call(zoom.scaleBy,f); } };
+document.getElementById('zin').addEventListener('click',e=>{e.preventDefault();zby(1.6);});
+document.getElementById('zout').addEventListener('click',e=>{e.preventDefault();zby(1/1.6);});
+document.getElementById('zreset').addEventListener('click',e=>{e.preventDefault();svg.call(zoom.transform,d3.zoomIdentity);});
+const bigBtn=document.getElementById('zbig');
+function setBig(on){ document.body.classList.toggle('bigmap',on); bigBtn.textContent=on?UI.bigExitShort:UI.bigViewShort; bigBtn.setAttribute('aria-pressed',on); }
+bigBtn.addEventListener('click',()=>setBig(!document.body.classList.contains('bigmap')));
+window.addEventListener('keydown',e=>{ if(e.key==='Escape') setBig(false); });
 
 // ---- state
-let year=YEARS[0], tab='power', focus=null, timer=null, selEl=null;
+let year=YEARS[0], tab='power', focus=null, selEl=null;
 const h=(location.hash||'').match(/^#y(\d{4})$/); if(h&&byYear[+h[1]]) year=+h[1];
 const info=document.getElementById('info');
 const fixText=id=>content.fixes[id]||'';
 
-function fill(d,rivals){
+function polyFill(d){
   const p=d.properties.p;
-  if(p && rivals.includes(p)) return (focus && focus!==p) ? 'var(--land)' : col(p);
+  if(p && alive(p,year) && (!focus || focus===p)){
+    const t=d.properties.c?'hatch':tierOf(statusOf(p,year));
+    return tierFill(p,t);
+  }
   return d.properties.n ? 'var(--land)' : 'var(--land0)';
 }
 function esc(s){return String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
 function closeBtn(){return `<button class="x" aria-label="${esc(UI.close)}">×</button>`;}
 function showInfo(d){
-  const p=d.properties, prec=UI.precVals[p.b-1]||UI.noInfo;
-  info.innerHTML=closeBtn()+`<b>${esc(p.n||UI.unnamed)}</b>`+
-    `<div class="meta">${p.s?esc(UI.srcSubj)+': '+esc(p.s)+' · ':''}${p.p?esc(UI.cls)+': '+esc(shortName(p.p,year))+' · ':''}${esc(UI.prec)}: ${esc(prec)}</div>`+
+  const p=d.properties, v=meta.verify[year];
+  let name=p.n, extra='';
+  if(p.kind==='choke'){const c=content.choke[p.pid][year]; name=c.name; extra=`<div class="fix">${esc(UI.patched)}: ${esc(c.who)}${c.note?' — '+esc(c.note):''}</div>`;}
+  if(p.kind==='region'){const c=content.patches[p.pid][year]; name=c.name; extra=`<div class="fix">${esc(UI.patched)}: ${esc(c.who)}${c.note?' — '+esc(c.note):''}</div>`;}
+  const ruler=p.p&&alive(p.p,year)?`${esc(shortName(p.p,year))} · ${esc(UI.status[statusOf(p.p,year)])}`:'';
+  const srcLine=p.src==='cs'
+    ? `${esc(UI.srcCs)}${p.st&&p.st!=='independent'?` · ${esc(UI.csStatus[p.st]||p.st)}${p.o&&p.o!=='x'?' ('+esc(shortName(p.o,year))+')':''}`:''}`
+    : p.kind? '' : `${esc(UI.srcHb)}${p.s?' · '+esc(UI.srcSubj)+': '+esc(p.s):''} · ${esc(UI.prec)}: ${esc(UI.precVals[p.b-1]||UI.noInfo)}`;
+  info.innerHTML=closeBtn()+`<b>${esc(name||UI.unnamed)}</b>`+
+    (ruler?`<div>${esc(UI.cls)}: <b style="font-size:13px">${ruler}</b></div>`:'')+
+    (srcLine?`<div class="meta">${srcLine}</div>`:'')+extra+
+    (p.c?`<div class="warn">${esc(UI.contested)}</div>`:'')+
     (p.f?`<div class="fix">${esc(UI.fix)}: ${esc(fixText(p.f))}</div>`:'');
+  void v;
   info.style.display='block';
   info.querySelector('.x').onclick=()=>{info.style.display='none';if(selEl)selEl.classList.remove('sel');};
 }
 const ckList=()=>meta.choke[year].map(c=>({...c,...content.choke[c.id][year]}));
-function ckColor(c){return c.k&&byYear[year].rivals.includes(c.k)?col(c.k):'var(--ink2)';}
+const ckShown=k2=>k2&&alive(k2,year)?k2:null;
+function ckColor(c){return ckShown(c.k)?pc(c.k):'var(--ink2)';}
+function ckVis(c){return !c.absent && ckShown(c.mapKey)!==ckShown(c.k);}
 function showCk(c){
   const mapLabel=c.absent?esc(UI.ckMapNone):`‘${esc(c.mapName||UI.unnamed)}’(${esc(c.mapKey?shortName(c.mapKey,year):UI.otherPower)})`;
   info.innerHTML=closeBtn()+`<b>◆ ${esc(c.name)}</b>`+
    `<div>${esc(fmt(UI.ckRuler,{year}))} <b style="font-size:13px">${esc(c.who)}</b></div>`+
    (c.note?`<div class="meta">${esc(c.note)}</div>`:'')+
+   (c.patched?`<div class="meta">${esc(UI.ckPatchedLong)}</div>`:'')+
    (c.absent?`<div class="meta">${esc(UI.ckAbsentLong)}</div>`:'')+
-   (c.vis?`<div class="warn">${esc(UI.ckDiffLong).replace('{map}',mapLabel)}</div>`:'');
+   (ckVis(c)?`<div class="warn">${esc(UI.ckDiffLong).replace('{map}',mapLabel)}</div>`:'');
   info.style.display='block';
   info.querySelector('.x').onclick=()=>{info.style.display='none';};
 }
@@ -121,51 +165,84 @@ function drawCk(){
   const sel=gCk.selectAll('g.ck').data(list,c=>c.id).join(en=>{const a=en.append('g').attr('class','ck');const i=a.append('g').attr('class','inner');i.append('circle').attr('class','hit').attr('r',9);i.append('circle').attr('class','ring').attr('r',7);i.append('path').attr('class','dia').attr('d','M0,-4.6L4.6,0L0,4.6L-4.6,0Z');return a;});
   sel.attr('transform',c=>`translate(${proj(c.ll)})`).on('click',(e,c)=>{e.stopPropagation();if(selEl)selEl.classList.remove('sel');showCk(c);});
   sel.select('g.inner').attr('transform',`scale(${MK()/k})`);
-  sel.select('.dia').attr('fill',ckColor);
-  sel.select('.ring').attr('display',c=>c.vis?null:'none');
+  sel.select('.dia').style('fill',ckColor).attr('opacity',c=>focus&&ckShown(c.k)!==focus?.35:1);
+  sel.select('.ring').attr('display',c=>ckVis(c)?null:'none');
 }
 async function drawMap(){
   const feats=await load(year); document.getElementById('loading').style.display='none';
-  const c=byYear[year], rivals=c.rivals;
   gPoly.selectAll('path').data(feats,(d,i)=>year+'-'+i).join('path')
-    .attr('class','poly').attr('d',path).attr('fill',d=>fill(d,rivals))
+    .attr('class','poly').attr('d',path).style('fill',polyFill)
     .on('click',function(e,d){ if(selEl) selEl.classList.remove('sel'); selEl=this; this.classList.add('sel'); showInfo(d); });
-  const L=meta.labels[year]||{};
-  gLbl.selectAll('text').data(rivals.filter(r=>L[r]),r=>r).join('text').attr('class','lbl')
-    .attr('x',r=>proj(L[r])[0]).attr('y',r=>proj(L[r])[1]).attr('font-size',LBL()/Math.sqrt(k)).style('stroke-width',3/k+'px')
-    .attr('opacity',r=>focus&&focus!==r?.25:1).text(r=>shortName(r,year));
-  const placed=[]; gLbl.selectAll('text').each(function(r){ let [x,y]=proj(L[r]); for(let n=0;n<4&&placed.some(([a,b])=>Math.abs(a-x)<LBL()*3.6&&Math.abs(b-y)<LBL());n++) y+=LBL()*1.1; placed.push([x,y]); d3.select(this).attr('y',y); });
   drawCk();
   document.getElementById('badge').textContent=year;
   const i=YEARS.indexOf(year); [YEARS[i+1],YEARS[i-1]].forEach(y=>y&&load(y));
 }
-function recolor(){
-  const rivals=byYear[year].rivals;
-  gPoly.selectAll('path').attr('fill',d=>fill(d,rivals));
-  gLbl.selectAll('text').attr('opacity',r=>focus&&focus!==r?.25:1);
-  renderLegend(); drawCk();
-}
+function recolor(){ gPoly.selectAll('path').style('fill',polyFill); drawCk(); renderLegend(); }
+function setFocus(k2){ focus=k2; if(k2) tab='powers'; recolor(); renderPanel(); }
 function renderYears(){
   const box=document.getElementById('years');
   box.innerHTML=YEARS.map(y=>`<button data-y="${y}" class="${y===year?'on':''}">${y}</button>`).join('');
   box.querySelectorAll('button').forEach(b=>b.onclick=()=>setYear(+b.dataset.y));
   const on=box.querySelector('.on'); if(on) on.scrollIntoView({inline:'center',block:'nearest',behavior:'smooth'});
 }
+function powersThisYear(){
+  const rivals=byYear[year].rivals;
+  return KEYS.filter(k2=>statusOf(k2,year)).sort((a,b)=>(rivals.includes(b)-rivals.includes(a))||(ORDER[statusOf(a,year)]-ORDER[statusOf(b,year)]));
+}
+function swatch(k2,y){const st=statusOf(k2,y);return `<i class="sw" style="${tierCss(pc(k2),tierOf(st))}${st==='end'?';opacity:.35':''}"></i>`;}
 function renderLegend(){
-  const c=byYear[year];
+  const rivals=byYear[year].rivals;
   const el=document.getElementById('legend');
-  el.innerHTML=c.rivals.map(r=>`<button class="chip ${focus&&focus!==r?'dim':''}" data-k="${r}" aria-pressed="${focus===r}"><i style="background:${col(r)}"></i>${esc(shortName(r,year))}</button>`).join('')+
-    `<span class="chip neutral" style="cursor:default"><i></i>${esc(UI.others)}</span>`+
-    `<button class="chip ${ckOn?'':'dim'}" id="cktog" aria-pressed="${ckOn}"><span style="font-size:12px">◆</span>${esc(ckOn?UI.ckShown:UI.ckHidden)}</button>`;
-  el.querySelectorAll('button[data-k]').forEach(b=>b.onclick=()=>{focus=focus===b.dataset.k?null:b.dataset.k;recolor();});
+  el.innerHTML=`<div class="lgtitle">${esc(fmt(UI.legendTitle,{year}))}${focus?` <button class="linkbtn" id="focusoff">${esc(UI.focusOff)}</button>`:''}</div>`+
+    powersThisYear().map(r=>`<button class="chip ${focus&&focus!==r?'dim':''} ${statusOf(r,year)==='end'?'ended':''}" data-k="${r}" aria-pressed="${focus===r}">${swatch(r,year)}<span>${esc(shortName(r,year))}${rivals.includes(r)?` <em>${esc(UI.rival)}</em>`:''}<small>${esc(UI.status[statusOf(r,year)])}</small></span></button>`).join('')+
+    `<button class="chip ${ckOn?'':'dim'}" id="cktog" aria-pressed="${ckOn}"><span style="font-size:12px">◆</span><span>${esc(ckOn?UI.ckShown:UI.ckHidden)}</span></button>`+
+    `<div class="tierkey">${UI.tiers.map(([t,l])=>`<span><i class="sw" style="${tierCss('var(--ink2)',t)}"></i>${esc(l)}</span>`).join('')}</div>`+
+    `<details class="ckey"><summary>${esc(UI.colorKey)}</summary><div>${KEYS.map(k2=>`<span><i class="sw" style="background:${pc(k2)}"></i>${esc(content.full[k2])}</span>`).join('')}</div><p class="sub">${esc(UI.colorKeyNote)}</p></details>`;
+  el.querySelectorAll('button[data-k]').forEach(b=>b.onclick=()=>setFocus(focus===b.dataset.k?null:b.dataset.k));
+  const fo=document.getElementById('focusoff'); if(fo) fo.onclick=()=>setFocus(null);
   document.getElementById('cktog').onclick=()=>{ckOn=!ckOn;renderLegend();drawCk();};
 }
-const TABS=['power','events','tech','ideas'];
+const TABS=['power','events','tech','ideas','powers'];
 function ckSection(){
-  const L=ckList(), bad=L.filter(c=>c.vis);
-  const ord=[...bad,...L.filter(c=>!c.vis)];
-  return `<div class="note"><h4>${esc(fmt(UI.ckTitle,{n:L.length}))}${esc(bad.length?fmt(UI.ckTitleDiff,{m:bad.length}):UI.ckTitleOk)}</h4><ul class="cklist">`+
-   ord.map(c=>`<li data-id="${c.id}"><span class="d" style="background:${ckColor(c)}"></span><span><b>${esc(c.name)}</b> — ${esc(c.who)}${c.vis?` <span class="warn">${esc(UI.ckDiff)}</span>`:''}${c.absent?` <span style="color:var(--muted)">${esc(UI.ckAbsent)}</span>`:''}${c.note?`<br><span style="color:var(--muted)">${esc(c.note)}</span>`:''}</span></li>`).join('')+`</ul></div>`;
+  const L=ckList(), bad=L.filter(ckVis), pat=L.filter(c=>c.patched);
+  const ord=[...bad,...L.filter(c=>!ckVis(c))];
+  return `<div class="note"><h4>${esc(fmt(UI.ckTitle,{n:L.length}))}${UI.ckTitlePatched?esc(fmt(UI.ckTitlePatched,{p:pat.length})):''}${esc(bad.length?fmt(UI.ckTitleDiff,{m:bad.length}):UI.ckTitleOk)}</h4><ul class="cklist">`+
+   ord.map(c=>`<li data-id="${c.id}"><span class="d" style="background:${ckColor(c)}"></span><span><b>${esc(c.name)}</b> — ${esc(c.who)}${ckVis(c)?` <span class="warn">${esc(UI.ckDiff)}</span>`:''}${c.patched&&UI.ckPatched?` <span class="okt">${esc(UI.ckPatched)}</span>`:''}${c.absent?` <span style="color:var(--muted)">${esc(UI.ckAbsent)}</span>`:''}${c.note?`<br><span style="color:var(--muted)">${esc(c.note)}</span>`:''}</span></li>`).join('')+`</ul></div>`;
+}
+const LANG=document.documentElement.lang;
+const num=(v,d)=>v.toLocaleString(LANG,{minimumFractionDigits:d,maximumFractionDigits:d});
+const km=a=>a>=1e6?fmt(UI.areaM,{v:num(a/1e6,a>=1e7?0:1)}):fmt(UI.areaK,{v:Math.round(a/1e4)});
+function verifySection(){
+  const v=meta.verify[year]; if(!v) return '';
+  if(v.src==='hb') return `<div class="note"><h4>${esc(UI.vTitle)}</h4><p class="sub">${esc(fmt(UI.vHb,{f:v.fixes,p:v.patches}))}</p></div>`;
+  const nm=k2=>k2?shortName(k2,year):UI.vNone;
+  return `<div class="note"><h4>${esc(UI.vTitle)}</h4><p class="sub">${esc(fmt(UI.vCs,{date:v.date,agree:num(v.agree*100,1),p:v.patches}))}</p>`+
+    `<div class="vbar"><i style="width:${(v.agree*100).toFixed(1)}%"></i></div>`+
+    (v.diffs.length?`<h5>${esc(UI.vDiffs)}</h5><ul class="vlist">${v.diffs.slice(0,6).map(d=>`<li><span>${esc(d.hn)} <b>${esc(nm(d.hk))}</b> ↔ ${esc(d.cn)} <b>${esc(nm(d.ck))}</b></span><span class="num">${esc(km(d.a))}</span></li>`).join('')}</ul><p class="sub">${esc(UI.vAdopt)}</p>`:'')+
+    (v.exceptions.length?`<h5>${esc(UI.vExc)}</h5><ul class="vlist">${v.exceptions.map(e=>`<li><span><b>${esc(e.n)}</b> — ${esc(fixText(e.f))}</span></li>`).join('')}</ul>`:'')+`</div>`;
+}
+function areaLine(k2,y){
+  const a=meta.area[y]?.[k2]; if(!a) return '';
+  const i=YEARS.indexOf(y), pa=i>0?meta.area[YEARS[i-1]]?.[k2]:null;
+  const d=pa?Math.round((a-pa)/pa*100):null;
+  return `<span class="area">${esc(fmt(UI.areaLabel,{a:km(a)}))}${d!==null?` <span class="${d>=0?'up':'down'}">${d>=0?'+':''}${d}%</span>`:''}</span>`;
+}
+function areaSpark(k2){
+  const vals=YEARS.map(y=>meta.area[y]?.[k2]||0), mx=Math.max(...vals)||1;
+  return `<div class="spark" role="img" aria-label="${esc(UI.sparkAria)}">${YEARS.map((y,i)=>`<span title="${y}: ${vals[i]?km(vals[i]):'—'}" class="${y===year?'cur':''}" style="height:${Math.max(vals[i]?4:0,vals[i]/mx*100)}%;${tierCss(pc(k2),tierOf(statusOf(k2,y))||'none').replace('background:','background:')}"></span>`).join('')}</div><div class="sparkx"><span>${YEARS[0]}</span><span>${esc(UI.sparkTitle)}</span><span>${YEARS.at(-1)}</span></div><p class="sub" style="font-size:12px">${esc(UI.sparkNote)}</p>`;
+}
+function powersBody(){
+  if(!focus){
+    return `<p class="sub">${esc(UI.trackAllNote)}</p><ul class="trk">`+powersThisYear().map(k2=>{const st=statusOf(k2,year);
+      return `<li data-k="${k2}" class="${st==='end'?'ended':''}">${swatch(k2,year)}<div><b>${esc(shortName(k2,year))}</b> <span class="st st-${st}">${esc(UI.status[st])}</span> ${areaLine(k2,year)}<p>${esc(content.powers[k2].t[year])}</p></div></li>`;}).join('')+`</ul>`;
+  }
+  const P=content.powers[focus], ys=YEARS.filter(y=>P.st[y]);
+  const first=ys[0], last=ys[ys.length-1];
+  return `<button class="linkbtn" id="trkback">${esc(UI.trackBack)}</button><h3 class="trkh">${esc(fmt(UI.trackOne,{name:content.full[focus]}))}</h3>`+areaSpark(focus)+`<p class="sub">${esc(UI.trackNote)}</p>`+
+    (first>YEARS[0]?`<p class="sub">${esc(fmt(UI.trackBefore,{year:first}))}</p>`:'')+
+    `<ol class="trk tl">`+ys.map(y=>{const st=P.st[y];
+      return `<li data-y="${y}" class="${y===year?'cur':''} ${st==='end'?'ended':''}">${swatch(focus,y)}<div><b>${y}</b> · ${esc(shortName(focus,y))} <span class="st st-${st}">${esc(UI.status[st])}</span> ${areaLine(focus,y)}<p>${esc(P.t[y])}</p></div></li>`;}).join('')+`</ol>`+
+    (P.st[last]==='end'?`<p class="sub">${esc(UI.trackAfter)}</p>`:'');
 }
 function renderPanel(){
   const c=byYear[year], i=YEARS.indexOf(year), prevY=YEARS[i-1];
@@ -173,30 +250,31 @@ function renderPanel(){
   const groups=[...new Set(fixes.map(([,f])=>f))].map(f=>[f,fixes.filter(x=>x[1]===f).map(x=>x[0])]);
   let body='';
   if(tab==='events') body=c.events.map(e=>`<div class="ev"><h3>${esc(e.t)}</h3><div class="row"><span class="tag g">${esc(UI.gain)}</span><span>${esc(e.g)}</span></div><div class="row"><span class="tag l">${esc(UI.loss)}</span><span>${esc(e.l)}</span></div></div>`).join('');
+  else if(tab==='powers') body=powersBody();
   else body=`<ul class="pts">${c[tab].map(t=>`<li>${esc(t)}</li>`).join('')}</ul>`;
   document.getElementById('panel').innerHTML=
     `<div class="era">${esc(prevY?fmt(UI.era,{prev:prevY,year}):fmt(UI.eraFirst,{year}))}</div><h2>${esc(c.title)}</h2>`+
     `<div class="tabs" role="tablist">${TABS.map((k2,j)=>`<button role="tab" data-t="${k2}" class="${tab===k2?'on':''}" aria-selected="${tab===k2}">${esc(UI.tabs[j])}</button>`).join('')}</div>`+
     body+
-    `<div class="note"><h4>${esc(UI.readMore)}</h4><div class="links">${c.links.map(([t,u])=>`<a href="${u}" target="_blank" rel="noopener">${esc(t)}</a>`).join('')}</div></div>`+
-    ckSection()+
-    (groups.length?`<div class="note"><h4>${esc(UI.fixesTitle)}</h4><ul>${groups.map(([f,ns])=>`<li>${esc(fixText(f))} — <span style="color:var(--muted)">${esc(ns.slice(0,8).join(', '))}${ns.length>8?esc(fmt(UI.andMore,{n:ns.length-8})):''}</span></li>`).join('')}</ul></div>`:'');
+    (tab==='powers'?'':`<div class="note"><h4>${esc(UI.readMore)}</h4><div class="links">${c.links.map(([t,u])=>`<a href="${u}" target="_blank" rel="noopener">${esc(t)}</a>`).join('')}</div></div>`+
+    verifySection()+ckSection()+
+    (groups.length?`<div class="note"><h4>${esc(UI.fixesTitle)}</h4><ul>${groups.map(([f,ns])=>`<li>${esc(fixText(f))} — <span style="color:var(--muted)">${esc(ns.slice(0,8).join(', '))}${ns.length>8?esc(fmt(UI.andMore,{n:ns.length-8})):''}</span></li>`).join('')}</ul></div>`:''));
   document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{tab=b.dataset.t;renderPanel();});
+  document.querySelectorAll('ul.trk li[data-k]').forEach(li=>li.onclick=()=>setFocus(li.dataset.k));
+  document.querySelectorAll('ol.tl li[data-y]').forEach(li=>li.onclick=()=>setYear(+li.dataset.y,true));
+  const bk=document.getElementById('trkback'); if(bk) bk.onclick=()=>setFocus(null);
+  const tb=document.querySelector('.tabs'), ont=tb&&tb.querySelector('button.on'); if(ont) tb.scrollLeft=Math.max(0,ont.offsetLeft-tb.clientWidth+ont.offsetWidth+8);
   document.querySelectorAll('.cklist li').forEach(li=>li.onclick=()=>{const c=ckList().find(x=>x.id===li.dataset.id);showCk(c);const [x,y2]=proj(c.ll);svg.transition().duration(600).call(zoom.transform,d3.zoomIdentity.translate(W/2,H/2).scale(4).translate(-x,-y2));document.querySelector('.mapcard').scrollIntoView({behavior:'smooth',block:'nearest'});});
 }
-async function setYear(y){
-  year=y; focus=null; info.style.display='none'; selEl=null;
+async function setYear(y,keepFocus){
+  year=y; info.style.display='none'; selEl=null;
+  if(focus && !statusOf(focus,y) && !keepFocus) focus=null;
   try{ if(location.hash!=='#y'+y) history.replaceState(null,'','#y'+y);}catch(e){}
   renderYears(); renderLegend(); renderPanel(); await drawMap();
 }
-const step=dlt=>{const i=YEARS.indexOf(year)+dlt; if(i>=0&&i<YEARS.length) setYear(YEARS[i]);};
+const step=dlt=>{const i=YEARS.indexOf(year)+dlt; if(i>=0&&i<YEARS.length) setYear(YEARS[i],true);};
 document.getElementById('prev').onclick=()=>step(-1);
 document.getElementById('next').onclick=()=>step(1);
-document.getElementById('play').onclick=function(){
-  if(timer){clearInterval(timer);timer=null;this.textContent='▶';return;}
-  this.textContent='❚❚'; if(year===YEARS[YEARS.length-1]) setYear(YEARS[0]);
-  timer=setInterval(()=>{ if(year===YEARS[YEARS.length-1]){clearInterval(timer);timer=null;document.getElementById('play').textContent='▶';return;} step(1);},3200);
-};
 window.addEventListener('keydown',e=>{if(e.key==='ArrowRight')step(1);if(e.key==='ArrowLeft')step(-1);});
 window.addEventListener('hashchange',()=>{const m=location.hash.match(/^#y(\d{4})$/);if(m&&byYear[+m[1]]&&+m[1]!==year)setYear(+m[1]);});
 setYear(year);

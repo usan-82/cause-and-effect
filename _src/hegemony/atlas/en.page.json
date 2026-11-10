@@ -8,22 +8,33 @@
  "metaDesc": "An interactive world map of 16 moments from 1492 to 2010, layering the struggle for hegemony, who gained and lost from key events, and developments in technology and ideas.",
  "subtitle": "Over each year's borders: the struggle for hegemony · gains and losses · technology · ideas",
  "mapAria": "World map by year",
- "zoomIn": "Zoom in", "zoomOut": "Zoom out", "zoomReset": "Show whole map",
- "prev": "Previous year", "next": "Next year", "play": "Play",
+ "zoomIn": "Zoom in",
+ "zoomOut": "Zoom out",
+ "zoomReset": "Back to original size",
+ "prev": "Previous year",
+ "next": "Next year",
  "langAria": "Language",
  "loading": "Loading map…",
- "hint": "Coloured countries are the main contenders for hegemony at this point (colonies and dependencies included). Tap a name to highlight only that country; tap an area of the map for its source data. ◆ marks a strategic point such as a strait, canal or base, whose ruler at this time was checked separately. A dotted ring (◌) means the map colour differs from who actually ruled it.",
- "footHtml": "Border data: <a href=\"https://github.com/aourednik/historical-basemaps\">historical-basemaps</a> (André Ourednik et al., GPL-3.0) — simplified, with clear errors in sovereignty labels corrected year by year (see ‘Data corrections’ for each year). The source is a work in progress, and borders before the modern era are approximations of spheres of influence. ‘Border precision’ in the area details is the source's own value (1 rough · 2 medium · 3 precise). The rulers of the 19 ◆ strategic points (straits, canals, bases) were checked year by year independently of the map data; where they disagree with the map colour, this is listed under ‘Strategic points’ in the panel. Because the gaps between years are uneven, ‘Gains and losses’ covers the main events since the previous year shown.",
+ "hint": "Colours show who ruled at that time, and each country has its own fixed colour. The stronger the colour, the firmer the rule; hatching means rule that is weakening or contested; a very pale colour means the country has left the contest for hegemony but still exists. Tap an area for its name and source; tap a country in the list below to keep only that country and follow its course and territory over time. ◆ marks strategic points such as straits, canals and bases; where the source map was wrong, the map has been recoloured with checked values.",
+ "footHtml": "Borders: up to 1880, <a href=\"https://github.com/aourednik/historical-basemaps\">historical-basemaps</a> (André Ourednik et al., GPL-3.0) with year-by-year corrections; from 1914, redrawn from <a href=\"https://icr.ethz.ch/data/cshapes/\">CShapes 2.0</a> (Schvitz, Girardin, Weidmann et al., dated borders and colonies). For 1914 onwards, where both sources exist, the ‘Cross-check’ section of each year shows the agreement rate and where they differ. Strategic points and some regions were recoloured with checked values where the source was wrong. Territory areas are approximations computed by sampling the final map on a 0.25° grid. Because the gaps between years are uneven, ‘Gains and losses’ covers the main events since the previous year shown.",
  "ui": {
-  "tabs": ["Balance of power", "Gains and losses", "Technology", "Ideas"],
+  "tabs": [
+   "Balance of power",
+   "Gains and losses",
+   "Technology",
+   "Ideas",
+   "Country by country"
+  ],
   "era": "{prev} → c. {year}",
   "eraFirst": "c. {year}",
-  "gain": "Gain", "loss": "Loss",
+  "gain": "Gain",
+  "loss": "Loss",
   "readMore": "Read more",
   "fixesTitle": "Data corrections for this year",
   "andMore": " and {n} more",
   "others": "Other states and powers",
-  "ckShown": "Strategic points on", "ckHidden": "Strategic points off",
+  "ckShown": "Strategic points on",
+  "ckHidden": "Strategic points off",
   "ckTitle": "Strategic points — {n}",
   "ckTitleDiff": ", {m} differ from the map colour",
   "ckTitleOk": ", all match the map",
@@ -35,8 +46,87 @@
   "ckMapNone": "an area it does not draw",
   "otherPower": "other power",
   "unnamed": "Unnamed area",
-  "srcSubj": "Sovereign (source)", "cls": "Group", "prec": "Border precision",
-  "precVals": ["rough", "medium", "precise"], "noInfo": "no data",
-  "fix": "Correction", "close": "Close"
- }
+  "srcSubj": "Sovereign (source)",
+  "cls": "Group",
+  "prec": "Border precision",
+  "precVals": [
+   "rough",
+   "medium",
+   "precise"
+  ],
+  "noInfo": "no data",
+  "fix": "Correction",
+  "close": "Close",
+  "status": {
+   "rise": "Rising",
+   "peak": "Peak",
+   "hold": "Holding",
+   "decline": "Declining / contested",
+   "exit": "Out of the contest (state continues)",
+   "end": "Ended"
+  },
+  "tiers": [
+   [
+    "solid",
+    "Firm"
+   ],
+   [
+    "hold",
+    "Holding"
+   ],
+   [
+    "hatch",
+    "Declining / contested"
+   ],
+   [
+    "exit",
+    "Out of the contest"
+   ]
+  ],
+  "legendTitle": "Ruling powers c. {year}",
+  "rival": "lead",
+  "trackAll": "What changed for each country",
+  "trackAllNote": "What has changed since the previous year shown. Tap a country to see its whole course.",
+  "trackOne": "The course of {name}",
+  "trackBack": "← All countries",
+  "trackNote": "Tap a year to go to that map.",
+  "trackBefore": "Not treated as a contender on this map before {year}",
+  "trackAfter": "Not coloured at later points",
+  "focusOff": "Show all",
+  "regionName": "Name of the area at the time",
+  "contested": "Rule here is contested (hatched)",
+  "bigViewShort": "Large",
+  "bigExitShort": "Close",
+  "patched": "Recoloured with checked value",
+  "srcCs": "Borders: CShapes 2.0",
+  "srcHb": "Borders: historical-basemaps",
+  "csStatus": {
+   "colony": "colony",
+   "protectorate": "protectorate",
+   "mandate": "mandate",
+   "occupied": "occupied",
+   "N/A": "status unknown"
+  },
+  "ckTitlePatched": "",
+  "ckPatched": "",
+  "ckPatchedLong": "In the source map this point was swallowed by the surrounding area or wrongly labelled, so the map itself has been recoloured with the checked ruler.",
+  "vTitle": "Cross-check",
+  "vCs": "Borders at this point were redrawn from CShapes 2.0 (as of {date}). Agreement with the open-source map used before (historical-basemaps): {agree}% (by area, 0.25° grid sample, coastline differences excluded). Strategic points and regions recoloured: {p}.",
+  "vHb": "Before 1886 there is no dated dataset to cross-check against. Based on historical-basemaps, {f} sovereignty-label errors were corrected and {p} strategic points and regions recoloured with checked values.",
+  "vDiffs": "Where the two sources differ most (source ↔ CShapes)",
+  "vAdopt": "Where they differ, the map follows CShapes.",
+  "vExc": "Shown differently from CShapes, or with a note added",
+  "vNone": "no sovereign",
+  "areaM": "{v} million km²",
+  "areaK": "{v}0,000 km²",
+  "areaLabel": "territory c. {a}",
+  "sparkTitle": "Territory (recomputed)",
+  "sparkAria": "Territory area by year",
+  "sparkNote": "Areas are recomputed from what is coloured on this map (colonies included). Before 1886 they include nominal claims and spheres, so they can exceed real control.",
+  "colorKey": "Show each country's colour",
+  "colorKeyNote": "A country keeps the same colour even when its name changes (Russia → USSR → Russia, Ming → Qing → China). When it grows stronger or weaker, the colour stays and only its strength and hatching change."
+ },
+ "zoomResetShort": "Reset",
+ "bigView": "Show the map large",
+ "bigViewShort": "Large"
 }

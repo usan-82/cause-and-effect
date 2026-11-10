@@ -14,6 +14,8 @@
   --bg:#f6f4ef; --surface:#fcfcfb; --ink:#1b1a18; --ink2:#55534e; --muted:#8a877f; --line:#e2dfd7;
   --ocean:#e9eef1; --grat:#d9e1e6; --land:#dcd8cf; --land0:#ebe8e1; --border:#ffffff;
   --gain:#0b7a3b; --loss:#b3362f;
+  --p-gb:#d63a2f; --p-fr:#2c63c9; --p-es:#e0a100; --p-pt:#2a9a46; --p-nl:#ef7a12; --p-ru:#6b4cc4; --p-ot:#10998b; --p-cn:#c22f6f;
+  --p-us:#27a2d8; --p-de:#5a4f45; --p-at:#d17ab9; --p-jp:#9cb01c; --p-it:#a0522d; --p-be:#4f6d7a; --p-mg:#8c6b3f;
   --c-blue:#2a78d6; --c-orange:#eb6834; --c-aqua:#1baf7a; --c-yellow:#eda100;
   --c-magenta:#e87ba4; --c-green:#008300; --c-violet:#6250d6; --c-red:#e34948;
 }
@@ -23,6 +25,8 @@
     --bg:#141413; --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#8f8d85; --line:#2f2e2b;
     --ocean:#1d2226; --grat:#262d32; --land:#3a3935; --land0:#2d2c29; --border:#1a1a19;
     --gain:#4cc27e; --loss:#ef7d75;
+    --p-gb:#e5554b; --p-fr:#4d82e6; --p-es:#e8ae16; --p-pt:#3db35a; --p-nl:#f28a2e; --p-ru:#8a6fe0; --p-ot:#22b3a3; --p-cn:#d9508a;
+    --p-us:#45b6e6; --p-de:#a39383; --p-at:#e08fcb; --p-jp:#b2c63a; --p-it:#c46d45; --p-be:#7e9aa6; --p-mg:#b08a55;
     --c-blue:#3987e5; --c-orange:#d95926; --c-aqua:#199e70; --c-yellow:#c98500;
     --c-magenta:#d55181; --c-green:#008300; --c-violet:#9085e9; --c-red:#e66767;
   }
@@ -44,7 +48,7 @@ header p{margin:0;color:var(--ink2);font-size:13px}
 #map:active{cursor:grabbing}
 .sphere{fill:var(--ocean)}
 .grat{fill:none;stroke:var(--grat);stroke-width:.6;vector-effect:non-scaling-stroke}
-.poly{stroke:var(--border);stroke-width:.35;vector-effect:non-scaling-stroke;transition:fill .35s,opacity .25s}
+.poly{stroke:var(--border);stroke-width:.35;vector-effect:non-scaling-stroke;transition:opacity .25s}
 .poly.sel{stroke:var(--ink);stroke-width:1.4}
 .lbl{font-family:var(--sans),sans-serif;font-weight:700;fill:var(--ink);paint-order:stroke;stroke:var(--surface);stroke-width:3px;stroke-linejoin:round;text-anchor:middle;pointer-events:none}
 .zoom{position:absolute;right:10px;top:10px;display:flex;flex-direction:column;gap:6px}
@@ -102,6 +106,58 @@ ul.pts li{margin-bottom:8px}
 .langs a{color:var(--ink2);text-decoration:none}
 .langs a:hover{text-decoration:underline}
 
+.sw{width:16px;height:16px;border-radius:4px;display:inline-block;flex:0 0 16px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
+.legend{align-items:center}
+.lgtitle{width:100%;font-size:12.5px;font-weight:700;color:var(--ink2);margin-bottom:2px}
+.chip span{display:inline-flex;flex-direction:column;align-items:flex-start;line-height:1.2;text-align:left}
+.chip small{font-size:11px;color:var(--muted)}
+.chip em{font-style:normal;font-size:10.5px;font-weight:700;color:var(--ink2);border:1px solid var(--line);border-radius:4px;padding:0 3px;margin-left:2px}
+.chip.ended span{text-decoration:line-through;text-decoration-color:var(--muted)}
+.tierkey{width:100%;display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--ink2);margin-top:4px}
+.tierkey span{display:inline-flex;align-items:center;gap:5px}
+.tierkey .sw{width:13px;height:13px;flex-basis:13px}
+.linkbtn{border:0;background:none;color:var(--c-blue);font:500 13px var(--sans);cursor:pointer;padding:0}
+.sub{color:var(--ink2);font-size:13px;margin:0 0 8px}
+.trkh{font-size:17px;margin:6px 0 4px}
+ul.trk,ol.trk{list-style:none;margin:0;padding:0}
+.trk li{display:grid;grid-template-columns:16px 1fr;gap:10px;padding:9px 6px;border-top:1px solid var(--line);cursor:pointer;border-radius:8px}
+.trk li:first-child{border-top:0}
+.trk li:hover{background:color-mix(in srgb, var(--ink) 4%, transparent)}
+.trk li .sw{margin-top:3px}
+.trk li p{margin:3px 0 0;font-size:14px}
+.trk li.cur{background:color-mix(in srgb, var(--ink) 7%, transparent);outline:1.5px solid var(--ink)}
+.trk li.ended b{text-decoration:line-through}
+.st{font-size:11.5px;font-weight:700;border-radius:5px;padding:1px 6px;margin-left:4px;border:1px solid var(--line);color:var(--ink2);white-space:nowrap}
+.st-peak,.st-rise{color:var(--gain);border-color:var(--gain)}
+.st-decline{color:var(--c-orange);border-color:var(--c-orange)}
+.st-exit{color:var(--muted)}
+.st-end{color:var(--loss);border-color:var(--loss)}
+
+.zoom button.txt{font-size:12px;padding:0 6px;min-width:36px}
+body.bigmap{overflow:hidden}
+body.bigmap .mapcard{position:fixed;inset:0;z-index:50;border-radius:0;border:0;display:flex;align-items:center;justify-content:center;background:var(--ocean)}
+body.bigmap #map{width:100%;height:100%}
+body.bigmap .zoom{right:max(10px, env(safe-area-inset-right))}
+.okt{color:var(--gain);font-weight:500}
+.vbar{height:8px;border-radius:4px;background:color-mix(in srgb, var(--loss) 35%, var(--line));overflow:hidden;margin:4px 0 8px}
+.vbar i{display:block;height:100%;background:var(--gain);border-radius:4px}
+.note h5{margin:8px 0 3px;font-size:12.5px;color:var(--ink)}
+.vlist{list-style:none;padding:0;margin:0}
+.vlist li{display:flex;justify-content:space-between;gap:10px;padding:3px 0;border-top:1px dashed var(--line);font-size:12.5px}
+.vlist li:first-child{border-top:0}
+.num{font-variant-numeric:tabular-nums;color:var(--ink2);white-space:nowrap}
+.area{font-size:12px;color:var(--ink2);white-space:nowrap;font-variant-numeric:tabular-nums}
+.area .up{color:var(--gain)} .area .down{color:var(--loss)}
+.spark{display:flex;align-items:flex-end;gap:3px;height:64px;margin:8px 0 2px;padding:0 2px;border-bottom:1px solid var(--line)}
+.spark span{flex:1;border-radius:3px 3px 0 0;min-width:4px}
+.spark span.cur{outline:2px solid var(--ink);outline-offset:1px}
+.sparkx{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-bottom:8px}
+details.ckey{width:100%;font-size:12.5px;margin-top:6px}
+details.ckey summary{cursor:pointer;color:var(--ink2)}
+details.ckey div{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:6px}
+details.ckey span{display:inline-flex;align-items:center;gap:6px}
+details.ckey .sw{width:13px;height:13px;flex-basis:13px}
+
 </style>
 </head>
 <body>
@@ -116,7 +172,7 @@ ul.pts li{margin-bottom:8px}
       <div class="card mapcard">
         <svg id="map" role="img" aria-label="연도별 세계 지도"></svg>
         <div class="yearbadge" id="badge"></div>
-        <div class="zoom"><button id="zin" aria-label="확대">+</button><button id="zout" aria-label="축소">−</button><button id="zreset" aria-label="전체 보기" style="font-size:13px">⤢</button></div>
+        <div class="zoom"><button id="zin" aria-label="확대" title="확대">+</button><button id="zout" aria-label="축소" title="축소">−</button><button id="zreset" aria-label="원래 크기로" title="원래 크기로" class="txt">원래대로</button><button id="zbig" aria-label="지도 크게 보기" title="지도 크게 보기" class="txt">크게</button></div>
         <div class="info" id="info"></div>
         <div class="loading" id="loading">지도 불러오는 중…</div>
       </div>
@@ -125,30 +181,31 @@ ul.pts li{margin-bottom:8px}
           <button id="prev" aria-label="이전 시점">‹</button>
           <div class="years" id="years"></div>
           <button id="next" aria-label="다음 시점">›</button>
-          <button id="play" aria-label="자동 재생" style="font-size:14px">▶</button>
         </div>
         <div class="legend" id="legend"></div>
-        <div class="hint">색칠된 나라는 이 시점의 패권 경쟁 주역(식민지·속령 포함)입니다. 이름을 누르면 그 나라만 강조되고, 지도의 영역을 누르면 원본 정보가 나옵니다. ◆는 해협·운하·거점 같은 요충지로, 그 시점의 지배 세력을 따로 검증해 표시했습니다. 점선 고리(◌)가 있는 요충지는 지도 색과 실제 지배 세력이 다른 곳입니다.</div>
+        <div class="hint">색은 그 시점에 지배하던 세력이고, 나라마다 고유색이 정해져 있습니다. 선명할수록 지배가 공고하고, 빗금은 지배력을 잃어 가거나 흔들리는 곳, 아주 옅은 색은 패권 경쟁에서 물러났지만 나라는 남아 있다는 뜻입니다. 지도의 영역을 누르면 지역 이름과 출처가 나오고, 아래 목록에서 나라를 누르면 그 나라만 남겨 연도별 흐름과 영토 변화를 따라갈 수 있습니다. ◆는 해협·운하·거점 같은 요충지로, 원본 지도가 틀린 곳은 검증한 값으로 다시 칠했습니다.</div>
       </div>
     </div>
     <aside class="card panel" id="panel"></aside>
   </div>
-  <div class="foot">국경 데이터: <a href="https://github.com/aourednik/historical-basemaps">historical-basemaps</a> (André Ourednik 외, GPL-3.0) — 단순화해 사용했고, 소속 표기의 명백한 오류는 연도별로 보정했습니다(각 시점 ‘데이터 보정’ 참고). 원본은 작업 중인 프로젝트이며, 근대 이전 국경은 ‘세력권’ 수준의 근사입니다. 영역 정보의 ‘국경 정밀도’는 원본 값(1 대략 · 2 중간 · 3 정밀)입니다. ◆ 요충지 19곳(해협·운하·거점)은 지도 데이터와 별개로 시점마다 지배 세력을 확인해 표시했고, 지도 색과 어긋나는 곳은 패널의 ‘요충지 점검’에 따로 적었습니다. 시점 사이 간격이 고르지 않으므로, 각 시점의 ‘사건과 손익’은 직전 시점 이후의 주요 사건을 다룹니다.</div>
+  <div class="foot">국경: 1880년까지는 <a href="https://github.com/aourednik/historical-basemaps">historical-basemaps</a>(André Ourednik 외, GPL-3.0)에 연도별 보정을 더했고, 1914년부터는 <a href="https://icr.ethz.ch/data/cshapes/">CShapes 2.0</a>(Schvitz·Girardin·Weidmann 외, 날짜 단위 국경·식민지 데이터)으로 다시 그렸습니다. 두 출처가 겹치는 1914년 이후는 시점마다 ‘교차검증’ 칸에 일치율과 어긋난 곳을 공개합니다. 요충지와 일부 지역은 원본이 틀린 경우 검증한 값으로 지도 자체를 다시 칠했습니다(‘재표기’). 영토 면적은 최종 지도를 0.25° 격자로 표본 추출해 계산한 근사값입니다. 시점 사이 간격이 고르지 않으므로, 각 시점의 ‘사건과 손익’은 직전 시점 이후의 주요 사건을 다룹니다.</div>
 </div>
 <script src="lib/d3.min.js"></script>
 <script src="lib/topojson-client.min.js"></script>
 <script>
 (async function(){
-const UI = {"tabs":["패권 구도","사건과 손익","기술 발전","사상 발전"],"era":"{prev} 이후 → {year}년 무렵","eraFirst":"{year}년 무렵","gain":"이득","loss":"손실","readMore":"더 읽기","fixesTitle":"이 시점의 데이터 보정","andMore":" 외 {n}곳","others":"그 밖의 국가·세력","ckShown":"요충지 표시 중","ckHidden":"요충지 숨김","ckTitle":"요충지 점검 — {n}곳","ckTitleDiff":", 지도 색과 다른 곳 {m}곳","ckTitleOk":", 모두 지도와 일치","ckDiff":"⚠ 지도 색과 다름","ckAbsent":"(지도에 미표시)","ckRuler":"{year}년 무렵 지배:","ckAbsentLong":"원본 국경 데이터에는 이 지점이 그려져 있지 않습니다(작은 섬·거점). 이 표시가 검증된 값입니다.","ckDiffLong":"⚠ 지도 색과 다릅니다. 원본 국경 데이터는 이 지점을 {map}으로 그립니다. 거점·해협처럼 작은 지역이라 주변 영역에 묻혔거나 원본 표기가 틀린 경우입니다 — 이 표시가 검증된 값입니다.","ckMapNone":"표시하지 않은 영역","otherPower":"기타 세력","unnamed":"이름 없는 지역","srcSubj":"소속(원본)","cls":"분류","prec":"국경 정밀도","precVals":["대략","중간","정밀"],"noInfo":"정보 없음","fix":"보정","close":"닫기"};
-const HUE={gb:'red',fr:'blue',es:'yellow',pt:'green',nl:'orange',ru:'violet',ot:'aqua',cn:'magenta',us:'aqua',de:'yellow',at:'magenta',jp:'orange',it:'green',be:'aqua',mg:'orange'};
-const col=k=>`var(--c-${HUE[k]})`;
+const UI = {"tabs":["패권 구도","사건과 손익","기술 발전","사상 발전","국가별 흐름"],"era":"{prev} 이후 → {year}년 무렵","eraFirst":"{year}년 무렵","gain":"이득","loss":"손실","readMore":"더 읽기","fixesTitle":"이 시점의 데이터 보정","andMore":" 외 {n}곳","others":"그 밖의 국가·세력","ckShown":"요충지 표시 중","ckHidden":"요충지 숨김","ckTitle":"요충지 점검 — {n}곳","ckTitleDiff":", 지도 색과 다른 곳 {m}곳","ckTitleOk":", 모두 지도와 일치","ckDiff":"⚠ 지도 색과 다름","ckAbsent":"(지도에 미표시)","ckRuler":"{year}년 무렵 지배:","ckAbsentLong":"원본 국경 데이터에는 이 지점이 그려져 있지 않습니다(작은 섬·거점). 이 표시가 검증된 값입니다.","ckDiffLong":"⚠ 지도 색과 다릅니다. 원본 국경 데이터는 이 지점을 {map}으로 그립니다. 거점·해협처럼 작은 지역이라 주변 영역에 묻혔거나 원본 표기가 틀린 경우입니다 — 이 표시가 검증된 값입니다.","ckMapNone":"표시하지 않은 영역","otherPower":"기타 세력","unnamed":"이름 없는 지역","srcSubj":"소속(원본)","cls":"분류","prec":"국경 정밀도","precVals":["대략","중간","정밀"],"noInfo":"정보 없음","fix":"보정","close":"닫기","status":{"rise":"부상","peak":"전성","hold":"유지","decline":"쇠퇴·흔들림","exit":"패권 퇴장(국가 존속)","end":"소멸"},"tiers":[["solid","공고"],["hold","유지"],["hatch","쇠퇴·흔들림"],["exit","패권 퇴장"]],"legendTitle":"{year}년 무렵 지배 세력","rival":"주역","trackAll":"이 시점 각 나라의 변화","trackAllNote":"직전 시점 이후 무엇이 바뀌었는지입니다. 나라를 누르면 그 나라의 전체 흐름이 나옵니다.","trackOne":"{name}의 흐름","trackBack":"← 모든 나라","trackNote":"연도를 누르면 그 시점의 지도로 이동합니다.","trackBefore":"{year}년 이전에는 이 지도에서 패권 세력으로 다루지 않음","trackAfter":"이후 시점에는 칠하지 않음","focusOff":"전체 보기","regionName":"그 시기 지역 이름","contested":"이 지역은 지배가 흔들리는 중(빗금)","bigViewShort":"크게","bigExitShort":"닫기","patched":"검증값으로 재표기","srcCs":"국경: CShapes 2.0","srcHb":"국경: historical-basemaps","csStatus":{"colony":"식민지","protectorate":"보호령","mandate":"위임통치령","occupied":"점령지","N/A":"지위 미상"},"ckTitlePatched":", 지도에 재표기 {p}곳","ckPatched":"재표기함","ckPatchedLong":"원본 지도에서 이 지점이 주변 영역에 묻히거나 잘못 표기되어 있어, 검증한 지배 세력으로 지도 자체를 다시 칠했습니다.","vTitle":"교차검증","vCs":"이 시점 국경은 CShapes 2.0({date} 기준)으로 다시 그렸습니다. 원래 쓰던 오픈소스(historical-basemaps)와 비교한 소속 일치율은 {agree}%입니다(면적 기준, 0.25° 격자 표본, 해안선 차이 제외). 요충지·지역 재표기 {p}곳.","vHb":"1886년 이전이라 교차 확인할 날짜 단위 데이터셋이 없습니다. historical-basemaps를 바탕으로 소속 표기 오류 {f}곳을 보정하고, 요충지·지역 {p}곳을 검증값으로 재표기했습니다.","vDiffs":"두 출처가 크게 어긋난 곳(원본 ↔ CShapes)","vAdopt":"어긋난 곳은 CShapes를 따랐습니다.","vExc":"CShapes와 다르게 표시하거나 설명을 덧붙인 곳","vNone":"소속 없음","areaM":"{v}백만 km²","areaK":"{v}만 km²","areaLabel":"영토 약 {a}","sparkTitle":"영토 면적(재계산)","sparkAria":"시점별 영토 면적 막대","colorKey":"국가 고유색 보기","colorKeyNote":"한 나라는 이름이 바뀌어도(예: 러시아→소련→러시아, 명→청→중국) 언제나 같은 색입니다. 지배력이 강해지거나 약해질 때는 색은 그대로 두고 진하기와 빗금만 달라집니다.","sparkNote":"면적은 이 지도에 칠해진 영역(식민지 포함)을 다시 계산한 값입니다. 1886년 이전은 명목상 영유권·세력권이 포함되어 실제 통제 범위보다 크게 나올 수 있습니다."};
+const KEYS=['gb','fr','es','pt','nl','ru','ot','cn','us','de','at','jp','it','be','mg'];
+const ORDER={peak:0,rise:1,hold:2,decline:3,exit:4,end:5};
+const pc=k=>`var(--p-${k})`;
 const fmt=(s,o)=>s.replace(/\{(\w+)\}/g,(_,k)=>o[k]);
 const [content, meta] = await Promise.all([fetch('content.json').then(r=>r.json()), fetch('meta.json').then(r=>r.json())]);
 function shortName(k,y){ const L=content.short[k]; if(!L) return k; for(const [until,label] of L) if(y<until) return label; return L[L.length-1][1]; }
 const YEARS = content.years.map(d=>d.year);
 const byYear = Object.fromEntries(content.years.map(d=>[d.year,d]));
+const statusOf=(k,y)=>content.powers[k]?.st[y]||null;
+const alive=(k,y)=>{const s=statusOf(k,y);return s&&s!=='end';};
 const cache = {};
-// 뒤집힌 고리(지구 전체를 덮는 폴리곤)를 바로잡는다
 function rewind(f){
   const gm=f.geometry; if(!gm) return f;
   const polys=gm.type==='Polygon'?[gm.coordinates]:gm.type==='MultiPolygon'?gm.coordinates:[];
@@ -157,55 +214,98 @@ function rewind(f){
 }
 const load = y => cache[y] ||= fetch(`data/${y}.json`).then(r=>r.json()).then(t=>topojson.feature(t,t.objects.w).features.map(rewind).filter(f=>f.geometry));
 
+// ---- 지배력 표현: 공고(진함) · 유지(중간) · 쇠퇴·흔들림(빗금) · 패권 퇴장(아주 옅음)
+const tierOf=st=>st==='peak'||st==='rise'?'solid':st==='hold'?'hold':st==='decline'?'hatch':st==='exit'?'exit':null;
+function tierFill(k,tier){
+  if(tier==='solid') return pc(k);
+  if(tier==='hold') return `color-mix(in srgb, ${pc(k)} 72%, var(--land))`;
+  if(tier==='exit') return `color-mix(in srgb, ${pc(k)} 30%, var(--land))`;
+  if(tier==='hatch') return `url(#hp-${k})`;
+  return 'var(--land)';
+}
+function tierCss(color,tier){
+  if(tier==='solid') return `background:${color}`;
+  if(tier==='hold') return `background:color-mix(in srgb, ${color} 72%, var(--land))`;
+  if(tier==='exit') return `background:color-mix(in srgb, ${color} 30%, var(--land))`;
+  if(tier==='hatch') return `background:repeating-linear-gradient(45deg, ${color} 0 2px, color-mix(in srgb, ${color} 45%, var(--land)) 2px 5px)`;
+  return 'background:var(--land)';
+}
+
 // ---- map setup
 const W=960,H=500;
 const svg=d3.select('#map').attr('viewBox',`0 0 ${W} ${H}`);
+const defs=svg.append('defs');
+for(const k of KEYS){
+  const p=defs.append('pattern').attr('id','hp-'+k).attr('patternUnits','userSpaceOnUse').attr('width',4).attr('height',4).attr('patternTransform','rotate(45)');
+  p.append('rect').attr('width',4).attr('height',4).style('fill',`color-mix(in srgb, ${pc(k)} 45%, var(--land))`);
+  p.append('rect').attr('width',1.6).attr('height',4).style('fill',pc(k));
+}
 const proj=d3.geoNaturalEarth1().fitExtent([[6,6],[W-6,H-6]],{type:'Sphere'});
 const path=d3.geoPath(proj);
 const g=svg.append('g');
 g.append('path').attr('class','sphere').attr('d',path({type:'Sphere'}));
 g.append('path').attr('class','grat').attr('d',path(d3.geoGraticule10()));
-const gPoly=g.append('g'), gCk=g.append('g'), gLbl=g.append('g');
+const gPoly=g.append('g'), gCk=g.append('g');
 let ckOn=true;
 const MK=()=>document.getElementById('map').clientWidth<640?2:1;
 let k=1;
-const LBL=()=>document.getElementById('map').clientWidth<640?24:13;
-const zoom=d3.zoom().scaleExtent([1,12]).translateExtent([[0,0],[W,H]]).on('zoom',e=>{k=e.transform.k;g.attr('transform',e.transform);gLbl.selectAll('text').attr('font-size',LBL()/Math.sqrt(k)).style('stroke-width',3/k+'px');gCk.selectAll('g.inner').attr('transform',`scale(${MK()/k})`);});
+const zoom=d3.zoom().scaleExtent([1,12]).translateExtent([[0,0],[W,H]]).on('zoom',e=>{k=e.transform.k;g.attr('transform',e.transform);gCk.selectAll('g.inner').attr('transform',`scale(${MK()/k})`);});
 svg.call(zoom).on('dblclick.zoom',null);
-d3.select('#zin').on('click',()=>svg.transition().duration(300).call(zoom.scaleBy,1.6));
-d3.select('#zout').on('click',()=>svg.transition().duration(300).call(zoom.scaleBy,1/1.6));
-d3.select('#zreset').on('click',()=>svg.transition().duration(400).call(zoom.transform,d3.zoomIdentity));
+const zby=f=>{ try{ svg.transition().duration(250).call(zoom.scaleBy,f); }catch(e){ svg.call(zoom.scaleBy,f); } };
+document.getElementById('zin').addEventListener('click',e=>{e.preventDefault();zby(1.6);});
+document.getElementById('zout').addEventListener('click',e=>{e.preventDefault();zby(1/1.6);});
+document.getElementById('zreset').addEventListener('click',e=>{e.preventDefault();svg.call(zoom.transform,d3.zoomIdentity);});
+const bigBtn=document.getElementById('zbig');
+function setBig(on){ document.body.classList.toggle('bigmap',on); bigBtn.textContent=on?UI.bigExitShort:UI.bigViewShort; bigBtn.setAttribute('aria-pressed',on); }
+bigBtn.addEventListener('click',()=>setBig(!document.body.classList.contains('bigmap')));
+window.addEventListener('keydown',e=>{ if(e.key==='Escape') setBig(false); });
 
 // ---- state
-let year=YEARS[0], tab='power', focus=null, timer=null, selEl=null;
+let year=YEARS[0], tab='power', focus=null, selEl=null;
 const h=(location.hash||'').match(/^#y(\d{4})$/); if(h&&byYear[+h[1]]) year=+h[1];
 const info=document.getElementById('info');
 const fixText=id=>content.fixes[id]||'';
 
-function fill(d,rivals){
+function polyFill(d){
   const p=d.properties.p;
-  if(p && rivals.includes(p)) return (focus && focus!==p) ? 'var(--land)' : col(p);
+  if(p && alive(p,year) && (!focus || focus===p)){
+    const t=d.properties.c?'hatch':tierOf(statusOf(p,year));
+    return tierFill(p,t);
+  }
   return d.properties.n ? 'var(--land)' : 'var(--land0)';
 }
 function esc(s){return String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
 function closeBtn(){return `<button class="x" aria-label="${esc(UI.close)}">×</button>`;}
 function showInfo(d){
-  const p=d.properties, prec=UI.precVals[p.b-1]||UI.noInfo;
-  info.innerHTML=closeBtn()+`<b>${esc(p.n||UI.unnamed)}</b>`+
-    `<div class="meta">${p.s?esc(UI.srcSubj)+': '+esc(p.s)+' · ':''}${p.p?esc(UI.cls)+': '+esc(shortName(p.p,year))+' · ':''}${esc(UI.prec)}: ${esc(prec)}</div>`+
+  const p=d.properties, v=meta.verify[year];
+  let name=p.n, extra='';
+  if(p.kind==='choke'){const c=content.choke[p.pid][year]; name=c.name; extra=`<div class="fix">${esc(UI.patched)}: ${esc(c.who)}${c.note?' — '+esc(c.note):''}</div>`;}
+  if(p.kind==='region'){const c=content.patches[p.pid][year]; name=c.name; extra=`<div class="fix">${esc(UI.patched)}: ${esc(c.who)}${c.note?' — '+esc(c.note):''}</div>`;}
+  const ruler=p.p&&alive(p.p,year)?`${esc(shortName(p.p,year))} · ${esc(UI.status[statusOf(p.p,year)])}`:'';
+  const srcLine=p.src==='cs'
+    ? `${esc(UI.srcCs)}${p.st&&p.st!=='independent'?` · ${esc(UI.csStatus[p.st]||p.st)}${p.o&&p.o!=='x'?' ('+esc(shortName(p.o,year))+')':''}`:''}`
+    : p.kind? '' : `${esc(UI.srcHb)}${p.s?' · '+esc(UI.srcSubj)+': '+esc(p.s):''} · ${esc(UI.prec)}: ${esc(UI.precVals[p.b-1]||UI.noInfo)}`;
+  info.innerHTML=closeBtn()+`<b>${esc(name||UI.unnamed)}</b>`+
+    (ruler?`<div>${esc(UI.cls)}: <b style="font-size:13px">${ruler}</b></div>`:'')+
+    (srcLine?`<div class="meta">${srcLine}</div>`:'')+extra+
+    (p.c?`<div class="warn">${esc(UI.contested)}</div>`:'')+
     (p.f?`<div class="fix">${esc(UI.fix)}: ${esc(fixText(p.f))}</div>`:'');
+  void v;
   info.style.display='block';
   info.querySelector('.x').onclick=()=>{info.style.display='none';if(selEl)selEl.classList.remove('sel');};
 }
 const ckList=()=>meta.choke[year].map(c=>({...c,...content.choke[c.id][year]}));
-function ckColor(c){return c.k&&byYear[year].rivals.includes(c.k)?col(c.k):'var(--ink2)';}
+const ckShown=k2=>k2&&alive(k2,year)?k2:null;
+function ckColor(c){return ckShown(c.k)?pc(c.k):'var(--ink2)';}
+function ckVis(c){return !c.absent && ckShown(c.mapKey)!==ckShown(c.k);}
 function showCk(c){
   const mapLabel=c.absent?esc(UI.ckMapNone):`‘${esc(c.mapName||UI.unnamed)}’(${esc(c.mapKey?shortName(c.mapKey,year):UI.otherPower)})`;
   info.innerHTML=closeBtn()+`<b>◆ ${esc(c.name)}</b>`+
    `<div>${esc(fmt(UI.ckRuler,{year}))} <b style="font-size:13px">${esc(c.who)}</b></div>`+
    (c.note?`<div class="meta">${esc(c.note)}</div>`:'')+
+   (c.patched?`<div class="meta">${esc(UI.ckPatchedLong)}</div>`:'')+
    (c.absent?`<div class="meta">${esc(UI.ckAbsentLong)}</div>`:'')+
-   (c.vis?`<div class="warn">${esc(UI.ckDiffLong).replace('{map}',mapLabel)}</div>`:'');
+   (ckVis(c)?`<div class="warn">${esc(UI.ckDiffLong).replace('{map}',mapLabel)}</div>`:'');
   info.style.display='block';
   info.querySelector('.x').onclick=()=>{info.style.display='none';};
 }
@@ -214,51 +314,84 @@ function drawCk(){
   const sel=gCk.selectAll('g.ck').data(list,c=>c.id).join(en=>{const a=en.append('g').attr('class','ck');const i=a.append('g').attr('class','inner');i.append('circle').attr('class','hit').attr('r',9);i.append('circle').attr('class','ring').attr('r',7);i.append('path').attr('class','dia').attr('d','M0,-4.6L4.6,0L0,4.6L-4.6,0Z');return a;});
   sel.attr('transform',c=>`translate(${proj(c.ll)})`).on('click',(e,c)=>{e.stopPropagation();if(selEl)selEl.classList.remove('sel');showCk(c);});
   sel.select('g.inner').attr('transform',`scale(${MK()/k})`);
-  sel.select('.dia').attr('fill',ckColor);
-  sel.select('.ring').attr('display',c=>c.vis?null:'none');
+  sel.select('.dia').style('fill',ckColor).attr('opacity',c=>focus&&ckShown(c.k)!==focus?.35:1);
+  sel.select('.ring').attr('display',c=>ckVis(c)?null:'none');
 }
 async function drawMap(){
   const feats=await load(year); document.getElementById('loading').style.display='none';
-  const c=byYear[year], rivals=c.rivals;
   gPoly.selectAll('path').data(feats,(d,i)=>year+'-'+i).join('path')
-    .attr('class','poly').attr('d',path).attr('fill',d=>fill(d,rivals))
+    .attr('class','poly').attr('d',path).style('fill',polyFill)
     .on('click',function(e,d){ if(selEl) selEl.classList.remove('sel'); selEl=this; this.classList.add('sel'); showInfo(d); });
-  const L=meta.labels[year]||{};
-  gLbl.selectAll('text').data(rivals.filter(r=>L[r]),r=>r).join('text').attr('class','lbl')
-    .attr('x',r=>proj(L[r])[0]).attr('y',r=>proj(L[r])[1]).attr('font-size',LBL()/Math.sqrt(k)).style('stroke-width',3/k+'px')
-    .attr('opacity',r=>focus&&focus!==r?.25:1).text(r=>shortName(r,year));
-  const placed=[]; gLbl.selectAll('text').each(function(r){ let [x,y]=proj(L[r]); for(let n=0;n<4&&placed.some(([a,b])=>Math.abs(a-x)<LBL()*3.6&&Math.abs(b-y)<LBL());n++) y+=LBL()*1.1; placed.push([x,y]); d3.select(this).attr('y',y); });
   drawCk();
   document.getElementById('badge').textContent=year;
   const i=YEARS.indexOf(year); [YEARS[i+1],YEARS[i-1]].forEach(y=>y&&load(y));
 }
-function recolor(){
-  const rivals=byYear[year].rivals;
-  gPoly.selectAll('path').attr('fill',d=>fill(d,rivals));
-  gLbl.selectAll('text').attr('opacity',r=>focus&&focus!==r?.25:1);
-  renderLegend(); drawCk();
-}
+function recolor(){ gPoly.selectAll('path').style('fill',polyFill); drawCk(); renderLegend(); }
+function setFocus(k2){ focus=k2; if(k2) tab='powers'; recolor(); renderPanel(); }
 function renderYears(){
   const box=document.getElementById('years');
   box.innerHTML=YEARS.map(y=>`<button data-y="${y}" class="${y===year?'on':''}">${y}</button>`).join('');
   box.querySelectorAll('button').forEach(b=>b.onclick=()=>setYear(+b.dataset.y));
   const on=box.querySelector('.on'); if(on) on.scrollIntoView({inline:'center',block:'nearest',behavior:'smooth'});
 }
+function powersThisYear(){
+  const rivals=byYear[year].rivals;
+  return KEYS.filter(k2=>statusOf(k2,year)).sort((a,b)=>(rivals.includes(b)-rivals.includes(a))||(ORDER[statusOf(a,year)]-ORDER[statusOf(b,year)]));
+}
+function swatch(k2,y){const st=statusOf(k2,y);return `<i class="sw" style="${tierCss(pc(k2),tierOf(st))}${st==='end'?';opacity:.35':''}"></i>`;}
 function renderLegend(){
-  const c=byYear[year];
+  const rivals=byYear[year].rivals;
   const el=document.getElementById('legend');
-  el.innerHTML=c.rivals.map(r=>`<button class="chip ${focus&&focus!==r?'dim':''}" data-k="${r}" aria-pressed="${focus===r}"><i style="background:${col(r)}"></i>${esc(shortName(r,year))}</button>`).join('')+
-    `<span class="chip neutral" style="cursor:default"><i></i>${esc(UI.others)}</span>`+
-    `<button class="chip ${ckOn?'':'dim'}" id="cktog" aria-pressed="${ckOn}"><span style="font-size:12px">◆</span>${esc(ckOn?UI.ckShown:UI.ckHidden)}</button>`;
-  el.querySelectorAll('button[data-k]').forEach(b=>b.onclick=()=>{focus=focus===b.dataset.k?null:b.dataset.k;recolor();});
+  el.innerHTML=`<div class="lgtitle">${esc(fmt(UI.legendTitle,{year}))}${focus?` <button class="linkbtn" id="focusoff">${esc(UI.focusOff)}</button>`:''}</div>`+
+    powersThisYear().map(r=>`<button class="chip ${focus&&focus!==r?'dim':''} ${statusOf(r,year)==='end'?'ended':''}" data-k="${r}" aria-pressed="${focus===r}">${swatch(r,year)}<span>${esc(shortName(r,year))}${rivals.includes(r)?` <em>${esc(UI.rival)}</em>`:''}<small>${esc(UI.status[statusOf(r,year)])}</small></span></button>`).join('')+
+    `<button class="chip ${ckOn?'':'dim'}" id="cktog" aria-pressed="${ckOn}"><span style="font-size:12px">◆</span><span>${esc(ckOn?UI.ckShown:UI.ckHidden)}</span></button>`+
+    `<div class="tierkey">${UI.tiers.map(([t,l])=>`<span><i class="sw" style="${tierCss('var(--ink2)',t)}"></i>${esc(l)}</span>`).join('')}</div>`+
+    `<details class="ckey"><summary>${esc(UI.colorKey)}</summary><div>${KEYS.map(k2=>`<span><i class="sw" style="background:${pc(k2)}"></i>${esc(content.full[k2])}</span>`).join('')}</div><p class="sub">${esc(UI.colorKeyNote)}</p></details>`;
+  el.querySelectorAll('button[data-k]').forEach(b=>b.onclick=()=>setFocus(focus===b.dataset.k?null:b.dataset.k));
+  const fo=document.getElementById('focusoff'); if(fo) fo.onclick=()=>setFocus(null);
   document.getElementById('cktog').onclick=()=>{ckOn=!ckOn;renderLegend();drawCk();};
 }
-const TABS=['power','events','tech','ideas'];
+const TABS=['power','events','tech','ideas','powers'];
 function ckSection(){
-  const L=ckList(), bad=L.filter(c=>c.vis);
-  const ord=[...bad,...L.filter(c=>!c.vis)];
-  return `<div class="note"><h4>${esc(fmt(UI.ckTitle,{n:L.length}))}${esc(bad.length?fmt(UI.ckTitleDiff,{m:bad.length}):UI.ckTitleOk)}</h4><ul class="cklist">`+
-   ord.map(c=>`<li data-id="${c.id}"><span class="d" style="background:${ckColor(c)}"></span><span><b>${esc(c.name)}</b> — ${esc(c.who)}${c.vis?` <span class="warn">${esc(UI.ckDiff)}</span>`:''}${c.absent?` <span style="color:var(--muted)">${esc(UI.ckAbsent)}</span>`:''}${c.note?`<br><span style="color:var(--muted)">${esc(c.note)}</span>`:''}</span></li>`).join('')+`</ul></div>`;
+  const L=ckList(), bad=L.filter(ckVis), pat=L.filter(c=>c.patched);
+  const ord=[...bad,...L.filter(c=>!ckVis(c))];
+  return `<div class="note"><h4>${esc(fmt(UI.ckTitle,{n:L.length}))}${UI.ckTitlePatched?esc(fmt(UI.ckTitlePatched,{p:pat.length})):''}${esc(bad.length?fmt(UI.ckTitleDiff,{m:bad.length}):UI.ckTitleOk)}</h4><ul class="cklist">`+
+   ord.map(c=>`<li data-id="${c.id}"><span class="d" style="background:${ckColor(c)}"></span><span><b>${esc(c.name)}</b> — ${esc(c.who)}${ckVis(c)?` <span class="warn">${esc(UI.ckDiff)}</span>`:''}${c.patched&&UI.ckPatched?` <span class="okt">${esc(UI.ckPatched)}</span>`:''}${c.absent?` <span style="color:var(--muted)">${esc(UI.ckAbsent)}</span>`:''}${c.note?`<br><span style="color:var(--muted)">${esc(c.note)}</span>`:''}</span></li>`).join('')+`</ul></div>`;
+}
+const LANG=document.documentElement.lang;
+const num=(v,d)=>v.toLocaleString(LANG,{minimumFractionDigits:d,maximumFractionDigits:d});
+const km=a=>a>=1e6?fmt(UI.areaM,{v:num(a/1e6,a>=1e7?0:1)}):fmt(UI.areaK,{v:Math.round(a/1e4)});
+function verifySection(){
+  const v=meta.verify[year]; if(!v) return '';
+  if(v.src==='hb') return `<div class="note"><h4>${esc(UI.vTitle)}</h4><p class="sub">${esc(fmt(UI.vHb,{f:v.fixes,p:v.patches}))}</p></div>`;
+  const nm=k2=>k2?shortName(k2,year):UI.vNone;
+  return `<div class="note"><h4>${esc(UI.vTitle)}</h4><p class="sub">${esc(fmt(UI.vCs,{date:v.date,agree:num(v.agree*100,1),p:v.patches}))}</p>`+
+    `<div class="vbar"><i style="width:${(v.agree*100).toFixed(1)}%"></i></div>`+
+    (v.diffs.length?`<h5>${esc(UI.vDiffs)}</h5><ul class="vlist">${v.diffs.slice(0,6).map(d=>`<li><span>${esc(d.hn)} <b>${esc(nm(d.hk))}</b> ↔ ${esc(d.cn)} <b>${esc(nm(d.ck))}</b></span><span class="num">${esc(km(d.a))}</span></li>`).join('')}</ul><p class="sub">${esc(UI.vAdopt)}</p>`:'')+
+    (v.exceptions.length?`<h5>${esc(UI.vExc)}</h5><ul class="vlist">${v.exceptions.map(e=>`<li><span><b>${esc(e.n)}</b> — ${esc(fixText(e.f))}</span></li>`).join('')}</ul>`:'')+`</div>`;
+}
+function areaLine(k2,y){
+  const a=meta.area[y]?.[k2]; if(!a) return '';
+  const i=YEARS.indexOf(y), pa=i>0?meta.area[YEARS[i-1]]?.[k2]:null;
+  const d=pa?Math.round((a-pa)/pa*100):null;
+  return `<span class="area">${esc(fmt(UI.areaLabel,{a:km(a)}))}${d!==null?` <span class="${d>=0?'up':'down'}">${d>=0?'+':''}${d}%</span>`:''}</span>`;
+}
+function areaSpark(k2){
+  const vals=YEARS.map(y=>meta.area[y]?.[k2]||0), mx=Math.max(...vals)||1;
+  return `<div class="spark" role="img" aria-label="${esc(UI.sparkAria)}">${YEARS.map((y,i)=>`<span title="${y}: ${vals[i]?km(vals[i]):'—'}" class="${y===year?'cur':''}" style="height:${Math.max(vals[i]?4:0,vals[i]/mx*100)}%;${tierCss(pc(k2),tierOf(statusOf(k2,y))||'none').replace('background:','background:')}"></span>`).join('')}</div><div class="sparkx"><span>${YEARS[0]}</span><span>${esc(UI.sparkTitle)}</span><span>${YEARS.at(-1)}</span></div><p class="sub" style="font-size:12px">${esc(UI.sparkNote)}</p>`;
+}
+function powersBody(){
+  if(!focus){
+    return `<p class="sub">${esc(UI.trackAllNote)}</p><ul class="trk">`+powersThisYear().map(k2=>{const st=statusOf(k2,year);
+      return `<li data-k="${k2}" class="${st==='end'?'ended':''}">${swatch(k2,year)}<div><b>${esc(shortName(k2,year))}</b> <span class="st st-${st}">${esc(UI.status[st])}</span> ${areaLine(k2,year)}<p>${esc(content.powers[k2].t[year])}</p></div></li>`;}).join('')+`</ul>`;
+  }
+  const P=content.powers[focus], ys=YEARS.filter(y=>P.st[y]);
+  const first=ys[0], last=ys[ys.length-1];
+  return `<button class="linkbtn" id="trkback">${esc(UI.trackBack)}</button><h3 class="trkh">${esc(fmt(UI.trackOne,{name:content.full[focus]}))}</h3>`+areaSpark(focus)+`<p class="sub">${esc(UI.trackNote)}</p>`+
+    (first>YEARS[0]?`<p class="sub">${esc(fmt(UI.trackBefore,{year:first}))}</p>`:'')+
+    `<ol class="trk tl">`+ys.map(y=>{const st=P.st[y];
+      return `<li data-y="${y}" class="${y===year?'cur':''} ${st==='end'?'ended':''}">${swatch(focus,y)}<div><b>${y}</b> · ${esc(shortName(focus,y))} <span class="st st-${st}">${esc(UI.status[st])}</span> ${areaLine(focus,y)}<p>${esc(P.t[y])}</p></div></li>`;}).join('')+`</ol>`+
+    (P.st[last]==='end'?`<p class="sub">${esc(UI.trackAfter)}</p>`:'');
 }
 function renderPanel(){
   const c=byYear[year], i=YEARS.indexOf(year), prevY=YEARS[i-1];
@@ -266,30 +399,31 @@ function renderPanel(){
   const groups=[...new Set(fixes.map(([,f])=>f))].map(f=>[f,fixes.filter(x=>x[1]===f).map(x=>x[0])]);
   let body='';
   if(tab==='events') body=c.events.map(e=>`<div class="ev"><h3>${esc(e.t)}</h3><div class="row"><span class="tag g">${esc(UI.gain)}</span><span>${esc(e.g)}</span></div><div class="row"><span class="tag l">${esc(UI.loss)}</span><span>${esc(e.l)}</span></div></div>`).join('');
+  else if(tab==='powers') body=powersBody();
   else body=`<ul class="pts">${c[tab].map(t=>`<li>${esc(t)}</li>`).join('')}</ul>`;
   document.getElementById('panel').innerHTML=
     `<div class="era">${esc(prevY?fmt(UI.era,{prev:prevY,year}):fmt(UI.eraFirst,{year}))}</div><h2>${esc(c.title)}</h2>`+
     `<div class="tabs" role="tablist">${TABS.map((k2,j)=>`<button role="tab" data-t="${k2}" class="${tab===k2?'on':''}" aria-selected="${tab===k2}">${esc(UI.tabs[j])}</button>`).join('')}</div>`+
     body+
-    `<div class="note"><h4>${esc(UI.readMore)}</h4><div class="links">${c.links.map(([t,u])=>`<a href="${u}" target="_blank" rel="noopener">${esc(t)}</a>`).join('')}</div></div>`+
-    ckSection()+
-    (groups.length?`<div class="note"><h4>${esc(UI.fixesTitle)}</h4><ul>${groups.map(([f,ns])=>`<li>${esc(fixText(f))} — <span style="color:var(--muted)">${esc(ns.slice(0,8).join(', '))}${ns.length>8?esc(fmt(UI.andMore,{n:ns.length-8})):''}</span></li>`).join('')}</ul></div>`:'');
+    (tab==='powers'?'':`<div class="note"><h4>${esc(UI.readMore)}</h4><div class="links">${c.links.map(([t,u])=>`<a href="${u}" target="_blank" rel="noopener">${esc(t)}</a>`).join('')}</div></div>`+
+    verifySection()+ckSection()+
+    (groups.length?`<div class="note"><h4>${esc(UI.fixesTitle)}</h4><ul>${groups.map(([f,ns])=>`<li>${esc(fixText(f))} — <span style="color:var(--muted)">${esc(ns.slice(0,8).join(', '))}${ns.length>8?esc(fmt(UI.andMore,{n:ns.length-8})):''}</span></li>`).join('')}</ul></div>`:''));
   document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{tab=b.dataset.t;renderPanel();});
+  document.querySelectorAll('ul.trk li[data-k]').forEach(li=>li.onclick=()=>setFocus(li.dataset.k));
+  document.querySelectorAll('ol.tl li[data-y]').forEach(li=>li.onclick=()=>setYear(+li.dataset.y,true));
+  const bk=document.getElementById('trkback'); if(bk) bk.onclick=()=>setFocus(null);
+  const tb=document.querySelector('.tabs'), ont=tb&&tb.querySelector('button.on'); if(ont) tb.scrollLeft=Math.max(0,ont.offsetLeft-tb.clientWidth+ont.offsetWidth+8);
   document.querySelectorAll('.cklist li').forEach(li=>li.onclick=()=>{const c=ckList().find(x=>x.id===li.dataset.id);showCk(c);const [x,y2]=proj(c.ll);svg.transition().duration(600).call(zoom.transform,d3.zoomIdentity.translate(W/2,H/2).scale(4).translate(-x,-y2));document.querySelector('.mapcard').scrollIntoView({behavior:'smooth',block:'nearest'});});
 }
-async function setYear(y){
-  year=y; focus=null; info.style.display='none'; selEl=null;
+async function setYear(y,keepFocus){
+  year=y; info.style.display='none'; selEl=null;
+  if(focus && !statusOf(focus,y) && !keepFocus) focus=null;
   try{ if(location.hash!=='#y'+y) history.replaceState(null,'','#y'+y);}catch(e){}
   renderYears(); renderLegend(); renderPanel(); await drawMap();
 }
-const step=dlt=>{const i=YEARS.indexOf(year)+dlt; if(i>=0&&i<YEARS.length) setYear(YEARS[i]);};
+const step=dlt=>{const i=YEARS.indexOf(year)+dlt; if(i>=0&&i<YEARS.length) setYear(YEARS[i],true);};
 document.getElementById('prev').onclick=()=>step(-1);
 document.getElementById('next').onclick=()=>step(1);
-document.getElementById('play').onclick=function(){
-  if(timer){clearInterval(timer);timer=null;this.textContent='▶';return;}
-  this.textContent='❚❚'; if(year===YEARS[YEARS.length-1]) setYear(YEARS[0]);
-  timer=setInterval(()=>{ if(year===YEARS[YEARS.length-1]){clearInterval(timer);timer=null;document.getElementById('play').textContent='▶';return;} step(1);},3200);
-};
 window.addEventListener('keydown',e=>{if(e.key==='ArrowRight')step(1);if(e.key==='ArrowLeft')step(-1);});
 window.addEventListener('hashchange',()=>{const m=location.hash.match(/^#y(\d{4})$/);if(m&&byYear[+m[1]]&&+m[1]!==year)setYear(+m[1]);});
 setYear(year);

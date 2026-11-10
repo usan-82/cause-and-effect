@@ -1099,7 +1099,7 @@
     ],
     [
      "Canada",
-     ""
+     "Effectively independent after the Statute of Westminster (1931)"
     ]
    ]
   },
@@ -1141,7 +1141,7 @@
  "fixes": {
   "inca": "Inca lands left over from the 1530 data → Spanish Viceroyalty of Peru",
   "quebec": "British after the Treaty of Paris (1763)",
-  "dominion": "British dominion or colony",
+  "dominion": "British dominion — Britain conducted its foreign relations (before the Statute of Westminster, 1931). CShapes counts it as independent",
   "rupert": "Hudson's Bay Company territory (British)",
   "decol": "German colony",
   "ph_us": "American from 1898",
@@ -1154,7 +1154,7 @@
   "escol": "Spanish colony",
   "itcol": "Italian colony or occupied land (Ethiopia 1936–41)",
   "gb_1945": "British in 1945 (the data draws post-independence borders)",
-  "indo_1945": "Independence declared 1945.8; disputed with the Netherlands until 1949",
+  "indo_1945": "Independence declared 1945.8.17, war of independence with the Netherlands until 1949 — CShapes counts it independent from the declaration; this map shows it as ‘contested’",
   "zaire_1945": "Belgian Congo (independent 1960)",
   "be_trust": "Belgian trust territory (independent 1962)",
   "nl_1960": "Dutch (independent 1975)",
@@ -1170,7 +1170,17 @@
   "egypt_ot": "Ottoman province (from 1517); de facto autonomous under Muhammad Ali's dynasty from 1805",
   "egypt_1945": "Independent from 1922 (British troops in the Canal Zone) — the source marks it as British",
   "manchu": "Source label \"Manchu Empire\" → Republic of China (from 1912)",
-  "ussr_1920": "The USSR was founded in 1922 — at this point: Soviet Russia and allied republics"
+  "ussr_1920": "The USSR was founded in 1922 — at this point: Soviet Russia and allied republics",
+  "aragon": "Crown of Aragon — under one royal couple with Castile since the marriage of 1469 (no sovereign in the source)",
+  "habsburg_nl": "Habsburg Netherlands — ruled directly by Charles V and Philip II, of the Spanish line (the source files it under Austria)",
+  "aragon_italy": "Italian kingdoms of the Crown of Aragon — held by the king of Spain (the 1700 source wrongly gives Austria or Savoy)",
+  "milan_es": "Spanish Duchy of Milan from 1535 (to Austria in 1714)",
+  "spanish_nl": "Spanish Netherlands (south) — passed to Austria in 1714 (labelled ‘Luxembourg’ in the source)",
+  "ireland_1920": "Irish War of Independence (1919–21) under way — Irish Free State in 1922",
+  "algeria_1960": "Algerian War of Independence (1954–62) under way — independent in 1962",
+  "ethiopia_1938": "Occupied and annexed by Italy in 1936 (Italian East Africa), resistance continued — CShapes counts it as independent",
+  "germany_west_1945": "West Germany was divided among US, British and French occupation — CShapes files it all as US-occupied (and the map follows)",
+  "luisiana_1783": "Spanish Louisiana (1762–1800) — the source wrongly gives France"
  },
  "short": {
   "gb": [
@@ -1307,5 +1317,375 @@
     "Mughals"
    ]
   ]
+ },
+ "powers": {
+  "gb": {
+   "1492": "Kingdom of England. It lost its lands in France in the Hundred Years' War (ended 1453), and the Tudor dynasty came to power in 1485 after the Wars of the Roses. Still a mid-sized kingdom on Europe's edge.",
+   "1530": "Reign of Henry VIII. Its only continental possession is Calais. Soon, the Act of Supremacy (1534) breaks with Rome → the start of rivalry with Catholic Spain.",
+   "1600": "Elizabeth I defeated the Armada in 1588 → confidence at sea, and the East India Company was founded in 1600 to trade overseas. The conquest of Ireland is under way.",
+   "1650": "Colonies in North America (Jamestown 1607) and the Caribbean. A republic after the civil wars (1642–51). The Navigation Act of 1651 challenges the Dutch carrying trade → Anglo-Dutch Wars.",
+   "1700": "The Glorious Revolution (1688) brought parliamentary sovereignty and public-debt finance (Bank of England, 1694) → the money to sustain long wars and compete with France for hegemony.",
+   "1715": "Union with Scotland as Great Britain (1707). Victory in the War of the Spanish Succession brought Gibraltar, Minorca, North American land and the slave-trade asiento → it rises to sea power.",
+   "1783": "Victory in the Seven Years' War (1756–63) gave it Canada and the upper hand in India, but taxing the colonies to pay for it provoked the American war and the loss of the Thirteen Colonies. Rule in India grew instead, shifting the empire's centre of gravity to Asia.",
+   "1815": "Victory in the Napoleonic Wars. After Trafalgar (1805) it controls the seas, and the Industrial Revolution puts its economy ahead → the start of 'Pax Britannica'.",
+   "1880": "Workshop of the world and financial centre. After the Indian Rebellion (1857) it rules India directly (1858); Victoria becomes Empress of India (1877). But German and US industry begin to catch up.",
+   "1914": "The partition of Africa secures a line from Egypt to South Africa. Facing Germany's naval challenge, it drops 'splendid isolation' and reaches understandings with France and Russia → enters the war.",
+   "1920": "Victory plus mandates make its territory the largest ever. But it owes war debts to the USA, and Ireland's war of independence (hatched) and Indian nationalism grow → the largest on the outside, weakening inside.",
+   "1938": "After the Depression it builds an economic bloc through imperial preference. Fiscal strain and public dread of war lead it to appease Germany.",
+   "1945": "A victor, but close to bankruptcy and dependent on US loans. Indian independence (1947) is near — it is losing the strength to hold the empire.",
+   "1960": "Colonies become independent one after another, beginning with India (1947). Backing down under US pressure in the Suez Crisis (1956) shows its independent exercise of hegemony is over.",
+   "1994": "Decolonisation is almost complete (only Hong Kong, to be returned in 1997). Influence remains as a close US ally and permanent Security Council member, but it has left the contest for hegemony — the state continues.",
+   "2010": "With Hong Kong returned (1997) the overseas empire is effectively over. It keeps great-power status but is not a lead contender for world hegemony."
+  },
+  "fr": {
+   "1492": "Having driven England out in the Hundred Years' War (ended 1453), the most populous kingdom in Europe. Its invasion of Italy in 1494 brings it into the contest for hegemony.",
+   "1530": "Head-on clash with the Habsburgs (Charles V) in the Italian Wars. Surrounded by Habsburg lands, it allies even with the Muslim Ottomans.",
+   "1600": "Tied down by the Wars of Religion (1562–98), it ends civil war with Henry IV's Edict of Nantes (1598) and begins to rebuild.",
+   "1650": "Wins against the Habsburgs in the Thirty Years' War (Westphalia, 1648) → part of Alsace. Replaces declining Spain as the strongest continental power.",
+   "1700": "Louis XIV's absolute monarchy: Europe's largest army and the colonies of Canada and Louisiana. Trying to put his grandson on the Spanish throne leads to war with a European coalition.",
+   "1715": "War of the Spanish Succession: the grandson keeps the Spanish throne, but the two crowns may never unite, and Newfoundland and Nova Scotia go to Britain.",
+   "1783": "Defeat in the Seven Years' War cost it Canada and the lead in India (1763). Helping American independence brought revenge, but the debts it piled up sparked the Revolution of 1789.",
+   "1815": "Through the Revolution and Napoleon's empire it once ruled most of Europe, but defeat → cut back to roughly its 1790 borders, having also lost Haiti and Louisiana. The country did not fall; the monarchy was restored.",
+   "1880": "After losing Alsace-Lorraine in the Franco-Prussian War (1871), it makes up for it by expanding colonies in Africa (centred on Algeria) and Indochina.",
+   "1914": "The world's second-largest colonial empire, in West and North Africa and Indochina. Allied with Russia and Britain to contain Germany.",
+   "1920": "As a victor it regains Alsace-Lorraine and gets mandates over Syria and Lebanon. But its northern industrial region was a battlefield and the damage is huge.",
+   "1938": "The empire is at its largest, but political instability and a defensive strategy (Maginot Line) lead it to appease German expansion. Defeat and occupation come in 1940.",
+   "1945": "Occupied by Germany 1940–44, then liberated. Treated as a victor, but much weakened, and colonial demands for independence grow.",
+   "1960": "Lost the Indochina War (1954); most African colonies independent (1960). The Algerian War of Independence (hatched) is under way.",
+   "1994": "The colonial empire is gone, but it remains a nuclear power, a permanent Security Council member and a pillar of the EU. State and influence continue; it has left the contest for world hegemony.",
+   "2010": "A core EU member. Only some overseas territories remain."
+  },
+  "es": {
+   "1492": "Castile and Aragon were joined under one royal couple by the marriage of 1469, but are still two kingdoms with their own laws and parliaments. They rise with the conquest of Granada and Columbus's voyage in 1492.",
+   "1530": "In 1516 Charles I inherited both crowns together, so it became 'Spain' in practice (a change of name, not a disappearance). As Holy Roman Emperor Charles V from 1519 he also ruled the Netherlands, Naples, Sicily and Sardinia. The conquest of the Aztecs begins the American empire — homeland and colonies share one colour.",
+   "1600": "Charles V's abdication (1556) split the Habsburgs in two: Spain, the Netherlands, Italy and the Americas to his son Philip II, Austria to his brother Ferdinand. Adding the Portuguese crown in 1580 makes it the largest ever. But the northern Netherlands declared independence (1581) and the Armada failed (1588).",
+   "1650": "Defeat in the Thirty Years' War, Portugal's independence (1640) and recognition of Dutch independence (1648) → European hegemony passes to France. The American colonies remain intact.",
+   "1700": "Charles II dies without an heir in 1700 → the Spanish Habsburg line ends. Louis XIV's grandson (Philip V of Bourbon) is named, starting the War of the Spanish Succession.",
+   "1715": "Treaty of Utrecht: in return for recognition of the Bourbon dynasty it gives the southern Netherlands and Italian lands to Austria and Savoy, and Gibraltar and Minorca to Britain. The homeland and the Americas stay — the country did not fall; its influence in Europe shrank.",
+   "1783": "Bourbon reforms reorganise colonial government. Fighting Britain alongside France in the American war, it regains Florida and Minorca → its American empire is at its largest.",
+   "1815": "Napoleon occupies the homeland in 1808 → with the mother country absent, the American colonies begin wars of independence (from 1810). The monarchy is restored in 1814.",
+   "1880": "Most of its mainland American colonies became independent in the 1820s. Only Cuba, Puerto Rico and the Philippines remain.",
+   "1914": "Defeat in the Spanish–American War (1898) → Cuba independent; the Philippines, Puerto Rico and Guam go to the USA. Only northern Morocco and parts of West Africa remain.",
+   "1920": "Neutral in the First World War. On the eve of the Rif War in northern Morocco (1921–26).",
+   "1938": "Drained by the Civil War (1936–39). Franco's side is closing in on victory.",
+   "1945": "Stayed out of the Second World War. Internationally isolated under Franco's dictatorship.",
+   "1960": "Returned its Moroccan protectorate in 1956. Only Western Sahara and Equatorial Guinea remain.",
+   "1994": "Equatorial Guinea independent (1968) and withdrawal from Western Sahara (1975) end the colonial empire. Democratisation after Franco; joins the European Community in 1986 — the state continues, out of the contest for hegemony.",
+   "2010": "EU member. No overseas colonies."
+  },
+  "pt": {
+   "1492": "Exploring the West African coast is a national project. In 1488 Dias rounds the Cape of Good Hope; the sea route to India is within reach.",
+   "1530": "After da Gama reached India (1498) it seized Goa, Malacca and Hormuz and dominates the Indian Ocean spice trade. Reached Brazil in 1500.",
+   "1600": "Its royal line died out in 1580 and the Spanish king also became king of Portugal (Iberian Union) → it now suffers attacks from Spain's enemies, the Dutch and English. The kingdom itself stays separate.",
+   "1650": "Independence regained in 1640. Meanwhile the Dutch took its Asian bases such as Malacca (1641) → Indian Ocean dominance lost; the empire now centres on Brazil.",
+   "1700": "Gold found in Brazil in the 1690s → Brazil becomes the centre of the empire. Close alliance with England.",
+   "1715": "Sided with Britain in the War of the Spanish Succession. Prospers on Brazilian gold.",
+   "1783": "Pombal's reforms after the Lisbon earthquake (1755). Keeps Brazil, Angola, Mozambique, Goa and more.",
+   "1815": "The court fled Napoleon's invasion to Brazil in 1807 → the relationship between metropole and colony is reversed. This leads to Brazilian independence in 1822.",
+   "1880": "After losing Brazil it reorganises around African colonies such as Angola and Mozambique.",
+   "1914": "Republic proclaimed in 1910. Keeps its African colonies.",
+   "1920": "Fought on the Allied side in the First World War. Keeps its colonies.",
+   "1938": "Salazar's dictatorship (Estado Novo). Binds its colonies as 'overseas territories'.",
+   "1945": "Neutral in the Second World War. Keeps its colonies.",
+   "1960": "Holds on while other European powers give up colonies → the next year it loses Goa to India (1961) and colonial wars begin, starting in Angola.",
+   "1994": "The Carnation Revolution (1974) → all African colonies independent in 1975. Only Macau remains, due back in 1999. Joined the European Community in 1986.",
+   "2010": "With Macau returned in 1999, the overseas empire is completely over."
+  },
+  "nl": {
+   "1600": "The seven northern provinces, once Spanish Habsburg lands, declared independence in 1581 → they grow through shipping and finance even while at war (they were not an independent country at earlier points). Just before the VOC is founded (1602).",
+   "1650": "The VOC takes Portuguese bases and reaches the East Indies (Indonesia), Ceylon, Taiwan and northern Brazil. Independence recognised in 1648. The golden age of maritime trade.",
+   "1700": "Worn down by the Anglo-Dutch Wars and France's invasion (1672). William III becomes king of England in 1688, joining with England — but the lead gradually passes to England.",
+   "1715": "The cost of the War of the Spanish Succession empties its treasury → sea power passes to Britain. It remains a centre of trade and finance.",
+   "1783": "Defeat in the Fourth Anglo-Dutch War (1780–84) hurts its shipping. The VOC also declines (dissolved 1799).",
+   "1815": "Occupied by French revolutionary armies (Batavian Republic 1795, then annexed by France). Meanwhile Britain took Ceylon and the Cape → after the Congress of Vienna it returns as a kingdom joined with the south (Belgium) and gets the East Indies back.",
+   "1880": "Belgium broke away in 1830. The Cultivation System (1830–70) in the East Indies brings huge profits.",
+   "1914": "Neutral in the First World War. The Aceh War (1873–1904) completed its control of the whole archipelago.",
+   "1920": "Stays neutral. Nationalism grows in the East Indies.",
+   "1938": "Keeps the East Indies. German occupation comes in 1940.",
+   "1945": "Germany occupied the homeland in 1940 and Japan the East Indies in 1942. Indonesia declared independence in August 1945 → war to retake it (hatched).",
+   "1960": "Sovereignty transferred to Indonesia in 1949. Only West New Guinea (handed over 1962) and Suriname remain.",
+   "1994": "Suriname independent in 1975. Only Caribbean islands remain as constituent countries of the kingdom — out of the contest for hegemony.",
+   "2010": "Only Caribbean islands remain as constituent countries of the kingdom."
+  },
+  "ru": {
+   "1492": "Grand Duchy of Moscow. Ivan III ended Mongol (Golden Horde) rule in 1480 and is uniting north-eastern Russia.",
+   "1530": "Vasily III annexed Pskov (1510) and Smolensk (1514). Soon Ivan IV takes the title of tsar (1547) and conquers Kazan (1552).",
+   "1600": "After Ivan IV the dynasty died out → the 'Time of Troubles' (1598–1613): civil war and Polish and Swedish invasions. Expansion into Siberia continues even so.",
+   "1650": "Stabilised under the Romanovs (1613). Following the fur trade across Siberia it reached the Pacific in 1639. Eastern Ukraine joins in 1654.",
+   "1700": "The Treaty of Nerchinsk (1689) fixed the border with Qing China. Peter the Great begins Westernising reforms and the Great Northern War with Sweden.",
+   "1715": "Victory at Poltava (1709) opens the Baltic; St Petersburg is built → leads to the proclamation of the Empire in 1721.",
+   "1783": "Catherine II: partition of Poland (1772), the Black Sea coast taken from the Ottomans, Crimea annexed in 1783.",
+   "1815": "Repelled Napoleon's invasion (1812) and marched to Paris. Takes Finland and most of Poland → Europe's strongest land power.",
+   "1880": "Defeat in the Crimean War (1856) blocked the Black Sea, so it turned to Central Asia and the Far East (Maritime Province 1860), playing the 'Great Game' with Britain. Serfs emancipated in 1861.",
+   "1914": "Shaken by defeat by Japan and the Revolution of 1905. Industrialising with French capital and joined the Triple Entente.",
+   "1920": "Revolution in 1917 → the Bolsheviks made a separate peace with Germany in 1918, giving up western lands. Civil war under way. This leads to the USSR in 1922 — the state did not fall; the regime changed.",
+   "1938": "The USSR. Rapid industrialisation through the Five-Year Plans; the Great Purge.",
+   "1945": "Defeating Germany, it occupies Eastern Europe and makes it its sphere of influence. A superpower alongside the USA.",
+   "1960": "Nuclear weapons (1949), Sputnik (1957). Eastern European satellites and the Warsaw Pact. Conflict with China begins.",
+   "1994": "The USSR dissolved in 1991 → the Russian Federation is the successor state. Territory, population and allies shrink sharply; the economy collapses.",
+   "2010": "Recovered through energy exports. The 2008 war with Georgia showed its will to regain influence over the former Soviet space."
+  },
+  "ot": {
+   "1492": "A rising empire holding the Balkans and Anatolia since conquering Constantinople in 1453.",
+   "1530": "Conquering the Mamluks (1517) brought Egypt, Syria, Mecca and Medina; Hungary was crushed at Mohács (1526). Suleiman I's golden age.",
+   "1600": "Rebuilt its fleet after Lepanto (1571) and kept its lands. But price inflation and military costs strain its finances.",
+   "1650": "Despite internal political turmoil, expansion continues (Cretan War, 1645–69).",
+   "1700": "Failure at Vienna (1683) → the Treaty of Karlowitz (1699) gave up most of Hungary, its first great loss. The end of expansion into Europe.",
+   "1715": "Beat Russia at the Pruth in 1711, but soon lost more land to the Habsburgs (1718).",
+   "1783": "Defeated by Russia (Treaty of Küçük Kaynarca, 1774) → Crimea lost to Russia in 1783.",
+   "1815": "Serbian uprising (from 1804); Muhammad Ali's Egypt de facto independent (from 1805). Just before Greek independence (1830).",
+   "1880": "Despite the Tanzimat reforms it was beaten by Russia (1877–78) → at the Congress of Berlin Serbia, Romania and Montenegro become independent and Bulgaria autonomous. Britain takes Cyprus and occupies Egypt in 1882.",
+   "1914": "The Balkan Wars (1912–13) cost most of its European lands; Libya went to Italy (1912). Enters the war on Germany's side.",
+   "1920": "Defeat → the Allies occupy Istanbul and its Arab lands become British and French mandates. The Treaty of Sèvres threatens partition.",
+   "1938": "Ended: the sultanate was abolished in 1922 and the Republic of Turkey founded in 1923 (Treaty of Lausanne). The empire is gone and Turkey succeeds it in Anatolia — not coloured at later points."
+  },
+  "cn": {
+   "1492": "Ming. A Han Chinese dynasty that drove out the Mongols, at the centre of the East Asian tributary order. Its maritime ban turned it away from the sea; it concentrates on defending the north against the Mongols.",
+   "1530": "Ming. Pressure from wokou pirates and the Mongols (Altan Khan). The maritime ban continues.",
+   "1600": "Ming. Easing the maritime ban in 1567 lets American silver flow in. Sending troops in the Imjin War (1592–98) drains its finances → an opening for the Jurchens to rise.",
+   "1650": "When the Ming fell to peasant rebellion in 1644, the Manchu Qing entered Beijing → a change of dynasty. The dynasty and ruling class changed, but the state of 'China' continued.",
+   "1700": "Kangxi Emperor: suppressed the Revolt of the Three Feudatories (1681), conquered Taiwan (1683), Treaty of Nerchinsk (1689).",
+   "1715": "The golden age continuing through Kangxi, Yongzheng and Qianlong.",
+   "1783": "The Qianlong Emperor conquered the Dzungars and Xinjiang (1759) — its largest extent.",
+   "1815": "Rapid population growth, official corruption, the White Lotus Rebellion (1796–1804). Opium smuggling begins to spread.",
+   "1880": "Defeats in the Opium Wars (1840, 1856) bring unequal treaties; the Maritime Province is ceded to Russia; the Taiping Rebellion (1850–64).",
+   "1914": "Defeat by Japan (1895) cost Taiwan and suzerainty over Korea. The 1911 Revolution → Republic of China (1912). The warlord era begins.",
+   "1920": "Divided among warlords. May Fourth Movement (1919).",
+   "1938": "Nominally unified by the Nationalist Northern Expedition (1928). Japan took Manchuria (1931) and, in the war from 1937, the east coast.",
+   "1945": "As a victor it recovers Taiwan and Manchuria and gets a permanent Security Council seat. But civil war is about to resume.",
+   "1960": "People's Republic founded in 1949 (Nationalists to Taiwan). Fought in the Korean War; the Great Leap Forward (1958) failed; conflict with the USSR.",
+   "1994": "Reform and opening up (1978) and the Southern Tour (1992) → rapid growth. Hong Kong due back in 1997.",
+   "2010": "Joined the WTO in 2001 → workshop of the world; second-largest economy by GDP in 2010. A rivalry with the USA takes shape."
+  },
+  "us": {
+   "1783": "The Thirteen Colonies declared independence in 1776 and, with French and Spanish help, won recognition in 1783 → a new republic reaching the Mississippi (British colonies at earlier points).",
+   "1815": "The Louisiana Purchase (1803) doubled its territory. The War of 1812 with Britain ended without territorial change.",
+   "1880": "The Mexican War (1846–48) secured the West; Alaska bought in 1867. Rapid industrialisation after the Civil War (1861–65).",
+   "1914": "The Spanish–American War (1898) brought the Philippines, Puerto Rico and Guam; Hawaii annexed. Panama Canal opened in 1914. The world's largest industrial power.",
+   "1920": "Its entry in 1917 decided the war and it became the largest creditor nation. But it stayed out of the League of Nations → retreat into isolationism.",
+   "1938": "The Depression → the New Deal. Neutrality Acts keep it out of European conflicts.",
+   "1945": "Entered the war after Pearl Harbor (1941); war production doubled the economy. Nuclear monopoly and sole occupation of Japan → a superpower.",
+   "1960": "Bound Western Europe through the Marshall Plan and NATO; fought in Korea. Space and nuclear race with the USSR.",
+   "1994": "With the USSR dissolved, the sole superpower. Won the Gulf War.",
+   "2010": "Burdened by the Afghanistan and Iraq wars after 9/11, and by the 2008 financial crisis. Still the strongest power, but China is catching up."
+  },
+  "de": {
+   "1700": "Brandenburg-Prussia. Grew into a state built around a standing army after the Thirty Years' War; proclaimed the Kingdom of Prussia in 1701.",
+   "1715": "Joined the anti-French alliance in the War of the Spanish Succession and won recognition as a kingdom. Builds up its army.",
+   "1783": "Frederick the Great: took Silesia from Austria (1742), survived the Seven Years' War, joined the partition of Poland (1772) → one of the five great powers.",
+   "1815": "Crushed by Napoleon in 1806, losing half its lands → reformed, fought the War of Liberation, and gained the Rhineland at the Congress of Vienna.",
+   "1880": "Bismarck: victories over Denmark (1864), Austria (1866) and France (1870–71) → German Empire unified in 1871. Industrial output catches up with Britain.",
+   "1914": "The world's second industrial power. Colonies in Africa and the Pacific. A naval race with Britain ends in war.",
+   "1920": "Defeat and revolution bring down the empire; the Weimar Republic. The Treaty of Versailles takes 13% of its home territory, all colonies, and imposes reparations.",
+   "1938": "Nazi Germany: rearmament; in 1938 the annexation of Austria and the Sudetenland.",
+   "1945": "Ended (temporarily): unconditional surrender dissolves the government and four powers divide and occupy it. Lands east of the Oder–Neisse lost.",
+   "1960": "Rebuilt in 1949 as two states, West and East Germany. The West: economic miracle and NATO; the East: Warsaw Pact — not a contender for hegemony.",
+   "1994": "Reunified in 1990. The central economy of the EU.",
+   "2010": "Europe's largest economy. Keeps its distance from military rivalry."
+  },
+  "at": {
+   "1530": "Habsburg Austria. Ruled by Charles V's brother Ferdinand, who inherited the crowns of Bohemia and Hungary in 1526. Held off the Ottoman siege of Vienna in 1529. (In the source map it is folded into the Holy Roman Empire and cannot be coloured separately)",
+   "1600": "After the Habsburg split in 1556, the Austrian line holds the imperial title and Austria, Bohemia and western Hungary. Long war with the Ottomans (1593–1606). (Folded into the Holy Roman Empire on the map)",
+   "1650": "The Thirty Years' War (1618–48) weakened imperial power, but its hereditary lands remain.",
+   "1700": "After repelling the siege of Vienna (1683) it counter-attacked → Hungary and Transylvania gained in the Treaty of Karlowitz (1699).",
+   "1715": "The War of the Spanish Succession brings it the Spanish Netherlands, Milan, Naples and Sardinia — its largest extent in central Europe.",
+   "1783": "Lost Silesia to Prussia (1742). Reforms of Maria Theresa and Joseph II; Galicia gained in the partition of Poland.",
+   "1815": "Repeatedly beaten by Napoleon; the Holy Roman Empire dissolved in 1806. At the Congress of Vienna (Metternich) it gains Lombardy–Venetia and presides over the German Confederation.",
+   "1880": "Lost in Italian unification and the war with Prussia (1866), pushed out of German affairs → Austria-Hungary dual monarchy (1867). Administers Bosnia from 1878.",
+   "1914": "National conflicts in a multinational empire. Annexing Bosnia (1908) → the Sarajevo assassination (1914) sets off the war.",
+   "1920": "Ended: dissolved with defeat in 1918 → split into Austria, Hungary, Czechoslovakia, Yugoslavia and more. The remaining Austrian republic is a small country (annexed by Germany in 1938)."
+  },
+  "jp": {
+   "1880": "The Meiji Restoration (1868) → Western-style modernisation and conscription. Opened Korea with the Treaty of Ganghwa (1876); annexed Ryukyu (1879).",
+   "1914": "Won the Sino-Japanese War (1895: Taiwan) and the Russo-Japanese War (1905: southern Sakhalin, rights in southern Manchuria); annexed Korea in 1910. Anglo-Japanese Alliance (1902).",
+   "1920": "On the Allied side in the First World War → rights in Shandong and the South Seas islands. Permanent member of the League Council.",
+   "1938": "Manchurian Incident (1931), Manchukuo (1932), left the League (1933), war with China (1937) → expanding into East Asia.",
+   "1945": "Empire ended: defeat cost all its colonies and occupied lands, and the USA occupied it (1945–52). The state remained and regained sovereignty in 1952.",
+   "1960": "Sovereignty regained in 1952. Economic recovery under the US–Japan Security Treaty — out of the military contest for hegemony.",
+   "1994": "The world's second-largest economy (from 1968). Long stagnation after the bubble burst (1991).",
+   "2010": "Overtaken by China in GDP in 2010, falling to third."
+  },
+  "it": {
+   "1880": "Kingdom of Italy proclaimed in 1861; unification completed by taking Rome in 1870. The youngest great power.",
+   "1914": "Eritrea and Somalia, then Libya in 1912. A member of the Triple Alliance, but entered the war on the Entente side in 1915.",
+   "1920": "A victor that did not get all the land it wanted — resentment over a 'mutilated victory' → the rise of fascism (Mussolini in power 1922).",
+   "1938": "Fascist Italy: conquered Ethiopia in 1936; the Axis with Germany.",
+   "1945": "Surrender and civil war from 1943 → a defeated power. Republic in 1946; the 1947 peace treaty took all its colonies — the state continues, out of the contest for hegemony.",
+   "1960": "Founding member of NATO and the European Economic Community. Economic miracle.",
+   "1994": "EU member.",
+   "2010": "EU member."
+  },
+  "be": {
+   "1914": "Independent from the Netherlands in 1830. Leopold II's private Congo Free State (1885) became the Belgian Congo in 1908 after atrocities. Invaded by Germany in 1914.",
+   "1920": "A victor. Mandate over part of former German East Africa (Ruanda-Urundi).",
+   "1938": "Keeps the Congo.",
+   "1945": "Occupied by Germany 1940–44, then liberated. Congo's resources (uranium and more) supplied the Allies.",
+   "1960": "Congo independent in 1960 → the Congo Crisis follows at once. Rwanda and Burundi due to become independent in 1962.",
+   "1994": "No colonies. Host of EU and NATO headquarters.",
+   "2010": "No colonies."
+  },
+  "mg": {
+   "1530": "In 1526 Babur defeated the Delhi Sultanate at Panipat and founded the Mughal Empire.",
+   "1600": "Akbar: unified most of northern India; a policy of religious tolerance.",
+   "1650": "Shah Jahan: built the Taj Mahal; the empire prospers.",
+   "1700": "Aurangzeb conquered the Deccan — the largest extent. But endless wars and religious repression bring more revolts.",
+   "1715": "Succession struggles after Aurangzeb's death (1707) → the Marathas and provincial governors become effectively independent.",
+   "1783": "Nader Shah sacked Delhi (1739); after Plassey (1757) the British East India Company controls Bengal. The emperor exists in name only.",
+   "1815": "The British East India Company took Delhi in 1803 → the emperor is a symbolic figure living on a Company pension.",
+   "1880": "Ended: after the failed Indian Rebellion of 1857, Britain deposed the last emperor (1858) and ruled India directly."
+  }
+ },
+ "full": {
+  "gb": "Britain (England)",
+  "fr": "France",
+  "es": "Spain (Castile–Aragon)",
+  "pt": "Portugal",
+  "nl": "Netherlands",
+  "ru": "Russia / USSR",
+  "ot": "Ottoman Empire",
+  "cn": "China (Ming, Qing, Republic, People's Republic)",
+  "us": "United States",
+  "de": "Germany (Prussia)",
+  "at": "Austria (Habsburg)",
+  "jp": "Japan",
+  "it": "Italy",
+  "be": "Belgium",
+  "mg": "Mughal Empire"
+ },
+ "patches": {
+  "yemen": {
+   "name": "Yemen",
+   "r": [
+    [
+     "Tahirid dynasty (Yemen)",
+     "The Ottomans took Aden in 1538 and inland Yemen in 1547"
+    ],
+    [
+     "Zaydi Imamate of Yemen",
+     "The Ottomans withdrew in 1635 and returned in 1849"
+    ]
+   ]
+  },
+  "macau": {
+   "name": "Macau",
+   "r": [
+    [
+     "Portugal (Macau)",
+     "Settlement allowed in 1557; sovereignty recognised by treaty in 1887"
+    ],
+    [
+     "China (Special Administrative Region)",
+     "Returned in 1999"
+    ]
+   ]
+  },
+  "manchukuo": {
+   "name": "Manchuria",
+   "r": [
+    [
+     "Manchukuo (Japanese puppet state)",
+     "Founded 1932, real power held by Japan's Kwantung Army — CShapes counts it as Chinese territory; this map shows it as Japanese"
+    ]
+   ]
+  },
+  "philippines": {
+   "name": "Philippines (Luzon, Visayas)",
+   "r": [
+    [
+     "Spain",
+     "Cebu 1565, Manila founded 1571 — no sovereign in the source"
+    ]
+   ]
+  },
+  "brazil_1600": {
+   "name": "Coast of Brazil",
+   "r": [
+    [
+     "Portugal (Brazil)",
+     "São Vicente 1532, Salvador 1549 — an approximate sphere around coastal settlements; no sovereign in the source"
+    ]
+   ]
+  },
+  "ngranada_1600": {
+   "name": "New Granada and Venezuela",
+   "r": [
+    [
+     "Spain",
+     "Bogotá founded 1538 — approximate sphere; no sovereign in the source"
+    ]
+   ]
+  },
+  "chile_1600": {
+   "name": "Central Chile",
+   "r": [
+    [
+     "Spain",
+     "Santiago founded 1541. After the defeat at Curalaba (1598) the Mapuche retook the land south of the Biobío — approximate sphere"
+    ]
+   ]
+  },
+  "rioplata_1600": {
+   "name": "Río de la Plata and Tucumán",
+   "r": [
+    [
+     "Spain",
+     "Asunción 1537, Buenos Aires 1580 — approximate sphere"
+    ]
+   ]
+  },
+  "chesapeake_1650": {
+   "name": "Virginia and Maryland",
+   "r": [
+    [
+     "England",
+     "Jamestown 1607, Maryland 1634 — missing in the source"
+    ]
+   ]
+  },
+  "newengland_1650": {
+   "name": "New England",
+   "r": [
+    [
+     "England",
+     "Plymouth 1620, Massachusetts Bay 1630 — missing in the source"
+    ]
+   ]
+  },
+  "engcol_1700": {
+   "name": "English North American colonies",
+   "r": [
+    [
+     "England",
+     "Coastal colonies from Carolina to Maine (absorbed New Netherland in 1664) — missing in the source"
+    ]
+   ]
+  },
+  "nfrance_1650": {
+   "name": "New France (St Lawrence)",
+   "r": [
+    [
+     "France",
+     "Quebec 1608, Montreal 1642 — missing in the source"
+    ]
+   ]
+  },
+  "nfrance_lakes": {
+   "name": "New France (St Lawrence and Great Lakes)",
+   "r": [
+    [
+     "France",
+     "Approximate sphere around the fur-trade forts — missing in the source"
+    ]
+   ]
+  },
+  "louisiana_1715": {
+   "name": "Louisiana",
+   "r": [
+    [
+     "France",
+     "Biloxi 1699, Mobile 1702 — approximate, around posts on the lower Mississippi"
+    ]
+   ]
+  }
  }
 }
