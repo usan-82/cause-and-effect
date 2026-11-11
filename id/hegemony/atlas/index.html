@@ -158,6 +158,18 @@ details.ckey div{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:6px}
 details.ckey span{display:inline-flex;align-items:center;gap:6px}
 details.ckey .sw{width:13px;height:13px;flex-basis:13px}
 
+sup.fn{font-size:.72em;line-height:0;margin-left:1px}
+sup.fn a{text-decoration:none;font-weight:700;padding:0 2px}
+.fnotes ul{list-style:none;padding:0;margin:0}
+.fnotes li{padding:5px 6px;border-radius:6px;transition:background .3s}
+.fnotes li b{color:var(--c-blue);margin-right:4px}
+.fnotes li.hit{background:color-mix(in srgb, var(--c-yellow) 28%, transparent)}
+.srcs{font-size:12px;color:var(--ink2);margin-top:14px;border-top:1px solid var(--line);padding-top:12px;line-height:1.7}
+.srcs h4{margin:0 0 4px;font-size:13px;color:var(--ink);font-family:var(--sans)}
+.srcs p{margin:0 0 6px;color:var(--muted)}
+.srcs ol{margin:0;padding-left:20px}
+.srcs a{overflow-wrap:anywhere}
+
 </style>
 </head>
 <body>
@@ -189,12 +201,13 @@ details.ckey .sw{width:13px;height:13px;flex-basis:13px}
     <aside class="card panel" id="panel"></aside>
   </div>
   <div class="foot">Perbatasan: sampai 1880 memakai <a href="https://github.com/aourednik/historical-basemaps">historical-basemaps</a> (André Ourednik dkk., GPL-3.0) dengan koreksi per tahun; sejak 1914 digambar ulang dari <a href="https://icr.ethz.ch/data/cshapes/">CShapes 2.0</a> (Schvitz, Girardin, Weidmann dkk., perbatasan dan koloni bertanggal). Untuk 1914 dan sesudahnya, ketika kedua sumber tersedia, bagian ‘Pemeriksaan silang’ di tiap tahun menampilkan tingkat kesesuaian dan letak perbedaannya. Titik strategis dan beberapa wilayah diwarnai ulang dengan nilai yang sudah diperiksa jika sumbernya keliru. Luas wilayah adalah perkiraan dari pengambilan sampel peta akhir pada kisi 0,25°. Karena jarak antartahun tidak sama, ‘Untung dan rugi’ membahas peristiwa utama sejak tahun sebelumnya yang ditampilkan.</div>
+
 </div>
 <script src="lib/d3.min.js"></script>
 <script src="lib/topojson-client.min.js"></script>
 <script>
 (async function(){
-const UI = {"tabs":["Peta kekuatan","Untung dan rugi","Teknologi","Gagasan","Per negara"],"era":"{prev} → sekitar {year}","eraFirst":"sekitar {year}","gain":"Untung","loss":"Rugi","readMore":"Bacaan lanjut","fixesTitle":"Koreksi data untuk tahun ini","andMore":" dan {n} lainnya","others":"Negara dan kekuatan lain","ckShown":"Titik strategis tampil","ckHidden":"Titik strategis disembunyikan","ckTitle":"Titik strategis — {n}","ckTitleDiff":", {m} berbeda dengan warna peta","ckTitleOk":", semua sesuai dengan peta","ckDiff":"⚠ berbeda dengan warna peta","ckAbsent":"(tidak tergambar di peta)","ckRuler":"Penguasa sekitar {year}:","ckAbsentLong":"Data perbatasan sumber tidak menggambar titik ini (pulau kecil atau pangkalan). Penanda ini adalah nilai yang sudah diperiksa.","ckDiffLong":"⚠ Ini berbeda dengan warna peta. Data perbatasan sumber menggambar titik ini sebagai {map}. Tempat kecil seperti pangkalan dan selat tertelan wilayah di sekitarnya, atau label sumbernya keliru — penanda ini adalah nilai yang sudah diperiksa.","ckMapNone":"wilayah yang tidak digambar","otherPower":"kekuatan lain","unnamed":"Wilayah tanpa nama","srcSubj":"Penguasa (sumber)","cls":"Kelompok","prec":"Ketelitian perbatasan","precVals":["kasar","sedang","teliti"],"noInfo":"tidak ada data","fix":"Koreksi","close":"Tutup","status":{"rise":"Bangkit","peak":"Puncak","hold":"Bertahan","decline":"Merosot / diperebutkan","exit":"Keluar dari perebutan (negara tetap ada)","end":"Berakhir"},"tiers":[["solid","Kokoh"],["hold","Bertahan"],["hatch","Merosot / diperebutkan"],["exit","Keluar dari perebutan"]],"legendTitle":"Kekuatan yang berkuasa sekitar {year}","rival":"utama","trackAll":"Perubahan tiap negara","trackAllNote":"Apa yang berubah sejak tahun sebelumnya yang ditampilkan. Ketuk negara untuk melihat seluruh perjalanannya.","trackOne":"Perjalanan {name}","trackBack":"← Semua negara","trackNote":"Ketuk tahun untuk membuka peta tahun itu.","trackBefore":"Sebelum {year} tidak diperlakukan sebagai pesaing di peta ini","trackAfter":"Tidak diwarnai pada titik waktu berikutnya","focusOff":"Tampilkan semua","regionName":"Nama wilayah pada masa itu","contested":"Kekuasaan di sini diperebutkan (berarsir)","bigViewShort":"Besar","bigExitShort":"Tutup","patched":"Diwarnai ulang dengan nilai yang diperiksa","srcCs":"Perbatasan: CShapes 2.0","srcHb":"Perbatasan: historical-basemaps","csStatus":{"colony":"koloni","protectorate":"protektorat","mandate":"mandat","occupied":"diduduki","N/A":"status tidak diketahui"},"ckTitlePatched":"","ckPatched":"","ckPatchedLong":"Di peta sumber titik ini tertelan wilayah sekitarnya atau labelnya keliru, sehingga petanya sendiri diwarnai ulang dengan penguasa yang sudah diperiksa.","vTitle":"Pemeriksaan silang","vCs":"Perbatasan pada titik waktu ini digambar ulang dari CShapes 2.0 (per {date}). Kesesuaian dengan peta sumber terbuka yang dipakai sebelumnya (historical-basemaps): {agree}% (berdasarkan luas, sampel kisi 0,25°, perbedaan garis pantai tidak dihitung). Titik strategis dan wilayah yang diwarnai ulang: {p}.","vHb":"Sebelum 1886 tidak ada data bertanggal untuk pemeriksaan silang. Berdasarkan historical-basemaps, {f} kesalahan label kedaulatan dikoreksi dan {p} titik strategis serta wilayah diwarnai ulang dengan nilai yang sudah diperiksa.","vDiffs":"Tempat kedua sumber paling berbeda (sumber ↔ CShapes)","vAdopt":"Jika berbeda, peta mengikuti CShapes.","vExc":"Ditampilkan berbeda dari CShapes, atau diberi catatan","vNone":"tanpa penguasa","areaM":"{v} juta km²","areaK":"{v}0.000 km²","areaLabel":"wilayah sekitar {a}","sparkTitle":"Luas wilayah (dihitung ulang)","sparkAria":"Luas wilayah per tahun","sparkNote":"Luas dihitung ulang dari wilayah yang diwarnai di peta ini (termasuk koloni). Sebelum 1886 termasuk klaim nominal dan wilayah pengaruh, sehingga bisa melebihi kendali sebenarnya.","colorKey":"Lihat warna tiap negara","colorKeyNote":"Sebuah negara tetap berwarna sama meski namanya berganti (Rusia → Uni Soviet → Rusia, Ming → Qing → Tiongkok). Ketika menguat atau melemah, warnanya tetap; hanya kepekatan dan arsirannya yang berubah."};
+const UI = {"tabs":["Peta kekuatan","Untung dan rugi","Teknologi","Gagasan","Per negara"],"era":"{prev} → sekitar {year}","eraFirst":"sekitar {year}","gain":"Untung","loss":"Rugi","readMore":"Bacaan lanjut","fixesTitle":"Koreksi data untuk tahun ini","andMore":" dan {n} lainnya","others":"Negara dan kekuatan lain","ckShown":"Titik strategis tampil","ckHidden":"Titik strategis disembunyikan","ckTitle":"Titik strategis — {n}","ckTitleDiff":", {m} berbeda dengan warna peta","ckTitleOk":", semua sesuai dengan peta","ckDiff":"⚠ berbeda dengan warna peta","ckAbsent":"(tidak tergambar di peta)","ckRuler":"Penguasa sekitar {year}:","ckAbsentLong":"Data perbatasan sumber tidak menggambar titik ini (pulau kecil atau pangkalan). Penanda ini adalah nilai yang sudah diperiksa.","ckDiffLong":"⚠ Ini berbeda dengan warna peta. Data perbatasan sumber menggambar titik ini sebagai {map}. Tempat kecil seperti pangkalan dan selat tertelan wilayah di sekitarnya, atau label sumbernya keliru — penanda ini adalah nilai yang sudah diperiksa.","ckMapNone":"wilayah yang tidak digambar","otherPower":"kekuatan lain","unnamed":"Wilayah tanpa nama","srcSubj":"Penguasa (sumber)","cls":"Kelompok","prec":"Ketelitian perbatasan","precVals":["kasar","sedang","teliti"],"noInfo":"tidak ada data","fix":"Koreksi","close":"Tutup","status":{"rise":"Bangkit","peak":"Puncak","hold":"Bertahan","decline":"Merosot / diperebutkan","exit":"Keluar dari perebutan (negara tetap ada)","end":"Berakhir"},"tiers":[["solid","Kokoh"],["hold","Bertahan"],["hatch","Merosot / diperebutkan"],["exit","Keluar dari perebutan"]],"legendTitle":"Kekuatan yang berkuasa sekitar {year}","rival":"utama","trackAll":"Perubahan tiap negara","trackAllNote":"Apa yang berubah sejak tahun sebelumnya yang ditampilkan. Ketuk negara untuk melihat seluruh perjalanannya.","trackOne":"Perjalanan {name}","trackBack":"← Semua negara","trackNote":"Ketuk tahun untuk membuka peta tahun itu.","trackBefore":"Sebelum {year} tidak diperlakukan sebagai pesaing di peta ini","trackAfter":"Tidak diwarnai pada titik waktu berikutnya","focusOff":"Tampilkan semua","regionName":"Nama wilayah pada masa itu","contested":"Kekuasaan di sini diperebutkan (berarsir)","bigViewShort":"Besar","bigExitShort":"Tutup","patched":"Diwarnai ulang dengan nilai yang diperiksa","srcCs":"Perbatasan: CShapes 2.0","srcHb":"Perbatasan: historical-basemaps","csStatus":{"colony":"koloni","protectorate":"protektorat","mandate":"mandat","occupied":"diduduki","N/A":"status tidak diketahui"},"ckTitlePatched":"","ckPatched":"","ckPatchedLong":"Di peta sumber titik ini tertelan wilayah sekitarnya atau labelnya keliru, sehingga petanya sendiri diwarnai ulang dengan penguasa yang sudah diperiksa.","vTitle":"Pemeriksaan silang","vCs":"Perbatasan pada titik waktu ini digambar ulang dari CShapes 2.0 (per {date}). Kesesuaian dengan peta sumber terbuka yang dipakai sebelumnya (historical-basemaps): {agree}% (berdasarkan luas, sampel kisi 0,25°, perbedaan garis pantai tidak dihitung). Titik strategis dan wilayah yang diwarnai ulang: {p}.","vHb":"Sebelum 1886 tidak ada data bertanggal untuk pemeriksaan silang. Berdasarkan historical-basemaps, {f} kesalahan label kedaulatan dikoreksi dan {p} titik strategis serta wilayah diwarnai ulang dengan nilai yang sudah diperiksa.","vDiffs":"Tempat kedua sumber paling berbeda (sumber ↔ CShapes)","vAdopt":"Jika berbeda, peta mengikuti CShapes.","vExc":"Ditampilkan berbeda dari CShapes, atau diberi catatan","vNone":"tanpa penguasa","areaM":"{v} juta km²","areaK":"{v}0.000 km²","areaLabel":"wilayah sekitar {a}","sparkTitle":"Luas wilayah (dihitung ulang)","sparkAria":"Luas wilayah per tahun","sparkNote":"Luas dihitung ulang dari wilayah yang diwarnai di peta ini (termasuk koloni). Sebelum 1886 termasuk klaim nominal dan wilayah pengaruh, sehingga bisa melebihi kendali sebenarnya.","colorKey":"Lihat warna tiap negara","colorKeyNote":"Sebuah negara tetap berwarna sama meski namanya berganti (Rusia → Uni Soviet → Rusia, Ming → Qing → Tiongkok). Ketika menguat atau melemah, warnanya tetap; hanya kepekatan dan arsirannya yang berubah.","footnotes":"Catatan"};
 const KEYS=['gb','fr','es','pt','nl','ru','ot','cn','us','de','at','jp','it','be','mg'];
 const ORDER={peak:0,rise:1,hold:2,decline:3,exit:4,end:5};
 const pc=k=>`var(--p-${k})`;
@@ -275,11 +288,18 @@ function polyFill(d){
   return d.properties.n ? 'var(--land)' : 'var(--land0)';
 }
 function esc(s){return String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+// 각주: 본문 속 [^id] → 위첨자 번호. 패널을 그릴 때 쓰인 각주만 모아 아래에 보여 준다.
+const NOTES=content.notes||{}, NIDS=Object.keys(NOTES); let used=new Set();
+const rich=s=>esc(s).replace(/\[\^(\w+)\]/g,(m,id)=>{ if(!NOTES[id]) return ''; used.add(id); return `<sup class="fn"><a href="#fn-${id}" data-fn="${id}">${NIDS.indexOf(id)+1}</a></sup>`; });
+const plain=s=>esc(String(s??'').replace(/\[\^\w+\]/g,''));
+const noteLines=s=>[...String(s??'').matchAll(/\[\^(\w+)\]/g)].filter(m=>NOTES[m[1]]).map(m=>`<div class="meta">※ ${esc(NOTES[m[1]])}</div>`).join('');
+function fnSection(){ const ids=NIDS.filter(id=>used.has(id)); if(!ids.length) return '';
+  return `<div class="note fnotes"><h4>${esc(UI.footnotes||'')}</h4><ul>${ids.map(id=>`<li id="fn-${id}"><b>${NIDS.indexOf(id)+1}</b> ${esc(NOTES[id])}</li>`).join('')}</ul></div>`; }
 function closeBtn(){return `<button class="x" aria-label="${esc(UI.close)}">×</button>`;}
 function showInfo(d){
   const p=d.properties, v=meta.verify[year];
   let name=p.n, extra='';
-  if(p.kind==='choke'){const c=content.choke[p.pid][year]; name=c.name; extra=`<div class="fix">${esc(UI.patched)}: ${esc(c.who)}${c.note?' — '+esc(c.note):''}</div>`;}
+  if(p.kind==='choke'){const c=content.choke[p.pid][year]; name=c.name; extra=`<div class="fix">${esc(UI.patched)}: ${plain(c.who)}${c.note?' — '+plain(c.note):''}</div>`+noteLines(c.who+c.note);}
   if(p.kind==='region'){const c=content.patches[p.pid][year]; name=c.name; extra=`<div class="fix">${esc(UI.patched)}: ${esc(c.who)}${c.note?' — '+esc(c.note):''}</div>`;}
   const ruler=p.p&&alive(p.p,year)?`${esc(shortName(p.p,year))} · ${esc(UI.status[statusOf(p.p,year)])}`:'';
   const srcLine=p.src==='cs'
@@ -301,8 +321,8 @@ function ckVis(c){return !c.absent && ckShown(c.mapKey)!==ckShown(c.k);}
 function showCk(c){
   const mapLabel=c.absent?esc(UI.ckMapNone):`‘${esc(c.mapName||UI.unnamed)}’(${esc(c.mapKey?shortName(c.mapKey,year):UI.otherPower)})`;
   info.innerHTML=closeBtn()+`<b>◆ ${esc(c.name)}</b>`+
-   `<div>${esc(fmt(UI.ckRuler,{year}))} <b style="font-size:13px">${esc(c.who)}</b></div>`+
-   (c.note?`<div class="meta">${esc(c.note)}</div>`:'')+
+   `<div>${esc(fmt(UI.ckRuler,{year}))} <b style="font-size:13px">${plain(c.who)}</b></div>`+
+   (c.note?`<div class="meta">${plain(c.note)}</div>`:'')+noteLines(c.who+c.note)+
    (c.patched?`<div class="meta">${esc(UI.ckPatchedLong)}</div>`:'')+
    (c.absent?`<div class="meta">${esc(UI.ckAbsentLong)}</div>`:'')+
    (ckVis(c)?`<div class="warn">${esc(UI.ckDiffLong).replace('{map}',mapLabel)}</div>`:'');
@@ -356,7 +376,7 @@ function ckSection(){
   const L=ckList(), bad=L.filter(ckVis), pat=L.filter(c=>c.patched);
   const ord=[...bad,...L.filter(c=>!ckVis(c))];
   return `<div class="note"><h4>${esc(fmt(UI.ckTitle,{n:L.length}))}${UI.ckTitlePatched?esc(fmt(UI.ckTitlePatched,{p:pat.length})):''}${esc(bad.length?fmt(UI.ckTitleDiff,{m:bad.length}):UI.ckTitleOk)}</h4><ul class="cklist">`+
-   ord.map(c=>`<li data-id="${c.id}"><span class="d" style="background:${ckColor(c)}"></span><span><b>${esc(c.name)}</b> — ${esc(c.who)}${ckVis(c)?` <span class="warn">${esc(UI.ckDiff)}</span>`:''}${c.patched&&UI.ckPatched?` <span class="okt">${esc(UI.ckPatched)}</span>`:''}${c.absent?` <span style="color:var(--muted)">${esc(UI.ckAbsent)}</span>`:''}${c.note?`<br><span style="color:var(--muted)">${esc(c.note)}</span>`:''}</span></li>`).join('')+`</ul></div>`;
+   ord.map(c=>`<li data-id="${c.id}"><span class="d" style="background:${ckColor(c)}"></span><span><b>${esc(c.name)}</b> — ${rich(c.who)}${ckVis(c)?` <span class="warn">${esc(UI.ckDiff)}</span>`:''}${c.patched&&UI.ckPatched?` <span class="okt">${esc(UI.ckPatched)}</span>`:''}${c.absent?` <span style="color:var(--muted)">${esc(UI.ckAbsent)}</span>`:''}${c.note?`<br><span style="color:var(--muted)">${rich(c.note)}</span>`:''}</span></li>`).join('')+`</ul></div>`;
 }
 const LANG=document.documentElement.lang;
 const num=(v,d)=>v.toLocaleString(LANG,{minimumFractionDigits:d,maximumFractionDigits:d});
@@ -383,31 +403,33 @@ function areaSpark(k2){
 function powersBody(){
   if(!focus){
     return `<p class="sub">${esc(UI.trackAllNote)}</p><ul class="trk">`+powersThisYear().map(k2=>{const st=statusOf(k2,year);
-      return `<li data-k="${k2}" class="${st==='end'?'ended':''}">${swatch(k2,year)}<div><b>${esc(shortName(k2,year))}</b> <span class="st st-${st}">${esc(UI.status[st])}</span> ${areaLine(k2,year)}<p>${esc(content.powers[k2].t[year])}</p></div></li>`;}).join('')+`</ul>`;
+      return `<li data-k="${k2}" class="${st==='end'?'ended':''}">${swatch(k2,year)}<div><b>${esc(shortName(k2,year))}</b> <span class="st st-${st}">${esc(UI.status[st])}</span> ${areaLine(k2,year)}<p>${rich(content.powers[k2].t[year])}</p></div></li>`;}).join('')+`</ul>`;
   }
   const P=content.powers[focus], ys=YEARS.filter(y=>P.st[y]);
   const first=ys[0], last=ys[ys.length-1];
   return `<button class="linkbtn" id="trkback">${esc(UI.trackBack)}</button><h3 class="trkh">${esc(fmt(UI.trackOne,{name:content.full[focus]}))}</h3>`+areaSpark(focus)+`<p class="sub">${esc(UI.trackNote)}</p>`+
     (first>YEARS[0]?`<p class="sub">${esc(fmt(UI.trackBefore,{year:first}))}</p>`:'')+
     `<ol class="trk tl">`+ys.map(y=>{const st=P.st[y];
-      return `<li data-y="${y}" class="${y===year?'cur':''} ${st==='end'?'ended':''}">${swatch(focus,y)}<div><b>${y}</b> · ${esc(shortName(focus,y))} <span class="st st-${st}">${esc(UI.status[st])}</span> ${areaLine(focus,y)}<p>${esc(P.t[y])}</p></div></li>`;}).join('')+`</ol>`+
+      return `<li data-y="${y}" class="${y===year?'cur':''} ${st==='end'?'ended':''}">${swatch(focus,y)}<div><b>${y}</b> · ${esc(shortName(focus,y))} <span class="st st-${st}">${esc(UI.status[st])}</span> ${areaLine(focus,y)}<p>${rich(P.t[y])}</p></div></li>`;}).join('')+`</ol>`+
     (P.st[last]==='end'?`<p class="sub">${esc(UI.trackAfter)}</p>`:'');
 }
 function renderPanel(){
   const c=byYear[year], i=YEARS.indexOf(year), prevY=YEARS[i-1];
   const fixes=Object.entries(meta.fixes[year]||{});
   const groups=[...new Set(fixes.map(([,f])=>f))].map(f=>[f,fixes.filter(x=>x[1]===f).map(x=>x[0])]);
-  let body='';
-  if(tab==='events') body=c.events.map(e=>`<div class="ev"><h3>${esc(e.t)}</h3><div class="row"><span class="tag g">${esc(UI.gain)}</span><span>${esc(e.g)}</span></div><div class="row"><span class="tag l">${esc(UI.loss)}</span><span>${esc(e.l)}</span></div></div>`).join('');
+  let body=''; used=new Set();
+  if(tab==='events') body=c.events.map(e=>`<div class="ev"><h3>${rich(e.t)}</h3><div class="row"><span class="tag g">${esc(UI.gain)}</span><span>${rich(e.g)}</span></div><div class="row"><span class="tag l">${esc(UI.loss)}</span><span>${rich(e.l)}</span></div></div>`).join('');
   else if(tab==='powers') body=powersBody();
-  else body=`<ul class="pts">${c[tab].map(t=>`<li>${esc(t)}</li>`).join('')}</ul>`;
+  else body=`<ul class="pts">${c[tab].map(t=>`<li>${rich(t)}</li>`).join('')}</ul>`;
+  const tail=(tab==='powers'?'':`<div class="note"><h4>${esc(UI.readMore)}</h4><div class="links">${c.links.map(([t,u])=>`<a href="${u}" target="_blank" rel="noopener">${esc(t)}</a>`).join('')}</div></div>`+
+    verifySection()+ckSection()+
+    (groups.length?`<div class="note"><h4>${esc(UI.fixesTitle)}</h4><ul>${groups.map(([f,ns])=>`<li>${esc(fixText(f))} — <span style="color:var(--muted)">${esc(ns.slice(0,8).join(', '))}${ns.length>8?esc(fmt(UI.andMore,{n:ns.length-8})):''}</span></li>`).join('')}</ul></div>`:''));
   document.getElementById('panel').innerHTML=
     `<div class="era">${esc(prevY?fmt(UI.era,{prev:prevY,year}):fmt(UI.eraFirst,{year}))}</div><h2>${esc(c.title)}</h2>`+
     `<div class="tabs" role="tablist">${TABS.map((k2,j)=>`<button role="tab" data-t="${k2}" class="${tab===k2?'on':''}" aria-selected="${tab===k2}">${esc(UI.tabs[j])}</button>`).join('')}</div>`+
     body+
-    (tab==='powers'?'':`<div class="note"><h4>${esc(UI.readMore)}</h4><div class="links">${c.links.map(([t,u])=>`<a href="${u}" target="_blank" rel="noopener">${esc(t)}</a>`).join('')}</div></div>`+
-    verifySection()+ckSection()+
-    (groups.length?`<div class="note"><h4>${esc(UI.fixesTitle)}</h4><ul>${groups.map(([f,ns])=>`<li>${esc(fixText(f))} — <span style="color:var(--muted)">${esc(ns.slice(0,8).join(', '))}${ns.length>8?esc(fmt(UI.andMore,{n:ns.length-8})):''}</span></li>`).join('')}</ul></div>`:''));
+fnSection()+tail;
+  document.querySelectorAll('#panel sup.fn a').forEach(el=>el.onclick=e=>{e.preventDefault();const li=document.getElementById('fn-'+el.dataset.fn);if(li){li.scrollIntoView({behavior:'smooth',block:'center'});li.classList.add('hit');setTimeout(()=>li.classList.remove('hit'),1600);}});
   document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{tab=b.dataset.t;renderPanel();});
   document.querySelectorAll('ul.trk li[data-k]').forEach(li=>li.onclick=()=>setFocus(li.dataset.k));
   document.querySelectorAll('ol.tl li[data-y]').forEach(li=>li.onclick=()=>setYear(+li.dataset.y,true));

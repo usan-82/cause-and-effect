@@ -114,7 +114,9 @@ const STEP=0.25, R=6371.0088, rad=Math.PI/180;
 const cellArea=lat=>R*R*STEP*rad*Math.abs(Math.sin((lat+STEP/2)*rad)-Math.sin((lat-STEP/2)*rad));
 
 const meta={fixes:{},choke:{},verify:{},area:{}}, DATA={};
-for(const y of YEARS){
+const REUSE=!!process.env.REUSE; // 글만 고쳤을 때: 기존 한국어판의 meta.json과 지도를 그대로 쓴다
+if(REUSE) Object.assign(meta,JSON.parse(fs.readFileSync(path.join(ROOT,'ko/hegemony/atlas/meta.json'),'utf8')));
+for(const y of (REUSE?[]:YEARS)){
   const rivals=ST.years.find(c=>c.year===y).rivals;
   // (a) HB + 보정
   const th=JSON.parse(fs.readFileSync(path.join(RAW,`w${y}.json`))); th.objects={w:th.objects[Object.keys(th.objects)[0]]};
@@ -190,7 +192,7 @@ for(const [lang] of LANGS.filter(([l])=>!ONLY.length||ONLY.includes(l))){
   const usedFix=new Set(FIX.map(f=>f[3]).concat(['manchu','ussr_1920'])); for(const f of usedFix) if(!tx.fixes[f]) throw new Error(`${lang}: 보정 문구 ${f} 없음`);
   const content={
     years:ST.years.map(y=>({year:y.year,rivals:y.rivals,links:y.links,...tx.years[y.year]})),
-    short:tx.short, fixes:tx.fixes, full:tx.full,
+    short:tx.short, fixes:tx.fixes, full:tx.full, notes:tx.notes||{},
     patches:Object.fromEntries((ST.patches||[]).map(c=>{const t=tx.patches?.[c.id]; if(!t||t.r.length!==c.r.length) throw new Error(`${lang}: 패치 ${c.id} 글 없음`);
       return [c.id,Object.fromEntries(YEARS.map(y=>{const i=c.r.findIndex(([a,b])=>a<=y&&y<=b);return i<0?null:[y,{name:t.name,who:t.r[i][0],note:t.r[i][1]}];}).filter(Boolean))];})),
     powers:Object.fromEntries(Object.entries(ST.powers).map(([k,stt])=>{
@@ -199,12 +201,14 @@ for(const [lang] of LANGS.filter(([l])=>!ONLY.length||ONLY.includes(l))){
     choke:Object.fromEntries(ST.choke.map(c=>[c.id,Object.fromEntries(YEARS.map(y=>{const i=c.r.findIndex(([a,b])=>a<=y&&y<=b);const [who,note]=tx.choke[c.id].r[i];return [y,{name:tx.choke[c.id].name,who,note}];}))]))
   };
   const langs=LANGS.map(([c,n])=>c===lang?`<span aria-current="page">${esc(n)}</span>`:`<a href="../../../${c}/hegemony/atlas/" hreflang="${c}" lang="${c}">${esc(n)}</a>`).join('');
-  let html=tpl.replace('{{css}}',css).replace('{{langs}}',langs).replace('{{ui}}',JSON.stringify(pg.ui).replace(/</g,'\\u003c'));
+  const srcHtml=pg.sources?`<div class="srcs"><h4>${esc(pg.sourcesTitle)}</h4><p>${esc(pg.sourcesIntro)}</p><ol>${pg.sources.map(([t,u])=>`<li><a href="${esc(u)}" target="_blank" rel="noopener">${esc(t)}</a></li>`).join('')}</ol></div>`:'';
+  for(const m of JSON.stringify(tx).matchAll(/\[\^(\w+)\]/g)) if(!(tx.notes||{})[m[1]]) throw new Error(`${lang}: 각주 ${m[1]} 없음`);
+  let html=tpl.replace('{{sourcesHtml}}',srcHtml).replace('{{css}}',css).replace('{{langs}}',langs).replace('{{ui}}',JSON.stringify(pg.ui).replace(/</g,'\\u003c'));
   for(const [k,v] of Object.entries(pg)) if(typeof v==='string') html=html.split('{{'+k+'}}').join(k.endsWith('Html')||k.startsWith('font')?v:esc(v));
   if(html.includes('{{')) throw new Error(`${lang}: 치환 안 된 자리표시자 `+html.match(/\{\{\w+\}\}/)[0]);
   const OUT=path.join(ROOT,lang,'hegemony','atlas');
   fs.mkdirSync(path.join(OUT,'data'),{recursive:true}); fs.mkdirSync(path.join(OUT,'lib'),{recursive:true});
-  for(const y of YEARS) fs.writeFileSync(path.join(OUT,'data',`${y}.json`),DATA[y]);
+  for(const y of YEARS) if(DATA[y]) fs.writeFileSync(path.join(OUT,'data',`${y}.json`),DATA[y]);
   fs.writeFileSync(path.join(OUT,'meta.json'),JSON.stringify(meta));
   fs.writeFileSync(path.join(OUT,'content.json'),JSON.stringify(content));
   fs.writeFileSync(path.join(OUT,'index.html'),html);

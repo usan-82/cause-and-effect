@@ -8,6 +8,7 @@ npm install
 npm run prepare-data           # historical-basemaps와 CShapes 2.0을 받아 시점별로 잘라 단순화 → raw/ (처음 한 번, 또는 연도를 바꿀 때)
 npm run build                  # 세 언어 모두
 node build.mjs raw ../../.. en # 한 언어만
+REUSE=1 npm run build        # 글만 고쳤을 때: 지도·면적 계산을 건너뛰고 기존 결과를 재사용(몇 초)
 ```
 
 - `template.html`, `style.css` — 공통 화면(지도, 시간축, 탭, 요충지 레이어)
@@ -17,7 +18,8 @@ node build.mjs raw ../../.. en # 한 언어만
   - `choke`: 요충지 좌표, 시점별 지배 세력 키(`[시작 연도, 끝 연도, 세력 키]`), 재표기용 폴리곤(`poly`, 일부만 `polyYears`)
   - `patches`: 원본에서 빠지거나 틀린 지역을 다시 칠하는 폴리곤과 시점별 세력 키
 - `{ko,en,id}.json` — 글: 시점별 제목·패권 구도·사건과 손익·기술·사상, 국가별 흐름(`powers`, 직전 시점 이후 원인→결과), 요충지·패치의 범위별 `[표시 이름, 주석]`(`struct.json`의 범위와 순서가 같아야 한다), 데이터 보정 문구(`fixes`), 나라 이름(`short`는 `[이 연도 전까지, 이름]`, `full`은 전체 이름)
-- `{ko,en,id}.page.json` — 제목, 안내문, 버튼 등 화면 문구와 글꼴
+- 각주: 글 속에 `[^id]`를 쓰고 같은 파일의 `notes`에 `id: 설명`을 둔다. 해석이 갈리거나 단서가 필요한 대목에 쓴다(현재 한국어판만).
+- `{ko,en,id}.page.json` — 제목, 안내문, 버튼 등 화면 문구와 글꼴. `sources`(`[제목, 주소]` 목록)가 있으면 페이지 맨 아래에 ‘검증에 참고한 출처’로 나온다(현재 한국어판만).
 - `build.mjs`
   - 1880년까지는 historical-basemaps에 세력 키를 붙이고 소속 표기 오류를 연도별로 보정(`FIX`)한다.
   - 1914년부터는 CShapes 2.0(시점별 기준일은 `CS_DATE`)의 식민지 소유국 코드로 지도를 다시 그리고, 일부러 다르게 둔 곳은 `CS_FIX`에 모아 페이지에 공개한다.

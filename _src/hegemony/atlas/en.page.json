@@ -124,7 +124,8 @@
   "sparkAria": "Territory area by year",
   "sparkNote": "Areas are recomputed from what is coloured on this map (colonies included). Before 1886 they include nominal claims and spheres, so they can exceed real control.",
   "colorKey": "Show each country's colour",
-  "colorKeyNote": "A country keeps the same colour even when its name changes (Russia → USSR → Russia, Ming → Qing → China). When it grows stronger or weaker, the colour stays and only its strength and hatching change."
+  "colorKeyNote": "A country keeps the same colour even when its name changes (Russia → USSR → Russia, Ming → Qing → China). When it grows stronger or weaker, the colour stays and only its strength and hatching change.",
+  "footnotes": "Notes"
  },
  "zoomResetShort": "Reset",
  "bigView": "Show the map large",
