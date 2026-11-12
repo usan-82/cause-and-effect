@@ -1180,7 +1180,8 @@
   "algeria_1960": "Perang Kemerdekaan Aljazair (1954–62) sedang berlangsung — merdeka pada 1962",
   "ethiopia_1938": "Diduduki dan dicaplok Italia pada 1936 (Afrika Timur Italia), perlawanan berlanjut — CShapes menganggapnya merdeka",
   "germany_west_1945": "Jerman Barat dibagi di antara pendudukan AS, Britania, dan Prancis — CShapes memasukkan semuanya sebagai pendudukan AS (peta mengikutinya)",
-  "luisiana_1783": "Louisiana Spanyol (1762–1800) — data sumber keliru menyebut Prancis"
+  "luisiana_1783": "Louisiana Spanyol (1762–1800) — data sumber keliru menyebut Prancis",
+  "rioplata_1815": "Río de la Plata lepas dari kekuasaan Spanyol setelah Revolusi Mei 1810 dan tidak pernah direbut kembali (kemerdekaan diproklamasikan 1816) — sumber menandainya sebagai milik Spanyol"
  },
  "short": {
   "gb": [
@@ -1687,5 +1688,67 @@
     ]
    ]
   }
+ },
+ "clips": {
+  "c_chagatai_1500": [
+   "Perbatasan barat laut Ming",
+   "Ming",
+   "Sumber menggambarnya sebagai Kekhanan Chagatai, padahal termasuk wilayah Ming. Batas diambil dari Cliopatria."
+  ],
+  "c_ming_north": [
+   "Dataran tinggi Mongolia selatan",
+   "Yuan Utara (Mongol)",
+   "Ming tidak menguasai dataran tinggi Mongolia di utara Tembok Besar. Batas diambil dari Cliopatria."
+  ],
+  "c_iraq_1530": [
+   "Irak dan Iran barat",
+   "Dinasti Safawi",
+   "Utsmaniyah baru merebut Bagdad dan Irak pada 1534. Batas diambil dari Cliopatria."
+  ],
+  "c_tunis_1530": [
+   "Tunisia",
+   "Dinasti Hafsiyun",
+   "Utsmaniyah merebut Tunisia pada 1574 (sempat pada 1534). Batas diambil dari Cliopatria."
+  ],
+  "c_hungary_1530": [
+   "Hungaria",
+   "Kerajaan Hungaria (raja dukungan Utsmaniyah vs. Habsburg)",
+   "Setelah Mohács (1526) dua raja memperebutkan Hungaria. Pemerintahan langsung Utsmaniyah dimulai dengan direbutnya Buda pada 1541. Batas diambil dari Cliopatria."
+  ],
+  "c_safavid_1650": [
+   "Kaukasus timur dan Iran barat",
+   "Dinasti Safawi",
+   "Ditetapkan sebagai wilayah Safawi oleh Perjanjian Zuhab (1639). Sumber menggambar jangkauan singkat Utsmaniyah pada akhir abad ke-16. Batas diambil dari Cliopatria."
+  ],
+  "c_qing_mongolia": [
+   "Mongolia dan Dzungaria",
+   "Qing",
+   "Mongolia Dalam masuk Qing pada 1636, Khalkha (Mongolia Luar) pada 1691, Dzungaria pada 1757. Sumber menggabungkannya sebagai ‘kekhanan Asia Tengah’. Batas diambil dari Cliopatria."
+  ],
+  "c_ru_steppe": [
+   "Siberia selatan",
+   "Rusia",
+   "Rusia menguasai Siberia selatan pada abad ke-17. Sumber menggabungkannya sebagai ‘kekhanan Asia Tengah’. Batas diambil dari Cliopatria."
+  ],
+  "c_amur": [
+   "Lembah Amur",
+   "Qing",
+   "Wilayah Qing menurut Perjanjian Nerchinsk (1689). Rusia baru memperolehnya pada 1858–60. Batas diambil dari Cliopatria."
+  ],
+  "c_mughal": [
+   "India utara, Gujarat, Benggala",
+   "Kekaisaran Mughal",
+   "Mughal merebut India utara pada 1526 dan, di bawah Akbar, Gujarat (1573) serta Benggala (1576). Sumber membiarkannya sebagai ‘negara-negara Islam dan Hindu’. Batas diambil dari Cliopatria."
+  ],
+  "c_rajput_1600": [
+   "Rajputana",
+   "Kekaisaran Mughal (vasal Rajput)",
+   "Sebagian besar kerajaan Rajput menjadi vasal Mughal di bawah Akbar (Mewar pada 1615). Batas diambil dari Cliopatria."
+  ],
+  "c_burma_1880": [
+   "Burma Hulu",
+   "Dinasti Konbaung (Burma)",
+   "Inggris baru menganeksasi Burma Hulu pada 1886. Batas diambil dari Cliopatria."
+  ]
  }
 }

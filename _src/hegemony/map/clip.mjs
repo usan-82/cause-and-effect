@@ -7,6 +7,11 @@ const HERE=path.dirname(fileURLToPath(import.meta.url)); const J=f=>JSON.parse(f
 const FX=J('fixes.json'), ALIAS=J('alias.json'); const canon=n=>{n=(n||'').replace(/\s+/g,' ').trim(); return ALIAS[n]||n;};
 const CL=JSON.parse(fs.readFileSync(path.join(HERE,'raw/clio_s.geojson'))).features.filter(f=>f.geometry&&f.properties.Type==='POLITY');
 const OUT=path.join(HERE,'raw/clip'); fs.rmSync(OUT,{recursive:true,force:true}); fs.mkdirSync(OUT,{recursive:true});
+const CLIOA=J('clio.json').alias;
+// atlas(패권의 지도)와 같은 교정을 쓰도록, 강대국 소속이 바뀌는 조각은 ../atlas/clips.json 에도 낸다
+const keyOf=s=>{ const S=re=>re.test(s); if(S(/United Kingdom of (the )?Netherlands/)) return 'nl'; if(S(/United Kingdom|Great Britain|^England|British|^UK$/)) return 'gb'; if(S(/^France|French/)) return 'fr'; if(S(/^Spain|Spanish|Castil/)) return 'es'; if(S(/^Portugal|Portuguese/)) return 'pt';
+  if(S(/^Netherlands|Dutch|^Holland/)) return 'nl'; if(S(/Russia|Muscovy|Moscow/)) return 'ru'; if(S(/Ottoman/)) return 'ot'; if(S(/Ming|Qing|Manchu Empire|^China$/)) return 'cn'; if(S(/United States/)) return 'us'; if(S(/^Germany|Prussia|Brandenburg/)) return 'de'; if(S(/Austria|Habsburg/)&&!S(/Spanish/)) return 'at'; if(S(/Japan/)) return 'jp'; if(S(/Mughal/)) return 'mg'; return null; };
+const ATLAS={};
 const byY={}; for(const c of FX.clip||[]) for(const y of c.y) (byY[y]=byY[y]||[]).push(c);
 for(const [y,list] of Object.entries(byY)){
   const t=JSON.parse(fs.readFileSync(path.join(HERE,'raw',`h${y}.json`))); const hb=feature(t,t.objects[Object.keys(t.objects)[0]]).features.filter(f=>f.geometry);
@@ -19,8 +24,12 @@ for(const [y,list] of Object.entries(byY)){
     let o={}; try{ o=await mapshaper.applyCommands(`-i c.json -clean overlap-rule=min-area -clip m.json -explode -filter "this.area>${(c.minArea||4000)*1e6} && this.area/this.perimeter>${(c.thick||15)*1000}" -dissolve n -o out.json precision=0.001`,
       {'c.json':JSON.stringify({type:'FeatureCollection',features:cs.map(f=>({type:'Feature',properties:{n:f.properties.Name},geometry:f.geometry}))}),'m.json':JSON.stringify({type:'FeatureCollection',features:m.map(f=>({type:'Feature',properties:{},geometry:f.geometry}))})}); }catch(err){ if(!/Missing a field/.test(err.message)) throw err; }
     const fc=o['out.json']?JSON.parse(o['out.json']).features.filter(f=>f.geometry):[];
+    if(FX.atlasYears.includes(+y)) for(const f of fc){ const nm=(c.rename||{})[f.properties.n]||f.properties.n; const to=c.to?(c.to[0]==='@'?c.to.slice(1):keyOf(c.to)):keyOf(canon(CLIOA[nm]||nm)); const fk=keyOf(c.from);
+      if(to!==fk) (ATLAS[y]=ATLAS[y]||[]).push({type:'Feature',properties:{id:c.note,p:to,from:fk},geometry:f.geometry}); }
     for(const f of fc) res.push({type:'Feature',geometry:f.geometry,properties:{n:f.properties.n,from:c.from,to:c.to||null,note:c.note}});
     console.log(y,c.from,'→',fc.map(f=>f.properties.n).join(', ')||'(없음)');
   }
   if(res.length) fs.writeFileSync(path.join(OUT,`${y}.json`),JSON.stringify({type:'FeatureCollection',features:res}));
 }
+fs.writeFileSync(path.join(HERE,'../atlas/clips.json'),JSON.stringify(ATLAS));
+console.log('atlas 조각:',Object.entries(ATLAS).map(([y,a])=>y+':'+a.map(f=>f.properties.id+'('+(f.properties.from||'-')+'→'+(f.properties.p||'-')+')').join(',')).join('  '));

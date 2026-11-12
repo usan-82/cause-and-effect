@@ -86,7 +86,7 @@ for(const s of SNAPS){
   if(s.src==='hb'){
     const CLIP=fs.existsSync(path.join(RAW,'clip',`${s.y}.json`))?JSON.parse(fs.readFileSync(path.join(RAW,'clip',`${s.y}.json`))).features.map(fix):[];
     const cdef=(FX.clip||[]).filter(c=>c.y.includes(s.y)), REPL=new Set(cdef.filter(c=>c.replace).map(c=>c.from));
-    s.clip=CLIP.map(f=>{const p=f.properties, c=cdef.find(c=>c.from===p.from)||{}; const nm=(c.rename||{})[p.n]||p.n; return {geometry:f.geometry,e:canon(p.to||CLIO.alias[nm]||nm),n:p.n,fx:p.note,top:1};});
+    s.clip=CLIP.map(f=>{const p=f.properties, c=cdef.find(c=>c.from===p.from)||{}; const nm=(c.rename||{})[p.n]||p.n; return {geometry:f.geometry,e:p.to&&p.to[0]==='@'?null:canon(p.to||CLIO.alias[nm]||nm),toKey:p.to&&p.to[0]==='@'?p.to:null,n:p.n,fx:p.note,top:1};});
     for(const f of feats){const sub=(f.properties.SUBJECTO||'').trim(); const n=(f.properties.NAME||'').trim()||(s.y>=1492&&base('',sub)?sub:''); if(!n) continue; // 이름 없이 소속만 적힌 식민지도 살린다
       let e=sub||n, k=s.y>=1492?base(n,sub):null, fx; if(k&&!inYears(FX.powerYears[k]||[],s.y)) k=null; // 그 강대국이 atlas에서 다뤄지는 시기에만 묶는다
       if(sub==='Mongol Empire'&&s.y>=1300) e=n;            // 1294년 이후 몽골 제국은 사실상 네 칸국으로 갈라져 있었다(교차검증에서 확인)
@@ -112,7 +112,7 @@ for(const s of SNAPS){
     for(const [k,o] of Object.entries(acc)) HOME[k]=[...o].sort((a,b)=>(b[1][1]-a[1][1])||b[1][0]-a[1][0])[0][0]; if(process.env.HOME_LOG) console.log('  home',s.y,JSON.stringify(HOME)); }
   const target=to=>!to?null:to[0]==='@'?(HOME[to.slice(1)]||null):canon(to);
   if(s.src==='hb') for(const f of F) if(f.k){ const h=HOME[f.k]; if(h) f.e=h; else if(f.fx) console.log('  보정 대상 없음',s.y,f.n,f.k); }
-  for(const c of s.clip||[]) F.push(c); // Cliopatria 경계를 빌린 교정 조각
+  for(const c of s.clip||[]){ if(c.toKey){ c.e=target(c.toKey); if(!c.e){ console.log('  조각 대상 없음',s.y,c.n,c.toKey); continue; } } F.push(c); } // Cliopatria 경계를 빌린 교정 조각
   for(const p of FX.patches){ const r=rangeFor(p,s.y); if(!r) continue; const e=target(r[2]); if(!e){ console.log('  패치 대상 없음',s.y,p.id,r[2]); continue; }
     FXN['p:'+p.id+':'+r[0]]=r[3]; F.push({geometry:cwPoly(p.poly),e,n:p.en||p.id,ko:p.ko,fx:'p:'+p.id+':'+r[0],top:1}); }
   // 격자 표본

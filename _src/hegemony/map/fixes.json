@@ -697,6 +697,15 @@
    "to": "Jin Empire",
    "note": "jin_name",
    "exact": true
+  },
+  {
+   "y": [
+    1815
+   ],
+   "n": "United Provinces of the Río de la Plata",
+   "to": "United Provinces of the Río de la Plata",
+   "note": "rioplata_1815",
+   "exact": true
   }
  ],
  "notes": {
@@ -780,7 +789,18 @@
   "c_chagatai_1500": "원자료는 몽골 고원까지 차가타이 칸국으로 그렸지만, 이 시점의 차가타이 계통(모굴리스탄)은 톈산·타림 일대뿐입니다. 몽골 고원은 북원, 초원 서부는 카자흐 칸국 등입니다. 원자료 영역을 Cliopatria의 나라들로 갈아 끼웠습니다.",
   "c_horde_1500": "백장 칸국은 15세기에 해체되어 시비르 칸국·카자흐 칸국·노가이 칸국 등으로 갈라졌습니다. 원자료 영역을 Cliopatria의 나라들로 갈아 끼웠습니다.",
   "c_iraq_1530": "오스만 제국이 바그다드와 이라크를 차지한 것은 1534년입니다. 이 시점에는 사파비 왕조의 영토입니다. 경계는 Cliopatria에서 가져왔습니다.",
-  "jin_name": "원자료 표기 ‘Jin’은 진(晉)입니다. 12세기의 금(金)과 구별해 적었습니다."
+  "jin_name": "원자료 표기 ‘Jin’은 진(晉)입니다. 12세기의 금(金)과 구별해 적었습니다.",
+  "c_tunis_1530": "오스만 제국이 튀니지를 차지한 것은 1574년입니다(1534년 일시 점령). 이 시점에는 하프스 왕조의 땅입니다. 경계는 Cliopatria에서 가져왔습니다.",
+  "c_hungary_1530": "1526년 모하치 전투 뒤 헝가리는 오스만의 봉신 왕(서포여이 야노시)과 합스부르크가 다투던 때입니다. 오스만의 직접 지배는 1541년 부다 점령부터입니다. 경계는 Cliopatria에서 가져왔습니다.",
+  "c_safavid_1650": "1639년 주하브 조약으로 캅카스 동부와 이란 서부는 사파비 왕조의 땅으로 확정되었습니다. 원자료는 16세기 말 오스만이 잠시 차지했던 범위를 그렸습니다. 경계는 Cliopatria에서 가져왔습니다.",
+  "c_ming_north": "명은 만리장성 이북의 몽골 고원을 다스리지 못했습니다. 이 일대는 북원(몽골)의 땅입니다. 경계는 Cliopatria에서 가져왔습니다.",
+  "c_qing_mongolia": "내몽골은 1636년, 할하(외몽골)는 1691년, 준가르는 1757년 청에 들어갔습니다. 원자료는 ‘중앙아시아 칸국들’로 뭉뚱그렸습니다. 경계는 Cliopatria에서 가져왔습니다.",
+  "c_ru_steppe": "남시베리아 일대는 17세기에 러시아가 차지했습니다. 원자료는 ‘중앙아시아 칸국들’로 뭉뚱그렸습니다. 경계는 Cliopatria에서 가져왔습니다.",
+  "c_amur": "1689년 네르친스크 조약으로 아무르강 유역은 청의 땅이 되었습니다. 러시아가 이 일대를 얻는 것은 1858~60년(아이훈·베이징 조약)입니다. 경계는 Cliopatria에서 가져왔습니다.",
+  "c_mughal": "무굴 제국은 1526년 북인도를 차지했고, 악바르 때 구자라트(1573)·벵골(1576)·카슈미르·신드까지 넓혔습니다. 원자료는 이 지역을 ‘이슬람·힌두 국가들’로 남겨 두었습니다. 경계는 Cliopatria에서 가져왔습니다.",
+  "c_rajput_1600": "라지푸트 왕국들은 악바르 때 대부분 무굴 제국의 봉신이 되었습니다(메와르는 1615년). 경계는 Cliopatria에서 가져왔습니다.",
+  "c_burma_1880": "영국은 1826년·1852년에 하부 버마를 차지했고, 상부 버마(꼰바웅 왕조)를 병합한 것은 1886년입니다. 경계는 Cliopatria에서 가져왔습니다.",
+  "rioplata_1815": "리오데라플라타는 1810년 5월 혁명 뒤 스페인의 지배에서 벗어났고 다시 정복되지 않았습니다(독립 선언 1816년). 원자료는 스페인령으로 표기했습니다."
  },
  "patches": [
   {
@@ -2346,6 +2366,124 @@
    "clio": "Safavid Dynasty",
    "to": "Safavid Empire",
    "note": "c_iraq_1530"
+  },
+  {
+   "y": [
+    1530
+   ],
+   "from": "Ottoman Empire",
+   "clio": "Hafsid Dynasty",
+   "to": "Hafsid Caliphate",
+   "note": "c_tunis_1530"
+  },
+  {
+   "y": [
+    1530
+   ],
+   "from": "Ottoman Empire",
+   "clio": "Kingdom of Hungary",
+   "to": "Hungary",
+   "note": "c_hungary_1530"
+  },
+  {
+   "y": [
+    1650,
+    1700
+   ],
+   "from": "Ottoman Empire",
+   "clio": "Safavid Dynasty",
+   "to": "Safavid Empire",
+   "note": "c_safavid_1650"
+  },
+  {
+   "y": [
+    1492,
+    1500,
+    1530,
+    1600
+   ],
+   "from": "Ming Empire",
+   "clio": "Mongol Khanate",
+   "to": "Northern Yuan",
+   "note": "c_ming_north"
+  },
+  {
+   "y": [
+    1650,
+    1700,
+    1715,
+    1783
+   ],
+   "from": "central Asian khanates",
+   "clio": "Qing Dynasty",
+   "to": "@cn",
+   "note": "c_qing_mongolia"
+  },
+  {
+   "y": [
+    1700
+   ],
+   "from": "central Asian khanates",
+   "clio": "Tsardom of Russia",
+   "to": "@ru",
+   "note": "c_ru_steppe"
+  },
+  {
+   "y": [
+    1783
+   ],
+   "from": "central Asian khanates",
+   "clio": "Russian Empire",
+   "to": "@ru",
+   "note": "c_ru_steppe"
+  },
+  {
+   "y": [
+    1700,
+    1715
+   ],
+   "from": "Tsardom of Muscovy",
+   "clio": "Qing Dynasty",
+   "to": "@cn",
+   "note": "c_amur"
+  },
+  {
+   "y": [
+    1783,
+    1815
+   ],
+   "from": "Russian Empire",
+   "clio": "Qing Dynasty",
+   "to": "@cn",
+   "note": "c_amur"
+  },
+  {
+   "y": [
+    1530,
+    1600
+   ],
+   "from": "Islamic and Hindu states",
+   "clio": "Mughal Empire",
+   "to": "@mg",
+   "note": "c_mughal"
+  },
+  {
+   "y": [
+    1600
+   ],
+   "from": "Rajputana",
+   "clio": "Mughal Empire",
+   "to": "@mg",
+   "note": "c_rajput_1600"
+  },
+  {
+   "y": [
+    1880
+   ],
+   "from": "United Kingdom",
+   "clio": "Burma",
+   "to": "Burma",
+   "note": "c_burma_1880"
   }
  ]
 }
