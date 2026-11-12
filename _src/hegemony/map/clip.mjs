@@ -31,5 +31,12 @@ for(const [y,list] of Object.entries(byY)){
   }
   if(res.length) fs.writeFileSync(path.join(OUT,`${y}.json`),JSON.stringify({type:'FeatureCollection',features:res}));
 }
+// 덧그리는 폴리곤 가운데 land 표시가 있는 것(바다에 걸치는 넓은 영역)은 육지 모양으로 잘라 raw/patch/{id}.json 으로 낸다
+{ const PO=path.join(HERE,'raw/patch'); fs.rmSync(PO,{recursive:true,force:true}); fs.mkdirSync(PO,{recursive:true});
+  const nt=JSON.parse(fs.readFileSync(path.join(HERE,'raw/n_usa.json'))); const land=nt.type==='Topology'?feature(nt,nt.objects[Object.keys(nt.objects)[0]]):nt;
+  for(const p of FX.patches.filter(p=>p.land)){ const ring=[...p.poly,p.poly[0]];
+    const o=await mapshaper.applyCommands('-i p.json -clip land.json -dissolve -o out.json precision=0.001',{'p.json':JSON.stringify({type:'Feature',properties:{},geometry:{type:'Polygon',coordinates:[ring]}}),'land.json':JSON.stringify(land)});
+    const g=JSON.parse(o['out.json']); const geom=(g.features?g.features[0]?.geometry:g.geometries?.[0])||null; if(!geom){ console.log('육지와 겹치지 않음:',p.id); continue; }
+    fs.writeFileSync(path.join(PO,`${p.id}.json`),JSON.stringify(geom)); console.log('육지로 자름:',p.id,geom.type); } }
 fs.writeFileSync(path.join(HERE,'../atlas/clips.json'),JSON.stringify(ATLAS));
 console.log('atlas 조각:',Object.entries(ATLAS).map(([y,a])=>y+':'+a.map(f=>f.properties.id+'('+(f.properties.from||'-')+'→'+(f.properties.p||'-')+')').join(',')).join('  '));

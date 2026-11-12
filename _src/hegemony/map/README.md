@@ -23,7 +23,8 @@ npm run build          # 검증 결과와 보충 층을 페이지에 싣기
 - `clio.json` — 보충 층의 이름 처리. `alias`는 Cliopatria 이름을 이 지도의 같은 나라에 잇는 표(색과 한글 이름을 같이 쓴다. 직접 확인한 동의어만 넣는다), `ko`는 한글 이름
 - `fixes.json` — 원자료 보정 목록. 페이지의 ‘원자료를 바로잡은 곳’에 주석과 함께 나온다
   - `hb`: historical-basemaps 지물의 소속·이름을 고치는 규칙(`n`은 NAME 정규식, `e`는 주체 이름). `to`가 `@gb`처럼 @키면 그 시점의 해당 강대국 본국, 이름이면 그 주체, 없으면 주석만 단다. `drop`은 그 시점에서 뺀다
-  - `patches`: 덧그리는 폴리곤(빠진 식민지, 요충지)과 시기별 대상
+  - `patches`: 덧그리는 폴리곤(빠진 식민지, 요충지)과 시기별 대상. `exact`면 적힌 시점에만 적용하고, `land`면 `clip.mjs`가 육지 모양으로 잘라 `raw/patch/`에 둔다(고조선, 원 간섭기의 고려)
+  - `cs`: CShapes 시점에서 나라 이름만 바꾸는 규칙(1886년 조선, 1900년 대한제국)
   - `clip`: 경계선 자체가 틀린 곳을 Cliopatria 경계로 고치는 항목(`clip.mjs`가 조각을 만든다). `replace`면 그 주체를 통째로 빼고 Cliopatria의 나라들로 채운다
   - 1492~1880년의 `hb`·`patches`는 `hegemony/atlas`의 `FIX`·`patches`·요충지 재표기에서 옮겼다. atlas 시점 사이에 낀 시점(1500, 1886 등)은 앞뒤 atlas 시점의 값이 같을 때만 적용한다(`atlasYears`, `powerYears`)
   - 강대국 15곳의 식민지·속령은 atlas와 같은 규칙(`build.mjs`의 `base`)으로 본국 주체에 묶는다. 본국은 수도가 들어 있는 주체로 정한다

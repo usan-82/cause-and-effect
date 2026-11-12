@@ -188,7 +188,7 @@
   "Rajastan": "라자스탄",
   "Tungusic Tribes": "퉁구스계 부족들",
   "Donghu tribes": "동호",
-  "Korea": "한국(조선·대한제국)",
+  "Korea": "한국",
   "Germany": "독일",
   "Turkey": "튀르키예(1923년 이전 오스만 제국)",
   "Iran": "이란(페르시아)",
@@ -449,7 +449,16 @@
   "Wattasid Caliphate": "와타스 왕조",
   "Kong Empire": "콩 제국",
   "Laotian states": "라오스 여러 왕국",
-  "Hindu Shahis": "힌두 샤히 왕조"
+  "Hindu Shahis": "힌두 샤히 왕조",
+  "Joseon": "조선",
+  "Korean Empire": "대한제국",
+  "Gaya": "가야",
+  "Goguryeo": "고구려",
+  "Baekje": "백제",
+  "Mahan": "마한",
+  "Jinhan": "진한",
+  "Byeonhan": "변한",
+  "Korean Jin": "진국(辰國)"
  },
  "nonstate": {
   "regex": "hunter|gatherer|culture|farmers|pastoral|nomad|tribe|peoples?$|fishers|fichers|foraging|civilization|Proto-|megalith|Bronze Age|Clans",
