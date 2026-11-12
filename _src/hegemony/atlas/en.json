@@ -1180,7 +1180,8 @@
   "algeria_1960": "Algerian War of Independence (1954–62) under way — independent in 1962",
   "ethiopia_1938": "Occupied and annexed by Italy in 1936 (Italian East Africa), resistance continued — CShapes counts it as independent",
   "germany_west_1945": "West Germany was divided among US, British and French occupation — CShapes files it all as US-occupied (and the map follows)",
-  "luisiana_1783": "Spanish Louisiana (1762–1800) — the source wrongly gives France"
+  "luisiana_1783": "Spanish Louisiana (1762–1800) — the source wrongly gives France",
+  "rioplata_1815": "The Río de la Plata left Spanish rule after the May Revolution of 1810 and was never reconquered (independence declared 1816) — the source marks it as Spanish"
  },
  "short": {
   "gb": [
@@ -1687,5 +1688,67 @@
     ]
    ]
   }
+ },
+ "clips": {
+  "c_chagatai_1500": [
+   "Ming north-western frontier",
+   "Ming",
+   "The source drew this as the Chagatai Khanate, but it lay within Ming territory. Boundary taken from Cliopatria."
+  ],
+  "c_ming_north": [
+   "Southern Mongolian plateau",
+   "Northern Yuan (Mongols)",
+   "The Ming did not rule the Mongolian plateau north of the Great Wall. Boundary taken from Cliopatria."
+  ],
+  "c_iraq_1530": [
+   "Iraq and western Iran",
+   "Safavid dynasty",
+   "The Ottomans took Baghdad and Iraq only in 1534. Boundary taken from Cliopatria."
+  ],
+  "c_tunis_1530": [
+   "Tunisia",
+   "Hafsid dynasty",
+   "The Ottomans took Tunisia in 1574 (briefly in 1534). Boundary taken from Cliopatria."
+  ],
+  "c_hungary_1530": [
+   "Hungary",
+   "Kingdom of Hungary (Ottoman-backed king vs. Habsburgs)",
+   "After Mohács (1526) two kings contested Hungary. Direct Ottoman rule began with the capture of Buda in 1541. Boundary taken from Cliopatria."
+  ],
+  "c_safavid_1650": [
+   "Eastern Caucasus and western Iran",
+   "Safavid dynasty",
+   "Confirmed as Safavid by the Treaty of Zuhab (1639). The source drew the brief Ottoman extent of the late 16th century. Boundary taken from Cliopatria."
+  ],
+  "c_qing_mongolia": [
+   "Mongolia and Dzungaria",
+   "Qing",
+   "Inner Mongolia came under the Qing in 1636, the Khalkha (Outer Mongolia) in 1691, Dzungaria in 1757. The source lumped this into ‘central Asian khanates’. Boundary taken from Cliopatria."
+  ],
+  "c_ru_steppe": [
+   "Southern Siberia",
+   "Russia",
+   "Russia took southern Siberia in the 17th century. The source lumped this into ‘central Asian khanates’. Boundary taken from Cliopatria."
+  ],
+  "c_amur": [
+   "Amur basin",
+   "Qing",
+   "Qing territory under the Treaty of Nerchinsk (1689). Russia gained it only in 1858–60. Boundary taken from Cliopatria."
+  ],
+  "c_mughal": [
+   "Northern India, Gujarat, Bengal",
+   "Mughal Empire",
+   "The Mughals took northern India in 1526 and, under Akbar, Gujarat (1573) and Bengal (1576). The source left this as ‘Islamic and Hindu states’. Boundary taken from Cliopatria."
+  ],
+  "c_rajput_1600": [
+   "Rajputana",
+   "Mughal Empire (Rajput vassals)",
+   "Most Rajput kingdoms became Mughal vassals under Akbar (Mewar in 1615). Boundary taken from Cliopatria."
+  ],
+  "c_burma_1880": [
+   "Upper Burma",
+   "Konbaung dynasty (Burma)",
+   "Britain annexed Upper Burma only in 1886. Boundary taken from Cliopatria."
+  ]
  }
 }

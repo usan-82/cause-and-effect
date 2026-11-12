@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "prepare-data": "bash prepare.sh",
+    "clip": "node --max-old-space-size=6000 clip.mjs",
     "build": "node build.mjs",
     "verify": "node --max-old-space-size=6000 verify.mjs"
   },
