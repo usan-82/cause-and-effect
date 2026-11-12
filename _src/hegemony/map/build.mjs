@@ -7,7 +7,8 @@ import Flatbush from 'flatbush'; import {geoArea} from 'd3-geo'; import {feature
 const HERE=path.dirname(fileURLToPath(import.meta.url));
 const RAW=path.join(HERE,'raw'), ROOT=path.join(HERE,'../../..');
 const J=f=>JSON.parse(fs.readFileSync(path.join(HERE,f),'utf8'));
-const TX=J('ko.json'), PG=J('ko.page.json');
+const TX=J('ko.json'); // 구조(문화권 판정, 색 묶음)와 한국어 이름. 언어별 글은 {lang}.json · {lang}.page.json · fixes.{lang}.json
+const LANGS=[['ko','한국어'],['en','English'],['id','Bahasa Indonesia']].filter(([c])=>!process.env.LANGS||process.env.LANGS.split(',').includes(c));
 
 // ---- 시점 목록
 const HB=[-3000,-2000,-1500,-1000,-700,-500,-400,-323,-300,-200,-100,-1,100,200,300,400,500,600,700,800,900,1000,1100,1200,1279,1300,1400,1492,1500,1530,1600,1650,1700,1715,1783,1815,1880];
@@ -103,7 +104,7 @@ for(const s of SNAPS){
   } else {
     for(const f of feats){const p=f.properties; if(p.ADM0_A3==='ATA') continue; const ov=UN_OVERRIDE[p.ADM0_A3];
       if(p.TYPE==='Indeterminate'&&!ov) continue; // 주인이 정해지지 않은 작은 땅은 분쟁 지역 층에서만 보여 준다
-      F.push({geometry:f.geometry,e:canon(ov||p.SOVEREIGNT),n:p.NAME_LONG||p.NAME,ko:p.NAME_KO,a3:p.ADM0_A3,un:ov?1:undefined});}
+      F.push({geometry:f.geometry,e:canon(ov||p.SOVEREIGNT),n:p.NAME_LONG||p.NAME,ne:{ko:p.NAME_KO,en:p.NAME_EN,id:p.NAME_ID},a3:p.ADM0_A3,un:ov?1:undefined});}
   }
   // 강대국 키 → 이 시점의 본국 주체(그 키로 묶이는 지물 가운데 면적이 가장 큰 이름)
   const HOME={}; { const acc={};
@@ -114,7 +115,7 @@ for(const s of SNAPS){
   if(s.src==='hb') for(const f of F) if(f.k){ const h=HOME[f.k]; if(h) f.e=h; else if(f.fx) console.log('  보정 대상 없음',s.y,f.n,f.k); }
   for(const c of s.clip||[]){ if(c.toKey){ c.e=target(c.toKey); if(!c.e){ console.log('  조각 대상 없음',s.y,c.n,c.toKey); continue; } } F.push(c); } // Cliopatria 경계를 빌린 교정 조각
   for(const p of FX.patches){ const r=rangeFor(p,s.y); if(!r) continue; const e=target(r[2]); if(!e){ console.log('  패치 대상 없음',s.y,p.id,r[2]); continue; }
-    FXN['p:'+p.id+':'+r[0]]=r[3]; F.push({geometry:cwPoly(p.poly),e,n:p.en||p.id,ko:p.ko,fx:'p:'+p.id+':'+r[0],top:1}); }
+    FXN['p:'+p.id+':'+r[0]]=r[3]; F.push({geometry:cwPoly(p.poly),e,n:p.id,pid:p.id,fx:'p:'+p.id+':'+r[0],top:1}); }
   // 격자 표본
   const I=mkIndex(F.map(x=>({type:'Feature',geometry:x.geometry,properties:{top:x.top}})));
   const grid=new Int32Array(NX*NY).fill(-1); const area=new Map(), cells=new Map();
@@ -167,13 +168,25 @@ for(const e of order){ if(e.ns){ e.c=-1; for(const m of e.members) m.c=-1; conti
 let clash=0, pairs=0; for(const e of E) for(const i of e.nb) if(i>e.id&&e.c>=0&&E[i].c>=0&&e.g!==E[i].g){pairs++; if(dist(PAL[e.c],PAL[E[i].c])<0.06) clash++;}
 console.log('entities',E.length,'adjacent pairs',pairs,'near-identical neighbour colours',clash);
 
-// ---- 3) 한글 이름: 직접 쓴 사전 → Natural Earth의 NAME_KO
+// ---- 3) 언어별 이름: 직접 쓴 사전 → Natural Earth의 NAME_{KO,EN,ID} → (인도네시아어만) 규칙 변환
 for(const [a,b] of Object.entries(CLIO.alias)) if(!ENT.get(canon(b))?.main&&!CLIO.ko[b]) console.log('clio.json alias 대상이 본 지도에 없음:',a,'→',b);
-const KO=new Map(Object.entries(TX.names)); for(const [k,v] of Object.entries(CLIO.ko)) if(!KO.has(k)) KO.set(k,v);
-{ const t=JSON.parse(fs.readFileSync(path.join(RAW,'n_usa.json'))); for(const g of t.objects[Object.keys(t.objects)[0]].geometries){const p=g.properties; for(const k of [p.NAME,p.NAME_LONG,p.ADMIN,p.SOVEREIGNT]) if(k&&p.NAME_KO&&!KO.has(canon(k))&&(k===p.NAME||k===p.NAME_LONG||k===p.ADMIN)) KO.set(canon(k),p.NAME_KO);} }
-const ko=n=>KO.get(n)||KO.get(canon(n))||null;
+const NEP=JSON.parse(fs.readFileSync(path.join(RAW,'n_usa.json'))); const NEG=NEP.objects[Object.keys(NEP.objects)[0]].geometries.map(g=>g.properties);
+// 인도네시아어: 사전에 없는 역사 국가 이름은 흔한 낱말만 규칙으로 바꾼다(고유명사는 그대로)
+const ID_RULES=[[/^Grand Duchy of (.+)$/,'Kadipaten Agung $1'],[/^(?:Kingdom|Kingdoms) of (.+)$/,'Kerajaan $1'],[/^Empire of (.+)$/,'Kekaisaran $1'],[/^Sultanate of (.+)$/,'Kesultanan $1'],[/^Khanate of (?:the )?(.+)$/,'Kekhanan $1'],[/^Emirate of (.+)$/,'Keamiran $1'],
+  [/^Duchy of (.+)$/,'Kadipaten $1'],[/^Principality of (.+)$/,'Kepangeranan $1'],[/^Republic of (.+)$/,'Republik $1'],[/^Viceroyalty of (?:the )?(.+)$/,'Kewalirajaan $1'],[/^Caliphate of (.+)$/,'Kekhalifahan $1'],[/^County of (.+)$/,'Kabupaten $1'],
+  [/^(.+) Empire$/,'Kekaisaran $1'],[/^(.+) (?:Kingdom|kingdoms?)$/,'Kerajaan $1'],[/^(.+) Sultanate$/,'Kesultanan $1'],[/^(.+) (?:Khanate|Khaganate|khanates)$/,'Kekhanan $1'],[/^(.+) Caliphate$/,'Kekhalifahan $1'],[/^(.+) (?:Dynasty|dynasty)$/,'Dinasti $1'],
+  [/^(.+) (?:Emirate|Emirates)$/,'Keamiran $1'],[/^(.+) Republic$/,'Republik $1'],[/^(.+) (?:Confederation|Confederacy|confederation)$/,'Konfederasi $1'],[/^(.+) city-states$/,'Negara-kota $1'],[/^(.+) (?:states|States)$/,'Negara-negara $1'],[/^(.+) (?:chiefdoms)$/,'Kepala-suku $1'],
+  [/^(.+) tribes$/,'Suku-suku $1'],[/^(.+) hunter-gatherers$/,'Pemburu-peramu $1'],[/^(.+) (?:cultures?|Culture)$/,'Budaya $1'],[/^(.+) peoples?$/,'Bangsa $1'],[/^(.+) (?:Islands|Is\.)$/,'Kepulauan $1'],[/^(.+) Horde$/,'Gerombolan $1'],[/^(.+) farmers$/,'Petani $1'],[/^(.+) nomads$/,'Pengembara $1'],[/^(.+) principalities$/,'Kepangeranan-kepangeranan $1']];
+// 나머지 부분이 고유명사 한두 낱말일 때만 바꾼다(영어 형용사가 섞이면 어색해지므로 영어 이름을 그대로 둔다)
+const ID_SKIP=/\b(Eastern|Western|Northern|Southern|Central|North|South|East|West|Upper|Lower|Great|Greater|Old|New|American|African|European|Asian|Roman|Islamic|Hindu|Buddhist|Christian|Arabian|Saharan|Australian|Indian|Burmese|Malaysian|minor|and|of|the)\b/;
+const idRule=n=>{ for(const [re,to] of ID_RULES){ const m=n.match(re); if(!m) continue; const r=m[1]; if(ID_SKIP.test(r)||!/^\p{Lu}[\p{L}'’.\-]*( \p{Lu}[\p{L}'’.\-]*)?$/u.test(r)) return null; return n.replace(re,to); } return null; };
+function namer(lang){ const L=lang==='ko'?TX:J(lang+'.json'); const M=new Map(Object.entries(L.names||{}));
+  if(lang==='ko') for(const [k,v] of Object.entries(CLIO.ko)) if(!M.has(k)) M.set(k,v);
+  if(lang!=='en'){ const F='NAME_'+lang.toUpperCase(); for(const p of NEG) for(const k of [p.NAME,p.NAME_LONG,p.ADMIN]) if(k&&p[F]&&!M.has(canon(k))) M.set(canon(k),p[F]); }
+  return n=>M.get(n)||M.get(canon(n))||(lang==='id'?idRule(n):null)||null; }
+const ko=namer('ko');
 if(process.env.MISSINGX){ console.log(JSON.stringify(E.filter(e=>e.x&&!ko(e.n)).sort((a,b)=>b.maxA-a.maxA).map(e=>e.n))); }
-if(process.env.MISSING){ console.log(E.slice().sort((a,b)=>b.maxA-a.maxA).filter(e=>!ko(e.n)).slice(0,+process.env.MISSING).map(e=>`${e.n} (${(e.maxA/1e6).toFixed(2)})`).join(' | ')); }
+if(process.env.MISSING){ const f=namer(process.env.MISSING_LANG||'ko'); console.log(E.slice().sort((a,b)=>b.maxA-a.maxA).filter(e=>!f(e.n)).slice(0,+process.env.MISSING).map(e=>`${e.n} (${(e.maxA/1e6).toFixed(2)})`).join(' | ')); }
 
 // ---- 4) 2026 분쟁 지역: 유엔(직접 정리) · 미국·한국(Natural Earth 관점 지도에서 읽음)
 const IU=mkIndex(load('n_usa.json').map(f=>({type:'Feature',geometry:f.geometry,properties:f.properties})));
@@ -182,38 +195,53 @@ const who=(I,ll)=>{ for(const d of [0,0.05,0.15,0.4]) for(const [dx,dy] of [[0,0
 const SKIP=/Lease|Overlay/;
 const disp=load('n_disputed.json').filter(f=>!SKIP.test(f.properties.TYPE||'')).map(f=>{const p=f.properties; const name=(p.BRK_NAME||p.NAME||'').replace(/^﻿/,'');
   const rs=rings(f.geometry); let sx=0,sy=0,n=0; for(const [x,y] of rs[0]||[]){sx+=x;sy+=y;n++;} const c=[sx/n,sy/n];
-  const u=who(IU,c), k=who(IK,c); const nm=q=>q?(ko(canon(q.SOVEREIGNT))||q.SOVEREIGNT)+(q.NAME!==q.SOVEREIGNT&&q.ADMIN!==q.SOVEREIGNT?` (${q.NAME_KO||q.NAME})`:''):null;
-  return {type:'Feature',geometry:f.geometry,properties:{n:name,ko:TX.disputedNames?.[name]||p.NAME_KO||null,note:p.NOTE_BRK||null,un:TX.unRules[name]||null,us:nm(u),kr:nm(k),ll:c.map(v=>+v.toFixed(2))}}; });
-console.log('disputed areas',disp.length,'with UN note',disp.filter(d=>d.properties.un).length);
+  return {geometry:f.geometry,name,p,u:who(IU,c),k:who(IK,c),c}; });
+const dispFor=(lang,L,loc)=>disp.map(d=>{ const F='NAME_'+lang.toUpperCase(); const nm=q=>q?(loc(canon(q.SOVEREIGNT))||q.SOVEREIGNT)+(q.NAME!==q.SOVEREIGNT&&q.ADMIN!==q.SOVEREIGNT?` (${q[F]||q.NAME})`:''):null;
+  const local=L.disputedNames?.[d.name]||(lang==='en'?null:d.p[F])||null;
+  return {type:'Feature',geometry:d.geometry,properties:{n:d.name,ko:local&&local!==d.name?local:null,note:d.p.NOTE_BRK||null,un:L.unRules[d.name]||null,us:nm(d.u),kr:nm(d.k),ll:d.c.map(v=>+v.toFixed(2))}}; });
+console.log('disputed areas',disp.length,'with UN note',disp.filter(d=>TX.unRules[d.name]).length);
 // 미국·한국 관점이 갈리는 곳(격자 비교)
 { const diff={}; for(let lat=-89.75;lat<90;lat+=0.5)for(let lon=-179.75;lon<180;lon+=0.5){const a=at(IU,lon,lat),b=at(IK,lon,lat); const x=a?.f.properties.SOVEREIGNT||'-', y=b?.f.properties.SOVEREIGNT||'-'; if(x!==y){const k=x+' ↔ '+y; diff[k]=(diff[k]||0)+1;}} console.log('USA vs KOR POV differences (cells):',JSON.stringify(diff)); }
 
 // ---- 5) 출력
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const OUT=path.join(ROOT,'ko','hegemony','map'); fs.mkdirSync(path.join(OUT,'data'),{recursive:true}); fs.mkdirSync(path.join(OUT,'lib'),{recursive:true});
 const VER=fs.existsSync(path.join(HERE,'verify.json'))?J('verify.json'):{};
 const usedFx=new Set(out.flatMap(s=>s.F.map(f=>f.fx).filter(Boolean)));
-const index={fx:Object.fromEntries([...usedFx].map(k=>[k,FXN[k]])),snaps:[],ents:E.map(e=>({n:e.n,ko:ko(e.n),...(e.c>=0?{c:PAL[e.c].hex}:{ns:1}),...(e.x?{x:1}:{})}))};
-let bytes=0, sbytes=0; for(const f of fs.readdirSync(path.join(OUT,'data'))) if(/^s-?\d+\.json$/.test(f)) fs.rmSync(path.join(OUT,'data',f));
-for(const s of out){
-  const fc={type:'FeatureCollection',features:s.F.map(f=>({type:'Feature',geometry:f.geometry,properties:{e:ENT.get(f.e).id,n:f.n,...(f.ko?{k:f.ko}:ko(f.n)?{k:ko(f.n)}:{}),...(f.b!=null?{b:f.b}:{}),...(f.st?{st:f.st}:{}),...(f.un?{un:1}:{}),...(f.fx?{fx:f.fx}:{}),...(f.top?{pt:1}:{})}}))};
-  const objs={w:fc}; if(s.src==='ne') objs.d={type:'FeatureCollection',features:disp};
-  const txt=JSON.stringify(topology(objs,1e5)); bytes+=txt.length; fs.writeFileSync(path.join(OUT,'data',`${s.y}.json`),txt);
-  const top=[...s.area].sort((a,b)=>b[1]-a[1]).map(([id,a])=>[id,a>=1000?Math.round(a/1000):+(a/1000).toFixed(3)]);
-  let sup;
-  if(s.S&&s.S.length){ const sfc={type:'FeatureCollection',features:s.S.map(f=>({type:'Feature',geometry:f.geometry,properties:{e:ENT.get(f.e).id,n:f.n}}))};
-    const st=JSON.stringify(topology({s:sfc},1e5)); sbytes+=st.length; fs.writeFileSync(path.join(OUT,'data',`s${s.y}.json`),st);
-    sup={top:[...s.sarea].sort((a,b)=>b[1]-a[1]).map(([id,a])=>[id,Math.round(a/1000)]),labels:s.slabels}; }
-  index.snaps.push({y:s.y,src:s.src,date:s.date||null,top,labels:s.labels,...(VER[s.y]?{v:VER[s.y]}:{}),...(sup?{sup}:{})});
+const land=fs.readFileSync(path.join(HERE,'node_modules/world-atlas/land-110m.json'));
+for(const [lang] of LANGS){
+  const L=lang==='ko'?TX:J(lang+'.json'), PG=J(lang+'.page.json'), FL=lang==='ko'?null:J(`fixes.${lang}.json`), loc=namer(lang);
+  // 보정 주석과 덧그린 영역의 이름
+  const note=k=>{ if(!FL) return FXN[k]; const m=k.match(/^p:(.+):(-?\d+)$/); const v=m?FL.patches?.[m[1]]?.r?.[m[2]]:FL.notes?.[k]; if(!v) throw new Error(`${lang}: 보정 주석 ${k} 없음`); return v; };
+  const pname=id=>{ const v=FL?FL.patches?.[id]?.name:FX.patches.find(p=>p.id===id)?.ko; if(!v) throw new Error(`${lang}: 패치 이름 ${id} 없음`); return v; };
+  const OUT=path.join(ROOT,lang,'hegemony','map'); fs.mkdirSync(path.join(OUT,'data'),{recursive:true}); fs.mkdirSync(path.join(OUT,'lib'),{recursive:true});
+  const index={fx:Object.fromEntries([...usedFx].map(k=>[k,note(k)])),snaps:[],ents:E.map(e=>({n:e.n,ko:loc(e.n),...(e.c>=0?{c:PAL[e.c].hex}:{ns:1}),...(e.x?{x:1}:{})}))};
+  for(const e of index.ents) if(e.ko===e.n) e.ko=null;
+  let bytes=0, sbytes=0; for(const f of fs.readdirSync(path.join(OUT,'data'))) if(/^s-?\d+\.json$/.test(f)) fs.rmSync(path.join(OUT,'data',f));
+  const dl=dispFor(lang,L,loc);
+  for(const s of out){
+    const kOf=f=>{ const v=f.pid?pname(f.pid):f.ne?(lang==='en'?null:f.ne[lang]):loc(f.n); return v&&v!==f.n?v:null; };
+    const fc={type:'FeatureCollection',features:s.F.map(f=>{ const k=kOf(f); return {type:'Feature',geometry:f.geometry,properties:{e:ENT.get(f.e).id,n:f.pid&&k?k:f.n,...(k&&!f.pid?{k}:{}),...(f.b!=null?{b:f.b}:{}),...(f.st?{st:f.st}:{}),...(f.un?{un:1}:{}),...(f.fx?{fx:f.fx}:{}),...(f.top?{pt:1}:{})}}; })};
+    const objs={w:fc}; if(s.src==='ne') objs.d={type:'FeatureCollection',features:dl};
+    const txt=JSON.stringify(topology(objs,1e5)); bytes+=txt.length; fs.writeFileSync(path.join(OUT,'data',`${s.y}.json`),txt);
+    const top=[...s.area].sort((a,b)=>b[1]-a[1]).map(([id,a])=>[id,a>=1000?Math.round(a/1000):+(a/1000).toFixed(3)]);
+    let sup;
+    if(s.S&&s.S.length){ const sfc={type:'FeatureCollection',features:s.S.map(f=>({type:'Feature',geometry:f.geometry,properties:{e:ENT.get(f.e).id,n:f.n}}))};
+      const st=JSON.stringify(topology({s:sfc},1e5)); sbytes+=st.length; fs.writeFileSync(path.join(OUT,'data',`s${s.y}.json`),st);
+      sup={top:[...s.sarea].sort((a,b)=>b[1]-a[1]).map(([id,a])=>[id,Math.round(a/1000)]),labels:s.slabels}; }
+    index.snaps.push({y:s.y,src:s.src,date:s.date||null,top,labels:s.labels,...(VER[s.y]?{v:VER[s.y]}:{}),...(sup?{sup}:{})});
+  }
+  fs.writeFileSync(path.join(OUT,'index.json'),JSON.stringify(index));
+  fs.writeFileSync(path.join(OUT,'data','land.json'),land);
+  fs.copyFileSync(path.join(HERE,'node_modules/d3/dist/d3.min.js'),path.join(OUT,'lib/d3.min.js'));
+  fs.copyFileSync(path.join(HERE,'node_modules/topojson-client/dist/topojson-client.min.js'),path.join(OUT,'lib/topojson-client.min.js'));
+  const langs=[['ko','한국어'],['en','English'],['id','Bahasa Indonesia']].map(([c,n])=>c===lang?`<span aria-current="page">${esc(n)}</span>`:`<a href="../../../${c}/hegemony/map/" hreflang="${c}" lang="${c}">${esc(n)}</a>`).join('');
+  let html=fs.readFileSync(path.join(HERE,'template.html'),'utf8').replace('{{css}}',fs.readFileSync(path.join(HERE,'style.css'),'utf8')).replace('{{ui}}',JSON.stringify(PG.ui).replace(/</g,'\\u003c'))
+    .replace('{{langs}}',langs).split('{{lang}}').join(lang)
+    .replace('{{sourcesHtml}}',`<ol>${PG.sources.map(([t,u])=>`<li><a href="${esc(u)}" target="_blank" rel="noopener">${esc(t)}</a></li>`).join('')}</ol>`);
+  html=html.replace('{{glossHtml}}',`<dl>${PG.glossary.map(([t,d])=>`<dt>${esc(t)}</dt><dd>${esc(d)}</dd>`).join('')}</dl>`);
+  for(const [k,v] of Object.entries(PG)) if(typeof v==='string') html=html.split('{{'+k+'}}').join(k.endsWith('Html')?v:esc(v));
+  if(html.includes('{{')) throw new Error(lang+': 치환 안 된 자리표시자 '+html.match(/\{\{\w+\}\}/)[0]);
+  fs.writeFileSync(path.join(OUT,'index.html'),html);
+  const noName=E.filter(e=>!index.ents[e.id].ko).length;
+  console.log(lang,'data bytes',(bytes/1e6).toFixed(1)+'MB','supplement',(sbytes/1e6).toFixed(2)+'MB','index',(JSON.stringify(index).length/1e3).toFixed(0)+'KB', lang==='en'?'':'현지어 이름 없는 주체 '+noName+'/'+E.length);
 }
-fs.writeFileSync(path.join(OUT,'index.json'),JSON.stringify(index));
-const land=JSON.parse(fs.readFileSync(path.join(HERE,'node_modules/world-atlas/land-110m.json'))); fs.writeFileSync(path.join(OUT,'data','land.json'),JSON.stringify(land));
-fs.copyFileSync(path.join(HERE,'node_modules/d3/dist/d3.min.js'),path.join(OUT,'lib/d3.min.js'));
-fs.copyFileSync(path.join(HERE,'node_modules/topojson-client/dist/topojson-client.min.js'),path.join(OUT,'lib/topojson-client.min.js'));
-let html=fs.readFileSync(path.join(HERE,'template.html'),'utf8').replace('{{css}}',fs.readFileSync(path.join(HERE,'style.css'),'utf8')).replace('{{ui}}',JSON.stringify(PG.ui).replace(/</g,'\\u003c'))
-  .replace('{{sourcesHtml}}',`<ol>${PG.sources.map(([t,u])=>`<li><a href="${esc(u)}" target="_blank" rel="noopener">${esc(t)}</a></li>`).join('')}</ol>`);
-html=html.replace('{{glossHtml}}',`<dl>${PG.glossary.map(([t,d])=>`<dt>${esc(t)}</dt><dd>${esc(d)}</dd>`).join('')}</dl>`);
-for(const [k,v] of Object.entries(PG)) if(typeof v==='string') html=html.split('{{'+k+'}}').join(k.endsWith('Html')?v:esc(v));
-if(html.includes('{{')) throw new Error('치환 안 된 자리표시자 '+html.match(/\{\{\w+\}\}/)[0]);
-fs.writeFileSync(path.join(OUT,'index.html'),html);
-console.log('data bytes',(bytes/1e6).toFixed(1)+'MB','supplement',(sbytes/1e6).toFixed(2)+'MB','index',(JSON.stringify(index).length/1e3).toFixed(0)+'KB');

@@ -29,6 +29,8 @@
 | 언어 | 파일 | 웹 (GitHub Pages) |
 |---|---|---|
 | 한국어 | [`ko/hegemony/map/`](ko/hegemony/map/index.html) | https://usan-82.github.io/cause-and-effect/ko/hegemony/map/ |
+| English | [`en/hegemony/map/`](en/hegemony/map/index.html) | https://usan-82.github.io/cause-and-effect/en/hegemony/map/ |
+| Bahasa Indonesia | [`id/hegemony/map/`](id/hegemony/map/index.html) | https://usan-82.github.io/cause-and-effect/id/hegemony/map/ |
 
 소스와 빌드 방법은 [`_src/hegemony/map/`](_src/hegemony/map/README.md).
 

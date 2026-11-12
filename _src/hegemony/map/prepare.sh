@@ -23,9 +23,9 @@ NE=https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson
 for f in countries_usa countries_kor disputed_areas; do
   [ -f "raw/ne_$f.geojson" ] || curl -sSL --max-time 300 -o "raw/ne_$f.geojson" "$NE/ne_10m_admin_0_$f.geojson"
 done
-npx mapshaper raw/ne_countries_usa.geojson -filter-fields NAME,NAME_KO,NAME_LONG,ADM0_A3,SOVEREIGNT,TYPE,ADMIN -simplify 4% keep-shapes -o raw/n_usa.json format=topojson quantization=1e5
-npx mapshaper raw/ne_countries_kor.geojson -filter-fields NAME,NAME_KO,ADM0_A3,SOVEREIGNT,ADMIN -simplify 4% keep-shapes -o raw/n_kor.json format=topojson quantization=1e5
-npx mapshaper raw/ne_disputed_areas.geojson -filter-fields NAME,NAME_KO,BRK_NAME,NOTE_BRK,ADMIN,SOVEREIGNT,TYPE,ADM0_A3 -simplify 12% keep-shapes -o raw/n_disputed.json format=topojson quantization=1e5
+npx mapshaper raw/ne_countries_usa.geojson -filter-fields NAME,NAME_KO,NAME_ID,NAME_EN,NAME_LONG,ADM0_A3,SOVEREIGNT,TYPE,ADMIN -simplify 4% keep-shapes -o raw/n_usa.json format=topojson quantization=1e5
+npx mapshaper raw/ne_countries_kor.geojson -filter-fields NAME,NAME_KO,NAME_ID,ADM0_A3,SOVEREIGNT,ADMIN -simplify 4% keep-shapes -o raw/n_kor.json format=topojson quantization=1e5
+npx mapshaper raw/ne_disputed_areas.geojson -filter-fields NAME,NAME_KO,NAME_ID,BRK_NAME,NOTE_BRK,ADMIN,SOVEREIGNT,TYPE,ADM0_A3 -simplify 12% keep-shapes -o raw/n_disputed.json format=topojson quantization=1e5
 
 # 교차검증용 독립 자료: Cliopatria (Seshat Global History Databank, CC BY 4.0)
 if [ ! -f raw/clio_s.geojson ]; then
