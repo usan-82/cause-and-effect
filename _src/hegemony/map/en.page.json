@@ -1,0 +1,186 @@
+{
+ "title": "World Territory Map 3000 BCE – 2026",
+ "subtitle": "Move the timeline to see the states and territories of each period",
+ "metaDesc": "An interactive map showing the world's territories at 53 points in time from 3000 BCE to 2026, one colour per state.",
+ "atlasLink": "Atlas of Hegemony 1492–2010 →",
+ "loading": "Loading map…",
+ "hint": "Each state has one colour, and states that share a border always differ in colour. States that continue under a new dynasty or name (e.g. Han, Tang, Ming, Qing; Russian Empire, Russia) keep the same colour. Land without colour is where no record of a state was found for that period. Dots mark areas recorded as a culture or people rather than a state; hatching marks disputed areas. Tap a state on the map or in the list for details.",
+ "sourcesTitle": "Sources",
+ "glossTitle": "Glossary",
+ "langAria": "Language",
+ "footHtml": "<b>Points to keep in mind</b><br>· Before 1886 there are only 37 points in time, and changes between them are not drawn. Borders there are rough spheres of power, not modern boundary lines.<br>· States missing from the source data could not be shown. No colour does not mean nobody lived there or no state existed; it means no record was found in the sources this map uses.<br>· Source corrections: wrong or missing ownership in the source (historical-basemaps) and anachronistic state names were checked and fixed. Each fix is listed with its reason under ‘Source corrections’ for that year, and also appears when you tap the place. For 1492–1880 the colonies and strategic points of the great powers follow the corrections checked in the <a href=\"../atlas/\">Atlas of Hegemony</a>, and boundary corrections found later are applied to both maps alike. For other years, each disagreement with Cliopatria was checked against the historical record. In 21 cases where the boundary itself was wrong (e.g. the Jin in northern China in 1200, the Ming and Northern Yuan in 1400, Iraq in 1530, Qing Mongolia in 1700) the boundary was borrowed from Cliopatria, so agreement there is true by construction.<br>· Where this map differs from the Atlas of Hegemony: this map follows legal sovereignty, so the British dominions (Canada, Australia, etc.) in 1914 and 1920 are independent states, and Manchukuo and Ethiopia (1938) and Indonesia (1945) follow the CShapes coding. The atlas follows effective influence and colours them British, Japanese, Italian and Dutch. Aragon in 1492 is also drawn apart from Castile here.<br>· Not yet fixed: the Central Asian steppe in 1600–1783 (the source lumps it into ‘central Asian khanates’; only the Qing and Russian parts were corrected) and Ottoman lands the source leaves unnamed and blank (inner Arabia and North Africa) remain under ‘Where the two differ’ in the cross-check section.<br>· The split between dotted areas (cultures and peoples) and states was made mechanically from names and may be inexact. Indigenous groups of the Americas and Australia are mostly coloured under their own names.<br>· For 2026, disputed areas are coloured by priority: United Nations → United States → South Korea. UN map data could not be obtained, so UN practice was compiled by hand from resolutions and convention. US and Korean depictions were read from Natural Earth's point-of-view maps.<br>· The 2026 map colours the 193 UN member states (as of September 2026), the observer states (the Holy See and Palestine) and Western Sahara, a UN non-self-governing territory, separately. No member state has been added or removed since 2019.<br>· Cross-check: the finished map was compared with the independent Cliopatria dataset (Seshat, 3400 BCE–2024) on a 0.5° grid, and the result is shown for each year under ‘Cross-check’. Four errors found this way were fixed: Greenland (Danish) was missing from the 1886–2019 maps; the Mongol Empire was lumped into one in 1300 and 1400 and is now split by khanate; the four administrative divisions of Rome in 300 were merged into one Roman Empire; and the Inca Empire still shown in 1600 was changed to Spanish.<br>· Cliopatria supplement: switching it on fills land with no record in this map's source (blank land and areas recorded only as cultures) with Cliopatria's polities, shown hatched. Places this map already colours as states are untouched. Supplemented areas copy Cliopatria's boundaries as they are, so they are not cross-checked, and because the criteria differ they may not meet neighbouring states cleanly. Thin slivers caused by mismatched coastlines and borders (narrower than about 30 km or smaller than 8,000 km²) are removed. Cross-check figures always refer to the base map, with or without the supplement.<br>· Areas are approximations computed by sampling the map on a 0.5° grid.",
+ "sources": [
+  [
+   "Borders, 3000 BCE–1880: historical-basemaps, André Ourednik et al. (GPL-3.0)",
+   "https://github.com/aourednik/historical-basemaps"
+  ],
+  [
+   "Borders and colonies, 1886–2019: CShapes 2.0, Schvitz et al. (2022)",
+   "https://icr.ethz.ch/data/cshapes/"
+  ],
+  [
+   "2026 borders, US and Korean points of view, disputed areas: Natural Earth (public domain)",
+   "https://www.naturalearthdata.com/"
+  ],
+  [
+   "Independent data for cross-checking: Cliopatria, Seshat Global History Databank (CC BY 4.0)",
+   "https://github.com/Seshat-Global-History-Databank/cliopatria"
+  ],
+  [
+   "Base land: world-atlas (Natural Earth 110m)",
+   "https://github.com/topojson/world-atlas"
+  ],
+  [
+   "Number of UN member states (193 as of September 2026): Wikipedia, Enlargement of the United Nations",
+   "https://en.wikipedia.org/wiki/Enlargement_of_the_United_Nations"
+  ]
+ ],
+ "ui": {
+  "bc": "{y} BCE",
+  "ad": "{y}",
+  "now": "October 2026",
+  "zoomIn": "Zoom in",
+  "zoomOut": "Zoom out",
+  "reset": "Reset",
+  "big": "Enlarge",
+  "bigExit": "Close",
+  "prev": "Previous",
+  "next": "Next",
+  "listTitle": "States at this time",
+  "count": "{n} states · {m} cultures and peoples",
+  "search": "Find a state",
+  "more": "Show more ({n} left)",
+  "nsTitle": "Cultures and peoples, not states (as labelled in the source)",
+  "showAll": "Show all",
+  "areaM": "{v} million km²",
+  "areaK": "{v}0,000 km²",
+  "areaS": "{v} km²",
+  "srcHb": "Data: historical-basemaps. Borders in this period are rough spheres of power.",
+  "srcCs": "Data: CShapes 2.0 (as of {date}). Colonies are coloured as their owner.",
+  "srcNe": "Data: Natural Earth. Disputed areas are coloured by priority UN → US → South Korea and hatched.",
+  "gapNext": "next data: {y}",
+  "region": "Region",
+  "belongs": "Belongs to",
+  "area": "Territory at this time: about {a}",
+  "prec": "Border precision (source)",
+  "precVals": [
+   "rough",
+   "medium",
+   "precise"
+  ],
+  "status": {
+   "colony": "colony",
+   "protectorate": "protectorate",
+   "mandate": "mandate",
+   "occupied": "occupied",
+   "N/A": "status unknown",
+   "leased": "leased territory"
+  },
+  "ns": "Recorded as a culture or people rather than a state.",
+  "noRecord": "No record found",
+  "noRecordLong": "The sources used by this map have no record of a state here {when}. That does not mean no state existed.",
+  "unApplied": "Coloured following UN practice.",
+  "dispTitle": "{n} disputed areas",
+  "dispNote": "The hatched places. Tap one to see how the UN, the US and South Korea each depict it.",
+  "un": "UN",
+  "us": "US map",
+  "kr": "Korean map",
+  "unNone": "UN practice could not be confirmed.",
+  "neNote": "Status (Natural Earth)",
+  "close": "Close",
+  "noteTr": [],
+  "areaT": "under 1 km²",
+  "vTitle": "Cross-check",
+  "vText": "Compared with the independent Cliopatria dataset{yr}. On {a}% of the land where both sources draw a state, their boundaries correspond. On {s}% they also divide it into the same units.",
+  "vYr": " (as of 2024)",
+  "vCover": "Land drawn as a state — both: {b} · this map only: {m} · Cliopatria only: {c}",
+  "vOnlyC": "States with large areas drawn only in Cliopatria (blank or a culture area on this map)",
+  "vConf": "Where the two differ (this map ↔ Cliopatria)",
+  "vNote": "A difference does not mean this map is wrong. Both sources contain estimates, and results also depend on whether colonies and vassals are drawn separately.",
+  "supBtn": "Cliopatria supplement",
+  "supOff": "Off — switch on to fill land with no record on this map using Cliopatria.",
+  "supOn": "On — the {n} hatched areas ({a}) exist only in Cliopatria.",
+  "supNone": "On — nothing to supplement at this time.",
+  "supKey": "Supplemented from Cliopatria",
+  "supTitle": "{n} states supplemented from Cliopatria",
+  "supSub": "Areas absent from this map's source and present only in Cliopatria. Areas count the supplemented part only.",
+  "supTag": "supplement",
+  "supArea": "Supplemented area: about {a}",
+  "supName": "Name in Cliopatria: {n}",
+  "supOnly": "A state absent from this map's source. Its boundary is copied from Cliopatria and has not been cross-checked.",
+  "supSame": "A state that is on this map, but this part is drawn only in Cliopatria. Not cross-checked.",
+  "fxTag": "Corrected",
+  "fxTitle": "Source corrections: {n}",
+  "fxSub": "Places where the source's ownership was wrong or missing, checked and fixed. Tap one to go there."
+ },
+ "glossary": [
+  [
+   "Cliopatria",
+   "A dataset of historical borders published by the Seshat team, giving the extent of each polity year by year from 3400 BCE to 2024. Here it is the comparison source for the cross-check and the material for the ‘Cliopatria supplement’."
+  ],
+  [
+   "Seshat",
+   "An international research database that gathers historical data from around the world into one comparable framework (Seshat: Global History Databank). It produced Cliopatria."
+  ],
+  [
+   "historical-basemaps",
+   "An open dataset of world borders by period. The 37 years up to 1880 on this map come from it. It is made by an individual and volunteers, so precision varies by period."
+  ],
+  [
+   "CShapes 2.0",
+   "An academic dataset (ETH Zurich) recording, by date, the borders of independent states and their colonies and dependencies for 1886–2019. The 15 years from 1886 to 2019 come from it."
+  ],
+  [
+   "Natural Earth",
+   "A public-domain world map dataset. It also provides ‘point-of-view’ maps showing how different countries draw disputed areas. The 2026 borders and the US and Korean depictions of disputed areas come from it."
+  ],
+  [
+   "Cross-check",
+   "Comparing two independent sources to find where they disagree. Here the finished map was compared with Cliopatria."
+  ],
+  [
+   "0.5° grid",
+   "The globe divided into cells of half a degree of latitude and longitude (about 55 km at the equator). Each cell was read to see which state it belongs to, in order to compare sources and compute areas. Areas are therefore approximate, and very small states carry large errors."
+  ],
+  [
+   "Agreement rate",
+   "Of the cells where both sources draw a state, the share they assign to corresponding states. Cases where one source draws a colony or vassal separately count as agreement; ‘the same units’ is the stricter figure that excludes them."
+  ],
+  [
+   "Cliopatria supplement",
+   "A layer that adds, hatched, the areas absent from this map's source and present only in Cliopatria. It is switched on and off, and is not cross-checked."
+  ],
+  [
+   "Source correction",
+   "A place where the source was wrong and was fixed after checking against other evidence: ownership changed, an anachronistic state name replaced or removed, a missing area drawn in, or a boundary borrowed from Cliopatria."
+  ],
+  [
+   "Cultures and peoples",
+   "Places the source records not as a state but as the range of a culture or people (e.g. hunter-gatherers, nomadic groups). Shown dotted, without a colour of their own."
+  ],
+  [
+   "Sphere of power",
+   "Before modern times there were no boundary lines of today's kind, so this means the rough extent of a state's reach."
+  ],
+  [
+   "Disputed area",
+   "A place two or more states claim, or where the state in control differs from the internationally recognised one. Hatched on the 2026 map."
+  ],
+  [
+   "Effective control",
+   "Actually governing a territory, regardless of whose it is in law."
+  ],
+  [
+   "UN observer state",
+   "A state that is not a UN member but takes part in the General Assembly as an observer: currently the Holy See and Palestine."
+  ],
+  [
+   "UN non-self-governing territory",
+   "A territory the UN lists as not yet having attained full self-government. Western Sahara is an example."
+  ],
+  [
+   "Protectorate / mandate / leased territory",
+   "A protectorate entrusts its diplomacy and defence to another state; a mandate is former enemy territory that the League of Nations assigned to a victor to administer after the First World War; a leased territory is land lent to another state for a fixed term."
+  ]
+ ]
+}

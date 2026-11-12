@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Peta Wilayah Dunia 3000 SM – 2026</title>
+<meta name="description" content="Peta interaktif yang menampilkan wilayah dunia pada 53 titik waktu dari 3000 SM sampai 2026, satu warna untuk tiap negara.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:light;--sans:"Noto Sans KR",system-ui,sans-serif;--serif:"Noto Serif KR",serif;
+  --bg:#f6f4ef;--surface:#fcfcfb;--ink:#1b1a18;--ink2:#55534e;--muted:#8a877f;--line:#e2dfd7;--ocean:#e6ecef;--grat:#d6dfe4;--land:#f3f1ea;--landline:#c9c5ba;--border:#ffffff;--accent:#2a78d6;--warn:#b3362f}
+@media (prefers-color-scheme:dark){:root{color-scheme:dark;--bg:#141413;--surface:#1a1a19;--ink:#f0efec;--ink2:#c3c2b7;--muted:#8f8d85;--line:#2f2e2b;--ocean:#161b1f;--grat:#222a30;--land:#262624;--landline:#4a4944;--border:#141413;--accent:#5a9bea;--warn:#ef7d75}}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.6;-webkit-text-size-adjust:100%}
+h1,h2{font-family:var(--serif);margin:0;line-height:1.3}
+a{color:var(--accent)}
+.wrap{max-width:1360px;margin:0 auto;padding:16px 14px 40px}
+header{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+header h1{font-size:22px} header p{margin:0;color:var(--ink2);font-size:13px} header a.to{margin-left:auto;font-size:13px;text-decoration:none}
+.layout{display:grid;gap:14px}.layout>*{min-width:0}
+@media(min-width:1000px){.layout{grid-template-columns:minmax(0,1.7fr) minmax(330px,1fr);align-items:start}.panel{position:sticky;top:12px;max-height:calc(100vh - 24px);overflow:auto}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px}
+.mapcard{position:relative;overflow:hidden}
+#map{display:block;width:100%;height:auto;touch-action:none;cursor:grab;background:var(--ocean)}
+.sphere{fill:var(--ocean)}.grat{fill:none;stroke:var(--grat);stroke-width:.6;vector-effect:non-scaling-stroke}
+.land{fill:var(--land);stroke:var(--landline);stroke-width:.5;vector-effect:non-scaling-stroke;cursor:help}
+.poly{stroke:var(--border);stroke-width:.4;vector-effect:non-scaling-stroke;cursor:pointer}
+.poly.dimmed{opacity:.18}.poly.sel{stroke:var(--ink);stroke-width:1.5}
+.disp{fill:url(#hatch);stroke:var(--ink);stroke-width:.6;stroke-dasharray:2 1.5;vector-effect:non-scaling-stroke;cursor:pointer}
+.lbl{font-family:var(--sans);font-weight:700;fill:var(--ink);paint-order:stroke;stroke:var(--surface);stroke-linejoin:round;text-anchor:middle;pointer-events:none}
+.lbl.ns{font-weight:400;font-style:italic;fill:var(--ink2)}
+.badge{position:absolute;left:12px;top:8px;font-family:var(--serif);font-weight:700;font-size:clamp(18px,4.6vw,32px);pointer-events:none;text-shadow:0 0 6px var(--ocean),0 0 6px var(--ocean)}
+.zoom{position:absolute;right:10px;top:10px;display:flex;flex-direction:column;gap:6px}
+.zoom button,.ctl button{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;min-width:36px;height:36px;font-size:17px;cursor:pointer}
+.zoom button.txt{font-size:12px;padding:0 6px}
+body.bigmap{overflow:hidden}
+body.bigmap .mapcard{position:fixed;inset:0;z-index:50;border-radius:0;border:0;display:flex;align-items:center;background:var(--ocean)}
+body.bigmap #map{width:100%;height:100%}
+.info{position:absolute;left:10px;right:10px;bottom:10px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:9px 34px 9px 12px;font-size:13px;display:none;box-shadow:0 4px 18px rgba(0,0,0,.14);max-height:60%;overflow:auto}
+.info b.t{font-size:14.5px}.info .x{position:absolute;right:6px;top:2px;border:0;background:none;color:var(--muted);font-size:20px;cursor:pointer}
+.info .meta{color:var(--ink2)}.info .w{color:var(--warn)}.info dl{margin:6px 0 0;display:grid;grid-template-columns:auto 1fr;gap:2px 10px}.info dt{font-weight:700;white-space:nowrap}.info dd{margin:0}
+.loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:13px;pointer-events:none}
+.ctl{display:flex;align-items:center;gap:8px;padding:10px 10px 0}
+.ctl input[type=range]{flex:1;min-width:0;accent-color:var(--ink);height:28px}
+.years{display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;padding:8px 10px 8px}
+.years button{flex:0 0 auto;border:1px solid var(--line);background:transparent;color:var(--ink2);border-radius:999px;padding:3px 10px;font:500 12.5px var(--sans);cursor:pointer;min-height:30px;white-space:nowrap}
+.years button.on{background:var(--ink);color:var(--surface);border-color:var(--ink)}
+.years .gap{flex:0 0 auto;align-self:center;color:var(--muted);font-size:11px}
+.key{display:flex;flex-wrap:wrap;gap:6px 16px;padding:2px 12px 6px;font-size:12.5px;color:var(--ink2)}
+.key span{display:inline-flex;align-items:center;gap:6px}.key i{width:16px;height:12px;border-radius:3px;display:inline-block;border:1px solid var(--landline)}
+.hint{color:var(--muted);font-size:12px;padding:0 12px 10px}
+.panel{padding:16px}
+.panel h2{font-size:19px;margin-bottom:2px}
+.sub{color:var(--ink2);font-size:13px;margin:0 0 8px}
+.src{font-size:12.5px;color:var(--muted);margin:0 0 10px}
+.search{width:100%;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:8px;padding:8px 10px;font:inherit;font-size:14px;margin-bottom:8px}
+ul.ents{list-style:none;margin:0;padding:0}
+ul.ents li{display:grid;grid-template-columns:18px 1fr auto;gap:8px;align-items:center;padding:6px 6px;border-radius:8px;cursor:pointer;font-size:14px}
+ul.ents li:hover,ul.ents li.on{background:color-mix(in srgb,var(--ink) 6%,transparent)}
+ul.ents li.on{outline:1.5px solid var(--ink)}
+ul.ents i{width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,.12)}
+ul.ents small{color:var(--muted);font-size:12px;margin-left:5px}
+ul.ents .a{color:var(--ink2);font-size:12.5px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.linkbtn{border:0;background:none;color:var(--accent);font:500 13px var(--sans);cursor:pointer;padding:6px 0}
+.sec{border-top:1px solid var(--line);margin-top:12px;padding-top:10px}
+.sec h3{font-size:13.5px;margin:0 0 4px;font-family:var(--sans)}
+ul.disp{list-style:none;margin:0;padding:0;font-size:13.5px}
+ul.disp li{padding:5px 6px;border-radius:8px;cursor:pointer}ul.disp li:hover{background:color-mix(in srgb,var(--ink) 6%,transparent)}
+.foot{font-size:12px;color:var(--muted);margin-top:16px;line-height:1.75}
+.foot b{color:var(--ink2)}
+.srcs{font-size:12px;color:var(--ink2);margin-top:12px;border-top:1px solid var(--line);padding-top:10px}
+.srcs h4{margin:0 0 4px;font-size:13px;color:var(--ink)}.srcs ol{margin:0;padding-left:20px}.srcs a{overflow-wrap:anywhere}
+@media(max-width:640px){.zoom{flex-direction:row;gap:4px;right:6px;top:6px}.zoom button{min-width:32px;height:32px;font-size:15px}.zoom button.txt{font-size:11px;padding:0 5px}.badge{top:auto;bottom:6px;left:10px}}
+details.ver{border:1px solid var(--line);border-radius:8px;padding:7px 10px;margin:0 0 10px;font-size:12.5px;color:var(--ink2)}
+details.ver summary{cursor:pointer;color:var(--ink);font-size:13px}
+details.ver p{margin:6px 0}details.ver h5{margin:8px 0 2px;font-size:12.5px;color:var(--ink)}
+details.ver ul{list-style:none;margin:0;padding:0}details.ver li{display:flex;justify-content:space-between;gap:10px;padding:2px 0;border-top:1px dashed var(--line)}
+details.ver small{color:var(--muted)}details.ver .a{white-space:nowrap;font-variant-numeric:tabular-nums}
+.vbar{display:inline-block;width:70px;height:7px;border-radius:4px;background:color-mix(in srgb,var(--warn) 30%,var(--line));vertical-align:middle;overflow:hidden;margin:0 4px}
+.vbar i{display:block;height:100%;background:#2e9a5b}
+.vn{color:var(--muted)}
+.sup{stroke:var(--ink2);stroke-width:.5;stroke-dasharray:2.5 1.5;vector-effect:non-scaling-stroke;cursor:pointer;fill-opacity:.8}
+.sup.dimmed{opacity:.18}.sup.sel{stroke:var(--ink);stroke-width:1.5;stroke-dasharray:none}
+.supx{fill:url(#stripe);pointer-events:none}
+.lbl.sp{font-weight:500;font-style:italic}
+.supbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:2px 12px 8px}
+#supbtn{appearance:none;display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:5px 12px 5px 6px;font:500 13px var(--sans);cursor:pointer;min-height:34px}
+#supbtn .sw{width:30px;height:18px;border-radius:9px;background:var(--landline);position:relative;transition:background .15s}
+#supbtn .sw::after{content:"";position:absolute;left:2px;top:2px;width:14px;height:14px;border-radius:50%;background:var(--surface);transition:left .15s}
+#supbtn.on{border-color:var(--ink)}#supbtn.on .sw{background:var(--accent)}#supbtn.on .sw::after{left:14px}
+.supnote{font-size:12px;color:var(--muted);flex:1;min-width:180px}
+i.sp{background-image:repeating-linear-gradient(-45deg,transparent 0 2px,rgba(255,255,255,.65) 2px 3.5px)}
+.info .tag{display:inline-block;font-size:11px;border:1px dashed var(--ink2);border-radius:5px;padding:0 5px;color:var(--ink2);vertical-align:1px}
+.gloss dl{margin:0}.gloss dt{font-weight:700;color:var(--ink);margin-top:7px}.gloss dd{margin:0;line-height:1.7}
+.info .fx{margin-top:4px;padding-top:4px;border-top:1px dashed var(--line);color:var(--ink2)}.info .fx b{color:var(--accent)}
+details.fixes{margin-top:12px}details.fixes li{display:block;cursor:pointer;padding:5px 0}details.fixes li b{color:var(--ink)}
+.langs{display:flex;gap:10px;font-size:13px;flex-wrap:wrap}.langs span{font-weight:700}.langs a{color:var(--ink2);text-decoration:none}.langs a:hover{text-decoration:underline}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header><h1>Peta Wilayah Dunia 3000 SM – 2026</h1><p>Geser garis waktu untuk melihat negara dan wilayah pada tiap masa</p><a class="to" href="../atlas/">Atlas Hegemoni 1492–2010 →</a><nav class="langs" aria-label="Bahasa"><a href="../../../ko/hegemony/map/" hreflang="ko" lang="ko">한국어</a><a href="../../../en/hegemony/map/" hreflang="en" lang="en">English</a><span aria-current="page">Bahasa Indonesia</span></nav></header>
+  <div class="layout">
+    <div>
+      <div class="card mapcard">
+        <svg id="map" role="img" aria-label="Peta Wilayah Dunia 3000 SM – 2026"></svg>
+        <div class="badge" id="badge"></div>
+        <div class="zoom"><button id="zin">+</button><button id="zout">−</button><button id="zreset" class="txt"></button><button id="zbig" class="txt"></button></div>
+        <div class="info" id="info"></div>
+        <div class="loading" id="loading">Memuat peta…</div>
+      </div>
+      <div class="card" style="margin-top:10px">
+        <div class="ctl"><button id="prev">‹</button><input type="range" id="slider" min="0" value="0" step="1"><button id="next">›</button></div>
+        <div class="years" id="years"></div>
+        <div class="supbar"><button id="supbtn" role="switch" aria-checked="false"><span class="sw"></span><span id="suplbl"></span></button><span class="supnote" id="supnote"></span></div>
+        <div class="key" id="key"></div>
+        <div class="hint">Tiap negara punya satu warna, dan negara yang berbatasan selalu berbeda warna. Negara yang berlanjut dengan dinasti atau nama baru (misalnya Han, Tang, Ming, Qing; Kekaisaran Rusia, Rusia) memakai warna yang sama. Daratan tanpa warna adalah tempat yang catatan negaranya tidak ditemukan untuk masa itu. Titik-titik menandai wilayah yang dicatat sebagai budaya atau suku bangsa, bukan negara; arsiran menandai wilayah sengketa. Ketuk negara di peta atau di daftar untuk melihat rinciannya.</div>
+      </div>
+    </div>
+    <aside class="card panel" id="panel"></aside>
+  </div>
+  <div class="foot"><b>Hal yang perlu diperhatikan</b><br>· Sebelum 1886 hanya ada 37 titik waktu, dan perubahan di antaranya tidak digambar. Batasnya pun bukan garis batas modern, melainkan perkiraan lingkup kekuasaan.<br>· Negara yang tidak ada dalam data sumber tidak dapat ditampilkan. Tanpa warna bukan berarti tidak ada penduduk atau negara; artinya catatannya tidak ditemukan dalam sumber yang dipakai peta ini.<br>· Koreksi sumber: kepemilikan yang keliru atau terlewat dalam sumber (historical-basemaps) dan nama negara yang tidak sesuai zamannya diperiksa lalu diperbaiki. Setiap perbaikan dicantumkan beserta alasannya pada ‘Koreksi sumber’ untuk tahun itu, dan juga muncul saat tempatnya diketuk. Untuk 1492–1880, koloni dan titik strategis kekuatan besar mengikuti koreksi yang sudah diperiksa di <a href="../atlas/">Atlas Hegemoni</a>, dan koreksi batas yang ditemukan kemudian diterapkan sama pada kedua peta. Untuk tahun lainnya, setiap perbedaan dengan Cliopatria dicocokkan dengan catatan sejarah. Pada 21 kasus yang garis batasnya sendiri keliru (misalnya Jin di Tiongkok utara pada 1200, Ming dan Yuan Utara pada 1400, Irak pada 1530, Mongolia di bawah Qing pada 1700) batasnya dipinjam dari Cliopatria, sehingga kesesuaian di sana memang dengan sendirinya.<br>· Perbedaan dengan Atlas Hegemoni: peta ini mengikuti kedaulatan hukum, sehingga dominion Britania (Kanada, Australia, dll.) pada 1914 dan 1920 adalah negara merdeka, sedangkan Manchukuo dan Etiopia (1938) serta Indonesia (1945) mengikuti penggolongan CShapes. Atlas mengikuti pengaruh nyata dan mewarnainya sebagai Britania, Jepang, Italia, dan Belanda. Aragon pada 1492 juga digambar terpisah dari Kastilia di sini.<br>· Belum diperbaiki: stepa Asia Tengah pada 1600–1783 (sumber menggabungkannya sebagai ‘kekhanan Asia Tengah’; hanya bagian Qing dan Rusia yang dikoreksi) dan wilayah Utsmaniyah yang dibiarkan tanpa nama dan kosong oleh sumber (pedalaman Arabia dan Afrika Utara) masih tercantum pada ‘Tempat keduanya berbeda’ di bagian pemeriksaan silang.<br>· Pemisahan antara wilayah bertitik (budaya dan suku bangsa) dan negara dibuat secara mekanis dari nama dan bisa tidak tepat. Kelompok pribumi di Amerika dan Australia umumnya diwarnai dengan namanya sendiri.<br>· Untuk 2026, wilayah sengketa diwarnai menurut urutan prioritas: PBB → Amerika Serikat → Korea Selatan. Data peta PBB tidak diperoleh, sehingga cara PBB menggambarkannya disusun sendiri dari resolusi dan kebiasaan. Penggambaran AS dan Korea dibaca dari peta sudut pandang Natural Earth.<br>· Peta 2026 mewarnai secara terpisah 193 negara anggota PBB (per September 2026), negara pengamat (Takhta Suci dan Palestina), serta Sahara Barat yang merupakan wilayah tak berpemerintahan sendiri menurut PBB. Sejak 2019 tidak ada negara anggota yang bertambah atau hilang.<br>· Pemeriksaan silang: peta jadi dibandingkan dengan data independen Cliopatria (Seshat, 3400 SM–2024) pada kisi 0,5°, dan hasilnya dimuat untuk tiap tahun pada ‘Pemeriksaan silang’. Empat kesalahan yang ditemukan dengan cara ini diperbaiki: Greenland (milik Denmark) yang hilang dari peta 1886–2019 ditambahkan; Kekaisaran Mongol yang disatukan pada 1300 dan 1400 dipecah per kekhanan; empat wilayah pemerintahan Romawi pada 300 digabung menjadi satu Kekaisaran Romawi; dan Kekaisaran Inka yang masih tampil pada 1600 diubah menjadi milik Spanyol.<br>· Tambahan Cliopatria: bila dinyalakan, daratan yang tidak punya catatan dalam sumber peta ini (daratan kosong dan wilayah yang hanya dicatat sebagai budaya) diisi dengan wilayah dari Cliopatria dan ditampilkan berarsir. Tempat yang sudah diwarnai sebagai negara tidak diubah. Wilayah tambahan menyalin batas Cliopatria apa adanya sehingga tidak diperiksa silang, dan karena kriterianya berbeda, batasnya bisa tidak pas dengan negara tetangga. Potongan tipis akibat garis pantai dan batas yang tidak cocok (lebih sempit dari sekitar 30 km atau lebih kecil dari 8.000 km²) dibuang. Angka pemeriksaan silang selalu mengacu pada peta dasar, dengan atau tanpa tambahan.<br>· Luas adalah perkiraan dari pengambilan sampel peta pada kisi 0,5°.</div>
+  <div class="srcs"><h4>Sumber</h4><ol><li><a href="https://github.com/aourednik/historical-basemaps" target="_blank" rel="noopener">Batas, 3000 SM–1880: historical-basemaps, André Ourednik dkk. (GPL-3.0)</a></li><li><a href="https://icr.ethz.ch/data/cshapes/" target="_blank" rel="noopener">Batas dan koloni, 1886–2019: CShapes 2.0, Schvitz dkk. (2022)</a></li><li><a href="https://www.naturalearthdata.com/" target="_blank" rel="noopener">Batas 2026, sudut pandang AS dan Korea, wilayah sengketa: Natural Earth (domain publik)</a></li><li><a href="https://github.com/Seshat-Global-History-Databank/cliopatria" target="_blank" rel="noopener">Data independen untuk pemeriksaan silang: Cliopatria, Seshat Global History Databank (CC BY 4.0)</a></li><li><a href="https://github.com/topojson/world-atlas" target="_blank" rel="noopener">Daratan dasar: world-atlas (Natural Earth 110m)</a></li><li><a href="https://en.wikipedia.org/wiki/Enlargement_of_the_United_Nations" target="_blank" rel="noopener">Jumlah negara anggota PBB (193 per September 2026): Wikipedia, Enlargement of the United Nations</a></li></ol></div>
+  <div class="srcs gloss"><h4>Glosarium</h4><dl><dt>Cliopatria</dt><dd>Kumpulan data batas historis dari tim Seshat, yang memuat luas tiap negara tahun demi tahun dari 3400 SM sampai 2024. Di sini dipakai sebagai pembanding dalam pemeriksaan silang dan sebagai bahan ‘Tambahan Cliopatria’.</dd><dt>Seshat</dt><dd>Basis data penelitian internasional yang menghimpun data sejarah dari seluruh dunia ke dalam satu kerangka yang dapat dibandingkan (Seshat: Global History Databank). Pembuat Cliopatria.</dd><dt>historical-basemaps</dt><dd>Kumpulan data terbuka tentang batas dunia menurut zaman. 37 tahun sampai 1880 pada peta ini berasal dari sini. Dibuat oleh perorangan dan sukarelawan, sehingga ketelitiannya tidak merata.</dd><dt>CShapes 2.0</dt><dd>Kumpulan data akademis (ETH Zürich) yang mencatat, per tanggal, batas negara merdeka serta koloni dan wilayah bawahannya untuk 1886–2019. 15 tahun dari 1886 sampai 2019 berasal dari sini.</dd><dt>Natural Earth</dt><dd>Kumpulan data peta dunia berdomain publik. Juga menyediakan peta ‘sudut pandang’ yang memperlihatkan cara tiap negara menggambar wilayah sengketa. Batas 2026 serta penggambaran AS dan Korea atas wilayah sengketa berasal dari sini.</dd><dt>Pemeriksaan silang</dt><dd>Membandingkan dua sumber yang saling independen untuk menemukan letak perbedaannya. Di sini peta jadi dibandingkan dengan Cliopatria.</dd><dt>Kisi 0,5°</dt><dd>Bola bumi dibagi menjadi sel setengah derajat lintang dan bujur (sekitar 55 km di khatulistiwa). Tiap sel dibaca untuk mengetahui negaranya, guna membandingkan sumber dan menghitung luas. Karena itu luas bersifat perkiraan, dan galatnya besar untuk negara yang sangat kecil.</dd><dt>Tingkat kesesuaian</dt><dd>Dari sel yang digambar sebagai negara oleh kedua sumber, porsi yang ditetapkan pada negara yang bersesuaian. Bila salah satu sumber menggambar koloni atau negara bawahan secara terpisah, itu tetap dihitung sesuai; ‘satuan yang sama’ adalah angka lebih ketat yang mengecualikannya.</dd><dt>Tambahan Cliopatria</dt><dd>Lapisan yang menambahkan, dengan arsiran, wilayah yang tidak ada dalam sumber peta ini dan hanya ada di Cliopatria. Dapat dinyalakan dan dimatikan, dan tidak diperiksa silang.</dd><dt>Koreksi sumber</dt><dd>Tempat yang sumbernya keliru lalu diperbaiki setelah dicocokkan dengan bukti lain: kepemilikan diubah, nama negara yang tidak sesuai zaman diganti atau dibuang, wilayah yang terlewat digambar, atau batas dipinjam dari Cliopatria.</dd><dt>Budaya dan suku bangsa</dt><dd>Tempat yang oleh sumber dicatat bukan sebagai negara, melainkan sebagai sebaran suatu budaya atau suku bangsa (misalnya pemburu-peramu, kelompok pengembara). Ditampilkan bertitik, tanpa warna sendiri.</dd><dt>Lingkup kekuasaan</dt><dd>Sebelum zaman modern belum ada garis batas seperti sekarang, sehingga istilah ini berarti jangkauan kasar kekuasaan suatu negara.</dd><dt>Wilayah sengketa</dt><dd>Tempat yang diklaim dua negara atau lebih, atau yang negara penguasanya berbeda dari yang diakui secara internasional. Diarsir pada peta 2026.</dd><dt>Penguasaan nyata</dt><dd>Benar-benar memerintah suatu wilayah, terlepas dari milik siapa menurut hukum.</dd><dt>Negara pengamat PBB</dt><dd>Negara yang bukan anggota PBB tetapi ikut serta di Majelis Umum sebagai pengamat: saat ini Takhta Suci dan Palestina.</dd><dt>Wilayah tak berpemerintahan sendiri (PBB)</dt><dd>Wilayah yang didaftar PBB sebagai belum mencapai pemerintahan sendiri sepenuhnya. Sahara Barat adalah contohnya.</dd><dt>Protektorat / mandat / wilayah sewaan</dt><dd>Protektorat menyerahkan diplomasi dan pertahanannya kepada negara lain; mandat adalah bekas wilayah musuh yang oleh Liga Bangsa-Bangsa diserahkan kepada pemenang untuk diperintah setelah Perang Dunia I; wilayah sewaan adalah tanah yang dipinjamkan kepada negara lain untuk jangka waktu tertentu.</dd></dl></div>
+</div>
+<script src="lib/d3.min.js"></script>
+<script src="lib/topojson-client.min.js"></script>
+<script>
+(async function(){
+const UI = {"bc":"{y} SM","ad":"{y}","now":"Oktober 2026","zoomIn":"Perbesar","zoomOut":"Perkecil","reset":"Awal","big":"Besar","bigExit":"Tutup","prev":"Sebelumnya","next":"Berikutnya","listTitle":"Negara pada masa ini","count":"{n} negara · {m} budaya dan suku bangsa","search":"Cari negara","more":"Lihat lagi (sisa {n})","nsTitle":"Budaya dan suku bangsa, bukan negara (menurut label sumber)","showAll":"Lihat semua","areaM":"{v} juta km²","areaK":"{v}0.000 km²","areaS":"{v} km²","srcHb":"Data: historical-basemaps. Batas pada masa ini adalah perkiraan lingkup kekuasaan.","srcCs":"Data: CShapes 2.0 (per {date}). Koloni diwarnai menurut pemiliknya.","srcNe":"Data: Natural Earth. Wilayah sengketa diwarnai menurut prioritas PBB → AS → Korea Selatan dan diarsir.","gapNext":"data berikutnya: {y}","region":"Wilayah","belongs":"Milik","area":"Wilayah pada masa ini: sekitar {a}","prec":"Ketelitian batas (sumber)","precVals":["kasar","sedang","teliti"],"status":{"colony":"koloni","protectorate":"protektorat","mandate":"mandat","occupied":"diduduki","N/A":"status tidak diketahui","leased":"wilayah sewaan"},"ns":"Dicatat sebagai budaya atau suku bangsa, bukan negara.","noRecord":"Catatan tidak ditemukan","noRecordLong":"Sumber yang dipakai peta ini tidak punya catatan negara di sini {when}. Itu tidak berarti tidak ada negara.","unApplied":"Diwarnai mengikuti cara PBB.","dispTitle":"{n} wilayah sengketa","dispNote":"Tempat yang diarsir. Ketuk untuk melihat cara PBB, AS, dan Korea Selatan menggambarkannya.","un":"PBB","us":"Peta AS","kr":"Peta Korea","unNone":"Cara PBB menggambarkannya tidak dapat dipastikan.","neNote":"Keadaan (Natural Earth)","close":"Tutup","noteTr":[["Admin\\. [Bb]y","Dikelola oleh"],["Self admin\\.","Mengelola sendiri"],["Claimed by","Diklaim oleh"],["Leased to","Disewakan kepada"],["Ceded to China by Pakistan","Diserahkan Pakistan kepada Tiongkok"],[" and "," dan "]],"areaT":"kurang dari 1 km²","vTitle":"Pemeriksaan silang","vText":"Hasil perbandingan dengan data independen Cliopatria{yr}. Pada {a}% daratan yang digambar sebagai negara oleh kedua sumber, batasnya saling bersesuaian. Pada {s}% satuan pembagian negaranya pun sama.","vYr":" (per 2024)","vCover":"Daratan yang digambar sebagai negara — keduanya: {b} · hanya peta ini: {m} · hanya Cliopatria: {c}","vOnlyC":"Negara dengan wilayah luas yang hanya digambar di Cliopatria (kosong atau wilayah budaya di peta ini)","vConf":"Tempat keduanya berbeda (peta ini ↔ Cliopatria)","vNote":"Perbedaan tidak berarti peta ini keliru. Kedua sumber mengandung perkiraan, dan hasilnya juga bergantung pada apakah koloni dan negara bawahan digambar terpisah.","supBtn":"Tambahan Cliopatria","supOff":"Mati — nyalakan untuk mengisi daratan tanpa catatan di peta ini dengan data Cliopatria.","supOn":"Menyala — {n} wilayah berarsir ({a}) hanya ada di Cliopatria.","supNone":"Menyala — tidak ada yang perlu ditambahkan pada masa ini.","supKey":"Ditambahkan dari Cliopatria","supTitle":"{n} negara ditambahkan dari Cliopatria","supSub":"Wilayah yang tidak ada dalam sumber peta ini dan hanya ada di Cliopatria. Luas hanya menghitung bagian tambahan.","supTag":"tambahan","supArea":"Wilayah tambahan: sekitar {a}","supName":"Nama di Cliopatria: {n}","supOnly":"Negara yang tidak ada dalam sumber peta ini. Batasnya disalin dari Cliopatria dan belum diperiksa silang.","supSame":"Negara ini ada di peta ini, tetapi bagian ini hanya digambar di Cliopatria. Belum diperiksa silang.","fxTag":"Koreksi","fxTitle":"Koreksi sumber: {n}","fxSub":"Tempat yang kepemilikannya keliru atau terlewat dalam sumber, lalu diperiksa dan diperbaiki. Ketuk untuk menuju ke sana."}; const LANG='id';
+const fmt=(s,o)=>s.replace(/\{(\w+)\}/g,(_,k)=>o[k]);
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const [IX, landT] = await Promise.all([fetch('index.json').then(r=>r.json()), fetch('data/land.json').then(r=>r.json())]);
+const SN=IX.snaps, EN=IX.ents;
+const yl=y=>y===2026?UI.now:y<0?fmt(UI.bc,{y:-y}):fmt(UI.ad,{y});
+const ys=y=>y===2026?'2026':y<0?'BC '+(-y):String(y);
+const nm=e=>e.ko||e.n, nm2=e=>e.ko?`${esc(e.ko)}<small>${esc(e.n)}</small>`:esc(e.n);
+const km=a=>a<1?UI.areaT:a<1e4?fmt(UI.areaS,{v:(a<1000?Math.round(a):Math.round(a/100)*100).toLocaleString(LANG)}):a>=1e6?fmt(UI.areaM,{v:(a/1e6).toLocaleString(LANG,{maximumFractionDigits:a>=1e7?0:1})}):a>=1e4?fmt(UI.areaK,{v:Math.round(a/1e4).toLocaleString(LANG)}):fmt(UI.areaS,{v:(Math.round(a/100)*100).toLocaleString(LANG)});
+function rewind(f){const gm=f.geometry;if(!gm)return f;const ps=gm.type==='Polygon'?[gm.coordinates]:gm.type==='MultiPolygon'?gm.coordinates:[];for(const p of ps)for(let i=0;i<p.length;i++){if(d3.geoArea({type:'Polygon',coordinates:[p[i]]})>2*Math.PI)p[i]=p[i].slice().reverse();}return f;}
+const cache={}; const load=i=>cache[i]||=fetch(`data/${SN[i].y}.json`).then(r=>r.json()).then(t=>({w:topojson.feature(t,t.objects.w).features.map(rewind).filter(f=>f.geometry),d:t.objects.d?topojson.feature(t,t.objects.d).features.map(rewind):[]}));
+
+const scache={}; const loadS=i=>!SN[i].sup?Promise.resolve([]):(scache[i]||=fetch(`data/s${SN[i].y}.json`).then(r=>r.json()).then(t=>topojson.feature(t,t.objects.s).features.map(rewind).filter(f=>f.geometry)));
+let supOn=false; try{supOn=localStorage.getItem('map.sup')==='1';}catch(e){}
+const W=960,H=500, svg=d3.select('#map').attr('viewBox',`0 0 ${W} ${H}`);
+const defs=svg.append('defs');
+const hp=defs.append('pattern').attr('id','hatch').attr('patternUnits','userSpaceOnUse').attr('width',3).attr('height',3).attr('patternTransform','rotate(45)');
+hp.append('rect').attr('width',3).attr('height',3).style('fill','rgba(255,255,255,.25)'); hp.append('rect').attr('width',1).attr('height',3).style('fill','var(--ink)');
+const dp=defs.append('pattern').attr('id','dots').attr('patternUnits','userSpaceOnUse').attr('width',3.2).attr('height',3.2);
+dp.append('rect').attr('width',3.2).attr('height',3.2).style('fill','var(--land)'); dp.append('circle').attr('cx',1.6).attr('cy',1.6).attr('r',.55).style('fill','var(--muted)');
+const sp=defs.append('pattern').attr('id','stripe').attr('patternUnits','userSpaceOnUse').attr('width',2.4).attr('height',2.4).attr('patternTransform','rotate(-45)');
+sp.append('rect').attr('width',1).attr('height',2.4).style('fill','var(--surface)').style('opacity',.6);
+const proj=d3.geoNaturalEarth1().fitExtent([[6,6],[W-6,H-6]],{type:'Sphere'}), path=d3.geoPath(proj);
+const g=svg.append('g');
+g.append('path').attr('class','sphere').attr('d',path({type:'Sphere'}));
+g.append('path').attr('class','grat').attr('d',path(d3.geoGraticule10()));
+const landF=topojson.feature(landT,landT.objects.land);
+g.append('path').attr('class','land').attr('d',path(landF)).on('click',()=>{clearSel(); show(`<b class="t">${esc(UI.noRecord)}</b><div class="meta">${esc(fmt(UI.noRecordLong,{when:yl(SN[cur].y)}))}</div>`);});
+const gP=g.append('g'), gS=g.append('g'), gS2=g.append('g'), gD=g.append('g'), gL=g.append('g');
+let k=1, cur=SN.length-1, focus=null, selEl=null, q='', limit=40, T=d3.zoomIdentity;
+const small=()=>document.getElementById('map').clientWidth<640;
+const zoom=d3.zoom().scaleExtent([1,40]).translateExtent([[0,0],[W,H]]).on('zoom',e=>{T=e.transform;k=T.k;g.attr('transform',T);layoutLabels();});
+svg.call(zoom).on('dblclick.zoom',null);
+const zby=f=>svg.transition().duration(250).call(zoom.scaleBy,f);
+document.getElementById('zin').onclick=()=>zby(1.7); document.getElementById('zout').onclick=()=>zby(1/1.7);
+const zr=document.getElementById('zreset'); zr.textContent=UI.reset; zr.onclick=()=>svg.call(zoom.transform,d3.zoomIdentity);
+const zb=document.getElementById('zbig'); const setBig=on=>{document.body.classList.toggle('bigmap',on);zb.textContent=on?UI.bigExit:UI.big;}; setBig(false);
+zb.onclick=()=>setBig(!document.body.classList.contains('bigmap'));
+['zin','zout','prev','next'].forEach((id,i)=>document.getElementById(id).setAttribute('aria-label',[UI.zoomIn,UI.zoomOut,UI.prev,UI.next][i]));
+
+const info=document.getElementById('info');
+function show(html){info.innerHTML=`<button class="x" aria-label="${esc(UI.close)}">×</button>`+html;info.style.display='block';info.querySelector('.x').onclick=()=>{info.style.display='none';clearSel();};}
+function clearSel(){if(selEl)selEl.classList.remove('sel');selEl=null;}
+const fillOf=e=>e.ns?'url(#dots)':e.c;
+const supTop=s=>supOn&&s.sup?s.sup.top:[];
+const areaOf=id=>{const r=SN[cur].top.find(t=>t[0]===id);return r?r[1]*1000:0;};
+const supAreaOf=id=>{const r=supTop(SN[cur]).find(t=>t[0]===id);return r?r[1]*1000:0;};
+const labelOf=id=>SN[cur].labels[id]||(supOn&&SN[cur].sup&&SN[cur].sup.labels[id])||null;
+function supInfo(id,p){ const e=EN[id], a=supAreaOf(id);
+  let h=`<b class="t">${esc(nm(e))}</b>${e.ko?` <span class="meta">${esc(e.n)}</span>`:''} <span class="tag">${esc(UI.supTag)}</span>`;
+  if(a) h+=`<div>${esc(fmt(UI.supArea,{a:km(a)}))}</div>`;
+  if(p&&p.n&&p.n!==e.n) h+=`<div class="meta">${esc(fmt(UI.supName,{n:p.n}))}</div>`;
+  return h+`<div class="meta">${esc(e.x?UI.supOnly:UI.supSame)}</div>`; }
+function entInfo(id,p){
+  const e=EN[id], a=areaOf(id);
+  let h=`<b class="t">${esc(nm(e))}</b>${e.ko?` <span class="meta">${esc(e.n)}</span>`:''}`;
+  if(a) h+=`<div>${esc(fmt(UI.area,{a:km(a)}))}</div>`;
+  if(e.ns) h+=`<div class="meta">${esc(UI.ns)}</div>`;
+  if(p){ if(p.n&&p.n!==e.n) h+=`<div class="meta">${esc(UI.region)}: ${esc(p.k||p.n)}${p.k?' ('+esc(p.n)+')':''}${p.st?' · '+esc(UI.status[p.st]||p.st):''}</div>`;
+    if(p.b) h+=`<div class="meta">${esc(UI.prec)}: ${esc(UI.precVals[p.b-1]||'')}</div>`;
+    if(p.un) h+=`<div class="w">${esc(UI.unApplied)}</div>`;
+    if(p.fx&&IX.fx[p.fx]) h+=`<div class="fx"><b>${esc(UI.fxTag)}</b> ${esc(IX.fx[p.fx])}</div>`; }
+  return h;
+}
+function noteKo(s){ if(!s) return ''; for(const [a,b] of UI.noteTr) s=s.replace(new RegExp(a,'g'),b); return s.replace(/[A-Z][A-Za-z.]+(?: [A-Z][A-Za-z.]+)*/g,m=>{const e=byName.get(m)||byName.get(m.replace(/\.$/,'')); return e&&e.ko?e.ko:m;}); }
+const byName=new Map(EN.map(e=>[e.n,e])); [['U.K.','United Kingdom'],['U.S.A.','United States of America'],['U.S.A','United States of America'],['Azer.','Azerbaijan'],['UAE','United Arab Emirates']].forEach(([a,b])=>byName.get(b)&&byName.set(a,byName.get(b)));
+function dispInfo(p){
+  return `<b class="t">▨ ${esc(p.ko||p.n)}</b>${p.ko?` <span class="meta">${esc(p.n)}</span>`:''}`+
+   `<dl>${p.note?`<dt>${esc(UI.neNote)}</dt><dd>${esc(noteKo(p.note))}</dd>`:''}<dt>${esc(UI.un)}</dt><dd>${esc(p.un||UI.unNone)}</dd>${p.us?`<dt>${esc(UI.us)}</dt><dd>${esc(p.us)}</dd>`:''}${p.kr?`<dt>${esc(UI.kr)}</dt><dd>${esc(p.kr)}</dd>`:''}</dl>`;
+}
+let LBL=[];
+function layoutLabels(){
+  const cw=document.getElementById('map').clientWidth||W, fs=Math.min(30,(small()?10.5:11.5)*W/cw), placed=[]; const maxN=Math.round((small()?16:34)*Math.pow(k,1.25));
+  gL.selectAll('text').each(function(d,i){
+    const el=d3.select(this); if(i>=maxN||(focus!==null&&d.id!==focus&&false)){el.attr('display','none');return;}
+    const sx=T.applyX(d.x), sy=T.applyY(d.y); const size=fs*(d.rank<6?1.25:d.rank<16?1.08:1), w=d.text.length*size*(/[가-힣]/.test(d.text)?0.95:0.56)+6, hh=size+4;
+    if(sx<-40||sx>W+40||sy<-20||sy>H+20){el.attr('display','none');return;}
+    const box=[sx-w/2,sy-hh/2,sx+w/2,sy+hh/2];
+    if(placed.some(b=>!(box[2]<b[0]||box[0]>b[2]||box[3]<b[1]||box[1]>b[3]))){el.attr('display','none');return;}
+    placed.push(box); el.attr('display',null).attr('font-size',size/k).style('stroke-width',(2.6/k)+'px');
+  });
+}
+async function draw(){
+  const i=cur, s=SN[i]; const [D,S0]=await Promise.all([load(i),supOn?loadS(i):[]]); if(i!==cur) return; const S=supOn?S0:[];
+  document.getElementById('loading').style.display='none';
+  gP.selectAll('path').data(D.w,(d,j)=>s.y+'_'+j).join('path').attr('class','poly').attr('d',path).style('fill',d=>fillOf(EN[d.properties.e]))
+    .classed('dimmed',d=>focus!==null&&d.properties.e!==focus)
+    .on('click',function(e,d){e.stopPropagation();clearSel();selEl=this;this.classList.add('sel');show(entInfo(d.properties.e,d.properties));});
+  gS.selectAll('path').data(S,(d,j)=>s.y+'s'+j).join('path').attr('class','sup').attr('d',path).style('fill',d=>EN[d.properties.e].c)
+    .classed('dimmed',d=>focus!==null&&d.properties.e!==focus)
+    .on('click',function(e,d){e.stopPropagation();clearSel();selEl=this;this.classList.add('sel');show(supInfo(d.properties.e,d.properties));});
+  gS2.selectAll('path').data(S,(d,j)=>s.y+'s'+j).join('path').attr('class','supx').attr('d',path);
+  gD.selectAll('path').data(D.d,(d,j)=>s.y+'d'+j).join('path').attr('class','disp').attr('d',path).on('click',(e,d)=>{e.stopPropagation();clearSel();show(dispInfo(d.properties));});
+  const sl=supOn&&s.sup?s.sup.top.filter(([id])=>s.sup.labels[id]&&!s.labels[id]).map(([id,a])=>[id,a,s.sup.labels[id],1]):[];
+  LBL=[...s.top.filter(([id])=>s.labels[id]).map(([id,a])=>[id,a,s.labels[id],0]),...sl].sort((a,b)=>b[1]-a[1]).slice(0,400).map(([id,a,ll,sp],rank)=>{const [x,y]=proj(ll);return {id,x,y,rank,text:nm(EN[id]),ns:EN[id].ns,sp};});
+  gL.selectAll('text').data(LBL,d=>d.id).join('text').attr('class',d=>'lbl'+(d.ns?' ns':'')+(d.sp?' sp':'')).attr('x',d=>d.x).attr('y',d=>d.y).attr('dy','.35em').text(d=>d.text);
+  layoutLabels();
+  document.getElementById('badge').textContent=yl(s.y);
+  [i-1,i+1].forEach(j=>SN[j]&&(load(j),supOn&&loadS(j)));
+  drawDispList(D.d); drawFixList(D.w);
+}
+function renderYears(){
+  const box=document.getElementById('years');
+  box.innerHTML=SN.map((s,i)=>`<button data-i="${i}" class="${i===cur?'on':''}">${ys(s.y)}</button>`).join('');
+  box.querySelectorAll('button').forEach(b=>b.onclick=()=>go(+b.dataset.i));
+  const on=box.querySelector('.on'); if(on) box.scrollLeft=on.offsetLeft-box.clientWidth/2+on.offsetWidth/2;
+  document.getElementById('slider').value=cur;
+}
+function renderPanel(){
+  const s=SN[cur]; const all=s.top.map(([id,a])=>({id,a:a*1000,e:EN[id]}));
+  const st=all.filter(o=>!o.e.ns), ns=all.filter(o=>o.e.ns);
+  const f=o=>!q||(o.e.n.toLowerCase().includes(q)||(o.e.ko||'').toLowerCase().includes(q));
+  const stf=st.filter(f), nsf=ns.filter(f);
+  const su=supTop(s).map(([id,a])=>({id,a:a*1000,e:EN[id],sp:1})).filter(f);
+  const li=o=>`<li data-id="${o.id}" class="${focus===o.id?'on':''}"><i class="${o.sp?'sp':''}" style="background-color:${o.e.ns?'var(--land)':o.e.c}"></i><span>${nm2(o.e)}</span><span class="a">${km(o.a)}</span></li>`;
+  const src=s.src==='hb'?UI.srcHb:s.src==='cs'?fmt(UI.srcCs,{date:s.date}):UI.srcNe;
+  const next=SN[cur+1];
+  document.getElementById('panel').innerHTML=
+    `<h2>${esc(yl(s.y))}</h2><p class="sub">${esc(fmt(UI.count,{n:st.length,m:ns.length}))}${focus!==null?` · <button class="linkbtn" id="unf">${esc(UI.showAll)}</button>`:''}</p>`+
+    `<p class="src">${esc(src)}${next&&s.src==='hb'?' '+esc(fmt(UI.gapNext,{y:yl(next.y)}))+'.':''}</p>`+
+    verifyHtml(s)+
+    `<input class="search" id="search" type="search" placeholder="${esc(UI.search)}" value="${esc(q)}">`+
+    `<ul class="ents" id="ents">${stf.slice(0,limit).map(li).join('')}</ul>`+
+    (stf.length>limit?`<button class="linkbtn" id="more">${esc(fmt(UI.more,{n:stf.length-limit}))}</button>`:'')+
+    (nsf.length?`<div class="sec"><h3>${esc(UI.nsTitle)}</h3><ul class="ents">${nsf.slice(0,q?60:12).map(li).join('')}</ul></div>`:'')+
+    (su.length?`<div class="sec"><h3>${esc(fmt(UI.supTitle,{n:su.length}))}</h3><p class="sub">${esc(UI.supSub)}</p><ul class="ents">${su.slice(0,q?80:30).map(li).join('')}</ul></div>`:'')+
+    `<div id="fixlist"></div><div id="displist"></div>`;
+  const si=document.getElementById('search'); si.oninput=()=>{q=si.value.trim().toLowerCase();limit=40;const p=si.selectionStart;renderPanel();const n=document.getElementById('search');n.focus();n.setSelectionRange(p,p);};
+  document.querySelectorAll('ul.ents li').forEach(l=>l.onclick=()=>pick(+l.dataset.id));
+  const m=document.getElementById('more'); if(m) m.onclick=()=>{limit+=80;renderPanel();};
+  const u=document.getElementById('unf'); if(u) u.onclick=()=>{focus=null;gP.selectAll('path').classed('dimmed',false);gS.selectAll('path').classed('dimmed',false);renderPanel();};
+  if(cache[cur]) cache[cur].then(D=>{drawDispList(D.d);drawFixList(D.w);});
+}
+function verifyHtml(s){ const v=s.v; if(!v||v.agree==null) return '';
+  const cn=n=>{const e=byName.get(n); return e&&e.ko?`${esc(e.ko)} <small>${esc(n)}</small>`:esc(n);};
+  return `<details class="ver"><summary><b>${esc(UI.vTitle)}</b> <span class="vbar"><i style="width:${(v.agree*100).toFixed(0)}%"></i></span> ${(v.agree*100).toFixed(0)}%</summary>`+
+   `<p>${esc(fmt(UI.vText,{yr:s.y>2024?UI.vYr:'',a:(v.agree*100).toFixed(0),s:(v.strict*100).toFixed(0)}))}</p>`+
+   `<p>${esc(fmt(UI.vCover,{b:km(v.both*1000),m:km(v.mine*1000),c:km(v.clio*1000)}))}</p>`+
+   (v.clioOnly.length?`<h5>${esc(UI.vOnlyC)}</h5><ul>${v.clioOnly.map(([n,a])=>`<li><span>${cn(n)}</span><span class="a">${km(a*1000)}</span></li>`).join('')}</ul>`:'')+
+   (v.conflicts.length?`<h5>${esc(UI.vConf)}</h5><ul>${v.conflicts.map(([e,n,a])=>`<li><span>${esc(nm(EN[e]))} ↔ ${cn(n)}</span><span class="a">${km(a*1000)}</span></li>`).join('')}</ul>`:'')+
+   `<p class="vn">${esc(UI.vNote)}</p></details>`; }
+function drawFixList(w){ const el=document.getElementById('fixlist'); if(!el) return; const m=new Map();
+  for(const f of w){const p=f.properties; if(!p.fx||!IX.fx[p.fx]) continue; const o=m.get(p.fx)||{names:[],f}; const nmx=p.k||p.n; if(!o.names.includes(nmx)) o.names.push(nmx); m.set(p.fx,o);}
+  if(!m.size){el.innerHTML='';return;}
+  const rows=[...m]; el.innerHTML=`<details class="ver fixes"><summary><b>${esc(fmt(UI.fxTitle,{n:rows.length}))}</b></summary><p>${esc(UI.fxSub)}</p><ul>${rows.map(([id,o],i)=>`<li data-i="${i}"><span><b>${esc(o.names.slice(0,4).join(', '))}${o.names.length>4?' …':''}</b> → ${esc(nm(EN[o.f.properties.e]))}<br>${esc(IX.fx[id])}</span></li>`).join('')}</ul></details>`;
+  el.querySelectorAll('li').forEach(l=>l.onclick=()=>{const f=rows[+l.dataset.i][1].f; const [x,y]=path.centroid(f); if(isFinite(x)){show(entInfo(f.properties.e,f.properties)); flyTo(x,y,Math.max(k,4));}});
+}
+function drawDispList(d){ const el=document.getElementById('displist'); if(!el) return; if(!d.length){el.innerHTML='';return;}
+  const major=d.filter(x=>x.properties.un), rest=d.filter(x=>!x.properties.un);
+  el.innerHTML=`<div class="sec"><h3>${esc(fmt(UI.dispTitle,{n:d.length}))}</h3><p class="sub">${esc(UI.dispNote)}</p><ul class="disp">${[...major,...rest].map((x,i)=>`<li data-i="${d.indexOf(x)}">▨ ${esc(x.properties.ko||x.properties.n)}</li>`).join('')}</ul></div>`;
+  el.querySelectorAll('li').forEach(l=>l.onclick=()=>{const p=d[+l.dataset.i].properties; show(dispInfo(p)); const [x,y]=proj(p.ll); flyTo(x,y,Math.max(k,8));});
+}
+function flyTo(x,y,z){ svg.transition().duration(600).call(zoom.transform,d3.zoomIdentity.translate(W/2,H/2).scale(z).translate(-x,-y)); document.querySelector('.mapcard').scrollIntoView({behavior:'smooth',block:'nearest'}); }
+function pick(id){ focus=focus===id?null:id; for(const G of [gP,gS]) G.selectAll('path').classed('dimmed',d=>focus!==null&&d.properties.e!==focus); renderPanel();
+  if(focus!==null){ show(areaOf(id)?entInfo(id,null):supInfo(id,null)); const ll=labelOf(id); if(ll){const [x,y]=proj(ll); const a=areaOf(id)||supAreaOf(id); flyTo(x,y,a>8e6?1.6:a>2e6?2.6:a>4e5?4.5:8);} } }
+function renderKey(){ document.getElementById('key').innerHTML=`<span><i style="background:var(--land)"></i>${esc(UI.noRecord)}</span><span><svg width="16" height="12"><rect width="16" height="12" rx="3" fill="url(#dots)" stroke="var(--landline)"/></svg>${esc(UI.nsTitle.split('(')[0])}</span>`+(supOn&&SN[cur].sup?`<span><i class="sp" style="background-color:var(--muted)"></i>${esc(UI.supKey)}</span>`:'')+(SN[cur].src==='ne'?`<span><svg width="16" height="12"><rect width="16" height="12" rx="3" fill="url(#hatch)" stroke="var(--ink)"/></svg>${esc(fmt(UI.dispTitle,{n:''}).replace(/\s*곳$/,''))}</span>`:''); }
+function renderSup(){ const s=SN[cur], b=document.getElementById('supbtn'); b.setAttribute('aria-checked',supOn); b.classList.toggle('on',supOn);
+  document.getElementById('suplbl').textContent=UI.supBtn;
+  document.getElementById('supnote').textContent=!supOn?UI.supOff:s.sup?fmt(UI.supOn,{n:s.sup.top.length,a:km(s.sup.top.reduce((t,x)=>t+x[1],0)*1000)}):UI.supNone; }
+document.getElementById('supbtn').onclick=()=>{ supOn=!supOn; try{localStorage.setItem('map.sup',supOn?'1':'0');}catch(e){} if(focus!==null&&!areaOf(focus)) focus=null; info.style.display='none'; clearSel(); renderSup(); renderKey(); renderPanel(); draw(); };
+function go(i){ if(i<0||i>=SN.length) return; const keep=focus!==null&&(SN[i].top.some(t=>t[0]===focus)||supTop(SN[i]).some(t=>t[0]===focus)); cur=i; if(!keep) focus=null; limit=40; info.style.display='none'; clearSel();
+  try{history.replaceState(null,'','#y'+(SN[i].y<0?'bc'+(-SN[i].y):SN[i].y));}catch(e){}
+  renderYears(); renderSup(); renderKey(); renderPanel(); draw(); }
+const sl=document.getElementById('slider'); sl.max=SN.length-1; sl.oninput=()=>go(+sl.value);
+document.getElementById('prev').onclick=()=>go(cur-1); document.getElementById('next').onclick=()=>go(cur+1);
+window.addEventListener('keydown',e=>{ if(e.target.tagName==='INPUT'&&e.target.type!=='range') return; if(e.key==='ArrowRight')go(cur+1); if(e.key==='ArrowLeft')go(cur-1); if(e.key==='Escape')setBig(false); });
+window.addEventListener('resize',layoutLabels);
+const hm=(location.hash||'').match(/^#y(bc)?(\d+)$/); if(hm){const y=(hm[1]?-1:1)*+hm[2]; const i=SN.findIndex(s=>s.y===y); if(i>=0) cur=i;}
+go(cur);
+})();
+</script>
+</body>
+</html>

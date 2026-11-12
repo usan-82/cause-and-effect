@@ -85,3 +85,4 @@ i.sp{background-image:repeating-linear-gradient(-45deg,transparent 0 2px,rgba(25
 .gloss dl{margin:0}.gloss dt{font-weight:700;color:var(--ink);margin-top:7px}.gloss dd{margin:0;line-height:1.7}
 .info .fx{margin-top:4px;padding-top:4px;border-top:1px dashed var(--line);color:var(--ink2)}.info .fx b{color:var(--accent)}
 details.fixes{margin-top:12px}details.fixes li{display:block;cursor:pointer;padding:5px 0}details.fixes li b{color:var(--ink)}
+.langs{display:flex;gap:10px;font-size:13px;flex-wrap:wrap}.langs span{font-weight:700}.langs a{color:var(--ink2);text-decoration:none}.langs a:hover{text-decoration:underline}

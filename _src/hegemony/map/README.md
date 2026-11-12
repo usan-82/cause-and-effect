@@ -1,13 +1,13 @@
 # 세계 영토 지도 / hegemony/map 소스
 
-`ko/hegemony/map/`의 파일은 모두 이 폴더에서 생성된다.
+`ko/hegemony/map/`, `en/hegemony/map/`, `id/hegemony/map/`의 파일은 모두 이 폴더에서 생성된다.
 
 ```
 cd _src/hegemony/map
 npm install
 npm run prepare-data   # 원본 국경 데이터를 받아 시점별로 단순화 → raw/
 npm run clip           # fixes.json의 clip 항목(경계 교정)을 Cliopatria에서 잘라 raw/clip/ 에 만든다
-npm run build          # ko/hegemony/map/ 생성 (약 1분)
+npm run build          # {ko,en,id}/hegemony/map/ 생성 (약 2분). LANGS=ko 처럼 언어를 고를 수 있다
 npm run verify         # 완성된 지도를 Cliopatria와 교차검증 → verify.json, 보충 층 → raw/sup/ (몇 분)
 npm run build          # 검증 결과와 보충 층을 페이지에 싣기
 ```
@@ -31,6 +31,10 @@ npm run build          # 검증 결과와 보충 층을 페이지에 싣기
 - `alias.json` — 출처마다 다른 표기를 하나로 모으는 표
 - `ko.json` — 한글 이름(`names`), 나라가 아닌 문화권·집단을 가려내는 규칙(`nonstate`), 같은 색 묶음(`groups`), 분쟁 지역의 유엔 표기 설명(`unRules`)
 - `ko.page.json` — 화면 문구, 출처 목록, 출처 아래에 싣는 용어 풀이(`glossary`)
+- 다른 언어: `{lang}.json`(이름 `names`, `unRules`, `disputedNames`), `{lang}.page.json`(화면 문구), `fixes.{lang}.json`(보정 주석과 덧그린 영역 이름). 구조(문화권 판정, 색 묶음)는 `ko.json`을 함께 쓴다
+  - 이름을 찾는 순서: 직접 쓴 사전 → Natural Earth의 `NAME_KO`/`NAME_ID` → (인도네시아어만) 흔한 낱말을 바꾸는 규칙(`build.mjs`의 `ID_RULES`: Kingdom→Kerajaan 등, 나머지가 고유명사일 때만) → 없으면 원자료의 영어 이름 그대로
+  - 영어판의 `names`는 원자료의 오탈자·옛 표기만 바로잡는다(Zhoa→Zhou 등)
+  - `fixes.{lang}.json`의 `patches`는 `hegemony/atlas`의 `{lang}.json`에서 옮긴 것이다. `fixes.json`에 주석을 더하면 두 언어 파일에도 같은 키로 번역을 넣어야 빌드된다
 - `template.html`, `style.css` — 화면
 
 ## 한계

@@ -1,0 +1,312 @@
+{
+ "_": "fixes.json의 주석과 덧그린 영역 이름의 번역. patches는 hegemony/atlas의 id.json에서 옮겼다(r의 키는 시작 연도).",
+ "notes": {
+  "inca": "Wilayah Inka sisa data 1530 → Wakil Kerajaan Peru milik Spanyol",
+  "quebec": "Milik Britania sejak Perjanjian Paris (1763)",
+  "colony19": "Koloni Britania — sumber menandainya terpisah seolah-olah merdeka",
+  "rupert": "Wilayah Hudson's Bay Company (Britania)",
+  "malta": "Milik Britania sejak 1800 (merdeka 1964)",
+  "ceylon": "Diduduki 1796; koloni mahkota Britania sejak 1802",
+  "ph_es": "Koloni Spanyol sejak 1565–71 (pedalaman dan wilayah Muslim di selatan di luar kendali)",
+  "habsburg_nl": "Belanda Habsburg — diperintah langsung oleh Karl V dan Felipe II, garis Spanyol (data sumber memasukkannya ke Austria)",
+  "aragon_italy": "Kerajaan-kerajaan Italia milik Mahkota Aragon — dipegang raja Spanyol (data sumber 1700 keliru menyebut Austria atau Savoia)",
+  "milan_es": "Kadipaten Milan milik Spanyol sejak 1535 (ke Austria pada 1714)",
+  "spanish_nl": "Belanda Spanyol (selatan) — berpindah ke Austria pada 1714 (berlabel ‘Luxembourg’ di data sumber)",
+  "luisiana_1783": "Louisiana Spanyol (1762–1800) — data sumber keliru menyebut Prancis",
+  "formosa": "Belanda diusir dari Taiwan pada 1662 dan Qing menguasainya pada 1683 — \"Dutch Formosa\" dalam data sumber adalah anakronisme",
+  "egypt_ot": "Provinsi Utsmaniyah (sejak 1517); otonom de facto di bawah dinasti Muhammad Ali sejak 1805",
+  "guiana_1783": "Essequibo dan Demerara adalah koloni Belanda pada 1783 (menjadi milik Britania lewat pendudukan 1796 dan perjanjian 1814) — sumber menandainya sebagai milik Britania",
+  "ur_3000": "Ur baru berkuasa pada abad ke-21 SM (Dinasti Ketiga Ur). Masa ini dikoreksi menjadi negara-kota Sumeria yang saling bersaing.",
+  "hurrian_3000": "Bangsa Hurri baru muncul dalam catatan sekitar 2300 SM, sehingga dibuang pada masa ini.",
+  "hatti_2000": "Kerajaan Het baru berdiri sekitar 1650 SM. Anatolia tengah pada masa ini dikoreksi menjadi negara-kota bangsa Hatti.",
+  "xia": "Xia dikenal dari naskah-naskah kemudian dan bukan dinasti yang sudah dipastikan secara arkeologis (ada yang mengaitkannya dengan budaya Erlitou).",
+  "shang_1500": "Zhou berdiri pada 1046 SM. Masa ini dikoreksi menjadi Shang. Sumber memakai gambar yang sama untuk 1500, 1000, dan 700 SM.",
+  "urartu_1500": "Kerajaan Urartu berdiri pada abad ke-9 SM, sehingga dibuang pada masa ini.",
+  "nairi_1000": "Kerajaan Urartu berdiri pada abad ke-9 SM. Masa ini dikoreksi menjadi pendahulunya, konfederasi suku Nairi.",
+  "canaan_1500": "Kerajaan Daud dan Sulaiman berasal dari abad ke-10 SM. Masa ini dikoreksi menjadi negara-kota Kanaan di bawah pengaruh Mesir.",
+  "judah_700": "Kerajaan bersatu pecah sekitar 930 SM dan Israel utara jatuh ke Asyur pada 722 SM. Yang tersisa pada masa ini adalah Kerajaan Yehuda, vasal Asyur.",
+  "phrygia_1500": "Bangsa Frigia baru masuk ke Anatolia setelah sekitar 1200 SM, sehingga dibuang pada masa ini.",
+  "wu_1500": "Menurut tradisi pun negara Wu berasal dari abad ke-11 SM atau sesudahnya, sehingga dibuang pada masa ini.",
+  "saba_1500": "Kerajaan Saba baru tercatat sejak sekitar 1000 SM, sehingga dibuang pada masa ini.",
+  "mycenae_1500": "Ini sebelum adanya polis. Masa ini dikoreksi menjadi negara-negara istana peradaban Mikenai.",
+  "neohittite_1000": "Kekaisaran Het runtuh sekitar 1180 SM. Masa ini dikoreksi menjadi negara-negara Het Baru yang menyusulnya.",
+  "assyria_700": "Negara-negara Het Baru sudah dicaplok Kekaisaran Asyur Baru menjelang akhir abad ke-8 SM (Karkemis, 717 SM).",
+  "assyria_700b": "Kerajaan-kerajaan Aram ditaklukkan Kekaisaran Asyur Baru pada abad ke-8 SM (Damaskus, 732 SM). Sumber menggambar Asyur terlalu kecil pada masa ini.",
+  "assyria_700c": "Babilonia berada di bawah kekuasaan raja-raja Asyur sejak 729 SM (Sanherib menghancurkan Babilon pada 689 SM). Kemerdekaannya pulih pada 626 SM.",
+  "xiongnu_400": "Xiongnu membentuk konfederasi pada 209 SM (Modu Chanyu). Pada masa ini berbagai suku pengembara masih tersebar, dan luas dalam sumber memundurkan jangkauan masa kemudian.",
+  "antigonus_300": "Antigonos tewas dalam Pertempuran Ipsos pada 301 SM dan wilayahnya dibagi. Lisimakhos memperoleh sebagian besar Asia Kecil (Seleukos memperoleh Suriah dan Ptolemaios bagian selatan — perkiraan).",
+  "numidia_200": "Syphax dikalahkan dan ditawan pada 203 SM, dan Numidia disatukan di bawah Masinissa.",
+  "numidia_200b": "Gala wafat pada 206 SM, dan putranya Masinissa menyatukan Numidia.",
+  "shunga_100": "Kekaisaran Maurya runtuh sekitar 185 SM dan digantikan Dinasti Shunga.",
+  "yuezhi_100": "Kekaisaran Kushan baru berdiri pada abad ke-1 M. Pada masa ini Baktria dikuasai Yuezhi, dengan kekuatan Indo-Yunani dan Saka bercampur di selatannya.",
+  "sasan_300": "Partia jatuh ke Dinasti Sasaniyah pada 224.",
+  "suren_300": "Kerajaan Indo-Partia wangsa Suren lenyap pada paruh pertama abad ke-3; kawasan ini diperintah Kekaisaran Sasaniyah dan kerajaan bawahannya (Kushanshah) — perkiraan.",
+  "gupta_300": "Gupta baru tumbuh menjadi kekaisaran sejak sekitar 320, saat Chandragupta I naik takhta. Luas yang ditampilkan memundurkan jangkauan masa kemudian.",
+  "vakataka": "Dinasti Satavahana berakhir pada paruh pertama abad ke-3. Dekkan diteruskan oleh Dinasti Vakataka dan lainnya.",
+  "qi_500": "Jin Timur berakhir pada 420. Dinasti selatan pada masa ini adalah Qi Selatan (479–502).",
+  "tang_700": "Sui berakhir pada 618 dan digantikan Tang.",
+  "umayyad_700": "Kekaisaran Sasaniyah runtuh oleh penaklukan Muslim pada 651. Pada masa ini wilayahnya milik Kekhalifahan Umayyah.",
+  "hejaz_700": "Hijaz adalah tempat lahir negara Islam dan pada masa ini milik Kekhalifahan Umayyah.",
+  "balhae_700": "Goguryeo runtuh pada 668 dan Balhae berdiri pada 698 (bagian selatan bekas Goguryeo dikuasai Silla dan Tang — perkiraan).",
+  "turgesh_700": "Kekhaganan Turk Barat jatuh ke Tang pada 657, dan sejak sekitar 699 Türgesh menggantikannya.",
+  "tibet_900": "Kekaisaran Tibet runtuh pada 842, dan sesudahnya Tibet terpecah di antara banyak kekuatan (Zaman Perpecahan).",
+  "uyghur_900": "Kekhaganan Uighur jatuh ke bangsa Kirgiz pada 840. Pada masa ini dataran tinggi Mongolia dikuasai Kirgiz Yenisei dan kawasan Tianshan oleh Uighur Qocho dan Ganzhou.",
+  "magyar_900": "Kekhaganan Avar lenyap pada awal abad ke-9, dan bangsa Magyar memasuki dataran Pannonia sekitar 895.",
+  "carol_900": "Kekaisaran Karoling bubar pada 888. Wilayah ini terdiri atas kerajaan-kerajaan penerus seperti Italia dan Burgundia.",
+  "norse_1000": "Persatuan Denmark dan Norwegia baru ada sejak 1380. Pada masa ini wilayah ini adalah Norwegia di bawah pengaruh raja Denmark, ditambah permukiman Nordik yang merdeka (Islandia, Greenland).",
+  "xixia_1000": "Xia Barat berdiri pada 1038. Pada masa ini wilayah ini adalah pendahulunya, kegubernuran militer Dingnan milik bangsa Tangut.",
+  "khazar_1000": "Kekhaganan Khazar dihancurkan Rus Kiev pada 965–969. Pada masa ini hanya tersisa sisa-sisanya.",
+  "daiviet_1000": "Vietnam merdeka pada 938 dan mendirikan Đại Cồ Việt pada 968.",
+  "dali": "Nanzhao runtuh pada 902 dan digantikan Kerajaan Dali sejak 937.",
+  "mon_1100": "Kerajaan Sukhothai berdiri pada 1238. Pada masa ini wilayah ini adalah lingkup negara-negara Mon seperti Lavo dan Haripuñjaya serta Kekaisaran Khmer.",
+  "tiwanaku_1200": "Tiwanaku runtuh sekitar 1000–1100 dan digantikan kerajaan-kerajaan kecil Aymara.",
+  "wari_1200": "Wari runtuh sekitar 1000. Sesudahnya berbagai kekuatan daerah hidup berdampingan di Andes.",
+  "mongol_1200": "Kekaisaran Mongol berdiri pada 1206. Pada masa ini Temüjin masih menyatukan suku-suku dataran tinggi Mongolia.",
+  "jin_1200": "Liao dihancurkan Jin pada 1125.",
+  "ayyubid_1200": "Salahuddin mengakhiri Kekhalifahan Fatimiyah pada 1171, dan Dinasti Ayyubiyah menggantikannya.",
+  "ghurid_1200": "Dinasti Ghaznawiyah jatuh ke Dinasti Ghuriyah pada 1186.",
+  "ghurid_1200b": "Kesultanan Delhi berdiri pada 1206. Pada masa ini India utara adalah tanah yang ditaklukkan Dinasti Ghuriyah setelah 1192.",
+  "ifat_1200": "Kesultanan Ifat berdiri pada 1285. Pada masa ini dataran tinggi Etiopia milik Dinasti Zagwe dan bagian timur milik Kesultanan Shewa dan lainnya.",
+  "melayu": "Sriwijaya merosot setelah serangan Chola pada abad ke-11 dan lenyap pada abad ke-13. Pada masa ini Sumatra adalah wilayah Melayu (Dharmasraya, Pagaruyung) dan lainnya, dan pada paruh akhir abad ke-14 masuk ke dalam pengaruh Majapahit.",
+  "burma_1300": "Dinasti Pagan runtuh setelah serbuan Mongol pada 1287, lalu Myanmar terpecah menjadi Pinya, Ava, Hanthawaddy, dan lainnya.",
+  "beylik_1400": "Kesultanan Rum berakhir pada 1308. Pada masa ini pedalaman Anatolia terdiri atas kepangeranan kecil Turki (beylik) seperti Karaman.",
+  "japan_1400": "Keshogunan Kamakura berakhir pada 1333. Masa ini termasuk zaman Keshogunan Muromachi.",
+  "horde_1400": "Gerombolan Putih dan Biru disatukan kembali di bawah Tokhtamysh sekitar 1380 sebagai Gerombolan Emas.",
+  "delhi_1400": "Setelah penjarahan Timur pada 1398, Kesultanan Delhi menyusut ke sekitar Delhi. Sumber menampilkan luas sebelumnya.",
+  "c_maurya_300": "Sekitar 303 SM Seleukos I menyerahkan provinsi-provinsi timurnya (Arakhosia, Gedrosia, dan lainnya) kepada Chandragupta Maurya. Sumber membiarkannya sebagai milik Seleukia. Batas diambil dari Cliopatria.",
+  "c_parthia_100": "Menjelang 141 SM Partia menguasai Iran dan Mesopotamia, dan Kerajaan Seleukia menyusut ke Suriah. Sumber menampilkan luas sebelumnya. Batas diambil dari Cliopatria.",
+  "c_jin_1200": "Song kehilangan Tiongkok utara kepada Jin pada 1127 (Song Selatan). Sumber memakai lagi batas tahun 1100. Batas diambil dari Cliopatria.",
+  "c_buyid_1200": "Dinasti Buwaihi berakhir pada 1062. Pada masa ini Iran dan Irak terbagi di antara Khwarezmia, Ghuriyah, Kekhalifahan Abbasiyah, dan lainnya. Wilayah dalam sumber diganti dengan negara-negara dari Cliopatria.",
+  "c_yuan_1400": "Yuan kehilangan Tiongkok daratan pada 1368 dan mundur ke dataran tinggi Mongolia (Yuan Utara). Tiongkok pada masa ini adalah Ming. Wilayah dalam sumber diganti dengan negara-negara dari Cliopatria.",
+  "c_chagatai_1500": "Sumber menggambarnya sebagai Kekhanan Chagatai, padahal termasuk wilayah Ming. Batas diambil dari Cliopatria.",
+  "c_horde_1500": "Gerombolan Putih bubar pada abad ke-15 menjadi Kekhanan Sibir, Kekhanan Kazakh, Gerombolan Nogai, dan lainnya. Wilayah dalam sumber diganti dengan negara-negara dari Cliopatria.",
+  "c_iraq_1530": "Utsmaniyah baru merebut Bagdad dan Irak pada 1534. Batas diambil dari Cliopatria.",
+  "jin_name": "‘Jin’ dalam sumber di sini adalah Dinasti Jin (晉), ditulis agar berbeda dari Jin bangsa Jurchen (金) pada abad ke-12.",
+  "c_tunis_1530": "Utsmaniyah merebut Tunisia pada 1574 (sempat pada 1534). Batas diambil dari Cliopatria.",
+  "c_hungary_1530": "Setelah Mohács (1526) dua raja memperebutkan Hongaria. Pemerintahan langsung Utsmaniyah dimulai dengan direbutnya Buda pada 1541. Batas diambil dari Cliopatria.",
+  "c_safavid_1650": "Ditetapkan sebagai wilayah Safawi oleh Perjanjian Zuhab (1639). Sumber menggambar jangkauan singkat Utsmaniyah pada akhir abad ke-16. Batas diambil dari Cliopatria.",
+  "c_ming_north": "Ming tidak menguasai dataran tinggi Mongolia di utara Tembok Besar. Batas diambil dari Cliopatria.",
+  "c_qing_mongolia": "Mongolia Dalam masuk Qing pada 1636, Khalkha (Mongolia Luar) pada 1691, Dzungaria pada 1757. Sumber menggabungkannya sebagai ‘kekhanan Asia Tengah’. Batas diambil dari Cliopatria.",
+  "c_ru_steppe": "Rusia menguasai Siberia selatan pada abad ke-17. Sumber menggabungkannya sebagai ‘kekhanan Asia Tengah’. Batas diambil dari Cliopatria.",
+  "c_amur": "Wilayah Qing menurut Perjanjian Nerchinsk (1689). Rusia baru memperolehnya pada 1858–60. Batas diambil dari Cliopatria.",
+  "c_mughal": "Mughal merebut India utara pada 1526 dan, di bawah Akbar, Gujarat (1573) serta Benggala (1576). Sumber membiarkannya sebagai ‘negara-negara Islam dan Hindu’. Batas diambil dari Cliopatria.",
+  "c_rajput_1600": "Sebagian besar kerajaan Rajput menjadi vasal Mughal di bawah Akbar (Mewar pada 1615). Batas diambil dari Cliopatria.",
+  "c_burma_1880": "Britania baru menganeksasi Burma Hulu pada 1886. Batas diambil dari Cliopatria.",
+  "rioplata_1815": "Río de la Plata lepas dari kekuasaan Spanyol setelah Revolusi Mei 1810 dan tidak pernah direbut kembali (kemerdekaan diproklamasikan 1816) — sumber menandainya sebagai milik Spanyol"
+ },
+ "patches": {
+  "yemen": {
+   "name": "Yaman",
+   "r": {
+    "1530": "Dataran tinggi Yaman (para imam Zaidiyah dan lainnya): Dinasti Tahiri runtuh oleh Mamluk pada 1517. Pendudukan penuh Utsmaniyah dimulai dengan Aden pada 1538 dan Sana'a pada 1547",
+    "1650": "Imamah Zaidi Yaman: Utsmaniyah mundur pada 1635 dan kembali pada 1849"
+   }
+  },
+  "macau": {
+   "name": "Makau",
+   "r": {
+    "1600": "Portugal (Makau): Izin bermukim 1557; kedaulatan diakui lewat perjanjian 1887",
+    "2010": "Tiongkok (Daerah Administratif Khusus): Diserahkan kembali pada 1999"
+   }
+  },
+  "philippines": {
+   "name": "Filipina (Luzon, Visayas)",
+   "r": {
+    "1600": "Spanyol: Cebu 1565, Manila didirikan 1571 — tanpa penguasa di data sumber"
+   }
+  },
+  "brazil_1600": {
+   "name": "Pesisir Brasil",
+   "r": {
+    "1600": "Portugal (Brasil): São Vicente 1532, Salvador 1549 — perkiraan wilayah pengaruh di sekitar permukiman pesisir; tanpa penguasa di data sumber"
+   }
+  },
+  "ngranada_1600": {
+   "name": "Granada Baru dan Venezuela",
+   "r": {
+    "1600": "Spanyol: Bogotá didirikan 1538 — perkiraan wilayah pengaruh; tanpa penguasa di data sumber"
+   }
+  },
+  "chile_1600": {
+   "name": "Chili tengah",
+   "r": {
+    "1600": "Spanyol: Santiago didirikan 1541. Setelah kekalahan di Curalaba (1598) bangsa Mapuche merebut kembali wilayah selatan Sungai Biobío — perkiraan wilayah pengaruh"
+   }
+  },
+  "rioplata_1600": {
+   "name": "Río de la Plata dan Tucumán",
+   "r": {
+    "1600": "Spanyol: Asunción 1537, Buenos Aires 1580 — perkiraan wilayah pengaruh"
+   }
+  },
+  "chesapeake_1650": {
+   "name": "Virginia dan Maryland",
+   "r": {
+    "1650": "Inggris: Jamestown 1607, Maryland 1634 — tidak ada di data sumber"
+   }
+  },
+  "newengland_1650": {
+   "name": "New England",
+   "r": {
+    "1650": "Inggris: Plymouth 1620, Teluk Massachusetts 1630 — tidak ada di data sumber"
+   }
+  },
+  "engcol_1700": {
+   "name": "Koloni Inggris di Amerika Utara",
+   "r": {
+    "1700": "Inggris: Koloni pesisir dari Carolina sampai Maine (menyerap Nieuw-Nederland pada 1664) — tidak ada di data sumber"
+   }
+  },
+  "nfrance_1650": {
+   "name": "Prancis Baru (Sungai St. Lawrence)",
+   "r": {
+    "1650": "Prancis: Quebec 1608, Montreal 1642 — tidak ada di data sumber"
+   }
+  },
+  "nfrance_lakes": {
+   "name": "Prancis Baru (St. Lawrence dan Danau-Danau Besar)",
+   "r": {
+    "1700": "Prancis: Perkiraan wilayah pengaruh di sekitar benteng dagang bulu — tidak ada di data sumber"
+   }
+  },
+  "louisiana_1715": {
+   "name": "Louisiana",
+   "r": {
+    "1715": "Prancis: Biloxi 1699, Mobile 1702 — perkiraan di sekitar pos di hilir Mississippi"
+   }
+  },
+  "gibraltar": {
+   "name": "Selat Gibraltar",
+   "r": {
+    "1492": "Spanyol (Kastilia): Direbut Kastilia pada 1462",
+    "1715": "Britania: Direbut 1704, diserahkan lewat Perjanjian Utrecht 1713"
+   }
+  },
+  "malacca": {
+   "name": "Selat Malaka (Malaka)",
+   "r": {
+    "1492": "Kesultanan Malaka",
+    "1530": "Portugal: Direbut 1511",
+    "1650": "Belanda (VOC): Direbut dari Portugal pada 1641",
+    "1815": "Britania (menduduki): Diduduki Britania 1795–1818; dipastikan milik Britania lewat Traktat London 1824",
+    "1880": "Britania (Negeri-Negeri Selat): Milik Britania lewat Traktat London 1824; Negeri-Negeri Selat sejak 1826",
+    "1945": "Britania (Negeri-Negeri Selat): Pendudukan Jepang 1942–45; Britania kembali 1945.9",
+    "1960": "Malaysia (Federasi Malaya): Merdeka 1957"
+   }
+  },
+  "singapore": {
+   "name": "Singapura",
+   "r": {
+    "1492": "Wilayah kerajaan-kerajaan Melayu: Sebelum ada pelabuhan modern",
+    "1815": "Kesultanan Johor: Raffles mendirikan pos dagang Britania pada 1819",
+    "1880": "Britania (Negeri-Negeri Selat): Pos dagang 1819, milik Britania sejak 1824",
+    "1945": "Britania (Negeri-Negeri Selat): Pendudukan Jepang 1942–45; Britania kembali 1945.9",
+    "1960": "Britania (negara berpemerintahan sendiri): Pemerintahan sendiri 1959, bagian Malaysia 1963, merdeka 1965",
+    "1994": "Singapura"
+   }
+  },
+  "hormuz": {
+   "name": "Selat Hormuz",
+   "r": {
+    "1492": "Kerajaan Hormuz",
+    "1530": "Portugal: Direbut 1515",
+    "1650": "Persia / Iran: Direbut kembali pada 1622 oleh Safawi bersama East India Company Inggris"
+   }
+  },
+  "cape": {
+   "name": "Tanjung Harapan (Cape Town)",
+   "r": {
+    "1492": "Wilayah suku Khoikhoi: Pos perbekalan VOC dibangun pada 1652",
+    "1700": "Belanda (VOC): Didirikan 1652",
+    "1815": "Britania: Diduduki 1806, diserahkan 1814",
+    "1914": "Uni Afrika Selatan (dominion Britania): Uni dibentuk 1910",
+    "1938": "Afrika Selatan: Praktis merdeka setelah Statuta Westminster (1931)"
+   }
+  },
+  "aden": {
+   "name": "Aden (Bab-el-Mandeb)",
+   "r": {
+    "1492": "Dinasti Tahiri: Ditaklukkan Utsmaniyah pada 1538",
+    "1600": "Kesultanan Utsmaniyah",
+    "1650": "Imamah Yaman / Kesultanan Lahej: Utsmaniyah mundur pada 1630-an",
+    "1880": "Britania: Direbut 1839",
+    "1960": "Britania: Direbut 1839; merdeka sebagai Yaman Selatan pada 1967",
+    "1994": "Yaman"
+   }
+  },
+  "malta": {
+   "name": "Malta",
+   "r": {
+    "1492": "Mahkota Aragon (Kerajaan Sisilia)",
+    "1530": "Ksatria Hospitaller (Ordo Malta): Diberikan Karl V pada 1530",
+    "1815": "Britania: Direbut 1800; milik Britania lewat Perjanjian Paris (1814)",
+    "1960": "Britania: Merdeka 1964",
+    "1994": "Malta"
+   }
+  },
+  "panama": {
+   "name": "Tanah Genting Panama",
+   "r": {
+    "1492": "Wilayah penduduk asli",
+    "1530": "Spanyol",
+    "1880": "Kolombia: Rel kereta Panama bermodal AS dibuka 1855",
+    "1914": "AS (Zona Terusan Panama): Panama merdeka dan Zona Terusan disewa pada 1903; terusan dibuka 1914",
+    "1994": "Panama (terusan dikelola AS): Yurisdiksi Zona Terusan dialihkan 1979; terusan diserahkan penuh 1999",
+    "2010": "Panama"
+   }
+  },
+  "hongkong": {
+   "name": "Hong Kong",
+   "r": {
+    "1492": "Ming / Qing",
+    "1880": "Britania: Diserahkan 1842 (Perjanjian Nanjing); Kowloon diserahkan 1860",
+    "1914": "Britania: Wilayah Baru disewa 99 tahun pada 1898",
+    "1945": "Britania: Pendudukan Jepang 1941–45; Britania kembali 1945.8",
+    "1960": "Britania: Wilayah Baru disewa 99 tahun pada 1898",
+    "1994": "Britania: Penyerahan 1997 ditetapkan Deklarasi Bersama Tiongkok–Britania (1984)",
+    "2010": "Tiongkok (Daerah Administratif Khusus): Diserahkan kembali 1997"
+   }
+  },
+  "taiwan": {
+   "name": "Selat Taiwan",
+   "r": {
+    "1492": "Wilayah penduduk asli",
+    "1650": "Belanda (VOC): Menguasai selatan 1624–62; Spanyol menguasai utara 1626–42",
+    "1700": "Qing: Menaklukkan kerajaan Zheng pada 1683",
+    "1914": "Jepang: Perjanjian Shimonoseki, 1895",
+    "1945": "Republik Tiongkok: Diambil alih 1945.10",
+    "1960": "Republik Tiongkok (Taiwan): Pemerintah Nasionalis pindah ke sini pada 1949"
+   }
+  },
+  "goa": {
+   "name": "Goa",
+   "r": {
+    "1492": "Kesultanan Bahmani / Kesultanan Bijapur",
+    "1530": "Portugal: Direbut 1510",
+    "1960": "Portugal: Direbut 1510; dicaplok India pada 1961.12",
+    "1994": "India"
+   }
+  },
+  "colombo": {
+   "name": "Kolombo (Sri Lanka)",
+   "r": {
+    "1492": "Kerajaan Kotte: Portugis tiba pada 1505. Mereka membangun benteng di Kolombo pada 1518, membongkarnya pada pertengahan 1520-an, dan hanya mempertahankan pos dagang",
+    "1600": "Portugal: Pada 1597 takhta Kotte diwarisi Raja Portugal. Direbut Belanda pada 1656",
+    "1700": "Belanda (VOC)",
+    "1815": "Britania: Diduduki 1796, diserahkan 1802",
+    "1960": "Sri Lanka (Ceylon): Merdeka 1948"
+   }
+  },
+  "quebec": {
+   "name": "Quebec (Sungai St. Lawrence)",
+   "r": {
+    "1492": "Wilayah penduduk asli: Didirikan Prancis pada 1608",
+    "1650": "Prancis",
+    "1783": "Britania: Direbut 1759, diserahkan 1763",
+    "1880": "Kanada (dominion Britania): Dominion Kanada dibentuk 1867",
+    "1914": "Kanada (dominion Britania)",
+    "1938": "Kanada: Praktis merdeka setelah Statuta Westminster (1931)"
+   }
+  }
+ }
+}

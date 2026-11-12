@@ -1,0 +1,312 @@
+{
+ "_": "fixes.json의 주석과 덧그린 영역 이름의 번역. patches는 hegemony/atlas의 en.json에서 옮겼다(r의 키는 시작 연도).",
+ "notes": {
+  "inca": "Inca lands left over from the 1530 data → Spanish Viceroyalty of Peru",
+  "quebec": "British after the Treaty of Paris (1763)",
+  "colony19": "A British colony — the source marks it separately as if independent",
+  "rupert": "Hudson's Bay Company territory (British)",
+  "malta": "British from 1800 (independent 1964)",
+  "ceylon": "Occupied 1796; British Crown colony from 1802",
+  "ph_es": "Spanish colony from 1565–71 (the interior and the Muslim south were outside its control)",
+  "habsburg_nl": "Habsburg Netherlands — ruled directly by Charles V and Philip II, of the Spanish line (the source files it under Austria)",
+  "aragon_italy": "Italian kingdoms of the Crown of Aragon — held by the king of Spain (the 1700 source wrongly gives Austria or Savoy)",
+  "milan_es": "Spanish Duchy of Milan from 1535 (to Austria in 1714)",
+  "spanish_nl": "Spanish Netherlands (south) — passed to Austria in 1714 (labelled ‘Luxembourg’ in the source)",
+  "luisiana_1783": "Spanish Louisiana (1762–1800) — the source wrongly gives France",
+  "formosa": "The Dutch were expelled from Taiwan in 1662 and the Qing took it in 1683 — the source's \"Dutch Formosa\" is an anachronism",
+  "egypt_ot": "Ottoman province (from 1517); de facto autonomous under Muhammad Ali's dynasty from 1805",
+  "guiana_1783": "Essequibo and Demerara were Dutch colonies in 1783 (British by occupation in 1796 and by treaty in 1814) — the source marks them as British",
+  "ur_3000": "Ur became dominant only in the 21st century BCE (Third Dynasty of Ur). This date is corrected to the period of rival Sumerian city-states.",
+  "hurrian_3000": "The Hurrians appear in records only from about 2300 BCE, so they are removed at this date.",
+  "hatti_2000": "The Hittite kingdom arose around 1650 BCE. Central Anatolia at this date is corrected to the Hattian city-states.",
+  "xia": "The Xia are known from later texts and are not an archaeologically confirmed dynasty (some link them to the Erlitou culture).",
+  "shang_1500": "The Zhou were founded in 1046 BCE. This date is corrected to the Shang. The source uses the same drawing for 1500, 1000 and 700 BCE.",
+  "urartu_1500": "The kingdom of Urartu arose in the 9th century BCE, so it is removed at this date.",
+  "nairi_1000": "The kingdom of Urartu arose in the 9th century BCE. This date is corrected to its forerunner, the Nairi tribal confederation.",
+  "canaan_1500": "The kingdom of David and Solomon belongs to the 10th century BCE. This date is corrected to the Canaanite city-states under Egyptian influence.",
+  "judah_700": "The united kingdom split around 930 BCE and northern Israel fell to Assyria in 722 BCE. What remained at this date was the kingdom of Judah, an Assyrian vassal.",
+  "phrygia_1500": "The Phrygians entered Anatolia only after about 1200 BCE, so they are removed at this date.",
+  "wu_1500": "Even by tradition the state of Wu dates from the 11th century BCE or later, so it is removed at this date.",
+  "saba_1500": "The Sabaean kingdom is attested only from about 1000 BCE, so it is removed at this date.",
+  "mycenae_1500": "This is before the polis. The date is corrected to the palace states of Mycenaean civilisation.",
+  "neohittite_1000": "The Hittite empire collapsed around 1180 BCE. This date is corrected to the Neo-Hittite states that followed.",
+  "assyria_700": "The Neo-Hittite states had been absorbed into the Neo-Assyrian Empire by the late 8th century BCE (Carchemish, 717 BCE).",
+  "assyria_700b": "The Aramaean kingdoms were conquered by the Neo-Assyrian Empire in the 8th century BCE (Damascus, 732 BCE). The source draws Assyria far too small at this date.",
+  "assyria_700c": "Babylonia was under the rule of Assyrian kings from 729 BCE (Sennacherib destroyed Babylon in 689 BCE). It regained independence in 626 BCE.",
+  "xiongnu_400": "The Xiongnu formed a confederation in 209 BCE (Modu Chanyu). At this date various nomadic tribes were scattered here, and the source's extent projects the later range backwards.",
+  "antigonus_300": "Antigonus died at the Battle of Ipsus in 301 BCE and his lands were divided. Lysimachus took most of Asia Minor (Seleucus took Syria and Ptolemy the south — an approximation).",
+  "numidia_200": "Syphax was defeated and captured in 203 BCE, and Numidia was united under Masinissa.",
+  "numidia_200b": "Gala died in 206 BCE, and his son Masinissa united Numidia.",
+  "shunga_100": "The Maurya Empire fell around 185 BCE and was succeeded by the Shunga dynasty.",
+  "yuezhi_100": "The Kushan Empire arose in the 1st century CE. At this date Bactria was held by the Yuezhi, with Indo-Greek and Saka powers mixed to the south.",
+  "sasan_300": "Parthia fell to the Sasanian dynasty in 224.",
+  "suren_300": "The Indo-Parthian kingdom of the house of Suren disappeared in the first half of the 3rd century; the region was ruled by the Sasanian Empire and its sub-kingdom (the Kushanshahs) — an approximation.",
+  "gupta_300": "The Guptas grew into an empire only from about 320, with the accession of Chandragupta I. The extent shown projects the later range backwards.",
+  "vakataka": "The Satavahana dynasty ended in the first half of the 3rd century. The Deccan passed to the Vakatakas and others.",
+  "qi_500": "The Eastern Jin ended in 420. The southern dynasty at this date was the Southern Qi (479–502).",
+  "tang_700": "The Sui ended in 618 and were succeeded by the Tang.",
+  "umayyad_700": "The Sasanian Empire fell to the Muslim conquest in 651. At this date the land belonged to the Umayyad Caliphate.",
+  "hejaz_700": "The Hejaz was the birthplace of the Islamic state and at this date belonged to the Umayyad Caliphate.",
+  "balhae_700": "Goguryeo fell in 668 and Balhae was founded in 698 (the southern part of old Goguryeo was held by Silla and the Tang — an approximation).",
+  "turgesh_700": "The Western Turkic Khaganate fell to the Tang in 657, and from about 699 the Türgesh took its place.",
+  "tibet_900": "The Tibetan Empire collapsed in 842, after which Tibet was split among many powers (the Era of Fragmentation).",
+  "uyghur_900": "The Uyghur Khaganate fell to the Kyrgyz in 840. At this date the Mongolian plateau was held by the Yenisei Kyrgyz and the Tianshan region by the Qocho and Ganzhou Uyghurs.",
+  "magyar_900": "The Avar Khaganate disappeared in the early 9th century, and the Magyars entered the Pannonian plain around 895.",
+  "carol_900": "The Carolingian Empire dissolved in 888. This area consists of successor kingdoms such as Italy and Burgundy.",
+  "norse_1000": "The union of Denmark and Norway dates from 1380. At this date this is Norway under the influence of the Danish king, plus independent Norse settlements (Iceland, Greenland).",
+  "xixia_1000": "Western Xia was founded in 1038. At this date this is its forerunner, the Tangut Dingnan military governorship.",
+  "khazar_1000": "The Khazar Khaganate was destroyed by Kievan Rus' in 965–969. Only remnants survived at this date.",
+  "daiviet_1000": "Vietnam became independent in 938 and founded Đại Cồ Việt in 968.",
+  "dali": "Nanzhao fell in 902 and was succeeded by the Dali Kingdom from 937.",
+  "mon_1100": "The Sukhothai Kingdom was founded in 1238. At this date this was the sphere of Mon states such as Lavo and Haripuñjaya and of the Khmer Empire.",
+  "tiwanaku_1200": "Tiwanaku collapsed around 1000–1100 and was followed by small Aymara kingdoms.",
+  "wari_1200": "Wari collapsed around 1000. Afterwards various regional powers coexisted in the Andes.",
+  "mongol_1200": "The Mongol Empire was founded in 1206. At this date Temüjin was still uniting the tribes of the Mongolian plateau.",
+  "jin_1200": "The Liao were destroyed by the Jin in 1125.",
+  "ayyubid_1200": "Saladin ended the Fatimid Caliphate in 1171, and the Ayyubid dynasty succeeded it.",
+  "ghurid_1200": "The Ghaznavids fell to the Ghurids in 1186.",
+  "ghurid_1200b": "The Delhi Sultanate was founded in 1206. At this date northern India was land conquered by the Ghurids after 1192.",
+  "ifat_1200": "The Ifat Sultanate was founded in 1285. At this date the Ethiopian highlands belonged to the Zagwe dynasty and the east to the Sultanate of Shewa and others.",
+  "melayu": "Srivijaya declined after the Chola raids of the 11th century and disappeared in the 13th. At this date Sumatra belonged to Melayu (Dharmasraya, Pagaruyung) and others, and in the later 14th century came under Majapahit influence.",
+  "burma_1300": "The Pagan dynasty collapsed after the Mongol invasion of 1287, and Myanmar then split into Pinya, Ava, Hanthawaddy and others.",
+  "beylik_1400": "The Sultanate of Rum ended in 1308. At this date inner Anatolia consisted of small Turkish principalities (beyliks) such as Karaman.",
+  "japan_1400": "The Kamakura shogunate ended in 1333. This date falls in the Muromachi shogunate.",
+  "horde_1400": "The White and Blue Hordes were reunited under Tokhtamysh around 1380 as the Golden Horde.",
+  "delhi_1400": "After Timur's sack in 1398 the Delhi Sultanate shrank to the area around Delhi. The source shows its earlier extent.",
+  "c_maurya_300": "Around 303 BCE Seleucus I ceded his eastern provinces (Arachosia, Gedrosia and others) to Chandragupta Maurya. The source left them as Seleucid. Boundary taken from Cliopatria.",
+  "c_parthia_100": "By 141 BCE Parthia held Iran and Mesopotamia, and the Seleucid kingdom had shrunk to Syria. The source shows the earlier extent. Boundary taken from Cliopatria.",
+  "c_jin_1200": "The Song lost northern China to the Jin in 1127 (Southern Song). The source reuses the borders of 1100. Boundary taken from Cliopatria.",
+  "c_buyid_1200": "The Buyid dynasty ended in 1062. At this date Iran and Iraq were divided among Khwarazm, the Ghurids, the Abbasid Caliphate and others. The source's area was replaced with Cliopatria's polities.",
+  "c_yuan_1400": "The Yuan lost China proper in 1368 and withdrew to the Mongolian plateau (Northern Yuan). China at this date is the Ming. The source's area was replaced with Cliopatria's polities.",
+  "c_chagatai_1500": "The source drew this as the Chagatai Khanate, but it lay within Ming territory. Boundary taken from Cliopatria.",
+  "c_horde_1500": "The White Horde broke up in the 15th century into the Khanate of Sibir, the Kazakh Khanate, the Nogai Horde and others. The source's area was replaced with Cliopatria's polities.",
+  "c_iraq_1530": "The Ottomans took Baghdad and Iraq only in 1534. Boundary taken from Cliopatria.",
+  "jin_name": "The source's ‘Jin’ here is the Jin dynasty (晉), written so as to distinguish it from the 12th-century Jurchen Jin (金).",
+  "c_tunis_1530": "The Ottomans took Tunisia in 1574 (briefly in 1534). Boundary taken from Cliopatria.",
+  "c_hungary_1530": "After Mohács (1526) two kings contested Hungary. Direct Ottoman rule began with the capture of Buda in 1541. Boundary taken from Cliopatria.",
+  "c_safavid_1650": "Confirmed as Safavid by the Treaty of Zuhab (1639). The source drew the brief Ottoman extent of the late 16th century. Boundary taken from Cliopatria.",
+  "c_ming_north": "The Ming did not rule the Mongolian plateau north of the Great Wall. Boundary taken from Cliopatria.",
+  "c_qing_mongolia": "Inner Mongolia came under the Qing in 1636, the Khalkha (Outer Mongolia) in 1691, Dzungaria in 1757. The source lumped this into ‘central Asian khanates’. Boundary taken from Cliopatria.",
+  "c_ru_steppe": "Russia took southern Siberia in the 17th century. The source lumped this into ‘central Asian khanates’. Boundary taken from Cliopatria.",
+  "c_amur": "Qing territory under the Treaty of Nerchinsk (1689). Russia gained it only in 1858–60. Boundary taken from Cliopatria.",
+  "c_mughal": "The Mughals took northern India in 1526 and, under Akbar, Gujarat (1573) and Bengal (1576). The source left this as ‘Islamic and Hindu states’. Boundary taken from Cliopatria.",
+  "c_rajput_1600": "Most Rajput kingdoms became Mughal vassals under Akbar (Mewar in 1615). Boundary taken from Cliopatria.",
+  "c_burma_1880": "Britain annexed Upper Burma only in 1886. Boundary taken from Cliopatria.",
+  "rioplata_1815": "The Río de la Plata left Spanish rule after the May Revolution of 1810 and was never reconquered (independence declared 1816) — the source marks it as Spanish"
+ },
+ "patches": {
+  "yemen": {
+   "name": "Yemen",
+   "r": {
+    "1530": "Yemeni highlands (Zaydi imams and others): The Tahirid dynasty fell to the Mamluks in 1517. Full Ottoman occupation began with Aden in 1538 and Sana'a in 1547",
+    "1650": "Zaydi Imamate of Yemen: The Ottomans withdrew in 1635 and returned in 1849"
+   }
+  },
+  "macau": {
+   "name": "Macau",
+   "r": {
+    "1600": "Portugal (Macau): Settlement allowed in 1557; sovereignty recognised by treaty in 1887",
+    "2010": "China (Special Administrative Region): Returned in 1999"
+   }
+  },
+  "philippines": {
+   "name": "Philippines (Luzon, Visayas)",
+   "r": {
+    "1600": "Spain: Cebu 1565, Manila founded 1571 — no sovereign in the source"
+   }
+  },
+  "brazil_1600": {
+   "name": "Coast of Brazil",
+   "r": {
+    "1600": "Portugal (Brazil): São Vicente 1532, Salvador 1549 — an approximate sphere around coastal settlements; no sovereign in the source"
+   }
+  },
+  "ngranada_1600": {
+   "name": "New Granada and Venezuela",
+   "r": {
+    "1600": "Spain: Bogotá founded 1538 — approximate sphere; no sovereign in the source"
+   }
+  },
+  "chile_1600": {
+   "name": "Central Chile",
+   "r": {
+    "1600": "Spain: Santiago founded 1541. After the defeat at Curalaba (1598) the Mapuche retook the land south of the Biobío — approximate sphere"
+   }
+  },
+  "rioplata_1600": {
+   "name": "Río de la Plata and Tucumán",
+   "r": {
+    "1600": "Spain: Asunción 1537, Buenos Aires 1580 — approximate sphere"
+   }
+  },
+  "chesapeake_1650": {
+   "name": "Virginia and Maryland",
+   "r": {
+    "1650": "England: Jamestown 1607, Maryland 1634 — missing in the source"
+   }
+  },
+  "newengland_1650": {
+   "name": "New England",
+   "r": {
+    "1650": "England: Plymouth 1620, Massachusetts Bay 1630 — missing in the source"
+   }
+  },
+  "engcol_1700": {
+   "name": "English North American colonies",
+   "r": {
+    "1700": "England: Coastal colonies from Carolina to Maine (absorbed New Netherland in 1664) — missing in the source"
+   }
+  },
+  "nfrance_1650": {
+   "name": "New France (St Lawrence)",
+   "r": {
+    "1650": "France: Quebec 1608, Montreal 1642 — missing in the source"
+   }
+  },
+  "nfrance_lakes": {
+   "name": "New France (St Lawrence and Great Lakes)",
+   "r": {
+    "1700": "France: Approximate sphere around the fur-trade forts — missing in the source"
+   }
+  },
+  "louisiana_1715": {
+   "name": "Louisiana",
+   "r": {
+    "1715": "France: Biloxi 1699, Mobile 1702 — approximate, around posts on the lower Mississippi"
+   }
+  },
+  "gibraltar": {
+   "name": "Strait of Gibraltar",
+   "r": {
+    "1492": "Spain (Castile): Taken by Castile in 1462",
+    "1715": "Britain: Captured 1704, ceded by the Treaty of Utrecht in 1713"
+   }
+  },
+  "malacca": {
+   "name": "Strait of Malacca (Malacca)",
+   "r": {
+    "1492": "Malacca Sultanate",
+    "1530": "Portugal: Captured 1511",
+    "1650": "Netherlands (VOC): Taken from Portugal in 1641",
+    "1815": "Britain (occupying): British occupation 1795–1818; confirmed British by the Anglo-Dutch Treaty of 1824",
+    "1880": "Britain (Straits Settlements): British by the Anglo-Dutch Treaty of 1824; Straits Settlements from 1826",
+    "1945": "Britain (Straits Settlements): Japanese occupation 1942–45; British return 1945.9",
+    "1960": "Malaysia (Federation of Malaya): Independent 1957"
+   }
+  },
+  "singapore": {
+   "name": "Singapore",
+   "r": {
+    "1492": "Lands of Malay kingdoms: Before a modern port existed",
+    "1815": "Johor Sultanate: Raffles set up a British trading post in 1819",
+    "1880": "Britain (Straits Settlements): Trading post 1819, British from 1824",
+    "1945": "Britain (Straits Settlements): Japanese occupation 1942–45; British return 1945.9",
+    "1960": "Britain (self-governing state): Self-government 1959, part of Malaysia 1963, independent 1965",
+    "1994": "Singapore"
+   }
+  },
+  "hormuz": {
+   "name": "Strait of Hormuz",
+   "r": {
+    "1492": "Kingdom of Hormuz",
+    "1530": "Portugal: Captured 1515",
+    "1650": "Persia / Iran: Retaken in 1622 by the Safavids with the English East India Company"
+   }
+  },
+  "cape": {
+   "name": "Cape of Good Hope (Cape Town)",
+   "r": {
+    "1492": "Khoikhoi lands: VOC supply station built in 1652",
+    "1700": "Netherlands (VOC): Founded 1652",
+    "1815": "Britain: Occupied 1806, ceded 1814",
+    "1914": "Union of South Africa (British dominion): Union formed 1910",
+    "1938": "South Africa: Effectively independent after the Statute of Westminster (1931)"
+   }
+  },
+  "aden": {
+   "name": "Aden (Bab-el-Mandeb)",
+   "r": {
+    "1492": "Tahirid dynasty: Ottoman conquest in 1538",
+    "1600": "Ottoman Empire",
+    "1650": "Yemeni Imamate / Sultanate of Lahej: Ottomans withdrew in the 1630s",
+    "1880": "Britain: Captured 1839",
+    "1960": "Britain: Captured 1839; independent as South Yemen in 1967",
+    "1994": "Yemen"
+   }
+  },
+  "malta": {
+   "name": "Malta",
+   "r": {
+    "1492": "Crown of Aragon (Kingdom of Sicily)",
+    "1530": "Knights Hospitaller (Order of Malta): Granted by Charles V in 1530",
+    "1815": "Britain: Taken 1800; British by the Treaty of Paris (1814)",
+    "1960": "Britain: Independent 1964",
+    "1994": "Malta"
+   }
+  },
+  "panama": {
+   "name": "Isthmus of Panama",
+   "r": {
+    "1492": "Indigenous lands",
+    "1530": "Spain",
+    "1880": "Colombia: US-financed Panama Railroad opened in 1855",
+    "1914": "USA (Panama Canal Zone): Panama independent and Canal Zone leased in 1903; canal opened 1914",
+    "1994": "Panama (canal run by the USA): Canal Zone jurisdiction transferred 1979; canal fully returned 1999",
+    "2010": "Panama"
+   }
+  },
+  "hongkong": {
+   "name": "Hong Kong",
+   "r": {
+    "1492": "Ming / Qing",
+    "1880": "Britain: Ceded 1842 (Treaty of Nanking); Kowloon ceded 1860",
+    "1914": "Britain: New Territories leased for 99 years in 1898",
+    "1945": "Britain: Japanese occupation 1941–45; British return 1945.8",
+    "1960": "Britain: New Territories leased for 99 years in 1898",
+    "1994": "Britain: Return in 1997 fixed by the Sino-British Joint Declaration (1984)",
+    "2010": "China (Special Administrative Region): Returned 1997"
+   }
+  },
+  "taiwan": {
+   "name": "Taiwan Strait",
+   "r": {
+    "1492": "Indigenous lands",
+    "1650": "Netherlands (VOC): Held the south 1624–62; Spain held the north 1626–42",
+    "1700": "Qing: Conquered the Zheng kingdom in 1683",
+    "1914": "Japan: Treaty of Shimonoseki, 1895",
+    "1945": "Republic of China: Taken over 1945.10",
+    "1960": "Republic of China (Taiwan): Nationalist government moved here in 1949"
+   }
+  },
+  "goa": {
+   "name": "Goa",
+   "r": {
+    "1492": "Bahmani Sultanate / Sultanate of Bijapur",
+    "1530": "Portugal: Captured 1510",
+    "1960": "Portugal: Captured 1510; annexed by India in 1961.12",
+    "1994": "India"
+   }
+  },
+  "colombo": {
+   "name": "Colombo (Ceylon)",
+   "r": {
+    "1492": "Kingdom of Kotte: Portuguese arrived in 1505. They built a fort at Colombo in 1518, dismantled it in the mid-1520s and kept only a trading post",
+    "1600": "Portugal: In 1597 the crown of Kotte passed to the King of Portugal. Taken by the Dutch in 1656",
+    "1700": "Netherlands (VOC)",
+    "1815": "Britain: Occupied 1796, ceded 1802",
+    "1960": "Sri Lanka (Ceylon): Independent 1948"
+   }
+  },
+  "quebec": {
+   "name": "Quebec (St Lawrence River)",
+   "r": {
+    "1492": "Indigenous lands: Founded by France in 1608",
+    "1650": "France",
+    "1783": "Britain: Captured 1759, ceded 1763",
+    "1880": "Canada (British dominion): Dominion of Canada created 1867",
+    "1914": "Canada (British dominion)",
+    "1938": "Canada: Effectively independent after the Statute of Westminster (1931)"
+   }
+  }
+ }
+}

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="{{lang}}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,7 +13,7 @@
 </head>
 <body>
 <div class="wrap">
-  <header><h1>{{title}}</h1><p>{{subtitle}}</p><a class="to" href="../atlas/">{{atlasLink}}</a></header>
+  <header><h1>{{title}}</h1><p>{{subtitle}}</p><a class="to" href="../atlas/">{{atlasLink}}</a><nav class="langs" aria-label="{{langAria}}">{{langs}}</nav></header>
   <div class="layout">
     <div>
       <div class="card mapcard">
@@ -41,7 +41,7 @@
 <script src="lib/topojson-client.min.js"></script>
 <script>
 (async function(){
-const UI = {{ui}};
+const UI = {{ui}}; const LANG='{{lang}}';
 const fmt=(s,o)=>s.replace(/\{(\w+)\}/g,(_,k)=>o[k]);
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const [IX, landT] = await Promise.all([fetch('index.json').then(r=>r.json()), fetch('data/land.json').then(r=>r.json())]);
@@ -49,7 +49,7 @@ const SN=IX.snaps, EN=IX.ents;
 const yl=y=>y===2026?UI.now:y<0?fmt(UI.bc,{y:-y}):fmt(UI.ad,{y});
 const ys=y=>y===2026?'2026':y<0?'BC '+(-y):String(y);
 const nm=e=>e.ko||e.n, nm2=e=>e.ko?`${esc(e.ko)}<small>${esc(e.n)}</small>`:esc(e.n);
-const km=a=>a<1?UI.areaT:a<1e4?fmt(UI.areaS,{v:(a<1000?Math.round(a):Math.round(a/100)*100).toLocaleString('ko')}):a>=1e6?fmt(UI.areaM,{v:(a/1e6).toLocaleString('ko',{maximumFractionDigits:a>=1e7?0:1})}):a>=1e4?fmt(UI.areaK,{v:Math.round(a/1e4).toLocaleString('ko')}):fmt(UI.areaS,{v:(Math.round(a/100)*100).toLocaleString('ko')});
+const km=a=>a<1?UI.areaT:a<1e4?fmt(UI.areaS,{v:(a<1000?Math.round(a):Math.round(a/100)*100).toLocaleString(LANG)}):a>=1e6?fmt(UI.areaM,{v:(a/1e6).toLocaleString(LANG,{maximumFractionDigits:a>=1e7?0:1})}):a>=1e4?fmt(UI.areaK,{v:Math.round(a/1e4).toLocaleString(LANG)}):fmt(UI.areaS,{v:(Math.round(a/100)*100).toLocaleString(LANG)});
 function rewind(f){const gm=f.geometry;if(!gm)return f;const ps=gm.type==='Polygon'?[gm.coordinates]:gm.type==='MultiPolygon'?gm.coordinates:[];for(const p of ps)for(let i=0;i<p.length;i++){if(d3.geoArea({type:'Polygon',coordinates:[p[i]]})>2*Math.PI)p[i]=p[i].slice().reverse();}return f;}
 const cache={}; const load=i=>cache[i]||=fetch(`data/${SN[i].y}.json`).then(r=>r.json()).then(t=>({w:topojson.feature(t,t.objects.w).features.map(rewind).filter(f=>f.geometry),d:t.objects.d?topojson.feature(t,t.objects.d).features.map(rewind):[]}));
 
@@ -152,7 +152,7 @@ function renderYears(){
 function renderPanel(){
   const s=SN[cur]; const all=s.top.map(([id,a])=>({id,a:a*1000,e:EN[id]}));
   const st=all.filter(o=>!o.e.ns), ns=all.filter(o=>o.e.ns);
-  const f=o=>!q||(o.e.n.toLowerCase().includes(q)||(o.e.ko||'').includes(q));
+  const f=o=>!q||(o.e.n.toLowerCase().includes(q)||(o.e.ko||'').toLowerCase().includes(q));
   const stf=st.filter(f), nsf=ns.filter(f);
   const su=supTop(s).map(([id,a])=>({id,a:a*1000,e:EN[id],sp:1})).filter(f);
   const li=o=>`<li data-id="${o.id}" class="${focus===o.id?'on':''}"><i class="${o.sp?'sp':''}" style="background-color:${o.e.ns?'var(--land)':o.e.c}"></i><span>${nm2(o.e)}</span><span class="a">${km(o.a)}</span></li>`;
