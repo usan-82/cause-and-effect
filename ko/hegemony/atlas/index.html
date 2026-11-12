@@ -101,6 +101,7 @@ ul.pts li{margin-bottom:8px}
 .warn{color:var(--loss);font-weight:500}
 .info .warn{margin-top:3px}
 .loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:13px;pointer-events:none}
+.simplelink{font-size:13px;font-weight:700;text-decoration:none;color:var(--c-blue);border:1px solid currentColor;border-radius:999px;padding:1px 10px;white-space:nowrap}
 .langs{display:flex;gap:10px;font-size:13px;margin-left:auto}
 .langs span{font-weight:700}
 .langs a{color:var(--ink2);text-decoration:none}
@@ -181,6 +182,7 @@ body.m .wrap{padding:0;max-width:none;height:100vh;height:100dvh;display:flex;fl
 body.m header{margin:0;padding:8px 10px 8px 14px;flex:0 0 auto;flex-wrap:nowrap;align-items:center;gap:8px}
 body.m header h1{font-size:16px;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 body.m header p{display:none}
+body.m .simplelink{flex:none;font-size:12px;padding:2px 9px}
 body.m .helpbtn{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:700 16px var(--sans),sans-serif;cursor:pointer}
 body.m .layout{flex:1;min-height:0;display:flex;flex-direction:column;gap:0}
 body.m .layout>div:first-child{flex:1;min-height:0;display:flex;flex-direction:column}
@@ -222,6 +224,7 @@ body.m .legend .chip{min-height:34px}
   <header>
     <h1>패권의 지도 1492–2010</h1>
     <p>연도별 국경 위에, 그 시기의 패권 경쟁 · 사건의 손익 · 기술 · 사상을 겹쳐 봅니다</p>
+    <a class="simplelink" id="simplelink" href="../atlas-simple/">쉬운 판</a>
     <nav class="langs" aria-label="언어"><span aria-current="page">한국어</span><a href="../../../en/hegemony/atlas/" hreflang="en" lang="en">English</a><a href="../../../id/hegemony/atlas/" hreflang="id" lang="id">Bahasa Indonesia</a></nav>
     <button class="helpbtn" id="helpbtn" aria-haspopup="dialog">?</button>
   </header>
@@ -255,6 +258,7 @@ body.m .legend .chip{min-height:34px}
 <script>
 (async function(){
 const UI = {"tabs":["패권 구도","사건과 손익","기술 발전","사상 발전","국가별 흐름"],"era":"{prev} 이후 → {year}년 무렵","eraFirst":"{year}년 무렵","gain":"이득","loss":"손실","readMore":"더 읽기","fixesTitle":"이 시점의 데이터 보정","andMore":" 외 {n}곳","others":"그 밖의 국가·세력","ckShown":"요충지 표시 중","ckHidden":"요충지 숨김","ckTitle":"요충지 점검 — {n}곳","ckTitleDiff":", 지도 색과 다른 곳 {m}곳","ckTitleOk":", 모두 지도와 일치","ckDiff":"⚠ 지도 색과 다름","ckAbsent":"(지도에 미표시)","ckRuler":"{year}년 무렵 지배:","ckAbsentLong":"원본 국경 데이터에는 이 지점이 그려져 있지 않습니다(작은 섬·거점). 이 표시가 검증된 값입니다.","ckDiffLong":"⚠ 지도 색과 다릅니다. 원본 국경 데이터는 이 지점을 {map}으로 그립니다. 거점·해협처럼 작은 지역이라 주변 영역에 묻혔거나 원본 표기가 틀린 경우입니다 — 이 표시가 검증된 값입니다.","ckMapNone":"표시하지 않은 영역","otherPower":"기타 세력","unnamed":"이름 없는 지역","srcSubj":"소속(원본)","cls":"분류","prec":"국경 정밀도","precVals":["대략","중간","정밀"],"noInfo":"정보 없음","fix":"보정","close":"닫기","status":{"rise":"부상","peak":"전성","hold":"유지","decline":"쇠퇴·흔들림","exit":"패권 퇴장(국가 존속)","end":"소멸"},"tiers":[["solid","공고"],["hold","유지"],["hatch","쇠퇴·흔들림"],["exit","패권 퇴장"]],"legendTitle":"{year}년 무렵 지배 세력","rival":"주역","trackAll":"이 시점 각 나라의 변화","trackAllNote":"직전 시점 이후 무엇이 바뀌었는지입니다. 나라를 누르면 그 나라의 전체 흐름이 나옵니다. 상태(부상·전성·쇠퇴 등)는 영토 면적이 아니라 당시 국제적 위상을 놓고 내린 해석입니다.","trackOne":"{name}의 흐름","trackBack":"← 모든 나라","trackNote":"연도를 누르면 그 시점의 지도로 이동합니다.","trackBefore":"{year}년 이전에는 이 지도에서 패권 세력으로 다루지 않음","trackAfter":"이후 시점에는 칠하지 않음","focusOff":"전체 보기","regionName":"그 시기 지역 이름","contested":"이 지역은 지배가 흔들리는 중(빗금)","bigViewShort":"크게","bigExitShort":"닫기","patched":"검증값으로 재표기","srcCs":"국경: CShapes 2.0","srcHb":"국경: historical-basemaps","csStatus":{"colony":"식민지","protectorate":"보호령","mandate":"위임통치령","occupied":"점령지","N/A":"지위 미상"},"ckTitlePatched":", 지도에 재표기 {p}곳","ckPatched":"재표기함","ckPatchedLong":"원본 지도에서 이 지점이 주변 영역에 묻히거나 잘못 표기되어 있어, 검증한 지배 세력으로 지도 자체를 다시 칠했습니다.","vTitle":"교차검증","vCs":"이 시점 국경은 CShapes 2.0({date} 기준)으로 다시 그렸습니다. 원래 쓰던 오픈소스(historical-basemaps)와 비교한 소속 일치율은 {agree}%입니다(면적 기준, 0.25° 격자 표본, 해안선 차이 제외). 요충지·지역 재표기 {p}곳.","vHb":"1886년 이전이라 교차 확인할 날짜 단위 데이터셋이 없습니다. historical-basemaps를 바탕으로 소속 표기 오류 {f}곳을 보정하고, 요충지·지역 {p}곳을 검증값으로 재표기했습니다.","vDiffs":"두 출처가 크게 어긋난 곳(원본 ↔ CShapes)","vAdopt":"어긋난 곳은 CShapes를 따랐습니다.","vExc":"CShapes와 다르게 표시하거나 설명을 덧붙인 곳","vNone":"소속 없음","areaM":"{v}백만 km²","areaK":"{v}만 km²","areaLabel":"영토 약 {a}","sparkTitle":"영토 면적(재계산)","sparkAria":"시점별 영토 면적 막대","colorKey":"국가 고유색 보기","colorKeyNote":"한 나라는 이름이 바뀌어도(예: 러시아→소련→러시아, 명→청→중국) 언제나 같은 색입니다. 지배력이 강해지거나 약해질 때는 색은 그대로 두고 진하기와 빗금만 달라집니다.","sparkNote":"면적은 이 지도에 칠해진 영역(식민지 포함)을 다시 계산한 값입니다. 1886년 이전은 명목상 영유권·세력권이 포함되어 실제 통제 범위보다 크게 나올 수 있습니다.","footnotes":"각주","vClio":"1886년 이전이라 날짜 단위 데이터셋은 없지만, 독립 자료 Cliopatria와 맞대어 강대국 소속을 비교했습니다. 일치율은 {agree}%입니다(두 자료가 모두 나라를 그린 곳 가운데 강대국 소속이 같은 비율, 0.5° 격자). historical-basemaps를 바탕으로 소속 표기 오류 {f}곳을 보정하고 요충지·지역 {p}곳을 재표기했으며, 그 가운데 {c}곳은 Cliopatria의 경계를 빌려 고쳤습니다.","vClioDiffs":"두 자료가 아직 다르게 그린 곳(이 지도 ↔ Cliopatria)","vClioNote":"남은 차이는 대부분 명목상 영유권을 어디까지 칠하느냐(스페인령 아메리카 내륙, 시베리아)와 종주권을 어떻게 보느냐(이집트, 티베트, 카자흐 초원)의 차이입니다. 어긋난다고 해서 이 지도가 틀렸다는 뜻은 아니며, Cliopatria도 오류가 있습니다. 경계를 빌려 고친 곳은 일치하는 것이 당연합니다.","vUnnamed":"(이름 없는 영역)","help":"도움말·출처"};
+const SIMPLE={"1492":1492,"1530":1600,"1600":1600,"1650":1715,"1700":1715,"1715":1715,"1783":1783,"1815":1815,"1880":1880,"1914":1914,"1920":1945,"1938":1945,"1945":1945,"1960":1960,"1994":1994,"2010":2010}; // 이 시점을 다루는 쉬운 판(atlas-simple)의 장
 const KEYS=['gb','fr','es','pt','nl','ru','ot','cn','us','de','at','jp','it','be','mg'];
 const ORDER={peak:0,rise:1,hold:2,decline:3,exit:4,end:5};
 const pc=k=>`var(--p-${k})`;
@@ -494,6 +498,7 @@ async function setYear(y,keepFocus){
   year=y; info.style.display='none'; selEl=null;
   if(focus && !statusOf(focus,y) && !keepFocus) focus=null;
   try{ if(location.hash!=='#y'+y) history.replaceState(null,'','#y'+y);}catch(e){}
+  const sy=SIMPLE[y]; document.getElementById('simplelink').href='../atlas-simple/'+(sy?'#y'+sy:'');
   renderYears(); renderLegend(); renderPanel(); await drawMap();
 }
 const step=dlt=>{const i=YEARS.indexOf(year)+dlt; if(i>=0&&i<YEARS.length) setYear(YEARS[i],true);};

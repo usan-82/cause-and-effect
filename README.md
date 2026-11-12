@@ -47,3 +47,15 @@
 > 지도·데이터 파일을 불러오는 구조라, 파일을 내려받아 더블클릭으로 열면 지도가 뜨지 않는다. 웹 주소나 로컬 서버(`python3 -m http.server`)로 연다.
 
 소스와 빌드 방법은 [`_src/hegemony/atlas/`](_src/hegemony/atlas/README.md).
+
+## 패권의 지도, 쉽게 읽기 / hegemony/atlas-simple
+
+패권의 지도를 중학생(전 세계 독자)이 읽을 수 있게 줄인 판. 16개 시점을 11장으로 묶고, 장마다 한 줄 요약 · 원인 → 결과 3단계 · 주인공 나라 · 낱말 풀이만 싣는다. 지도에는 주인공 나라만 칠한다. 휴대폰을 먼저 생각한 화면이고, 각 장에서 자세한 판의 같은 시점으로 건너갈 수 있다.
+
+| 언어 | 파일 | 웹 |
+|---|---|---|
+| 한국어 | [`ko/hegemony/atlas-simple/`](ko/hegemony/atlas-simple/index.html) | https://usan-82.github.io/cause-and-effect/ko/hegemony/atlas-simple/ |
+| English | [`en/hegemony/atlas-simple/`](en/hegemony/atlas-simple/index.html) | https://usan-82.github.io/cause-and-effect/en/hegemony/atlas-simple/ |
+| Bahasa Indonesia | [`id/hegemony/atlas-simple/`](id/hegemony/atlas-simple/index.html) | https://usan-82.github.io/cause-and-effect/id/hegemony/atlas-simple/ |
+
+소스와 빌드 방법은 [`_src/hegemony/atlas-simple/`](_src/hegemony/atlas-simple/README.md).

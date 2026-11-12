@@ -16,6 +16,7 @@
   <header>
     <h1>{{title}}</h1>
     <p>{{subtitle}}</p>
+    <a class="simplelink" id="simplelink" href="../atlas-simple/">{{simpleLink}}</a>
     <nav class="langs" aria-label="{{langAria}}">{{langs}}</nav>
     <button class="helpbtn" id="helpbtn" aria-haspopup="dialog">?</button>
   </header>
@@ -49,6 +50,7 @@
 <script>
 (async function(){
 const UI = {{ui}};
+const SIMPLE={{simpleMap}}; // 이 시점을 다루는 쉬운 판(atlas-simple)의 장
 const KEYS=['gb','fr','es','pt','nl','ru','ot','cn','us','de','at','jp','it','be','mg'];
 const ORDER={peak:0,rise:1,hold:2,decline:3,exit:4,end:5};
 const pc=k=>`var(--p-${k})`;
@@ -288,6 +290,7 @@ async function setYear(y,keepFocus){
   year=y; info.style.display='none'; selEl=null;
   if(focus && !statusOf(focus,y) && !keepFocus) focus=null;
   try{ if(location.hash!=='#y'+y) history.replaceState(null,'','#y'+y);}catch(e){}
+  const sy=SIMPLE[y]; document.getElementById('simplelink').href='../atlas-simple/'+(sy?'#y'+sy:'');
   renderYears(); renderLegend(); renderPanel(); await drawMap();
 }
 const step=dlt=>{const i=YEARS.indexOf(year)+dlt; if(i>=0&&i<YEARS.length) setYear(YEARS[i],true);};

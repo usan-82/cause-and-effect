@@ -71,6 +71,8 @@ const FIX=[
  [[1815], L('United Provinces of the Río de la Plata'), null, 'rioplata_1815'],
 ];
 function rewind(f){const gm=f.geometry;if(!gm)return f;const ps=gm.type==='Polygon'?[gm.coordinates]:gm.type==='MultiPolygon'?gm.coordinates:[];for(const p of ps)for(let i=0;i<p.length;i++){if(geoArea({type:'Polygon',coordinates:[p[i]]})>2*Math.PI)p[i]=p[i].slice().reverse();}return f;}
+// 쉬운 판(../atlas-simple)의 장이 흡수한 시점 → 그 장의 연도. 헤더의 '쉬운 판' 링크가 같은 시기로 가도록
+const SIMPLE_MAP=Object.fromEntries(JSON.parse(fs.readFileSync(new URL('../atlas-simple/struct.json',import.meta.url),'utf8')).chapters.flatMap(c=>c.from.map(y=>[y,c.year])));
 const LANGS=[['ko','한국어'],['en','English'],['id','Bahasa Indonesia']];
 const J=f=>JSON.parse(fs.readFileSync(path.join(HERE,f),'utf8'));
 const ST=J('struct.json');
@@ -212,6 +214,7 @@ for(const [lang] of LANGS.filter(([l])=>!ONLY.length||ONLY.includes(l))){
   for(const m of JSON.stringify(tx).matchAll(/\[\^(\w+)\]/g)) if(!(tx.notes||{})[m[1]]) throw new Error(`${lang}: 각주 ${m[1]} 없음`);
   const glossHtml=pg.glossary?`<div class="srcs gloss"><h4>${esc(pg.glossTitle)}</h4><dl>${pg.glossary.map(([t,d])=>`<dt>${esc(t)}</dt><dd>${esc(d)}</dd>`).join('')}</dl></div>`:'';
   let html=tpl.replace('{{sourcesHtml}}',srcHtml+glossHtml).replace('{{css}}',css).replace('{{langs}}',langs).replace('{{ui}}',JSON.stringify(pg.ui).replace(/</g,'\\u003c'));
+  html=html.replace('{{simpleMap}}',JSON.stringify(SIMPLE_MAP));
   for(const [k,v] of Object.entries(pg)) if(typeof v==='string') html=html.split('{{'+k+'}}').join(k.endsWith('Html')||k.startsWith('font')?v:esc(v));
   if(html.includes('{{')) throw new Error(`${lang}: 치환 안 된 자리표시자 `+html.match(/\{\{\w+\}\}/)[0]);
   const OUT=path.join(ROOT,lang,'hegemony','atlas');

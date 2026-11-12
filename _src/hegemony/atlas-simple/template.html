@@ -109,11 +109,16 @@ function fitStars(animate, keys){
   (animate ? svg.transition().duration(650) : svg).call(zoom.transform, t);
 }
 // 나라 이름: 가장 넓은 조각의 중심(그릴 때 한 번 계산하고, 줌할 때는 위치만 옮긴다)
+// 나라 이름은 본국에 붙인다(식민지가 더 넓어도). 본국 조각을 못 찾으면 가장 넓은 조각
+const HOME={gb:[-1.5,52.5],fr:[2.5,46.5],es:[-3.7,40],pt:[-8,39.6],nl:[5.3,52.2],ru:[37.6,55.8],ot:[32.8,39.9],cn:[114,34],
+  us:[-98,39],de:[10,51],at:[15,47.8],jp:[138,36],it:[12.5,42.5],be:[4.5,50.6],mg:[77,25]};
+function allParts(f){ const gm=f.geometry; if(!gm) return []; return (gm.type==='Polygon'?[gm.coordinates]:gm.coordinates).map(c=>({type:'Polygon',coordinates:c})); }
 let labBase=[];
 function computeLabels(){
   labBase = feats.filter(f=>f.properties.k).map(f=>{
-    let best=null, ba=0;
-    for(const p of mainParts(f)){ const a=path.area(p); if(a>ba){ba=a;best=p;} }
+    const k=f.properties.k, home=HOME[k];
+    let best = home ? allParts(f).find(p=>d3.geoContains(p, home)) : null, ba=0;
+    if(!best) for(const p of mainParts(f)){ const a=path.area(p); if(a>ba){ba=a;best=p;} }
     return {k:f.properties.k, c: best ? path.centroid(best) : [NaN,NaN]};
   }).filter(d=>isFinite(d.c[0]));
   const ch = CH[idx];

@@ -60,11 +60,12 @@ function check(lang, txt, pg) {
       if (len(s) > pg.maxSentence) errs.push(`${where}: 문장이 김(${len(s)}>${pg.maxSentence}) — ${s}`);
     const yrs = new Set(texts.join(' ').match(/(?<!\d)1\d{3}(?!\d)|(?<!\d)20\d{2}(?!\d)/g) || []);
     if (yrs.size > pg.maxYears) errs.push(`${where}: 연도가 많음(${[...yrs].join(', ')})`);
-    const words = new Set((c.words || []).map(w => w[0]));
+    const words = new Set((c.words || []).map(w => w[0].toLowerCase()));
     const all = texts.join(' ');
-    for (const term of pg.explain || []) {
-      const re = new RegExp(unit === 'word' ? `\\b${term}\\b` : `(^|[^가-힣])${term}`, unit === 'word' ? 'i' : '');
-      if (re.test(all) && !words.has(term)) errs.push(`${where}: '${term}' 낱말 풀이 필요`);
+    for (const entry of pg.explain || []) {           // 'colony|colonies' → 풀이 낱말은 첫 번째
+      const [key, ...alts] = entry.split('|');
+      const hit = [key, ...alts].some(term => (unit === 'word' ? new RegExp(`\\b${term}\\b`, 'i') : new RegExp(`(^|[^가-힣])${term}`)).test(all));
+      if (hit && !words.has(key.toLowerCase())) errs.push(`${where}: '${key}' 낱말 풀이 필요`);
     }
   }
   return errs;
