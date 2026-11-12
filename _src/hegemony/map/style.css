@@ -70,3 +70,15 @@ details.ver small{color:var(--muted)}details.ver .a{white-space:nowrap;font-vari
 .vbar{display:inline-block;width:70px;height:7px;border-radius:4px;background:color-mix(in srgb,var(--warn) 30%,var(--line));vertical-align:middle;overflow:hidden;margin:0 4px}
 .vbar i{display:block;height:100%;background:#2e9a5b}
 .vn{color:var(--muted)}
+.sup{stroke:var(--ink2);stroke-width:.5;stroke-dasharray:2.5 1.5;vector-effect:non-scaling-stroke;cursor:pointer;fill-opacity:.8}
+.sup.dimmed{opacity:.18}.sup.sel{stroke:var(--ink);stroke-width:1.5;stroke-dasharray:none}
+.supx{fill:url(#stripe);pointer-events:none}
+.lbl.sp{font-weight:500;font-style:italic}
+.supbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:2px 12px 8px}
+#supbtn{appearance:none;display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:5px 12px 5px 6px;font:500 13px var(--sans);cursor:pointer;min-height:34px}
+#supbtn .sw{width:30px;height:18px;border-radius:9px;background:var(--landline);position:relative;transition:background .15s}
+#supbtn .sw::after{content:"";position:absolute;left:2px;top:2px;width:14px;height:14px;border-radius:50%;background:var(--surface);transition:left .15s}
+#supbtn.on{border-color:var(--ink)}#supbtn.on .sw{background:var(--accent)}#supbtn.on .sw::after{left:14px}
+.supnote{font-size:12px;color:var(--muted);flex:1;min-width:180px}
+i.sp{background-image:repeating-linear-gradient(-45deg,transparent 0 2px,rgba(255,255,255,.65) 2px 3.5px)}
+.info .tag{display:inline-block;font-size:11px;border:1px dashed var(--ink2);border-radius:5px;padding:0 5px;color:var(--ink2);vertical-align:1px}

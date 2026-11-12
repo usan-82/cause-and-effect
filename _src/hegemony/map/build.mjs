@@ -35,10 +35,25 @@ const STEP=0.5, R=6371.0088, rad=Math.PI/180, NX=360/STEP, NY=180/STEP;
 const cellArea=lat=>R*R*STEP*rad*Math.abs(Math.sin((lat+STEP/2)*rad)-Math.sin((lat-STEP/2)*rad));
 const load=f=>{const t=JSON.parse(fs.readFileSync(path.join(RAW,f)));return feature(t,t.objects[Object.keys(t.objects)[0]]).features.map(fix).filter(x=>x.geometry);};
 
+const NSRE=new RegExp(TX.nonstate.regex,'i'), NSSET=new Set(TX.nonstate.list.map(canon));
+const isNs=n=>NSRE.test(n)||NSSET.has(n);
+const CLIO=J('clio.json');
 const HBFIX=[[1600,'Inca Empire','Spain']]; // 원본이 1530년 상태 그대로 둔 곳(잉카는 1572년까지 정복됨)
 const GRL=load('n_usa.json').find(f=>f.properties.ADM0_A3==='GRL');
+// 이름표 위치: 가장 큰 연결 덩어리 안에서 가장자리로부터 가장 먼 칸
+function labelsOf(cells){ const labels={};
+  for(const [id,arr] of cells){ const n=arr.length/2; const set=new Set(); for(let q=0;q<n;q++) set.add(arr[2*q+1]*NX+arr[2*q]);
+    let best=null; const seen=new Set();
+    for(const start of set){ if(seen.has(start)) continue; const comp=[start]; seen.add(start);
+      for(let h=0;h<comp.length;h++){const c=comp[h], ci=c%NX, cj=(c-ci)/NX; for(const [di,dj] of [[1,0],[-1,0],[0,1],[0,-1]]){const ni=(ci+di+NX)%NX, nj=cj+dj; if(nj<0||nj>=NY) continue; const k=nj*NX+ni; if(set.has(k)&&!seen.has(k)){seen.add(k);comp.push(k);}}}
+      let w=0; for(const c of comp) w+=cellArea(-90+STEP/2+((c-c%NX)/NX)*STEP); if(!best||w>best.w) best={w,comp}; }
+    // 덩어리 안에서 가장자리로부터 가장 먼 칸(여러 번 깎아 내기)
+    let cur=new Set(best.comp), last=cur; while(cur.size){ last=cur; const nx=new Set(); for(const c of cur){const ci=c%NX, cj=(c-ci)/NX; let inner=true; for(const [di,dj] of [[1,0],[-1,0],[0,1],[0,-1]]){const nj=cj+dj; if(nj<0||nj>=NY||!cur.has(nj*NX+((ci+di+NX)%NX))){inner=false;break;}} if(inner) nx.add(c);} cur=nx; }
+    const pick=[...last]; pick.sort((a,b)=>a-b); const c=pick[pick.length>>1]; const ci=c%NX, cj=(c-ci)/NX;
+    labels[id]=[+(-180+STEP/2+ci*STEP).toFixed(2), +(-90+STEP/2+cj*STEP).toFixed(2)]; }
+  return labels; }
 // ---- 1) 시점별 지물 읽기
-const ENT=new Map(); const ent=n=>{ if(!ENT.has(n)) ENT.set(n,{id:ENT.size,n,maxA:0,nb:new Set()}); return ENT.get(n); };
+const ENT=new Map(), EL=[]; const E0=i=>EL[i]; const ent=n=>{ if(!ENT.has(n)){ const o={id:ENT.size,n,maxA:0,nb:new Set()}; ENT.set(n,o); EL.push(o);} return ENT.get(n); };
 const out=[];
 for(const s of SNAPS){
   let feats=load(s.file), F=[];
@@ -67,26 +82,29 @@ for(const s of SNAPS){
       grid[j*NX+i]=E.id; area.set(E.id,(area.get(E.id)||0)+ca); (cells.get(E.id)||cells.set(E.id,[]).get(E.id)).push(i,j);}}
   for(let j=0;j<NY;j++)for(let i=0;i<NX;i++){const a=grid[j*NX+i]; if(a<0) continue; const b=grid[j*NX+((i+1)%NX)], c=j+1<NY?grid[(j+1)*NX+i]:-1;
     for(const o of [b,c]) if(o>=0&&o!==a){s.edges=(s.edges||new Set()).add(a<o?a+'_'+o:o+'_'+a);}}
-  for(const f of F) ent(f.e); // 격자에 안 잡힌 작은 나라도 등록
-  // 이름표 위치: 가장 큰 연결 덩어리의 중심에 가까운 칸
-  const labels={};
-  for(const [id,arr] of cells){ const n=arr.length/2; const set=new Set(); for(let q=0;q<n;q++) set.add(arr[2*q+1]*NX+arr[2*q]);
-    let best=null; const seen=new Set();
-    for(const start of set){ if(seen.has(start)) continue; const comp=[start]; seen.add(start);
-      for(let h=0;h<comp.length;h++){const c=comp[h], ci=c%NX, cj=(c-ci)/NX; for(const [di,dj] of [[1,0],[-1,0],[0,1],[0,-1]]){const ni=(ci+di+NX)%NX, nj=cj+dj; if(nj<0||nj>=NY) continue; const k=nj*NX+ni; if(set.has(k)&&!seen.has(k)){seen.add(k);comp.push(k);}}}
-      let w=0; for(const c of comp) w+=cellArea(-90+STEP/2+((c-c%NX)/NX)*STEP); if(!best||w>best.w) best={w,comp}; }
-    // 덩어리 안에서 가장자리로부터 가장 먼 칸(여러 번 깎아 내기)
-    let cur=new Set(best.comp), last=cur; while(cur.size){ last=cur; const nx=new Set(); for(const c of cur){const ci=c%NX, cj=(c-ci)/NX; let inner=true; for(const [di,dj] of [[1,0],[-1,0],[0,1],[0,-1]]){const nj=cj+dj; if(nj<0||nj>=NY||!cur.has(nj*NX+((ci+di+NX)%NX))){inner=false;break;}} if(inner) nx.add(c);} cur=nx; }
-    const pick=[...last]; pick.sort((a,b)=>a-b); const c=pick[pick.length>>1]; const ci=c%NX, cj=(c-ci)/NX;
-    labels[id]=[+(-180+STEP/2+ci*STEP).toFixed(2), +(-90+STEP/2+cj*STEP).toFixed(2)]; }
+  for(const f of F) ent(f.e).main=true; // 격자에 안 잡힌 작은 나라도 등록
+  const labels=labelsOf(cells);
   // 격자(0.5°)에 잡히지 않은 작은 나라: 도형 면적과 첫 꼭짓점 평균으로 보충
   const tiny=new Map(); for(const f of F){const id=ent(f.e).id; if(area.has(id)) continue; let ar=geoArea({type:'Feature',geometry:f.geometry}); if(ar>2*Math.PI) ar=4*Math.PI-ar; const t=tiny.get(id)||{a:0,best:0,ll:null}; const km2=ar*R*R; t.a+=km2; if(km2>=t.best){t.best=km2; const r=rings(f.geometry)[0]||[]; let sx=0,sy=0; for(const [x,y] of r){sx+=x;sy+=y;} t.ll=[+(sx/r.length).toFixed(2),+(sy/r.length).toFixed(2)];} tiny.set(id,t);}
   for(const [id,t] of tiny){ area.set(id,t.a); if(t.ll) labels[id]=t.ll; }
+  // 보충 층(Cliopatria에만 있는 땅). verify.mjs가 raw/sup/에 만들어 둔다. 이 지도가 나라로 칠한 칸은 건드리지 않는다
+  const sf=path.join(RAW,'sup',`${s.y}.json`);
+  if(fs.existsSync(sf)){
+    const S=JSON.parse(fs.readFileSync(sf)).features.map(fix).map(f=>({geometry:f.geometry,e:canon(CLIO.alias[f.properties.n]||f.properties.n),n:f.properties.n}));
+    const IS=mkIndex(S.map(x=>({type:'Feature',geometry:x.geometry,properties:{}})));
+    const g2=new Int32Array(NX*NY).fill(-1), sarea=new Map(), scells=new Map(), isSup=new Uint8Array(NX*NY);
+    for(let j=0;j<NY;j++){const lat=-90+STEP/2+j*STEP, ca=cellArea(lat);
+      for(let i=0;i<NX;i++){const q=j*NX+i, m=grid[q]; if(m>=0&&!isNs(E0(m).n)){g2[q]=m; continue;}
+        const o=at(IS,-180+STEP/2+i*STEP,lat); if(!o) continue; const id=ent(S[o.i].e).id; g2[q]=id; isSup[q]=1; sarea.set(id,(sarea.get(id)||0)+ca); (scells.get(id)||scells.set(id,[]).get(id)).push(i,j);}}
+    for(let j=0;j<NY;j++)for(let i=0;i<NX;i++){const q=j*NX+i, a=g2[q]; if(a<0) continue; const q1=j*NX+((i+1)%NX), q2=j+1<NY?(j+1)*NX+i:-1;
+      for(const qq of [q1,q2]){ if(qq<0) continue; const o=g2[qq]; if(o>=0&&o!==a&&(isSup[q]||isSup[qq])) (s.edges=s.edges||new Set()).add(a<o?a+'_'+o:o+'_'+a);}}
+    s.S=S.filter(x=>sarea.has(ent(x.e).id)); s.sarea=sarea; s.slabels=labelsOf(scells);
+  }
   s.F=F; s.area=area; s.labels=labels; out.push(s);
   console.log(s.y, s.src, 'features', F.length, 'entities', new Set(F.map(f=>f.e)).size);
 }
 const E=[...ENT.values()];
-for(const s of out){ for(const [id,a] of s.area) if(a>E[id].maxA) E[id].maxA=a; for(const k of s.edges||[]){const [a,b]=k.split('_').map(Number); E[a].nb.add(b); E[b].nb.add(a);} }
+for(const s of out){ for(const [id,a] of [...s.area,...(s.sarea||[])]) if(a>E[id].maxA) E[id].maxA=a; for(const k of s.edges||[]){const [a,b]=k.split('_').map(Number); E[a].nb.add(b); E[b].nb.add(a);} }
 
 // ---- 2) 색 배정: OKLCH 팔레트, 이웃과 가장 먼 색을 고른다
 function oklch2hex(L,C,h){const a=C*Math.cos(h*rad), b=C*Math.sin(h*rad);
@@ -96,12 +114,11 @@ function oklch2hex(L,C,h){const a=C*Math.cos(h*rad), b=C*Math.sin(h*rad);
 const PAL=[]; for(const [L,C,off] of [[0.70,0.13,0],[0.57,0.14,6],[0.82,0.10,3],[0.64,0.07,9]]) for(let h=0;h<360;h+=12) PAL.push({L,C,h:(h+off)%360,lab:[L,C*Math.cos((h+off)*rad),C*Math.sin((h+off)*rad)],hex:oklch2hex(L,C,(h+off)%360),used:0});
 const dist=(p,q)=>Math.hypot((p.lab[0]-q.lab[0])*1.2,p.lab[1]-q.lab[1],p.lab[2]-q.lab[2]);
 const GROUP=new Map(); for(const [g,ms] of Object.entries(TX.groups||{})){GROUP.set(g,g); for(const m of ms) GROUP.set(canon(m),g);}
-const NSRE=new RegExp(TX.nonstate.regex,'i'), NSSET=new Set(TX.nonstate.list.map(canon));
-for(const e of E){ e.ns=NSRE.test(e.n)||NSSET.has(e.n); e.g=GROUP.get(e.n)||e.n; }
+for(const e of E){ e.ns=e.main?isNs(e.n):false; e.x=!e.main; e.g=GROUP.get(e.n)||e.n; }
 // 묶음 단위 노드로 합친다
-const NODE=new Map(); for(const e of E){ let n=NODE.get(e.g); if(!n){n={k:e.g,maxA:0,nb:new Set(),ns:e.ns,members:[]};NODE.set(e.g,n);} n.members.push(e); n.maxA=Math.max(n.maxA,e.maxA); }
+const NODE=new Map(); for(const e of E){ let n=NODE.get(e.g); if(!n){n={k:e.g,maxA:0,nb:new Set(),ns:e.ns,x:true,members:[]};NODE.set(e.g,n);} n.members.push(e); if(!e.x) n.x=false; n.maxA=Math.max(n.maxA,e.maxA); }
 for(const e of E) for(const i of e.nb){ const o=E[i].g; if(o!==e.g) NODE.get(e.g).nb.add(o); }
-const order=[...NODE.values()].sort((a,b)=>(a.ns-b.ns)||b.maxA-a.maxA);
+const order=[...NODE.values()].sort((a,b)=>(a.ns-b.ns)||(a.x-b.x)||b.maxA-a.maxA); // 보충 층에만 나오는 나라는 나중에 칠해 본 지도의 색을 흔들지 않는다
 for(const e of order){ if(e.ns){ e.c=-1; for(const m of e.members) m.c=-1; continue; }
   const nbc=[...e.nb].map(k=>NODE.get(k).c).filter(c=>c!==undefined&&c>=0).map(c=>PAL[c]);
   let best=-1,bs=-1; PAL.forEach((p,i)=>{ const d=nbc.length?Math.min(...nbc.map(q=>dist(p,q))):1; const sc=d-p.used*0.004; if(sc>bs){bs=sc;best=i;} });
@@ -110,9 +127,11 @@ let clash=0, pairs=0; for(const e of E) for(const i of e.nb) if(i>e.id&&e.c>=0&&
 console.log('entities',E.length,'adjacent pairs',pairs,'near-identical neighbour colours',clash);
 
 // ---- 3) 한글 이름: 직접 쓴 사전 → Natural Earth의 NAME_KO
-const KO=new Map(Object.entries(TX.names));
+for(const [a,b] of Object.entries(CLIO.alias)) if(!ENT.get(canon(b))?.main&&!CLIO.ko[b]) console.log('clio.json alias 대상이 본 지도에 없음:',a,'→',b);
+const KO=new Map(Object.entries(TX.names)); for(const [k,v] of Object.entries(CLIO.ko)) if(!KO.has(k)) KO.set(k,v);
 { const t=JSON.parse(fs.readFileSync(path.join(RAW,'n_usa.json'))); for(const g of t.objects[Object.keys(t.objects)[0]].geometries){const p=g.properties; for(const k of [p.NAME,p.NAME_LONG,p.ADMIN,p.SOVEREIGNT]) if(k&&p.NAME_KO&&!KO.has(canon(k))&&(k===p.NAME||k===p.NAME_LONG||k===p.ADMIN)) KO.set(canon(k),p.NAME_KO);} }
 const ko=n=>KO.get(n)||KO.get(canon(n))||null;
+if(process.env.MISSINGX){ console.log(JSON.stringify(E.filter(e=>e.x&&!ko(e.n)).sort((a,b)=>b.maxA-a.maxA).map(e=>e.n))); }
 if(process.env.MISSING){ console.log(E.slice().sort((a,b)=>b.maxA-a.maxA).filter(e=>!ko(e.n)).slice(0,+process.env.MISSING).map(e=>`${e.n} (${(e.maxA/1e6).toFixed(2)})`).join(' | ')); }
 
 // ---- 4) 2026 분쟁 지역: 유엔(직접 정리) · 미국·한국(Natural Earth 관점 지도에서 읽음)
@@ -132,14 +151,18 @@ console.log('disputed areas',disp.length,'with UN note',disp.filter(d=>d.propert
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const OUT=path.join(ROOT,'ko','hegemony','map'); fs.mkdirSync(path.join(OUT,'data'),{recursive:true}); fs.mkdirSync(path.join(OUT,'lib'),{recursive:true});
 const VER=fs.existsSync(path.join(HERE,'verify.json'))?J('verify.json'):{};
-const index={snaps:[],ents:E.map(e=>({n:e.n,ko:ko(e.n),...(e.c>=0?{c:PAL[e.c].hex}:{ns:1})}))};
-let bytes=0;
+const index={snaps:[],ents:E.map(e=>({n:e.n,ko:ko(e.n),...(e.c>=0?{c:PAL[e.c].hex}:{ns:1}),...(e.x?{x:1}:{})}))};
+let bytes=0, sbytes=0; for(const f of fs.readdirSync(path.join(OUT,'data'))) if(/^s-?\d+\.json$/.test(f)) fs.rmSync(path.join(OUT,'data',f));
 for(const s of out){
   const fc={type:'FeatureCollection',features:s.F.map(f=>({type:'Feature',geometry:f.geometry,properties:{e:ENT.get(f.e).id,n:f.n,...(f.ko?{k:f.ko}:ko(f.n)?{k:ko(f.n)}:{}),...(f.b!=null?{b:f.b}:{}),...(f.st?{st:f.st}:{}),...(f.un?{un:1}:{})}}))};
   const objs={w:fc}; if(s.src==='ne') objs.d={type:'FeatureCollection',features:disp};
   const txt=JSON.stringify(topology(objs,1e5)); bytes+=txt.length; fs.writeFileSync(path.join(OUT,'data',`${s.y}.json`),txt);
   const top=[...s.area].sort((a,b)=>b[1]-a[1]).map(([id,a])=>[id,a>=1000?Math.round(a/1000):+(a/1000).toFixed(3)]);
-  index.snaps.push({y:s.y,src:s.src,date:s.date||null,top,labels:s.labels,...(VER[s.y]?{v:VER[s.y]}:{})});
+  let sup;
+  if(s.S&&s.S.length){ const sfc={type:'FeatureCollection',features:s.S.map(f=>({type:'Feature',geometry:f.geometry,properties:{e:ENT.get(f.e).id,n:f.n}}))};
+    const st=JSON.stringify(topology({s:sfc},1e5)); sbytes+=st.length; fs.writeFileSync(path.join(OUT,'data',`s${s.y}.json`),st);
+    sup={top:[...s.sarea].sort((a,b)=>b[1]-a[1]).map(([id,a])=>[id,Math.round(a/1000)]),labels:s.slabels}; }
+  index.snaps.push({y:s.y,src:s.src,date:s.date||null,top,labels:s.labels,...(VER[s.y]?{v:VER[s.y]}:{}),...(sup?{sup}:{})});
 }
 fs.writeFileSync(path.join(OUT,'index.json'),JSON.stringify(index));
 const land=JSON.parse(fs.readFileSync(path.join(HERE,'node_modules/world-atlas/land-110m.json'))); fs.writeFileSync(path.join(OUT,'data','land.json'),JSON.stringify(land));
@@ -150,4 +173,4 @@ let html=fs.readFileSync(path.join(HERE,'template.html'),'utf8').replace('{{css}
 for(const [k,v] of Object.entries(PG)) if(typeof v==='string') html=html.split('{{'+k+'}}').join(k.endsWith('Html')?v:esc(v));
 if(html.includes('{{')) throw new Error('치환 안 된 자리표시자 '+html.match(/\{\{\w+\}\}/)[0]);
 fs.writeFileSync(path.join(OUT,'index.html'),html);
-console.log('data bytes',(bytes/1e6).toFixed(1)+'MB','index',(JSON.stringify(index).length/1e3).toFixed(0)+'KB');
+console.log('data bytes',(bytes/1e6).toFixed(1)+'MB','supplement',(sbytes/1e6).toFixed(2)+'MB','index',(JSON.stringify(index).length/1e3).toFixed(0)+'KB');

@@ -80,6 +80,18 @@ details.ver small{color:var(--muted)}details.ver .a{white-space:nowrap;font-vari
 .vbar{display:inline-block;width:70px;height:7px;border-radius:4px;background:color-mix(in srgb,var(--warn) 30%,var(--line));vertical-align:middle;overflow:hidden;margin:0 4px}
 .vbar i{display:block;height:100%;background:#2e9a5b}
 .vn{color:var(--muted)}
+.sup{stroke:var(--ink2);stroke-width:.5;stroke-dasharray:2.5 1.5;vector-effect:non-scaling-stroke;cursor:pointer;fill-opacity:.8}
+.sup.dimmed{opacity:.18}.sup.sel{stroke:var(--ink);stroke-width:1.5;stroke-dasharray:none}
+.supx{fill:url(#stripe);pointer-events:none}
+.lbl.sp{font-weight:500;font-style:italic}
+.supbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:2px 12px 8px}
+#supbtn{appearance:none;display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:5px 12px 5px 6px;font:500 13px var(--sans);cursor:pointer;min-height:34px}
+#supbtn .sw{width:30px;height:18px;border-radius:9px;background:var(--landline);position:relative;transition:background .15s}
+#supbtn .sw::after{content:"";position:absolute;left:2px;top:2px;width:14px;height:14px;border-radius:50%;background:var(--surface);transition:left .15s}
+#supbtn.on{border-color:var(--ink)}#supbtn.on .sw{background:var(--accent)}#supbtn.on .sw::after{left:14px}
+.supnote{font-size:12px;color:var(--muted);flex:1;min-width:180px}
+i.sp{background-image:repeating-linear-gradient(-45deg,transparent 0 2px,rgba(255,255,255,.65) 2px 3.5px)}
+.info .tag{display:inline-block;font-size:11px;border:1px dashed var(--ink2);border-radius:5px;padding:0 5px;color:var(--ink2);vertical-align:1px}
 
 </style>
 </head>
@@ -98,20 +110,21 @@ details.ver small{color:var(--muted)}details.ver .a{white-space:nowrap;font-vari
       <div class="card" style="margin-top:10px">
         <div class="ctl"><button id="prev">‹</button><input type="range" id="slider" min="0" value="0" step="1"><button id="next">›</button></div>
         <div class="years" id="years"></div>
+        <div class="supbar"><button id="supbtn" role="switch" aria-checked="false"><span class="sw"></span><span id="suplbl"></span></button><span class="supnote" id="supnote"></span></div>
         <div class="key" id="key"></div>
         <div class="hint">나라마다 색이 하나씩 정해져 있고, 국경을 맞댄 나라끼리는 서로 다른 색입니다. 왕조나 국호가 바뀌어도 이어지는 나라(예: 한·당·명·청, 러시아 제국·러시아)는 같은 색을 씁니다. 색이 없는 땅은 그 시기의 나라 기록을 찾지 못한 곳입니다. 점무늬는 나라가 아니라 문화권이나 민족 집단으로 기록된 곳, 빗금은 분쟁 지역입니다. 지도나 목록에서 나라를 누르면 자세한 내용이 나옵니다.</div>
       </div>
     </div>
     <aside class="card panel" id="panel"></aside>
   </div>
-  <div class="foot"><b>읽을 때 유의할 점</b><br>· 1886년 이전은 37개 시점뿐이고, 그 사이의 변화는 그리지 않았습니다. 국경도 근대적인 국경선이 아니라 세력권을 어림한 것입니다.<br>· 원본 자료에 없는 나라는 표시하지 못했습니다. 색이 없다고 해서 사람이 살지 않았거나 나라가 없었다는 뜻이 아니라, 이 지도가 쓴 자료에서 기록을 찾지 못했다는 뜻입니다.<br>· 1886년 이전 자료는 식민지·속령의 소속 표기가 틀린 곳이 있습니다. 1492~2010년의 주요 강대국은 <a href="../atlas/">패권의 지도</a>에서 따로 바로잡았습니다.<br>· 점무늬(문화권·민족 집단)와 나라의 구분은 이름을 보고 기계적으로 나눈 것이라 정확하지 않을 수 있습니다. 아메리카·오스트레일리아 원주민 집단은 대부분 고유 이름 그대로 색을 칠했습니다.<br>· 2026년은 분쟁 지역을 유엔 → 미국 → 한국 순서로 우선해 칠했습니다. 유엔의 지도 데이터는 구하지 못해, 유엔의 표기 방식은 결의와 관행을 바탕으로 직접 정리했습니다. 미국·한국의 표기는 Natural Earth의 관점별 지도에서 읽었습니다.<br>· 2026년 지도는 유엔 회원국 193개국(2026년 9월 기준)과 옵서버 국가인 바티칸·팔레스타인, 유엔 비자치 지역인 서사하라를 따로 칠했습니다. 2019년 이후 새로 생기거나 사라진 회원국은 없습니다.<br>· 교차검증: 완성한 지도를 독립된 자료 Cliopatria(Seshat, 기원전 3400~2024)와 0.5° 격자로 맞대어 보고, 시점마다 결과를 오른쪽 ‘교차검증’ 칸에 실었습니다. 이 과정에서 드러난 오류 네 가지를 고쳤습니다: 1886~2019년 지도에서 빠져 있던 그린란드(덴마크령)를 보충했고, 1300·1400년에 하나로 묶여 있던 몽골 제국을 칸국별로 나눴고, 300년 로마의 분할 통치 구역을 로마 제국 하나로 합쳤고, 1600년에 남아 있던 잉카 제국을 스페인령으로 바꿨습니다.<br>· 면적은 지도를 0.5° 격자로 표본 추출해 계산한 근사값입니다.</div>
+  <div class="foot"><b>읽을 때 유의할 점</b><br>· 1886년 이전은 37개 시점뿐이고, 그 사이의 변화는 그리지 않았습니다. 국경도 근대적인 국경선이 아니라 세력권을 어림한 것입니다.<br>· 원본 자료에 없는 나라는 표시하지 못했습니다. 색이 없다고 해서 사람이 살지 않았거나 나라가 없었다는 뜻이 아니라, 이 지도가 쓴 자료에서 기록을 찾지 못했다는 뜻입니다.<br>· 1886년 이전 자료는 식민지·속령의 소속 표기가 틀린 곳이 있습니다. 1492~2010년의 주요 강대국은 <a href="../atlas/">패권의 지도</a>에서 따로 바로잡았습니다.<br>· 점무늬(문화권·민족 집단)와 나라의 구분은 이름을 보고 기계적으로 나눈 것이라 정확하지 않을 수 있습니다. 아메리카·오스트레일리아 원주민 집단은 대부분 고유 이름 그대로 색을 칠했습니다.<br>· 2026년은 분쟁 지역을 유엔 → 미국 → 한국 순서로 우선해 칠했습니다. 유엔의 지도 데이터는 구하지 못해, 유엔의 표기 방식은 결의와 관행을 바탕으로 직접 정리했습니다. 미국·한국의 표기는 Natural Earth의 관점별 지도에서 읽었습니다.<br>· 2026년 지도는 유엔 회원국 193개국(2026년 9월 기준)과 옵서버 국가인 바티칸·팔레스타인, 유엔 비자치 지역인 서사하라를 따로 칠했습니다. 2019년 이후 새로 생기거나 사라진 회원국은 없습니다.<br>· 교차검증: 완성한 지도를 독립된 자료 Cliopatria(Seshat, 기원전 3400~2024)와 0.5° 격자로 맞대어 보고, 시점마다 결과를 오른쪽 ‘교차검증’ 칸에 실었습니다. 이 과정에서 드러난 오류 네 가지를 고쳤습니다: 1886~2019년 지도에서 빠져 있던 그린란드(덴마크령)를 보충했고, 1300·1400년에 하나로 묶여 있던 몽골 제국을 칸국별로 나눴고, 300년 로마의 분할 통치 구역을 로마 제국 하나로 합쳤고, 1600년에 남아 있던 잉카 제국을 스페인령으로 바꿨습니다.<br>· Cliopatria 보충: ‘Cliopatria 보충’을 켜면 이 지도의 원자료에 기록이 없는 땅(빈 땅과 문화권으로만 적힌 곳)을 Cliopatria의 영역으로 채워 빗금으로 보여 줍니다. 이 지도가 이미 나라로 칠한 곳은 건드리지 않습니다. 보충한 영역은 Cliopatria의 경계를 그대로 옮긴 것이라 교차검증을 거치지 않았고, 원자료와 기준이 달라 이웃 나라와 경계가 매끄럽게 맞지 않을 수 있습니다. 두 자료의 해안선·국경이 어긋나 생기는 가는 띠(폭 약 30km 미만이거나 8,000km² 미만인 조각)는 뺐습니다. 교차검증 수치는 보충을 켜도 원자료 기준 그대로입니다.<br>· 면적은 지도를 0.5° 격자로 표본 추출해 계산한 근사값입니다.</div>
   <div class="srcs"><h4>출처</h4><ol><li><a href="https://github.com/aourednik/historical-basemaps" target="_blank" rel="noopener">기원전 3000 ~ 1880년 국경: historical-basemaps, André Ourednik 외 (GPL-3.0)</a></li><li><a href="https://icr.ethz.ch/data/cshapes/" target="_blank" rel="noopener">1886 ~ 2019년 국경·식민지: CShapes 2.0, Schvitz 외 (2022)</a></li><li><a href="https://www.naturalearthdata.com/" target="_blank" rel="noopener">2026년 국경, 미국·한국 관점, 분쟁 지역: Natural Earth (퍼블릭 도메인)</a></li><li><a href="https://github.com/Seshat-Global-History-Databank/cliopatria" target="_blank" rel="noopener">교차검증용 독립 자료: Cliopatria, Seshat Global History Databank (CC BY 4.0)</a></li><li><a href="https://github.com/topojson/world-atlas" target="_blank" rel="noopener">바탕 육지: world-atlas (Natural Earth 110m)</a></li><li><a href="https://en.wikipedia.org/wiki/Enlargement_of_the_United_Nations" target="_blank" rel="noopener">유엔 회원국 수(2026년 9월 기준 193개국): Wikipedia, Enlargement of the United Nations</a></li></ol></div>
 </div>
 <script src="lib/d3.min.js"></script>
 <script src="lib/topojson-client.min.js"></script>
 <script>
 (async function(){
-const UI = {"bc":"기원전 {y}년","ad":"{y}년","now":"2026년 10월","zoomIn":"확대","zoomOut":"축소","reset":"원래대로","big":"크게","bigExit":"닫기","prev":"이전 시점","next":"다음 시점","listTitle":"이 시점의 나라들","count":"나라 {n}곳 · 문화권·집단 {m}곳","search":"나라 이름 찾기","more":"더 보기 ({n}곳 남음)","nsTitle":"나라가 아닌 문화권·민족 집단(원본 자료의 표기)","showAll":"전체 보기","areaM":"{v}백만 km²","areaK":"{v}만 km²","areaS":"{v} km²","srcHb":"자료: historical-basemaps. 이 시기 국경은 세력권을 어림한 것입니다.","srcCs":"자료: CShapes 2.0 ({date} 기준). 식민지는 소유국 색으로 칠했습니다.","srcNe":"자료: Natural Earth. 분쟁 지역은 유엔 → 미국 → 한국 순으로 우선해 칠하고 빗금으로 표시했습니다.","gapNext":"다음 자료는 {y}","region":"지역","belongs":"소속","area":"이 시점 영토 약 {a}","prec":"국경 정밀도(원본)","precVals":["대략","중간","정밀"],"status":{"colony":"식민지","protectorate":"보호령","mandate":"위임통치령","occupied":"점령지","N/A":"지위 미상","leased":"조차지"},"ns":"나라가 아니라 문화권·민족 집단으로 기록된 곳입니다.","noRecord":"기록을 찾지 못한 지역","noRecordLong":"이 지도가 쓴 자료에는 {when} 이 지역에 있던 나라의 기록이 없습니다. 실제로 나라가 없었다는 뜻은 아닙니다.","unApplied":"유엔의 표기를 따라 칠했습니다.","dispTitle":"분쟁 지역 {n}곳","dispNote":"빗금 친 곳입니다. 누르면 유엔·미국·한국이 각각 어떻게 표기하는지 나옵니다.","un":"유엔","us":"미국 지도","kr":"한국 지도","unNone":"유엔의 표기 방식을 확인하지 못했습니다.","neNote":"현황(Natural Earth)","close":"닫기","noteTr":[["Admin\\. [Bb]y","실효 지배:"],["Self admin\\.","자체 통치"],["Claimed by","영유권 주장:"],["Leased to","조차:"],["Ceded to China by Pakistan","파키스탄이 중국에 양도"],[" and ",", "]],"areaT":"1 km² 미만","vTitle":"교차검증","vText":"독립된 자료 Cliopatria{yr}와 맞대어 본 결과입니다. 두 자료 모두 나라를 그린 땅의 {a}%에서 경계가 서로 대응합니다. 나라를 나누는 단위까지 같은 곳은 {s}%입니다.","vYr":"(2024년 기준)","vCover":"나라가 그려진 땅 — 둘 다: {b} · 이 지도만: {m} · Cliopatria만: {c}","vOnlyC":"Cliopatria에만 그려진 땅이 넓은 나라 (이 지도에서는 빈 땅이거나 문화권)","vConf":"두 자료가 다르게 그린 곳 (이 지도 ↔ Cliopatria)","vNote":"차이가 난다고 이 지도가 틀렸다는 뜻은 아닙니다. 두 자료 모두 추정이 섞여 있고, 식민지나 속국을 따로 그리느냐에 따라서도 달라집니다."};
+const UI = {"bc":"기원전 {y}년","ad":"{y}년","now":"2026년 10월","zoomIn":"확대","zoomOut":"축소","reset":"원래대로","big":"크게","bigExit":"닫기","prev":"이전 시점","next":"다음 시점","listTitle":"이 시점의 나라들","count":"나라 {n}곳 · 문화권·집단 {m}곳","search":"나라 이름 찾기","more":"더 보기 ({n}곳 남음)","nsTitle":"나라가 아닌 문화권·민족 집단(원본 자료의 표기)","showAll":"전체 보기","areaM":"{v}백만 km²","areaK":"{v}만 km²","areaS":"{v} km²","srcHb":"자료: historical-basemaps. 이 시기 국경은 세력권을 어림한 것입니다.","srcCs":"자료: CShapes 2.0 ({date} 기준). 식민지는 소유국 색으로 칠했습니다.","srcNe":"자료: Natural Earth. 분쟁 지역은 유엔 → 미국 → 한국 순으로 우선해 칠하고 빗금으로 표시했습니다.","gapNext":"다음 자료는 {y}","region":"지역","belongs":"소속","area":"이 시점 영토 약 {a}","prec":"국경 정밀도(원본)","precVals":["대략","중간","정밀"],"status":{"colony":"식민지","protectorate":"보호령","mandate":"위임통치령","occupied":"점령지","N/A":"지위 미상","leased":"조차지"},"ns":"나라가 아니라 문화권·민족 집단으로 기록된 곳입니다.","noRecord":"기록을 찾지 못한 지역","noRecordLong":"이 지도가 쓴 자료에는 {when} 이 지역에 있던 나라의 기록이 없습니다. 실제로 나라가 없었다는 뜻은 아닙니다.","unApplied":"유엔의 표기를 따라 칠했습니다.","dispTitle":"분쟁 지역 {n}곳","dispNote":"빗금 친 곳입니다. 누르면 유엔·미국·한국이 각각 어떻게 표기하는지 나옵니다.","un":"유엔","us":"미국 지도","kr":"한국 지도","unNone":"유엔의 표기 방식을 확인하지 못했습니다.","neNote":"현황(Natural Earth)","close":"닫기","noteTr":[["Admin\\. [Bb]y","실효 지배:"],["Self admin\\.","자체 통치"],["Claimed by","영유권 주장:"],["Leased to","조차:"],["Ceded to China by Pakistan","파키스탄이 중국에 양도"],[" and ",", "]],"areaT":"1 km² 미만","vTitle":"교차검증","vText":"독립된 자료 Cliopatria{yr}와 맞대어 본 결과입니다. 두 자료 모두 나라를 그린 땅의 {a}%에서 경계가 서로 대응합니다. 나라를 나누는 단위까지 같은 곳은 {s}%입니다.","vYr":"(2024년 기준)","vCover":"나라가 그려진 땅 — 둘 다: {b} · 이 지도만: {m} · Cliopatria만: {c}","vOnlyC":"Cliopatria에만 그려진 땅이 넓은 나라 (이 지도에서는 빈 땅이거나 문화권)","vConf":"두 자료가 다르게 그린 곳 (이 지도 ↔ Cliopatria)","vNote":"차이가 난다고 이 지도가 틀렸다는 뜻은 아닙니다. 두 자료 모두 추정이 섞여 있고, 식민지나 속국을 따로 그리느냐에 따라서도 달라집니다.","supBtn":"Cliopatria 보충","supOff":"꺼짐 — 켜면 이 지도에 기록이 없는 땅을 Cliopatria 자료로 채워 보여 줍니다.","supOn":"켜짐 — 빗금 친 {n}곳({a})은 Cliopatria에만 있는 영역입니다.","supNone":"켜짐 — 이 시점에는 보충할 영역이 없습니다.","supKey":"Cliopatria로 보충한 영역","supTitle":"Cliopatria로 보충한 나라 {n}곳","supSub":"이 지도의 원자료에는 없고 Cliopatria에만 있는 영역입니다. 면적은 보충한 부분만 센 것입니다.","supTag":"보충","supArea":"보충한 영역 약 {a}","supName":"Cliopatria의 이름: {n}","supOnly":"이 지도의 원자료에는 없는 나라입니다. Cliopatria의 경계를 그대로 옮긴 것이라 교차검증을 거치지 않았습니다.","supSame":"이 지도에 있는 나라이지만, 이 부분은 Cliopatria에만 그려져 있습니다. 교차검증을 거치지 않았습니다."};
 const fmt=(s,o)=>s.replace(/\{(\w+)\}/g,(_,k)=>o[k]);
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const [IX, landT] = await Promise.all([fetch('index.json').then(r=>r.json()), fetch('data/land.json').then(r=>r.json())]);
@@ -123,19 +136,23 @@ const km=a=>a<1?UI.areaT:a<1e4?fmt(UI.areaS,{v:(a<1000?Math.round(a):Math.round(
 function rewind(f){const gm=f.geometry;if(!gm)return f;const ps=gm.type==='Polygon'?[gm.coordinates]:gm.type==='MultiPolygon'?gm.coordinates:[];for(const p of ps)for(let i=0;i<p.length;i++){if(d3.geoArea({type:'Polygon',coordinates:[p[i]]})>2*Math.PI)p[i]=p[i].slice().reverse();}return f;}
 const cache={}; const load=i=>cache[i]||=fetch(`data/${SN[i].y}.json`).then(r=>r.json()).then(t=>({w:topojson.feature(t,t.objects.w).features.map(rewind).filter(f=>f.geometry),d:t.objects.d?topojson.feature(t,t.objects.d).features.map(rewind):[]}));
 
+const scache={}; const loadS=i=>!SN[i].sup?Promise.resolve([]):(scache[i]||=fetch(`data/s${SN[i].y}.json`).then(r=>r.json()).then(t=>topojson.feature(t,t.objects.s).features.map(rewind).filter(f=>f.geometry)));
+let supOn=false; try{supOn=localStorage.getItem('map.sup')==='1';}catch(e){}
 const W=960,H=500, svg=d3.select('#map').attr('viewBox',`0 0 ${W} ${H}`);
 const defs=svg.append('defs');
 const hp=defs.append('pattern').attr('id','hatch').attr('patternUnits','userSpaceOnUse').attr('width',3).attr('height',3).attr('patternTransform','rotate(45)');
 hp.append('rect').attr('width',3).attr('height',3).style('fill','rgba(255,255,255,.25)'); hp.append('rect').attr('width',1).attr('height',3).style('fill','var(--ink)');
 const dp=defs.append('pattern').attr('id','dots').attr('patternUnits','userSpaceOnUse').attr('width',3.2).attr('height',3.2);
 dp.append('rect').attr('width',3.2).attr('height',3.2).style('fill','var(--land)'); dp.append('circle').attr('cx',1.6).attr('cy',1.6).attr('r',.55).style('fill','var(--muted)');
+const sp=defs.append('pattern').attr('id','stripe').attr('patternUnits','userSpaceOnUse').attr('width',2.4).attr('height',2.4).attr('patternTransform','rotate(-45)');
+sp.append('rect').attr('width',1).attr('height',2.4).style('fill','var(--surface)').style('opacity',.6);
 const proj=d3.geoNaturalEarth1().fitExtent([[6,6],[W-6,H-6]],{type:'Sphere'}), path=d3.geoPath(proj);
 const g=svg.append('g');
 g.append('path').attr('class','sphere').attr('d',path({type:'Sphere'}));
 g.append('path').attr('class','grat').attr('d',path(d3.geoGraticule10()));
 const landF=topojson.feature(landT,landT.objects.land);
 g.append('path').attr('class','land').attr('d',path(landF)).on('click',()=>{clearSel(); show(`<b class="t">${esc(UI.noRecord)}</b><div class="meta">${esc(fmt(UI.noRecordLong,{when:yl(SN[cur].y)}))}</div>`);});
-const gP=g.append('g'), gD=g.append('g'), gL=g.append('g');
+const gP=g.append('g'), gS=g.append('g'), gS2=g.append('g'), gD=g.append('g'), gL=g.append('g');
 let k=1, cur=SN.length-1, focus=null, selEl=null, q='', limit=40, T=d3.zoomIdentity;
 const small=()=>document.getElementById('map').clientWidth<640;
 const zoom=d3.zoom().scaleExtent([1,40]).translateExtent([[0,0],[W,H]]).on('zoom',e=>{T=e.transform;k=T.k;g.attr('transform',T);layoutLabels();});
@@ -151,7 +168,15 @@ const info=document.getElementById('info');
 function show(html){info.innerHTML=`<button class="x" aria-label="${esc(UI.close)}">×</button>`+html;info.style.display='block';info.querySelector('.x').onclick=()=>{info.style.display='none';clearSel();};}
 function clearSel(){if(selEl)selEl.classList.remove('sel');selEl=null;}
 const fillOf=e=>e.ns?'url(#dots)':e.c;
+const supTop=s=>supOn&&s.sup?s.sup.top:[];
 const areaOf=id=>{const r=SN[cur].top.find(t=>t[0]===id);return r?r[1]*1000:0;};
+const supAreaOf=id=>{const r=supTop(SN[cur]).find(t=>t[0]===id);return r?r[1]*1000:0;};
+const labelOf=id=>SN[cur].labels[id]||(supOn&&SN[cur].sup&&SN[cur].sup.labels[id])||null;
+function supInfo(id,p){ const e=EN[id], a=supAreaOf(id);
+  let h=`<b class="t">${esc(nm(e))}</b>${e.ko?` <span class="meta">${esc(e.n)}</span>`:''} <span class="tag">${esc(UI.supTag)}</span>`;
+  if(a) h+=`<div>${esc(fmt(UI.supArea,{a:km(a)}))}</div>`;
+  if(p&&p.n&&p.n!==e.n) h+=`<div class="meta">${esc(fmt(UI.supName,{n:p.n}))}</div>`;
+  return h+`<div class="meta">${esc(e.x?UI.supOnly:UI.supSame)}</div>`; }
 function entInfo(id,p){
   const e=EN[id], a=areaOf(id);
   let h=`<b class="t">${esc(nm(e))}</b>${e.ko?` <span class="meta">${esc(e.n)}</span>`:''}`;
@@ -181,17 +206,22 @@ function layoutLabels(){
   });
 }
 async function draw(){
-  const i=cur, s=SN[i]; const D=await load(i); if(i!==cur) return;
+  const i=cur, s=SN[i]; const [D,S0]=await Promise.all([load(i),supOn?loadS(i):[]]); if(i!==cur) return; const S=supOn?S0:[];
   document.getElementById('loading').style.display='none';
   gP.selectAll('path').data(D.w,(d,j)=>s.y+'_'+j).join('path').attr('class','poly').attr('d',path).style('fill',d=>fillOf(EN[d.properties.e]))
     .classed('dimmed',d=>focus!==null&&d.properties.e!==focus)
     .on('click',function(e,d){e.stopPropagation();clearSel();selEl=this;this.classList.add('sel');show(entInfo(d.properties.e,d.properties));});
+  gS.selectAll('path').data(S,(d,j)=>s.y+'s'+j).join('path').attr('class','sup').attr('d',path).style('fill',d=>EN[d.properties.e].c)
+    .classed('dimmed',d=>focus!==null&&d.properties.e!==focus)
+    .on('click',function(e,d){e.stopPropagation();clearSel();selEl=this;this.classList.add('sel');show(supInfo(d.properties.e,d.properties));});
+  gS2.selectAll('path').data(S,(d,j)=>s.y+'s'+j).join('path').attr('class','supx').attr('d',path);
   gD.selectAll('path').data(D.d,(d,j)=>s.y+'d'+j).join('path').attr('class','disp').attr('d',path).on('click',(e,d)=>{e.stopPropagation();clearSel();show(dispInfo(d.properties));});
-  LBL=s.top.filter(([id])=>s.labels[id]).slice(0,400).map(([id],rank)=>{const [x,y]=proj(s.labels[id]);return {id,x,y,rank,text:nm(EN[id]),ns:EN[id].ns};});
-  gL.selectAll('text').data(LBL,d=>d.id).join('text').attr('class',d=>'lbl'+(d.ns?' ns':'')).attr('x',d=>d.x).attr('y',d=>d.y).attr('dy','.35em').text(d=>d.text);
+  const sl=supOn&&s.sup?s.sup.top.filter(([id])=>s.sup.labels[id]&&!s.labels[id]).map(([id,a])=>[id,a,s.sup.labels[id],1]):[];
+  LBL=[...s.top.filter(([id])=>s.labels[id]).map(([id,a])=>[id,a,s.labels[id],0]),...sl].sort((a,b)=>b[1]-a[1]).slice(0,400).map(([id,a,ll,sp],rank)=>{const [x,y]=proj(ll);return {id,x,y,rank,text:nm(EN[id]),ns:EN[id].ns,sp};});
+  gL.selectAll('text').data(LBL,d=>d.id).join('text').attr('class',d=>'lbl'+(d.ns?' ns':'')+(d.sp?' sp':'')).attr('x',d=>d.x).attr('y',d=>d.y).attr('dy','.35em').text(d=>d.text);
   layoutLabels();
   document.getElementById('badge').textContent=yl(s.y);
-  [i-1,i+1].forEach(j=>SN[j]&&load(j));
+  [i-1,i+1].forEach(j=>SN[j]&&(load(j),supOn&&loadS(j)));
   drawDispList(D.d);
 }
 function renderYears(){
@@ -206,7 +236,8 @@ function renderPanel(){
   const st=all.filter(o=>!o.e.ns), ns=all.filter(o=>o.e.ns);
   const f=o=>!q||(o.e.n.toLowerCase().includes(q)||(o.e.ko||'').includes(q));
   const stf=st.filter(f), nsf=ns.filter(f);
-  const li=o=>`<li data-id="${o.id}" class="${focus===o.id?'on':''}"><i style="background:${o.e.ns?'var(--land)':o.e.c}"></i><span>${nm2(o.e)}</span><span class="a">${km(o.a)}</span></li>`;
+  const su=supTop(s).map(([id,a])=>({id,a:a*1000,e:EN[id],sp:1})).filter(f);
+  const li=o=>`<li data-id="${o.id}" class="${focus===o.id?'on':''}"><i class="${o.sp?'sp':''}" style="background-color:${o.e.ns?'var(--land)':o.e.c}"></i><span>${nm2(o.e)}</span><span class="a">${km(o.a)}</span></li>`;
   const src=s.src==='hb'?UI.srcHb:s.src==='cs'?fmt(UI.srcCs,{date:s.date}):UI.srcNe;
   const next=SN[cur+1];
   document.getElementById('panel').innerHTML=
@@ -217,11 +248,12 @@ function renderPanel(){
     `<ul class="ents" id="ents">${stf.slice(0,limit).map(li).join('')}</ul>`+
     (stf.length>limit?`<button class="linkbtn" id="more">${esc(fmt(UI.more,{n:stf.length-limit}))}</button>`:'')+
     (nsf.length?`<div class="sec"><h3>${esc(UI.nsTitle)}</h3><ul class="ents">${nsf.slice(0,q?60:12).map(li).join('')}</ul></div>`:'')+
+    (su.length?`<div class="sec"><h3>${esc(fmt(UI.supTitle,{n:su.length}))}</h3><p class="sub">${esc(UI.supSub)}</p><ul class="ents">${su.slice(0,q?80:30).map(li).join('')}</ul></div>`:'')+
     `<div id="displist"></div>`;
   const si=document.getElementById('search'); si.oninput=()=>{q=si.value.trim().toLowerCase();limit=40;const p=si.selectionStart;renderPanel();const n=document.getElementById('search');n.focus();n.setSelectionRange(p,p);};
   document.querySelectorAll('ul.ents li').forEach(l=>l.onclick=()=>pick(+l.dataset.id));
   const m=document.getElementById('more'); if(m) m.onclick=()=>{limit+=80;renderPanel();};
-  const u=document.getElementById('unf'); if(u) u.onclick=()=>{focus=null;gP.selectAll('path').classed('dimmed',false);renderPanel();};
+  const u=document.getElementById('unf'); if(u) u.onclick=()=>{focus=null;gP.selectAll('path').classed('dimmed',false);gS.selectAll('path').classed('dimmed',false);renderPanel();};
   if(cache[cur]) cache[cur].then(D=>drawDispList(D.d));
 }
 function verifyHtml(s){ const v=s.v; if(!v||v.agree==null) return '';
@@ -238,12 +270,16 @@ function drawDispList(d){ const el=document.getElementById('displist'); if(!el) 
   el.querySelectorAll('li').forEach(l=>l.onclick=()=>{const p=d[+l.dataset.i].properties; show(dispInfo(p)); const [x,y]=proj(p.ll); flyTo(x,y,Math.max(k,8));});
 }
 function flyTo(x,y,z){ svg.transition().duration(600).call(zoom.transform,d3.zoomIdentity.translate(W/2,H/2).scale(z).translate(-x,-y)); document.querySelector('.mapcard').scrollIntoView({behavior:'smooth',block:'nearest'}); }
-function pick(id){ focus=focus===id?null:id; gP.selectAll('path').classed('dimmed',d=>focus!==null&&d.properties.e!==focus); renderPanel();
-  if(focus!==null){ show(entInfo(id,null)); const ll=SN[cur].labels[id]; if(ll){const [x,y]=proj(ll); const a=areaOf(id); flyTo(x,y,a>8e6?1.6:a>2e6?2.6:a>4e5?4.5:8);} } }
-function renderKey(){ document.getElementById('key').innerHTML=`<span><i style="background:var(--land)"></i>${esc(UI.noRecord)}</span><span><svg width="16" height="12"><rect width="16" height="12" rx="3" fill="url(#dots)" stroke="var(--landline)"/></svg>${esc(UI.nsTitle.split('(')[0])}</span>`+(SN[cur].src==='ne'?`<span><svg width="16" height="12"><rect width="16" height="12" rx="3" fill="url(#hatch)" stroke="var(--ink)"/></svg>${esc(fmt(UI.dispTitle,{n:''}).replace(/\s*곳$/,''))}</span>`:''); }
-function go(i){ if(i<0||i>=SN.length) return; const keep=focus!==null&&SN[i].top.some(t=>t[0]===focus); cur=i; if(!keep) focus=null; limit=40; info.style.display='none'; clearSel();
+function pick(id){ focus=focus===id?null:id; for(const G of [gP,gS]) G.selectAll('path').classed('dimmed',d=>focus!==null&&d.properties.e!==focus); renderPanel();
+  if(focus!==null){ show(areaOf(id)?entInfo(id,null):supInfo(id,null)); const ll=labelOf(id); if(ll){const [x,y]=proj(ll); const a=areaOf(id)||supAreaOf(id); flyTo(x,y,a>8e6?1.6:a>2e6?2.6:a>4e5?4.5:8);} } }
+function renderKey(){ document.getElementById('key').innerHTML=`<span><i style="background:var(--land)"></i>${esc(UI.noRecord)}</span><span><svg width="16" height="12"><rect width="16" height="12" rx="3" fill="url(#dots)" stroke="var(--landline)"/></svg>${esc(UI.nsTitle.split('(')[0])}</span>`+(supOn&&SN[cur].sup?`<span><i class="sp" style="background-color:var(--muted)"></i>${esc(UI.supKey)}</span>`:'')+(SN[cur].src==='ne'?`<span><svg width="16" height="12"><rect width="16" height="12" rx="3" fill="url(#hatch)" stroke="var(--ink)"/></svg>${esc(fmt(UI.dispTitle,{n:''}).replace(/\s*곳$/,''))}</span>`:''); }
+function renderSup(){ const s=SN[cur], b=document.getElementById('supbtn'); b.setAttribute('aria-checked',supOn); b.classList.toggle('on',supOn);
+  document.getElementById('suplbl').textContent=UI.supBtn;
+  document.getElementById('supnote').textContent=!supOn?UI.supOff:s.sup?fmt(UI.supOn,{n:s.sup.top.length,a:km(s.sup.top.reduce((t,x)=>t+x[1],0)*1000)}):UI.supNone; }
+document.getElementById('supbtn').onclick=()=>{ supOn=!supOn; try{localStorage.setItem('map.sup',supOn?'1':'0');}catch(e){} if(focus!==null&&!areaOf(focus)) focus=null; info.style.display='none'; clearSel(); renderSup(); renderKey(); renderPanel(); draw(); };
+function go(i){ if(i<0||i>=SN.length) return; const keep=focus!==null&&(SN[i].top.some(t=>t[0]===focus)||supTop(SN[i]).some(t=>t[0]===focus)); cur=i; if(!keep) focus=null; limit=40; info.style.display='none'; clearSel();
   try{history.replaceState(null,'','#y'+(SN[i].y<0?'bc'+(-SN[i].y):SN[i].y));}catch(e){}
-  renderYears(); renderKey(); renderPanel(); draw(); }
+  renderYears(); renderSup(); renderKey(); renderPanel(); draw(); }
 const sl=document.getElementById('slider'); sl.max=SN.length-1; sl.oninput=()=>go(+sl.value);
 document.getElementById('prev').onclick=()=>go(cur-1); document.getElementById('next').onclick=()=>go(cur+1);
 window.addEventListener('keydown',e=>{ if(e.target.tagName==='INPUT'&&e.target.type!=='range') return; if(e.key==='ArrowRight')go(cur+1); if(e.key==='ArrowLeft')go(cur-1); if(e.key==='Escape')setBig(false); });

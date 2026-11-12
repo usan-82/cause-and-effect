@@ -26,6 +26,7 @@
       <div class="card" style="margin-top:10px">
         <div class="ctl"><button id="prev">‹</button><input type="range" id="slider" min="0" value="0" step="1"><button id="next">›</button></div>
         <div class="years" id="years"></div>
+        <div class="supbar"><button id="supbtn" role="switch" aria-checked="false"><span class="sw"></span><span id="suplbl"></span></button><span class="supnote" id="supnote"></span></div>
         <div class="key" id="key"></div>
         <div class="hint">{{hint}}</div>
       </div>
@@ -51,19 +52,23 @@ const km=a=>a<1?UI.areaT:a<1e4?fmt(UI.areaS,{v:(a<1000?Math.round(a):Math.round(
 function rewind(f){const gm=f.geometry;if(!gm)return f;const ps=gm.type==='Polygon'?[gm.coordinates]:gm.type==='MultiPolygon'?gm.coordinates:[];for(const p of ps)for(let i=0;i<p.length;i++){if(d3.geoArea({type:'Polygon',coordinates:[p[i]]})>2*Math.PI)p[i]=p[i].slice().reverse();}return f;}
 const cache={}; const load=i=>cache[i]||=fetch(`data/${SN[i].y}.json`).then(r=>r.json()).then(t=>({w:topojson.feature(t,t.objects.w).features.map(rewind).filter(f=>f.geometry),d:t.objects.d?topojson.feature(t,t.objects.d).features.map(rewind):[]}));
 
+const scache={}; const loadS=i=>!SN[i].sup?Promise.resolve([]):(scache[i]||=fetch(`data/s${SN[i].y}.json`).then(r=>r.json()).then(t=>topojson.feature(t,t.objects.s).features.map(rewind).filter(f=>f.geometry)));
+let supOn=false; try{supOn=localStorage.getItem('map.sup')==='1';}catch(e){}
 const W=960,H=500, svg=d3.select('#map').attr('viewBox',`0 0 ${W} ${H}`);
 const defs=svg.append('defs');
 const hp=defs.append('pattern').attr('id','hatch').attr('patternUnits','userSpaceOnUse').attr('width',3).attr('height',3).attr('patternTransform','rotate(45)');
 hp.append('rect').attr('width',3).attr('height',3).style('fill','rgba(255,255,255,.25)'); hp.append('rect').attr('width',1).attr('height',3).style('fill','var(--ink)');
 const dp=defs.append('pattern').attr('id','dots').attr('patternUnits','userSpaceOnUse').attr('width',3.2).attr('height',3.2);
 dp.append('rect').attr('width',3.2).attr('height',3.2).style('fill','var(--land)'); dp.append('circle').attr('cx',1.6).attr('cy',1.6).attr('r',.55).style('fill','var(--muted)');
+const sp=defs.append('pattern').attr('id','stripe').attr('patternUnits','userSpaceOnUse').attr('width',2.4).attr('height',2.4).attr('patternTransform','rotate(-45)');
+sp.append('rect').attr('width',1).attr('height',2.4).style('fill','var(--surface)').style('opacity',.6);
 const proj=d3.geoNaturalEarth1().fitExtent([[6,6],[W-6,H-6]],{type:'Sphere'}), path=d3.geoPath(proj);
 const g=svg.append('g');
 g.append('path').attr('class','sphere').attr('d',path({type:'Sphere'}));
 g.append('path').attr('class','grat').attr('d',path(d3.geoGraticule10()));
 const landF=topojson.feature(landT,landT.objects.land);
 g.append('path').attr('class','land').attr('d',path(landF)).on('click',()=>{clearSel(); show(`<b class="t">${esc(UI.noRecord)}</b><div class="meta">${esc(fmt(UI.noRecordLong,{when:yl(SN[cur].y)}))}</div>`);});
-const gP=g.append('g'), gD=g.append('g'), gL=g.append('g');
+const gP=g.append('g'), gS=g.append('g'), gS2=g.append('g'), gD=g.append('g'), gL=g.append('g');
 let k=1, cur=SN.length-1, focus=null, selEl=null, q='', limit=40, T=d3.zoomIdentity;
 const small=()=>document.getElementById('map').clientWidth<640;
 const zoom=d3.zoom().scaleExtent([1,40]).translateExtent([[0,0],[W,H]]).on('zoom',e=>{T=e.transform;k=T.k;g.attr('transform',T);layoutLabels();});
@@ -79,7 +84,15 @@ const info=document.getElementById('info');
 function show(html){info.innerHTML=`<button class="x" aria-label="${esc(UI.close)}">×</button>`+html;info.style.display='block';info.querySelector('.x').onclick=()=>{info.style.display='none';clearSel();};}
 function clearSel(){if(selEl)selEl.classList.remove('sel');selEl=null;}
 const fillOf=e=>e.ns?'url(#dots)':e.c;
+const supTop=s=>supOn&&s.sup?s.sup.top:[];
 const areaOf=id=>{const r=SN[cur].top.find(t=>t[0]===id);return r?r[1]*1000:0;};
+const supAreaOf=id=>{const r=supTop(SN[cur]).find(t=>t[0]===id);return r?r[1]*1000:0;};
+const labelOf=id=>SN[cur].labels[id]||(supOn&&SN[cur].sup&&SN[cur].sup.labels[id])||null;
+function supInfo(id,p){ const e=EN[id], a=supAreaOf(id);
+  let h=`<b class="t">${esc(nm(e))}</b>${e.ko?` <span class="meta">${esc(e.n)}</span>`:''} <span class="tag">${esc(UI.supTag)}</span>`;
+  if(a) h+=`<div>${esc(fmt(UI.supArea,{a:km(a)}))}</div>`;
+  if(p&&p.n&&p.n!==e.n) h+=`<div class="meta">${esc(fmt(UI.supName,{n:p.n}))}</div>`;
+  return h+`<div class="meta">${esc(e.x?UI.supOnly:UI.supSame)}</div>`; }
 function entInfo(id,p){
   const e=EN[id], a=areaOf(id);
   let h=`<b class="t">${esc(nm(e))}</b>${e.ko?` <span class="meta">${esc(e.n)}</span>`:''}`;
@@ -109,17 +122,22 @@ function layoutLabels(){
   });
 }
 async function draw(){
-  const i=cur, s=SN[i]; const D=await load(i); if(i!==cur) return;
+  const i=cur, s=SN[i]; const [D,S0]=await Promise.all([load(i),supOn?loadS(i):[]]); if(i!==cur) return; const S=supOn?S0:[];
   document.getElementById('loading').style.display='none';
   gP.selectAll('path').data(D.w,(d,j)=>s.y+'_'+j).join('path').attr('class','poly').attr('d',path).style('fill',d=>fillOf(EN[d.properties.e]))
     .classed('dimmed',d=>focus!==null&&d.properties.e!==focus)
     .on('click',function(e,d){e.stopPropagation();clearSel();selEl=this;this.classList.add('sel');show(entInfo(d.properties.e,d.properties));});
+  gS.selectAll('path').data(S,(d,j)=>s.y+'s'+j).join('path').attr('class','sup').attr('d',path).style('fill',d=>EN[d.properties.e].c)
+    .classed('dimmed',d=>focus!==null&&d.properties.e!==focus)
+    .on('click',function(e,d){e.stopPropagation();clearSel();selEl=this;this.classList.add('sel');show(supInfo(d.properties.e,d.properties));});
+  gS2.selectAll('path').data(S,(d,j)=>s.y+'s'+j).join('path').attr('class','supx').attr('d',path);
   gD.selectAll('path').data(D.d,(d,j)=>s.y+'d'+j).join('path').attr('class','disp').attr('d',path).on('click',(e,d)=>{e.stopPropagation();clearSel();show(dispInfo(d.properties));});
-  LBL=s.top.filter(([id])=>s.labels[id]).slice(0,400).map(([id],rank)=>{const [x,y]=proj(s.labels[id]);return {id,x,y,rank,text:nm(EN[id]),ns:EN[id].ns};});
-  gL.selectAll('text').data(LBL,d=>d.id).join('text').attr('class',d=>'lbl'+(d.ns?' ns':'')).attr('x',d=>d.x).attr('y',d=>d.y).attr('dy','.35em').text(d=>d.text);
+  const sl=supOn&&s.sup?s.sup.top.filter(([id])=>s.sup.labels[id]&&!s.labels[id]).map(([id,a])=>[id,a,s.sup.labels[id],1]):[];
+  LBL=[...s.top.filter(([id])=>s.labels[id]).map(([id,a])=>[id,a,s.labels[id],0]),...sl].sort((a,b)=>b[1]-a[1]).slice(0,400).map(([id,a,ll,sp],rank)=>{const [x,y]=proj(ll);return {id,x,y,rank,text:nm(EN[id]),ns:EN[id].ns,sp};});
+  gL.selectAll('text').data(LBL,d=>d.id).join('text').attr('class',d=>'lbl'+(d.ns?' ns':'')+(d.sp?' sp':'')).attr('x',d=>d.x).attr('y',d=>d.y).attr('dy','.35em').text(d=>d.text);
   layoutLabels();
   document.getElementById('badge').textContent=yl(s.y);
-  [i-1,i+1].forEach(j=>SN[j]&&load(j));
+  [i-1,i+1].forEach(j=>SN[j]&&(load(j),supOn&&loadS(j)));
   drawDispList(D.d);
 }
 function renderYears(){
@@ -134,7 +152,8 @@ function renderPanel(){
   const st=all.filter(o=>!o.e.ns), ns=all.filter(o=>o.e.ns);
   const f=o=>!q||(o.e.n.toLowerCase().includes(q)||(o.e.ko||'').includes(q));
   const stf=st.filter(f), nsf=ns.filter(f);
-  const li=o=>`<li data-id="${o.id}" class="${focus===o.id?'on':''}"><i style="background:${o.e.ns?'var(--land)':o.e.c}"></i><span>${nm2(o.e)}</span><span class="a">${km(o.a)}</span></li>`;
+  const su=supTop(s).map(([id,a])=>({id,a:a*1000,e:EN[id],sp:1})).filter(f);
+  const li=o=>`<li data-id="${o.id}" class="${focus===o.id?'on':''}"><i class="${o.sp?'sp':''}" style="background-color:${o.e.ns?'var(--land)':o.e.c}"></i><span>${nm2(o.e)}</span><span class="a">${km(o.a)}</span></li>`;
   const src=s.src==='hb'?UI.srcHb:s.src==='cs'?fmt(UI.srcCs,{date:s.date}):UI.srcNe;
   const next=SN[cur+1];
   document.getElementById('panel').innerHTML=
@@ -145,11 +164,12 @@ function renderPanel(){
     `<ul class="ents" id="ents">${stf.slice(0,limit).map(li).join('')}</ul>`+
     (stf.length>limit?`<button class="linkbtn" id="more">${esc(fmt(UI.more,{n:stf.length-limit}))}</button>`:'')+
     (nsf.length?`<div class="sec"><h3>${esc(UI.nsTitle)}</h3><ul class="ents">${nsf.slice(0,q?60:12).map(li).join('')}</ul></div>`:'')+
+    (su.length?`<div class="sec"><h3>${esc(fmt(UI.supTitle,{n:su.length}))}</h3><p class="sub">${esc(UI.supSub)}</p><ul class="ents">${su.slice(0,q?80:30).map(li).join('')}</ul></div>`:'')+
     `<div id="displist"></div>`;
   const si=document.getElementById('search'); si.oninput=()=>{q=si.value.trim().toLowerCase();limit=40;const p=si.selectionStart;renderPanel();const n=document.getElementById('search');n.focus();n.setSelectionRange(p,p);};
   document.querySelectorAll('ul.ents li').forEach(l=>l.onclick=()=>pick(+l.dataset.id));
   const m=document.getElementById('more'); if(m) m.onclick=()=>{limit+=80;renderPanel();};
-  const u=document.getElementById('unf'); if(u) u.onclick=()=>{focus=null;gP.selectAll('path').classed('dimmed',false);renderPanel();};
+  const u=document.getElementById('unf'); if(u) u.onclick=()=>{focus=null;gP.selectAll('path').classed('dimmed',false);gS.selectAll('path').classed('dimmed',false);renderPanel();};
   if(cache[cur]) cache[cur].then(D=>drawDispList(D.d));
 }
 function verifyHtml(s){ const v=s.v; if(!v||v.agree==null) return '';
@@ -166,12 +186,16 @@ function drawDispList(d){ const el=document.getElementById('displist'); if(!el) 
   el.querySelectorAll('li').forEach(l=>l.onclick=()=>{const p=d[+l.dataset.i].properties; show(dispInfo(p)); const [x,y]=proj(p.ll); flyTo(x,y,Math.max(k,8));});
 }
 function flyTo(x,y,z){ svg.transition().duration(600).call(zoom.transform,d3.zoomIdentity.translate(W/2,H/2).scale(z).translate(-x,-y)); document.querySelector('.mapcard').scrollIntoView({behavior:'smooth',block:'nearest'}); }
-function pick(id){ focus=focus===id?null:id; gP.selectAll('path').classed('dimmed',d=>focus!==null&&d.properties.e!==focus); renderPanel();
-  if(focus!==null){ show(entInfo(id,null)); const ll=SN[cur].labels[id]; if(ll){const [x,y]=proj(ll); const a=areaOf(id); flyTo(x,y,a>8e6?1.6:a>2e6?2.6:a>4e5?4.5:8);} } }
-function renderKey(){ document.getElementById('key').innerHTML=`<span><i style="background:var(--land)"></i>${esc(UI.noRecord)}</span><span><svg width="16" height="12"><rect width="16" height="12" rx="3" fill="url(#dots)" stroke="var(--landline)"/></svg>${esc(UI.nsTitle.split('(')[0])}</span>`+(SN[cur].src==='ne'?`<span><svg width="16" height="12"><rect width="16" height="12" rx="3" fill="url(#hatch)" stroke="var(--ink)"/></svg>${esc(fmt(UI.dispTitle,{n:''}).replace(/\s*곳$/,''))}</span>`:''); }
-function go(i){ if(i<0||i>=SN.length) return; const keep=focus!==null&&SN[i].top.some(t=>t[0]===focus); cur=i; if(!keep) focus=null; limit=40; info.style.display='none'; clearSel();
+function pick(id){ focus=focus===id?null:id; for(const G of [gP,gS]) G.selectAll('path').classed('dimmed',d=>focus!==null&&d.properties.e!==focus); renderPanel();
+  if(focus!==null){ show(areaOf(id)?entInfo(id,null):supInfo(id,null)); const ll=labelOf(id); if(ll){const [x,y]=proj(ll); const a=areaOf(id)||supAreaOf(id); flyTo(x,y,a>8e6?1.6:a>2e6?2.6:a>4e5?4.5:8);} } }
+function renderKey(){ document.getElementById('key').innerHTML=`<span><i style="background:var(--land)"></i>${esc(UI.noRecord)}</span><span><svg width="16" height="12"><rect width="16" height="12" rx="3" fill="url(#dots)" stroke="var(--landline)"/></svg>${esc(UI.nsTitle.split('(')[0])}</span>`+(supOn&&SN[cur].sup?`<span><i class="sp" style="background-color:var(--muted)"></i>${esc(UI.supKey)}</span>`:'')+(SN[cur].src==='ne'?`<span><svg width="16" height="12"><rect width="16" height="12" rx="3" fill="url(#hatch)" stroke="var(--ink)"/></svg>${esc(fmt(UI.dispTitle,{n:''}).replace(/\s*곳$/,''))}</span>`:''); }
+function renderSup(){ const s=SN[cur], b=document.getElementById('supbtn'); b.setAttribute('aria-checked',supOn); b.classList.toggle('on',supOn);
+  document.getElementById('suplbl').textContent=UI.supBtn;
+  document.getElementById('supnote').textContent=!supOn?UI.supOff:s.sup?fmt(UI.supOn,{n:s.sup.top.length,a:km(s.sup.top.reduce((t,x)=>t+x[1],0)*1000)}):UI.supNone; }
+document.getElementById('supbtn').onclick=()=>{ supOn=!supOn; try{localStorage.setItem('map.sup',supOn?'1':'0');}catch(e){} if(focus!==null&&!areaOf(focus)) focus=null; info.style.display='none'; clearSel(); renderSup(); renderKey(); renderPanel(); draw(); };
+function go(i){ if(i<0||i>=SN.length) return; const keep=focus!==null&&(SN[i].top.some(t=>t[0]===focus)||supTop(SN[i]).some(t=>t[0]===focus)); cur=i; if(!keep) focus=null; limit=40; info.style.display='none'; clearSel();
   try{history.replaceState(null,'','#y'+(SN[i].y<0?'bc'+(-SN[i].y):SN[i].y));}catch(e){}
-  renderYears(); renderKey(); renderPanel(); draw(); }
+  renderYears(); renderSup(); renderKey(); renderPanel(); draw(); }
 const sl=document.getElementById('slider'); sl.max=SN.length-1; sl.oninput=()=>go(+sl.value);
 document.getElementById('prev').onclick=()=>go(cur-1); document.getElementById('next').onclick=()=>go(cur+1);
 window.addEventListener('keydown',e=>{ if(e.target.tagName==='INPUT'&&e.target.type!=='range') return; if(e.key==='ArrowRight')go(cur+1); if(e.key==='ArrowLeft')go(cur-1); if(e.key==='Escape')setBig(false); });
