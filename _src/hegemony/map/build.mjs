@@ -98,7 +98,8 @@ for(const s of SNAPS){
   } else if(s.src==='cs'){
     const byGw=new Map(feats.map(f=>[+f.properties.gwcode,f.properties.country_name]));
     for(const f of feats){const p=f.properties; const own=byGw.get(+p.owner)||p.country_name;
-      F.push({geometry:f.geometry,e:canon(own),n:p.country_name,st:p.status&&p.status!=='independent'?p.status:undefined});}
+      const rn=(FX.cs||[]).find(r=>r.y.includes(s.y)&&canon(own)===r.e); // 시점에 따라 나라 이름이 다른 곳(조선→대한제국)
+      F.push({geometry:f.geometry,e:canon(rn?rn.to:own),n:p.country_name,st:p.status&&p.status!=='independent'?p.status:undefined});}
     // CShapes에는 그린란드가 없다(교차검증에서 확인). Natural Earth 도형으로 보충: 이 기간 내내 덴마크령
     F.push({geometry:GRL.geometry,e:'Denmark',n:'Greenland',st:s.y<1953?'colony':undefined});
   } else {
@@ -115,7 +116,7 @@ for(const s of SNAPS){
   if(s.src==='hb') for(const f of F) if(f.k){ const h=HOME[f.k]; if(h) f.e=h; else if(f.fx) console.log('  보정 대상 없음',s.y,f.n,f.k); }
   for(const c of s.clip||[]){ if(c.toKey){ c.e=target(c.toKey); if(!c.e){ console.log('  조각 대상 없음',s.y,c.n,c.toKey); continue; } } F.push(c); } // Cliopatria 경계를 빌린 교정 조각
   for(const p of FX.patches){ const r=rangeFor(p,s.y); if(!r) continue; const e=target(r[2]); if(!e){ console.log('  패치 대상 없음',s.y,p.id,r[2]); continue; }
-    FXN['p:'+p.id+':'+r[0]]=r[3]; F.push({geometry:cwPoly(p.poly),e,n:p.id,pid:p.id,fx:'p:'+p.id+':'+r[0],top:1}); }
+    FXN['p:'+p.id+':'+r[0]]=r[3]; const pg=p.land&&fs.existsSync(path.join(RAW,'patch',p.id+'.json'))?fix({type:'Feature',properties:{},geometry:JSON.parse(fs.readFileSync(path.join(RAW,'patch',p.id+'.json')))}).geometry:cwPoly(p.poly); F.push({geometry:pg,e,n:p.id,pid:p.id,fx:'p:'+p.id+':'+r[0],top:1}); }
   // 격자 표본
   const I=mkIndex(F.map(x=>({type:'Feature',geometry:x.geometry,properties:{top:x.top}})));
   const grid=new Int32Array(NX*NY).fill(-1); const area=new Map(), cells=new Map();

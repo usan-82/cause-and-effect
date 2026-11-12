@@ -92,7 +92,10 @@
   "c_mughal": "Mughal merebut India utara pada 1526 dan, di bawah Akbar, Gujarat (1573) serta Benggala (1576). Sumber membiarkannya sebagai ‘negara-negara Islam dan Hindu’. Batas diambil dari Cliopatria.",
   "c_rajput_1600": "Sebagian besar kerajaan Rajput menjadi vasal Mughal di bawah Akbar (Mewar pada 1615). Batas diambil dari Cliopatria.",
   "c_burma_1880": "Britania baru menganeksasi Burma Hulu pada 1886. Batas diambil dari Cliopatria.",
-  "rioplata_1815": "Río de la Plata lepas dari kekuasaan Spanyol setelah Revolusi Mei 1810 dan tidak pernah direbut kembali (kemerdekaan diproklamasikan 1816) — sumber menandainya sebagai milik Spanyol"
+  "rioplata_1815": "Río de la Plata lepas dari kekuasaan Spanyol setelah Revolusi Mei 1810 dan tidak pernah direbut kembali (kemerdekaan diproklamasikan 1816) — sumber menandainya sebagai milik Spanyol",
+  "gojoseon_400": "Sumber hanya memuat Gojoseon pada 400 SM dan membentangkannya sampai melewati Primorye, sehingga diganti dengan wilayah yang digambar tambahan (lihat ‘Gojoseon’).",
+  "korea_name": "Sumber hanya menulis ‘Korea’; namanya diganti dengan nama negara pada masa itu (Goryeo pada 1000 dan 1100, Joseon pada 1400–1880).",
+  "baekje_700": "Baekje runtuh pada 660. Bekas wilayahnya menjadi bagian Silla setelah Perang Silla–Tang (670–676)."
  },
  "patches": {
   "yemen": {
@@ -306,6 +309,30 @@
     "1880": "Kanada (dominion Britania): Dominion Kanada dibentuk 1867",
     "1914": "Kanada (dominion Britania)",
     "1938": "Kanada: Praktis merdeka setelah Statuta Westminster (1931)"
+   }
+  },
+  "gojoseon": {
+   "name": "Gojoseon",
+   "r": {
+    "-700": "Gojoseon: sumber hanya memuatnya pada 400 SM, sehingga digambar tambahan untuk 700–300 SM. Catatan Tiongkok (Guanzi) menyebutnya sejak sekitar abad ke-7 SM, dan Samguk Yusa mencatat tahun pendirian tradisional 2333 SM. Wilayahnya adalah perkiraan kasar Liaodong dan Korea barat laut; para ahli berbeda pendapat tentang pusat dan batasnya"
+   }
+  },
+  "gojoseon_late": {
+   "name": "Gojoseon (akhir)",
+   "r": {
+    "-200": "Gojoseon: tidak ada di sumber, digambar tambahan. Perkiraan wilayah setelah kehilangan tanah baratnya akibat serangan negara Yan pada awal abad ke-3 SM. Wiman merebut takhta pada 194 SM, dan Dinasti Han menaklukkannya pada 108 SM"
+   }
+  },
+  "goryeo_1279": {
+   "name": "Goryeo",
+   "r": {
+    "1279": "Goryeo: di sumber digabung ke Kekaisaran Mongol. Setelah berdamai pada 1259 Goryeo berada di bawah campur tangan Yuan, tetapi dinasti dan negaranya tetap berlanjut. Saat itu wilayah barat laut (Dongnyeong, 1270–1290), timur laut (Ssangseong, 1258–1356), dan Jeju diperintah langsung oleh Yuan. Batas hanya perkiraan"
+   }
+  },
+  "goryeo_1300": {
+   "name": "Goryeo",
+   "r": {
+    "1300": "Goryeo: di sumber digabung ke Kekaisaran Mongol (Yuan). Berada di bawah campur tangan Yuan, tetapi dinasti dan negaranya tetap berlanjut. Dongnyeong dikembalikan pada 1290 dan Jeju pada 1294; wilayah timur laut (Ssangseong) tetap diperintah langsung oleh Yuan sampai 1356. Batas hanya perkiraan"
    }
   }
  }

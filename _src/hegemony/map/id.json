@@ -183,7 +183,7 @@
   "Parhae": "Balhae",
   "Balhae": "Balhae",
   "Gojoseon": "Gojoseon",
-  "Korea": "Korea (Joseon/Goryeo)",
+  "Korea": "Korea",
   "Silla": "Silla",
   "Japan": "Jepang",
   "Imperial Japan": "Jepang",
@@ -386,7 +386,13 @@
   "Mon-Khmer": "Mon-Khmer",
   "Tibeto-Burmanese": "Tibeto-Burma",
   "Cushites": "Bangsa Kush",
-  "Plateau fichers and hunter gatherers": "Nelayan dan pemburu-peramu Plato"
+  "Plateau fichers and hunter gatherers": "Nelayan dan pemburu-peramu Plato",
+  "Joseon": "Joseon",
+  "Goryeo": "Goryeo",
+  "Korean Empire": "Kekaisaran Korea",
+  "Goguryeo": "Goguryeo",
+  "Baekje": "Baekje",
+  "Gaya": "Gaya"
  },
  "unRules": {
   "Taiwan": "Sejak Resolusi Majelis Umum 2758 (1971) PBB menggambarkan Taiwan sebagai bagian dari Tiongkok. Pada kenyataannya Taiwan diperintah terpisah oleh pemerintah Republik Tiongkok.",

@@ -92,7 +92,10 @@
   "c_mughal": "The Mughals took northern India in 1526 and, under Akbar, Gujarat (1573) and Bengal (1576). The source left this as ‘Islamic and Hindu states’. Boundary taken from Cliopatria.",
   "c_rajput_1600": "Most Rajput kingdoms became Mughal vassals under Akbar (Mewar in 1615). Boundary taken from Cliopatria.",
   "c_burma_1880": "Britain annexed Upper Burma only in 1886. Boundary taken from Cliopatria.",
-  "rioplata_1815": "The Río de la Plata left Spanish rule after the May Revolution of 1810 and was never reconquered (independence declared 1816) — the source marks it as Spanish"
+  "rioplata_1815": "The Río de la Plata left Spanish rule after the May Revolution of 1810 and was never reconquered (independence declared 1816) — the source marks it as Spanish",
+  "gojoseon_400": "The source shows Gojoseon only in 400 BC and stretches it beyond Primorye, so it is replaced by the drawn-in area (see ‘Gojoseon’).",
+  "korea_name": "The source labels it only ‘Korea’; renamed to the state of the time (Goryeo in 1000 and 1100, Joseon in 1400–1880).",
+  "baekje_700": "Baekje fell in 660. Its former territory came under Silla after the Silla–Tang War (670–676)."
  },
  "patches": {
   "yemen": {
@@ -306,6 +309,30 @@
     "1880": "Canada (British dominion): Dominion of Canada created 1867",
     "1914": "Canada (British dominion)",
     "1938": "Canada: Effectively independent after the Statute of Westminster (1931)"
+   }
+  },
+  "gojoseon": {
+   "name": "Gojoseon",
+   "r": {
+    "-700": "Gojoseon: the source has it only in 400 BC, so it is drawn in for 700–300 BC. Chinese records (the Guanzi) mention it from about the 7th century BC, and the Samguk Yusa gives a traditional founding date of 2333 BC. The area is an approximation of Liaodong and north-western Korea; scholars disagree on its centre and borders"
+   }
+  },
+  "gojoseon_late": {
+   "name": "Gojoseon (late)",
+   "r": {
+    "-200": "Gojoseon: missing in the source, drawn in. Approximate area after it lost its western lands to the state of Yan in the early 3rd century BC. Wiman took the throne in 194 BC, and the Han dynasty conquered it in 108 BC"
+   }
+  },
+  "goryeo_1279": {
+   "name": "Goryeo",
+   "r": {
+    "1279": "Goryeo: merged into the Mongol Empire in the source. After making peace in 1259 Goryeo came under Yuan interference, but the dynasty and the state continued. At this time the north-west (Dongnyeong Prefecture, 1270–1290), the north-east (Ssangseong Prefecture, 1258–1356) and Jeju were ruled directly by the Yuan. Borders are approximate"
+   }
+  },
+  "goryeo_1300": {
+   "name": "Goryeo",
+   "r": {
+    "1300": "Goryeo: merged into the Mongol Empire (Yuan) in the source. It was under Yuan interference, but the dynasty and the state continued. Dongnyeong was returned in 1290 and Jeju in 1294; the north-east (Ssangseong Prefecture) stayed under direct Yuan rule until 1356. Borders are approximate"
    }
   }
  }
