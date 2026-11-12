@@ -16,7 +16,7 @@
  "langAria": "Bahasa",
  "loading": "Memuat peta…",
  "hint": "Warna menunjukkan siapa yang berkuasa saat itu, dan setiap negara punya warna tetapnya sendiri. Makin pekat warnanya, makin kokoh kekuasaannya; arsiran berarti kekuasaan yang melemah atau diperebutkan; warna sangat pucat berarti negara itu sudah keluar dari perebutan hegemoni tetapi masih ada. Ketuk wilayah untuk melihat nama dan sumbernya; ketuk negara di daftar bawah untuk menyisakan negara itu saja dan mengikuti perjalanan serta luas wilayahnya dari waktu ke waktu. ◆ menandai titik strategis seperti selat, terusan, dan pangkalan; jika peta sumber keliru, peta diwarnai ulang dengan nilai yang sudah diperiksa.",
- "footHtml": "Perbatasan: sampai 1880 memakai <a href=\"https://github.com/aourednik/historical-basemaps\">historical-basemaps</a> (André Ourednik dkk., GPL-3.0) dengan koreksi per tahun; sejak 1914 digambar ulang dari <a href=\"https://icr.ethz.ch/data/cshapes/\">CShapes 2.0</a> (Schvitz, Girardin, Weidmann dkk., perbatasan dan koloni bertanggal). Untuk 1914 dan sesudahnya, ketika kedua sumber tersedia, bagian ‘Pemeriksaan silang’ di tiap tahun menampilkan tingkat kesesuaian dan letak perbedaannya. Titik strategis dan beberapa wilayah diwarnai ulang dengan nilai yang sudah diperiksa jika sumbernya keliru. Luas wilayah adalah perkiraan dari pengambilan sampel peta akhir pada kisi 0,25°. Karena jarak antartahun tidak sama, ‘Untung dan rugi’ membahas peristiwa utama sejak tahun sebelumnya yang ditampilkan. Untuk 1492–1880, tempat yang garis batasnya sendiri keliru (misalnya Irak, Tunisia, dan Hungaria pada 1530; Mongolia di bawah Qing dan lembah Amur pada 1700) ditemukan dengan membandingkannya dengan data independen <a href=\"https://github.com/Seshat-Global-History-Databank/cliopatria\">Cliopatria</a> (batas historis dari tim Seshat); hanya yang terkonfirmasi oleh catatan sejarah yang diwarnai ulang, dengan meminjam batas Cliopatria. Koreksi yang sama diterapkan pada <a href=\"../../../ko/hegemony/map/\">peta wilayah dunia</a> pendamping (hanya bahasa Korea). Namun kedua peta memakai kriteria berbeda: atlas ini mengikuti pengaruh nyata, sehingga dominion Inggris (Kanada, Australia, dll.) diwarnai sebagai Inggris pada 1914 dan 1920, serta Manchukuo dan Etiopia (1938) dan Indonesia (1945) menurut kekuatan yang benar-benar menguasai, sedangkan peta wilayah mengikuti kedaulatan hukum. Aragon pada 1492 ditampilkan sebagai Spanyol di sini tetapi sebagai negara tersendiri di sana, dan tahun kedua dari akhir adalah 1994 di sini dan 1991 di sana.",
+ "footHtml": "Perbatasan: sampai 1880 memakai <a href=\"https://github.com/aourednik/historical-basemaps\">historical-basemaps</a> (André Ourednik dkk., GPL-3.0) dengan koreksi per tahun; sejak 1914 digambar ulang dari <a href=\"https://icr.ethz.ch/data/cshapes/\">CShapes 2.0</a> (Schvitz, Girardin, Weidmann dkk., perbatasan dan koloni bertanggal). Untuk 1914 dan sesudahnya, ketika kedua sumber tersedia, bagian ‘Pemeriksaan silang’ di tiap tahun menampilkan tingkat kesesuaian dan letak perbedaannya. Titik strategis dan beberapa wilayah diwarnai ulang dengan nilai yang sudah diperiksa jika sumbernya keliru. Luas wilayah adalah perkiraan dari pengambilan sampel peta akhir pada kisi 0,25°. Karena jarak antartahun tidak sama, ‘Untung dan rugi’ membahas peristiwa utama sejak tahun sebelumnya yang ditampilkan. Setiap tahun berarti ‘sekitar masa itu’, sehingga peristiwa atau karya dari satu-dua tahun sesudahnya kadang ikut dibahas (misalnya Undang-Undang Navigasi 1651 pada tahun 1650). Angka kecil dalam teks adalah catatan kaki untuk bagian yang tafsirnya berbeda-beda atau perlu keterangan. Untuk 1492–1880, tempat yang garis batasnya sendiri keliru (misalnya Irak, Tunisia, dan Hongaria pada 1530; Mongolia di bawah Qing dan lembah Amur pada 1700) ditemukan dengan membandingkannya dengan data independen <a href=\"https://github.com/Seshat-Global-History-Databank/cliopatria\">Cliopatria</a> (batas historis dari tim Seshat); hanya yang terkonfirmasi oleh catatan sejarah yang diwarnai ulang, dengan meminjam batas Cliopatria. Koreksi yang sama diterapkan pada <a href=\"../../../ko/hegemony/map/\">peta wilayah dunia</a> pendamping (hanya bahasa Korea). Namun kedua peta memakai kriteria berbeda: atlas ini mengikuti pengaruh nyata, sehingga dominion Britania (Kanada, Australia, dll.) diwarnai sebagai Britania pada 1914 dan 1920, serta Manchukuo dan Etiopia (1938) dan Indonesia (1945) menurut kekuatan yang benar-benar menguasai, sedangkan peta wilayah mengikuti kedaulatan hukum. Aragon pada 1492 ditampilkan sebagai Spanyol di sini tetapi sebagai negara tersendiri di sana, dan tahun kedua dari akhir adalah 1994 di sini dan 1991 di sana.",
  "ui": {
   "tabs": [
    "Peta kekuatan",
@@ -86,7 +86,7 @@
   "legendTitle": "Kekuatan yang berkuasa sekitar {year}",
   "rival": "utama",
   "trackAll": "Perubahan tiap negara",
-  "trackAllNote": "Apa yang berubah sejak tahun sebelumnya yang ditampilkan. Ketuk negara untuk melihat seluruh perjalanannya.",
+  "trackAllNote": "Apa yang berubah sejak tahun sebelumnya yang ditampilkan. Ketuk negara untuk melihat seluruh perjalanannya. Status (bangkit, puncak, merosot, dsb.) adalah penilaian atas kedudukan internasional saat itu, bukan atas luas wilayah.",
   "trackOne": "Perjalanan {name}",
   "trackBack": "← Semua negara",
   "trackNote": "Ketuk tahun untuk membuka peta tahun itu.",
@@ -125,9 +125,77 @@
   "sparkNote": "Luas dihitung ulang dari wilayah yang diwarnai di peta ini (termasuk koloni). Sebelum 1886 termasuk klaim nominal dan wilayah pengaruh, sehingga bisa melebihi kendali sebenarnya.",
   "colorKey": "Lihat warna tiap negara",
   "colorKeyNote": "Sebuah negara tetap berwarna sama meski namanya berganti (Rusia → Uni Soviet → Rusia, Ming → Qing → Tiongkok). Ketika menguat atau melemah, warnanya tetap; hanya kepekatan dan arsirannya yang berubah.",
-  "footnotes": "Catatan"
+  "footnotes": "Catatan kaki"
  },
  "zoomResetShort": "Awal",
  "bigView": "Tampilkan peta besar",
- "bigViewShort": "Besar"
+ "bigViewShort": "Besar",
+ "sourcesTitle": "Sumber yang dipakai untuk pemeriksaan",
+ "sourcesIntro": "Pada November 2026 edisi bahasa Korea ditinjau ulang seluruhnya, dan bagian yang tahun atau pelakunya meragukan, atau yang tafsirnya diperdebatkan, dicocokkan dengan sumber-sumber di bawah; koreksi dan catatan kaki yang sama diterapkan di sini. Tahun dan peristiwa lainnya diperiksa pada tingkat kronologi yang umum dikenal; lihat juga tautan ‘Baca lebih lanjut’ di tiap tahun.",
+ "sources": [
+  [
+   "Batas (sampai 1880): historical-basemaps, André Ourednik dkk.",
+   "https://github.com/aourednik/historical-basemaps"
+  ],
+  [
+   "Batas (sejak 1914) dan pemilik koloni: CShapes 2.0, Schvitz dkk. (2022)",
+   "https://icr.ethz.ch/data/cshapes/"
+  ],
+  [
+   "Larangan maritim Ming (1371): Wikipedia, Jiajing wokou raids",
+   "https://en.wikipedia.org/wiki/Jiajing_wokou_raids"
+  ],
+  [
+   "Ratifikasi perjanjian Prancis–Utsmaniyah 1536: Wikipedia, Jean de La Forêt",
+   "https://www.wikipedia.org/wiki/Jean_de_la_Foret"
+  ],
+  [
+   "Kritik atas pandangan umum tentang Westfalen: A. Osiander, “Sovereignty, International Relations, and the Westphalian Myth”, International Organization 55(2), 2001",
+   "https://doi.org/10.1162/00208180151140577"
+  ],
+  [
+   "Goa dan Bijapur: Wikipedia, Sultanate of Bijapur",
+   "https://en.wikipedia.org/wiki/Sultanate_of_Bijapur"
+  ],
+  [
+   "Penaklukan Goa (1510): Wikipedia, Portuguese conquest of Goa",
+   "https://en.wikipedia.org/wiki/Portuguese_conquest_of_Goa"
+  ],
+  [
+   "Dinasti Tahiri di Yaman dan Aden (1517, 1538): Wikipedia, Tahirid Sultanate",
+   "https://en.wikipedia.org/wiki/Tahirid_Sultanate"
+  ],
+  [
+   "Dinasti Tahiri: V. Porter, The History and Monuments of the Tahirid Dynasty of the Yemen, disertasi doktoral, Universitas Durham (1992)",
+   "https://etheses.durham.ac.uk/id/eprint/5867"
+  ],
+  [
+   "Kekhanan Krimea dan Utsmaniyah (1475, 1478): Wikipedia, Crimean Campaign (1475)",
+   "https://en.wikipedia.org/wiki/Crimean_Campaign_(1475)"
+  ],
+  [
+   "Perdebatan tentang ketundukan kekhanan: V. L. Myts, Археология евразийских степей 2023(3)",
+   "https://doaj.org/article/cdd26728e0c94aa9841396b3c69e704d"
+  ],
+  [
+   "Benteng Portugis di Kolombo (1518): Enciclopédia Virtual da Expansão Portuguesa, City of Colombo",
+   "https://eve.fcsh.unl.pt/index.php/en/places/city-colombo"
+  ],
+  [
+   "Pembongkaran benteng Kolombo: Sunday Observer, “Early challenges to the Portuguese in Ceylon” (2024)",
+   "https://www.sundayobserver.lk/2024/05/12/news-features/22725/early-challenges-to-the-portuguese-in-ceylon"
+  ],
+  [
+   "Perjanjian damai Italia (1947) dan perwalian Somaliland: Trusteeship Agreement for the Territory of Somaliland under Italian Administration (1950)",
+   "https://resolve.cambridge.org/core/journals/international-organization/article/1-trusteeship-agreement-for-the-territory-of-somaliland-under-italian-administration-adopted-by-the-trusteeship-council-january-27-19501/353C8EFBDD6CADD1F0A8F24787D3C3DB"
+  ],
+  [
+   "Penandatanganan dan berlakunya Perjanjian Maastricht: Eurostat, Glossary: Treaty on European Union",
+   "https://ec.europa.eu/eurostat/statistics-explained/index.php/Glossary:Treaty_on_European_Union"
+  ],
+  [
+   "Cliopatria — batas historis negara dari Seshat Global History Databank (3400 SM–2024, CC BY 4.0). Data pembanding untuk koreksi batas 1492–1880",
+   "https://github.com/Seshat-Global-History-Databank/cliopatria"
+  ]
+ ]
 }
