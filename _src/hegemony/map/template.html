@@ -140,6 +140,7 @@ function renderPanel(){
   document.getElementById('panel').innerHTML=
     `<h2>${esc(yl(s.y))}</h2><p class="sub">${esc(fmt(UI.count,{n:st.length,m:ns.length}))}${focus!==null?` · <button class="linkbtn" id="unf">${esc(UI.showAll)}</button>`:''}</p>`+
     `<p class="src">${esc(src)}${next&&s.src==='hb'?' '+esc(fmt(UI.gapNext,{y:yl(next.y)}))+'.':''}</p>`+
+    verifyHtml(s)+
     `<input class="search" id="search" type="search" placeholder="${esc(UI.search)}" value="${esc(q)}">`+
     `<ul class="ents" id="ents">${stf.slice(0,limit).map(li).join('')}</ul>`+
     (stf.length>limit?`<button class="linkbtn" id="more">${esc(fmt(UI.more,{n:stf.length-limit}))}</button>`:'')+
@@ -151,6 +152,14 @@ function renderPanel(){
   const u=document.getElementById('unf'); if(u) u.onclick=()=>{focus=null;gP.selectAll('path').classed('dimmed',false);renderPanel();};
   if(cache[cur]) cache[cur].then(D=>drawDispList(D.d));
 }
+function verifyHtml(s){ const v=s.v; if(!v||v.agree==null) return '';
+  const cn=n=>{const e=byName.get(n); return e&&e.ko?`${esc(e.ko)} <small>${esc(n)}</small>`:esc(n);};
+  return `<details class="ver"><summary><b>${esc(UI.vTitle)}</b> <span class="vbar"><i style="width:${(v.agree*100).toFixed(0)}%"></i></span> ${(v.agree*100).toFixed(0)}%</summary>`+
+   `<p>${esc(fmt(UI.vText,{yr:s.y>2024?UI.vYr:'',a:(v.agree*100).toFixed(0),s:(v.strict*100).toFixed(0)}))}</p>`+
+   `<p>${esc(fmt(UI.vCover,{b:km(v.both*1000),m:km(v.mine*1000),c:km(v.clio*1000)}))}</p>`+
+   (v.clioOnly.length?`<h5>${esc(UI.vOnlyC)}</h5><ul>${v.clioOnly.map(([n,a])=>`<li><span>${cn(n)}</span><span class="a">${km(a*1000)}</span></li>`).join('')}</ul>`:'')+
+   (v.conflicts.length?`<h5>${esc(UI.vConf)}</h5><ul>${v.conflicts.map(([e,n,a])=>`<li><span>${esc(nm(EN[e]))} ↔ ${cn(n)}</span><span class="a">${km(a*1000)}</span></li>`).join('')}</ul>`:'')+
+   `<p class="vn">${esc(UI.vNote)}</p></details>`; }
 function drawDispList(d){ const el=document.getElementById('displist'); if(!el) return; if(!d.length){el.innerHTML='';return;}
   const major=d.filter(x=>x.properties.un), rest=d.filter(x=>!x.properties.un);
   el.innerHTML=`<div class="sec"><h3>${esc(fmt(UI.dispTitle,{n:d.length}))}</h3><p class="sub">${esc(UI.dispNote)}</p><ul class="disp">${[...major,...rest].map((x,i)=>`<li data-i="${d.indexOf(x)}">▨ ${esc(x.properties.ko||x.properties.n)}</li>`).join('')}</ul></div>`;

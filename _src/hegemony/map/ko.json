@@ -181,7 +181,7 @@
   "Satavahanihara": "사타바하나",
   "Indus valley civilization": "인더스 문명",
   "Turan": "투란",
-  "Persi": "페르시아인",
+  "Persi": "페르시아(사산 제국)",
   "Lahore": "라호르",
   "Segu": "세구 왕국",
   "Kanauj": "카나우지",
@@ -436,7 +436,10 @@
   "Maitraka Kingdom": "마이트라카 왕국",
   "Mysore (Indian princely state)": "마이소르 왕국",
   "Koryaks": "코랴크인",
-  "Quechua": "케추아"
+  "Quechua": "케추아",
+  "Great Khanate": "대칸국(원·북원)",
+  "Blue Horde": "청장 칸국",
+  "Greenland": "그린란드"
  },
  "nonstate": {
   "regex": "hunter|gatherer|culture|farmers|pastoral|nomad|tribe|peoples?$|fishers|fichers|foraging|civilization|Proto-|megalith|Bronze Age|Clans",
@@ -502,7 +505,6 @@
    "Bashkirs",
    "Nenets",
    "Tuaregs",
-   "Persi",
    "T'atsaot'ine",
    "Obiwa",
    "Khitans",
@@ -563,7 +565,8 @@
    "Parthia",
    "Sasanian Empire",
    "Safavid Empire",
-   "Persia"
+   "Persia",
+   "Persi"
   ],
   "United Kingdom": [
    "England",

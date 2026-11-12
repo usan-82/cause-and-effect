@@ -35,6 +35,8 @@ const STEP=0.5, R=6371.0088, rad=Math.PI/180, NX=360/STEP, NY=180/STEP;
 const cellArea=lat=>R*R*STEP*rad*Math.abs(Math.sin((lat+STEP/2)*rad)-Math.sin((lat-STEP/2)*rad));
 const load=f=>{const t=JSON.parse(fs.readFileSync(path.join(RAW,f)));return feature(t,t.objects[Object.keys(t.objects)[0]]).features.map(fix).filter(x=>x.geometry);};
 
+const HBFIX=[[1600,'Inca Empire','Spain']]; // 원본이 1530년 상태 그대로 둔 곳(잉카는 1572년까지 정복됨)
+const GRL=load('n_usa.json').find(f=>f.properties.ADM0_A3==='GRL');
 // ---- 1) 시점별 지물 읽기
 const ENT=new Map(); const ent=n=>{ if(!ENT.has(n)) ENT.set(n,{id:ENT.size,n,maxA:0,nb:new Set()}); return ENT.get(n); };
 const out=[];
@@ -42,11 +44,16 @@ for(const s of SNAPS){
   let feats=load(s.file), F=[];
   if(s.src==='hb'){
     for(const f of feats){const n=(f.properties.NAME||'').trim(); if(!n) continue; const sub=(f.properties.SUBJECTO||'').trim();
-      F.push({geometry:f.geometry,e:canon(sub||n),n,b:f.properties.BORDERPRECISION??null});}
+      let e=sub||n;
+      if(sub==='Mongol Empire'&&s.y>=1300) e=n;            // 1294년 이후 몽골 제국은 사실상 네 칸국으로 갈라져 있었다(교차검증에서 확인)
+      for(const [yy,nn,to] of HBFIX) if(yy===s.y&&nn===n) e=to;
+      F.push({geometry:f.geometry,e:canon(e),n,b:f.properties.BORDERPRECISION??null});}
   } else if(s.src==='cs'){
     const byGw=new Map(feats.map(f=>[+f.properties.gwcode,f.properties.country_name]));
     for(const f of feats){const p=f.properties; const own=byGw.get(+p.owner)||p.country_name;
       F.push({geometry:f.geometry,e:canon(own),n:p.country_name,st:p.status&&p.status!=='independent'?p.status:undefined});}
+    // CShapes에는 그린란드가 없다(교차검증에서 확인). Natural Earth 도형으로 보충: 이 기간 내내 덴마크령
+    F.push({geometry:GRL.geometry,e:'Denmark',n:'Greenland',st:s.y<1953?'colony':undefined});
   } else {
     for(const f of feats){const p=f.properties; if(p.ADM0_A3==='ATA') continue; const ov=UN_OVERRIDE[p.ADM0_A3];
       if(p.TYPE==='Indeterminate'&&!ov) continue; // 주인이 정해지지 않은 작은 땅은 분쟁 지역 층에서만 보여 준다
@@ -124,6 +131,7 @@ console.log('disputed areas',disp.length,'with UN note',disp.filter(d=>d.propert
 // ---- 5) 출력
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const OUT=path.join(ROOT,'ko','hegemony','map'); fs.mkdirSync(path.join(OUT,'data'),{recursive:true}); fs.mkdirSync(path.join(OUT,'lib'),{recursive:true});
+const VER=fs.existsSync(path.join(HERE,'verify.json'))?J('verify.json'):{};
 const index={snaps:[],ents:E.map(e=>({n:e.n,ko:ko(e.n),...(e.c>=0?{c:PAL[e.c].hex}:{ns:1})}))};
 let bytes=0;
 for(const s of out){
@@ -131,7 +139,7 @@ for(const s of out){
   const objs={w:fc}; if(s.src==='ne') objs.d={type:'FeatureCollection',features:disp};
   const txt=JSON.stringify(topology(objs,1e5)); bytes+=txt.length; fs.writeFileSync(path.join(OUT,'data',`${s.y}.json`),txt);
   const top=[...s.area].sort((a,b)=>b[1]-a[1]).map(([id,a])=>[id,a>=1000?Math.round(a/1000):+(a/1000).toFixed(3)]);
-  index.snaps.push({y:s.y,src:s.src,date:s.date||null,top,labels:s.labels});
+  index.snaps.push({y:s.y,src:s.src,date:s.date||null,top,labels:s.labels,...(VER[s.y]?{v:VER[s.y]}:{})});
 }
 fs.writeFileSync(path.join(OUT,'index.json'),JSON.stringify(index));
 const land=JSON.parse(fs.readFileSync(path.join(HERE,'node_modules/world-atlas/land-110m.json'))); fs.writeFileSync(path.join(OUT,'data','land.json'),JSON.stringify(land));
