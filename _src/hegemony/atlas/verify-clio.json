@@ -1,0 +1,462 @@
+{
+ "1492": {
+  "agree": 0.851,
+  "clips": 2,
+  "diffs": [
+   {
+    "hn": "Siberians",
+    "hk": null,
+    "cn": "Grand Principality of Moscow",
+    "ck": "ru",
+    "a": 158000
+   }
+  ]
+ },
+ "1530": {
+  "agree": 0.779,
+  "clips": 5,
+  "diffs": [
+   {
+    "hn": "",
+    "hk": null,
+    "cn": "Ottoman Empire",
+    "ck": "ot",
+    "a": 301000
+   },
+   {
+    "hn": "Nogai Horde",
+    "hk": null,
+    "cn": "Grand Principality of Moscow",
+    "ck": "ru",
+    "a": 271000
+   },
+   {
+    "hn": "Holy Roman Empire",
+    "hk": null,
+    "cn": "Kingdom of Spain",
+    "ck": "es",
+    "a": 215000
+   },
+   {
+    "hn": "#yemen",
+    "hk": null,
+    "cn": "Ottoman Empire",
+    "ck": "ot",
+    "a": 176000
+   },
+   {
+    "hn": "Ottoman Empire",
+    "hk": "ot",
+    "cn": "Funj Sultanate",
+    "ck": null,
+    "a": 164000
+   },
+   {
+    "hn": "Mughal Empire",
+    "hk": "mg",
+    "cn": "Kashmiri Sultanate",
+    "ck": null,
+    "a": 152000
+   }
+  ]
+ },
+ "1600": {
+  "agree": 0.783,
+  "clips": 3,
+  "diffs": [
+   {
+    "hn": "",
+    "hk": null,
+    "cn": "Spanish Empire",
+    "ck": "es",
+    "a": 576000
+   },
+   {
+    "hn": "Savanna hunter-gatherers",
+    "hk": null,
+    "cn": "Spanish Empire",
+    "ck": "es",
+    "a": 491000
+   },
+   {
+    "hn": "",
+    "hk": null,
+    "cn": "Ottoman Empire",
+    "ck": "ot",
+    "a": 437000
+   },
+   {
+    "hn": "#brazil_1600",
+    "hk": "pt",
+    "cn": "Spanish Empire",
+    "ck": "es",
+    "a": 322000
+   },
+   {
+    "hn": "Pampas cultures",
+    "hk": null,
+    "cn": "Spanish Empire",
+    "ck": "es",
+    "a": 279000
+   },
+   {
+    "hn": "Holy Roman Empire",
+    "hk": null,
+    "cn": "Habsburg Monarchy",
+    "ck": "at",
+    "a": 254000
+   },
+   {
+    "hn": "Ottoman Empire",
+    "hk": "ot",
+    "cn": "Principality of Moldavia",
+    "ck": null,
+    "a": 254000
+   },
+   {
+    "hn": "Tsardom of Muscovy",
+    "hk": "ru",
+    "cn": "Kazakh Khanate",
+    "ck": null,
+    "a": 179000
+   }
+  ]
+ },
+ "1650": {
+  "agree": 0.85,
+  "clips": 2,
+  "diffs": [
+   {
+    "hn": "",
+    "hk": null,
+    "cn": "Spanish Empire",
+    "ck": "es",
+    "a": 390000
+   },
+   {
+    "hn": "Savanna hunter-gatherers",
+    "hk": null,
+    "cn": "Spanish Empire",
+    "ck": "es",
+    "a": 357000
+   },
+   {
+    "hn": "",
+    "hk": null,
+    "cn": "Ottoman Empire",
+    "ck": "ot",
+    "a": 277000
+   },
+   {
+    "hn": "Viceroyalty of Peru",
+    "hk": "es",
+    "cn": "Jesuit Reducciones",
+    "ck": null,
+    "a": 232000
+   },
+   {
+    "hn": "Holy Roman Empire",
+    "hk": null,
+    "cn": "Habsburg Monarchy",
+    "ck": "at",
+    "a": 228000
+   },
+   {
+    "hn": "Pampas cultures",
+    "hk": null,
+    "cn": "Spanish Empire",
+    "ck": "es",
+    "a": 223000
+   },
+   {
+    "hn": "Tsardom of Muscovy",
+    "hk": "ru",
+    "cn": "Kazakh Khanate",
+    "ck": null,
+    "a": 175000
+   },
+   {
+    "hn": "Ottoman Empire",
+    "hk": "ot",
+    "cn": "Funj Sultanate",
+    "ck": null,
+    "a": 164000
+   }
+  ]
+ },
+ "1700": {
+  "agree": 0.851,
+  "clips": 4,
+  "diffs": [
+   {
+    "hn": "",
+    "hk": null,
+    "cn": "Spanish Empire",
+    "ck": "es",
+    "a": 563000
+   },
+   {
+    "hn": "Chukchi",
+    "hk": null,
+    "cn": "Tsardom of Russia",
+    "ck": "ru",
+    "a": 559000
+   },
+   {
+    "hn": "Savanna hunter-gatherers",
+    "hk": null,
+    "cn": "Spanish Empire",
+    "ck": "es",
+    "a": 357000
+   },
+   {
+    "hn": "Tibet",
+    "hk": null,
+    "cn": "Qing Dynasty",
+    "ck": "cn",
+    "a": 322000
+   },
+   {
+    "hn": "",
+    "hk": null,
+    "cn": "Ottoman Empire",
+    "ck": "ot",
+    "a": 277000
+   },
+   {
+    "hn": "Viceroyalty of Peru",
+    "hk": "es",
+    "cn": "Jesuit Reducciones",
+    "ck": null,
+    "a": 232000
+   },
+   {
+    "hn": "Pampas cultures",
+    "hk": null,
+    "cn": "Spanish Empire",
+    "ck": "es",
+    "a": 230000
+   },
+   {
+    "hn": "Holy Roman Empire",
+    "hk": null,
+    "cn": "Habsburg Monarchy",
+    "ck": "at",
+    "a": 213000
+   }
+  ]
+ },
+ "1715": {
+  "agree": 0.883,
+  "clips": 2,
+  "diffs": [
+   {
+    "hn": "Tibet",
+    "hk": null,
+    "cn": "Qing Dynasty",
+    "ck": "cn",
+    "a": 369000
+   },
+   {
+    "hn": "",
+    "hk": null,
+    "cn": "Ottoman Empire",
+    "ck": "ot",
+    "a": 321000
+   },
+   {
+    "hn": "Savanna hunter-gatherers",
+    "hk": null,
+    "cn": "Spanish Empire",
+    "ck": "es",
+    "a": 314000
+   },
+   {
+    "hn": "Amazon hunter-gatherers",
+    "hk": null,
+    "cn": "Spanish Empire",
+    "ck": "es",
+    "a": 273000
+   },
+   {
+    "hn": "Viceroyalty of Peru",
+    "hk": "es",
+    "cn": "Jesuit Reducciones",
+    "ck": null,
+    "a": 238000
+   },
+   {
+    "hn": "Tsardom of Muscovy",
+    "hk": "ru",
+    "cn": "Kazakh Khanate",
+    "ck": null,
+    "a": 177000
+   }
+  ]
+ },
+ "1783": {
+  "agree": 0.921,
+  "clips": 3,
+  "diffs": [
+   {
+    "hn": "Qing Empire",
+    "hk": "cn",
+    "cn": "Tibet",
+    "ck": null,
+    "a": 1195000
+   },
+   {
+    "hn": "Viceroyalty of Brazil",
+    "hk": "pt",
+    "cn": "Spanish Empire",
+    "ck": "es",
+    "a": 438000
+   },
+   {
+    "hn": "Mahratta states",
+    "hk": null,
+    "cn": "Mughal Empire",
+    "ck": "mg",
+    "a": 347000
+   },
+   {
+    "hn": "",
+    "hk": null,
+    "cn": "Ottoman Empire",
+    "ck": "ot",
+    "a": 248000
+   },
+   {
+    "hn": "United States of America",
+    "hk": "us",
+    "cn": "Spanish Empire",
+    "ck": "es",
+    "a": 165000
+   }
+  ]
+ },
+ "1815": {
+  "agree": 0.884,
+  "clips": 2,
+  "diffs": [
+   {
+    "hn": "Russian Empire",
+    "hk": "ru",
+    "cn": "Kazakh Khanate",
+    "ck": null,
+    "a": 686000
+   },
+   {
+    "hn": "Egypt",
+    "hk": "ot",
+    "cn": "Muhammad Ali dynasty",
+    "ck": null,
+    "a": 581000
+   },
+   {
+    "hn": "Viceroyalty of New Granada",
+    "hk": "es",
+    "cn": "New Granada",
+    "ck": null,
+    "a": 578000
+   },
+   {
+    "hn": "Maratha Confederacy",
+    "hk": null,
+    "cn": "British Empire",
+    "ck": "gb",
+    "a": 554000
+   },
+   {
+    "hn": "Viceroyalty of Brazil",
+    "hk": "pt",
+    "cn": "Spanish Empire",
+    "ck": "es",
+    "a": 387000
+   },
+   {
+    "hn": "Viceroyalty of New Spain",
+    "hk": "es",
+    "cn": "Mexicans",
+    "ck": null,
+    "a": 299000
+   },
+   {
+    "hn": "",
+    "hk": null,
+    "cn": "Ottoman Empire",
+    "ck": "ot",
+    "a": 261000
+   },
+   {
+    "hn": "Prussia",
+    "hk": "de",
+    "cn": "German Confederation",
+    "ck": null,
+    "a": 248000
+   }
+  ]
+ },
+ "1880": {
+  "agree": 0.921,
+  "clips": 1,
+  "diffs": [
+   {
+    "hn": "Egypt",
+    "hk": "ot",
+    "cn": "Khedivate of Egypt",
+    "ck": null,
+    "a": 1683000
+   },
+   {
+    "hn": "Arabia",
+    "hk": null,
+    "cn": "British Colonial Empire",
+    "ck": "gb",
+    "a": 285000
+   },
+   {
+    "hn": "Transvaal",
+    "hk": null,
+    "cn": "British Cape Colony",
+    "ck": "gb",
+    "a": 255000
+   },
+   {
+    "hn": "Arabia",
+    "hk": null,
+    "cn": "Ottoman Empire",
+    "ck": "ot",
+    "a": 222000
+   },
+   {
+    "hn": "Māori",
+    "hk": null,
+    "cn": "British Colonial Empire",
+    "ck": "gb",
+    "a": 195000
+   },
+   {
+    "hn": "Bokhara Khanate",
+    "hk": null,
+    "cn": "Russian Empire",
+    "ck": "ru",
+    "a": 176000
+   },
+   {
+    "hn": "Persia",
+    "hk": null,
+    "cn": "Russian Empire",
+    "ck": "ru",
+    "a": 164000
+   },
+   {
+    "hn": "British Raj",
+    "hk": "gb",
+    "cn": "Kashmir and Jammu",
+    "ck": null,
+    "a": 164000
+   }
+  ]
+ }
+}

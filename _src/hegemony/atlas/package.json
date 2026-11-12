@@ -4,7 +4,8 @@
   "type": "module",
   "scripts": {
     "prepare-data": "bash prepare.sh",
-    "build": "node build.mjs"
+    "build": "node build.mjs",
+    "verify": "node --max-old-space-size=6000 verify.mjs"
   },
   "dependencies": {
     "d3": "^7.9.0",
