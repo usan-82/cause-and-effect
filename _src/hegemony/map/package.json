@@ -1,0 +1,19 @@
+{
+  "name": "hegemony-map",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "prepare-data": "bash prepare.sh",
+    "build": "node build.mjs",
+    "verify": "node --max-old-space-size=6000 verify.mjs"
+  },
+  "dependencies": {
+    "d3": "^7.9.0",
+    "d3-geo": "^3.1.1",
+    "flatbush": "^4.4.0",
+    "mapshaper": "^0.6.0",
+    "topojson-client": "^3.1.0",
+    "topojson-server": "^3.0.1",
+    "world-atlas": "^2.0.2"
+  }
+}
