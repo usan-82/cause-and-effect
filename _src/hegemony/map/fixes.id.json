@@ -95,7 +95,8 @@
   "rioplata_1815": "Río de la Plata lepas dari kekuasaan Spanyol setelah Revolusi Mei 1810 dan tidak pernah direbut kembali (kemerdekaan diproklamasikan 1816) — sumber menandainya sebagai milik Spanyol",
   "gojoseon_400": "Sumber hanya memuat Gojoseon pada 400 SM dan membentangkannya sampai melewati Primorye, sehingga diganti dengan wilayah yang digambar tambahan (lihat ‘Gojoseon’).",
   "korea_name": "Sumber hanya menulis ‘Korea’; namanya diganti dengan nama negara pada masa itu (Goryeo pada 1000 dan 1100, Joseon pada 1400–1880).",
-  "baekje_700": "Baekje runtuh pada 660. Bekas wilayahnya menjadi bagian Silla setelah Perang Silla–Tang (670–676)."
+  "baekje_700": "Baekje runtuh pada 660. Bekas wilayahnya menjadi bagian Silla setelah Perang Silla–Tang (670–676).",
+  "samhan": "Silla, Baekje, dan Gaya di sumber diganti dengan Mahan, Jinhan, dan Byeonhan (lihat ‘Mahan’)."
  },
  "patches": {
   "yemen": {
@@ -333,6 +334,57 @@
    "name": "Goryeo",
    "r": {
     "1300": "Goryeo: di sumber digabung ke Kekaisaran Mongol (Yuan). Berada di bawah campur tangan Yuan, tetapi dinasti dan negaranya tetap berlanjut. Dongnyeong dikembalikan pada 1290 dan Jeju pada 1294; wilayah timur laut (Ssangseong) tetap diperintah langsung oleh Yuan sampai 1356. Batas hanya perkiraan"
+   }
+  },
+  "kr_lelang": {
+   "name": "Wilayah Lelang",
+   "r": {
+    "300": "Komanderi Lelang dan Daifang di bawah Jin Barat: direbut Goguryeo pada 313–314. Luas hanya perkiraan",
+    "400": "Goguryeo: merebut Lelang pada 313 dan Daifang pada 314. Sumber menggambarnya di bawah negara Tiongkok",
+    "-100": "Komanderi Lelang milik Han: didirikan setelah Han menaklukkan Gojoseon pada 108 SM; jatuh ke Goguryeo pada 313. Sumber mengosongkannya pada 100 SM dan menggambarnya sebagai Goguryeo pada 1 SM. Luasnya mengikuti pandangan umum (sekitar Pyongyang) dan hanya perkiraan"
+   }
+  },
+  "kr_mahan": {
+   "name": "Mahan",
+   "r": {
+    "-1": "Mahan: konfederasi negara-negara kecil di Korea barat daya (54 menurut Catatan Tiga Kerajaan). Sumber menggambar Silla dan Baekje di sini, tetapi pandangan umum menyatakan keduanya baru menyatukan tetangganya pada abad ke-3–4, sehingga diganti dengan Samhan. Baekje (pendirian tradisional 18 SM) adalah salah satu negara Mahan. Batas hanya perkiraan"
+   }
+  },
+  "kr_mahan_s": {
+   "name": "Mahan (sisa)",
+   "r": {
+    "300": "Sisa Mahan: wilayah Jeolla diperkirakan masuk ke Baekje pada akhir abad ke-4 (sekitar 369, masa Raja Geunchogo). Sumber menggambarnya sebagai Baekje. Batas hanya perkiraan"
+   }
+  },
+  "kr_jinhan": {
+   "name": "Jinhan",
+   "r": {
+    "-1": "Jinhan: konfederasi 12 negara kecil di timur Sungai Nakdong. Salah satunya, Saro (pendirian tradisional 57 SM), menjadi Silla. Batas hanya perkiraan"
+   }
+  },
+  "kr_byeonhan": {
+   "name": "Byeonhan / Gaya",
+   "r": {
+    "300": "Gaya: konfederasi yang tumbuh dari Byeonhan. Silla menyerap Geumgwan Gaya pada 532 dan Daegaya pada 562. Sumber hanya memuatnya sampai 400 dan sangat kecil, sehingga digambar tambahan. Batas hanya perkiraan",
+    "-1": "Byeonhan: konfederasi 12 negara kecil di hilir Sungai Nakdong dan sebelah baratnya, pendahulu Gaya. Geumgwan Gaya secara tradisional didirikan pada 42 M. Batas hanya perkiraan"
+   }
+  },
+  "kr_jinguk": {
+   "name": "Negara Jin",
+   "r": {
+    "-100": "Jin: negara di selatan Gojoseon yang disebut dalam catatan Tiongkok (juga ditafsirkan sebagai sebutan bersama negara-negara kecil). Kemudian dilanjutkan oleh Mahan, Jinhan, dan Byeonhan. Luas hanya perkiraan"
+   }
+  },
+  "kr_hangang": {
+   "name": "Lembah Sungai Han",
+   "r": {
+    "300": "Baekje: lembah Sungai Han, tempat ibu kotanya Hanseong (kini Seoul). Sumber menggambarnya sebagai Goguryeo. Direbut Goguryeo pada 475"
+   }
+  },
+  "kr_central": {
+   "name": "Korea tengah",
+   "r": {
+    "500": "Goguryeo: menguasai lembah Sungai Han dan Korea tengah sejak jatuhnya Hanseong pada 475 sampai 551. Sumber menggambarnya sebagai Silla (Silla baru menguasainya pada 553)"
    }
   }
  }

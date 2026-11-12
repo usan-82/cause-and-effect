@@ -454,7 +454,11 @@
   "Korean Empire": "대한제국",
   "Gaya": "가야",
   "Goguryeo": "고구려",
-  "Baekje": "백제"
+  "Baekje": "백제",
+  "Mahan": "마한",
+  "Jinhan": "진한",
+  "Byeonhan": "변한",
+  "Korean Jin": "진국(辰國)"
  },
  "nonstate": {
   "regex": "hunter|gatherer|culture|farmers|pastoral|nomad|tribe|peoples?$|fishers|fichers|foraging|civilization|Proto-|megalith|Bronze Age|Clans",
