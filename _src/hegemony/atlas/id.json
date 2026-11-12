@@ -4,7 +4,7 @@
    "title": "Di ambang Zaman Penjelajahan",
    "power": [
     "Setelah merebut Konstantinopel pada 1453, Kesultanan Utsmaniyah menguasai Balkan dan Mediterania timur, sehingga memegang simpul jalur dagang antara Eropa dan Asia.",
-    "Dinasti Ming menjadi pusat tatanan upeti di Asia Timur, tetapi setelah pelayaran Zheng He berakhir pada 1433, Ming menutup diri dari laut lewat kebijakan larangan maritim (haijin).",
+    "Dinasti Ming menjadi pusat tatanan upeti di Asia Timur, tetapi setelah pelayaran Zheng He berakhir pada 1433, Ming menghentikan pelayaran samudra oleh negara dan tetap menutup pelayaran swasta lewat larangan maritim (haijin).[^haijin]",
     "Portugal menyusuri pantai Afrika Barat ke selatan, dan pada 1488 Dias mengitari Tanjung Harapan sehingga jalan menuju Samudra Hindia terbuka.",
     "Kastilia dan Aragon bersatu lewat perkawinan politik 1469, lalu menaklukkan Granada pada 1492 dan menuntaskan Reconquista."
    ],
@@ -40,7 +40,7 @@
    "title": "Karl V dan Suleiman",
    "power": [
     "Karl V dari Habsburg (raja Spanyol 1516, Kaisar Romawi Suci 1519) sekaligus menguasai Spanyol, Belanda, Italia selatan, dan Dunia Baru. Wilayah Austria diserahkan kepada adiknya, Ferdinand.",
-    "François I dari Prancis berperang di Italia untuk memecah kepungan Habsburg, bahkan bersekutu dengan Utsmaniyah yang Muslim (perjanjian 1536).",
+    "François I dari Prancis berperang di Italia untuk memecah kepungan Habsburg, bahkan bersekutu dengan Utsmaniyah yang Muslim (perjanjian 1536[^fr_ot]).",
     "Sultan Utsmaniyah Suleiman I menghancurkan Hongaria di Mohács pada 1526 dan mengepung Wina pada 1529.",
     "Portugal membangun imperium rempah di Samudra Hindia dengan pangkalan di Goa (1510), Malaka (1511), dan Hormuz (1515)."
    ],
@@ -51,9 +51,9 @@
      "l": "Negara Eropa lain tersisih dan kelak menentang; hak penduduk asli tidak diperhitungkan"
     },
     {
-     "t": "1519–21 Penaklukan Aztek · 1532– Penaklukan Inka",
-     "g": "Spanyol — perak dan wilayah yang sangat luas",
-     "l": "Kekaisaran Aztek dan Inka runtuh"
+     "t": "1519–21 Penaklukan Aztek",
+     "g": "Spanyol — wilayah dan perak dataran tinggi Meksiko",
+     "l": "Kekaisaran Aztek runtuh[^inca]"
     },
     {
      "t": "1525 Pertempuran Pavia",
@@ -62,8 +62,8 @@
     },
     {
      "t": "1526 Pertempuran Mohács",
-     "g": "Utsmaniyah — menguasai Hongaria tengah. Habsburg mewarisi takhta Hongaria dan Bohemia",
-     "l": "Kerajaan Hongaria (Lajos II gugur)"
+     "g": "Utsmaniyah — Hongaria masuk lingkup pengaruhnya (pemerintahan langsung atas bagian tengah baru dimulai dengan direbutnya Buda pada 1541). Habsburg mewarisi takhta Hongaria dan Bohemia",
+     "l": "Kerajaan Hongaria (Lajos II tewas saat mundur)"
     }
    ],
    "tech": [
@@ -80,16 +80,21 @@
   "1600": {
    "title": "Zaman perak dan kekuatan laut baru",
    "power": [
-    "Pada 1580 Spanyol juga merangkap takhta Portugal (Uni Iberia, sampai 1640) dan menjadi imperium terbesar di dunia, tetapi dilanda krisis keuangan dan berulang kali bangkrut.",
+    "Pada 1580 Spanyol juga merangkap takhta Portugal (Uni Iberia, sampai 1640) dan menjadi imperium seberang lautan terluas pada masanya, tetapi dilanda krisis keuangan dan berulang kali bangkrut.",
     "Belanda menyatakan merdeka dari Spanyol pada 1581 dan bangkit sebagai kekuatan dagang meski masih berperang dalam Perang Delapan Puluh Tahun.",
     "Inggris di bawah Elizabeth I mengalahkan Armada Spanyol pada 1588 dan mulai serius berekspansi ke seberang laut.",
     "Di Asia Timur, Perang Imjin (1592–98) mengguncang Ming, Joseon (Korea), dan Jepang sekaligus, dan Pertempuran Sekigahara (1600) membuka jalan bagi Keshogunan Tokugawa."
    ],
    "events": [
     {
+     "t": "1532–72 Penaklukan Inka",
+     "g": "Spanyol — wilayah Andes dan tambang perak Potosí (ditemukan 1545)",
+     "l": "Kekaisaran Inka runtuh (perlawanan terakhir di Vilcabamba bertahan sampai 1572)"
+    },
+    {
      "t": "1571 Pertempuran Lepanto",
      "g": "Liga Suci (Spanyol, Venesia, Negara Gereja) — mempertahankan Mediterania barat",
-     "l": "Armada Utsmaniyah hancur (tetapi dibangun kembali tahun berikutnya)"
+     "l": "Armada Utsmaniyah hancur (tetapi dibangun kembali tahun berikutnya)[^lepanto]"
     },
     {
      "t": "1588 Kekalahan Armada Spanyol",
@@ -121,9 +126,9 @@
   "1650": {
    "title": "Tatanan Westfalen dan Zaman Keemasan Belanda",
    "power": [
-    "Perdamaian Westfalen (1648) mengakhiri Perang Tiga Puluh Tahun. Kemerdekaan Belanda dan Swiss diakui, dan lahirlah cikal bakal sistem negara-negara berdaulat yang hidup berdampingan.",
+    "Perdamaian Westfalen (1648) mengakhiri Perang Tiga Puluh Tahun. Kemerdekaan Belanda dan Swiss diakui, dan peristiwa ini lazim disebut sebagai cikal bakal sistem negara-negara berdaulat yang hidup berdampingan.[^westphalia]",
     "Belanda, dengan VOC di garis depan, menjadi pemain utama perdagangan laut Asia.",
-    "Kemunduran Spanyol makin nyata setelah Portugal merdeka kembali pada 1640, dan Prancis mengincar kekosongan itu (Perjanjian Pirenia, 1659).",
+    "Kemunduran Spanyol makin nyata setelah Portugal merdeka kembali pada 1640, dan Prancis mengincar kekosongan itu (kelak dikukuhkan oleh Perjanjian Pirenia, 1659).",
     "Inggris mengeksekusi Charles I pada 1649 setelah perang saudara (1642–51) dan menjadi republik. Di Asia Timur, Ming runtuh pada 1644 dan Qing memasuki Beijing."
    ],
    "events": [
@@ -368,7 +373,7 @@
    "title": "Puncak imperialisme dan pecahnya perang",
    "power": [
     "Setelah Konferensi Berlin (1884–85), pembagian Afrika hampir tuntas; hanya Etiopia dan Liberia yang tetap merdeka.",
-    "Britania membalas pembangunan armada Jerman dengan kapal Dreadnought (1906). Eropa terbelah menjadi Entente Tiga (Britania, Prancis, Rusia) dan Aliansi Tiga (Jerman, Austria-Hongaria, Italia).",
+    "Britania membalas pembangunan armada Jerman dengan kapal Dreadnought (1906). Eropa terbelah menjadi Entente Tiga (Britania, Prancis, Rusia) dan Aliansi Tiga (Jerman, Austria-Hongaria, Italia) — meski Italia netral saat perang pecah dan bergabung dengan pihak Entente pada 1915.",
     "AS memperoleh Filipina, Guam, dan Puerto Riko lewat Perang Spanyol–Amerika 1898.",
     "Jepang memenangi Perang Tiongkok–Jepang (1894–95) dan Perang Rusia–Jepang (1904–05), lalu mencaplok Korea pada 1910. Di Tiongkok, Revolusi 1911 menumbangkan Qing (Republik Tiongkok, 1912)."
    ],
@@ -414,7 +419,7 @@
    "title": "Sistem Versailles",
    "power": [
     "Perang Dunia I meruntuhkan empat imperium: Jerman, Austria-Hongaria, Rusia, dan Utsmaniyah.",
-    "Britania dan Prancis membagi bekas wilayah Jerman dan Utsmaniyah di Timur Tengah dan Afrika dengan nama 'mandat'. Imperium Britania mencapai luas terbesarnya.",
+    "Britania dan Prancis membagi bekas wilayah Jerman dan Utsmaniyah di Timur Tengah dan Afrika dengan nama 'mandat'. Imperium Britania mencapai luas terbesarnya sekitar masa ini.[^gb_peak]",
     "AS menjadi negara kreditur terbesar, tetapi Senat tidak meratifikasi Perjanjian Versailles sehingga AS tidak pernah bergabung dengan Liga Bangsa-Bangsa.",
     "Setelah revolusi 1917, Rusia dilanda perang saudara (sampai 1922). Jepang memperoleh hak di Shandong dan pulau-pulau Laut Selatan."
    ],
@@ -495,7 +500,7 @@
   "1945": {
    "title": "Akhir Perang Dunia II dan awal dunia dua kutub",
    "power": [
-    "Jerman (Mei) dan Jepang (Agustus) menyerah. AS memonopoli senjata nuklir dan menjadi satu-satunya kekuatan besar dengan kekuatan industri yang luar biasa.",
+    "Jerman (Mei) dan Jepang (pengumuman menyerah 15 Agustus, penandatanganan 2 September) menyerah. AS memonopoli senjata nuklir dan menjadi satu-satunya kekuatan besar dengan kekuatan industri yang luar biasa.",
     "Uni Soviet menderita korban jiwa sangat besar, tetapi menduduki seluruh Eropa Timur dan menjadikannya wilayah pengaruh.",
     "Britania dan Prancis termasuk pihak pemenang, tetapi keuangan mereka terkuras dan kemampuan mempertahankan koloni mulai hilang.",
     "Korea merdeka sekaligus terbagi di garis lintang 38 antara pendudukan AS dan Soviet. PBB (Oktober 1945) dan sistem Bretton Woods (IMF, Bank Dunia) menjadi kerangka tatanan pascaperang."
@@ -579,7 +584,7 @@
    "power": [
     "Tembok Berlin runtuh pada 1989, Jerman bersatu kembali pada 1990, dan Uni Soviet bubar menjadi 15 republik pada 1991.",
     "AS menunjukkan keunggulan militer dan diplomatiknya dalam Perang Teluk 1991 dan menjadi satu-satunya adidaya.",
-    "Eropa meluncurkan Uni Eropa lewat Perjanjian Maastricht (1993).",
+    "Eropa meluncurkan Uni Eropa lewat Perjanjian Maastricht (ditandatangani 1992, berlaku November 1993).",
     "Setelah 'reformasi dan keterbukaan' 1978, Tiongkok mempercepat peralihan ke ekonomi pasar dengan Lawatan ke Selatan Deng Xiaoping (1992)."
    ],
    "events": [
@@ -708,7 +713,7 @@
      "Terusan dibuka 1869; Britania membeli saham perusahaan terusan pada 1875 dan menduduki Mesir pada 1882"
     ],
     [
-     "Britania (protektorat)",
+     "Britania (protektorat)[^egypt_1914]",
      "Diduduki Britania 1882, protektorat 1914.12, merdeka 1922"
     ],
     [
@@ -829,7 +834,7 @@
    "name": "Aden (Bab-el-Mandeb)",
    "r": [
     [
-     "Dinasti Tahiri",
+     "Dinasti Tahiri[^aden]",
      "Ditaklukkan Utsmaniyah pada 1538"
     ],
     [
@@ -945,8 +950,8 @@
    "name": "Krimea (Sevastopol)",
    "r": [
     [
-     "Kekhanan Krimea (vasal Utsmaniyah)",
-     "Di bawah kedaulatan Utsmaniyah sejak 1475"
+     "Kekhanan Krimea (di bawah suzeranitas Utsmaniyah)[^crimea]",
+     "Pada 1475 Utsmaniyah menjadikan pesisir selatan (Kaffa) wilayah langsung; sejak sekitar 1478 kekhanan mengakui suzeranitasnya"
     ],
     [
      "Rusia",
@@ -1032,7 +1037,7 @@
    "name": "Goa",
    "r": [
     [
-     "Kesultanan penerus Bahmani",
+     "Kesultanan Bahmani / Kesultanan Bijapur[^goa]",
      ""
     ],
     [
@@ -1054,11 +1059,11 @@
    "r": [
     [
      "Kerajaan Kotte",
-     "Portugis tiba pada 1505 dan mendirikan pos dagang"
+     "Portugis tiba pada 1505. Mereka membangun benteng di Kolombo pada 1518, membongkarnya pada pertengahan 1520-an, dan hanya mempertahankan pos dagang"
     ],
     [
      "Portugal",
-     "Direbut Belanda pada 1656"
+     "Pada 1597 takhta Kotte diwarisi Raja Portugal. Direbut Belanda pada 1656"
     ],
     [
      "Belanda (VOC)",
@@ -1365,12 +1370,12 @@
    "1715": "Perjanjian Utrecht: sebagai imbalan pengakuan dinasti Bourbon, Belanda selatan dan wilayah Italia diserahkan kepada Austria dan Savoia, serta Gibraltar dan Menorca kepada Britania. Tanah induk dan Amerika tetap — negaranya tidak runtuh; pengaruhnya di Eropa yang menyusut.",
    "1783": "Reformasi Bourbon menata ulang pemerintahan kolonial. Bersama Prancis melawan Britania dalam perang Amerika, merebut kembali Florida dan Menorca → imperium Amerikanya mencapai luas terbesar.",
    "1815": "Napoleon menduduki tanah induk pada 1808 → saat negeri induk kosong, koloni Amerika memulai perang kemerdekaan (sejak 1810). Monarki dipulihkan pada 1814.",
-   "1880": "Sebagian besar koloni di daratan Amerika merdeka pada 1820-an. Tinggal Kuba, Puerto Riko, dan Filipina.",
+   "1880": "Sebagian besar koloni di daratan Amerika merdeka pada 1820-an. Tinggal Kuba, Puerto Riko, Filipina, beberapa pulau Pasifik (Guam dan lainnya), serta sebagian kecil Afrika.",
    "1914": "Kalah dalam Perang Spanyol–Amerika (1898) → Kuba merdeka; Filipina, Puerto Riko, dan Guam jatuh ke AS. Tinggal Maroko utara dan sebagian Afrika Barat.",
    "1920": "Netral dalam Perang Dunia I. Menjelang Perang Rif di Maroko utara (1921–26).",
    "1938": "Terkuras oleh Perang Saudara (1936–39). Pihak Franco mendekati kemenangan.",
    "1945": "Tidak ikut Perang Dunia II. Terkucil secara internasional di bawah kediktatoran Franco.",
-   "1960": "Mengembalikan protektorat Maroko pada 1956. Tinggal Sahara Barat dan Guinea Khatulistiwa.",
+   "1960": "Mengembalikan protektorat Maroko pada 1956. Tinggal Sahara Barat, Guinea Khatulistiwa, dan Ifni (dikembalikan 1969).",
    "1994": "Kemerdekaan Guinea Khatulistiwa (1968) dan penarikan diri dari Sahara Barat (1975) mengakhiri imperium kolonial. Demokratisasi setelah Franco; bergabung dengan Masyarakat Eropa pada 1986 — negaranya tetap ada, keluar dari perebutan hegemoni.",
    "2010": "Anggota Uni Eropa. Tidak punya koloni."
   },
@@ -1389,7 +1394,7 @@
    "1938": "Kediktatoran Salazar (Estado Novo). Mengikat koloni sebagai 'wilayah seberang laut'.",
    "1945": "Netral dalam Perang Dunia II. Mempertahankan koloni.",
    "1960": "Bertahan ketika negara Eropa lain melepas koloni → tahun berikutnya kehilangan Goa ke India (1961) dan perang kolonial dimulai, diawali di Angola.",
-   "1994": "Revolusi Anyelir (1974) → semua koloni Afrika merdeka pada 1975. Tinggal Makau, diserahkan 1999. Bergabung dengan Masyarakat Eropa pada 1986.",
+   "1994": "Revolusi Anyelir (1974) → semua koloni Afrika merdeka pada 1974–75 (Timor Timur diduduki Indonesia pada 1975). Tinggal Makau, diserahkan 1999. Bergabung dengan Masyarakat Eropa pada 1986.",
    "2010": "Dengan diserahkannya Makau pada 1999, imperium seberang laut berakhir sepenuhnya."
   },
   "nl": {
@@ -1435,7 +1440,7 @@
    "1715": "Mengalahkan Rusia di Sungai Prut pada 1711, tetapi tak lama kemudian kehilangan wilayah lagi kepada Habsburg (1718).",
    "1783": "Kalah dari Rusia (Perjanjian Küçük Kaynarca, 1774) → Krimea jatuh ke Rusia pada 1783.",
    "1815": "Pemberontakan Serbia (sejak 1804); Mesir di bawah Muhammad Ali praktis merdeka (sejak 1805). Menjelang kemerdekaan Yunani (1830).",
-   "1880": "Meski ada reformasi Tanzimat, kalah dari Rusia (1877–78) → di Kongres Berlin Serbia, Rumania, dan Montenegro merdeka, Bulgaria otonom. Britania mengambil Siprus dan menduduki Mesir pada 1882.",
+   "1880": "Meski ada reformasi Tanzimat, kalah dari Rusia (1877–78) → di Kongres Berlin Serbia, Rumania, dan Montenegro merdeka, Bulgaria otonom. Britania memperoleh Siprus, dan tak lama kemudian menduduki Mesir (1882).",
    "1914": "Perang Balkan (1912–13) menghabiskan sebagian besar wilayah Eropanya; Libya jatuh ke Italia (1912). Ikut berperang di pihak Jerman.",
    "1920": "Kalah → Sekutu menduduki Istanbul dan wilayah Arabnya menjadi mandat Britania dan Prancis. Perjanjian Sèvres mengancam pemecahan.",
    "1938": "Berakhir: kesultanan dihapus pada 1922 dan Republik Turki berdiri pada 1923 (Perjanjian Lausanne). Imperium lenyap dan Turki menjadi penerus di Anatolia — tidak diwarnai pada titik waktu berikutnya."
@@ -1465,7 +1470,7 @@
    "1914": "Perang Spanyol–Amerika (1898) membawa Filipina, Puerto Riko, dan Guam; Hawaii dicaplok. Terusan Panama dibuka pada 1914. Kekuatan industri terbesar di dunia.",
    "1920": "Keikutsertaannya pada 1917 menentukan hasil perang dan menjadi negara kreditur terbesar. Tetapi tidak bergabung dengan Liga Bangsa-Bangsa → mundur ke isolasionisme.",
    "1938": "Depresi → New Deal. Undang-Undang Netralitas menjauhkannya dari konflik Eropa.",
-   "1945": "Berperang setelah Pearl Harbor (1941); produksi perang menggandakan ekonomi. Monopoli nuklir dan pendudukan tunggal atas Jepang → adidaya.",
+   "1945": "Berperang setelah Pearl Harbor (1941); produksi perang sangat memperbesar ekonomi.[^us_ww2] Monopoli nuklir dan pendudukan tunggal atas Jepang → adidaya.",
    "1960": "Merangkul Eropa Barat lewat Rencana Marshall dan NATO; ikut Perang Korea. Perlombaan antariksa dan nuklir dengan Uni Soviet.",
    "1994": "Dengan bubarnya Uni Soviet, satu-satunya adidaya. Memenangi Perang Teluk.",
    "2010": "Terbebani perang Afganistan dan Irak setelah 11 September dan krisis keuangan 2008. Masih yang terkuat, tetapi Tiongkok mengejar."
@@ -1474,7 +1479,7 @@
    "1700": "Brandenburg-Prusia. Tumbuh menjadi negara yang bertumpu pada tentara tetap setelah Perang Tiga Puluh Tahun; Kerajaan Prusia diproklamasikan pada 1701.",
    "1715": "Bergabung dalam aliansi anti-Prancis pada Perang Suksesi Spanyol dan diakui sebagai kerajaan. Membangun angkatan darat.",
    "1783": "Friedrich Agung: merebut Silesia dari Austria (1742), bertahan dalam Perang Tujuh Tahun, ikut membagi Polandia (1772) → salah satu dari lima kekuatan besar.",
-   "1815": "Dihancurkan Napoleon pada 1806 dan kehilangan separuh wilayah → melakukan reformasi, berperang dalam Perang Pembebasan, dan memperoleh Rhineland di Kongres Wina.",
+   "1815": "Dihancurkan Napoleon pada 1806 dan kehilangan separuh wilayah lewat Perjanjian Tilsit (1807) → melakukan reformasi, berperang dalam Perang Pembebasan, dan memperoleh Rhineland di Kongres Wina.",
    "1880": "Bismarck: menang atas Denmark (1864), Austria (1866), dan Prancis (1870–71) → Kekaisaran Jerman bersatu pada 1871. Produksi industri mengejar Britania.",
    "1914": "Kekuatan industri kedua di dunia. Koloni di Afrika dan Pasifik. Perlombaan angkatan laut dengan Britania berujung perang.",
    "1920": "Kekalahan dan revolusi meruntuhkan kekaisaran; Republik Weimar. Perjanjian Versailles mengambil 13% wilayah inti, semua koloni, dan membebankan ganti rugi.",
@@ -1503,7 +1508,7 @@
    "1938": "Insiden Mukden (1931), Manchukuo (1932), keluar dari Liga (1933), perang dengan Tiongkok (1937) → berekspansi ke Asia Timur.",
    "1945": "Imperium berakhir: kekalahan menghilangkan semua koloni dan wilayah pendudukan, dan AS mendudukinya (1945–52). Negaranya tetap ada dan memulihkan kedaulatan pada 1952.",
    "1960": "Kedaulatan pulih pada 1952. Pemulihan ekonomi di bawah Perjanjian Keamanan AS–Jepang — keluar dari persaingan hegemoni militer.",
-   "1994": "Ekonomi terbesar kedua di dunia (sejak 1968). Stagnasi panjang setelah gelembung pecah (1991).",
+   "1994": "Ekonomi terbesar kedua di dunia (sejak 1968).[^jp_1968] Stagnasi panjang setelah gelembung pecah (1991).",
    "2010": "Disalip Tiongkok dalam PDB pada 2010, turun ke peringkat ketiga."
   },
   "it": {
@@ -1511,7 +1516,7 @@
    "1914": "Eritrea dan Somalia, lalu Libya pada 1912. Anggota Aliansi Tiga, tetapi ikut berperang di pihak Entente pada 1915.",
    "1920": "Pemenang yang tidak mendapat semua wilayah yang diinginkan — kekecewaan atas 'kemenangan yang cacat' → bangkitnya fasisme (Mussolini berkuasa 1922).",
    "1938": "Italia fasis: menaklukkan Etiopia pada 1936; poros dengan Jerman.",
-   "1945": "Menyerah dan perang saudara sejak 1943 → pihak yang kalah. Republik pada 1946; perjanjian damai 1947 mengambil semua koloninya — negaranya tetap ada, keluar dari perebutan hegemoni.",
+   "1945": "Menyerah dan perang saudara sejak 1943 → pihak yang kalah. Republik pada 1946; lewat perjanjian damai 1947 melepaskan semua koloninya (hanya bekas Somaliland Italia yang dipercayakan kepadanya sebagai wilayah perwalian PBB, 1950–60) — negaranya tetap ada, keluar dari perebutan hegemoni.",
    "1960": "Anggota pendiri NATO dan Masyarakat Ekonomi Eropa. Keajaiban ekonomi.",
    "1994": "Anggota Uni Eropa.",
    "2010": "Anggota Uni Eropa."
@@ -1558,8 +1563,8 @@
    "name": "Yaman",
    "r": [
     [
-     "Dinasti Tahiri (Yaman)",
-     "Utsmaniyah merebut Aden pada 1538 dan pedalaman Yaman pada 1547"
+     "Dataran tinggi Yaman (para imam Zaidiyah dan lainnya)",
+     "Dinasti Tahiri runtuh oleh Mamluk pada 1517. Pendudukan penuh Utsmaniyah dimulai dengan Aden pada 1538 dan Sana'a pada 1547"
     ],
     [
      "Imamah Zaidi Yaman",
@@ -1711,9 +1716,9 @@
    "Utsmaniyah merebut Tunisia pada 1574 (sempat pada 1534). Batas diambil dari Cliopatria."
   ],
   "c_hungary_1530": [
-   "Hungaria",
-   "Kerajaan Hungaria (raja dukungan Utsmaniyah vs. Habsburg)",
-   "Setelah Mohács (1526) dua raja memperebutkan Hungaria. Pemerintahan langsung Utsmaniyah dimulai dengan direbutnya Buda pada 1541. Batas diambil dari Cliopatria."
+   "Hongaria",
+   "Kerajaan Hongaria (raja dukungan Utsmaniyah vs. Habsburg)",
+   "Setelah Mohács (1526) dua raja memperebutkan Hongaria. Pemerintahan langsung Utsmaniyah dimulai dengan direbutnya Buda pada 1541. Batas diambil dari Cliopatria."
   ],
   "c_safavid_1650": [
    "Kaukasus timur dan Iran barat",
@@ -1748,7 +1753,21 @@
   "c_burma_1880": [
    "Burma Hulu",
    "Dinasti Konbaung (Burma)",
-   "Inggris baru menganeksasi Burma Hulu pada 1886. Batas diambil dari Cliopatria."
+   "Britania baru menganeksasi Burma Hulu pada 1886. Batas diambil dari Cliopatria."
   ]
+ },
+ "notes": {
+  "haijin": "Larangan maritim sendiri pertama kali dikeluarkan pada 1371 di masa Kaisar Hongwu, dan pelayaran Zheng He (1405–33) adalah usaha negara yang dijalankan sementara perdagangan swasta tetap dilarang. Setelah pelayaran itu, Ming tidak 'menutup laut', melainkan menghentikan pelayaran yang dipimpin negara. Larangan itu sebagian dilonggarkan pada 1567.",
+  "fr_ot": "Dari perjanjian 1536 hanya tersisa rancangannya, dan tidak pasti apakah saat itu diratifikasi secara resmi (ratifikasi resmi biasanya ditempatkan pada 1569). Namun kerja sama militer keduanya memang berlangsung. Peristiwa ini sedikit setelah tahun 1530 pada peta ini.",
+  "inca": "Penaklukan Inka dimulai pada 1532, setelah tahun ini (1530). Pada peta ini Inka masih merdeka; penaklukannya dibahas dalam 'Untung dan rugi' untuk tahun berikutnya yang ditampilkan (1600).",
+  "lepanto": "Dalam perang yang sama Utsmaniyah merebut Siprus (1571) dan membangun kembali armadanya tahun berikutnya. Seberapa jauh Lepanto mengubah peta kekuatan di Mediterania masih diperdebatkan.",
+  "westphalia": "Anggapan bahwa Westfalen menciptakan sistem negara berdaulat dikritik sebagai tafsir yang baru mengeras pada abad ke-19 dan ke-20 (Osiander 2001). Naskah perjanjiannya terutama mengatur tatanan di dalam Kekaisaran Romawi Suci, dan kemerdekaan Belanda serta Swiss lebih merupakan pengukuhan atas kenyataan yang sudah mapan.",
+  "gb_peak": "Luas terbesar Imperium Britania biasanya ditempatkan pada awal 1920-an. Angka luasnya berbeda-beda tergantung apakah dominion dan wilayah mandat dihitung. Peta ini mewarnai dominion sebagai Britania pada 1914 dan 1920.",
+  "us_ww2": "Besarnya kenaikan tergantung ukurannya. GNP nominal naik lebih dari dua kali lipat antara 1939 dan 1945, tetapi secara riil, setelah memperhitungkan harga, kenaikannya lebih kecil.",
+  "jp_1968": "1968 adalah tahun GNP Jepang melampaui Jerman Barat, artinya kedua di antara negara-negara Barat. Tergantung taksiran ekonomi Uni Soviet, saat Jepang menjadi 'kedua di dunia' dapat ditempatkan berbeda.",
+  "goa": "Goa sedang berpindah tangan pada masa ini. Bijapur (Adil Shahi) memisahkan diri dari Kesultanan Bahmani pada 1490, dan sumber-sumber berbeda tentang kapan pada 1490-an ia menguasai Goa. Dari Bijapur-lah Portugal merebut Goa pada 1510.",
+  "aden": "Garis utama Dinasti Tahiri runtuh akibat serbuan Mamluk pada 1517. Hanya Aden yang dipertahankan penguasa Tahiri terakhir sampai jatuh ke Utsmaniyah pada 1538.",
+  "crimea": "Kekhanan Krimea mengurus urusan dalam negerinya sendiri, dan seberapa jauh ia tunduk kepada Utsmaniyah masih diperdebatkan para sejarawan (ada yang melihatnya sebagai persekutuan yang tidak setara). Peta ini mewarnainya sebagai Utsmaniyah berdasarkan penguasaan atas titik-titik strategis di utara Laut Hitam.",
+  "egypt_1914": "Pada tanggal acuan peta ini (Juli 1914) Mesir secara nominal milik Utsmaniyah tetapi diduduki dan diperintah Britania sejak 1882. Protektorat baru diumumkan pada Desember tahun itu. Ditampilkan sebagai Britania berdasarkan penguasaan nyata."
  }
 }
