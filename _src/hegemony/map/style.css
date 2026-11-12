@@ -82,3 +82,4 @@ details.ver small{color:var(--muted)}details.ver .a{white-space:nowrap;font-vari
 .supnote{font-size:12px;color:var(--muted);flex:1;min-width:180px}
 i.sp{background-image:repeating-linear-gradient(-45deg,transparent 0 2px,rgba(255,255,255,.65) 2px 3.5px)}
 .info .tag{display:inline-block;font-size:11px;border:1px dashed var(--ink2);border-radius:5px;padding:0 5px;color:var(--ink2);vertical-align:1px}
+.gloss dl{margin:0}.gloss dt{font-weight:700;color:var(--ink);margin-top:7px}.gloss dd{margin:0;line-height:1.7}

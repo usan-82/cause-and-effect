@@ -170,6 +170,7 @@ fs.copyFileSync(path.join(HERE,'node_modules/d3/dist/d3.min.js'),path.join(OUT,'
 fs.copyFileSync(path.join(HERE,'node_modules/topojson-client/dist/topojson-client.min.js'),path.join(OUT,'lib/topojson-client.min.js'));
 let html=fs.readFileSync(path.join(HERE,'template.html'),'utf8').replace('{{css}}',fs.readFileSync(path.join(HERE,'style.css'),'utf8')).replace('{{ui}}',JSON.stringify(PG.ui).replace(/</g,'\\u003c'))
   .replace('{{sourcesHtml}}',`<ol>${PG.sources.map(([t,u])=>`<li><a href="${esc(u)}" target="_blank" rel="noopener">${esc(t)}</a></li>`).join('')}</ol>`);
+html=html.replace('{{glossHtml}}',`<dl>${PG.glossary.map(([t,d])=>`<dt>${esc(t)}</dt><dd>${esc(d)}</dd>`).join('')}</dl>`);
 for(const [k,v] of Object.entries(PG)) if(typeof v==='string') html=html.split('{{'+k+'}}').join(k.endsWith('Html')?v:esc(v));
 if(html.includes('{{')) throw new Error('치환 안 된 자리표시자 '+html.match(/\{\{\w+\}\}/)[0]);
 fs.writeFileSync(path.join(OUT,'index.html'),html);

@@ -22,7 +22,7 @@ npm run build          # 검증 결과와 보충 층을 페이지에 싣기
 - `clio.json` — 보충 층의 이름 처리. `alias`는 Cliopatria 이름을 이 지도의 같은 나라에 잇는 표(색과 한글 이름을 같이 쓴다. 직접 확인한 동의어만 넣는다), `ko`는 한글 이름
 - `alias.json` — 출처마다 다른 표기를 하나로 모으는 표
 - `ko.json` — 한글 이름(`names`), 나라가 아닌 문화권·집단을 가려내는 규칙(`nonstate`), 같은 색 묶음(`groups`), 분쟁 지역의 유엔 표기 설명(`unRules`)
-- `ko.page.json` — 화면 문구와 출처 목록
+- `ko.page.json` — 화면 문구, 출처 목록, 출처 아래에 싣는 용어 풀이(`glossary`)
 - `template.html`, `style.css` — 화면
 
 ## 한계
