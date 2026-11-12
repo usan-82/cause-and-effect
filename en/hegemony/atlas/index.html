@@ -158,6 +158,18 @@ details.ckey div{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:6px}
 details.ckey span{display:inline-flex;align-items:center;gap:6px}
 details.ckey .sw{width:13px;height:13px;flex-basis:13px}
 
+sup.fn{font-size:.72em;line-height:0;margin-left:1px}
+sup.fn a{text-decoration:none;font-weight:700;padding:0 2px}
+.fnotes ul{list-style:none;padding:0;margin:0}
+.fnotes li{padding:5px 6px;border-radius:6px;transition:background .3s}
+.fnotes li b{color:var(--c-blue);margin-right:4px}
+.fnotes li.hit{background:color-mix(in srgb, var(--c-yellow) 28%, transparent)}
+.srcs{font-size:12px;color:var(--ink2);margin-top:14px;border-top:1px solid var(--line);padding-top:12px;line-height:1.7}
+.srcs h4{margin:0 0 4px;font-size:13px;color:var(--ink);font-family:var(--sans)}
+.srcs p{margin:0 0 6px;color:var(--muted)}
+.srcs ol{margin:0;padding-left:20px}
+.srcs a{overflow-wrap:anywhere}
+
 </style>
 </head>
 <body>
@@ -189,12 +201,13 @@ details.ckey .sw{width:13px;height:13px;flex-basis:13px}
     <aside class="card panel" id="panel"></aside>
   </div>
   <div class="foot">Borders: up to 1880, <a href="https://github.com/aourednik/historical-basemaps">historical-basemaps</a> (André Ourednik et al., GPL-3.0) with year-by-year corrections; from 1914, redrawn from <a href="https://icr.ethz.ch/data/cshapes/">CShapes 2.0</a> (Schvitz, Girardin, Weidmann et al., dated borders and colonies). For 1914 onwards, where both sources exist, the ‘Cross-check’ section of each year shows the agreement rate and where they differ. Strategic points and some regions were recoloured with checked values where the source was wrong. Territory areas are approximations computed by sampling the final map on a 0.25° grid. Because the gaps between years are uneven, ‘Gains and losses’ covers the main events since the previous year shown.</div>
+
 </div>
 <script src="lib/d3.min.js"></script>
 <script src="lib/topojson-client.min.js"></script>
 <script>
 (async function(){
-const UI = {"tabs":["Balance of power","Gains and losses","Technology","Ideas","Country by country"],"era":"{prev} → c. {year}","eraFirst":"c. {year}","gain":"Gain","loss":"Loss","readMore":"Read more","fixesTitle":"Data corrections for this year","andMore":" and {n} more","others":"Other states and powers","ckShown":"Strategic points on","ckHidden":"Strategic points off","ckTitle":"Strategic points — {n}","ckTitleDiff":", {m} differ from the map colour","ckTitleOk":", all match the map","ckDiff":"⚠ differs from map colour","ckAbsent":"(not drawn on map)","ckRuler":"Ruler c. {year}:","ckAbsentLong":"The source border data does not draw this point (a small island or base). This marker is the checked value.","ckDiffLong":"⚠ This differs from the map colour. The source border data draws this point as {map}. Small places such as bases and straits get swallowed by the surrounding area, or the source label is wrong — this marker is the checked value.","ckMapNone":"an area it does not draw","otherPower":"other power","unnamed":"Unnamed area","srcSubj":"Sovereign (source)","cls":"Group","prec":"Border precision","precVals":["rough","medium","precise"],"noInfo":"no data","fix":"Correction","close":"Close","status":{"rise":"Rising","peak":"Peak","hold":"Holding","decline":"Declining / contested","exit":"Out of the contest (state continues)","end":"Ended"},"tiers":[["solid","Firm"],["hold","Holding"],["hatch","Declining / contested"],["exit","Out of the contest"]],"legendTitle":"Ruling powers c. {year}","rival":"lead","trackAll":"What changed for each country","trackAllNote":"What has changed since the previous year shown. Tap a country to see its whole course.","trackOne":"The course of {name}","trackBack":"← All countries","trackNote":"Tap a year to go to that map.","trackBefore":"Not treated as a contender on this map before {year}","trackAfter":"Not coloured at later points","focusOff":"Show all","regionName":"Name of the area at the time","contested":"Rule here is contested (hatched)","bigViewShort":"Large","bigExitShort":"Close","patched":"Recoloured with checked value","srcCs":"Borders: CShapes 2.0","srcHb":"Borders: historical-basemaps","csStatus":{"colony":"colony","protectorate":"protectorate","mandate":"mandate","occupied":"occupied","N/A":"status unknown"},"ckTitlePatched":"","ckPatched":"","ckPatchedLong":"In the source map this point was swallowed by the surrounding area or wrongly labelled, so the map itself has been recoloured with the checked ruler.","vTitle":"Cross-check","vCs":"Borders at this point were redrawn from CShapes 2.0 (as of {date}). Agreement with the open-source map used before (historical-basemaps): {agree}% (by area, 0.25° grid sample, coastline differences excluded). Strategic points and regions recoloured: {p}.","vHb":"Before 1886 there is no dated dataset to cross-check against. Based on historical-basemaps, {f} sovereignty-label errors were corrected and {p} strategic points and regions recoloured with checked values.","vDiffs":"Where the two sources differ most (source ↔ CShapes)","vAdopt":"Where they differ, the map follows CShapes.","vExc":"Shown differently from CShapes, or with a note added","vNone":"no sovereign","areaM":"{v} million km²","areaK":"{v}0,000 km²","areaLabel":"territory c. {a}","sparkTitle":"Territory (recomputed)","sparkAria":"Territory area by year","sparkNote":"Areas are recomputed from what is coloured on this map (colonies included). Before 1886 they include nominal claims and spheres, so they can exceed real control.","colorKey":"Show each country's colour","colorKeyNote":"A country keeps the same colour even when its name changes (Russia → USSR → Russia, Ming → Qing → China). When it grows stronger or weaker, the colour stays and only its strength and hatching change."};
+const UI = {"tabs":["Balance of power","Gains and losses","Technology","Ideas","Country by country"],"era":"{prev} → c. {year}","eraFirst":"c. {year}","gain":"Gain","loss":"Loss","readMore":"Read more","fixesTitle":"Data corrections for this year","andMore":" and {n} more","others":"Other states and powers","ckShown":"Strategic points on","ckHidden":"Strategic points off","ckTitle":"Strategic points — {n}","ckTitleDiff":", {m} differ from the map colour","ckTitleOk":", all match the map","ckDiff":"⚠ differs from map colour","ckAbsent":"(not drawn on map)","ckRuler":"Ruler c. {year}:","ckAbsentLong":"The source border data does not draw this point (a small island or base). This marker is the checked value.","ckDiffLong":"⚠ This differs from the map colour. The source border data draws this point as {map}. Small places such as bases and straits get swallowed by the surrounding area, or the source label is wrong — this marker is the checked value.","ckMapNone":"an area it does not draw","otherPower":"other power","unnamed":"Unnamed area","srcSubj":"Sovereign (source)","cls":"Group","prec":"Border precision","precVals":["rough","medium","precise"],"noInfo":"no data","fix":"Correction","close":"Close","status":{"rise":"Rising","peak":"Peak","hold":"Holding","decline":"Declining / contested","exit":"Out of the contest (state continues)","end":"Ended"},"tiers":[["solid","Firm"],["hold","Holding"],["hatch","Declining / contested"],["exit","Out of the contest"]],"legendTitle":"Ruling powers c. {year}","rival":"lead","trackAll":"What changed for each country","trackAllNote":"What has changed since the previous year shown. Tap a country to see its whole course.","trackOne":"The course of {name}","trackBack":"← All countries","trackNote":"Tap a year to go to that map.","trackBefore":"Not treated as a contender on this map before {year}","trackAfter":"Not coloured at later points","focusOff":"Show all","regionName":"Name of the area at the time","contested":"Rule here is contested (hatched)","bigViewShort":"Large","bigExitShort":"Close","patched":"Recoloured with checked value","srcCs":"Borders: CShapes 2.0","srcHb":"Borders: historical-basemaps","csStatus":{"colony":"colony","protectorate":"protectorate","mandate":"mandate","occupied":"occupied","N/A":"status unknown"},"ckTitlePatched":"","ckPatched":"","ckPatchedLong":"In the source map this point was swallowed by the surrounding area or wrongly labelled, so the map itself has been recoloured with the checked ruler.","vTitle":"Cross-check","vCs":"Borders at this point were redrawn from CShapes 2.0 (as of {date}). Agreement with the open-source map used before (historical-basemaps): {agree}% (by area, 0.25° grid sample, coastline differences excluded). Strategic points and regions recoloured: {p}.","vHb":"Before 1886 there is no dated dataset to cross-check against. Based on historical-basemaps, {f} sovereignty-label errors were corrected and {p} strategic points and regions recoloured with checked values.","vDiffs":"Where the two sources differ most (source ↔ CShapes)","vAdopt":"Where they differ, the map follows CShapes.","vExc":"Shown differently from CShapes, or with a note added","vNone":"no sovereign","areaM":"{v} million km²","areaK":"{v}0,000 km²","areaLabel":"territory c. {a}","sparkTitle":"Territory (recomputed)","sparkAria":"Territory area by year","sparkNote":"Areas are recomputed from what is coloured on this map (colonies included). Before 1886 they include nominal claims and spheres, so they can exceed real control.","colorKey":"Show each country's colour","colorKeyNote":"A country keeps the same colour even when its name changes (Russia → USSR → Russia, Ming → Qing → China). When it grows stronger or weaker, the colour stays and only its strength and hatching change.","footnotes":"Notes"};
 const KEYS=['gb','fr','es','pt','nl','ru','ot','cn','us','de','at','jp','it','be','mg'];
 const ORDER={peak:0,rise:1,hold:2,decline:3,exit:4,end:5};
 const pc=k=>`var(--p-${k})`;
@@ -275,11 +288,18 @@ function polyFill(d){
   return d.properties.n ? 'var(--land)' : 'var(--land0)';
 }
 function esc(s){return String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+// 각주: 본문 속 [^id] → 위첨자 번호. 패널을 그릴 때 쓰인 각주만 모아 아래에 보여 준다.
+const NOTES=content.notes||{}, NIDS=Object.keys(NOTES); let used=new Set();
+const rich=s=>esc(s).replace(/\[\^(\w+)\]/g,(m,id)=>{ if(!NOTES[id]) return ''; used.add(id); return `<sup class="fn"><a href="#fn-${id}" data-fn="${id}">${NIDS.indexOf(id)+1}</a></sup>`; });
+const plain=s=>esc(String(s??'').replace(/\[\^\w+\]/g,''));
+const noteLines=s=>[...String(s??'').matchAll(/\[\^(\w+)\]/g)].filter(m=>NOTES[m[1]]).map(m=>`<div class="meta">※ ${esc(NOTES[m[1]])}</div>`).join('');
+function fnSection(){ const ids=NIDS.filter(id=>used.has(id)); if(!ids.length) return '';
+  return `<div class="note fnotes"><h4>${esc(UI.footnotes||'')}</h4><ul>${ids.map(id=>`<li id="fn-${id}"><b>${NIDS.indexOf(id)+1}</b> ${esc(NOTES[id])}</li>`).join('')}</ul></div>`; }
 function closeBtn(){return `<button class="x" aria-label="${esc(UI.close)}">×</button>`;}
 function showInfo(d){
   const p=d.properties, v=meta.verify[year];
   let name=p.n, extra='';
-  if(p.kind==='choke'){const c=content.choke[p.pid][year]; name=c.name; extra=`<div class="fix">${esc(UI.patched)}: ${esc(c.who)}${c.note?' — '+esc(c.note):''}</div>`;}
+  if(p.kind==='choke'){const c=content.choke[p.pid][year]; name=c.name; extra=`<div class="fix">${esc(UI.patched)}: ${plain(c.who)}${c.note?' — '+plain(c.note):''}</div>`+noteLines(c.who+c.note);}
   if(p.kind==='region'){const c=content.patches[p.pid][year]; name=c.name; extra=`<div class="fix">${esc(UI.patched)}: ${esc(c.who)}${c.note?' — '+esc(c.note):''}</div>`;}
   const ruler=p.p&&alive(p.p,year)?`${esc(shortName(p.p,year))} · ${esc(UI.status[statusOf(p.p,year)])}`:'';
   const srcLine=p.src==='cs'
@@ -301,8 +321,8 @@ function ckVis(c){return !c.absent && ckShown(c.mapKey)!==ckShown(c.k);}
 function showCk(c){
   const mapLabel=c.absent?esc(UI.ckMapNone):`‘${esc(c.mapName||UI.unnamed)}’(${esc(c.mapKey?shortName(c.mapKey,year):UI.otherPower)})`;
   info.innerHTML=closeBtn()+`<b>◆ ${esc(c.name)}</b>`+
-   `<div>${esc(fmt(UI.ckRuler,{year}))} <b style="font-size:13px">${esc(c.who)}</b></div>`+
-   (c.note?`<div class="meta">${esc(c.note)}</div>`:'')+
+   `<div>${esc(fmt(UI.ckRuler,{year}))} <b style="font-size:13px">${plain(c.who)}</b></div>`+
+   (c.note?`<div class="meta">${plain(c.note)}</div>`:'')+noteLines(c.who+c.note)+
    (c.patched?`<div class="meta">${esc(UI.ckPatchedLong)}</div>`:'')+
    (c.absent?`<div class="meta">${esc(UI.ckAbsentLong)}</div>`:'')+
    (ckVis(c)?`<div class="warn">${esc(UI.ckDiffLong).replace('{map}',mapLabel)}</div>`:'');
@@ -356,7 +376,7 @@ function ckSection(){
   const L=ckList(), bad=L.filter(ckVis), pat=L.filter(c=>c.patched);
   const ord=[...bad,...L.filter(c=>!ckVis(c))];
   return `<div class="note"><h4>${esc(fmt(UI.ckTitle,{n:L.length}))}${UI.ckTitlePatched?esc(fmt(UI.ckTitlePatched,{p:pat.length})):''}${esc(bad.length?fmt(UI.ckTitleDiff,{m:bad.length}):UI.ckTitleOk)}</h4><ul class="cklist">`+
-   ord.map(c=>`<li data-id="${c.id}"><span class="d" style="background:${ckColor(c)}"></span><span><b>${esc(c.name)}</b> — ${esc(c.who)}${ckVis(c)?` <span class="warn">${esc(UI.ckDiff)}</span>`:''}${c.patched&&UI.ckPatched?` <span class="okt">${esc(UI.ckPatched)}</span>`:''}${c.absent?` <span style="color:var(--muted)">${esc(UI.ckAbsent)}</span>`:''}${c.note?`<br><span style="color:var(--muted)">${esc(c.note)}</span>`:''}</span></li>`).join('')+`</ul></div>`;
+   ord.map(c=>`<li data-id="${c.id}"><span class="d" style="background:${ckColor(c)}"></span><span><b>${esc(c.name)}</b> — ${rich(c.who)}${ckVis(c)?` <span class="warn">${esc(UI.ckDiff)}</span>`:''}${c.patched&&UI.ckPatched?` <span class="okt">${esc(UI.ckPatched)}</span>`:''}${c.absent?` <span style="color:var(--muted)">${esc(UI.ckAbsent)}</span>`:''}${c.note?`<br><span style="color:var(--muted)">${rich(c.note)}</span>`:''}</span></li>`).join('')+`</ul></div>`;
 }
 const LANG=document.documentElement.lang;
 const num=(v,d)=>v.toLocaleString(LANG,{minimumFractionDigits:d,maximumFractionDigits:d});
@@ -383,31 +403,33 @@ function areaSpark(k2){
 function powersBody(){
   if(!focus){
     return `<p class="sub">${esc(UI.trackAllNote)}</p><ul class="trk">`+powersThisYear().map(k2=>{const st=statusOf(k2,year);
-      return `<li data-k="${k2}" class="${st==='end'?'ended':''}">${swatch(k2,year)}<div><b>${esc(shortName(k2,year))}</b> <span class="st st-${st}">${esc(UI.status[st])}</span> ${areaLine(k2,year)}<p>${esc(content.powers[k2].t[year])}</p></div></li>`;}).join('')+`</ul>`;
+      return `<li data-k="${k2}" class="${st==='end'?'ended':''}">${swatch(k2,year)}<div><b>${esc(shortName(k2,year))}</b> <span class="st st-${st}">${esc(UI.status[st])}</span> ${areaLine(k2,year)}<p>${rich(content.powers[k2].t[year])}</p></div></li>`;}).join('')+`</ul>`;
   }
   const P=content.powers[focus], ys=YEARS.filter(y=>P.st[y]);
   const first=ys[0], last=ys[ys.length-1];
   return `<button class="linkbtn" id="trkback">${esc(UI.trackBack)}</button><h3 class="trkh">${esc(fmt(UI.trackOne,{name:content.full[focus]}))}</h3>`+areaSpark(focus)+`<p class="sub">${esc(UI.trackNote)}</p>`+
     (first>YEARS[0]?`<p class="sub">${esc(fmt(UI.trackBefore,{year:first}))}</p>`:'')+
     `<ol class="trk tl">`+ys.map(y=>{const st=P.st[y];
-      return `<li data-y="${y}" class="${y===year?'cur':''} ${st==='end'?'ended':''}">${swatch(focus,y)}<div><b>${y}</b> · ${esc(shortName(focus,y))} <span class="st st-${st}">${esc(UI.status[st])}</span> ${areaLine(focus,y)}<p>${esc(P.t[y])}</p></div></li>`;}).join('')+`</ol>`+
+      return `<li data-y="${y}" class="${y===year?'cur':''} ${st==='end'?'ended':''}">${swatch(focus,y)}<div><b>${y}</b> · ${esc(shortName(focus,y))} <span class="st st-${st}">${esc(UI.status[st])}</span> ${areaLine(focus,y)}<p>${rich(P.t[y])}</p></div></li>`;}).join('')+`</ol>`+
     (P.st[last]==='end'?`<p class="sub">${esc(UI.trackAfter)}</p>`:'');
 }
 function renderPanel(){
   const c=byYear[year], i=YEARS.indexOf(year), prevY=YEARS[i-1];
   const fixes=Object.entries(meta.fixes[year]||{});
   const groups=[...new Set(fixes.map(([,f])=>f))].map(f=>[f,fixes.filter(x=>x[1]===f).map(x=>x[0])]);
-  let body='';
-  if(tab==='events') body=c.events.map(e=>`<div class="ev"><h3>${esc(e.t)}</h3><div class="row"><span class="tag g">${esc(UI.gain)}</span><span>${esc(e.g)}</span></div><div class="row"><span class="tag l">${esc(UI.loss)}</span><span>${esc(e.l)}</span></div></div>`).join('');
+  let body=''; used=new Set();
+  if(tab==='events') body=c.events.map(e=>`<div class="ev"><h3>${rich(e.t)}</h3><div class="row"><span class="tag g">${esc(UI.gain)}</span><span>${rich(e.g)}</span></div><div class="row"><span class="tag l">${esc(UI.loss)}</span><span>${rich(e.l)}</span></div></div>`).join('');
   else if(tab==='powers') body=powersBody();
-  else body=`<ul class="pts">${c[tab].map(t=>`<li>${esc(t)}</li>`).join('')}</ul>`;
+  else body=`<ul class="pts">${c[tab].map(t=>`<li>${rich(t)}</li>`).join('')}</ul>`;
+  const tail=(tab==='powers'?'':`<div class="note"><h4>${esc(UI.readMore)}</h4><div class="links">${c.links.map(([t,u])=>`<a href="${u}" target="_blank" rel="noopener">${esc(t)}</a>`).join('')}</div></div>`+
+    verifySection()+ckSection()+
+    (groups.length?`<div class="note"><h4>${esc(UI.fixesTitle)}</h4><ul>${groups.map(([f,ns])=>`<li>${esc(fixText(f))} — <span style="color:var(--muted)">${esc(ns.slice(0,8).join(', '))}${ns.length>8?esc(fmt(UI.andMore,{n:ns.length-8})):''}</span></li>`).join('')}</ul></div>`:''));
   document.getElementById('panel').innerHTML=
     `<div class="era">${esc(prevY?fmt(UI.era,{prev:prevY,year}):fmt(UI.eraFirst,{year}))}</div><h2>${esc(c.title)}</h2>`+
     `<div class="tabs" role="tablist">${TABS.map((k2,j)=>`<button role="tab" data-t="${k2}" class="${tab===k2?'on':''}" aria-selected="${tab===k2}">${esc(UI.tabs[j])}</button>`).join('')}</div>`+
     body+
-    (tab==='powers'?'':`<div class="note"><h4>${esc(UI.readMore)}</h4><div class="links">${c.links.map(([t,u])=>`<a href="${u}" target="_blank" rel="noopener">${esc(t)}</a>`).join('')}</div></div>`+
-    verifySection()+ckSection()+
-    (groups.length?`<div class="note"><h4>${esc(UI.fixesTitle)}</h4><ul>${groups.map(([f,ns])=>`<li>${esc(fixText(f))} — <span style="color:var(--muted)">${esc(ns.slice(0,8).join(', '))}${ns.length>8?esc(fmt(UI.andMore,{n:ns.length-8})):''}</span></li>`).join('')}</ul></div>`:''));
+fnSection()+tail;
+  document.querySelectorAll('#panel sup.fn a').forEach(el=>el.onclick=e=>{e.preventDefault();const li=document.getElementById('fn-'+el.dataset.fn);if(li){li.scrollIntoView({behavior:'smooth',block:'center'});li.classList.add('hit');setTimeout(()=>li.classList.remove('hit'),1600);}});
   document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{tab=b.dataset.t;renderPanel();});
   document.querySelectorAll('ul.trk li[data-k]').forEach(li=>li.onclick=()=>setFocus(li.dataset.k));
   document.querySelectorAll('ol.tl li[data-y]').forEach(li=>li.onclick=()=>setYear(+li.dataset.y,true));

@@ -158,6 +158,18 @@ details.ckey div{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:6px}
 details.ckey span{display:inline-flex;align-items:center;gap:6px}
 details.ckey .sw{width:13px;height:13px;flex-basis:13px}
 
+sup.fn{font-size:.72em;line-height:0;margin-left:1px}
+sup.fn a{text-decoration:none;font-weight:700;padding:0 2px}
+.fnotes ul{list-style:none;padding:0;margin:0}
+.fnotes li{padding:5px 6px;border-radius:6px;transition:background .3s}
+.fnotes li b{color:var(--c-blue);margin-right:4px}
+.fnotes li.hit{background:color-mix(in srgb, var(--c-yellow) 28%, transparent)}
+.srcs{font-size:12px;color:var(--ink2);margin-top:14px;border-top:1px solid var(--line);padding-top:12px;line-height:1.7}
+.srcs h4{margin:0 0 4px;font-size:13px;color:var(--ink);font-family:var(--sans)}
+.srcs p{margin:0 0 6px;color:var(--muted)}
+.srcs ol{margin:0;padding-left:20px}
+.srcs a{overflow-wrap:anywhere}
+
 </style>
 </head>
 <body>
@@ -188,13 +200,14 @@ details.ckey .sw{width:13px;height:13px;flex-basis:13px}
     </div>
     <aside class="card panel" id="panel"></aside>
   </div>
-  <div class="foot">국경: 1880년까지는 <a href="https://github.com/aourednik/historical-basemaps">historical-basemaps</a>(André Ourednik 외, GPL-3.0)에 연도별 보정을 더했고, 1914년부터는 <a href="https://icr.ethz.ch/data/cshapes/">CShapes 2.0</a>(Schvitz·Girardin·Weidmann 외, 날짜 단위 국경·식민지 데이터)으로 다시 그렸습니다. 두 출처가 겹치는 1914년 이후는 시점마다 ‘교차검증’ 칸에 일치율과 어긋난 곳을 공개합니다. 요충지와 일부 지역은 원본이 틀린 경우 검증한 값으로 지도 자체를 다시 칠했습니다(‘재표기’). 영토 면적은 최종 지도를 0.25° 격자로 표본 추출해 계산한 근사값입니다. 시점 사이 간격이 고르지 않으므로, 각 시점의 ‘사건과 손익’은 직전 시점 이후의 주요 사건을 다룹니다.</div>
+  <div class="foot">국경: 1880년까지는 <a href="https://github.com/aourednik/historical-basemaps">historical-basemaps</a>(André Ourednik 외, GPL-3.0)에 연도별 보정을 더했고, 1914년부터는 <a href="https://icr.ethz.ch/data/cshapes/">CShapes 2.0</a>(Schvitz·Girardin·Weidmann 외, 날짜 단위 국경·식민지 데이터)으로 다시 그렸습니다. 두 출처가 겹치는 1914년 이후는 시점마다 ‘교차검증’ 칸에 일치율과 어긋난 곳을 공개합니다. 요충지와 일부 지역은 원본이 틀린 경우 검증한 값으로 지도 자체를 다시 칠했습니다(‘재표기’). 영토 면적은 최종 지도를 0.25° 격자로 표본 추출해 계산한 근사값입니다. 시점 사이 간격이 고르지 않으므로, 각 시점의 ‘사건과 손익’은 직전 시점 이후의 주요 사건을 다룹니다. 각 시점은 ‘그 무렵’을 뜻하며, 1~2년 뒤의 사건이나 저작(예: 1650년 시점의 1651년 항해법)을 함께 다루기도 합니다. 본문의 작은 숫자는 해석이 갈리거나 단서가 필요한 대목에 붙인 각주입니다.</div>
+<div class="srcs"><h4>검증에 참고한 출처</h4><p>2026년 11월 한국어판 전체를 다시 검토하면서, 연도·주체가 의심스럽거나 해석이 갈리는 대목을 아래 자료와 대조했습니다. 그 밖의 연도와 사건은 널리 알려진 연표 수준에서 점검했으며, 시점별 ‘더 읽기’ 문서를 함께 참고할 수 있습니다.</p><ol><li><a href="https://github.com/aourednik/historical-basemaps" target="_blank" rel="noopener">국경(~1880): historical-basemaps, André Ourednik 외</a></li><li><a href="https://icr.ethz.ch/data/cshapes/" target="_blank" rel="noopener">국경(1914~)·식민지 소유국: CShapes 2.0, Schvitz 외 (2022)</a></li><li><a href="https://en.wikipedia.org/wiki/Jiajing_wokou_raids" target="_blank" rel="noopener">명의 해금(1371): Wikipedia, Jiajing wokou raids</a></li><li><a href="https://www.wikipedia.org/wiki/Jean_de_la_Foret" target="_blank" rel="noopener">1536년 프랑스–오스만 협약의 비준 문제: Wikipedia, Jean de La Forêt</a></li><li><a href="https://doi.org/10.1162/00208180151140577" target="_blank" rel="noopener">베스트팔렌 통설 비판: A. Osiander, “Sovereignty, International Relations, and the Westphalian Myth”, International Organization 55(2), 2001</a></li><li><a href="https://en.wikipedia.org/wiki/Sultanate_of_Bijapur" target="_blank" rel="noopener">고아와 비자푸르: Wikipedia, Sultanate of Bijapur</a></li><li><a href="https://en.wikipedia.org/wiki/Portuguese_conquest_of_Goa" target="_blank" rel="noopener">고아 정복(1510): Wikipedia, Portuguese conquest of Goa</a></li><li><a href="https://en.wikipedia.org/wiki/Tahirid_Sultanate" target="_blank" rel="noopener">예멘 타히르 왕조와 아덴(1517·1538): Wikipedia, Tahirid Sultanate</a></li><li><a href="https://etheses.durham.ac.uk/id/eprint/5867" target="_blank" rel="noopener">타히르 왕조: V. Porter, The History and Monuments of the Tahirid Dynasty of the Yemen, 더럼대 박사논문 (1992)</a></li><li><a href="https://en.wikipedia.org/wiki/Crimean_Campaign_(1475)" target="_blank" rel="noopener">크림 칸국과 오스만(1475·1478): Wikipedia, Crimean Campaign (1475)</a></li><li><a href="https://doaj.org/article/cdd26728e0c94aa9841396b3c69e704d" target="_blank" rel="noopener">크림 칸국 종속 여부 논쟁: В. Л. Мыц, Археология евразийских степей 2023(3)</a></li><li><a href="https://eve.fcsh.unl.pt/index.php/en/places/city-colombo" target="_blank" rel="noopener">콜롬보의 포르투갈 요새(1518): Enciclopédia Virtual da Expansão Portuguesa, City of Colombo</a></li><li><a href="https://www.sundayobserver.lk/2024/05/12/news-features/22725/early-challenges-to-the-portuguese-in-ceylon" target="_blank" rel="noopener">콜롬보 요새 철거: Sunday Observer, “Early challenges to the Portuguese in Ceylon” (2024)</a></li><li><a href="https://resolve.cambridge.org/core/journals/international-organization/article/1-trusteeship-agreement-for-the-territory-of-somaliland-under-italian-administration-adopted-by-the-trusteeship-council-january-27-19501/353C8EFBDD6CADD1F0A8F24787D3C3DB" target="_blank" rel="noopener">이탈리아 강화조약(1947)과 소말릴란드 신탁통치: Trusteeship Agreement for the Territory of Somaliland under Italian Administration (1950)</a></li><li><a href="https://ec.europa.eu/eurostat/statistics-explained/index.php/Glossary:Treaty_on_European_Union" target="_blank" rel="noopener">마스트리흐트 조약 서명·발효일: Eurostat, Glossary: Treaty on European Union</a></li></ol></div>
 </div>
 <script src="lib/d3.min.js"></script>
 <script src="lib/topojson-client.min.js"></script>
 <script>
 (async function(){
-const UI = {"tabs":["패권 구도","사건과 손익","기술 발전","사상 발전","국가별 흐름"],"era":"{prev} 이후 → {year}년 무렵","eraFirst":"{year}년 무렵","gain":"이득","loss":"손실","readMore":"더 읽기","fixesTitle":"이 시점의 데이터 보정","andMore":" 외 {n}곳","others":"그 밖의 국가·세력","ckShown":"요충지 표시 중","ckHidden":"요충지 숨김","ckTitle":"요충지 점검 — {n}곳","ckTitleDiff":", 지도 색과 다른 곳 {m}곳","ckTitleOk":", 모두 지도와 일치","ckDiff":"⚠ 지도 색과 다름","ckAbsent":"(지도에 미표시)","ckRuler":"{year}년 무렵 지배:","ckAbsentLong":"원본 국경 데이터에는 이 지점이 그려져 있지 않습니다(작은 섬·거점). 이 표시가 검증된 값입니다.","ckDiffLong":"⚠ 지도 색과 다릅니다. 원본 국경 데이터는 이 지점을 {map}으로 그립니다. 거점·해협처럼 작은 지역이라 주변 영역에 묻혔거나 원본 표기가 틀린 경우입니다 — 이 표시가 검증된 값입니다.","ckMapNone":"표시하지 않은 영역","otherPower":"기타 세력","unnamed":"이름 없는 지역","srcSubj":"소속(원본)","cls":"분류","prec":"국경 정밀도","precVals":["대략","중간","정밀"],"noInfo":"정보 없음","fix":"보정","close":"닫기","status":{"rise":"부상","peak":"전성","hold":"유지","decline":"쇠퇴·흔들림","exit":"패권 퇴장(국가 존속)","end":"소멸"},"tiers":[["solid","공고"],["hold","유지"],["hatch","쇠퇴·흔들림"],["exit","패권 퇴장"]],"legendTitle":"{year}년 무렵 지배 세력","rival":"주역","trackAll":"이 시점 각 나라의 변화","trackAllNote":"직전 시점 이후 무엇이 바뀌었는지입니다. 나라를 누르면 그 나라의 전체 흐름이 나옵니다.","trackOne":"{name}의 흐름","trackBack":"← 모든 나라","trackNote":"연도를 누르면 그 시점의 지도로 이동합니다.","trackBefore":"{year}년 이전에는 이 지도에서 패권 세력으로 다루지 않음","trackAfter":"이후 시점에는 칠하지 않음","focusOff":"전체 보기","regionName":"그 시기 지역 이름","contested":"이 지역은 지배가 흔들리는 중(빗금)","bigViewShort":"크게","bigExitShort":"닫기","patched":"검증값으로 재표기","srcCs":"국경: CShapes 2.0","srcHb":"국경: historical-basemaps","csStatus":{"colony":"식민지","protectorate":"보호령","mandate":"위임통치령","occupied":"점령지","N/A":"지위 미상"},"ckTitlePatched":", 지도에 재표기 {p}곳","ckPatched":"재표기함","ckPatchedLong":"원본 지도에서 이 지점이 주변 영역에 묻히거나 잘못 표기되어 있어, 검증한 지배 세력으로 지도 자체를 다시 칠했습니다.","vTitle":"교차검증","vCs":"이 시점 국경은 CShapes 2.0({date} 기준)으로 다시 그렸습니다. 원래 쓰던 오픈소스(historical-basemaps)와 비교한 소속 일치율은 {agree}%입니다(면적 기준, 0.25° 격자 표본, 해안선 차이 제외). 요충지·지역 재표기 {p}곳.","vHb":"1886년 이전이라 교차 확인할 날짜 단위 데이터셋이 없습니다. historical-basemaps를 바탕으로 소속 표기 오류 {f}곳을 보정하고, 요충지·지역 {p}곳을 검증값으로 재표기했습니다.","vDiffs":"두 출처가 크게 어긋난 곳(원본 ↔ CShapes)","vAdopt":"어긋난 곳은 CShapes를 따랐습니다.","vExc":"CShapes와 다르게 표시하거나 설명을 덧붙인 곳","vNone":"소속 없음","areaM":"{v}백만 km²","areaK":"{v}만 km²","areaLabel":"영토 약 {a}","sparkTitle":"영토 면적(재계산)","sparkAria":"시점별 영토 면적 막대","colorKey":"국가 고유색 보기","colorKeyNote":"한 나라는 이름이 바뀌어도(예: 러시아→소련→러시아, 명→청→중국) 언제나 같은 색입니다. 지배력이 강해지거나 약해질 때는 색은 그대로 두고 진하기와 빗금만 달라집니다.","sparkNote":"면적은 이 지도에 칠해진 영역(식민지 포함)을 다시 계산한 값입니다. 1886년 이전은 명목상 영유권·세력권이 포함되어 실제 통제 범위보다 크게 나올 수 있습니다."};
+const UI = {"tabs":["패권 구도","사건과 손익","기술 발전","사상 발전","국가별 흐름"],"era":"{prev} 이후 → {year}년 무렵","eraFirst":"{year}년 무렵","gain":"이득","loss":"손실","readMore":"더 읽기","fixesTitle":"이 시점의 데이터 보정","andMore":" 외 {n}곳","others":"그 밖의 국가·세력","ckShown":"요충지 표시 중","ckHidden":"요충지 숨김","ckTitle":"요충지 점검 — {n}곳","ckTitleDiff":", 지도 색과 다른 곳 {m}곳","ckTitleOk":", 모두 지도와 일치","ckDiff":"⚠ 지도 색과 다름","ckAbsent":"(지도에 미표시)","ckRuler":"{year}년 무렵 지배:","ckAbsentLong":"원본 국경 데이터에는 이 지점이 그려져 있지 않습니다(작은 섬·거점). 이 표시가 검증된 값입니다.","ckDiffLong":"⚠ 지도 색과 다릅니다. 원본 국경 데이터는 이 지점을 {map}으로 그립니다. 거점·해협처럼 작은 지역이라 주변 영역에 묻혔거나 원본 표기가 틀린 경우입니다 — 이 표시가 검증된 값입니다.","ckMapNone":"표시하지 않은 영역","otherPower":"기타 세력","unnamed":"이름 없는 지역","srcSubj":"소속(원본)","cls":"분류","prec":"국경 정밀도","precVals":["대략","중간","정밀"],"noInfo":"정보 없음","fix":"보정","close":"닫기","status":{"rise":"부상","peak":"전성","hold":"유지","decline":"쇠퇴·흔들림","exit":"패권 퇴장(국가 존속)","end":"소멸"},"tiers":[["solid","공고"],["hold","유지"],["hatch","쇠퇴·흔들림"],["exit","패권 퇴장"]],"legendTitle":"{year}년 무렵 지배 세력","rival":"주역","trackAll":"이 시점 각 나라의 변화","trackAllNote":"직전 시점 이후 무엇이 바뀌었는지입니다. 나라를 누르면 그 나라의 전체 흐름이 나옵니다. 상태(부상·전성·쇠퇴 등)는 영토 면적이 아니라 당시 국제적 위상을 놓고 내린 해석입니다.","trackOne":"{name}의 흐름","trackBack":"← 모든 나라","trackNote":"연도를 누르면 그 시점의 지도로 이동합니다.","trackBefore":"{year}년 이전에는 이 지도에서 패권 세력으로 다루지 않음","trackAfter":"이후 시점에는 칠하지 않음","focusOff":"전체 보기","regionName":"그 시기 지역 이름","contested":"이 지역은 지배가 흔들리는 중(빗금)","bigViewShort":"크게","bigExitShort":"닫기","patched":"검증값으로 재표기","srcCs":"국경: CShapes 2.0","srcHb":"국경: historical-basemaps","csStatus":{"colony":"식민지","protectorate":"보호령","mandate":"위임통치령","occupied":"점령지","N/A":"지위 미상"},"ckTitlePatched":", 지도에 재표기 {p}곳","ckPatched":"재표기함","ckPatchedLong":"원본 지도에서 이 지점이 주변 영역에 묻히거나 잘못 표기되어 있어, 검증한 지배 세력으로 지도 자체를 다시 칠했습니다.","vTitle":"교차검증","vCs":"이 시점 국경은 CShapes 2.0({date} 기준)으로 다시 그렸습니다. 원래 쓰던 오픈소스(historical-basemaps)와 비교한 소속 일치율은 {agree}%입니다(면적 기준, 0.25° 격자 표본, 해안선 차이 제외). 요충지·지역 재표기 {p}곳.","vHb":"1886년 이전이라 교차 확인할 날짜 단위 데이터셋이 없습니다. historical-basemaps를 바탕으로 소속 표기 오류 {f}곳을 보정하고, 요충지·지역 {p}곳을 검증값으로 재표기했습니다.","vDiffs":"두 출처가 크게 어긋난 곳(원본 ↔ CShapes)","vAdopt":"어긋난 곳은 CShapes를 따랐습니다.","vExc":"CShapes와 다르게 표시하거나 설명을 덧붙인 곳","vNone":"소속 없음","areaM":"{v}백만 km²","areaK":"{v}만 km²","areaLabel":"영토 약 {a}","sparkTitle":"영토 면적(재계산)","sparkAria":"시점별 영토 면적 막대","colorKey":"국가 고유색 보기","colorKeyNote":"한 나라는 이름이 바뀌어도(예: 러시아→소련→러시아, 명→청→중국) 언제나 같은 색입니다. 지배력이 강해지거나 약해질 때는 색은 그대로 두고 진하기와 빗금만 달라집니다.","sparkNote":"면적은 이 지도에 칠해진 영역(식민지 포함)을 다시 계산한 값입니다. 1886년 이전은 명목상 영유권·세력권이 포함되어 실제 통제 범위보다 크게 나올 수 있습니다.","footnotes":"각주"};
 const KEYS=['gb','fr','es','pt','nl','ru','ot','cn','us','de','at','jp','it','be','mg'];
 const ORDER={peak:0,rise:1,hold:2,decline:3,exit:4,end:5};
 const pc=k=>`var(--p-${k})`;
@@ -275,11 +288,18 @@ function polyFill(d){
   return d.properties.n ? 'var(--land)' : 'var(--land0)';
 }
 function esc(s){return String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+// 각주: 본문 속 [^id] → 위첨자 번호. 패널을 그릴 때 쓰인 각주만 모아 아래에 보여 준다.
+const NOTES=content.notes||{}, NIDS=Object.keys(NOTES); let used=new Set();
+const rich=s=>esc(s).replace(/\[\^(\w+)\]/g,(m,id)=>{ if(!NOTES[id]) return ''; used.add(id); return `<sup class="fn"><a href="#fn-${id}" data-fn="${id}">${NIDS.indexOf(id)+1}</a></sup>`; });
+const plain=s=>esc(String(s??'').replace(/\[\^\w+\]/g,''));
+const noteLines=s=>[...String(s??'').matchAll(/\[\^(\w+)\]/g)].filter(m=>NOTES[m[1]]).map(m=>`<div class="meta">※ ${esc(NOTES[m[1]])}</div>`).join('');
+function fnSection(){ const ids=NIDS.filter(id=>used.has(id)); if(!ids.length) return '';
+  return `<div class="note fnotes"><h4>${esc(UI.footnotes||'')}</h4><ul>${ids.map(id=>`<li id="fn-${id}"><b>${NIDS.indexOf(id)+1}</b> ${esc(NOTES[id])}</li>`).join('')}</ul></div>`; }
 function closeBtn(){return `<button class="x" aria-label="${esc(UI.close)}">×</button>`;}
 function showInfo(d){
   const p=d.properties, v=meta.verify[year];
   let name=p.n, extra='';
-  if(p.kind==='choke'){const c=content.choke[p.pid][year]; name=c.name; extra=`<div class="fix">${esc(UI.patched)}: ${esc(c.who)}${c.note?' — '+esc(c.note):''}</div>`;}
+  if(p.kind==='choke'){const c=content.choke[p.pid][year]; name=c.name; extra=`<div class="fix">${esc(UI.patched)}: ${plain(c.who)}${c.note?' — '+plain(c.note):''}</div>`+noteLines(c.who+c.note);}
   if(p.kind==='region'){const c=content.patches[p.pid][year]; name=c.name; extra=`<div class="fix">${esc(UI.patched)}: ${esc(c.who)}${c.note?' — '+esc(c.note):''}</div>`;}
   const ruler=p.p&&alive(p.p,year)?`${esc(shortName(p.p,year))} · ${esc(UI.status[statusOf(p.p,year)])}`:'';
   const srcLine=p.src==='cs'
@@ -301,8 +321,8 @@ function ckVis(c){return !c.absent && ckShown(c.mapKey)!==ckShown(c.k);}
 function showCk(c){
   const mapLabel=c.absent?esc(UI.ckMapNone):`‘${esc(c.mapName||UI.unnamed)}’(${esc(c.mapKey?shortName(c.mapKey,year):UI.otherPower)})`;
   info.innerHTML=closeBtn()+`<b>◆ ${esc(c.name)}</b>`+
-   `<div>${esc(fmt(UI.ckRuler,{year}))} <b style="font-size:13px">${esc(c.who)}</b></div>`+
-   (c.note?`<div class="meta">${esc(c.note)}</div>`:'')+
+   `<div>${esc(fmt(UI.ckRuler,{year}))} <b style="font-size:13px">${plain(c.who)}</b></div>`+
+   (c.note?`<div class="meta">${plain(c.note)}</div>`:'')+noteLines(c.who+c.note)+
    (c.patched?`<div class="meta">${esc(UI.ckPatchedLong)}</div>`:'')+
    (c.absent?`<div class="meta">${esc(UI.ckAbsentLong)}</div>`:'')+
    (ckVis(c)?`<div class="warn">${esc(UI.ckDiffLong).replace('{map}',mapLabel)}</div>`:'');
@@ -356,7 +376,7 @@ function ckSection(){
   const L=ckList(), bad=L.filter(ckVis), pat=L.filter(c=>c.patched);
   const ord=[...bad,...L.filter(c=>!ckVis(c))];
   return `<div class="note"><h4>${esc(fmt(UI.ckTitle,{n:L.length}))}${UI.ckTitlePatched?esc(fmt(UI.ckTitlePatched,{p:pat.length})):''}${esc(bad.length?fmt(UI.ckTitleDiff,{m:bad.length}):UI.ckTitleOk)}</h4><ul class="cklist">`+
-   ord.map(c=>`<li data-id="${c.id}"><span class="d" style="background:${ckColor(c)}"></span><span><b>${esc(c.name)}</b> — ${esc(c.who)}${ckVis(c)?` <span class="warn">${esc(UI.ckDiff)}</span>`:''}${c.patched&&UI.ckPatched?` <span class="okt">${esc(UI.ckPatched)}</span>`:''}${c.absent?` <span style="color:var(--muted)">${esc(UI.ckAbsent)}</span>`:''}${c.note?`<br><span style="color:var(--muted)">${esc(c.note)}</span>`:''}</span></li>`).join('')+`</ul></div>`;
+   ord.map(c=>`<li data-id="${c.id}"><span class="d" style="background:${ckColor(c)}"></span><span><b>${esc(c.name)}</b> — ${rich(c.who)}${ckVis(c)?` <span class="warn">${esc(UI.ckDiff)}</span>`:''}${c.patched&&UI.ckPatched?` <span class="okt">${esc(UI.ckPatched)}</span>`:''}${c.absent?` <span style="color:var(--muted)">${esc(UI.ckAbsent)}</span>`:''}${c.note?`<br><span style="color:var(--muted)">${rich(c.note)}</span>`:''}</span></li>`).join('')+`</ul></div>`;
 }
 const LANG=document.documentElement.lang;
 const num=(v,d)=>v.toLocaleString(LANG,{minimumFractionDigits:d,maximumFractionDigits:d});
@@ -383,31 +403,33 @@ function areaSpark(k2){
 function powersBody(){
   if(!focus){
     return `<p class="sub">${esc(UI.trackAllNote)}</p><ul class="trk">`+powersThisYear().map(k2=>{const st=statusOf(k2,year);
-      return `<li data-k="${k2}" class="${st==='end'?'ended':''}">${swatch(k2,year)}<div><b>${esc(shortName(k2,year))}</b> <span class="st st-${st}">${esc(UI.status[st])}</span> ${areaLine(k2,year)}<p>${esc(content.powers[k2].t[year])}</p></div></li>`;}).join('')+`</ul>`;
+      return `<li data-k="${k2}" class="${st==='end'?'ended':''}">${swatch(k2,year)}<div><b>${esc(shortName(k2,year))}</b> <span class="st st-${st}">${esc(UI.status[st])}</span> ${areaLine(k2,year)}<p>${rich(content.powers[k2].t[year])}</p></div></li>`;}).join('')+`</ul>`;
   }
   const P=content.powers[focus], ys=YEARS.filter(y=>P.st[y]);
   const first=ys[0], last=ys[ys.length-1];
   return `<button class="linkbtn" id="trkback">${esc(UI.trackBack)}</button><h3 class="trkh">${esc(fmt(UI.trackOne,{name:content.full[focus]}))}</h3>`+areaSpark(focus)+`<p class="sub">${esc(UI.trackNote)}</p>`+
     (first>YEARS[0]?`<p class="sub">${esc(fmt(UI.trackBefore,{year:first}))}</p>`:'')+
     `<ol class="trk tl">`+ys.map(y=>{const st=P.st[y];
-      return `<li data-y="${y}" class="${y===year?'cur':''} ${st==='end'?'ended':''}">${swatch(focus,y)}<div><b>${y}</b> · ${esc(shortName(focus,y))} <span class="st st-${st}">${esc(UI.status[st])}</span> ${areaLine(focus,y)}<p>${esc(P.t[y])}</p></div></li>`;}).join('')+`</ol>`+
+      return `<li data-y="${y}" class="${y===year?'cur':''} ${st==='end'?'ended':''}">${swatch(focus,y)}<div><b>${y}</b> · ${esc(shortName(focus,y))} <span class="st st-${st}">${esc(UI.status[st])}</span> ${areaLine(focus,y)}<p>${rich(P.t[y])}</p></div></li>`;}).join('')+`</ol>`+
     (P.st[last]==='end'?`<p class="sub">${esc(UI.trackAfter)}</p>`:'');
 }
 function renderPanel(){
   const c=byYear[year], i=YEARS.indexOf(year), prevY=YEARS[i-1];
   const fixes=Object.entries(meta.fixes[year]||{});
   const groups=[...new Set(fixes.map(([,f])=>f))].map(f=>[f,fixes.filter(x=>x[1]===f).map(x=>x[0])]);
-  let body='';
-  if(tab==='events') body=c.events.map(e=>`<div class="ev"><h3>${esc(e.t)}</h3><div class="row"><span class="tag g">${esc(UI.gain)}</span><span>${esc(e.g)}</span></div><div class="row"><span class="tag l">${esc(UI.loss)}</span><span>${esc(e.l)}</span></div></div>`).join('');
+  let body=''; used=new Set();
+  if(tab==='events') body=c.events.map(e=>`<div class="ev"><h3>${rich(e.t)}</h3><div class="row"><span class="tag g">${esc(UI.gain)}</span><span>${rich(e.g)}</span></div><div class="row"><span class="tag l">${esc(UI.loss)}</span><span>${rich(e.l)}</span></div></div>`).join('');
   else if(tab==='powers') body=powersBody();
-  else body=`<ul class="pts">${c[tab].map(t=>`<li>${esc(t)}</li>`).join('')}</ul>`;
+  else body=`<ul class="pts">${c[tab].map(t=>`<li>${rich(t)}</li>`).join('')}</ul>`;
+  const tail=(tab==='powers'?'':`<div class="note"><h4>${esc(UI.readMore)}</h4><div class="links">${c.links.map(([t,u])=>`<a href="${u}" target="_blank" rel="noopener">${esc(t)}</a>`).join('')}</div></div>`+
+    verifySection()+ckSection()+
+    (groups.length?`<div class="note"><h4>${esc(UI.fixesTitle)}</h4><ul>${groups.map(([f,ns])=>`<li>${esc(fixText(f))} — <span style="color:var(--muted)">${esc(ns.slice(0,8).join(', '))}${ns.length>8?esc(fmt(UI.andMore,{n:ns.length-8})):''}</span></li>`).join('')}</ul></div>`:''));
   document.getElementById('panel').innerHTML=
     `<div class="era">${esc(prevY?fmt(UI.era,{prev:prevY,year}):fmt(UI.eraFirst,{year}))}</div><h2>${esc(c.title)}</h2>`+
     `<div class="tabs" role="tablist">${TABS.map((k2,j)=>`<button role="tab" data-t="${k2}" class="${tab===k2?'on':''}" aria-selected="${tab===k2}">${esc(UI.tabs[j])}</button>`).join('')}</div>`+
     body+
-    (tab==='powers'?'':`<div class="note"><h4>${esc(UI.readMore)}</h4><div class="links">${c.links.map(([t,u])=>`<a href="${u}" target="_blank" rel="noopener">${esc(t)}</a>`).join('')}</div></div>`+
-    verifySection()+ckSection()+
-    (groups.length?`<div class="note"><h4>${esc(UI.fixesTitle)}</h4><ul>${groups.map(([f,ns])=>`<li>${esc(fixText(f))} — <span style="color:var(--muted)">${esc(ns.slice(0,8).join(', '))}${ns.length>8?esc(fmt(UI.andMore,{n:ns.length-8})):''}</span></li>`).join('')}</ul></div>`:''));
+fnSection()+tail;
+  document.querySelectorAll('#panel sup.fn a').forEach(el=>el.onclick=e=>{e.preventDefault();const li=document.getElementById('fn-'+el.dataset.fn);if(li){li.scrollIntoView({behavior:'smooth',block:'center'});li.classList.add('hit');setTimeout(()=>li.classList.remove('hit'),1600);}});
   document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{tab=b.dataset.t;renderPanel();});
   document.querySelectorAll('ul.trk li[data-k]').forEach(li=>li.onclick=()=>setFocus(li.dataset.k));
   document.querySelectorAll('ol.tl li[data-y]').forEach(li=>li.onclick=()=>setYear(+li.dataset.y,true));

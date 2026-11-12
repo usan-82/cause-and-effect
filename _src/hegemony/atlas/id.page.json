@@ -124,7 +124,8 @@
   "sparkAria": "Luas wilayah per tahun",
   "sparkNote": "Luas dihitung ulang dari wilayah yang diwarnai di peta ini (termasuk koloni). Sebelum 1886 termasuk klaim nominal dan wilayah pengaruh, sehingga bisa melebihi kendali sebenarnya.",
   "colorKey": "Lihat warna tiap negara",
-  "colorKeyNote": "Sebuah negara tetap berwarna sama meski namanya berganti (Rusia → Uni Soviet → Rusia, Ming → Qing → Tiongkok). Ketika menguat atau melemah, warnanya tetap; hanya kepekatan dan arsirannya yang berubah."
+  "colorKeyNote": "Sebuah negara tetap berwarna sama meski namanya berganti (Rusia → Uni Soviet → Rusia, Ming → Qing → Tiongkok). Ketika menguat atau melemah, warnanya tetap; hanya kepekatan dan arsirannya yang berubah.",
+  "footnotes": "Catatan"
  },
  "zoomResetShort": "Awal",
  "bigView": "Tampilkan peta besar",
