@@ -159,3 +159,5 @@ sup.fn a{text-decoration:none;font-weight:700;padding:0 2px}
 .srcs p{margin:0 0 6px;color:var(--muted)}
 .srcs ol{margin:0;padding-left:20px}
 .srcs a{overflow-wrap:anywhere}
+
+.gloss dl{margin:0}.gloss dt{font-weight:700;color:var(--ink);margin-top:7px}.gloss dd{margin:0;line-height:1.7}

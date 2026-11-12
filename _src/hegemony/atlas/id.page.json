@@ -125,7 +125,11 @@
   "sparkNote": "Luas dihitung ulang dari wilayah yang diwarnai di peta ini (termasuk koloni). Sebelum 1886 termasuk klaim nominal dan wilayah pengaruh, sehingga bisa melebihi kendali sebenarnya.",
   "colorKey": "Lihat warna tiap negara",
   "colorKeyNote": "Sebuah negara tetap berwarna sama meski namanya berganti (Rusia → Uni Soviet → Rusia, Ming → Qing → Tiongkok). Ketika menguat atau melemah, warnanya tetap; hanya kepekatan dan arsirannya yang berubah.",
-  "footnotes": "Catatan kaki"
+  "footnotes": "Catatan kaki",
+  "vClio": "Sebelum 1886 tidak ada kumpulan data bertanggal, tetapi kepemilikan kekuatan besar dibandingkan dengan data independen Cliopatria. Tingkat kesesuaiannya {agree}% (porsi sel, pada kisi 0,5°, tempat kedua sumber menggambar negara dan menetapkannya pada kekuatan besar yang sama). Berdasarkan historical-basemaps, {f} kesalahan kepemilikan dikoreksi dan {p} titik strategis serta wilayah diwarnai ulang, {c} di antaranya dengan batas yang dipinjam dari Cliopatria.",
+  "vClioDiffs": "Tempat keduanya masih berbeda (peta ini ↔ Cliopatria)",
+  "vClioNote": "Sebagian besar perbedaan yang tersisa berasal dari seberapa jauh klaim nominal diwarnai (pedalaman Amerika Spanyol, Siberia) dan bagaimana suzeranitas ditafsirkan (Mesir, Tibet, stepa Kazakh). Perbedaan tidak berarti peta ini keliru, dan Cliopatria pun punya kesalahan. Tempat yang dikoreksi dengan batas pinjaman tentu saja sesuai.",
+  "vUnnamed": "(wilayah tanpa nama)"
  },
  "zoomResetShort": "Awal",
  "bigView": "Tampilkan peta besar",
@@ -196,6 +200,57 @@
   [
    "Cliopatria — batas historis negara dari Seshat Global History Databank (3400 SM–2024, CC BY 4.0). Data pembanding untuk koreksi batas 1492–1880",
    "https://github.com/Seshat-Global-History-Databank/cliopatria"
+  ]
+ ],
+ "glossTitle": "Glosarium",
+ "glossary": [
+  [
+   "Hegemoni",
+   "Kedudukan sebuah negara yang menentukan aturan tatanan internasional lewat kekuatan militer, bobot ekonomi, dan lembaga. Atlas ini mewarnai lima belas kekuatan besar yang memperebutkannya."
+  ],
+  [
+   "historical-basemaps",
+   "Kumpulan data terbuka tentang batas dunia menurut zaman. Sembilan tahun sampai 1880 berasal dari sini. Dibuat oleh sukarelawan, sehingga ketelitiannya tidak merata."
+  ],
+  [
+   "CShapes 2.0",
+   "Kumpulan data akademis (ETH Zürich) yang mencatat, per tanggal, batas negara merdeka serta koloni dan wilayah bawahannya untuk 1886–2019. Tujuh tahun sejak 1914 berasal dari sini."
+  ],
+  [
+   "Cliopatria",
+   "Kumpulan data batas historis negara (3400 SM–2024) dari tim Seshat. Di sini dipakai sebagai pembanding untuk 1492–1880 dan sebagai sumber batas yang dipinjam untuk memperbaiki tempat yang garis batasnya keliru."
+  ],
+  [
+   "Pemeriksaan silang",
+   "Membandingkan dua sumber yang saling independen untuk menemukan letak perbedaannya."
+  ],
+  [
+   "Tingkat kesesuaian",
+   "Porsi sel kisi tempat kedua sumber menetapkan kekuatan besar yang sama. Berdasarkan luas dan mengabaikan perbedaan garis pantai."
+  ],
+  [
+   "Diwarnai ulang",
+   "Tempat yang sumbernya keliru atau kosong lalu dicat ulang dengan nilai yang sudah diperiksa. Ketuk untuk melihat alasannya."
+  ],
+  [
+   "Titik strategis",
+   "Selat, terusan, atau pelabuhan yang begitu sempit sehingga siapa pun yang menguasainya dapat mengendalikan perdagangan dan pergerakan militer."
+  ],
+  [
+   "Klaim nominal / wilayah pengaruh",
+   "Wilayah yang diklaim lewat perjanjian atau maklumat tetapi tidak terjangkau pemerintahan nyata. Peta sebelum 1886 memuat wilayah semacam ini, sehingga bisa tampak lebih luas daripada kendali sebenarnya."
+  ],
+  [
+   "Suzeranitas",
+   "Hubungan ketika satu negara membiarkan urusan dalam negeri negara lain tetapi diakui sebagai atasannya dalam diplomasi dan perang — Utsmaniyah dengan Mesir dan Kekhanan Krimea, Qing dengan Tibet. Sumber-sumber mewarnainya secara berbeda."
+  ],
+  [
+   "Dominion",
+   "Anggota Imperium Britania yang mengatur urusan dalam negerinya sendiri sementara hubungan luar negerinya ditentukan Britania (Kanada, Australia, dll.). Menjadi praktis merdeka dengan Statuta Westminster (1931)."
+  ],
+  [
+   "Protektorat / mandat / wilayah sewaan",
+   "Protektorat menyerahkan diplomasi dan pertahanannya kepada negara lain; mandat adalah bekas wilayah musuh yang oleh Liga Bangsa-Bangsa diserahkan kepada pemenang untuk diperintah setelah Perang Dunia I; wilayah sewaan adalah tanah yang dipinjamkan kepada negara lain untuk jangka waktu tertentu."
   ]
  ]
 }

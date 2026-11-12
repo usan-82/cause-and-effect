@@ -222,6 +222,11 @@ const num=(v,d)=>v.toLocaleString(LANG,{minimumFractionDigits:d,maximumFractionD
 const km=a=>a>=1e6?fmt(UI.areaM,{v:num(a/1e6,a>=1e7?0:1)}):fmt(UI.areaK,{v:Math.round(a/1e4)});
 function verifySection(){
   const v=meta.verify[year]; if(!v) return '';
+  if(v.src==='hb'&&v.clio&&UI.vClio){ const c=v.clio, nm=k2=>k2?shortName(k2,year):UI.vNone;
+    const hn=d=>d.hn[0]==='#'?((content.patches[d.hn.slice(1)]||content.choke[d.hn.slice(1)]||{})[year]||{}).name||'':d.hn;
+    return `<div class="note"><h4>${esc(UI.vTitle)}</h4><p class="sub">${esc(fmt(UI.vClio,{agree:num(c.agree*100,1),f:v.fixes,p:v.patches,c:c.clips}))}</p>`+
+      `<div class="vbar"><i style="width:${(c.agree*100).toFixed(1)}%"></i></div>`+
+      (c.diffs.length?`<h5>${esc(UI.vClioDiffs)}</h5><ul class="vlist">${c.diffs.slice(0,6).map(d=>`<li><span>${esc(hn(d)||UI.vUnnamed)} <b>${esc(nm(d.hk))}</b> ↔ ${esc(d.cn)} <b>${esc(nm(d.ck))}</b></span><span class="num">${esc(km(d.a))}</span></li>`).join('')}</ul><p class="sub">${esc(UI.vClioNote)}</p>`:'')+`</div>`; }
   if(v.src==='hb') return `<div class="note"><h4>${esc(UI.vTitle)}</h4><p class="sub">${esc(fmt(UI.vHb,{f:v.fixes,p:v.patches}))}</p></div>`;
   const nm=k2=>k2?shortName(k2,year):UI.vNone;
   return `<div class="note"><h4>${esc(UI.vTitle)}</h4><p class="sub">${esc(fmt(UI.vCs,{date:v.date,agree:num(v.agree*100,1),p:v.patches}))}</p>`+

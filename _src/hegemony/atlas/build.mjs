@@ -76,6 +76,8 @@ const J=f=>JSON.parse(fs.readFileSync(path.join(HERE,f),'utf8'));
 const ST=J('struct.json');
 // 경계선 자체를 고치는 조각. ../map/clip.mjs가 Cliopatria에서 잘라 만든다(세계 영토 지도와 같은 교정을 쓰기 위해)
 const CLIPS=fs.existsSync(path.join(HERE,'clips.json'))?J('clips.json'):{};
+// 1492~1880년 Cliopatria 교차검증 결과(verify.mjs가 만든다)
+const VCLIO=fs.existsSync(path.join(HERE,'verify-clio.json'))?J('verify-clio.json'):{};
 const statusAt=(k,y)=>ST.powers[k]?.[y]||null;
 if(ST.years.map(y=>y.year).join()!==YEARS.join()) throw new Error('struct.json 연도 목록이 YEARS와 다름');
 // 요충지 범위가 모든 시점을 정확히 한 번씩 덮는지 확인
@@ -208,12 +210,14 @@ for(const [lang] of LANGS.filter(([l])=>!ONLY.length||ONLY.includes(l))){
   const langs=LANGS.map(([c,n])=>c===lang?`<span aria-current="page">${esc(n)}</span>`:`<a href="../../../${c}/hegemony/atlas/" hreflang="${c}" lang="${c}">${esc(n)}</a>`).join('');
   const srcHtml=pg.sources?`<div class="srcs"><h4>${esc(pg.sourcesTitle)}</h4><p>${esc(pg.sourcesIntro)}</p><ol>${pg.sources.map(([t,u])=>`<li><a href="${esc(u)}" target="_blank" rel="noopener">${esc(t)}</a></li>`).join('')}</ol></div>`:'';
   for(const m of JSON.stringify(tx).matchAll(/\[\^(\w+)\]/g)) if(!(tx.notes||{})[m[1]]) throw new Error(`${lang}: 각주 ${m[1]} 없음`);
-  let html=tpl.replace('{{sourcesHtml}}',srcHtml).replace('{{css}}',css).replace('{{langs}}',langs).replace('{{ui}}',JSON.stringify(pg.ui).replace(/</g,'\\u003c'));
+  const glossHtml=pg.glossary?`<div class="srcs gloss"><h4>${esc(pg.glossTitle)}</h4><dl>${pg.glossary.map(([t,d])=>`<dt>${esc(t)}</dt><dd>${esc(d)}</dd>`).join('')}</dl></div>`:'';
+  let html=tpl.replace('{{sourcesHtml}}',srcHtml+glossHtml).replace('{{css}}',css).replace('{{langs}}',langs).replace('{{ui}}',JSON.stringify(pg.ui).replace(/</g,'\\u003c'));
   for(const [k,v] of Object.entries(pg)) if(typeof v==='string') html=html.split('{{'+k+'}}').join(k.endsWith('Html')||k.startsWith('font')?v:esc(v));
   if(html.includes('{{')) throw new Error(`${lang}: 치환 안 된 자리표시자 `+html.match(/\{\{\w+\}\}/)[0]);
   const OUT=path.join(ROOT,lang,'hegemony','atlas');
   fs.mkdirSync(path.join(OUT,'data'),{recursive:true}); fs.mkdirSync(path.join(OUT,'lib'),{recursive:true});
   for(const y of YEARS) if(DATA[y]) fs.writeFileSync(path.join(OUT,'data',`${y}.json`),DATA[y]);
+  for(const [y,v] of Object.entries(VCLIO)) if(meta.verify[y]) meta.verify[y].clio=v;
   fs.writeFileSync(path.join(OUT,'meta.json'),JSON.stringify(meta));
   fs.writeFileSync(path.join(OUT,'content.json'),JSON.stringify(content));
   fs.writeFileSync(path.join(OUT,'index.html'),html);
