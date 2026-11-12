@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{title}}</title>
+<meta name="description" content="{{metaDesc}}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@600;700&display=swap" rel="stylesheet">
+<style>
+{{css}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header><h1>{{title}}</h1><p>{{subtitle}}</p><a class="to" href="../atlas/">{{atlasLink}}</a></header>
+  <div class="layout">
+    <div>
+      <div class="card mapcard">
+        <svg id="map" role="img" aria-label="{{title}}"></svg>
+        <div class="badge" id="badge"></div>
+        <div class="zoom"><button id="zin">+</button><button id="zout">−</button><button id="zreset" class="txt"></button><button id="zbig" class="txt"></button></div>
+        <div class="info" id="info"></div>
+        <div class="loading" id="loading">{{loading}}</div>
+      </div>
+      <div class="card" style="margin-top:10px">
+        <div class="ctl"><button id="prev">‹</button><input type="range" id="slider" min="0" value="0" step="1"><button id="next">›</button></div>
+        <div class="years" id="years"></div>
+        <div class="key" id="key"></div>
+        <div class="hint">{{hint}}</div>
+      </div>
+    </div>
+    <aside class="card panel" id="panel"></aside>
+  </div>
+  <div class="foot">{{footHtml}}</div>
+  <div class="srcs"><h4>{{sourcesTitle}}</h4>{{sourcesHtml}}</div>
+</div>
+<script src="lib/d3.min.js"></script>
+<script src="lib/topojson-client.min.js"></script>
+<script>
+(async function(){
+const UI = {{ui}};
+const fmt=(s,o)=>s.replace(/\{(\w+)\}/g,(_,k)=>o[k]);
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const [IX, landT] = await Promise.all([fetch('index.json').then(r=>r.json()), fetch('data/land.json').then(r=>r.json())]);
+const SN=IX.snaps, EN=IX.ents;
+const yl=y=>y===2026?UI.now:y<0?fmt(UI.bc,{y:-y}):fmt(UI.ad,{y});
+const ys=y=>y===2026?'2026':y<0?'BC '+(-y):String(y);
+const nm=e=>e.ko||e.n, nm2=e=>e.ko?`${esc(e.ko)}<small>${esc(e.n)}</small>`:esc(e.n);
+const km=a=>a<1?UI.areaT:a<1e4?fmt(UI.areaS,{v:(a<1000?Math.round(a):Math.round(a/100)*100).toLocaleString('ko')}):a>=1e6?fmt(UI.areaM,{v:(a/1e6).toLocaleString('ko',{maximumFractionDigits:a>=1e7?0:1})}):a>=1e4?fmt(UI.areaK,{v:Math.round(a/1e4).toLocaleString('ko')}):fmt(UI.areaS,{v:(Math.round(a/100)*100).toLocaleString('ko')});
+function rewind(f){const gm=f.geometry;if(!gm)return f;const ps=gm.type==='Polygon'?[gm.coordinates]:gm.type==='MultiPolygon'?gm.coordinates:[];for(const p of ps)for(let i=0;i<p.length;i++){if(d3.geoArea({type:'Polygon',coordinates:[p[i]]})>2*Math.PI)p[i]=p[i].slice().reverse();}return f;}
+const cache={}; const load=i=>cache[i]||=fetch(`data/${SN[i].y}.json`).then(r=>r.json()).then(t=>({w:topojson.feature(t,t.objects.w).features.map(rewind).filter(f=>f.geometry),d:t.objects.d?topojson.feature(t,t.objects.d).features.map(rewind):[]}));
+
+const W=960,H=500, svg=d3.select('#map').attr('viewBox',`0 0 ${W} ${H}`);
+const defs=svg.append('defs');
+const hp=defs.append('pattern').attr('id','hatch').attr('patternUnits','userSpaceOnUse').attr('width',3).attr('height',3).attr('patternTransform','rotate(45)');
+hp.append('rect').attr('width',3).attr('height',3).style('fill','rgba(255,255,255,.25)'); hp.append('rect').attr('width',1).attr('height',3).style('fill','var(--ink)');
+const dp=defs.append('pattern').attr('id','dots').attr('patternUnits','userSpaceOnUse').attr('width',3.2).attr('height',3.2);
+dp.append('rect').attr('width',3.2).attr('height',3.2).style('fill','var(--land)'); dp.append('circle').attr('cx',1.6).attr('cy',1.6).attr('r',.55).style('fill','var(--muted)');
+const proj=d3.geoNaturalEarth1().fitExtent([[6,6],[W-6,H-6]],{type:'Sphere'}), path=d3.geoPath(proj);
+const g=svg.append('g');
+g.append('path').attr('class','sphere').attr('d',path({type:'Sphere'}));
+g.append('path').attr('class','grat').attr('d',path(d3.geoGraticule10()));
+const landF=topojson.feature(landT,landT.objects.land);
+g.append('path').attr('class','land').attr('d',path(landF)).on('click',()=>{clearSel(); show(`<b class="t">${esc(UI.noRecord)}</b><div class="meta">${esc(fmt(UI.noRecordLong,{when:yl(SN[cur].y)}))}</div>`);});
+const gP=g.append('g'), gD=g.append('g'), gL=g.append('g');
+let k=1, cur=SN.length-1, focus=null, selEl=null, q='', limit=40, T=d3.zoomIdentity;
+const small=()=>document.getElementById('map').clientWidth<640;
+const zoom=d3.zoom().scaleExtent([1,40]).translateExtent([[0,0],[W,H]]).on('zoom',e=>{T=e.transform;k=T.k;g.attr('transform',T);layoutLabels();});
+svg.call(zoom).on('dblclick.zoom',null);
+const zby=f=>svg.transition().duration(250).call(zoom.scaleBy,f);
+document.getElementById('zin').onclick=()=>zby(1.7); document.getElementById('zout').onclick=()=>zby(1/1.7);
+const zr=document.getElementById('zreset'); zr.textContent=UI.reset; zr.onclick=()=>svg.call(zoom.transform,d3.zoomIdentity);
+const zb=document.getElementById('zbig'); const setBig=on=>{document.body.classList.toggle('bigmap',on);zb.textContent=on?UI.bigExit:UI.big;}; setBig(false);
+zb.onclick=()=>setBig(!document.body.classList.contains('bigmap'));
+['zin','zout','prev','next'].forEach((id,i)=>document.getElementById(id).setAttribute('aria-label',[UI.zoomIn,UI.zoomOut,UI.prev,UI.next][i]));
+
+const info=document.getElementById('info');
+function show(html){info.innerHTML=`<button class="x" aria-label="${esc(UI.close)}">×</button>`+html;info.style.display='block';info.querySelector('.x').onclick=()=>{info.style.display='none';clearSel();};}
+function clearSel(){if(selEl)selEl.classList.remove('sel');selEl=null;}
+const fillOf=e=>e.ns?'url(#dots)':e.c;
+const areaOf=id=>{const r=SN[cur].top.find(t=>t[0]===id);return r?r[1]*1000:0;};
+function entInfo(id,p){
+  const e=EN[id], a=areaOf(id);
+  let h=`<b class="t">${esc(nm(e))}</b>${e.ko?` <span class="meta">${esc(e.n)}</span>`:''}`;
+  if(a) h+=`<div>${esc(fmt(UI.area,{a:km(a)}))}</div>`;
+  if(e.ns) h+=`<div class="meta">${esc(UI.ns)}</div>`;
+  if(p){ if(p.n&&p.n!==e.n) h+=`<div class="meta">${esc(UI.region)}: ${esc(p.k||p.n)}${p.k?' ('+esc(p.n)+')':''}${p.st?' · '+esc(UI.status[p.st]||p.st):''}</div>`;
+    if(p.b) h+=`<div class="meta">${esc(UI.prec)}: ${esc(UI.precVals[p.b-1]||'')}</div>`;
+    if(p.un) h+=`<div class="w">${esc(UI.unApplied)}</div>`; }
+  return h;
+}
+function noteKo(s){ if(!s) return ''; for(const [a,b] of UI.noteTr) s=s.replace(new RegExp(a,'g'),b); return s.replace(/[A-Z][A-Za-z.]+(?: [A-Z][A-Za-z.]+)*/g,m=>{const e=byName.get(m)||byName.get(m.replace(/\.$/,'')); return e&&e.ko?e.ko:m;}); }
+const byName=new Map(EN.map(e=>[e.n,e])); [['U.K.','United Kingdom'],['U.S.A.','United States of America'],['U.S.A','United States of America'],['Azer.','Azerbaijan'],['UAE','United Arab Emirates']].forEach(([a,b])=>byName.get(b)&&byName.set(a,byName.get(b)));
+function dispInfo(p){
+  return `<b class="t">▨ ${esc(p.ko||p.n)}</b>${p.ko?` <span class="meta">${esc(p.n)}</span>`:''}`+
+   `<dl>${p.note?`<dt>${esc(UI.neNote)}</dt><dd>${esc(noteKo(p.note))}</dd>`:''}<dt>${esc(UI.un)}</dt><dd>${esc(p.un||UI.unNone)}</dd>${p.us?`<dt>${esc(UI.us)}</dt><dd>${esc(p.us)}</dd>`:''}${p.kr?`<dt>${esc(UI.kr)}</dt><dd>${esc(p.kr)}</dd>`:''}</dl>`;
+}
+let LBL=[];
+function layoutLabels(){
+  const cw=document.getElementById('map').clientWidth||W, fs=Math.min(30,(small()?10.5:11.5)*W/cw), placed=[]; const maxN=Math.round((small()?16:34)*Math.pow(k,1.25));
+  gL.selectAll('text').each(function(d,i){
+    const el=d3.select(this); if(i>=maxN||(focus!==null&&d.id!==focus&&false)){el.attr('display','none');return;}
+    const sx=T.applyX(d.x), sy=T.applyY(d.y); const size=fs*(d.rank<6?1.25:d.rank<16?1.08:1), w=d.text.length*size*(/[가-힣]/.test(d.text)?0.95:0.56)+6, hh=size+4;
+    if(sx<-40||sx>W+40||sy<-20||sy>H+20){el.attr('display','none');return;}
+    const box=[sx-w/2,sy-hh/2,sx+w/2,sy+hh/2];
+    if(placed.some(b=>!(box[2]<b[0]||box[0]>b[2]||box[3]<b[1]||box[1]>b[3]))){el.attr('display','none');return;}
+    placed.push(box); el.attr('display',null).attr('font-size',size/k).style('stroke-width',(2.6/k)+'px');
+  });
+}
+async function draw(){
+  const i=cur, s=SN[i]; const D=await load(i); if(i!==cur) return;
+  document.getElementById('loading').style.display='none';
+  gP.selectAll('path').data(D.w,(d,j)=>s.y+'_'+j).join('path').attr('class','poly').attr('d',path).style('fill',d=>fillOf(EN[d.properties.e]))
+    .classed('dimmed',d=>focus!==null&&d.properties.e!==focus)
+    .on('click',function(e,d){e.stopPropagation();clearSel();selEl=this;this.classList.add('sel');show(entInfo(d.properties.e,d.properties));});
+  gD.selectAll('path').data(D.d,(d,j)=>s.y+'d'+j).join('path').attr('class','disp').attr('d',path).on('click',(e,d)=>{e.stopPropagation();clearSel();show(dispInfo(d.properties));});
+  LBL=s.top.filter(([id])=>s.labels[id]).slice(0,400).map(([id],rank)=>{const [x,y]=proj(s.labels[id]);return {id,x,y,rank,text:nm(EN[id]),ns:EN[id].ns};});
+  gL.selectAll('text').data(LBL,d=>d.id).join('text').attr('class',d=>'lbl'+(d.ns?' ns':'')).attr('x',d=>d.x).attr('y',d=>d.y).attr('dy','.35em').text(d=>d.text);
+  layoutLabels();
+  document.getElementById('badge').textContent=yl(s.y);
+  [i-1,i+1].forEach(j=>SN[j]&&load(j));
+  drawDispList(D.d);
+}
+function renderYears(){
+  const box=document.getElementById('years');
+  box.innerHTML=SN.map((s,i)=>`<button data-i="${i}" class="${i===cur?'on':''}">${ys(s.y)}</button>`).join('');
+  box.querySelectorAll('button').forEach(b=>b.onclick=()=>go(+b.dataset.i));
+  const on=box.querySelector('.on'); if(on) box.scrollLeft=on.offsetLeft-box.clientWidth/2+on.offsetWidth/2;
+  document.getElementById('slider').value=cur;
+}
+function renderPanel(){
+  const s=SN[cur]; const all=s.top.map(([id,a])=>({id,a:a*1000,e:EN[id]}));
+  const st=all.filter(o=>!o.e.ns), ns=all.filter(o=>o.e.ns);
+  const f=o=>!q||(o.e.n.toLowerCase().includes(q)||(o.e.ko||'').includes(q));
+  const stf=st.filter(f), nsf=ns.filter(f);
+  const li=o=>`<li data-id="${o.id}" class="${focus===o.id?'on':''}"><i style="background:${o.e.ns?'var(--land)':o.e.c}"></i><span>${nm2(o.e)}</span><span class="a">${km(o.a)}</span></li>`;
+  const src=s.src==='hb'?UI.srcHb:s.src==='cs'?fmt(UI.srcCs,{date:s.date}):UI.srcNe;
+  const next=SN[cur+1];
+  document.getElementById('panel').innerHTML=
+    `<h2>${esc(yl(s.y))}</h2><p class="sub">${esc(fmt(UI.count,{n:st.length,m:ns.length}))}${focus!==null?` · <button class="linkbtn" id="unf">${esc(UI.showAll)}</button>`:''}</p>`+
+    `<p class="src">${esc(src)}${next&&s.src==='hb'?' '+esc(fmt(UI.gapNext,{y:yl(next.y)}))+'.':''}</p>`+
+    `<input class="search" id="search" type="search" placeholder="${esc(UI.search)}" value="${esc(q)}">`+
+    `<ul class="ents" id="ents">${stf.slice(0,limit).map(li).join('')}</ul>`+
+    (stf.length>limit?`<button class="linkbtn" id="more">${esc(fmt(UI.more,{n:stf.length-limit}))}</button>`:'')+
+    (nsf.length?`<div class="sec"><h3>${esc(UI.nsTitle)}</h3><ul class="ents">${nsf.slice(0,q?60:12).map(li).join('')}</ul></div>`:'')+
+    `<div id="displist"></div>`;
+  const si=document.getElementById('search'); si.oninput=()=>{q=si.value.trim().toLowerCase();limit=40;const p=si.selectionStart;renderPanel();const n=document.getElementById('search');n.focus();n.setSelectionRange(p,p);};
+  document.querySelectorAll('ul.ents li').forEach(l=>l.onclick=()=>pick(+l.dataset.id));
+  const m=document.getElementById('more'); if(m) m.onclick=()=>{limit+=80;renderPanel();};
+  const u=document.getElementById('unf'); if(u) u.onclick=()=>{focus=null;gP.selectAll('path').classed('dimmed',false);renderPanel();};
+  if(cache[cur]) cache[cur].then(D=>drawDispList(D.d));
+}
+function drawDispList(d){ const el=document.getElementById('displist'); if(!el) return; if(!d.length){el.innerHTML='';return;}
+  const major=d.filter(x=>x.properties.un), rest=d.filter(x=>!x.properties.un);
+  el.innerHTML=`<div class="sec"><h3>${esc(fmt(UI.dispTitle,{n:d.length}))}</h3><p class="sub">${esc(UI.dispNote)}</p><ul class="disp">${[...major,...rest].map((x,i)=>`<li data-i="${d.indexOf(x)}">▨ ${esc(x.properties.ko||x.properties.n)}</li>`).join('')}</ul></div>`;
+  el.querySelectorAll('li').forEach(l=>l.onclick=()=>{const p=d[+l.dataset.i].properties; show(dispInfo(p)); const [x,y]=proj(p.ll); flyTo(x,y,Math.max(k,8));});
+}
+function flyTo(x,y,z){ svg.transition().duration(600).call(zoom.transform,d3.zoomIdentity.translate(W/2,H/2).scale(z).translate(-x,-y)); document.querySelector('.mapcard').scrollIntoView({behavior:'smooth',block:'nearest'}); }
+function pick(id){ focus=focus===id?null:id; gP.selectAll('path').classed('dimmed',d=>focus!==null&&d.properties.e!==focus); renderPanel();
+  if(focus!==null){ show(entInfo(id,null)); const ll=SN[cur].labels[id]; if(ll){const [x,y]=proj(ll); const a=areaOf(id); flyTo(x,y,a>8e6?1.6:a>2e6?2.6:a>4e5?4.5:8);} } }
+function renderKey(){ document.getElementById('key').innerHTML=`<span><i style="background:var(--land)"></i>${esc(UI.noRecord)}</span><span><svg width="16" height="12"><rect width="16" height="12" rx="3" fill="url(#dots)" stroke="var(--landline)"/></svg>${esc(UI.nsTitle.split('(')[0])}</span>`+(SN[cur].src==='ne'?`<span><svg width="16" height="12"><rect width="16" height="12" rx="3" fill="url(#hatch)" stroke="var(--ink)"/></svg>${esc(fmt(UI.dispTitle,{n:''}).replace(/\s*곳$/,''))}</span>`:''); }
+function go(i){ if(i<0||i>=SN.length) return; const keep=focus!==null&&SN[i].top.some(t=>t[0]===focus); cur=i; if(!keep) focus=null; limit=40; info.style.display='none'; clearSel();
+  try{history.replaceState(null,'','#y'+(SN[i].y<0?'bc'+(-SN[i].y):SN[i].y));}catch(e){}
+  renderYears(); renderKey(); renderPanel(); draw(); }
+const sl=document.getElementById('slider'); sl.max=SN.length-1; sl.oninput=()=>go(+sl.value);
+document.getElementById('prev').onclick=()=>go(cur-1); document.getElementById('next').onclick=()=>go(cur+1);
+window.addEventListener('keydown',e=>{ if(e.target.tagName==='INPUT'&&e.target.type!=='range') return; if(e.key==='ArrowRight')go(cur+1); if(e.key==='ArrowLeft')go(cur-1); if(e.key==='Escape')setBig(false); });
+window.addEventListener('resize',layoutLabels);
+const hm=(location.hash||'').match(/^#y(bc)?(\d+)$/); if(hm){const y=(hm[1]?-1:1)*+hm[2]; const i=SN.findIndex(s=>s.y===y); if(i>=0) cur=i;}
+go(cur);
+})();
+</script>
+</body>
+</html>
