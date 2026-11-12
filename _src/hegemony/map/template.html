@@ -101,7 +101,8 @@ function entInfo(id,p){
   if(e.ns) h+=`<div class="meta">${esc(UI.ns)}</div>`;
   if(p){ if(p.n&&p.n!==e.n) h+=`<div class="meta">${esc(UI.region)}: ${esc(p.k||p.n)}${p.k?' ('+esc(p.n)+')':''}${p.st?' · '+esc(UI.status[p.st]||p.st):''}</div>`;
     if(p.b) h+=`<div class="meta">${esc(UI.prec)}: ${esc(UI.precVals[p.b-1]||'')}</div>`;
-    if(p.un) h+=`<div class="w">${esc(UI.unApplied)}</div>`; }
+    if(p.un) h+=`<div class="w">${esc(UI.unApplied)}</div>`;
+    if(p.fx&&IX.fx[p.fx]) h+=`<div class="fx"><b>${esc(UI.fxTag)}</b> ${esc(IX.fx[p.fx])}</div>`; }
   return h;
 }
 function noteKo(s){ if(!s) return ''; for(const [a,b] of UI.noteTr) s=s.replace(new RegExp(a,'g'),b); return s.replace(/[A-Z][A-Za-z.]+(?: [A-Z][A-Za-z.]+)*/g,m=>{const e=byName.get(m)||byName.get(m.replace(/\.$/,'')); return e&&e.ko?e.ko:m;}); }
@@ -139,7 +140,7 @@ async function draw(){
   layoutLabels();
   document.getElementById('badge').textContent=yl(s.y);
   [i-1,i+1].forEach(j=>SN[j]&&(load(j),supOn&&loadS(j)));
-  drawDispList(D.d);
+  drawDispList(D.d); drawFixList(D.w);
 }
 function renderYears(){
   const box=document.getElementById('years');
@@ -166,12 +167,12 @@ function renderPanel(){
     (stf.length>limit?`<button class="linkbtn" id="more">${esc(fmt(UI.more,{n:stf.length-limit}))}</button>`:'')+
     (nsf.length?`<div class="sec"><h3>${esc(UI.nsTitle)}</h3><ul class="ents">${nsf.slice(0,q?60:12).map(li).join('')}</ul></div>`:'')+
     (su.length?`<div class="sec"><h3>${esc(fmt(UI.supTitle,{n:su.length}))}</h3><p class="sub">${esc(UI.supSub)}</p><ul class="ents">${su.slice(0,q?80:30).map(li).join('')}</ul></div>`:'')+
-    `<div id="displist"></div>`;
+    `<div id="fixlist"></div><div id="displist"></div>`;
   const si=document.getElementById('search'); si.oninput=()=>{q=si.value.trim().toLowerCase();limit=40;const p=si.selectionStart;renderPanel();const n=document.getElementById('search');n.focus();n.setSelectionRange(p,p);};
   document.querySelectorAll('ul.ents li').forEach(l=>l.onclick=()=>pick(+l.dataset.id));
   const m=document.getElementById('more'); if(m) m.onclick=()=>{limit+=80;renderPanel();};
   const u=document.getElementById('unf'); if(u) u.onclick=()=>{focus=null;gP.selectAll('path').classed('dimmed',false);gS.selectAll('path').classed('dimmed',false);renderPanel();};
-  if(cache[cur]) cache[cur].then(D=>drawDispList(D.d));
+  if(cache[cur]) cache[cur].then(D=>{drawDispList(D.d);drawFixList(D.w);});
 }
 function verifyHtml(s){ const v=s.v; if(!v||v.agree==null) return '';
   const cn=n=>{const e=byName.get(n); return e&&e.ko?`${esc(e.ko)} <small>${esc(n)}</small>`:esc(n);};
@@ -181,6 +182,12 @@ function verifyHtml(s){ const v=s.v; if(!v||v.agree==null) return '';
    (v.clioOnly.length?`<h5>${esc(UI.vOnlyC)}</h5><ul>${v.clioOnly.map(([n,a])=>`<li><span>${cn(n)}</span><span class="a">${km(a*1000)}</span></li>`).join('')}</ul>`:'')+
    (v.conflicts.length?`<h5>${esc(UI.vConf)}</h5><ul>${v.conflicts.map(([e,n,a])=>`<li><span>${esc(nm(EN[e]))} ↔ ${cn(n)}</span><span class="a">${km(a*1000)}</span></li>`).join('')}</ul>`:'')+
    `<p class="vn">${esc(UI.vNote)}</p></details>`; }
+function drawFixList(w){ const el=document.getElementById('fixlist'); if(!el) return; const m=new Map();
+  for(const f of w){const p=f.properties; if(!p.fx||!IX.fx[p.fx]) continue; const o=m.get(p.fx)||{names:[],f}; const nmx=p.k||p.n; if(!o.names.includes(nmx)) o.names.push(nmx); m.set(p.fx,o);}
+  if(!m.size){el.innerHTML='';return;}
+  const rows=[...m]; el.innerHTML=`<details class="ver fixes"><summary><b>${esc(fmt(UI.fxTitle,{n:rows.length}))}</b></summary><p>${esc(UI.fxSub)}</p><ul>${rows.map(([id,o],i)=>`<li data-i="${i}"><span><b>${esc(o.names.slice(0,4).join(', '))}${o.names.length>4?' …':''}</b> → ${esc(nm(EN[o.f.properties.e]))}<br>${esc(IX.fx[id])}</span></li>`).join('')}</ul></details>`;
+  el.querySelectorAll('li').forEach(l=>l.onclick=()=>{const f=rows[+l.dataset.i][1].f; const [x,y]=path.centroid(f); if(isFinite(x)){show(entInfo(f.properties.e,f.properties)); flyTo(x,y,Math.max(k,4));}});
+}
 function drawDispList(d){ const el=document.getElementById('displist'); if(!el) return; if(!d.length){el.innerHTML='';return;}
   const major=d.filter(x=>x.properties.un), rest=d.filter(x=>!x.properties.un);
   el.innerHTML=`<div class="sec"><h3>${esc(fmt(UI.dispTitle,{n:d.length}))}</h3><p class="sub">${esc(UI.dispNote)}</p><ul class="disp">${[...major,...rest].map((x,i)=>`<li data-i="${d.indexOf(x)}">▨ ${esc(x.properties.ko||x.properties.n)}</li>`).join('')}</ul></div>`;

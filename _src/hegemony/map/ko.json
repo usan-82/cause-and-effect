@@ -15,7 +15,7 @@
   "Jin": "금",
   "Jin Empire": "진(晉)",
   "Zhou states": "주(周)의 제후국들",
-  "Zhoa": "조(趙)",
+  "Zhoa": "주(周)",
   "Sixteen Kingdoms": "오호십육국",
   "Toba Wei": "북위",
   "Liao": "요",
@@ -439,7 +439,17 @@
   "Quechua": "케추아",
   "Great Khanate": "대칸국(원·북원)",
   "Blue Horde": "청장 칸국",
-  "Greenland": "그린란드"
+  "Greenland": "그린란드",
+  "Dutch Republic": "네덜란드 공화국",
+  "United Kingdom of Netherlands": "네덜란드 연합왕국",
+  "England and Ireland": "잉글랜드(아일랜드 포함)",
+  "English territory": "잉글랜드령",
+  "Angevin Empire": "앙주 제국",
+  "Wadai Empire": "와다이 제국",
+  "Wattasid Caliphate": "와타스 왕조",
+  "Kong Empire": "콩 제국",
+  "Laotian states": "라오스 여러 왕국",
+  "Hindu Shahis": "힌두 샤히 왕조"
  },
  "nonstate": {
   "regex": "hunter|gatherer|culture|farmers|pastoral|nomad|tribe|peoples?$|fishers|fichers|foraging|civilization|Proto-|megalith|Bronze Age|Clans",
@@ -572,7 +582,9 @@
    "England",
    "Great Britain",
    "United Kingdom of Great Britain and Ireland",
-   "UK"
+   "UK",
+   "England and Ireland",
+   "English territory"
   ],
   "South Korea": [
    "Korea",
@@ -603,6 +615,10 @@
    "Japan (Warring States)",
    "Tokugawa shogunate",
    "Imperial Japan"
+  ],
+  "Netherlands": [
+   "Dutch Republic",
+   "United Kingdom of Netherlands"
   ]
  },
  "unRules": {

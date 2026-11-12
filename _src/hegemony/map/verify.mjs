@@ -11,7 +11,7 @@ function pip(rs,x,y){let inside=false;for(const r of rs){for(let i=0,j=r.length-
 function shoelace(rs){let a=0;for(const r of rs){let s=0;for(let i=0,j=r.length-1;i<r.length;j=i++)s+=(r[j][0]*r[i][1]-r[i][0]*r[j][1]);a+=Math.abs(s)/2;}return a;}
 function mk(items){const it=items.map(o=>{const rs=rings(o.g);let x0=180,y0=90,x1=-180,y1=-90;for(const r of rs)for(const [x,y] of r){if(x<x0)x0=x;if(y<y0)y0=y;if(x>x1)x1=x;if(y>y1)y1=y;}return {...o,rs,bb:[x0,y0,x1,y1],a:shoelace(rs)};}).filter(o=>o.rs.length&&o.bb[0]<=o.bb[2]);
   const ix=new Flatbush(Math.max(1,it.length)); if(!it.length) ix.add(0,0,0,0); for(const o of it) ix.add(...o.bb); ix.finish(); return {ix,it};}
-const at=(I,x,y)=>{const c=I.ix.search(x,y,x,y).map(i=>I.it[i]).filter(o=>o&&pip(o.rs,x,y)); if(!c.length) return null; c.sort((a,b)=>a.a-b.a); return c[0];};
+const at=(I,x,y)=>{const c=I.ix.search(x,y,x,y).map(i=>I.it[i]).filter(o=>o&&pip(o.rs,x,y)); if(!c.length) return null; c.sort((a,b)=>((b.pt|0)-(a.pt|0))||a.a-b.a); return c[0];};
 const STEP=0.5,R=6371.0088,rad=Math.PI/180; const cellArea=lat=>R*R*STEP*rad*Math.abs(Math.sin((lat+STEP/2)*rad)-Math.sin((lat-STEP/2)*rad));
 const res={};
 // 보충 층: Cliopatria에만 있는 땅(이 지도에서 빈 땅이거나 문화권인 곳)을 잘라 raw/sup/{연도}.json 으로 낸다. build.mjs가 읽는다.
@@ -21,7 +21,7 @@ const THICK=+(process.env.THICK||30), MINA=+(process.env.MINA||8000);
 for(const s of IX.snaps){ if(process.env.ONLY&&!process.env.ONLY.split(",").includes(String(s.y))) continue;
   const y=s.y, cy=Math.min(y,2024);
   const t=JSON.parse(fs.readFileSync(path.join(OUT,'data',`${y}.json`)));
-  const mine=mk(feature(t,t.objects.w).features.filter(f=>f.geometry).map(f=>({g:f.geometry,e:f.properties.e})));
+  const mine=mk(feature(t,t.objects.w).features.filter(f=>f.geometry).map(f=>({g:f.geometry,e:f.properties.e,pt:f.properties.pt})));
   // Cliopatria: 괄호 이름은 여러 나라를 묶은 상위 단위라 제외
   const clio=mk(CL.filter(f=>f.properties.FromYear<=cy&&f.properties.ToYear>=cy&&!/^\(/.test(f.properties.Name)).map(f=>({g:f.geometry,n:f.properties.Name})));
   let both=0,mo=0,co=0,nsOnly=0; const pair=new Map(), mA=new Map(), cA=new Map(), coP=new Map(), moP=new Map();
@@ -55,6 +55,7 @@ for(const s of IX.snaps){ if(process.env.ONLY&&!process.env.ONLY.split(",").incl
       res[y].sup=fc.features.length;
     }
   }
+  if(process.env.CONF) fs.appendFileSync(process.env.CONF,`\n== ${y} agree ${(agree/both*100).toFixed(0)}%\n`+conf.sort((a,b)=>b[2]-a[2]).slice(0,14).filter(x=>x[2]>=60000).map(([E,n,a])=>`  ${K(a)}k  map:${IX.ents[E].n}  ↔ clio:${n}   (map의 짝:${bestC.get(E)[0]} / clio의 짝:${IX.ents[bestM.get(n)[0]].n})`).join('\n')+'\n  clio-only: '+top(coP,10).map(x=>x.join(' ')).join(', ')+'\n  map-only: '+top(moP,8).map(([e,a])=>IX.ents[e].n+' '+a).join(', ')+'\n');
   const nm=e=>IX.ents[e].n;
   console.log(String(y).padStart(6),'clio',String(clio.it.length).padStart(4),'both',(both/1e6).toFixed(1).padStart(6),'mineOnly',(mo/1e6).toFixed(1).padStart(5),'clioOnly',(co/1e6).toFixed(1).padStart(5),'agree',(agree/both*100).toFixed(0).padStart(3)+'%','strict',(strict/both*100).toFixed(0).padStart(3)+'%','| clio-only:',res[y].clioOnly.slice(0,3).map(x=>x[0]+' '+x[1]).join(', '),'| sup',res[y].sup||0,'| conflict:',res[y].conflicts.slice(0,2).map(x=>nm(x[0])+'≠'+x[1]+' '+x[2]).join(', '));
 }

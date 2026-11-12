@@ -30,7 +30,7 @@ function mkIndex(feats){
   const items=feats.map((f,i)=>{const rs=rings(f.geometry);let x0=180,y0=90,x1=-180,y1=-90;for(const r of rs)for(const [x,y] of r){if(x<x0)x0=x;if(y<y0)y0=y;if(x>x1)x1=x;if(y>y1)y1=y;}let a=geoArea(f);if(a>2*Math.PI)a=4*Math.PI-a;return {i,f,rs,bb:[x0,y0,x1,y1],a};}).filter(o=>o.rs.length&&o.bb[0]<=o.bb[2]);
   const ix=new Flatbush(Math.max(items.length,1)); if(!items.length) ix.add(0,0,0,0); for(const o of items) ix.add(...o.bb); ix.finish(); return {ix,items};
 }
-function at(I,x,y){const c=I.ix.search(x,y,x,y).map(i=>I.items[i]).filter(o=>o&&pip(o.rs,x,y)); if(!c.length) return null; c.sort((a,b)=>a.a-b.a); return c[0];}
+function at(I,x,y){const c=I.ix.search(x,y,x,y).map(i=>I.items[i]).filter(o=>o&&pip(o.rs,x,y)); if(!c.length) return null; c.sort((a,b)=>((b.f.properties.top|0)-(a.f.properties.top|0))||a.a-b.a); return c[0];} // 덧그린 패치가 먼저, 그다음 가장 작은 영역
 const STEP=0.5, R=6371.0088, rad=Math.PI/180, NX=360/STEP, NY=180/STEP;
 const cellArea=lat=>R*R*STEP*rad*Math.abs(Math.sin((lat+STEP/2)*rad)-Math.sin((lat-STEP/2)*rad));
 const load=f=>{const t=JSON.parse(fs.readFileSync(path.join(RAW,f)));return feature(t,t.objects[Object.keys(t.objects)[0]]).features.map(fix).filter(x=>x.geometry);};
@@ -38,7 +38,33 @@ const load=f=>{const t=JSON.parse(fs.readFileSync(path.join(RAW,f)));return feat
 const NSRE=new RegExp(TX.nonstate.regex,'i'), NSSET=new Set(TX.nonstate.list.map(canon));
 const isNs=n=>NSRE.test(n)||NSSET.has(n);
 const CLIO=J('clio.json');
-const HBFIX=[[1600,'Inca Empire','Spain']]; // 원본이 1530년 상태 그대로 둔 곳(잉카는 1572년까지 정복됨)
+// ---- 보정(fixes.json). hegemony/atlas에서 검증한 보정을 옮겨 온 것 + 이 지도에서 따로 찾은 것
+const FX=J('fixes.json'); const FXN={...FX.notes};
+// 강대국 15곳의 식민지·속령 표기를 한 주체로 모으는 규칙(atlas build.mjs와 같은 규칙). 1492년 이후 historical-basemaps에만 쓴다
+const base=(n,s)=>{ const S=re=>re.test(s), N=re=>re.test(n);
+  if(S(/United Kingdom of (the )?Netherlands/)) return 'nl';
+  if(S(/United Kingdom|Great Britain|^England|British|\(UK\)|^UK$/)||N(/\(UK\)|\(GB\)|British/)) return 'gb';
+  if(S(/^France|French/)||N(/\(France\)|\(FR\)/)) return 'fr';
+  if(S(/^Spain|Spanish|Castil|Viceroyalty of (New Spain|Peru|the Río de la Plata|New Granada)/)||N(/\(Spain\)/)) return 'es';
+  if(S(/^Portugal|Portuguese/)||N(/\(Portugal\)/)) return 'pt';
+  if(S(/^Netherlands|Neterlands|Dutch|^Holland|Netherlands Indies/)) return 'nl';
+  if(S(/Russia|Muscovy|Moscow|USSR|Soviet/)&&!S(/White Russia/)) return 'ru';
+  if(S(/Ottoman|^Turkey$/)) return 'ot';
+  if(S(/Ming|Qing|Manchu Empire|^China$|Chinese/)) return 'cn';
+  if(S(/United States|^USA$/)) return 'us';
+  if(S(/^Germany|German Empire|Prussia|Brandenburg/)) return 'de';
+  if(S(/Austria|Austro|Habsburg/)&&!S(/Spanish/)) return 'at';
+  if(S(/Japan/)) return 'jp'; if(S(/^Italy|Italian/)) return 'it'; if(S(/^Belgium|Belgian/)) return 'be'; if(S(/Mughal/)) return 'mg';
+  return null; };
+// atlas 시점 사이에 낀 시점(예: 1500, 1886)은 앞뒤 atlas 시점의 값이 같을 때만 따른다
+const CAP={gb:[-0.1,51.5],fr:[2.35,48.85],es:[-3.7,40.4],pt:[-9.14,38.72],nl:[4.9,52.37],ru:[37.6,55.75],ot:[28.98,41.01],cn:[116.4,39.9],us:[-77.04,38.9],de:[13.4,52.52],at:[16.37,48.2],jp:[135.77,35.01],it:[12.5,41.9],be:[4.35,50.85],mg:[78,27.18]};
+const AY=FX.atlasYears; const around=y=>{ if(y<AY[0]||y>AY.at(-1)) return null; let a=AY[0],b=AY.at(-1); for(const v of AY){ if(v<=y) a=v; } for(const v of AY.slice().reverse()){ if(v>=y) b=v; } return [a,b]; };
+const inYears=(list,y)=>{ if(list.includes(y)) return true; const ab=around(y); return !!ab&&list.includes(ab[0])&&list.includes(ab[1]); };
+const rangeAt=(r,y)=>r.find(([a,b])=>a<=y&&y<=b)||null;
+const rangeFor=(p,y)=>{ if(p.exact) return rangeAt(p.r,y); const ab=around(y); if(!ab) return null; const A=rangeAt(p.r,ab[0]), B=rangeAt(p.r,ab[1]); if(!A||!B||A[2]!==B[2]) return null;
+  if(p.polyYears&&!(p.polyYears.includes(ab[0])&&p.polyYears.includes(ab[1]))) return null; return A; };
+function cwPoly(c){ const p={type:'Polygon',coordinates:[c[0][0]===c.at(-1)[0]&&c[0][1]===c.at(-1)[1]?c:[...c,c[0]]]}; if(geoArea(p)>2*Math.PI) p.coordinates[0]=p.coordinates[0].slice().reverse(); return p; }
+const fArea=g=>{ let a=geoArea({type:'Feature',geometry:g}); return a>2*Math.PI?4*Math.PI-a:a; };
 const GRL=load('n_usa.json').find(f=>f.properties.ADM0_A3==='GRL');
 // 이름표 위치: 가장 큰 연결 덩어리 안에서 가장자리로부터 가장 먼 칸
 function labelsOf(cells){ const labels={};
@@ -58,11 +84,16 @@ const out=[];
 for(const s of SNAPS){
   let feats=load(s.file), F=[];
   if(s.src==='hb'){
-    for(const f of feats){const n=(f.properties.NAME||'').trim(); if(!n) continue; const sub=(f.properties.SUBJECTO||'').trim();
-      let e=sub||n;
+    const CLIP=fs.existsSync(path.join(RAW,'clip',`${s.y}.json`))?JSON.parse(fs.readFileSync(path.join(RAW,'clip',`${s.y}.json`))).features.map(fix):[];
+    const cdef=(FX.clip||[]).filter(c=>c.y.includes(s.y)), REPL=new Set(cdef.filter(c=>c.replace).map(c=>c.from));
+    s.clip=CLIP.map(f=>{const p=f.properties, c=cdef.find(c=>c.from===p.from)||{}; const nm=(c.rename||{})[p.n]||p.n; return {geometry:f.geometry,e:canon(p.to||CLIO.alias[nm]||nm),n:p.n,fx:p.note,top:1};});
+    for(const f of feats){const sub=(f.properties.SUBJECTO||'').trim(); const n=(f.properties.NAME||'').trim()||(s.y>=1492&&base('',sub)?sub:''); if(!n) continue; // 이름 없이 소속만 적힌 식민지도 살린다
+      let e=sub||n, k=s.y>=1492?base(n,sub):null, fx; if(k&&!inYears(FX.powerYears[k]||[],s.y)) k=null; // 그 강대국이 atlas에서 다뤄지는 시기에만 묶는다
       if(sub==='Mongol Empire'&&s.y>=1300) e=n;            // 1294년 이후 몽골 제국은 사실상 네 칸국으로 갈라져 있었다(교차검증에서 확인)
-      for(const [yy,nn,to] of HBFIX) if(yy===s.y&&nn===n) e=to;
-      F.push({geometry:f.geometry,e:canon(e),n,b:f.properties.BORDERPRECISION??null});}
+      let drop=REPL.has(canon(e));
+      for(const r of FX.hb) if((r.exact?r.y.includes(s.y):inYears(r.y,s.y))&&(r.n?new RegExp('^('+r.n+')$').test(n):canon(e)===r.e)){ fx=r.note; if(r.drop) drop=true; else if(r.to&&r.to[0]==='@') k=r.to.slice(1); else if(r.to){ k=null; e=r.to; } break; }
+      if(drop) continue;
+      F.push({geometry:f.geometry,e:canon(e),n,b:f.properties.BORDERPRECISION??null,k,fx});}
   } else if(s.src==='cs'){
     const byGw=new Map(feats.map(f=>[+f.properties.gwcode,f.properties.country_name]));
     for(const f of feats){const p=f.properties; const own=byGw.get(+p.owner)||p.country_name;
@@ -74,8 +105,18 @@ for(const s of SNAPS){
       if(p.TYPE==='Indeterminate'&&!ov) continue; // 주인이 정해지지 않은 작은 땅은 분쟁 지역 층에서만 보여 준다
       F.push({geometry:f.geometry,e:canon(ov||p.SOVEREIGNT),n:p.NAME_LONG||p.NAME,ko:p.NAME_KO,a3:p.ADM0_A3,un:ov?1:undefined});}
   }
+  // 강대국 키 → 이 시점의 본국 주체(그 키로 묶이는 지물 가운데 면적이 가장 큰 이름)
+  const HOME={}; { const acc={};
+    for(const f of F){ const k=s.src==='hb'?(f.fx?null:f.k):base(f.e,f.e); if(!k) continue; const o=acc[k]=acc[k]||new Map(); const v=o.get(f.e)||[0,0]; v[0]+=fArea(f.geometry);
+      const c=CAP[k]; if(c&&!v[1]&&pip(rings(f.geometry),c[0],c[1])) v[1]=1; o.set(f.e,v); } // 수도가 들어 있는 주체를 본국으로 본다. 없으면 가장 넓은 주체
+    for(const [k,o] of Object.entries(acc)) HOME[k]=[...o].sort((a,b)=>(b[1][1]-a[1][1])||b[1][0]-a[1][0])[0][0]; if(process.env.HOME_LOG) console.log('  home',s.y,JSON.stringify(HOME)); }
+  const target=to=>!to?null:to[0]==='@'?(HOME[to.slice(1)]||null):canon(to);
+  if(s.src==='hb') for(const f of F) if(f.k){ const h=HOME[f.k]; if(h) f.e=h; else if(f.fx) console.log('  보정 대상 없음',s.y,f.n,f.k); }
+  for(const c of s.clip||[]) F.push(c); // Cliopatria 경계를 빌린 교정 조각
+  for(const p of FX.patches){ const r=rangeFor(p,s.y); if(!r) continue; const e=target(r[2]); if(!e){ console.log('  패치 대상 없음',s.y,p.id,r[2]); continue; }
+    FXN['p:'+p.id+':'+r[0]]=r[3]; F.push({geometry:cwPoly(p.poly),e,n:p.en||p.id,ko:p.ko,fx:'p:'+p.id+':'+r[0],top:1}); }
   // 격자 표본
-  const I=mkIndex(F.map(x=>({type:'Feature',geometry:x.geometry,properties:{}})));
+  const I=mkIndex(F.map(x=>({type:'Feature',geometry:x.geometry,properties:{top:x.top}})));
   const grid=new Int32Array(NX*NY).fill(-1); const area=new Map(), cells=new Map();
   for(let j=0;j<NY;j++){const lat=-90+STEP/2+j*STEP, ca=cellArea(lat);
     for(let i=0;i<NX;i++){const lon=-180+STEP/2+i*STEP; const o=at(I,lon,lat); if(!o) continue; const fe=F[o.i]; const E=ent(fe.e);
@@ -151,10 +192,11 @@ console.log('disputed areas',disp.length,'with UN note',disp.filter(d=>d.propert
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const OUT=path.join(ROOT,'ko','hegemony','map'); fs.mkdirSync(path.join(OUT,'data'),{recursive:true}); fs.mkdirSync(path.join(OUT,'lib'),{recursive:true});
 const VER=fs.existsSync(path.join(HERE,'verify.json'))?J('verify.json'):{};
-const index={snaps:[],ents:E.map(e=>({n:e.n,ko:ko(e.n),...(e.c>=0?{c:PAL[e.c].hex}:{ns:1}),...(e.x?{x:1}:{})}))};
+const usedFx=new Set(out.flatMap(s=>s.F.map(f=>f.fx).filter(Boolean)));
+const index={fx:Object.fromEntries([...usedFx].map(k=>[k,FXN[k]])),snaps:[],ents:E.map(e=>({n:e.n,ko:ko(e.n),...(e.c>=0?{c:PAL[e.c].hex}:{ns:1}),...(e.x?{x:1}:{})}))};
 let bytes=0, sbytes=0; for(const f of fs.readdirSync(path.join(OUT,'data'))) if(/^s-?\d+\.json$/.test(f)) fs.rmSync(path.join(OUT,'data',f));
 for(const s of out){
-  const fc={type:'FeatureCollection',features:s.F.map(f=>({type:'Feature',geometry:f.geometry,properties:{e:ENT.get(f.e).id,n:f.n,...(f.ko?{k:f.ko}:ko(f.n)?{k:ko(f.n)}:{}),...(f.b!=null?{b:f.b}:{}),...(f.st?{st:f.st}:{}),...(f.un?{un:1}:{})}}))};
+  const fc={type:'FeatureCollection',features:s.F.map(f=>({type:'Feature',geometry:f.geometry,properties:{e:ENT.get(f.e).id,n:f.n,...(f.ko?{k:f.ko}:ko(f.n)?{k:ko(f.n)}:{}),...(f.b!=null?{b:f.b}:{}),...(f.st?{st:f.st}:{}),...(f.un?{un:1}:{}),...(f.fx?{fx:f.fx}:{}),...(f.top?{pt:1}:{})}}))};
   const objs={w:fc}; if(s.src==='ne') objs.d={type:'FeatureCollection',features:disp};
   const txt=JSON.stringify(topology(objs,1e5)); bytes+=txt.length; fs.writeFileSync(path.join(OUT,'data',`${s.y}.json`),txt);
   const top=[...s.area].sort((a,b)=>b[1]-a[1]).map(([id,a])=>[id,a>=1000?Math.round(a/1000):+(a/1000).toFixed(3)]);
