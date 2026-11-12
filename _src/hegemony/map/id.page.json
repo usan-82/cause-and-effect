@@ -136,7 +136,8 @@
   "supSame": "Negara ini ada di peta ini, tetapi bagian ini hanya digambar di Cliopatria. Belum diperiksa silang.",
   "fxTag": "Koreksi",
   "fxTitle": "Koreksi sumber: {n}",
-  "fxSub": "Tempat yang kepemilikannya keliru atau terlewat dalam sumber, lalu diperiksa dan diperbaiki. Ketuk untuk menuju ke sana."
+  "fxSub": "Tempat yang kepemilikannya keliru atau terlewat dalam sumber, lalu diperiksa dan diperbaiki. Ketuk untuk menuju ke sana.",
+  "help": "Bantuan dan sumber"
  },
  "glossary": [
   [

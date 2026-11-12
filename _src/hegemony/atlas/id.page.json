@@ -129,7 +129,8 @@
   "vClio": "Sebelum 1886 tidak ada kumpulan data bertanggal, tetapi kepemilikan kekuatan besar dibandingkan dengan data independen Cliopatria. Tingkat kesesuaiannya {agree}% (porsi sel, pada kisi 0,5°, tempat kedua sumber menggambar negara dan menetapkannya pada kekuatan besar yang sama). Berdasarkan historical-basemaps, {f} kesalahan kepemilikan dikoreksi dan {p} titik strategis serta wilayah diwarnai ulang, {c} di antaranya dengan batas yang dipinjam dari Cliopatria.",
   "vClioDiffs": "Tempat keduanya masih berbeda (peta ini ↔ Cliopatria)",
   "vClioNote": "Sebagian besar perbedaan yang tersisa berasal dari seberapa jauh klaim nominal diwarnai (pedalaman Amerika Spanyol, Siberia) dan bagaimana suzeranitas ditafsirkan (Mesir, Tibet, stepa Kazakh). Perbedaan tidak berarti peta ini keliru, dan Cliopatria pun punya kesalahan. Tempat yang dikoreksi dengan batas pinjaman tentu saja sesuai.",
-  "vUnnamed": "(wilayah tanpa nama)"
+  "vUnnamed": "(wilayah tanpa nama)",
+  "help": "Bantuan dan sumber"
  },
  "zoomResetShort": "Awal",
  "bigView": "Tampilkan peta besar",

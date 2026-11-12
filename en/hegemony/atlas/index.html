@@ -41,7 +41,7 @@ header h1{font-size:22px}
 header p{margin:0;color:var(--ink2);font-size:13px}
 .layout{display:grid;gap:14px}
 .layout>*{min-width:0}
-@media(min-width:1000px){.layout{grid-template-columns:minmax(0,1.55fr) minmax(360px,1fr);align-items:start}.panel{position:sticky;top:12px;max-height:calc(100vh - 24px);overflow:auto}}
+@media(min-width:1000px){.layout{grid-template-columns:minmax(0,1.55fr) minmax(360px,1fr);align-items:start}.sheet{position:sticky;top:12px;max-height:calc(100vh - 24px);overflow:auto}}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:12px}
 .mapcard{position:relative;overflow:hidden}
 #map{display:block;width:100%;height:auto;touch-action:none;cursor:grab;background:var(--ocean)}
@@ -172,6 +172,49 @@ sup.fn a{text-decoration:none;font-weight:700;padding:0 2px}
 
 .gloss dl{margin:0}.gloss dt{font-weight:700;color:var(--ink);margin-top:7px}.gloss dd{margin:0;line-height:1.7}
 
+.ctlcard{margin-top:10px}
+.helpbtn,.grab{display:none}
+.help[hidden]{display:none}
+/* ---- 휴대폰 배치(template.html의 applyMode가 body.m을 붙인다) ---- */
+body.m{overflow:hidden;overscroll-behavior:none}
+body.m .wrap{padding:0;max-width:none;height:100vh;height:100dvh;display:flex;flex-direction:column}
+body.m header{margin:0;padding:8px 10px 8px 14px;flex:0 0 auto;flex-wrap:nowrap;align-items:center;gap:8px}
+body.m header h1{font-size:16px;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+body.m header p{display:none}
+body.m .helpbtn{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:700 16px var(--sans),sans-serif;cursor:pointer}
+body.m .layout{flex:1;min-height:0;display:flex;flex-direction:column;gap:0}
+body.m .layout>div:first-child{flex:1;min-height:0;display:flex;flex-direction:column}
+body.m .card{border-radius:0;border-left:0;border-right:0}
+body.m .mapcard{flex:1;min-height:110px}
+body.m #map{position:absolute;inset:0;width:100%;height:100%}
+body.m #zin,body.m #zout,body.m #zbig{display:none}
+body.m .zoom{right:8px;top:8px}
+body.m .ctlcard{margin:0;border-top:0;border-bottom:0;flex:0 0 auto}
+body.m .ctl{padding:6px 8px 0;gap:6px}
+body.m .ctl button{min-width:40px;height:40px;font-size:19px}
+body.m .years{padding:2px 2px 6px}
+body.m .years button{min-height:36px}
+body.m .legend{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding:0 8px 8px}
+body.m .legend::-webkit-scrollbar{display:none}
+body.m .legend>*{flex:0 0 auto}
+body.m .sheet{flex:0 0 auto;height:52px;display:flex;flex-direction:column;border-radius:16px 16px 0 0!important;border-bottom:0;box-shadow:0 -4px 16px rgba(0,0,0,.10);overflow:hidden;transition:height .18s ease-out}
+body.m .sheet[data-s=half]{height:46vh;height:46dvh}
+body.m .sheet[data-s=full]{height:calc(100vh - 272px);height:calc(100dvh - 272px)}
+body.m .grab{display:flex;flex-direction:column;align-items:center;gap:5px;flex:0 0 52px;width:100%;border:0;background:none;color:var(--ink2);font:500 12.5px var(--sans),sans-serif;cursor:grab;touch-action:none;padding:7px 12px 0}
+body.m .grab i{width:40px;height:4px;border-radius:2px;background:var(--line)}
+body.m .grab span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+body.m .sheetscroll{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+body.m .sheet[data-s=peek] .sheetscroll{visibility:hidden}
+body.m .panel{padding:4px 14px 24px}
+body.m .info{position:relative;left:auto;right:auto;bottom:auto;margin:0 10px 8px;box-shadow:none}
+body.m .help{position:fixed;inset:0;z-index:60;background:var(--bg);overflow:auto;padding:14px 16px 40px}
+body.m .helpx{position:sticky;top:0;float:right;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:22px;cursor:pointer}
+body.m .help .langs{margin:4px 0 12px}
+body.m .help .hint{padding:0;font-size:13.5px;color:var(--ink2);margin-bottom:8px}
+body.m .help .foot{font-size:13px}
+body.m .lgtitle{display:none}
+body.m .legend .chip{min-height:34px}
+
 </style>
 </head>
 <body>
@@ -180,6 +223,7 @@ sup.fn a{text-decoration:none;font-weight:700;padding:0 2px}
     <h1>Atlas of Hegemony 1492–2010</h1>
     <p>Over each year's borders: the struggle for hegemony · gains and losses · technology · ideas</p>
     <nav class="langs" aria-label="Language"><a href="../../../ko/hegemony/atlas/" hreflang="ko" lang="ko">한국어</a><span aria-current="page">English</span><a href="../../../id/hegemony/atlas/" hreflang="id" lang="id">Bahasa Indonesia</a></nav>
+    <button class="helpbtn" id="helpbtn" aria-haspopup="dialog">?</button>
   </header>
   <div class="layout">
     <div>
@@ -190,7 +234,7 @@ sup.fn a{text-decoration:none;font-weight:700;padding:0 2px}
         <div class="info" id="info"></div>
         <div class="loading" id="loading">Loading map…</div>
       </div>
-      <div class="card" style="margin-top:10px">
+      <div class="card ctlcard">
         <div class="ctl">
           <button id="prev" aria-label="Previous year">‹</button>
           <div class="years" id="years"></div>
@@ -200,16 +244,17 @@ sup.fn a{text-decoration:none;font-weight:700;padding:0 2px}
         <div class="hint">Colours show who ruled at that time, and each country has its own fixed colour. The stronger the colour, the firmer the rule; hatching means rule that is weakening or contested; a very pale colour means the country has left the contest for hegemony but still exists. Tap an area for its name and source; tap a country in the list below to keep only that country and follow its course and territory over time. ◆ marks strategic points such as straits, canals and bases; where the source map was wrong, the map has been recoloured with checked values.</div>
       </div>
     </div>
-    <aside class="card panel" id="panel"></aside>
+    <aside class="card sheet" id="sheet" data-s="half"><button class="grab" id="grab"><i></i><span id="grablbl"></span></button><div class="sheetscroll" id="sheetscroll"><div id="sheetinfo"></div><div class="panel" id="panel"></div></div></aside>
   </div>
   <div class="foot">Borders: up to 1880, <a href="https://github.com/aourednik/historical-basemaps">historical-basemaps</a> (André Ourednik et al., GPL-3.0) with year-by-year corrections; from 1914, redrawn from <a href="https://icr.ethz.ch/data/cshapes/">CShapes 2.0</a> (Schvitz, Girardin, Weidmann et al., dated borders and colonies). For 1914 onwards, where both sources exist, the ‘Cross-check’ section of each year shows the agreement rate and where they differ. Strategic points and some regions were recoloured with checked values where the source was wrong. Territory areas are approximations computed by sampling the final map on a 0.25° grid. Because the gaps between years are uneven, ‘Gains and losses’ covers the main events since the previous year shown. Each year means ‘around then’, so events or works from a year or two later are sometimes included (e.g. the Navigation Act of 1651 under 1650). Small numbers in the text are footnotes on points where interpretations differ or a qualification is needed. For 1492–1880, places where the boundary itself was wrong (e.g. Iraq, Tunisia and Hungary in 1530; Qing Mongolia and the Amur basin in 1700) were found by comparing with the independent <a href="https://github.com/Seshat-Global-History-Databank/cliopatria">Cliopatria</a> dataset (historical borders from the Seshat team); only those confirmed against the historical record were recoloured, borrowing Cliopatria’s boundary. The same corrections are applied to the companion <a href="../map/">world territory map</a>. The two maps use different criteria, however: this atlas follows effective influence, colouring the British dominions (Canada, Australia, etc.) as British in 1914 and 1920, and Manchukuo and Ethiopia (1938) and Indonesia (1945) by the power actually in control, whereas the territory map follows legal sovereignty. Aragon in 1492 is shown as Spain here but as a separate state there, and the second-to-last year is 1994 here versus 1991 there.</div>
 <div class="srcs"><h4>Sources used for checking</h4><p>In November 2026 the Korean edition was reviewed in full, and passages with doubtful dates or actors, or with contested interpretations, were checked against the sources below; the same corrections and footnotes are carried over here. Other dates and events were checked at the level of well-known chronologies; see also the ‘Read more’ links for each year.</p><ol><li><a href="https://github.com/aourednik/historical-basemaps" target="_blank" rel="noopener">Borders (to 1880): historical-basemaps, André Ourednik et al.</a></li><li><a href="https://icr.ethz.ch/data/cshapes/" target="_blank" rel="noopener">Borders (from 1914) and colonial owners: CShapes 2.0, Schvitz et al. (2022)</a></li><li><a href="https://en.wikipedia.org/wiki/Jiajing_wokou_raids" target="_blank" rel="noopener">The Ming maritime ban (1371): Wikipedia, Jiajing wokou raids</a></li><li><a href="https://www.wikipedia.org/wiki/Jean_de_la_Foret" target="_blank" rel="noopener">Ratification of the 1536 Franco-Ottoman agreement: Wikipedia, Jean de La Forêt</a></li><li><a href="https://doi.org/10.1162/00208180151140577" target="_blank" rel="noopener">Critique of the Westphalian orthodoxy: A. Osiander, “Sovereignty, International Relations, and the Westphalian Myth”, International Organization 55(2), 2001</a></li><li><a href="https://en.wikipedia.org/wiki/Sultanate_of_Bijapur" target="_blank" rel="noopener">Goa and Bijapur: Wikipedia, Sultanate of Bijapur</a></li><li><a href="https://en.wikipedia.org/wiki/Portuguese_conquest_of_Goa" target="_blank" rel="noopener">Conquest of Goa (1510): Wikipedia, Portuguese conquest of Goa</a></li><li><a href="https://en.wikipedia.org/wiki/Tahirid_Sultanate" target="_blank" rel="noopener">The Tahirids of Yemen and Aden (1517, 1538): Wikipedia, Tahirid Sultanate</a></li><li><a href="https://etheses.durham.ac.uk/id/eprint/5867" target="_blank" rel="noopener">The Tahirids: V. Porter, The History and Monuments of the Tahirid Dynasty of the Yemen, PhD thesis, Durham University (1992)</a></li><li><a href="https://en.wikipedia.org/wiki/Crimean_Campaign_(1475)" target="_blank" rel="noopener">The Crimean Khanate and the Ottomans (1475, 1478): Wikipedia, Crimean Campaign (1475)</a></li><li><a href="https://doaj.org/article/cdd26728e0c94aa9841396b3c69e704d" target="_blank" rel="noopener">Debate on the khanate's subordination: V. L. Myts, Археология евразийских степей 2023(3)</a></li><li><a href="https://eve.fcsh.unl.pt/index.php/en/places/city-colombo" target="_blank" rel="noopener">The Portuguese fort at Colombo (1518): Enciclopédia Virtual da Expansão Portuguesa, City of Colombo</a></li><li><a href="https://www.sundayobserver.lk/2024/05/12/news-features/22725/early-challenges-to-the-portuguese-in-ceylon" target="_blank" rel="noopener">Dismantling of the Colombo fort: Sunday Observer, “Early challenges to the Portuguese in Ceylon” (2024)</a></li><li><a href="https://resolve.cambridge.org/core/journals/international-organization/article/1-trusteeship-agreement-for-the-territory-of-somaliland-under-italian-administration-adopted-by-the-trusteeship-council-january-27-19501/353C8EFBDD6CADD1F0A8F24787D3C3DB" target="_blank" rel="noopener">Italian peace treaty (1947) and the Somaliland trusteeship: Trusteeship Agreement for the Territory of Somaliland under Italian Administration (1950)</a></li><li><a href="https://ec.europa.eu/eurostat/statistics-explained/index.php/Glossary:Treaty_on_European_Union" target="_blank" rel="noopener">Signing and entry into force of the Maastricht Treaty: Eurostat, Glossary: Treaty on European Union</a></li><li><a href="https://github.com/Seshat-Global-History-Databank/cliopatria" target="_blank" rel="noopener">Cliopatria — historical polity borders from the Seshat Global History Databank (3400 BCE–2024, CC BY 4.0). Comparison data for the 1492–1880 boundary corrections</a></li></ol></div><div class="srcs gloss"><h4>Glossary</h4><dl><dt>Hegemony</dt><dd>The position of a state that sets the rules of the international order through military power, economic weight and institutions. This atlas colours the fifteen great powers that contested it.</dd><dt>historical-basemaps</dt><dd>An open dataset of world borders by period. The nine years up to 1880 come from it. It is volunteer-made, so precision varies by period.</dd><dt>CShapes 2.0</dt><dd>An academic dataset (ETH Zurich) recording, by date, the borders of independent states and their colonies and dependencies for 1886–2019. The seven years from 1914 come from it.</dd><dt>Cliopatria</dt><dd>A dataset of historical polity borders (3400 BCE–2024) published by the Seshat team. Here it is the comparison source for 1492–1880 and the source of boundaries borrowed to fix places where the border itself was wrong.</dd><dt>Cross-check</dt><dd>Comparing two independent sources to find where they disagree.</dd><dt>Agreement rate</dt><dd>The share of grid cells in which both sources assign the same great power. It is area-based and ignores coastline differences.</dd><dt>Recoloured</dt><dd>A place where the source was wrong or blank and the map was repainted with a checked value. Tap it to see why.</dd><dt>Strategic point (chokepoint)</dt><dd>A strait, canal or port so narrow that whoever holds it can control trade and military movement.</dd><dt>Nominal claim / sphere</dt><dd>Territory claimed by treaty or proclamation that actual administration did not reach. Maps before 1886 include such areas, so they can look larger than real control.</dd><dt>Suzerainty</dt><dd>A relationship in which one state leaves another's internal affairs alone but is acknowledged as its superior in diplomacy and war — the Ottomans with Egypt and the Crimean Khanate, the Qing with Tibet. Sources colour these differently.</dd><dt>Dominion</dt><dd>A member of the British Empire that governed itself internally while Britain decided its external relations (Canada, Australia, etc.). They became effectively independent with the Statute of Westminster (1931).</dd><dt>Protectorate / mandate / leased territory</dt><dd>A protectorate entrusts its diplomacy and defence to another state; a mandate is former enemy territory that the League of Nations assigned to a victor to administer after the First World War; a leased territory is land lent to another state for a fixed term.</dd></dl></div>
 </div>
+<div class="help" id="help" role="dialog" aria-modal="true" hidden><button class="helpx" id="helpx">×</button><div id="helpbody"></div></div>
 <script src="lib/d3.min.js"></script>
 <script src="lib/topojson-client.min.js"></script>
 <script>
 (async function(){
-const UI = {"tabs":["Balance of power","Gains and losses","Technology","Ideas","Country by country"],"era":"{prev} → c. {year}","eraFirst":"c. {year}","gain":"Gain","loss":"Loss","readMore":"Read more","fixesTitle":"Data corrections for this year","andMore":" and {n} more","others":"Other states and powers","ckShown":"Strategic points on","ckHidden":"Strategic points off","ckTitle":"Strategic points — {n}","ckTitleDiff":", {m} differ from the map colour","ckTitleOk":", all match the map","ckDiff":"⚠ differs from map colour","ckAbsent":"(not drawn on map)","ckRuler":"Ruler c. {year}:","ckAbsentLong":"The source border data does not draw this point (a small island or base). This marker is the checked value.","ckDiffLong":"⚠ This differs from the map colour. The source border data draws this point as {map}. Small places such as bases and straits get swallowed by the surrounding area, or the source label is wrong — this marker is the checked value.","ckMapNone":"an area it does not draw","otherPower":"other power","unnamed":"Unnamed area","srcSubj":"Sovereign (source)","cls":"Group","prec":"Border precision","precVals":["rough","medium","precise"],"noInfo":"no data","fix":"Correction","close":"Close","status":{"rise":"Rising","peak":"Peak","hold":"Holding","decline":"Declining / contested","exit":"Out of the contest (state continues)","end":"Ended"},"tiers":[["solid","Firm"],["hold","Holding"],["hatch","Declining / contested"],["exit","Out of the contest"]],"legendTitle":"Ruling powers c. {year}","rival":"lead","trackAll":"What changed for each country","trackAllNote":"What has changed since the previous year shown. Tap a country to see its whole course. The status (rising, at its height, declining, etc.) is a judgement about international standing at the time, not about land area.","trackOne":"The course of {name}","trackBack":"← All countries","trackNote":"Tap a year to go to that map.","trackBefore":"Not treated as a contender on this map before {year}","trackAfter":"Not coloured at later points","focusOff":"Show all","regionName":"Name of the area at the time","contested":"Rule here is contested (hatched)","bigViewShort":"Large","bigExitShort":"Close","patched":"Recoloured with checked value","srcCs":"Borders: CShapes 2.0","srcHb":"Borders: historical-basemaps","csStatus":{"colony":"colony","protectorate":"protectorate","mandate":"mandate","occupied":"occupied","N/A":"status unknown"},"ckTitlePatched":"","ckPatched":"","ckPatchedLong":"In the source map this point was swallowed by the surrounding area or wrongly labelled, so the map itself has been recoloured with the checked ruler.","vTitle":"Cross-check","vCs":"Borders at this point were redrawn from CShapes 2.0 (as of {date}). Agreement with the open-source map used before (historical-basemaps): {agree}% (by area, 0.25° grid sample, coastline differences excluded). Strategic points and regions recoloured: {p}.","vHb":"Before 1886 there is no dated dataset to cross-check against. Based on historical-basemaps, {f} sovereignty-label errors were corrected and {p} strategic points and regions recoloured with checked values.","vDiffs":"Where the two sources differ most (source ↔ CShapes)","vAdopt":"Where they differ, the map follows CShapes.","vExc":"Shown differently from CShapes, or with a note added","vNone":"no sovereign","areaM":"{v} million km²","areaK":"{v}0,000 km²","areaLabel":"territory c. {a}","sparkTitle":"Territory (recomputed)","sparkAria":"Territory area by year","sparkNote":"Areas are recomputed from what is coloured on this map (colonies included). Before 1886 they include nominal claims and spheres, so they can exceed real control.","colorKey":"Show each country's colour","colorKeyNote":"A country keeps the same colour even when its name changes (Russia → USSR → Russia, Ming → Qing → China). When it grows stronger or weaker, the colour stays and only its strength and hatching change.","footnotes":"Footnotes","vClio":"Before 1886 there is no date-level dataset, but great-power ownership was compared with the independent Cliopatria dataset. Agreement is {agree}% (share of cells, on a 0.5° grid, where both sources draw a state and assign it to the same great power). Based on historical-basemaps, {f} ownership errors were corrected and {p} strategic points and regions recoloured, {c} of them using boundaries borrowed from Cliopatria.","vClioDiffs":"Where the two still differ (this map ↔ Cliopatria)","vClioNote":"Most remaining differences come from how far nominal claims are coloured (the interior of Spanish America, Siberia) and how suzerainty is read (Egypt, Tibet, the Kazakh steppe). A difference does not mean this map is wrong, and Cliopatria has errors of its own. Places corrected with borrowed boundaries agree by construction.","vUnnamed":"(unnamed area)"};
+const UI = {"tabs":["Balance of power","Gains and losses","Technology","Ideas","Country by country"],"era":"{prev} → c. {year}","eraFirst":"c. {year}","gain":"Gain","loss":"Loss","readMore":"Read more","fixesTitle":"Data corrections for this year","andMore":" and {n} more","others":"Other states and powers","ckShown":"Strategic points on","ckHidden":"Strategic points off","ckTitle":"Strategic points — {n}","ckTitleDiff":", {m} differ from the map colour","ckTitleOk":", all match the map","ckDiff":"⚠ differs from map colour","ckAbsent":"(not drawn on map)","ckRuler":"Ruler c. {year}:","ckAbsentLong":"The source border data does not draw this point (a small island or base). This marker is the checked value.","ckDiffLong":"⚠ This differs from the map colour. The source border data draws this point as {map}. Small places such as bases and straits get swallowed by the surrounding area, or the source label is wrong — this marker is the checked value.","ckMapNone":"an area it does not draw","otherPower":"other power","unnamed":"Unnamed area","srcSubj":"Sovereign (source)","cls":"Group","prec":"Border precision","precVals":["rough","medium","precise"],"noInfo":"no data","fix":"Correction","close":"Close","status":{"rise":"Rising","peak":"Peak","hold":"Holding","decline":"Declining / contested","exit":"Out of the contest (state continues)","end":"Ended"},"tiers":[["solid","Firm"],["hold","Holding"],["hatch","Declining / contested"],["exit","Out of the contest"]],"legendTitle":"Ruling powers c. {year}","rival":"lead","trackAll":"What changed for each country","trackAllNote":"What has changed since the previous year shown. Tap a country to see its whole course. The status (rising, at its height, declining, etc.) is a judgement about international standing at the time, not about land area.","trackOne":"The course of {name}","trackBack":"← All countries","trackNote":"Tap a year to go to that map.","trackBefore":"Not treated as a contender on this map before {year}","trackAfter":"Not coloured at later points","focusOff":"Show all","regionName":"Name of the area at the time","contested":"Rule here is contested (hatched)","bigViewShort":"Large","bigExitShort":"Close","patched":"Recoloured with checked value","srcCs":"Borders: CShapes 2.0","srcHb":"Borders: historical-basemaps","csStatus":{"colony":"colony","protectorate":"protectorate","mandate":"mandate","occupied":"occupied","N/A":"status unknown"},"ckTitlePatched":"","ckPatched":"","ckPatchedLong":"In the source map this point was swallowed by the surrounding area or wrongly labelled, so the map itself has been recoloured with the checked ruler.","vTitle":"Cross-check","vCs":"Borders at this point were redrawn from CShapes 2.0 (as of {date}). Agreement with the open-source map used before (historical-basemaps): {agree}% (by area, 0.25° grid sample, coastline differences excluded). Strategic points and regions recoloured: {p}.","vHb":"Before 1886 there is no dated dataset to cross-check against. Based on historical-basemaps, {f} sovereignty-label errors were corrected and {p} strategic points and regions recoloured with checked values.","vDiffs":"Where the two sources differ most (source ↔ CShapes)","vAdopt":"Where they differ, the map follows CShapes.","vExc":"Shown differently from CShapes, or with a note added","vNone":"no sovereign","areaM":"{v} million km²","areaK":"{v}0,000 km²","areaLabel":"territory c. {a}","sparkTitle":"Territory (recomputed)","sparkAria":"Territory area by year","sparkNote":"Areas are recomputed from what is coloured on this map (colonies included). Before 1886 they include nominal claims and spheres, so they can exceed real control.","colorKey":"Show each country's colour","colorKeyNote":"A country keeps the same colour even when its name changes (Russia → USSR → Russia, Ming → Qing → China). When it grows stronger or weaker, the colour stays and only its strength and hatching change.","footnotes":"Footnotes","vClio":"Before 1886 there is no date-level dataset, but great-power ownership was compared with the independent Cliopatria dataset. Agreement is {agree}% (share of cells, on a 0.5° grid, where both sources draw a state and assign it to the same great power). Based on historical-basemaps, {f} ownership errors were corrected and {p} strategic points and regions recoloured, {c} of them using boundaries borrowed from Cliopatria.","vClioDiffs":"Where the two still differ (this map ↔ Cliopatria)","vClioNote":"Most remaining differences come from how far nominal claims are coloured (the interior of Spanish America, Siberia) and how suzerainty is read (Egypt, Tibet, the Kazakh steppe). A difference does not mean this map is wrong, and Cliopatria has errors of its own. Places corrected with borrowed boundaries agree by construction.","vUnnamed":"(unnamed area)","help":"Help and sources"};
 const KEYS=['gb','fr','es','pt','nl','ru','ot','cn','us','de','at','jp','it','be','mg'];
 const ORDER={peak:0,rise:1,hold:2,decline:3,exit:4,end:5};
 const pc=k=>`var(--p-${k})`;
@@ -262,9 +307,9 @@ g.append('path').attr('class','sphere').attr('d',path({type:'Sphere'}));
 g.append('path').attr('class','grat').attr('d',path(d3.geoGraticule10()));
 const gPoly=g.append('g'), gCk=g.append('g');
 let ckOn=true;
-const MK=()=>document.getElementById('map').clientWidth<640?2:1;
+const MK=()=>vscale()<0.6?2:1; let T=d3.zoomIdentity;
 let k=1;
-const zoom=d3.zoom().scaleExtent([1,12]).translateExtent([[0,0],[W,H]]).on('zoom',e=>{k=e.transform.k;g.attr('transform',e.transform);gCk.selectAll('g.inner').attr('transform',`scale(${MK()/k})`);});
+const zoom=d3.zoom().scaleExtent([1,12]).translateExtent([[0,0],[W,H]]).on('zoom',e=>{T=e.transform;k=e.transform.k;g.attr('transform',e.transform);gCk.selectAll('g.inner').attr('transform',`scale(${MK()/k})`);});
 svg.call(zoom).on('dblclick.zoom',null);
 const zby=f=>{ try{ svg.transition().duration(250).call(zoom.scaleBy,f); }catch(e){ svg.call(zoom.scaleBy,f); } };
 document.getElementById('zin').addEventListener('click',e=>{e.preventDefault();zby(1.6);});
@@ -313,7 +358,7 @@ function showInfo(d){
     (p.c?`<div class="warn">${esc(UI.contested)}</div>`:'')+
     (p.f?`<div class="fix">${esc(UI.fix)}: ${esc(fixText(p.f))}</div>`:'');
   void v;
-  info.style.display='block';
+  info.style.display='block'; infoShown();
   info.querySelector('.x').onclick=()=>{info.style.display='none';if(selEl)selEl.classList.remove('sel');};
 }
 const ckList=()=>meta.choke[year].map(c=>({...c,...content.choke[c.id][year]}));
@@ -328,7 +373,7 @@ function showCk(c){
    (c.patched?`<div class="meta">${esc(UI.ckPatchedLong)}</div>`:'')+
    (c.absent?`<div class="meta">${esc(UI.ckAbsentLong)}</div>`:'')+
    (ckVis(c)?`<div class="warn">${esc(UI.ckDiffLong).replace('{map}',mapLabel)}</div>`:'');
-  info.style.display='block';
+  info.style.display='block'; infoShown();
   info.querySelector('.x').onclick=()=>{info.style.display='none';};
 }
 function drawCk(){
@@ -431,6 +476,7 @@ function renderPanel(){
   const tail=(tab==='powers'?'':`<div class="note"><h4>${esc(UI.readMore)}</h4><div class="links">${c.links.map(([t,u])=>`<a href="${u}" target="_blank" rel="noopener">${esc(t)}</a>`).join('')}</div></div>`+
     verifySection()+ckSection()+
     (groups.length?`<div class="note"><h4>${esc(UI.fixesTitle)}</h4><ul>${groups.map(([f,ns])=>`<li>${esc(fixText(f))} — <span style="color:var(--muted)">${esc(ns.slice(0,8).join(', '))}${ns.length>8?esc(fmt(UI.andMore,{n:ns.length-8})):''}</span></li>`).join('')}</ul></div>`:''));
+  document.getElementById('grablbl').textContent=`${year} · ${c.title}`;
   document.getElementById('panel').innerHTML=
     `<div class="era">${esc(prevY?fmt(UI.era,{prev:prevY,year}):fmt(UI.eraFirst,{year}))}</div><h2>${esc(c.title)}</h2>`+
     `<div class="tabs" role="tablist">${TABS.map((k2,j)=>`<button role="tab" data-t="${k2}" class="${tab===k2?'on':''}" aria-selected="${tab===k2}">${esc(UI.tabs[j])}</button>`).join('')}</div>`+
@@ -455,6 +501,29 @@ document.getElementById('prev').onclick=()=>step(-1);
 document.getElementById('next').onclick=()=>step(1);
 window.addEventListener('keydown',e=>{if(e.key==='ArrowRight')step(1);if(e.key==='ArrowLeft')step(-1);});
 window.addEventListener('hashchange',()=>{const m=location.hash.match(/^#y(\d{4})$/);if(m&&byYear[+m[1]]&&+m[1]!==year)setYear(+m[1]);});
+// ---- 휴대폰 배치(폭 760px 이하): 지도를 크게 고정하고, 해설은 아래에서 끌어올리는 패널로, 안내·출처는 도움말로 옮긴다
+const MQ=matchMedia('(max-width:760px)'), sheet=document.getElementById('sheet'), help=document.getElementById('help'), helpBody=document.getElementById('helpbody'), mapEl=document.getElementById('map');
+function isM(){ return document.body.classList.contains('m'); }
+function vscale(){ const el=document.getElementById('map'), cw=el.clientWidth||W, ch=el.clientHeight||H; return isM()?Math.max(cw/W,ch/H):cw/W; }
+function fitZoom(){ const cw=mapEl.clientWidth||W, ch=mapEl.clientHeight||H; if(!isM()){ zoom.extent([[0,0],[W,H]]).scaleExtent([1,12]); svg.call(zoom.transform,T); return; }
+  const s=Math.max(cw/W,ch/H), vw=cw/s, vh=ch/s; zoom.extent([[(W-vw)/2,(H-vh)/2],[(W+vw)/2,(H+vh)/2]]).scaleExtent([Math.min(1,cw/W/s),12]); svg.call(zoom.transform,T); }
+const SHEETS=['peek','half','full']; function setSheet(s){ sheet.dataset.s=s; document.getElementById('grab').setAttribute('aria-expanded',s!=='peek'); }
+function infoShown(){ if(!isM()) return; if(sheet.dataset.s==='peek') setSheet('half'); document.getElementById('sheetscroll').scrollTop=0; }
+{ const grab=document.getElementById('grab'); let y0=null;
+  grab.addEventListener('pointerdown',e=>{y0=e.clientY;grab.setPointerCapture(e.pointerId);});
+  grab.addEventListener('pointerup',e=>{ if(y0===null) return; const dy=e.clientY-y0, i=SHEETS.indexOf(sheet.dataset.s); y0=null;
+    if(Math.abs(dy)<12) setSheet(i===0?'half':i===1?'full':'half'); else setSheet(SHEETS[Math.max(0,Math.min(2,i+(dy<0?1:-1)))]); });
+  grab.addEventListener('pointercancel',()=>{y0=null;}); }
+const homes=new Map(); const moveTo=(el,to)=>{ if(!el) return; if(!homes.has(el)) homes.set(el,[el.parentNode,el.nextSibling]); to.appendChild(el); };
+function applyMode(){ const m=MQ.matches; if(m===isM()&&homes.size) return; document.body.classList.toggle('m',m);
+  mapEl.setAttribute('preserveAspectRatio',m?'xMidYMid slice':'xMidYMid meet');
+  if(m){ setBig(false); for(const el of [document.querySelector('nav.langs'),document.querySelector('.hint'),document.querySelector('.foot'),...document.querySelectorAll('.srcs')]) moveTo(el,helpBody); moveTo(info,document.getElementById('sheetinfo')); }
+  else { for(const [el,[p,nx]] of [...homes].reverse()) p.insertBefore(el,nx&&nx.parentNode===p?nx:null); homes.clear(); help.hidden=true; }
+  requestAnimationFrame(fitZoom); }
+document.getElementById('helpbtn').setAttribute('aria-label',UI.help); document.getElementById('helpbtn').onclick=()=>{help.hidden=false;help.scrollTop=0;};
+document.getElementById('helpx').setAttribute('aria-label',UI.close); document.getElementById('helpx').onclick=()=>{help.hidden=true;};
+MQ.addEventListener('change',applyMode); new ResizeObserver(()=>{ if(isM()) fitZoom(); }).observe(mapEl);
+applyMode();
 setYear(year);
 })();
 </script>
