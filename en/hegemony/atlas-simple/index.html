@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atlas of Hegemony, made simple</title>
+<meta name="description" content="How the most powerful country in the world changed from 1492 to 2010, told simply in 11 maps.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&family=Noto+Serif:wght@700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sans:"Noto Sans"; --serif:"Noto Serif";
+  color-scheme: light;
+  --bg:#f6f4ef; --surface:#fcfcfb; --ink:#1b1a18; --ink2:#55534e; --muted:#8a877f; --line:#e2dfd7;
+  --ocean:#e9eef1; --land:#d6d2c8; --border:#ffffff; --accent:#2a78d6;
+  --p-gb:#d63a2f; --p-fr:#2c63c9; --p-es:#e0a100; --p-pt:#2a9a46; --p-nl:#ef7a12; --p-ru:#6b4cc4; --p-ot:#10998b; --p-cn:#c22f6f;
+  --p-us:#27a2d8; --p-de:#5a4f45; --p-at:#d17ab9; --p-jp:#9cb01c; --p-it:#a0522d; --p-be:#4f6d7a; --p-mg:#8c6b3f;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    color-scheme: dark;
+    --bg:#141413; --surface:#1c1c1b; --ink:#f0efec; --ink2:#c3c2b7; --muted:#8f8d85; --line:#2f2e2b;
+    --ocean:#1d2226; --land:#3d3c38; --border:#1a1a19; --accent:#4d94ea;
+    --p-gb:#e5554b; --p-fr:#4d82e6; --p-es:#e8ae16; --p-pt:#3db35a; --p-nl:#f28a2e; --p-ru:#8a6fe0; --p-ot:#22b3a3; --p-cn:#d9508a;
+    --p-us:#45b6e6; --p-de:#a39383; --p-at:#e08fcb; --p-jp:#b2c63a; --p-it:#c46d45; --p-be:#7e9aa6; --p-mg:#b08a55;
+  }
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans),system-ui,sans-serif;font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%}
+:lang(ko){word-break:keep-all;overflow-wrap:anywhere}
+a{color:var(--accent)}
+button{font:inherit;color:inherit}
+
+/* 머리 */
+.top{padding:14px 16px 10px;max-width:1280px;margin:0 auto}
+.tt{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+h1{font:700 22px/1.3 var(--serif),serif;margin:0}
+.sub{margin:6px 0 0;color:var(--ink2);font-size:15px}
+.langs{font-size:13px;display:flex;gap:10px;color:var(--muted)}
+.langs span{color:var(--ink);font-weight:500}
+
+/* 배치: 휴대폰은 지도(위, 고정) + 카드(아래) */
+.layout{max-width:1280px;margin:0 auto}
+.mapbox{position:sticky;top:0;z-index:5;height:42vh;min-height:220px;max-height:440px;background:var(--ocean);overflow:hidden;touch-action:none;border-bottom:1px solid var(--line)}
+#map{display:block;width:100%;height:100%}
+.sea{fill:var(--ocean)}
+#map path.rest{stroke:var(--border);stroke-width:.4;vector-effect:non-scaling-stroke}
+#map path.star{stroke:var(--border);stroke-width:.8;vector-effect:non-scaling-stroke;cursor:pointer}
+.labs text{font:700 13px var(--sans);fill:var(--ink);paint-order:stroke;stroke:var(--bg);stroke-width:3.5px;stroke-linejoin:round;text-anchor:middle;dominant-baseline:middle;cursor:pointer}
+.badge{position:absolute;left:10px;top:10px;font:700 15px var(--sans);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:3px 12px;pointer-events:none}
+.reset{position:absolute;right:10px;top:10px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:3px 12px;font-size:14px;cursor:pointer}
+.tip{position:absolute;left:10px;right:10px;bottom:10px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:8px 12px;font-size:15px;line-height:1.5;box-shadow:0 2px 10px rgba(0,0,0,.12)}
+.tip b{display:flex;align-items:center;gap:6px}
+.tip span{display:block;color:var(--ink2)}
+.loading{position:absolute;inset:0;display:grid;place-items:center;color:var(--muted);font-size:15px}
+.loading[hidden]{display:none}
+.sw{display:inline-block;width:14px;height:14px;border-radius:4px;flex:none}
+
+.side{padding:0 16px 32px}
+.pager{display:flex;align-items:center;gap:6px;padding:10px 0}
+.pager>button{flex:none;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--surface);font-size:24px;line-height:1;cursor:pointer}
+.pager>button:disabled{opacity:.35;cursor:default}
+.dots{flex:1;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;justify-content:space-between}
+.dots::-webkit-scrollbar{display:none}
+.dots button{flex:1 0 auto;min-width:28px;height:44px;border:0;background:none;cursor:pointer;display:grid;place-items:center;padding:0}
+.dots span{display:block;width:10px;height:10px;border-radius:50%;background:var(--line);font-size:0}
+.dots button.on span{width:auto;height:auto;background:var(--ink);color:var(--bg);font:700 13px var(--sans);padding:2px 8px;border-radius:999px}
+
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px 18px 14px}
+.era{margin:0;color:var(--muted);font-size:14px}
+.card h2{font:700 24px/1.35 var(--serif),serif;margin:4px 0 10px}
+.sum{font-size:18px;font-weight:500;margin:0 0 6px;padding:10px 12px;border-radius:10px;background:color-mix(in srgb, var(--accent) 9%, transparent)}
+.card h3{font-size:15px;color:var(--ink2);margin:20px 0 8px;font-weight:700}
+.why{list-style:none;margin:0;padding:0}
+.why li{display:flex;gap:10px;position:relative;padding-bottom:14px}
+.why li:not(:last-child)::after{content:"";position:absolute;left:13px;top:30px;bottom:2px;border-left:2px dashed var(--line)}
+.why .n{flex:none;width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--bg);display:grid;place-items:center;font:700 14px var(--sans)}
+.why p{margin:1px 0 0}
+.chips{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.chips button{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:var(--bg);border-radius:999px;padding:4px 12px;font-weight:700;font-size:16px;cursor:pointer;min-height:36px}
+.chips button.on{border-color:var(--ink);box-shadow:0 0 0 1px var(--ink)}
+.chips p{margin:3px 0 0 4px;color:var(--ink2)}
+.words details{border-top:1px solid var(--line);padding:8px 0}
+.words details:last-child{border-bottom:1px solid var(--line)}
+.words summary{cursor:pointer;font-weight:700;min-height:28px}
+.words p{margin:4px 0 0;color:var(--ink2)}
+.more{margin:18px 0 0;font-size:14px;color:var(--muted)}
+.endnav{display:flex;justify-content:space-between;margin-top:16px;gap:10px}
+.endnav button{min-height:44px;padding:0 18px;border-radius:999px;border:1px solid var(--line);background:var(--bg);font-weight:700;cursor:pointer}
+.foot{margin-top:18px;font-size:13px;line-height:1.6;color:var(--muted)}
+
+/* 넓은 화면: 왼쪽 지도, 오른쪽 카드 */
+@media (min-width:861px){
+  .layout{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(360px,1fr);gap:18px;padding:0 16px 24px;align-items:start}
+  .mapbox{top:12px;height:calc(100vh - 24px);max-height:720px;border:1px solid var(--line);border-radius:16px}
+  .side{padding:0}
+  .pager{padding-top:0}
+  .labs text{font-size:14px}
+}
+
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="tt">
+    <h1>Atlas of Hegemony, made simple</h1>
+    <nav class="langs" aria-label="language"><a href="../../../ko/hegemony/atlas-simple/" hreflang="ko" lang="ko">한국어</a><span aria-current="page">English</span><a href="../../../id/hegemony/atlas-simple/" hreflang="id" lang="id">Bahasa Indonesia</a></nav>
+  </div>
+  <p class="sub">Hegemony is power great enough to lead or push around other countries. Who held it from 1492 to 2010?</p>
+</header>
+<main class="layout">
+  <section class="mapbox" aria-label="map">
+    <svg id="map" role="img"></svg>
+    <div class="badge" id="badge"></div>
+    <button class="reset" id="reset" type="button">Reset</button>
+    <div class="tip" id="tip" hidden></div>
+    <div class="loading" id="loading">Loading map…</div>
+  </section>
+  <section class="side">
+    <nav class="pager" aria-label="chapters">
+      <button id="prev" type="button" aria-label="Previous">‹</button>
+      <div class="dots" id="dots"></div>
+      <button id="next" type="button" aria-label="Next">›</button>
+    </nav>
+    <article class="card" id="card" aria-live="polite"></article>
+    <footer class="foot">Border data: <a href="https://github.com/aourednik/historical-basemaps">historical-basemaps</a> (to 1880, GPL-3.0) and <a href="https://icr.ethz.ch/data/cshapes/">CShapes 2.0</a> (from 1914, GPL ≥ 2). Older borders are rough. The text is a short version of the <a href="../atlas/">full version</a>.</footer>
+  </section>
+</main>
+<script src="lib/d3.min.js"></script>
+<script src="lib/topojson-client.min.js"></script>
+<script>
+(function(){
+const {ui:UI, content:C} = {"ui":{"era":"around {year}","sum":"In one line","why":"How did it happen?","stars":"Main players","words":"Words to know","more":"Read more","moreYear":"{year}","prev":"Previous","next":"Next","chapter":"Chapter {n} of {total}","hint":"Tap a colored area or a country name.","others":"Other countries and regions","othersLong":"Countries and regions that are not main players in this chapter.","reset":"Reset","loading":"Loading map…","full":"Full version"},"content":{"chapters":[{"year":1492,"from":[1492],"stars":{"es":"Columbus crossed the Atlantic and reached the Americas.","pt":"It opened a sea route around Africa to the Indian Ocean.","ot":"It took Constantinople and controlled the crossroads between Europe and Asia.","cn":"It was the center of East Asia, but the state stopped sending ships on long ocean voyages."},"title":"Opening the sea routes","sum":"Ming China and the Ottomans were the biggest powers. But two small kingdoms in the far west of Europe set out across the oceans.","why":["New ships could sail against the wind. Sailors also used tools that read the stars to find their position.","Portugal sailed south along the coast of Africa. In 1488 its ships rounded the southern tip of Africa.","In 1492 Spain conquered the last Muslim kingdom on the Iberian Peninsula. That same year it sent Columbus west across the ocean."],"names":{"es":"Spain (Castile–Aragon)"},"words":[["Constantinople","Today's Istanbul in Türkiye. It sits where Europe meets Asia."],["Ming","The dynasty that ruled China from 1368 to 1644."]]},{"year":1600,"from":[1530,1600],"stars":{"es":"Its king also became king of Portugal, but the state went bankrupt several times.","pt":"It traded spices through a chain of ports around the Indian Ocean.","nl":"It fought for independence from Spain and grew into a trading power.","gb":"It set up the East India Company to trade with Asia."},"title":"The age of silver and trade","sum":"Spain held the largest lands across the seas. The Netherlands and England followed close behind.","why":["Spain defeated the Aztecs and the Incas and took huge lands in the Americas. Its mines there produced enormous amounts of silver.","Ships carried this silver to Europe and all the way to China. Silver tied trade around the world together.","In 1588 England defeated Spain's great fleet. England and the Netherlands gained the confidence to sail the oceans."],"words":[["Aztecs and Incas","Large states in what are now Mexico and Peru."],["East India Company","A company that handled trade with Asia. The state gave it the sole right to that trade."]]},{"year":1715,"from":[1650,1700,1715],"stars":{"gb":"It united with Scotland in 1707 and gained the most from the war.","fr":"It had the strongest army but could not lead Europe alone.","es":"The grandson of Louis XIV became king, but Spain gave up several lands in Europe.","nl":"The war drained its money, and it handed leadership at sea to Britain."},"title":"Keeping the balance","sum":"France tried to lead Europe, but other countries joined forces to keep the balance of power.","why":["The Netherlands raised money by selling shares in a company. It led sea trade with Asia.","Louis XIV of France had the largest army in Europe. When his grandson became king of Spain, war broke out.","A treaty in 1713 banned one king from ruling both France and Spain. Britain gained lands such as Gibraltar."],"words":[["balance of power","Several countries keep their strength in balance so that no single country becomes too strong."],["share","A piece of a company that people can buy. Selling many shares raises a lot of money."]]},{"year":1783,"from":[1783],"stars":{"gb":"It lost its North American colonies but kept expanding in India.","fr":"It paid Britain back by helping the Americans, but it ran up huge debts. These debts were one cause of the 1789 revolution.","us":"Thirteen colonies joined together to found a new country."},"title":"American independence","sum":"Britain beat France and gained colonies, but it lost 13 colonies in North America.","why":["Britain defeated France in the Seven Years' War. It won Canada and took the lead in India.","To pay for the war, Britain taxed its colonies. Colonists in North America resisted and started a war for independence.","France fought on the colonists' side. In 1783 the independence of the United States was recognized."],"words":[["colony","A land ruled by another country."],["Seven Years' War","A war from 1756 to 1763, fought by Britain, France and others in Europe and in their colonies."]]},{"year":1815,"from":[1815],"stars":{"gb":"It gained key bases along the sea routes, such as the Cape, Ceylon and Malta.","fr":"After Napoleon's defeat, it went back to roughly its borders from before the revolution.","ru":"It drove back Napoleon's invasion and gained Finland and most of Poland.","at":"It lost to Napoleon many times, but gained northern Italy at the Congress of Vienna."},"title":"Britain rules the waves","sum":"Napoleon was defeated, and Britain alone came to rule the seas.","why":["After its revolution, France called up all its citizens to the army. Napoleon used this army to take over much of Europe.","In 1805 Britain won the Battle of Trafalgar. After that, the seas belonged to Britain.","Napoleon's invasion of Russia failed, and he lost at Waterloo in 1815. At the Congress of Vienna, Europe restored the balance of power."],"words":[["balance of power","Several countries keep their strength in balance so that no single country becomes too strong."],["Congress of Vienna","A meeting in Vienna, Austria, where European countries redrew the borders after the Napoleonic Wars."]]},{"year":1880,"from":[1880],"stars":{"gb":"It was the center of industry and finance, and it also ruled India.","fr":"After losing a war to Germany, it expanded its colonies in Africa and Southeast Asia.","de":"After unifying, it made friends with other countries to leave France isolated.","us":"After the Civil War, it quickly became an industrial country."},"title":"Britain, workshop of the world","sum":"Britain became the 'workshop of the world' and ruled the largest empire.","why":["The Industrial Revolution began first in Britain. Factories used machines to make goods in large numbers.","Railways, steamships and the telegraph quickly linked the world. In 1869 the Suez Canal opened.","Germany became one country in 1871. The USA industrialized fast, and Japan also began to modernize."],"words":[["Industrial Revolution","The great change when machines and steam engines began to make goods in large numbers."],["colony","A land ruled by another country."],["Suez Canal","A waterway joining the Mediterranean and the Red Sea. It greatly shortened the sea route from Europe to Asia."]]},{"year":1914,"from":[1914],"stars":{"gb":"It was the empire that ruled the most land in the world.","de":"It became the world's second industrial power and challenged Britain's rule of the seas.","fr":"It held large colonies in Africa and Southeast Asia and teamed up with Britain and Russia.","ru":"It was shaken after losing a war to Japan, but it teamed up with Britain and France."},"title":"Colonial rivalry and world war","sum":"European countries divided the world into colonies. Then they went to war with each other.","why":["European countries divided almost all of Africa among themselves. Only Ethiopia and Liberia stayed independent.","Germany built a large navy, and Britain answered with stronger battleships. Europe split into two alliances.","In 1914 the heir to the throne of Austria-Hungary was shot dead in Sarajevo. Because of the alliances, this conflict grew into a world war."],"words":[["colony","A land ruled by another country."],["alliance","An agreement between countries to help each other. Often they promise to fight together if one is attacked."]]},{"year":1945,"from":[1920,1938,1945],"stars":{"us":"It was the first to have nuclear weapons, and its industry was the strongest.","ru":"It suffered terrible losses but defeated Germany and took control of Eastern Europe.","gb":"It won the war, but it ran out of money and was losing the strength to keep its empire.","fr":"It was occupied by Germany, then liberated. Its colonies demanded independence more and more."},"title":"A world split in two","sum":"After two world wars, the USA and the Soviet Union became the two strongest countries.","why":["The First World War brought down four great empires. A revolution in Russia led to the Soviet Union.","The Great Depression of 1929 wrecked the world economy. Germany, Japan and Italy tried to grab land by war.","Germany and Japan lost the Second World War. Among the winners, only the USA and the Soviet Union still had their strength."],"words":[["Soviet Union","A country made of many republics, led by Russia, from 1922 to 1991. Also called the USSR."],["Great Depression","A huge economic crisis that began in the USA in 1929 and spread around the world. Many people lost their jobs."],["colony","A land ruled by another country."]]},{"year":1960,"from":[1960],"stars":{"us":"It led the capitalist side and competed with the Soviet Union in nuclear weapons and space.","ru":"It led the communist side and launched the world's first satellite.","cn":"It became a communist country, but around this time it fell out with the Soviet Union.","gb":"Starting with India, its colonies became independent one after another, and its empire shrank."},"title":"The Cold War and new nations","sum":"The USA's side and the Soviet side faced off in the Cold War. Colonies in Asia and Africa won independence.","why":["The USA and the Soviet Union each gathered allies into military alliances. Europe was split into two sides.","In 1949 a communist government took power in China. The Korean War hardened the division of East Asia.","In the 1956 Suez Crisis, Britain and France had to back down. In 1960, 17 countries in Africa became independent."],"words":[["Cold War","A long standoff between the capitalist side led by the USA and the communist side led by the Soviet Union. The two never fought each other directly."],["Soviet Union","A country made of many republics, led by Russia, from 1922 to 1991. Also called the USSR."],["colony","A land ruled by another country."]]},{"year":1994,"from":[1994],"stars":{"us":"It became the only superpower, ahead in military, economic and technological strength.","ru":"It lost much land, population and many allies, and its economy collapsed.","cn":"It adopted a market economy and began to grow fast."},"title":"The only superpower","sum":"The Soviet Union collapsed, and the USA became the only superpower.","why":["The Berlin Wall fell in 1989. The next year Germany became one country again.","In 1991 the Soviet Union broke up into 15 countries. This ended the Cold War.","In the Gulf War, the USA showed its advanced weapons and diplomatic power."],"words":[["superpower","A country far stronger than all the others."],["Soviet Union","A country made of many republics, led by Russia, from 1922 to 1991. Also called the USSR."],["Cold War","A long standoff between the capitalist side led by the USA and the communist side led by the Soviet Union. The two never fought each other directly."]]},{"year":2010,"from":[2010],"stars":{"us":"It was the strongest country, but long wars and the financial crisis weighed on it.","cn":"It grew fast through exports and rose as a rival to the USA.","ru":"It fought a war with Georgia to win back influence over former Soviet lands."},"title":"The USA and China","sum":"The USA was still the strongest, but China was catching up fast.","why":["After the terrorist attacks of 2001, the USA fought long wars in Afghanistan and Iraq.","The global financial crisis of 2008 shook the USA and Europe. Emerging economies such as China gained a bigger voice.","China became the 'factory of the world'. In 2010 its economy passed Japan's to become the second largest."],"words":[["emerging economy","A country whose economy is growing fast."],["size of the economy","The total value of all the goods and services a country makes in a year (GDP)."],["Soviet Union","A country made of many republics, led by Russia, from 1922 to 1991. Also called the USSR."]]}],"short":{"gb":[[1707,"England"],[9999,"Britain"]],"es":[[1516,"Castile–Aragon"],[9999,"Spain"]],"ru":[[1920,"Russia"],[1922,"Soviet Russia"],[1991,"USSR"],[9999,"Russia"]],"cn":[[1644,"Ming"],[1912,"Qing"],[1949,"Rep. of China"],[9999,"China"]],"de":[[1871,"Prussia"],[9999,"Germany"]],"at":[[1867,"Austria"],[1918,"Austria-Hungary"],[9999,"Austria"]],"nl":[[9999,"Netherlands"]],"fr":[[9999,"France"]],"pt":[[9999,"Portugal"]],"ot":[[9999,"Ottomans"]],"us":[[9999,"USA"]],"jp":[[9999,"Japan"]],"it":[[9999,"Italy"]],"be":[[9999,"Belgium"]],"mg":[[9999,"Mughals"]]},"full":{"gb":"Britain (England)","fr":"France","es":"Spain (Castile–Aragon)","pt":"Portugal","nl":"Netherlands","ru":"Russia / USSR","ot":"Ottoman Empire","cn":"China (Ming, Qing, Republic, People's Republic)","us":"United States","de":"Germany (Prussia)","at":"Austria (Habsburg)","jp":"Japan","it":"Italy","be":"Belgium","mg":"Mughal Empire"}},"keys":["gb","fr","es","pt","nl","ru","ot","cn","us","de","at","jp","it","be","mg"]};
+const CH = C.chapters, N = CH.length;
+const fmt = (s,o) => s.replace(/\{(\w+)\}/g, (_,k) => o[k]);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function shortName(k,y){ const L=C.short[k]; if(!L) return k; for(const [u,n] of L) if(y<u) return n; return L[L.length-1][1]; }
+const nameOf = (ch,k) => (ch.names && ch.names[k]) || shortName(k, ch.year);
+const pc = k => k ? `var(--p-${k})` : 'var(--land)';
+
+let idx = 0;
+const h = (location.hash||'').match(/^#y(\d{4})$/);
+if (h) { const i = CH.findIndex(c => c.year === +h[1]); if (i >= 0) idx = i; }
+
+// ---------- 지도 ----------
+const svg = d3.select('#map'), box = document.querySelector('.mapbox');
+const gRoot = svg.append('g'), gSea = gRoot.append('g'), gLand = gRoot.append('g'), gLab = svg.append('g').attr('class','labs');
+const outline = d3.geoGraticule().extent([[-180,-58],[180,84]]).outline();
+let W=0, H=0, Hw=0, proj, path, feats=[], zt=d3.zoomIdentity;
+const cache = {};
+const load = y => cache[y] ||= fetch(`data/${y}.json`).then(r=>r.json()).then(t=>topojson.feature(t,t.objects.w).features.map(rewind));
+function rewind(f){
+  const gm=f.geometry; if(!gm) return f;
+  const polys=gm.type==='Polygon'?[gm.coordinates]:gm.type==='MultiPolygon'?gm.coordinates:[];
+  for(const poly of polys) for(let i=0;i<poly.length;i++){ if(d3.geoArea({type:'Polygon',coordinates:[poly[i]]})>2*Math.PI) poly[i]=poly[i].slice().reverse(); }
+  return f;
+}
+const zoom = d3.zoom().scaleExtent([1,12]).on('zoom', e => { zt=e.transform; gRoot.attr('transform', zt); placeLabels(); });
+svg.call(zoom).on('dblclick.zoom', null);
+
+function size(){
+  W = box.clientWidth; H = box.clientHeight;
+  proj = d3.geoNaturalEarth1().fitSize([W, W*0.5], outline);
+  path = d3.geoPath(proj);
+  const b = path.bounds(outline); Hw = b[1][1];
+  svg.attr('viewBox', `0 0 ${W} ${H}`);
+  zoom.scaleExtent([1, 12]).translateExtent([[b[0][0]-W*0.1, 0],[b[1][0]+W*0.1, Hw]]);
+  gSea.selectAll('path').data([outline]).join('path').attr('class','sea').attr('d', path);
+  draw(false);
+}
+function draw(animate){
+  gLand.selectAll('path').data(feats, (d,i)=>i).join('path')
+    .attr('d', path).attr('class', d => d.properties.k ? 'star' : 'rest')
+    .style('fill', d => pc(d.properties.k))
+    .on('click', (e,d) => { e.stopPropagation(); showTip(d.properties.k, e); });
+  computeLabels();
+  fitStars(animate);
+}
+function boundsOf(keys){
+  let x0=Infinity,y0=Infinity,x1=-Infinity,y1=-Infinity;
+  for(const f of feats){ if(!f.properties.k || (keys && !keys.includes(f.properties.k))) continue;
+    for(const p of mainParts(f)){ const b=path.bounds(p); x0=Math.min(x0,b[0][0]); y0=Math.min(y0,b[0][1]); x1=Math.max(x1,b[1][0]); y1=Math.max(y1,b[1][1]); } }
+  return x0<Infinity ? [[x0,y0],[x1,y1]] : path.bounds(outline);
+}
+// 넓은 땅 위주로 화면을 맞춘다(작은 섬·거점 때문에 세계 전체로 물러나지 않도록)
+function mainParts(f){
+  const gm=f.geometry; if(!gm) return [];
+  const polys = gm.type==='Polygon'?[gm.coordinates]:gm.coordinates;
+  const parts = polys.map(c=>({type:'Polygon',coordinates:c})).map(p=>[p,path.area(p)]);
+  const tot = d3.sum(parts, p=>p[1]);
+  return parts.filter(p=>p[1] >= tot*0.04).map(p=>p[0]);
+}
+function fitStars(animate, keys){
+  const [[x0,y0],[x1,y1]] = boundsOf(keys);
+  let k = Math.min(12, 0.72*W/(x1-x0), 0.8*H/(y1-y0));
+  k = Math.max(1, Math.min(k, keys ? 8 : 4));
+  const t = d3.zoomIdentity.translate(W/2 - k*(x0+x1)/2, H/2 - k*(y0+y1)/2).scale(k);
+  (animate ? svg.transition().duration(650) : svg).call(zoom.transform, t);
+}
+// 나라 이름: 가장 넓은 조각의 중심(그릴 때 한 번 계산하고, 줌할 때는 위치만 옮긴다)
+// 나라 이름은 본국에 붙인다(식민지가 더 넓어도). 본국 조각을 못 찾으면 가장 넓은 조각
+const HOME={gb:[-1.5,52.5],fr:[2.5,46.5],es:[-3.7,40],pt:[-8,39.6],nl:[5.3,52.2],ru:[37.6,55.8],ot:[32.8,39.9],cn:[114,34],
+  us:[-98,39],de:[10,51],at:[15,47.8],jp:[138,36],it:[12.5,42.5],be:[4.5,50.6],mg:[77,25]};
+function allParts(f){ const gm=f.geometry; if(!gm) return []; return (gm.type==='Polygon'?[gm.coordinates]:gm.coordinates).map(c=>({type:'Polygon',coordinates:c})); }
+let labBase=[];
+function computeLabels(){
+  labBase = feats.filter(f=>f.properties.k).map(f=>{
+    const k=f.properties.k, home=HOME[k];
+    let best = home ? allParts(f).find(p=>d3.geoContains(p, home)) : null, ba=0;
+    if(!best) for(const p of mainParts(f)){ const a=path.area(p); if(a>ba){ba=a;best=p;} }
+    return {k:f.properties.k, c: best ? path.centroid(best) : [NaN,NaN]};
+  }).filter(d=>isFinite(d.c[0]));
+  const ch = CH[idx];
+  gLab.selectAll('text').data(labBase, d=>d.k).join('text').text(d=>nameOf(ch, d.k))
+    .on('click', (e,d) => { e.stopPropagation(); showTip(d.k, e); });
+  placeLabels();
+}
+// 겹치는 이름은 아래위로 비켜 놓는다
+function placeLabels(){
+  const t = gLab.selectAll('text').attr('x', d=>zt.applyX(d.c[0])).attr('y', d=>zt.applyY(d.c[1])).nodes();
+  const boxes = t.map(n => ({n, b:n.getBBox(), dy:0})).sort((a,b)=>a.b.y-b.b.y);
+  for(let i=0;i<boxes.length;i++) for(let j=0;j<i;j++){
+    const a=boxes[j], c=boxes[i];
+    const ax0=a.b.x, ax1=a.b.x+a.b.width, ay0=a.b.y+a.dy, ay1=ay0+a.b.height;
+    const cx0=c.b.x, cx1=c.b.x+c.b.width, cy0=c.b.y+c.dy, cy1=cy0+c.b.height;
+    if (cx0<ax1 && ax0<cx1 && cy0<ay1 && ay0<cy1) c.dy += ay1-cy0+1;
+  }
+  for(const o of boxes){
+    if(o.dy) o.n.setAttribute('y', +o.n.getAttribute('y') + o.dy);
+    const hw=o.b.width/2+4, x=+o.n.getAttribute('x');   // 화면 밖으로 나가지 않게
+    o.n.setAttribute('x', Math.min(W-hw, Math.max(hw, x)));
+  }
+}
+const tip = document.getElementById('tip');
+function showTip(k, e){
+  const ch = CH[idx];
+  tip.innerHTML = k ? `<b><i class="sw" style="background:${pc(k)}"></i>${esc(nameOf(ch,k))}</b><span>${esc(ch.stars[k])}</span>`
+                    : `<b>${esc(UI.others)}</b><span>${esc(UI.othersLong)}</span>`;
+  tip.hidden = false;
+  document.querySelectorAll('.chips button').forEach(b => b.classList.toggle('on', b.dataset.k===k));
+}
+svg.on('click', () => { tip.hidden = true; document.querySelectorAll('.chips button.on').forEach(b=>b.classList.remove('on')); });
+document.getElementById('reset').onclick = () => { tip.hidden = true; fitStars(true); };
+
+// ---------- 카드 ----------
+const card = document.getElementById('card');
+function renderCard(){
+  const ch = CH[idx];
+  const why = ch.why.map((s,i)=>`<li><span class="n">${i+1}</span><p>${esc(s)}</p></li>`).join('');
+  const chips = Object.keys(ch.stars).map(k=>`<li><button type="button" data-k="${k}"><i class="sw" style="background:${pc(k)}"></i>${esc(nameOf(ch,k))}</button><p>${esc(ch.stars[k])}</p></li>`).join('');
+  const words = ch.words.map(([t,d])=>`<details><summary>${esc(t)}</summary><p>${esc(d)}</p></details>`).join('');
+  const more = ch.from.map(y=>`<a href="../atlas/#y${y}">${esc(fmt(UI.moreYear,{year:y}))}</a>`).join(' · ');
+  card.innerHTML =
+    `<p class="era">${esc(fmt(UI.chapter,{n:idx+1,total:N}))} · ${esc(fmt(UI.era,{year:ch.year}))}</p>`+
+    `<h2>${esc(ch.title)}</h2>`+
+    `<p class="sum">${esc(ch.sum)}</p>`+
+    `<h3>${esc(UI.why)}</h3><ol class="why">${why}</ol>`+
+    `<h3>${esc(UI.stars)}</h3><ul class="chips">${chips}</ul>`+
+    (words ? `<h3>${esc(UI.words)}</h3><div class="words">${words}</div>` : '')+
+    `<p class="more">${esc(UI.more)}: ${more}</p>`+
+    `<div class="endnav">${idx>0?`<button type="button" data-d="-1">‹ ${CH[idx-1].year}</button>`:'<span></span>'}${idx<N-1?`<button type="button" data-d="1">${CH[idx+1].year} ›</button>`:''}</div>`;
+  card.querySelectorAll('.endnav button').forEach(b => b.onclick = () => { go(idx + +b.dataset.d); window.scrollTo({top:0, behavior:'smooth'}); });
+  card.querySelectorAll('.chips button').forEach(b => b.onclick = () => {
+    const on = !b.classList.contains('on');
+    if (on) { showTip(b.dataset.k); fitStars(true, [b.dataset.k]); if (window.innerWidth <= 860) box.scrollIntoView({behavior:'smooth', block:'nearest'}); }
+    else { tip.hidden = true; b.classList.remove('on'); fitStars(true); }
+  });
+}
+const dots = document.getElementById('dots');
+dots.innerHTML = CH.map((c,i)=>`<button type="button" data-i="${i}" aria-label="${c.year}"><span>${c.year}</span></button>`).join('');
+dots.querySelectorAll('button').forEach(b => b.onclick = () => go(+b.dataset.i));
+document.getElementById('prev').onclick = () => go(idx-1);
+document.getElementById('next').onclick = () => go(idx+1);
+document.addEventListener('keydown', e => { if (e.target.closest('input,textarea')) return; if (e.key==='ArrowLeft') go(idx-1); if (e.key==='ArrowRight') go(idx+1); });
+// 카드를 좌우로 밀어 장 넘기기
+let sx=0, sy=0;
+card.addEventListener('touchstart', e => { sx=e.touches[0].clientX; sy=e.touches[0].clientY; }, {passive:true});
+card.addEventListener('touchend', e => { const dx=e.changedTouches[0].clientX-sx, dy=e.changedTouches[0].clientY-sy;
+  if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy)*1.5) go(idx + (dx<0 ? 1 : -1)); }, {passive:true});
+
+async function go(i, first){
+  if (i<0 || i>=N || (i===idx && !first)) return;
+  idx = i; const ch = CH[idx];
+  tip.hidden = true;
+  document.getElementById('badge').textContent = fmt(UI.era,{year:ch.year});
+  document.getElementById('prev').disabled = idx===0;
+  document.getElementById('next').disabled = idx===N-1;
+  dots.querySelectorAll('button').forEach((b,j)=>{ b.classList.toggle('on', j===idx); b.setAttribute('aria-current', j===idx?'step':'false'); });
+  dots.children[idx].scrollIntoView({block:'nearest', inline:'center'});
+  renderCard();
+  if (!first) { card.scrollTop = 0; if (window.innerWidth > 860) card.scrollIntoView({block:'nearest'}); }
+  try{ history.replaceState(null,'','#y'+ch.year); }catch(e){}
+  const f = await load(ch.year);
+  if (CH[idx] !== ch) return;
+  feats = f; document.getElementById('loading').hidden = true;
+  draw(!first);
+  if (CH[idx+1]) load(CH[idx+1].year);
+}
+new ResizeObserver(() => { if (box.clientWidth && (box.clientWidth!==W || box.clientHeight!==H)) size(); }).observe(box);
+size();
+go(idx, true);
+})();
+</script>
+</body>
+</html>

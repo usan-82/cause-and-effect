@@ -1,0 +1,299 @@
+{
+  "chapters": {
+    "1492": {
+      "title": "Membuka jalur laut",
+      "sum": "Dinasti Ming dan Utsmaniyah adalah kekuatan terbesar. Namun dua kerajaan kecil di ujung barat Eropa mulai berlayar ke samudra.",
+      "why": [
+        "Muncul kapal yang bisa berlayar melawan arah angin. Pelaut juga memakai alat untuk menentukan posisi dari bintang.",
+        "Portugal berlayar ke selatan menyusuri pantai Afrika. Pada 1488 kapalnya berhasil mengitari ujung selatan Afrika.",
+        "Pada 1492 Spanyol menaklukkan kerajaan Islam terakhir di Semenanjung Iberia. Pada tahun yang sama, Spanyol mengirim Kolumbus berlayar ke barat."
+      ],
+      "stars": {
+        "es": "Kolumbus menyeberangi Samudra Atlantik dan tiba di Benua Amerika.",
+        "pt": "Membuka jalur laut mengelilingi Afrika menuju Samudra Hindia.",
+        "ot": "Merebut Konstantinopel dan menguasai persimpangan antara Eropa dan Asia.",
+        "cn": "Menjadi pusat Asia Timur, tetapi negara berhenti mengirim kapal untuk pelayaran jauh."
+      },
+      "names": {
+        "es": "Spanyol (Kastilia–Aragon)"
+      },
+      "words": [
+        [
+          "Konstantinopel",
+          "Kini bernama Istanbul di Turki. Kota ini terletak di tempat Eropa bertemu Asia."
+        ],
+        [
+          "Ming",
+          "Dinasti yang memerintah Tiongkok dari 1368 sampai 1644."
+        ]
+      ]
+    },
+    "1600": {
+      "title": "Zaman perak dan perdagangan",
+      "sum": "Spanyol memiliki wilayah seberang laut paling luas. Belanda dan Inggris mengejar di belakangnya.",
+      "why": [
+        "Spanyol mengalahkan bangsa Aztek dan Inka lalu menguasai wilayah luas di Amerika. Tambang di sana menghasilkan perak dalam jumlah sangat besar.",
+        "Kapal membawa perak itu ke Eropa, bahkan sampai ke Tiongkok. Perak menghubungkan perdagangan di seluruh dunia.",
+        "Pada 1588 Inggris mengalahkan armada besar Spanyol. Inggris dan Belanda menjadi berani berlayar ke samudra."
+      ],
+      "stars": {
+        "es": "Rajanya juga menjadi raja Portugal, tetapi keuangan negara beberapa kali bangkrut.",
+        "pt": "Berdagang rempah-rempah lewat rangkaian pelabuhan di sekitar Samudra Hindia.",
+        "nl": "Berjuang merdeka dari Spanyol sambil tumbuh menjadi kekuatan dagang.",
+        "gb": "Mendirikan EIC, kongsi dagang Inggris, untuk berdagang dengan Asia."
+      },
+      "words": [
+        [
+          "Aztek dan Inka",
+          "Negara-negara besar di wilayah yang kini menjadi Meksiko dan Peru."
+        ],
+        [
+          "EIC",
+          "Kongsi Dagang Hindia Timur milik Inggris. Negara memberinya hak tunggal atas perdagangan dengan Asia. (Belanda punya kongsi serupa, VOC.)"
+        ]
+      ]
+    },
+    "1715": {
+      "title": "Menjaga keseimbangan",
+      "sum": "Prancis ingin memimpin Eropa, tetapi negara-negara lain bersatu menjaga keseimbangan kekuatan.",
+      "why": [
+        "Belanda mengumpulkan uang dengan menjual saham sebuah perusahaan. Belanda memimpin perdagangan laut dengan Asia.",
+        "Raja Louis XIV dari Prancis memiliki tentara terbesar di Eropa. Ketika cucunya menjadi raja Spanyol, perang pun pecah.",
+        "Perjanjian tahun 1713 melarang satu raja memerintah Prancis dan Spanyol sekaligus. Britania mendapat wilayah seperti Gibraltar."
+      ],
+      "stars": {
+        "gb": "Bersatu dengan Skotlandia pada 1707 dan paling banyak untung dari perang ini.",
+        "fr": "Memiliki tentara terkuat, tetapi tidak bisa memimpin Eropa sendirian.",
+        "es": "Cucu Louis XIV menjadi raja, tetapi Spanyol menyerahkan beberapa wilayahnya di Eropa.",
+        "nl": "Perang menguras uangnya, sehingga kepemimpinan di laut beralih ke Britania."
+      },
+      "words": [
+        [
+          "keseimbangan kekuatan",
+          "Beberapa negara menjaga kekuatan agar seimbang, supaya tidak ada satu negara yang terlalu kuat."
+        ],
+        [
+          "saham",
+          "Bagian kepemilikan sebuah perusahaan yang bisa dibeli orang. Dengan menjual banyak saham, perusahaan mendapat banyak uang."
+        ]
+      ]
+    },
+    "1783": {
+      "title": "Kemerdekaan Amerika",
+      "sum": "Britania mengalahkan Prancis dan menambah koloni, tetapi kehilangan 13 koloni di Amerika Utara.",
+      "why": [
+        "Britania mengalahkan Prancis dalam Perang Tujuh Tahun. Britania mendapat Kanada dan unggul di India.",
+        "Untuk membayar biaya perang, Britania menarik pajak dari koloninya. Penduduk koloni di Amerika Utara melawan dan memulai perang kemerdekaan.",
+        "Prancis ikut berperang di pihak koloni. Pada 1783 kemerdekaan Amerika Serikat diakui."
+      ],
+      "stars": {
+        "gb": "Kehilangan koloni di Amerika Utara, tetapi terus memperluas wilayah di India.",
+        "fr": "Membalas Britania dengan membantu Amerika, tetapi menanggung utang besar. Utang ini menjadi salah satu penyebab revolusi 1789.",
+        "us": "Tiga belas koloni bersatu dan mendirikan negara baru."
+      },
+      "words": [
+        [
+          "koloni",
+          "Wilayah yang dikuasai oleh negara lain."
+        ],
+        [
+          "Perang Tujuh Tahun",
+          "Perang tahun 1756–1763 antara Britania, Prancis, dan negara lain di Eropa dan di koloni mereka."
+        ]
+      ]
+    },
+    "1815": {
+      "title": "Britania menguasai lautan",
+      "sum": "Napoleon kalah, dan Britania menjadi satu-satunya penguasa lautan.",
+      "why": [
+        "Setelah revolusi, Prancis memanggil seluruh rakyatnya menjadi tentara. Napoleon memakai tentara ini untuk menguasai sebagian besar Eropa.",
+        "Pada 1805 Britania menang dalam Pertempuran Trafalgar. Sejak itu lautan dikuasai Britania.",
+        "Serangan Napoleon ke Rusia gagal, lalu ia kalah di Waterloo pada 1815. Di Kongres Wina, Eropa memulihkan keseimbangan kekuatan."
+      ],
+      "stars": {
+        "gb": "Mendapat pangkalan penting di jalur laut, seperti Tanjung Harapan, Sri Lanka, dan Malta.",
+        "fr": "Setelah Napoleon kalah, perbatasannya kembali kira-kira seperti sebelum revolusi.",
+        "ru": "Mengusir serangan Napoleon dan mendapat Finlandia serta sebagian besar Polandia.",
+        "at": "Berkali-kali kalah dari Napoleon, tetapi mendapat Italia utara di Kongres Wina."
+      },
+      "words": [
+        [
+          "keseimbangan kekuatan",
+          "Beberapa negara menjaga kekuatan agar seimbang, supaya tidak ada satu negara yang terlalu kuat."
+        ],
+        [
+          "Kongres Wina",
+          "Pertemuan di Wina, Austria, tempat negara-negara Eropa menata ulang perbatasan setelah Perang Napoleon."
+        ]
+      ]
+    },
+    "1880": {
+      "title": "Britania, bengkel dunia",
+      "sum": "Britania menjadi 'bengkel dunia' dan memerintah kekaisaran terluas.",
+      "why": [
+        "Revolusi Industri pertama kali terjadi di Britania. Pabrik memakai mesin untuk membuat barang dalam jumlah besar.",
+        "Kereta api, kapal uap, dan telegraf dengan cepat menghubungkan dunia. Pada 1869 Terusan Suez dibuka.",
+        "Jerman bersatu menjadi satu negara pada 1871. AS cepat menjadi negara industri, dan Jepang juga mulai memodernkan diri."
+      ],
+      "stars": {
+        "gb": "Menjadi pusat industri dan keuangan, dan juga memerintah India.",
+        "fr": "Setelah kalah perang dari Jerman, Prancis memperluas koloninya di Afrika dan Asia Tenggara.",
+        "de": "Setelah bersatu, Jerman berteman dengan negara lain agar Prancis terkucil.",
+        "us": "Setelah Perang Saudara, AS cepat menjadi negara industri."
+      },
+      "words": [
+        [
+          "Revolusi Industri",
+          "Perubahan besar ketika mesin dan mesin uap mulai membuat barang dalam jumlah besar."
+        ],
+        [
+          "koloni",
+          "Wilayah yang dikuasai oleh negara lain."
+        ],
+        [
+          "Terusan Suez",
+          "Jalur air yang menghubungkan Laut Tengah dan Laut Merah. Jalur laut dari Eropa ke Asia menjadi jauh lebih pendek."
+        ]
+      ]
+    },
+    "1914": {
+      "title": "Perebutan koloni dan perang dunia",
+      "sum": "Negara-negara Eropa membagi dunia menjadi koloni. Lalu mereka saling berperang.",
+      "why": [
+        "Negara-negara Eropa membagi hampir seluruh Afrika. Hanya Etiopia dan Liberia yang tetap merdeka.",
+        "Jerman membangun angkatan laut besar, dan Britania membalas dengan kapal perang yang lebih kuat. Eropa terbelah menjadi dua aliansi.",
+        "Pada 1914 putra mahkota Austria-Hongaria ditembak mati di Sarajevo. Karena aliansi, konflik ini membesar menjadi perang dunia."
+      ],
+      "stars": {
+        "gb": "Kekaisaran yang menguasai wilayah paling luas di dunia.",
+        "de": "Menjadi kekuatan industri kedua di dunia dan menantang Britania di lautan.",
+        "fr": "Memiliki koloni luas di Afrika dan Asia Tenggara, serta bersekutu dengan Britania dan Rusia.",
+        "ru": "Goyah setelah kalah perang dari Jepang, tetapi bersekutu dengan Britania dan Prancis."
+      },
+      "words": [
+        [
+          "koloni",
+          "Wilayah yang dikuasai oleh negara lain."
+        ],
+        [
+          "aliansi",
+          "Perjanjian antarnegara untuk saling membantu. Sering kali mereka berjanji berperang bersama jika salah satu diserang."
+        ]
+      ]
+    },
+    "1945": {
+      "title": "Dunia terbelah dua",
+      "sum": "Setelah dua perang dunia, AS dan Uni Soviet menjadi dua negara terkuat.",
+      "why": [
+        "Perang Dunia I meruntuhkan empat kekaisaran besar. Revolusi di Rusia melahirkan Uni Soviet.",
+        "Depresi Besar tahun 1929 menghancurkan ekonomi dunia. Jerman, Jepang, dan Italia mencoba merebut wilayah dengan perang.",
+        "Jerman dan Jepang kalah dalam Perang Dunia II. Di antara pemenang, hanya AS dan Uni Soviet yang masih kuat."
+      ],
+      "stars": {
+        "us": "Negara pertama yang memiliki senjata nuklir, dan industrinya paling kuat.",
+        "ru": "Menderita kerugian sangat besar, tetapi mengalahkan Jerman dan menguasai Eropa Timur.",
+        "gb": "Menang perang, tetapi kehabisan uang dan mulai kehilangan kekuatan untuk mempertahankan kekaisarannya.",
+        "fr": "Diduduki Jerman, lalu dibebaskan. Tuntutan merdeka dari koloninya makin kuat."
+      },
+      "words": [
+        [
+          "Uni Soviet",
+          "Negara gabungan banyak republik yang dipimpin Rusia, dari 1922 sampai 1991."
+        ],
+        [
+          "Depresi Besar",
+          "Krisis ekonomi besar yang dimulai di AS pada 1929 dan menyebar ke seluruh dunia. Banyak orang kehilangan pekerjaan."
+        ],
+        [
+          "koloni",
+          "Wilayah yang dikuasai oleh negara lain."
+        ]
+      ]
+    },
+    "1960": {
+      "title": "Perang Dingin dan negara-negara baru",
+      "sum": "Blok AS dan blok Uni Soviet saling berhadapan dalam Perang Dingin. Koloni di Asia dan Afrika meraih kemerdekaan.",
+      "why": [
+        "AS dan Uni Soviet masing-masing mengumpulkan sekutu dalam aliansi militer. Eropa terbelah menjadi dua pihak.",
+        "Pada 1949 pemerintah komunis berkuasa di Tiongkok. Perang Korea memperkuat perpecahan di Asia Timur.",
+        "Dalam Krisis Suez 1956, Britania dan Prancis terpaksa mundur. Pada 1960, 17 negara di Afrika merdeka."
+      ],
+      "stars": {
+        "us": "Memimpin blok kapitalis dan bersaing dengan Uni Soviet dalam senjata nuklir dan antariksa.",
+        "ru": "Memimpin blok komunis dan meluncurkan satelit pertama di dunia.",
+        "cn": "Menjadi negara komunis, tetapi sekitar masa ini berselisih dengan Uni Soviet.",
+        "gb": "Dimulai dari India, koloninya merdeka satu per satu dan kekaisarannya menyusut."
+      },
+      "words": [
+        [
+          "Perang Dingin",
+          "Persaingan panjang antara blok kapitalis yang dipimpin AS dan blok komunis yang dipimpin Uni Soviet. Keduanya tidak pernah berperang langsung."
+        ],
+        [
+          "Uni Soviet",
+          "Negara gabungan banyak republik yang dipimpin Rusia, dari 1922 sampai 1991."
+        ],
+        [
+          "koloni",
+          "Wilayah yang dikuasai oleh negara lain."
+        ]
+      ]
+    },
+    "1994": {
+      "title": "Satu-satunya negara adidaya",
+      "sum": "Uni Soviet runtuh, dan AS menjadi satu-satunya negara adidaya.",
+      "why": [
+        "Tembok Berlin runtuh pada 1989. Tahun berikutnya Jerman bersatu kembali.",
+        "Pada 1991 Uni Soviet pecah menjadi 15 negara. Perang Dingin pun berakhir.",
+        "Dalam Perang Teluk, AS menunjukkan senjata canggih dan kekuatan diplomasinya."
+      ],
+      "stars": {
+        "us": "Menjadi satu-satunya negara adidaya, unggul dalam militer, ekonomi, dan teknologi.",
+        "ru": "Kehilangan banyak wilayah, penduduk, dan sekutu, dan ekonominya runtuh.",
+        "cn": "Menerapkan ekonomi pasar dan mulai tumbuh pesat."
+      },
+      "words": [
+        [
+          "negara adidaya",
+          "Negara yang jauh lebih kuat daripada negara-negara lain."
+        ],
+        [
+          "Uni Soviet",
+          "Negara gabungan banyak republik yang dipimpin Rusia, dari 1922 sampai 1991."
+        ],
+        [
+          "Perang Dingin",
+          "Persaingan panjang antara blok kapitalis yang dipimpin AS dan blok komunis yang dipimpin Uni Soviet. Keduanya tidak pernah berperang langsung."
+        ]
+      ]
+    },
+    "2010": {
+      "title": "AS dan Tiongkok",
+      "sum": "AS masih yang terkuat, tetapi Tiongkok mengejar dengan cepat.",
+      "why": [
+        "Setelah serangan teror tahun 2001, AS berperang lama di Afganistan dan Irak.",
+        "Krisis keuangan global tahun 2008 mengguncang AS dan Eropa. Negara berkembang pesat seperti Tiongkok makin didengar.",
+        "Tiongkok menjadi 'pabrik dunia'. Pada 2010 ekonominya melampaui Jepang dan menjadi terbesar kedua di dunia."
+      ],
+      "stars": {
+        "us": "Negara terkuat, tetapi perang panjang dan krisis keuangan menjadi beban berat.",
+        "cn": "Tumbuh cepat lewat ekspor dan muncul sebagai pesaing AS.",
+        "ru": "Berperang dengan Georgia untuk merebut kembali pengaruh di bekas wilayah Uni Soviet."
+      },
+      "words": [
+        [
+          "negara berkembang pesat",
+          "Negara yang ekonominya tumbuh dengan cepat."
+        ],
+        [
+          "ukuran ekonomi",
+          "Nilai seluruh barang dan jasa yang dibuat suatu negara dalam setahun (PDB)."
+        ],
+        [
+          "Uni Soviet",
+          "Negara gabungan banyak republik yang dipimpin Rusia, dari 1922 sampai 1991."
+        ]
+      ]
+    }
+  }
+}

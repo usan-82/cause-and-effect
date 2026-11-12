@@ -101,6 +101,7 @@ ul.pts li{margin-bottom:8px}
 .warn{color:var(--loss);font-weight:500}
 .info .warn{margin-top:3px}
 .loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:13px;pointer-events:none}
+.simplelink{font-size:13px;font-weight:700;text-decoration:none;color:var(--c-blue);border:1px solid currentColor;border-radius:999px;padding:1px 10px;white-space:nowrap}
 .langs{display:flex;gap:10px;font-size:13px;margin-left:auto}
 .langs span{font-weight:700}
 .langs a{color:var(--ink2);text-decoration:none}
@@ -181,6 +182,7 @@ body.m .wrap{padding:0;max-width:none;height:100vh;height:100dvh;display:flex;fl
 body.m header{margin:0;padding:8px 10px 8px 14px;flex:0 0 auto;flex-wrap:nowrap;align-items:center;gap:8px}
 body.m header h1{font-size:16px;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 body.m header p{display:none}
+body.m .simplelink{flex:none;font-size:12px;padding:2px 9px}
 body.m .helpbtn{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:700 16px var(--sans),sans-serif;cursor:pointer}
 body.m .layout{flex:1;min-height:0;display:flex;flex-direction:column;gap:0}
 body.m .layout>div:first-child{flex:1;min-height:0;display:flex;flex-direction:column}
@@ -222,6 +224,7 @@ body.m .legend .chip{min-height:34px}
   <header>
     <h1>Atlas of Hegemony 1492–2010</h1>
     <p>Over each year's borders: the struggle for hegemony · gains and losses · technology · ideas</p>
+    <a class="simplelink" id="simplelink" href="../atlas-simple/">Simple version</a>
     <nav class="langs" aria-label="Language"><a href="../../../ko/hegemony/atlas/" hreflang="ko" lang="ko">한국어</a><span aria-current="page">English</span><a href="../../../id/hegemony/atlas/" hreflang="id" lang="id">Bahasa Indonesia</a></nav>
     <button class="helpbtn" id="helpbtn" aria-haspopup="dialog">?</button>
   </header>
@@ -255,6 +258,7 @@ body.m .legend .chip{min-height:34px}
 <script>
 (async function(){
 const UI = {"tabs":["Balance of power","Gains and losses","Technology","Ideas","Country by country"],"era":"{prev} → c. {year}","eraFirst":"c. {year}","gain":"Gain","loss":"Loss","readMore":"Read more","fixesTitle":"Data corrections for this year","andMore":" and {n} more","others":"Other states and powers","ckShown":"Strategic points on","ckHidden":"Strategic points off","ckTitle":"Strategic points — {n}","ckTitleDiff":", {m} differ from the map colour","ckTitleOk":", all match the map","ckDiff":"⚠ differs from map colour","ckAbsent":"(not drawn on map)","ckRuler":"Ruler c. {year}:","ckAbsentLong":"The source border data does not draw this point (a small island or base). This marker is the checked value.","ckDiffLong":"⚠ This differs from the map colour. The source border data draws this point as {map}. Small places such as bases and straits get swallowed by the surrounding area, or the source label is wrong — this marker is the checked value.","ckMapNone":"an area it does not draw","otherPower":"other power","unnamed":"Unnamed area","srcSubj":"Sovereign (source)","cls":"Group","prec":"Border precision","precVals":["rough","medium","precise"],"noInfo":"no data","fix":"Correction","close":"Close","status":{"rise":"Rising","peak":"Peak","hold":"Holding","decline":"Declining / contested","exit":"Out of the contest (state continues)","end":"Ended"},"tiers":[["solid","Firm"],["hold","Holding"],["hatch","Declining / contested"],["exit","Out of the contest"]],"legendTitle":"Ruling powers c. {year}","rival":"lead","trackAll":"What changed for each country","trackAllNote":"What has changed since the previous year shown. Tap a country to see its whole course. The status (rising, at its height, declining, etc.) is a judgement about international standing at the time, not about land area.","trackOne":"The course of {name}","trackBack":"← All countries","trackNote":"Tap a year to go to that map.","trackBefore":"Not treated as a contender on this map before {year}","trackAfter":"Not coloured at later points","focusOff":"Show all","regionName":"Name of the area at the time","contested":"Rule here is contested (hatched)","bigViewShort":"Large","bigExitShort":"Close","patched":"Recoloured with checked value","srcCs":"Borders: CShapes 2.0","srcHb":"Borders: historical-basemaps","csStatus":{"colony":"colony","protectorate":"protectorate","mandate":"mandate","occupied":"occupied","N/A":"status unknown"},"ckTitlePatched":"","ckPatched":"","ckPatchedLong":"In the source map this point was swallowed by the surrounding area or wrongly labelled, so the map itself has been recoloured with the checked ruler.","vTitle":"Cross-check","vCs":"Borders at this point were redrawn from CShapes 2.0 (as of {date}). Agreement with the open-source map used before (historical-basemaps): {agree}% (by area, 0.25° grid sample, coastline differences excluded). Strategic points and regions recoloured: {p}.","vHb":"Before 1886 there is no dated dataset to cross-check against. Based on historical-basemaps, {f} sovereignty-label errors were corrected and {p} strategic points and regions recoloured with checked values.","vDiffs":"Where the two sources differ most (source ↔ CShapes)","vAdopt":"Where they differ, the map follows CShapes.","vExc":"Shown differently from CShapes, or with a note added","vNone":"no sovereign","areaM":"{v} million km²","areaK":"{v}0,000 km²","areaLabel":"territory c. {a}","sparkTitle":"Territory (recomputed)","sparkAria":"Territory area by year","sparkNote":"Areas are recomputed from what is coloured on this map (colonies included). Before 1886 they include nominal claims and spheres, so they can exceed real control.","colorKey":"Show each country's colour","colorKeyNote":"A country keeps the same colour even when its name changes (Russia → USSR → Russia, Ming → Qing → China). When it grows stronger or weaker, the colour stays and only its strength and hatching change.","footnotes":"Footnotes","vClio":"Before 1886 there is no date-level dataset, but great-power ownership was compared with the independent Cliopatria dataset. Agreement is {agree}% (share of cells, on a 0.5° grid, where both sources draw a state and assign it to the same great power). Based on historical-basemaps, {f} ownership errors were corrected and {p} strategic points and regions recoloured, {c} of them using boundaries borrowed from Cliopatria.","vClioDiffs":"Where the two still differ (this map ↔ Cliopatria)","vClioNote":"Most remaining differences come from how far nominal claims are coloured (the interior of Spanish America, Siberia) and how suzerainty is read (Egypt, Tibet, the Kazakh steppe). A difference does not mean this map is wrong, and Cliopatria has errors of its own. Places corrected with borrowed boundaries agree by construction.","vUnnamed":"(unnamed area)","help":"Help and sources"};
+const SIMPLE={"1492":1492,"1530":1600,"1600":1600,"1650":1715,"1700":1715,"1715":1715,"1783":1783,"1815":1815,"1880":1880,"1914":1914,"1920":1945,"1938":1945,"1945":1945,"1960":1960,"1994":1994,"2010":2010}; // 이 시점을 다루는 쉬운 판(atlas-simple)의 장
 const KEYS=['gb','fr','es','pt','nl','ru','ot','cn','us','de','at','jp','it','be','mg'];
 const ORDER={peak:0,rise:1,hold:2,decline:3,exit:4,end:5};
 const pc=k=>`var(--p-${k})`;
@@ -494,6 +498,7 @@ async function setYear(y,keepFocus){
   year=y; info.style.display='none'; selEl=null;
   if(focus && !statusOf(focus,y) && !keepFocus) focus=null;
   try{ if(location.hash!=='#y'+y) history.replaceState(null,'','#y'+y);}catch(e){}
+  const sy=SIMPLE[y]; document.getElementById('simplelink').href='../atlas-simple/'+(sy?'#y'+sy:'');
   renderYears(); renderLegend(); renderPanel(); await drawMap();
 }
 const step=dlt=>{const i=YEARS.indexOf(year)+dlt; if(i>=0&&i<YEARS.length) setYear(YEARS[i],true);};
