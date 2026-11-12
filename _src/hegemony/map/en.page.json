@@ -111,7 +111,8 @@
   "supSame": "A state that is on this map, but this part is drawn only in Cliopatria. Not cross-checked.",
   "fxTag": "Corrected",
   "fxTitle": "Source corrections: {n}",
-  "fxSub": "Places where the source's ownership was wrong or missing, checked and fixed. Tap one to go there."
+  "fxSub": "Places where the source's ownership was wrong or missing, checked and fixed. Tap one to go there.",
+  "help": "Help and sources"
  },
  "glossary": [
   [

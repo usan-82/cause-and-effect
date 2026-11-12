@@ -17,6 +17,7 @@
     <h1>{{title}}</h1>
     <p>{{subtitle}}</p>
     <nav class="langs" aria-label="{{langAria}}">{{langs}}</nav>
+    <button class="helpbtn" id="helpbtn" aria-haspopup="dialog">?</button>
   </header>
   <div class="layout">
     <div>
@@ -27,7 +28,7 @@
         <div class="info" id="info"></div>
         <div class="loading" id="loading">{{loading}}</div>
       </div>
-      <div class="card" style="margin-top:10px">
+      <div class="card ctlcard">
         <div class="ctl">
           <button id="prev" aria-label="{{prev}}">‹</button>
           <div class="years" id="years"></div>
@@ -37,11 +38,12 @@
         <div class="hint">{{hint}}</div>
       </div>
     </div>
-    <aside class="card panel" id="panel"></aside>
+    <aside class="card sheet" id="sheet" data-s="half"><button class="grab" id="grab"><i></i><span id="grablbl"></span></button><div class="sheetscroll" id="sheetscroll"><div id="sheetinfo"></div><div class="panel" id="panel"></div></div></aside>
   </div>
   <div class="foot">{{footHtml}}</div>
 {{sourcesHtml}}
 </div>
+<div class="help" id="help" role="dialog" aria-modal="true" hidden><button class="helpx" id="helpx">×</button><div id="helpbody"></div></div>
 <script src="lib/d3.min.js"></script>
 <script src="lib/topojson-client.min.js"></script>
 <script>
@@ -99,9 +101,9 @@ g.append('path').attr('class','sphere').attr('d',path({type:'Sphere'}));
 g.append('path').attr('class','grat').attr('d',path(d3.geoGraticule10()));
 const gPoly=g.append('g'), gCk=g.append('g');
 let ckOn=true;
-const MK=()=>document.getElementById('map').clientWidth<640?2:1;
+const MK=()=>vscale()<0.6?2:1; let T=d3.zoomIdentity;
 let k=1;
-const zoom=d3.zoom().scaleExtent([1,12]).translateExtent([[0,0],[W,H]]).on('zoom',e=>{k=e.transform.k;g.attr('transform',e.transform);gCk.selectAll('g.inner').attr('transform',`scale(${MK()/k})`);});
+const zoom=d3.zoom().scaleExtent([1,12]).translateExtent([[0,0],[W,H]]).on('zoom',e=>{T=e.transform;k=e.transform.k;g.attr('transform',e.transform);gCk.selectAll('g.inner').attr('transform',`scale(${MK()/k})`);});
 svg.call(zoom).on('dblclick.zoom',null);
 const zby=f=>{ try{ svg.transition().duration(250).call(zoom.scaleBy,f); }catch(e){ svg.call(zoom.scaleBy,f); } };
 document.getElementById('zin').addEventListener('click',e=>{e.preventDefault();zby(1.6);});
@@ -150,7 +152,7 @@ function showInfo(d){
     (p.c?`<div class="warn">${esc(UI.contested)}</div>`:'')+
     (p.f?`<div class="fix">${esc(UI.fix)}: ${esc(fixText(p.f))}</div>`:'');
   void v;
-  info.style.display='block';
+  info.style.display='block'; infoShown();
   info.querySelector('.x').onclick=()=>{info.style.display='none';if(selEl)selEl.classList.remove('sel');};
 }
 const ckList=()=>meta.choke[year].map(c=>({...c,...content.choke[c.id][year]}));
@@ -165,7 +167,7 @@ function showCk(c){
    (c.patched?`<div class="meta">${esc(UI.ckPatchedLong)}</div>`:'')+
    (c.absent?`<div class="meta">${esc(UI.ckAbsentLong)}</div>`:'')+
    (ckVis(c)?`<div class="warn">${esc(UI.ckDiffLong).replace('{map}',mapLabel)}</div>`:'');
-  info.style.display='block';
+  info.style.display='block'; infoShown();
   info.querySelector('.x').onclick=()=>{info.style.display='none';};
 }
 function drawCk(){
@@ -268,6 +270,7 @@ function renderPanel(){
   const tail=(tab==='powers'?'':`<div class="note"><h4>${esc(UI.readMore)}</h4><div class="links">${c.links.map(([t,u])=>`<a href="${u}" target="_blank" rel="noopener">${esc(t)}</a>`).join('')}</div></div>`+
     verifySection()+ckSection()+
     (groups.length?`<div class="note"><h4>${esc(UI.fixesTitle)}</h4><ul>${groups.map(([f,ns])=>`<li>${esc(fixText(f))} — <span style="color:var(--muted)">${esc(ns.slice(0,8).join(', '))}${ns.length>8?esc(fmt(UI.andMore,{n:ns.length-8})):''}</span></li>`).join('')}</ul></div>`:''));
+  document.getElementById('grablbl').textContent=`${year} · ${c.title}`;
   document.getElementById('panel').innerHTML=
     `<div class="era">${esc(prevY?fmt(UI.era,{prev:prevY,year}):fmt(UI.eraFirst,{year}))}</div><h2>${esc(c.title)}</h2>`+
     `<div class="tabs" role="tablist">${TABS.map((k2,j)=>`<button role="tab" data-t="${k2}" class="${tab===k2?'on':''}" aria-selected="${tab===k2}">${esc(UI.tabs[j])}</button>`).join('')}</div>`+
@@ -292,6 +295,29 @@ document.getElementById('prev').onclick=()=>step(-1);
 document.getElementById('next').onclick=()=>step(1);
 window.addEventListener('keydown',e=>{if(e.key==='ArrowRight')step(1);if(e.key==='ArrowLeft')step(-1);});
 window.addEventListener('hashchange',()=>{const m=location.hash.match(/^#y(\d{4})$/);if(m&&byYear[+m[1]]&&+m[1]!==year)setYear(+m[1]);});
+// ---- 휴대폰 배치(폭 760px 이하): 지도를 크게 고정하고, 해설은 아래에서 끌어올리는 패널로, 안내·출처는 도움말로 옮긴다
+const MQ=matchMedia('(max-width:760px)'), sheet=document.getElementById('sheet'), help=document.getElementById('help'), helpBody=document.getElementById('helpbody'), mapEl=document.getElementById('map');
+function isM(){ return document.body.classList.contains('m'); }
+function vscale(){ const el=document.getElementById('map'), cw=el.clientWidth||W, ch=el.clientHeight||H; return isM()?Math.max(cw/W,ch/H):cw/W; }
+function fitZoom(){ const cw=mapEl.clientWidth||W, ch=mapEl.clientHeight||H; if(!isM()){ zoom.extent([[0,0],[W,H]]).scaleExtent([1,12]); svg.call(zoom.transform,T); return; }
+  const s=Math.max(cw/W,ch/H), vw=cw/s, vh=ch/s; zoom.extent([[(W-vw)/2,(H-vh)/2],[(W+vw)/2,(H+vh)/2]]).scaleExtent([Math.min(1,cw/W/s),12]); svg.call(zoom.transform,T); }
+const SHEETS=['peek','half','full']; function setSheet(s){ sheet.dataset.s=s; document.getElementById('grab').setAttribute('aria-expanded',s!=='peek'); }
+function infoShown(){ if(!isM()) return; if(sheet.dataset.s==='peek') setSheet('half'); document.getElementById('sheetscroll').scrollTop=0; }
+{ const grab=document.getElementById('grab'); let y0=null;
+  grab.addEventListener('pointerdown',e=>{y0=e.clientY;grab.setPointerCapture(e.pointerId);});
+  grab.addEventListener('pointerup',e=>{ if(y0===null) return; const dy=e.clientY-y0, i=SHEETS.indexOf(sheet.dataset.s); y0=null;
+    if(Math.abs(dy)<12) setSheet(i===0?'half':i===1?'full':'half'); else setSheet(SHEETS[Math.max(0,Math.min(2,i+(dy<0?1:-1)))]); });
+  grab.addEventListener('pointercancel',()=>{y0=null;}); }
+const homes=new Map(); const moveTo=(el,to)=>{ if(!el) return; if(!homes.has(el)) homes.set(el,[el.parentNode,el.nextSibling]); to.appendChild(el); };
+function applyMode(){ const m=MQ.matches; if(m===isM()&&homes.size) return; document.body.classList.toggle('m',m);
+  mapEl.setAttribute('preserveAspectRatio',m?'xMidYMid slice':'xMidYMid meet');
+  if(m){ setBig(false); for(const el of [document.querySelector('nav.langs'),document.querySelector('.hint'),document.querySelector('.foot'),...document.querySelectorAll('.srcs')]) moveTo(el,helpBody); moveTo(info,document.getElementById('sheetinfo')); }
+  else { for(const [el,[p,nx]] of [...homes].reverse()) p.insertBefore(el,nx&&nx.parentNode===p?nx:null); homes.clear(); help.hidden=true; }
+  requestAnimationFrame(fitZoom); }
+document.getElementById('helpbtn').setAttribute('aria-label',UI.help); document.getElementById('helpbtn').onclick=()=>{help.hidden=false;help.scrollTop=0;};
+document.getElementById('helpx').setAttribute('aria-label',UI.close); document.getElementById('helpx').onclick=()=>{help.hidden=true;};
+MQ.addEventListener('change',applyMode); new ResizeObserver(()=>{ if(isM()) fitZoom(); }).observe(mapEl);
+applyMode();
 setYear(year);
 })();
 </script>

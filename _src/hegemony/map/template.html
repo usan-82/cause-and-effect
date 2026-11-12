@@ -13,7 +13,7 @@
 </head>
 <body>
 <div class="wrap">
-  <header><h1>{{title}}</h1><p>{{subtitle}}</p><a class="to" href="../atlas/">{{atlasLink}}</a><nav class="langs" aria-label="{{langAria}}">{{langs}}</nav></header>
+  <header><h1>{{title}}</h1><p>{{subtitle}}</p><a class="to" href="../atlas/">{{atlasLink}}</a><nav class="langs" aria-label="{{langAria}}">{{langs}}</nav><button class="helpbtn" id="helpbtn" aria-haspopup="dialog">?</button></header>
   <div class="layout">
     <div>
       <div class="card mapcard">
@@ -23,7 +23,7 @@
         <div class="info" id="info"></div>
         <div class="loading" id="loading">{{loading}}</div>
       </div>
-      <div class="card" style="margin-top:10px">
+      <div class="card ctlcard">
         <div class="ctl"><button id="prev">‹</button><input type="range" id="slider" min="0" value="0" step="1"><button id="next">›</button></div>
         <div class="years" id="years"></div>
         <div class="supbar"><button id="supbtn" role="switch" aria-checked="false"><span class="sw"></span><span id="suplbl"></span></button><span class="supnote" id="supnote"></span></div>
@@ -31,12 +31,13 @@
         <div class="hint">{{hint}}</div>
       </div>
     </div>
-    <aside class="card panel" id="panel"></aside>
+    <aside class="card sheet" id="sheet" data-s="peek"><button class="grab" id="grab"><i></i><span id="grablbl"></span></button><div class="sheetscroll" id="sheetscroll"><div id="sheetinfo"></div><div class="panel" id="panel"></div></div></aside>
   </div>
   <div class="foot">{{footHtml}}</div>
   <div class="srcs"><h4>{{sourcesTitle}}</h4>{{sourcesHtml}}</div>
   <div class="srcs gloss"><h4>{{glossTitle}}</h4>{{glossHtml}}</div>
 </div>
+<div class="help" id="help" role="dialog" aria-modal="true" hidden><button class="helpx" id="helpx">×</button><div id="helpbody"></div></div>
 <script src="lib/d3.min.js"></script>
 <script src="lib/topojson-client.min.js"></script>
 <script>
@@ -82,7 +83,7 @@ zb.onclick=()=>setBig(!document.body.classList.contains('bigmap'));
 ['zin','zout','prev','next'].forEach((id,i)=>document.getElementById(id).setAttribute('aria-label',[UI.zoomIn,UI.zoomOut,UI.prev,UI.next][i]));
 
 const info=document.getElementById('info');
-function show(html){info.innerHTML=`<button class="x" aria-label="${esc(UI.close)}">×</button>`+html;info.style.display='block';info.querySelector('.x').onclick=()=>{info.style.display='none';clearSel();};}
+function show(html){info.innerHTML=`<button class="x" aria-label="${esc(UI.close)}">×</button>`+html;info.style.display='block'; if(isM()){ if(sheet.dataset.s==='peek') setSheet('half'); document.getElementById('sheetscroll').scrollTop=0; }info.querySelector('.x').onclick=()=>{info.style.display='none';clearSel();};}
 function clearSel(){if(selEl)selEl.classList.remove('sel');selEl=null;}
 const fillOf=e=>e.ns?'url(#dots)':e.c;
 const supTop=s=>supOn&&s.sup?s.sup.top:[];
@@ -113,7 +114,7 @@ function dispInfo(p){
 }
 let LBL=[];
 function layoutLabels(){
-  const cw=document.getElementById('map').clientWidth||W, fs=Math.min(30,(small()?10.5:11.5)*W/cw), placed=[]; const maxN=Math.round((small()?16:34)*Math.pow(k,1.25));
+  const fs=Math.min(30,(small()?10.5:11.5)/vscale()), placed=[]; const maxN=Math.round((small()?16:34)*Math.pow(k,1.25));
   gL.selectAll('text').each(function(d,i){
     const el=d3.select(this); if(i>=maxN||(focus!==null&&d.id!==focus&&false)){el.attr('display','none');return;}
     const sx=T.applyX(d.x), sy=T.applyY(d.y); const size=fs*(d.rank<6?1.25:d.rank<16?1.08:1), w=d.text.length*size*(/[가-힣]/.test(d.text)?0.95:0.56)+6, hh=size+4;
@@ -158,6 +159,7 @@ function renderPanel(){
   const li=o=>`<li data-id="${o.id}" class="${focus===o.id?'on':''}"><i class="${o.sp?'sp':''}" style="background-color:${o.e.ns?'var(--land)':o.e.c}"></i><span>${nm2(o.e)}</span><span class="a">${km(o.a)}</span></li>`;
   const src=s.src==='hb'?UI.srcHb:s.src==='cs'?fmt(UI.srcCs,{date:s.date}):UI.srcNe;
   const next=SN[cur+1];
+  document.getElementById('grablbl').textContent=`${yl(s.y)} · ${fmt(UI.count,{n:st.length,m:ns.length})}`;
   document.getElementById('panel').innerHTML=
     `<h2>${esc(yl(s.y))}</h2><p class="sub">${esc(fmt(UI.count,{n:st.length,m:ns.length}))}${focus!==null?` · <button class="linkbtn" id="unf">${esc(UI.showAll)}</button>`:''}</p>`+
     `<p class="src">${esc(src)}${next&&s.src==='hb'?' '+esc(fmt(UI.gapNext,{y:yl(next.y)}))+'.':''}</p>`+
@@ -193,7 +195,7 @@ function drawDispList(d){ const el=document.getElementById('displist'); if(!el) 
   el.innerHTML=`<div class="sec"><h3>${esc(fmt(UI.dispTitle,{n:d.length}))}</h3><p class="sub">${esc(UI.dispNote)}</p><ul class="disp">${[...major,...rest].map((x,i)=>`<li data-i="${d.indexOf(x)}">▨ ${esc(x.properties.ko||x.properties.n)}</li>`).join('')}</ul></div>`;
   el.querySelectorAll('li').forEach(l=>l.onclick=()=>{const p=d[+l.dataset.i].properties; show(dispInfo(p)); const [x,y]=proj(p.ll); flyTo(x,y,Math.max(k,8));});
 }
-function flyTo(x,y,z){ svg.transition().duration(600).call(zoom.transform,d3.zoomIdentity.translate(W/2,H/2).scale(z).translate(-x,-y)); document.querySelector('.mapcard').scrollIntoView({behavior:'smooth',block:'nearest'}); }
+function flyTo(x,y,z){ svg.transition().duration(600).call(zoom.transform,d3.zoomIdentity.translate(W/2,H/2).scale(z).translate(-x,-y)); if(!isM()) document.querySelector('.mapcard').scrollIntoView({behavior:'smooth',block:'nearest'}); }
 function pick(id){ focus=focus===id?null:id; for(const G of [gP,gS]) G.selectAll('path').classed('dimmed',d=>focus!==null&&d.properties.e!==focus); renderPanel();
   if(focus!==null){ show(areaOf(id)?entInfo(id,null):supInfo(id,null)); const ll=labelOf(id); if(ll){const [x,y]=proj(ll); const a=areaOf(id)||supAreaOf(id); flyTo(x,y,a>8e6?1.6:a>2e6?2.6:a>4e5?4.5:8);} } }
 function renderKey(){ document.getElementById('key').innerHTML=`<span><i style="background:var(--land)"></i>${esc(UI.noRecord)}</span><span><svg width="16" height="12"><rect width="16" height="12" rx="3" fill="url(#dots)" stroke="var(--landline)"/></svg>${esc(UI.nsTitle.split('(')[0])}</span>`+(supOn&&SN[cur].sup?`<span><i class="sp" style="background-color:var(--muted)"></i>${esc(UI.supKey)}</span>`:'')+(SN[cur].src==='ne'?`<span><svg width="16" height="12"><rect width="16" height="12" rx="3" fill="url(#hatch)" stroke="var(--ink)"/></svg>${esc(fmt(UI.dispTitle,{n:''}).replace(/\s*곳$/,''))}</span>`:''); }
@@ -208,7 +210,29 @@ const sl=document.getElementById('slider'); sl.max=SN.length-1; sl.oninput=()=>g
 document.getElementById('prev').onclick=()=>go(cur-1); document.getElementById('next').onclick=()=>go(cur+1);
 window.addEventListener('keydown',e=>{ if(e.target.tagName==='INPUT'&&e.target.type!=='range') return; if(e.key==='ArrowRight')go(cur+1); if(e.key==='ArrowLeft')go(cur-1); if(e.key==='Escape')setBig(false); });
 window.addEventListener('resize',layoutLabels);
+// ---- 휴대폰 배치(폭 760px 이하): 지도를 크게 고정하고, 목록·설명은 아래에서 끌어올리는 패널로, 안내·출처는 도움말로 옮긴다
+const MQ=matchMedia('(max-width:760px)'), sheet=document.getElementById('sheet'), help=document.getElementById('help'), helpBody=document.getElementById('helpbody'), mapEl=document.getElementById('map');
+function isM(){ return document.body.classList.contains('m'); }
+function vscale(){ const cw=mapEl.clientWidth||W, ch=mapEl.clientHeight||H; return isM()?Math.max(cw/W,ch/H):cw/W; } // 화면 px ÷ 지도 좌표
+function fitZoom(){ const cw=mapEl.clientWidth||W, ch=mapEl.clientHeight||H; if(!isM()){ zoom.extent([[0,0],[W,H]]).scaleExtent([1,40]); svg.call(zoom.transform,T); return; }
+  const s=Math.max(cw/W,ch/H), vw=cw/s, vh=ch/s; zoom.extent([[(W-vw)/2,(H-vh)/2],[(W+vw)/2,(H+vh)/2]]).scaleExtent([Math.min(1,cw/W/s),40]); svg.call(zoom.transform,T); layoutLabels(); }
+const ORDER=['peek','half','full']; function setSheet(s){ sheet.dataset.s=s; document.getElementById('grab').setAttribute('aria-expanded',s!=='peek'); }
+{ const grab=document.getElementById('grab'); let y0=null, moved=false;
+  grab.addEventListener('pointerdown',e=>{y0=e.clientY;moved=false;grab.setPointerCapture(e.pointerId);});
+  grab.addEventListener('pointerup',e=>{ if(y0===null) return; const dy=e.clientY-y0, i=ORDER.indexOf(sheet.dataset.s); y0=null;
+    if(Math.abs(dy)<12) setSheet(i===0?'half':i===1?'full':'half'); else setSheet(ORDER[Math.max(0,Math.min(2,i+(dy<0?1:-1)))]); });
+  grab.addEventListener('pointercancel',()=>{y0=null;}); }
+const homes=new Map(); const moveTo=(el,to)=>{ if(!el) return; if(!homes.has(el)) homes.set(el,[el.parentNode,el.nextSibling]); to.appendChild(el); };
+function applyMode(){ const m=MQ.matches; if(m===isM()&&homes.size) return; document.body.classList.toggle('m',m);
+  mapEl.setAttribute('preserveAspectRatio',m?'xMidYMid slice':'xMidYMid meet');
+  if(m){ setBig(false); for(const el of [document.querySelector('nav.langs'),document.querySelector('header a.to'),document.getElementById('key'),document.querySelector('.hint'),document.querySelector('.foot'),...document.querySelectorAll('.srcs')]) moveTo(el,helpBody); moveTo(info,document.getElementById('sheetinfo')); }
+  else { for(const [el,[p,nx]] of [...homes].reverse()) p.insertBefore(el,nx&&nx.parentNode===p?nx:null); homes.clear(); help.hidden=true; }
+  requestAnimationFrame(fitZoom); }
+document.getElementById('helpbtn').setAttribute('aria-label',UI.help); document.getElementById('helpbtn').onclick=()=>{help.hidden=false;help.scrollTop=0;};
+document.getElementById('helpx').setAttribute('aria-label',UI.close); document.getElementById('helpx').onclick=()=>{help.hidden=true;};
+MQ.addEventListener('change',applyMode); new ResizeObserver(()=>{ if(isM()) fitZoom(); }).observe(mapEl);
 const hm=(location.hash||'').match(/^#y(bc)?(\d+)$/); if(hm){const y=(hm[1]?-1:1)*+hm[2]; const i=SN.findIndex(s=>s.y===y); if(i>=0) cur=i;}
+applyMode();
 go(cur);
 })();
 </script>

@@ -31,7 +31,7 @@ header h1{font-size:22px}
 header p{margin:0;color:var(--ink2);font-size:13px}
 .layout{display:grid;gap:14px}
 .layout>*{min-width:0}
-@media(min-width:1000px){.layout{grid-template-columns:minmax(0,1.55fr) minmax(360px,1fr);align-items:start}.panel{position:sticky;top:12px;max-height:calc(100vh - 24px);overflow:auto}}
+@media(min-width:1000px){.layout{grid-template-columns:minmax(0,1.55fr) minmax(360px,1fr);align-items:start}.sheet{position:sticky;top:12px;max-height:calc(100vh - 24px);overflow:auto}}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:12px}
 .mapcard{position:relative;overflow:hidden}
 #map{display:block;width:100%;height:auto;touch-action:none;cursor:grab;background:var(--ocean)}
@@ -161,3 +161,46 @@ sup.fn a{text-decoration:none;font-weight:700;padding:0 2px}
 .srcs a{overflow-wrap:anywhere}
 
 .gloss dl{margin:0}.gloss dt{font-weight:700;color:var(--ink);margin-top:7px}.gloss dd{margin:0;line-height:1.7}
+
+.ctlcard{margin-top:10px}
+.helpbtn,.grab{display:none}
+.help[hidden]{display:none}
+/* ---- 휴대폰 배치(template.html의 applyMode가 body.m을 붙인다) ---- */
+body.m{overflow:hidden;overscroll-behavior:none}
+body.m .wrap{padding:0;max-width:none;height:100vh;height:100dvh;display:flex;flex-direction:column}
+body.m header{margin:0;padding:8px 10px 8px 14px;flex:0 0 auto;flex-wrap:nowrap;align-items:center;gap:8px}
+body.m header h1{font-size:16px;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+body.m header p{display:none}
+body.m .helpbtn{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:700 16px var(--sans),sans-serif;cursor:pointer}
+body.m .layout{flex:1;min-height:0;display:flex;flex-direction:column;gap:0}
+body.m .layout>div:first-child{flex:1;min-height:0;display:flex;flex-direction:column}
+body.m .card{border-radius:0;border-left:0;border-right:0}
+body.m .mapcard{flex:1;min-height:110px}
+body.m #map{position:absolute;inset:0;width:100%;height:100%}
+body.m #zin,body.m #zout,body.m #zbig{display:none}
+body.m .zoom{right:8px;top:8px}
+body.m .ctlcard{margin:0;border-top:0;border-bottom:0;flex:0 0 auto}
+body.m .ctl{padding:6px 8px 0;gap:6px}
+body.m .ctl button{min-width:40px;height:40px;font-size:19px}
+body.m .years{padding:2px 2px 6px}
+body.m .years button{min-height:36px}
+body.m .legend{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding:0 8px 8px}
+body.m .legend::-webkit-scrollbar{display:none}
+body.m .legend>*{flex:0 0 auto}
+body.m .sheet{flex:0 0 auto;height:52px;display:flex;flex-direction:column;border-radius:16px 16px 0 0!important;border-bottom:0;box-shadow:0 -4px 16px rgba(0,0,0,.10);overflow:hidden;transition:height .18s ease-out}
+body.m .sheet[data-s=half]{height:46vh;height:46dvh}
+body.m .sheet[data-s=full]{height:calc(100vh - 272px);height:calc(100dvh - 272px)}
+body.m .grab{display:flex;flex-direction:column;align-items:center;gap:5px;flex:0 0 52px;width:100%;border:0;background:none;color:var(--ink2);font:500 12.5px var(--sans),sans-serif;cursor:grab;touch-action:none;padding:7px 12px 0}
+body.m .grab i{width:40px;height:4px;border-radius:2px;background:var(--line)}
+body.m .grab span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+body.m .sheetscroll{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+body.m .sheet[data-s=peek] .sheetscroll{visibility:hidden}
+body.m .panel{padding:4px 14px 24px}
+body.m .info{position:relative;left:auto;right:auto;bottom:auto;margin:0 10px 8px;box-shadow:none}
+body.m .help{position:fixed;inset:0;z-index:60;background:var(--bg);overflow:auto;padding:14px 16px 40px}
+body.m .helpx{position:sticky;top:0;float:right;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:22px;cursor:pointer}
+body.m .help .langs{margin:4px 0 12px}
+body.m .help .hint{padding:0;font-size:13.5px;color:var(--ink2);margin-bottom:8px}
+body.m .help .foot{font-size:13px}
+body.m .lgtitle{display:none}
+body.m .legend .chip{min-height:34px}

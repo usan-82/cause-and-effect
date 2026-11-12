@@ -19,7 +19,7 @@ a{color:var(--accent)}
 header{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:12px}
 header h1{font-size:22px} header p{margin:0;color:var(--ink2);font-size:13px} header a.to{margin-left:auto;font-size:13px;text-decoration:none}
 .layout{display:grid;gap:14px}.layout>*{min-width:0}
-@media(min-width:1000px){.layout{grid-template-columns:minmax(0,1.7fr) minmax(330px,1fr);align-items:start}.panel{position:sticky;top:12px;max-height:calc(100vh - 24px);overflow:auto}}
+@media(min-width:1000px){.layout{grid-template-columns:minmax(0,1.7fr) minmax(330px,1fr);align-items:start}.sheet{position:sticky;top:12px;max-height:calc(100vh - 24px);overflow:auto}}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:12px}
 .mapcard{position:relative;overflow:hidden}
 #map{display:block;width:100%;height:auto;touch-action:none;cursor:grab;background:var(--ocean)}
@@ -97,11 +97,55 @@ i.sp{background-image:repeating-linear-gradient(-45deg,transparent 0 2px,rgba(25
 details.fixes{margin-top:12px}details.fixes li{display:block;cursor:pointer;padding:5px 0}details.fixes li b{color:var(--ink)}
 .langs{display:flex;gap:10px;font-size:13px;flex-wrap:wrap}.langs span{font-weight:700}.langs a{color:var(--ink2);text-decoration:none}.langs a:hover{text-decoration:underline}
 
+.ctlcard{margin-top:10px}
+.helpbtn,.grab{display:none}
+.help[hidden]{display:none}
+/* ---- 휴대폰 배치(template.html의 applyMode가 body.m을 붙인다) ---- */
+body.m{overflow:hidden;overscroll-behavior:none}
+body.m .wrap{padding:0;max-width:none;height:100vh;height:100dvh;display:flex;flex-direction:column}
+body.m header{margin:0;padding:8px 10px 8px 14px;flex:0 0 auto;flex-wrap:nowrap;align-items:center;gap:8px}
+body.m header h1{font-size:16px;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+body.m header p{display:none}
+body.m .helpbtn{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:700 16px var(--sans);cursor:pointer}
+body.m .layout{flex:1;min-height:0;display:flex;flex-direction:column;gap:0}
+body.m .layout>div:first-child{flex:1;min-height:0;display:flex;flex-direction:column}
+body.m .card{border-radius:0;border-left:0;border-right:0}
+body.m .mapcard{flex:1;min-height:110px}
+body.m #map{position:absolute;inset:0;width:100%;height:100%}
+body.m #zin,body.m #zout,body.m #zbig{display:none}
+body.m .zoom{right:8px;top:8px}
+body.m .ctlcard{margin:0;border-top:0;border-bottom:0;flex:0 0 auto;display:flex;align-items:center;gap:6px;padding:6px 8px}
+body.m .ctl{flex:1;min-width:0;padding:0;gap:6px}
+body.m .ctl button{min-width:44px;height:44px;font-size:20px}
+body.m .ctl input[type=range]{height:44px}
+body.m .years,body.m .supnote{display:none}
+body.m .supbar{padding:0;flex:0 0 auto}
+body.m #supbtn{min-height:44px;padding:5px 10px 5px 6px;font-size:12px;white-space:nowrap}
+body.m .sheet{flex:0 0 auto;height:52px;display:flex;flex-direction:column;border-radius:16px 16px 0 0!important;border-bottom:0;box-shadow:0 -4px 16px rgba(0,0,0,.10);overflow:hidden;transition:height .18s ease-out}
+body.m .sheet[data-s=half]{height:46vh;height:46dvh}
+body.m .sheet[data-s=full]{height:calc(100vh - 226px);height:calc(100dvh - 226px)}
+body.m .grab{display:flex;flex-direction:column;align-items:center;gap:5px;flex:0 0 52px;width:100%;border:0;background:none;color:var(--ink2);font:500 12.5px var(--sans);cursor:grab;touch-action:none;padding:7px 12px 0}
+body.m .grab i{width:40px;height:4px;border-radius:2px;background:var(--landline)}
+body.m .grab span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+body.m .sheetscroll{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+body.m .sheet[data-s=peek] .sheetscroll{visibility:hidden}
+body.m .panel{padding:4px 14px 24px}
+body.m .panel h2{display:none}
+body.m .info{position:relative;left:auto;right:auto;bottom:auto;margin:0 10px 8px;box-shadow:none;max-height:none;background:color-mix(in srgb,var(--accent) 7%,var(--surface))}
+body.m ul.ents li{padding:9px 6px}
+body.m .help{position:fixed;inset:0;z-index:60;background:var(--bg);overflow:auto;padding:14px 16px 40px}
+body.m .helpx{position:sticky;top:0;float:right;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:22px;cursor:pointer}
+body.m .help .langs{margin:4px 0 10px}
+body.m .help a.to{display:block;margin:0 0 12px;font-size:14px}
+body.m .help .key{padding:0;margin:0 0 8px}
+body.m .help .hint{padding:0;font-size:13.5px;color:var(--ink2);margin-bottom:6px}
+body.m .help .foot{font-size:13px}
+
 </style>
 </head>
 <body>
 <div class="wrap">
-  <header><h1>World Territory Map 3000 BCE – 2026</h1><p>Move the timeline to see the states and territories of each period</p><a class="to" href="../atlas/">Atlas of Hegemony 1492–2010 →</a><nav class="langs" aria-label="Language"><a href="../../../ko/hegemony/map/" hreflang="ko" lang="ko">한국어</a><span aria-current="page">English</span><a href="../../../id/hegemony/map/" hreflang="id" lang="id">Bahasa Indonesia</a></nav></header>
+  <header><h1>World Territory Map 3000 BCE – 2026</h1><p>Move the timeline to see the states and territories of each period</p><a class="to" href="../atlas/">Atlas of Hegemony 1492–2010 →</a><nav class="langs" aria-label="Language"><a href="../../../ko/hegemony/map/" hreflang="ko" lang="ko">한국어</a><span aria-current="page">English</span><a href="../../../id/hegemony/map/" hreflang="id" lang="id">Bahasa Indonesia</a></nav><button class="helpbtn" id="helpbtn" aria-haspopup="dialog">?</button></header>
   <div class="layout">
     <div>
       <div class="card mapcard">
@@ -111,7 +155,7 @@ details.fixes{margin-top:12px}details.fixes li{display:block;cursor:pointer;padd
         <div class="info" id="info"></div>
         <div class="loading" id="loading">Loading map…</div>
       </div>
-      <div class="card" style="margin-top:10px">
+      <div class="card ctlcard">
         <div class="ctl"><button id="prev">‹</button><input type="range" id="slider" min="0" value="0" step="1"><button id="next">›</button></div>
         <div class="years" id="years"></div>
         <div class="supbar"><button id="supbtn" role="switch" aria-checked="false"><span class="sw"></span><span id="suplbl"></span></button><span class="supnote" id="supnote"></span></div>
@@ -119,17 +163,18 @@ details.fixes{margin-top:12px}details.fixes li{display:block;cursor:pointer;padd
         <div class="hint">Each state has one colour, and states that share a border always differ in colour. States that continue under a new dynasty or name (e.g. Han, Tang, Ming, Qing; Russian Empire, Russia) keep the same colour. Land without colour is where no record of a state was found for that period. Dots mark areas recorded as a culture or people rather than a state; hatching marks disputed areas. Tap a state on the map or in the list for details.</div>
       </div>
     </div>
-    <aside class="card panel" id="panel"></aside>
+    <aside class="card sheet" id="sheet" data-s="peek"><button class="grab" id="grab"><i></i><span id="grablbl"></span></button><div class="sheetscroll" id="sheetscroll"><div id="sheetinfo"></div><div class="panel" id="panel"></div></div></aside>
   </div>
   <div class="foot"><b>Points to keep in mind</b><br>· Before 1886 there are only 37 points in time, and changes between them are not drawn. Borders there are rough spheres of power, not modern boundary lines.<br>· States missing from the source data could not be shown. No colour does not mean nobody lived there or no state existed; it means no record was found in the sources this map uses.<br>· Source corrections: wrong or missing ownership in the source (historical-basemaps) and anachronistic state names were checked and fixed. Each fix is listed with its reason under ‘Source corrections’ for that year, and also appears when you tap the place. For 1492–1880 the colonies and strategic points of the great powers follow the corrections checked in the <a href="../atlas/">Atlas of Hegemony</a>, and boundary corrections found later are applied to both maps alike. For other years, each disagreement with Cliopatria was checked against the historical record. In 21 cases where the boundary itself was wrong (e.g. the Jin in northern China in 1200, the Ming and Northern Yuan in 1400, Iraq in 1530, Qing Mongolia in 1700) the boundary was borrowed from Cliopatria, so agreement there is true by construction.<br>· Where this map differs from the Atlas of Hegemony: this map follows legal sovereignty, so the British dominions (Canada, Australia, etc.) in 1914 and 1920 are independent states, and Manchukuo and Ethiopia (1938) and Indonesia (1945) follow the CShapes coding. The atlas follows effective influence and colours them British, Japanese, Italian and Dutch. Aragon in 1492 is also drawn apart from Castile here.<br>· Not yet fixed: the Central Asian steppe in 1600–1783 (the source lumps it into ‘central Asian khanates’; only the Qing and Russian parts were corrected) and Ottoman lands the source leaves unnamed and blank (inner Arabia and North Africa) remain under ‘Where the two differ’ in the cross-check section.<br>· The split between dotted areas (cultures and peoples) and states was made mechanically from names and may be inexact. Indigenous groups of the Americas and Australia are mostly coloured under their own names.<br>· For 2026, disputed areas are coloured by priority: United Nations → United States → South Korea. UN map data could not be obtained, so UN practice was compiled by hand from resolutions and convention. US and Korean depictions were read from Natural Earth's point-of-view maps.<br>· The 2026 map colours the 193 UN member states (as of September 2026), the observer states (the Holy See and Palestine) and Western Sahara, a UN non-self-governing territory, separately. No member state has been added or removed since 2019.<br>· Cross-check: the finished map was compared with the independent Cliopatria dataset (Seshat, 3400 BCE–2024) on a 0.5° grid, and the result is shown for each year under ‘Cross-check’. Four errors found this way were fixed: Greenland (Danish) was missing from the 1886–2019 maps; the Mongol Empire was lumped into one in 1300 and 1400 and is now split by khanate; the four administrative divisions of Rome in 300 were merged into one Roman Empire; and the Inca Empire still shown in 1600 was changed to Spanish.<br>· Cliopatria supplement: switching it on fills land with no record in this map's source (blank land and areas recorded only as cultures) with Cliopatria's polities, shown hatched. Places this map already colours as states are untouched. Supplemented areas copy Cliopatria's boundaries as they are, so they are not cross-checked, and because the criteria differ they may not meet neighbouring states cleanly. Thin slivers caused by mismatched coastlines and borders (narrower than about 30 km or smaller than 8,000 km²) are removed. Cross-check figures always refer to the base map, with or without the supplement.<br>· Areas are approximations computed by sampling the map on a 0.5° grid.</div>
   <div class="srcs"><h4>Sources</h4><ol><li><a href="https://github.com/aourednik/historical-basemaps" target="_blank" rel="noopener">Borders, 3000 BCE–1880: historical-basemaps, André Ourednik et al. (GPL-3.0)</a></li><li><a href="https://icr.ethz.ch/data/cshapes/" target="_blank" rel="noopener">Borders and colonies, 1886–2019: CShapes 2.0, Schvitz et al. (2022)</a></li><li><a href="https://www.naturalearthdata.com/" target="_blank" rel="noopener">2026 borders, US and Korean points of view, disputed areas: Natural Earth (public domain)</a></li><li><a href="https://github.com/Seshat-Global-History-Databank/cliopatria" target="_blank" rel="noopener">Independent data for cross-checking: Cliopatria, Seshat Global History Databank (CC BY 4.0)</a></li><li><a href="https://github.com/topojson/world-atlas" target="_blank" rel="noopener">Base land: world-atlas (Natural Earth 110m)</a></li><li><a href="https://en.wikipedia.org/wiki/Enlargement_of_the_United_Nations" target="_blank" rel="noopener">Number of UN member states (193 as of September 2026): Wikipedia, Enlargement of the United Nations</a></li></ol></div>
   <div class="srcs gloss"><h4>Glossary</h4><dl><dt>Cliopatria</dt><dd>A dataset of historical borders published by the Seshat team, giving the extent of each polity year by year from 3400 BCE to 2024. Here it is the comparison source for the cross-check and the material for the ‘Cliopatria supplement’.</dd><dt>Seshat</dt><dd>An international research database that gathers historical data from around the world into one comparable framework (Seshat: Global History Databank). It produced Cliopatria.</dd><dt>historical-basemaps</dt><dd>An open dataset of world borders by period. The 37 years up to 1880 on this map come from it. It is made by an individual and volunteers, so precision varies by period.</dd><dt>CShapes 2.0</dt><dd>An academic dataset (ETH Zurich) recording, by date, the borders of independent states and their colonies and dependencies for 1886–2019. The 15 years from 1886 to 2019 come from it.</dd><dt>Natural Earth</dt><dd>A public-domain world map dataset. It also provides ‘point-of-view’ maps showing how different countries draw disputed areas. The 2026 borders and the US and Korean depictions of disputed areas come from it.</dd><dt>Cross-check</dt><dd>Comparing two independent sources to find where they disagree. Here the finished map was compared with Cliopatria.</dd><dt>0.5° grid</dt><dd>The globe divided into cells of half a degree of latitude and longitude (about 55 km at the equator). Each cell was read to see which state it belongs to, in order to compare sources and compute areas. Areas are therefore approximate, and very small states carry large errors.</dd><dt>Agreement rate</dt><dd>Of the cells where both sources draw a state, the share they assign to corresponding states. Cases where one source draws a colony or vassal separately count as agreement; ‘the same units’ is the stricter figure that excludes them.</dd><dt>Cliopatria supplement</dt><dd>A layer that adds, hatched, the areas absent from this map's source and present only in Cliopatria. It is switched on and off, and is not cross-checked.</dd><dt>Source correction</dt><dd>A place where the source was wrong and was fixed after checking against other evidence: ownership changed, an anachronistic state name replaced or removed, a missing area drawn in, or a boundary borrowed from Cliopatria.</dd><dt>Cultures and peoples</dt><dd>Places the source records not as a state but as the range of a culture or people (e.g. hunter-gatherers, nomadic groups). Shown dotted, without a colour of their own.</dd><dt>Sphere of power</dt><dd>Before modern times there were no boundary lines of today's kind, so this means the rough extent of a state's reach.</dd><dt>Disputed area</dt><dd>A place two or more states claim, or where the state in control differs from the internationally recognised one. Hatched on the 2026 map.</dd><dt>Effective control</dt><dd>Actually governing a territory, regardless of whose it is in law.</dd><dt>UN observer state</dt><dd>A state that is not a UN member but takes part in the General Assembly as an observer: currently the Holy See and Palestine.</dd><dt>UN non-self-governing territory</dt><dd>A territory the UN lists as not yet having attained full self-government. Western Sahara is an example.</dd><dt>Protectorate / mandate / leased territory</dt><dd>A protectorate entrusts its diplomacy and defence to another state; a mandate is former enemy territory that the League of Nations assigned to a victor to administer after the First World War; a leased territory is land lent to another state for a fixed term.</dd></dl></div>
 </div>
+<div class="help" id="help" role="dialog" aria-modal="true" hidden><button class="helpx" id="helpx">×</button><div id="helpbody"></div></div>
 <script src="lib/d3.min.js"></script>
 <script src="lib/topojson-client.min.js"></script>
 <script>
 (async function(){
-const UI = {"bc":"{y} BCE","ad":"{y}","now":"October 2026","zoomIn":"Zoom in","zoomOut":"Zoom out","reset":"Reset","big":"Enlarge","bigExit":"Close","prev":"Previous","next":"Next","listTitle":"States at this time","count":"{n} states · {m} cultures and peoples","search":"Find a state","more":"Show more ({n} left)","nsTitle":"Cultures and peoples, not states (as labelled in the source)","showAll":"Show all","areaM":"{v} million km²","areaK":"{v}0,000 km²","areaS":"{v} km²","srcHb":"Data: historical-basemaps. Borders in this period are rough spheres of power.","srcCs":"Data: CShapes 2.0 (as of {date}). Colonies are coloured as their owner.","srcNe":"Data: Natural Earth. Disputed areas are coloured by priority UN → US → South Korea and hatched.","gapNext":"next data: {y}","region":"Region","belongs":"Belongs to","area":"Territory at this time: about {a}","prec":"Border precision (source)","precVals":["rough","medium","precise"],"status":{"colony":"colony","protectorate":"protectorate","mandate":"mandate","occupied":"occupied","N/A":"status unknown","leased":"leased territory"},"ns":"Recorded as a culture or people rather than a state.","noRecord":"No record found","noRecordLong":"The sources used by this map have no record of a state here {when}. That does not mean no state existed.","unApplied":"Coloured following UN practice.","dispTitle":"{n} disputed areas","dispNote":"The hatched places. Tap one to see how the UN, the US and South Korea each depict it.","un":"UN","us":"US map","kr":"Korean map","unNone":"UN practice could not be confirmed.","neNote":"Status (Natural Earth)","close":"Close","noteTr":[],"areaT":"under 1 km²","vTitle":"Cross-check","vText":"Compared with the independent Cliopatria dataset{yr}. On {a}% of the land where both sources draw a state, their boundaries correspond. On {s}% they also divide it into the same units.","vYr":" (as of 2024)","vCover":"Land drawn as a state — both: {b} · this map only: {m} · Cliopatria only: {c}","vOnlyC":"States with large areas drawn only in Cliopatria (blank or a culture area on this map)","vConf":"Where the two differ (this map ↔ Cliopatria)","vNote":"A difference does not mean this map is wrong. Both sources contain estimates, and results also depend on whether colonies and vassals are drawn separately.","supBtn":"Cliopatria supplement","supOff":"Off — switch on to fill land with no record on this map using Cliopatria.","supOn":"On — the {n} hatched areas ({a}) exist only in Cliopatria.","supNone":"On — nothing to supplement at this time.","supKey":"Supplemented from Cliopatria","supTitle":"{n} states supplemented from Cliopatria","supSub":"Areas absent from this map's source and present only in Cliopatria. Areas count the supplemented part only.","supTag":"supplement","supArea":"Supplemented area: about {a}","supName":"Name in Cliopatria: {n}","supOnly":"A state absent from this map's source. Its boundary is copied from Cliopatria and has not been cross-checked.","supSame":"A state that is on this map, but this part is drawn only in Cliopatria. Not cross-checked.","fxTag":"Corrected","fxTitle":"Source corrections: {n}","fxSub":"Places where the source's ownership was wrong or missing, checked and fixed. Tap one to go there."}; const LANG='en';
+const UI = {"bc":"{y} BCE","ad":"{y}","now":"October 2026","zoomIn":"Zoom in","zoomOut":"Zoom out","reset":"Reset","big":"Enlarge","bigExit":"Close","prev":"Previous","next":"Next","listTitle":"States at this time","count":"{n} states · {m} cultures and peoples","search":"Find a state","more":"Show more ({n} left)","nsTitle":"Cultures and peoples, not states (as labelled in the source)","showAll":"Show all","areaM":"{v} million km²","areaK":"{v}0,000 km²","areaS":"{v} km²","srcHb":"Data: historical-basemaps. Borders in this period are rough spheres of power.","srcCs":"Data: CShapes 2.0 (as of {date}). Colonies are coloured as their owner.","srcNe":"Data: Natural Earth. Disputed areas are coloured by priority UN → US → South Korea and hatched.","gapNext":"next data: {y}","region":"Region","belongs":"Belongs to","area":"Territory at this time: about {a}","prec":"Border precision (source)","precVals":["rough","medium","precise"],"status":{"colony":"colony","protectorate":"protectorate","mandate":"mandate","occupied":"occupied","N/A":"status unknown","leased":"leased territory"},"ns":"Recorded as a culture or people rather than a state.","noRecord":"No record found","noRecordLong":"The sources used by this map have no record of a state here {when}. That does not mean no state existed.","unApplied":"Coloured following UN practice.","dispTitle":"{n} disputed areas","dispNote":"The hatched places. Tap one to see how the UN, the US and South Korea each depict it.","un":"UN","us":"US map","kr":"Korean map","unNone":"UN practice could not be confirmed.","neNote":"Status (Natural Earth)","close":"Close","noteTr":[],"areaT":"under 1 km²","vTitle":"Cross-check","vText":"Compared with the independent Cliopatria dataset{yr}. On {a}% of the land where both sources draw a state, their boundaries correspond. On {s}% they also divide it into the same units.","vYr":" (as of 2024)","vCover":"Land drawn as a state — both: {b} · this map only: {m} · Cliopatria only: {c}","vOnlyC":"States with large areas drawn only in Cliopatria (blank or a culture area on this map)","vConf":"Where the two differ (this map ↔ Cliopatria)","vNote":"A difference does not mean this map is wrong. Both sources contain estimates, and results also depend on whether colonies and vassals are drawn separately.","supBtn":"Cliopatria supplement","supOff":"Off — switch on to fill land with no record on this map using Cliopatria.","supOn":"On — the {n} hatched areas ({a}) exist only in Cliopatria.","supNone":"On — nothing to supplement at this time.","supKey":"Supplemented from Cliopatria","supTitle":"{n} states supplemented from Cliopatria","supSub":"Areas absent from this map's source and present only in Cliopatria. Areas count the supplemented part only.","supTag":"supplement","supArea":"Supplemented area: about {a}","supName":"Name in Cliopatria: {n}","supOnly":"A state absent from this map's source. Its boundary is copied from Cliopatria and has not been cross-checked.","supSame":"A state that is on this map, but this part is drawn only in Cliopatria. Not cross-checked.","fxTag":"Corrected","fxTitle":"Source corrections: {n}","fxSub":"Places where the source's ownership was wrong or missing, checked and fixed. Tap one to go there.","help":"Help and sources"}; const LANG='en';
 const fmt=(s,o)=>s.replace(/\{(\w+)\}/g,(_,k)=>o[k]);
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const [IX, landT] = await Promise.all([fetch('index.json').then(r=>r.json()), fetch('data/land.json').then(r=>r.json())]);
@@ -170,7 +215,7 @@ zb.onclick=()=>setBig(!document.body.classList.contains('bigmap'));
 ['zin','zout','prev','next'].forEach((id,i)=>document.getElementById(id).setAttribute('aria-label',[UI.zoomIn,UI.zoomOut,UI.prev,UI.next][i]));
 
 const info=document.getElementById('info');
-function show(html){info.innerHTML=`<button class="x" aria-label="${esc(UI.close)}">×</button>`+html;info.style.display='block';info.querySelector('.x').onclick=()=>{info.style.display='none';clearSel();};}
+function show(html){info.innerHTML=`<button class="x" aria-label="${esc(UI.close)}">×</button>`+html;info.style.display='block'; if(isM()){ if(sheet.dataset.s==='peek') setSheet('half'); document.getElementById('sheetscroll').scrollTop=0; }info.querySelector('.x').onclick=()=>{info.style.display='none';clearSel();};}
 function clearSel(){if(selEl)selEl.classList.remove('sel');selEl=null;}
 const fillOf=e=>e.ns?'url(#dots)':e.c;
 const supTop=s=>supOn&&s.sup?s.sup.top:[];
@@ -201,7 +246,7 @@ function dispInfo(p){
 }
 let LBL=[];
 function layoutLabels(){
-  const cw=document.getElementById('map').clientWidth||W, fs=Math.min(30,(small()?10.5:11.5)*W/cw), placed=[]; const maxN=Math.round((small()?16:34)*Math.pow(k,1.25));
+  const fs=Math.min(30,(small()?10.5:11.5)/vscale()), placed=[]; const maxN=Math.round((small()?16:34)*Math.pow(k,1.25));
   gL.selectAll('text').each(function(d,i){
     const el=d3.select(this); if(i>=maxN||(focus!==null&&d.id!==focus&&false)){el.attr('display','none');return;}
     const sx=T.applyX(d.x), sy=T.applyY(d.y); const size=fs*(d.rank<6?1.25:d.rank<16?1.08:1), w=d.text.length*size*(/[가-힣]/.test(d.text)?0.95:0.56)+6, hh=size+4;
@@ -246,6 +291,7 @@ function renderPanel(){
   const li=o=>`<li data-id="${o.id}" class="${focus===o.id?'on':''}"><i class="${o.sp?'sp':''}" style="background-color:${o.e.ns?'var(--land)':o.e.c}"></i><span>${nm2(o.e)}</span><span class="a">${km(o.a)}</span></li>`;
   const src=s.src==='hb'?UI.srcHb:s.src==='cs'?fmt(UI.srcCs,{date:s.date}):UI.srcNe;
   const next=SN[cur+1];
+  document.getElementById('grablbl').textContent=`${yl(s.y)} · ${fmt(UI.count,{n:st.length,m:ns.length})}`;
   document.getElementById('panel').innerHTML=
     `<h2>${esc(yl(s.y))}</h2><p class="sub">${esc(fmt(UI.count,{n:st.length,m:ns.length}))}${focus!==null?` · <button class="linkbtn" id="unf">${esc(UI.showAll)}</button>`:''}</p>`+
     `<p class="src">${esc(src)}${next&&s.src==='hb'?' '+esc(fmt(UI.gapNext,{y:yl(next.y)}))+'.':''}</p>`+
@@ -281,7 +327,7 @@ function drawDispList(d){ const el=document.getElementById('displist'); if(!el) 
   el.innerHTML=`<div class="sec"><h3>${esc(fmt(UI.dispTitle,{n:d.length}))}</h3><p class="sub">${esc(UI.dispNote)}</p><ul class="disp">${[...major,...rest].map((x,i)=>`<li data-i="${d.indexOf(x)}">▨ ${esc(x.properties.ko||x.properties.n)}</li>`).join('')}</ul></div>`;
   el.querySelectorAll('li').forEach(l=>l.onclick=()=>{const p=d[+l.dataset.i].properties; show(dispInfo(p)); const [x,y]=proj(p.ll); flyTo(x,y,Math.max(k,8));});
 }
-function flyTo(x,y,z){ svg.transition().duration(600).call(zoom.transform,d3.zoomIdentity.translate(W/2,H/2).scale(z).translate(-x,-y)); document.querySelector('.mapcard').scrollIntoView({behavior:'smooth',block:'nearest'}); }
+function flyTo(x,y,z){ svg.transition().duration(600).call(zoom.transform,d3.zoomIdentity.translate(W/2,H/2).scale(z).translate(-x,-y)); if(!isM()) document.querySelector('.mapcard').scrollIntoView({behavior:'smooth',block:'nearest'}); }
 function pick(id){ focus=focus===id?null:id; for(const G of [gP,gS]) G.selectAll('path').classed('dimmed',d=>focus!==null&&d.properties.e!==focus); renderPanel();
   if(focus!==null){ show(areaOf(id)?entInfo(id,null):supInfo(id,null)); const ll=labelOf(id); if(ll){const [x,y]=proj(ll); const a=areaOf(id)||supAreaOf(id); flyTo(x,y,a>8e6?1.6:a>2e6?2.6:a>4e5?4.5:8);} } }
 function renderKey(){ document.getElementById('key').innerHTML=`<span><i style="background:var(--land)"></i>${esc(UI.noRecord)}</span><span><svg width="16" height="12"><rect width="16" height="12" rx="3" fill="url(#dots)" stroke="var(--landline)"/></svg>${esc(UI.nsTitle.split('(')[0])}</span>`+(supOn&&SN[cur].sup?`<span><i class="sp" style="background-color:var(--muted)"></i>${esc(UI.supKey)}</span>`:'')+(SN[cur].src==='ne'?`<span><svg width="16" height="12"><rect width="16" height="12" rx="3" fill="url(#hatch)" stroke="var(--ink)"/></svg>${esc(fmt(UI.dispTitle,{n:''}).replace(/\s*곳$/,''))}</span>`:''); }
@@ -296,7 +342,29 @@ const sl=document.getElementById('slider'); sl.max=SN.length-1; sl.oninput=()=>g
 document.getElementById('prev').onclick=()=>go(cur-1); document.getElementById('next').onclick=()=>go(cur+1);
 window.addEventListener('keydown',e=>{ if(e.target.tagName==='INPUT'&&e.target.type!=='range') return; if(e.key==='ArrowRight')go(cur+1); if(e.key==='ArrowLeft')go(cur-1); if(e.key==='Escape')setBig(false); });
 window.addEventListener('resize',layoutLabels);
+// ---- 휴대폰 배치(폭 760px 이하): 지도를 크게 고정하고, 목록·설명은 아래에서 끌어올리는 패널로, 안내·출처는 도움말로 옮긴다
+const MQ=matchMedia('(max-width:760px)'), sheet=document.getElementById('sheet'), help=document.getElementById('help'), helpBody=document.getElementById('helpbody'), mapEl=document.getElementById('map');
+function isM(){ return document.body.classList.contains('m'); }
+function vscale(){ const cw=mapEl.clientWidth||W, ch=mapEl.clientHeight||H; return isM()?Math.max(cw/W,ch/H):cw/W; } // 화면 px ÷ 지도 좌표
+function fitZoom(){ const cw=mapEl.clientWidth||W, ch=mapEl.clientHeight||H; if(!isM()){ zoom.extent([[0,0],[W,H]]).scaleExtent([1,40]); svg.call(zoom.transform,T); return; }
+  const s=Math.max(cw/W,ch/H), vw=cw/s, vh=ch/s; zoom.extent([[(W-vw)/2,(H-vh)/2],[(W+vw)/2,(H+vh)/2]]).scaleExtent([Math.min(1,cw/W/s),40]); svg.call(zoom.transform,T); layoutLabels(); }
+const ORDER=['peek','half','full']; function setSheet(s){ sheet.dataset.s=s; document.getElementById('grab').setAttribute('aria-expanded',s!=='peek'); }
+{ const grab=document.getElementById('grab'); let y0=null, moved=false;
+  grab.addEventListener('pointerdown',e=>{y0=e.clientY;moved=false;grab.setPointerCapture(e.pointerId);});
+  grab.addEventListener('pointerup',e=>{ if(y0===null) return; const dy=e.clientY-y0, i=ORDER.indexOf(sheet.dataset.s); y0=null;
+    if(Math.abs(dy)<12) setSheet(i===0?'half':i===1?'full':'half'); else setSheet(ORDER[Math.max(0,Math.min(2,i+(dy<0?1:-1)))]); });
+  grab.addEventListener('pointercancel',()=>{y0=null;}); }
+const homes=new Map(); const moveTo=(el,to)=>{ if(!el) return; if(!homes.has(el)) homes.set(el,[el.parentNode,el.nextSibling]); to.appendChild(el); };
+function applyMode(){ const m=MQ.matches; if(m===isM()&&homes.size) return; document.body.classList.toggle('m',m);
+  mapEl.setAttribute('preserveAspectRatio',m?'xMidYMid slice':'xMidYMid meet');
+  if(m){ setBig(false); for(const el of [document.querySelector('nav.langs'),document.querySelector('header a.to'),document.getElementById('key'),document.querySelector('.hint'),document.querySelector('.foot'),...document.querySelectorAll('.srcs')]) moveTo(el,helpBody); moveTo(info,document.getElementById('sheetinfo')); }
+  else { for(const [el,[p,nx]] of [...homes].reverse()) p.insertBefore(el,nx&&nx.parentNode===p?nx:null); homes.clear(); help.hidden=true; }
+  requestAnimationFrame(fitZoom); }
+document.getElementById('helpbtn').setAttribute('aria-label',UI.help); document.getElementById('helpbtn').onclick=()=>{help.hidden=false;help.scrollTop=0;};
+document.getElementById('helpx').setAttribute('aria-label',UI.close); document.getElementById('helpx').onclick=()=>{help.hidden=true;};
+MQ.addEventListener('change',applyMode); new ResizeObserver(()=>{ if(isM()) fitZoom(); }).observe(mapEl);
 const hm=(location.hash||'').match(/^#y(bc)?(\d+)$/); if(hm){const y=(hm[1]?-1:1)*+hm[2]; const i=SN.findIndex(s=>s.y===y); if(i>=0) cur=i;}
+applyMode();
 go(cur);
 })();
 </script>

@@ -129,7 +129,8 @@
   "vClio": "Before 1886 there is no date-level dataset, but great-power ownership was compared with the independent Cliopatria dataset. Agreement is {agree}% (share of cells, on a 0.5° grid, where both sources draw a state and assign it to the same great power). Based on historical-basemaps, {f} ownership errors were corrected and {p} strategic points and regions recoloured, {c} of them using boundaries borrowed from Cliopatria.",
   "vClioDiffs": "Where the two still differ (this map ↔ Cliopatria)",
   "vClioNote": "Most remaining differences come from how far nominal claims are coloured (the interior of Spanish America, Siberia) and how suzerainty is read (Egypt, Tibet, the Kazakh steppe). A difference does not mean this map is wrong, and Cliopatria has errors of its own. Places corrected with borrowed boundaries agree by construction.",
-  "vUnnamed": "(unnamed area)"
+  "vUnnamed": "(unnamed area)",
+  "help": "Help and sources"
  },
  "zoomResetShort": "Reset",
  "bigView": "Show the map large",
