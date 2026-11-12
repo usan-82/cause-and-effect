@@ -1,0 +1,32 @@
+{
+  "htmlLang": "ko",
+  "langName": "한국어",
+  "fontLink": "https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@700&display=swap",
+  "fontSans": "\"Noto Sans KR\"",
+  "fontSerif": "\"Noto Serif KR\"",
+  "title": "패권의 지도, 쉽게 읽기",
+  "metaDesc": "1492년부터 2010년까지 세계에서 가장 힘센 나라가 어떻게 바뀌었는지 11장의 지도로 쉽게 읽어요.",
+  "subtitle": "패권은 다른 나라들을 이끌거나 누를 만큼 큰 힘이에요. 1492년부터 2010년까지 누가 그 힘을 가졌을까요?",
+  "maxSentence": 45,
+  "maxYears": 3,
+  "explain": ["식민지", "냉전", "세력 균형", "제국주의", "산업혁명", "동맹", "콘스탄티노폴리스", "명", "청", "소련"],
+  "ui": {
+    "era": "{year}년 무렵",
+    "sum": "한 줄 요약",
+    "why": "왜 그렇게 됐을까요?",
+    "stars": "주인공 나라",
+    "words": "낱말 풀이",
+    "more": "더 자세히 보기",
+    "moreYear": "{year}년",
+    "prev": "이전",
+    "next": "다음",
+    "chapter": "{n}장 / {total}장",
+    "hint": "색칠된 곳이나 나라 이름을 눌러 보세요.",
+    "others": "그 밖의 나라와 지역",
+    "othersLong": "이 장의 주인공이 아닌 나라와 지역이에요.",
+    "reset": "원래대로",
+    "loading": "지도를 불러오는 중…",
+    "full": "자세한 판"
+  },
+  "footHtml": "국경 데이터: <a href=\"https://github.com/aourednik/historical-basemaps\">historical-basemaps</a>(1880년까지, GPL-3.0), <a href=\"https://icr.ethz.ch/data/cshapes/\">CShapes 2.0</a>(1914년부터, GPL ≥ 2). 옛날 국경일수록 대략적인 모습이에요. 내용은 <a href=\"../atlas/\">자세한 판</a>을 바탕으로 줄여 썼어요."
+}

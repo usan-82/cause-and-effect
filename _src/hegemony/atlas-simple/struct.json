@@ -1,0 +1,15 @@
+{
+  "chapters": [
+    {"year":1492, "from":[1492],           "stars":["es","pt","ot","cn"]},
+    {"year":1600, "from":[1530,1600],      "stars":["es","pt","nl","gb"]},
+    {"year":1715, "from":[1650,1700,1715], "stars":["gb","fr","es","at"]},
+    {"year":1783, "from":[1783],           "stars":["gb","fr","us","es"]},
+    {"year":1815, "from":[1815],           "stars":["gb","fr","ru","at"]},
+    {"year":1880, "from":[1880],           "stars":["gb","fr","de","us"]},
+    {"year":1914, "from":[1914],           "stars":["gb","de","fr","ru"]},
+    {"year":1945, "from":[1920,1938,1945], "stars":["us","ru","gb","fr"]},
+    {"year":1960, "from":[1960],           "stars":["us","ru","cn","gb"]},
+    {"year":1994, "from":[1994],           "stars":["us","ru","cn"]},
+    {"year":2010, "from":[2010],           "stars":["us","cn","ru"]}
+  ]
+}

@@ -1,0 +1,89 @@
+:root{
+  --sans:{{fontSans}}; --serif:{{fontSerif}};
+  color-scheme: light;
+  --bg:#f6f4ef; --surface:#fcfcfb; --ink:#1b1a18; --ink2:#55534e; --muted:#8a877f; --line:#e2dfd7;
+  --ocean:#e9eef1; --land:#d6d2c8; --border:#ffffff; --accent:#2a78d6;
+  --p-gb:#d63a2f; --p-fr:#2c63c9; --p-es:#e0a100; --p-pt:#2a9a46; --p-nl:#ef7a12; --p-ru:#6b4cc4; --p-ot:#10998b; --p-cn:#c22f6f;
+  --p-us:#27a2d8; --p-de:#5a4f45; --p-at:#d17ab9; --p-jp:#9cb01c; --p-it:#a0522d; --p-be:#4f6d7a; --p-mg:#8c6b3f;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    color-scheme: dark;
+    --bg:#141413; --surface:#1c1c1b; --ink:#f0efec; --ink2:#c3c2b7; --muted:#8f8d85; --line:#2f2e2b;
+    --ocean:#1d2226; --land:#3d3c38; --border:#1a1a19; --accent:#4d94ea;
+    --p-gb:#e5554b; --p-fr:#4d82e6; --p-es:#e8ae16; --p-pt:#3db35a; --p-nl:#f28a2e; --p-ru:#8a6fe0; --p-ot:#22b3a3; --p-cn:#d9508a;
+    --p-us:#45b6e6; --p-de:#a39383; --p-at:#e08fcb; --p-jp:#b2c63a; --p-it:#c46d45; --p-be:#7e9aa6; --p-mg:#b08a55;
+  }
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans),system-ui,sans-serif;font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%}
+:lang(ko){word-break:keep-all;overflow-wrap:anywhere}
+a{color:var(--accent)}
+button{font:inherit;color:inherit}
+
+/* 머리 */
+.top{padding:14px 16px 10px;max-width:1280px;margin:0 auto}
+.tt{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+h1{font:700 22px/1.3 var(--serif),serif;margin:0}
+.sub{margin:6px 0 0;color:var(--ink2);font-size:15px}
+.langs{font-size:13px;display:flex;gap:10px;color:var(--muted)}
+.langs span{color:var(--ink);font-weight:500}
+
+/* 배치: 휴대폰은 지도(위, 고정) + 카드(아래) */
+.layout{max-width:1280px;margin:0 auto}
+.mapbox{position:sticky;top:0;z-index:5;height:42vh;min-height:220px;max-height:440px;background:var(--ocean);overflow:hidden;touch-action:none;border-bottom:1px solid var(--line)}
+#map{display:block;width:100%;height:100%}
+.sea{fill:var(--ocean)}
+#map path.rest{stroke:var(--border);stroke-width:.4;vector-effect:non-scaling-stroke}
+#map path.star{stroke:var(--border);stroke-width:.8;vector-effect:non-scaling-stroke;cursor:pointer}
+.labs text{font:700 13px var(--sans);fill:var(--ink);paint-order:stroke;stroke:var(--bg);stroke-width:3.5px;stroke-linejoin:round;text-anchor:middle;dominant-baseline:middle;cursor:pointer}
+.badge{position:absolute;left:10px;top:10px;font:700 15px var(--sans);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:3px 12px;pointer-events:none}
+.reset{position:absolute;right:10px;top:10px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:3px 12px;font-size:14px;cursor:pointer}
+.tip{position:absolute;left:10px;right:10px;bottom:10px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:8px 12px;font-size:15px;line-height:1.5;box-shadow:0 2px 10px rgba(0,0,0,.12)}
+.tip b{display:flex;align-items:center;gap:6px}
+.tip span{display:block;color:var(--ink2)}
+.loading{position:absolute;inset:0;display:grid;place-items:center;color:var(--muted);font-size:15px}
+.loading[hidden]{display:none}
+.sw{display:inline-block;width:14px;height:14px;border-radius:4px;flex:none}
+
+.side{padding:0 16px 32px}
+.pager{display:flex;align-items:center;gap:6px;padding:10px 0}
+.pager>button{flex:none;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--surface);font-size:24px;line-height:1;cursor:pointer}
+.pager>button:disabled{opacity:.35;cursor:default}
+.dots{flex:1;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;justify-content:space-between}
+.dots::-webkit-scrollbar{display:none}
+.dots button{flex:1 0 auto;min-width:28px;height:44px;border:0;background:none;cursor:pointer;display:grid;place-items:center;padding:0}
+.dots span{display:block;width:10px;height:10px;border-radius:50%;background:var(--line);font-size:0}
+.dots button.on span{width:auto;height:auto;background:var(--ink);color:var(--bg);font:700 13px var(--sans);padding:2px 8px;border-radius:999px}
+
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px 18px 14px}
+.era{margin:0;color:var(--muted);font-size:14px}
+.card h2{font:700 24px/1.35 var(--serif),serif;margin:4px 0 10px}
+.sum{font-size:18px;font-weight:500;margin:0 0 6px;padding:10px 12px;border-radius:10px;background:color-mix(in srgb, var(--accent) 9%, transparent)}
+.card h3{font-size:15px;color:var(--ink2);margin:20px 0 8px;font-weight:700}
+.why{list-style:none;margin:0;padding:0}
+.why li{display:flex;gap:10px;position:relative;padding-bottom:14px}
+.why li:not(:last-child)::after{content:"";position:absolute;left:13px;top:30px;bottom:2px;border-left:2px dashed var(--line)}
+.why .n{flex:none;width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--bg);display:grid;place-items:center;font:700 14px var(--sans)}
+.why p{margin:1px 0 0}
+.chips{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.chips button{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:var(--bg);border-radius:999px;padding:4px 12px;font-weight:700;font-size:16px;cursor:pointer;min-height:36px}
+.chips button.on{border-color:var(--ink);box-shadow:0 0 0 1px var(--ink)}
+.chips p{margin:3px 0 0 4px;color:var(--ink2)}
+.words details{border-top:1px solid var(--line);padding:8px 0}
+.words details:last-child{border-bottom:1px solid var(--line)}
+.words summary{cursor:pointer;font-weight:700;min-height:28px}
+.words p{margin:4px 0 0;color:var(--ink2)}
+.more{margin:18px 0 0;font-size:14px;color:var(--muted)}
+.endnav{display:flex;justify-content:space-between;margin-top:16px;gap:10px}
+.endnav button{min-height:44px;padding:0 18px;border-radius:999px;border:1px solid var(--line);background:var(--bg);font-weight:700;cursor:pointer}
+.foot{margin-top:18px;font-size:13px;line-height:1.6;color:var(--muted)}
+
+/* 넓은 화면: 왼쪽 지도, 오른쪽 카드 */
+@media (min-width:861px){
+  .layout{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(360px,1fr);gap:18px;padding:0 16px 24px;align-items:start}
+  .mapbox{top:12px;height:calc(100vh - 24px);max-height:720px;border:1px solid var(--line);border-radius:16px}
+  .side{padding:0}
+  .pager{padding-top:0}
+  .labs text{font-size:14px}
+}

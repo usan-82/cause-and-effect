@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>패권의 지도, 쉽게 읽기</title>
+<meta name="description" content="1492년부터 2010년까지 세계에서 가장 힘센 나라가 어떻게 바뀌었는지 11장의 지도로 쉽게 읽어요.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sans:"Noto Sans KR"; --serif:"Noto Serif KR";
+  color-scheme: light;
+  --bg:#f6f4ef; --surface:#fcfcfb; --ink:#1b1a18; --ink2:#55534e; --muted:#8a877f; --line:#e2dfd7;
+  --ocean:#e9eef1; --land:#d6d2c8; --border:#ffffff; --accent:#2a78d6;
+  --p-gb:#d63a2f; --p-fr:#2c63c9; --p-es:#e0a100; --p-pt:#2a9a46; --p-nl:#ef7a12; --p-ru:#6b4cc4; --p-ot:#10998b; --p-cn:#c22f6f;
+  --p-us:#27a2d8; --p-de:#5a4f45; --p-at:#d17ab9; --p-jp:#9cb01c; --p-it:#a0522d; --p-be:#4f6d7a; --p-mg:#8c6b3f;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    color-scheme: dark;
+    --bg:#141413; --surface:#1c1c1b; --ink:#f0efec; --ink2:#c3c2b7; --muted:#8f8d85; --line:#2f2e2b;
+    --ocean:#1d2226; --land:#3d3c38; --border:#1a1a19; --accent:#4d94ea;
+    --p-gb:#e5554b; --p-fr:#4d82e6; --p-es:#e8ae16; --p-pt:#3db35a; --p-nl:#f28a2e; --p-ru:#8a6fe0; --p-ot:#22b3a3; --p-cn:#d9508a;
+    --p-us:#45b6e6; --p-de:#a39383; --p-at:#e08fcb; --p-jp:#b2c63a; --p-it:#c46d45; --p-be:#7e9aa6; --p-mg:#b08a55;
+  }
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans),system-ui,sans-serif;font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%}
+:lang(ko){word-break:keep-all;overflow-wrap:anywhere}
+a{color:var(--accent)}
+button{font:inherit;color:inherit}
+
+/* 머리 */
+.top{padding:14px 16px 10px;max-width:1280px;margin:0 auto}
+.tt{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+h1{font:700 22px/1.3 var(--serif),serif;margin:0}
+.sub{margin:6px 0 0;color:var(--ink2);font-size:15px}
+.langs{font-size:13px;display:flex;gap:10px;color:var(--muted)}
+.langs span{color:var(--ink);font-weight:500}
+
+/* 배치: 휴대폰은 지도(위, 고정) + 카드(아래) */
+.layout{max-width:1280px;margin:0 auto}
+.mapbox{position:sticky;top:0;z-index:5;height:42vh;min-height:220px;max-height:440px;background:var(--ocean);overflow:hidden;touch-action:none;border-bottom:1px solid var(--line)}
+#map{display:block;width:100%;height:100%}
+.sea{fill:var(--ocean)}
+#map path.rest{stroke:var(--border);stroke-width:.4;vector-effect:non-scaling-stroke}
+#map path.star{stroke:var(--border);stroke-width:.8;vector-effect:non-scaling-stroke;cursor:pointer}
+.labs text{font:700 13px var(--sans);fill:var(--ink);paint-order:stroke;stroke:var(--bg);stroke-width:3.5px;stroke-linejoin:round;text-anchor:middle;dominant-baseline:middle;cursor:pointer}
+.badge{position:absolute;left:10px;top:10px;font:700 15px var(--sans);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:3px 12px;pointer-events:none}
+.reset{position:absolute;right:10px;top:10px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:3px 12px;font-size:14px;cursor:pointer}
+.tip{position:absolute;left:10px;right:10px;bottom:10px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:8px 12px;font-size:15px;line-height:1.5;box-shadow:0 2px 10px rgba(0,0,0,.12)}
+.tip b{display:flex;align-items:center;gap:6px}
+.tip span{display:block;color:var(--ink2)}
+.loading{position:absolute;inset:0;display:grid;place-items:center;color:var(--muted);font-size:15px}
+.loading[hidden]{display:none}
+.sw{display:inline-block;width:14px;height:14px;border-radius:4px;flex:none}
+
+.side{padding:0 16px 32px}
+.pager{display:flex;align-items:center;gap:6px;padding:10px 0}
+.pager>button{flex:none;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--surface);font-size:24px;line-height:1;cursor:pointer}
+.pager>button:disabled{opacity:.35;cursor:default}
+.dots{flex:1;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;justify-content:space-between}
+.dots::-webkit-scrollbar{display:none}
+.dots button{flex:1 0 auto;min-width:28px;height:44px;border:0;background:none;cursor:pointer;display:grid;place-items:center;padding:0}
+.dots span{display:block;width:10px;height:10px;border-radius:50%;background:var(--line);font-size:0}
+.dots button.on span{width:auto;height:auto;background:var(--ink);color:var(--bg);font:700 13px var(--sans);padding:2px 8px;border-radius:999px}
+
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px 18px 14px}
+.era{margin:0;color:var(--muted);font-size:14px}
+.card h2{font:700 24px/1.35 var(--serif),serif;margin:4px 0 10px}
+.sum{font-size:18px;font-weight:500;margin:0 0 6px;padding:10px 12px;border-radius:10px;background:color-mix(in srgb, var(--accent) 9%, transparent)}
+.card h3{font-size:15px;color:var(--ink2);margin:20px 0 8px;font-weight:700}
+.why{list-style:none;margin:0;padding:0}
+.why li{display:flex;gap:10px;position:relative;padding-bottom:14px}
+.why li:not(:last-child)::after{content:"";position:absolute;left:13px;top:30px;bottom:2px;border-left:2px dashed var(--line)}
+.why .n{flex:none;width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--bg);display:grid;place-items:center;font:700 14px var(--sans)}
+.why p{margin:1px 0 0}
+.chips{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.chips button{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:var(--bg);border-radius:999px;padding:4px 12px;font-weight:700;font-size:16px;cursor:pointer;min-height:36px}
+.chips button.on{border-color:var(--ink);box-shadow:0 0 0 1px var(--ink)}
+.chips p{margin:3px 0 0 4px;color:var(--ink2)}
+.words details{border-top:1px solid var(--line);padding:8px 0}
+.words details:last-child{border-bottom:1px solid var(--line)}
+.words summary{cursor:pointer;font-weight:700;min-height:28px}
+.words p{margin:4px 0 0;color:var(--ink2)}
+.more{margin:18px 0 0;font-size:14px;color:var(--muted)}
+.endnav{display:flex;justify-content:space-between;margin-top:16px;gap:10px}
+.endnav button{min-height:44px;padding:0 18px;border-radius:999px;border:1px solid var(--line);background:var(--bg);font-weight:700;cursor:pointer}
+.foot{margin-top:18px;font-size:13px;line-height:1.6;color:var(--muted)}
+
+/* 넓은 화면: 왼쪽 지도, 오른쪽 카드 */
+@media (min-width:861px){
+  .layout{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(360px,1fr);gap:18px;padding:0 16px 24px;align-items:start}
+  .mapbox{top:12px;height:calc(100vh - 24px);max-height:720px;border:1px solid var(--line);border-radius:16px}
+  .side{padding:0}
+  .pager{padding-top:0}
+  .labs text{font-size:14px}
+}
+
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="tt">
+    <h1>패권의 지도, 쉽게 읽기</h1>
+    <nav class="langs" aria-label="language"><span aria-current="page">한국어</span></nav>
+  </div>
+  <p class="sub">패권은 다른 나라들을 이끌거나 누를 만큼 큰 힘이에요. 1492년부터 2010년까지 누가 그 힘을 가졌을까요?</p>
+</header>
+<main class="layout">
+  <section class="mapbox" aria-label="map">
+    <svg id="map" role="img"></svg>
+    <div class="badge" id="badge"></div>
+    <button class="reset" id="reset" type="button">원래대로</button>
+    <div class="tip" id="tip" hidden></div>
+    <div class="loading" id="loading">지도를 불러오는 중…</div>
+  </section>
+  <section class="side">
+    <nav class="pager" aria-label="chapters">
+      <button id="prev" type="button" aria-label="이전">‹</button>
+      <div class="dots" id="dots"></div>
+      <button id="next" type="button" aria-label="다음">›</button>
+    </nav>
+    <article class="card" id="card" aria-live="polite"></article>
+    <footer class="foot">국경 데이터: <a href="https://github.com/aourednik/historical-basemaps">historical-basemaps</a>(1880년까지, GPL-3.0), <a href="https://icr.ethz.ch/data/cshapes/">CShapes 2.0</a>(1914년부터, GPL ≥ 2). 옛날 국경일수록 대략적인 모습이에요. 내용은 <a href="../atlas/">자세한 판</a>을 바탕으로 줄여 썼어요.</footer>
+  </section>
+</main>
+<script src="lib/d3.min.js"></script>
+<script src="lib/topojson-client.min.js"></script>
+<script>
+(function(){
+const {ui:UI, content:C} = {"ui":{"era":"{year}년 무렵","sum":"한 줄 요약","why":"왜 그렇게 됐을까요?","stars":"주인공 나라","words":"낱말 풀이","more":"더 자세히 보기","moreYear":"{year}년","prev":"이전","next":"다음","chapter":"{n}장 / {total}장","hint":"색칠된 곳이나 나라 이름을 눌러 보세요.","others":"그 밖의 나라와 지역","othersLong":"이 장의 주인공이 아닌 나라와 지역이에요.","reset":"원래대로","loading":"지도를 불러오는 중…","full":"자세한 판"},"content":{"chapters":[{"year":1492,"from":[1492],"stars":{"es":"콜럼버스가 대서양을 건너 아메리카에 닿았어요.","pt":"아프리카를 돌아 인도양으로 가는 바닷길을 열었어요.","ot":"콘스탄티노폴리스를 차지해 유럽과 아시아를 잇는 길목을 쥐었어요.","cn":"동아시아의 중심이었지만, 나라가 나서는 먼바다 항해는 멈췄어요."},"title":"바닷길을 연 나라들","sum":"가장 큰 나라는 명과 오스만이었어요. 그런데 유럽 서쪽 끝의 두 나라가 먼바다로 나섰어요.","why":["바람을 거슬러 나아가는 배가 나왔어요. 별을 보고 위치를 재는 도구도 쓰였어요.","포르투갈은 아프리카 해안을 따라 내려갔어요. 1488년에는 아프리카 남쪽 끝을 돌았어요.","스페인은 1492년 이베리아반도의 마지막 이슬람 왕국을 정복했어요. 같은 해 콜럼버스를 서쪽 바다로 보냈어요."],"names":{"es":"스페인(카스티야·아라곤)"},"words":[["콘스탄티노폴리스","지금의 튀르키예 이스탄불이에요. 유럽과 아시아가 맞닿은 곳에 있어요."],["명","1368년부터 1644년까지 중국을 다스린 왕조예요."]]}],"short":{"gb":[[1707,"잉글랜드"],[9999,"영국"]],"es":[[1516,"카스티야·아라곤"],[9999,"스페인"]],"ru":[[1920,"러시아"],[1922,"소비에트 러시아"],[1991,"소련"],[9999,"러시아"]],"cn":[[1644,"명"],[1912,"청"],[1949,"중화민국"],[9999,"중국"]],"de":[[1871,"프로이센"],[9999,"독일"]],"at":[[1867,"오스트리아"],[1918,"오스트리아-헝가리"],[9999,"오스트리아"]],"nl":[[9999,"네덜란드"]],"fr":[[9999,"프랑스"]],"pt":[[9999,"포르투갈"]],"ot":[[9999,"오스만"]],"us":[[9999,"미국"]],"jp":[[9999,"일본"]],"it":[[9999,"이탈리아"]],"be":[[9999,"벨기에"]],"mg":[[9999,"무굴"]]},"full":{"gb":"영국(잉글랜드)","fr":"프랑스","es":"스페인(카스티야·아라곤)","pt":"포르투갈","nl":"네덜란드","ru":"러시아·소련","ot":"오스만 제국","cn":"중국(명·청·중화민국·중화인민공화국)","us":"미국","de":"독일(프로이센)","at":"오스트리아(합스부르크)","jp":"일본","it":"이탈리아","be":"벨기에","mg":"무굴 제국"}},"keys":["gb","fr","es","pt","nl","ru","ot","cn","us","de","at","jp","it","be","mg"]};
+const CH = C.chapters, N = CH.length;
+const fmt = (s,o) => s.replace(/\{(\w+)\}/g, (_,k) => o[k]);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function shortName(k,y){ const L=C.short[k]; if(!L) return k; for(const [u,n] of L) if(y<u) return n; return L[L.length-1][1]; }
+const nameOf = (ch,k) => (ch.names && ch.names[k]) || shortName(k, ch.year);
+const pc = k => k ? `var(--p-${k})` : 'var(--land)';
+
+let idx = 0;
+const h = (location.hash||'').match(/^#y(\d{4})$/);
+if (h) { const i = CH.findIndex(c => c.year === +h[1]); if (i >= 0) idx = i; }
+
+// ---------- 지도 ----------
+const svg = d3.select('#map'), box = document.querySelector('.mapbox');
+const gRoot = svg.append('g'), gSea = gRoot.append('g'), gLand = gRoot.append('g'), gLab = svg.append('g').attr('class','labs');
+const outline = d3.geoGraticule().extent([[-180,-58],[180,84]]).outline();
+let W=0, H=0, Hw=0, proj, path, feats=[], zt=d3.zoomIdentity;
+const cache = {};
+const load = y => cache[y] ||= fetch(`data/${y}.json`).then(r=>r.json()).then(t=>topojson.feature(t,t.objects.w).features.map(rewind));
+function rewind(f){
+  const gm=f.geometry; if(!gm) return f;
+  const polys=gm.type==='Polygon'?[gm.coordinates]:gm.type==='MultiPolygon'?gm.coordinates:[];
+  for(const poly of polys) for(let i=0;i<poly.length;i++){ if(d3.geoArea({type:'Polygon',coordinates:[poly[i]]})>2*Math.PI) poly[i]=poly[i].slice().reverse(); }
+  return f;
+}
+const zoom = d3.zoom().scaleExtent([1,12]).on('zoom', e => { zt=e.transform; gRoot.attr('transform', zt); placeLabels(); });
+svg.call(zoom).on('dblclick.zoom', null);
+
+function size(){
+  W = box.clientWidth; H = box.clientHeight;
+  proj = d3.geoNaturalEarth1().fitSize([W, W*0.5], outline);
+  path = d3.geoPath(proj);
+  const b = path.bounds(outline); Hw = b[1][1];
+  svg.attr('viewBox', `0 0 ${W} ${H}`);
+  zoom.scaleExtent([1, 12]).translateExtent([[b[0][0]-W*0.1, 0],[b[1][0]+W*0.1, Hw]]);
+  gSea.selectAll('path').data([outline]).join('path').attr('class','sea').attr('d', path);
+  draw(false);
+}
+function draw(animate){
+  gLand.selectAll('path').data(feats, (d,i)=>i).join('path')
+    .attr('d', path).attr('class', d => d.properties.k ? 'star' : 'rest')
+    .style('fill', d => pc(d.properties.k))
+    .on('click', (e,d) => { e.stopPropagation(); showTip(d.properties.k, e); });
+  computeLabels();
+  fitStars(animate);
+}
+function boundsOf(keys){
+  let x0=Infinity,y0=Infinity,x1=-Infinity,y1=-Infinity;
+  for(const f of feats){ if(!f.properties.k || (keys && !keys.includes(f.properties.k))) continue;
+    for(const p of mainParts(f)){ const b=path.bounds(p); x0=Math.min(x0,b[0][0]); y0=Math.min(y0,b[0][1]); x1=Math.max(x1,b[1][0]); y1=Math.max(y1,b[1][1]); } }
+  return x0<Infinity ? [[x0,y0],[x1,y1]] : path.bounds(outline);
+}
+// 넓은 땅 위주로 화면을 맞춘다(작은 섬·거점 때문에 세계 전체로 물러나지 않도록)
+function mainParts(f){
+  const gm=f.geometry; if(!gm) return [];
+  const polys = gm.type==='Polygon'?[gm.coordinates]:gm.coordinates;
+  const parts = polys.map(c=>({type:'Polygon',coordinates:c})).map(p=>[p,path.area(p)]);
+  const tot = d3.sum(parts, p=>p[1]);
+  return parts.filter(p=>p[1] >= tot*0.04).map(p=>p[0]);
+}
+function fitStars(animate, keys){
+  const [[x0,y0],[x1,y1]] = boundsOf(keys);
+  let k = Math.min(12, 0.72*W/(x1-x0), 0.8*H/(y1-y0));
+  k = Math.max(1, Math.min(k, keys ? 8 : 4));
+  const t = d3.zoomIdentity.translate(W/2 - k*(x0+x1)/2, H/2 - k*(y0+y1)/2).scale(k);
+  (animate ? svg.transition().duration(650) : svg).call(zoom.transform, t);
+}
+// 나라 이름: 가장 넓은 조각의 중심(그릴 때 한 번 계산하고, 줌할 때는 위치만 옮긴다)
+let labBase=[];
+function computeLabels(){
+  labBase = feats.filter(f=>f.properties.k).map(f=>{
+    let best=null, ba=0;
+    for(const p of mainParts(f)){ const a=path.area(p); if(a>ba){ba=a;best=p;} }
+    return {k:f.properties.k, c: best ? path.centroid(best) : [NaN,NaN]};
+  }).filter(d=>isFinite(d.c[0]));
+  const ch = CH[idx];
+  gLab.selectAll('text').data(labBase, d=>d.k).join('text').text(d=>nameOf(ch, d.k))
+    .on('click', (e,d) => { e.stopPropagation(); showTip(d.k, e); });
+  placeLabels();
+}
+// 겹치는 이름은 아래위로 비켜 놓는다
+function placeLabels(){
+  const t = gLab.selectAll('text').attr('x', d=>zt.applyX(d.c[0])).attr('y', d=>zt.applyY(d.c[1])).nodes();
+  const boxes = t.map(n => ({n, b:n.getBBox(), dy:0})).sort((a,b)=>a.b.y-b.b.y);
+  for(let i=0;i<boxes.length;i++) for(let j=0;j<i;j++){
+    const a=boxes[j], c=boxes[i];
+    const ax0=a.b.x, ax1=a.b.x+a.b.width, ay0=a.b.y+a.dy, ay1=ay0+a.b.height;
+    const cx0=c.b.x, cx1=c.b.x+c.b.width, cy0=c.b.y+c.dy, cy1=cy0+c.b.height;
+    if (cx0<ax1 && ax0<cx1 && cy0<ay1 && ay0<cy1) c.dy += ay1-cy0+1;
+  }
+  for(const o of boxes){
+    if(o.dy) o.n.setAttribute('y', +o.n.getAttribute('y') + o.dy);
+    const hw=o.b.width/2+4, x=+o.n.getAttribute('x');   // 화면 밖으로 나가지 않게
+    o.n.setAttribute('x', Math.min(W-hw, Math.max(hw, x)));
+  }
+}
+const tip = document.getElementById('tip');
+function showTip(k, e){
+  const ch = CH[idx];
+  tip.innerHTML = k ? `<b><i class="sw" style="background:${pc(k)}"></i>${esc(nameOf(ch,k))}</b><span>${esc(ch.stars[k])}</span>`
+                    : `<b>${esc(UI.others)}</b><span>${esc(UI.othersLong)}</span>`;
+  tip.hidden = false;
+  document.querySelectorAll('.chips button').forEach(b => b.classList.toggle('on', b.dataset.k===k));
+}
+svg.on('click', () => { tip.hidden = true; document.querySelectorAll('.chips button.on').forEach(b=>b.classList.remove('on')); });
+document.getElementById('reset').onclick = () => { tip.hidden = true; fitStars(true); };
+
+// ---------- 카드 ----------
+const card = document.getElementById('card');
+function renderCard(){
+  const ch = CH[idx];
+  const why = ch.why.map((s,i)=>`<li><span class="n">${i+1}</span><p>${esc(s)}</p></li>`).join('');
+  const chips = Object.keys(ch.stars).map(k=>`<li><button type="button" data-k="${k}"><i class="sw" style="background:${pc(k)}"></i>${esc(nameOf(ch,k))}</button><p>${esc(ch.stars[k])}</p></li>`).join('');
+  const words = ch.words.map(([t,d])=>`<details><summary>${esc(t)}</summary><p>${esc(d)}</p></details>`).join('');
+  const more = ch.from.map(y=>`<a href="../atlas/#y${y}">${esc(fmt(UI.moreYear,{year:y}))}</a>`).join(' · ');
+  card.innerHTML =
+    `<p class="era">${esc(fmt(UI.chapter,{n:idx+1,total:N}))} · ${esc(fmt(UI.era,{year:ch.year}))}</p>`+
+    `<h2>${esc(ch.title)}</h2>`+
+    `<p class="sum">${esc(ch.sum)}</p>`+
+    `<h3>${esc(UI.why)}</h3><ol class="why">${why}</ol>`+
+    `<h3>${esc(UI.stars)}</h3><ul class="chips">${chips}</ul>`+
+    (words ? `<h3>${esc(UI.words)}</h3><div class="words">${words}</div>` : '')+
+    `<p class="more">${esc(UI.more)}: ${more}</p>`+
+    `<div class="endnav">${idx>0?`<button type="button" data-d="-1">‹ ${CH[idx-1].year}</button>`:'<span></span>'}${idx<N-1?`<button type="button" data-d="1">${CH[idx+1].year} ›</button>`:''}</div>`;
+  card.querySelectorAll('.endnav button').forEach(b => b.onclick = () => { go(idx + +b.dataset.d); window.scrollTo({top:0, behavior:'smooth'}); });
+  card.querySelectorAll('.chips button').forEach(b => b.onclick = () => {
+    const on = !b.classList.contains('on');
+    if (on) { showTip(b.dataset.k); fitStars(true, [b.dataset.k]); if (window.innerWidth <= 860) box.scrollIntoView({behavior:'smooth', block:'nearest'}); }
+    else { tip.hidden = true; b.classList.remove('on'); fitStars(true); }
+  });
+}
+const dots = document.getElementById('dots');
+dots.innerHTML = CH.map((c,i)=>`<button type="button" data-i="${i}" aria-label="${c.year}"><span>${c.year}</span></button>`).join('');
+dots.querySelectorAll('button').forEach(b => b.onclick = () => go(+b.dataset.i));
+document.getElementById('prev').onclick = () => go(idx-1);
+document.getElementById('next').onclick = () => go(idx+1);
+document.addEventListener('keydown', e => { if (e.target.closest('input,textarea')) return; if (e.key==='ArrowLeft') go(idx-1); if (e.key==='ArrowRight') go(idx+1); });
+// 카드를 좌우로 밀어 장 넘기기
+let sx=0, sy=0;
+card.addEventListener('touchstart', e => { sx=e.touches[0].clientX; sy=e.touches[0].clientY; }, {passive:true});
+card.addEventListener('touchend', e => { const dx=e.changedTouches[0].clientX-sx, dy=e.changedTouches[0].clientY-sy;
+  if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy)*1.5) go(idx + (dx<0 ? 1 : -1)); }, {passive:true});
+
+async function go(i, first){
+  if (i<0 || i>=N || (i===idx && !first)) return;
+  idx = i; const ch = CH[idx];
+  tip.hidden = true;
+  document.getElementById('badge').textContent = fmt(UI.era,{year:ch.year});
+  document.getElementById('prev').disabled = idx===0;
+  document.getElementById('next').disabled = idx===N-1;
+  dots.querySelectorAll('button').forEach((b,j)=>{ b.classList.toggle('on', j===idx); b.setAttribute('aria-current', j===idx?'step':'false'); });
+  dots.children[idx].scrollIntoView({block:'nearest', inline:'center'});
+  renderCard();
+  if (!first) { card.scrollTop = 0; if (window.innerWidth > 860) card.scrollIntoView({block:'nearest'}); }
+  try{ history.replaceState(null,'','#y'+ch.year); }catch(e){}
+  const f = await load(ch.year);
+  if (CH[idx] !== ch) return;
+  feats = f; document.getElementById('loading').hidden = true;
+  draw(!first);
+  if (CH[idx+1]) load(CH[idx+1].year);
+}
+new ResizeObserver(() => { if (box.clientWidth && (box.clientWidth!==W || box.clientHeight!==H)) size(); }).observe(box);
+size();
+go(idx, true);
+})();
+</script>
+</body>
+</html>

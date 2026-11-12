@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="{{htmlLang}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{title}}</title>
+<meta name="description" content="{{metaDesc}}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="{{fontLink}}" rel="stylesheet">
+<style>
+{{css}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="tt">
+    <h1>{{title}}</h1>
+    <nav class="langs" aria-label="language">{{langs}}</nav>
+  </div>
+  <p class="sub">{{subtitle}}</p>
+</header>
+<main class="layout">
+  <section class="mapbox" aria-label="map">
+    <svg id="map" role="img"></svg>
+    <div class="badge" id="badge"></div>
+    <button class="reset" id="reset" type="button">{{reset}}</button>
+    <div class="tip" id="tip" hidden></div>
+    <div class="loading" id="loading">{{loading}}</div>
+  </section>
+  <section class="side">
+    <nav class="pager" aria-label="chapters">
+      <button id="prev" type="button" aria-label="{{prev}}">‹</button>
+      <div class="dots" id="dots"></div>
+      <button id="next" type="button" aria-label="{{next}}">›</button>
+    </nav>
+    <article class="card" id="card" aria-live="polite"></article>
+    <footer class="foot">{{footHtml}}</footer>
+  </section>
+</main>
+<script src="lib/d3.min.js"></script>
+<script src="lib/topojson-client.min.js"></script>
+<script>
+(function(){
+const {ui:UI, content:C} = {{data}};
+const CH = C.chapters, N = CH.length;
+const fmt = (s,o) => s.replace(/\{(\w+)\}/g, (_,k) => o[k]);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function shortName(k,y){ const L=C.short[k]; if(!L) return k; for(const [u,n] of L) if(y<u) return n; return L[L.length-1][1]; }
+const nameOf = (ch,k) => (ch.names && ch.names[k]) || shortName(k, ch.year);
+const pc = k => k ? `var(--p-${k})` : 'var(--land)';
+
+let idx = 0;
+const h = (location.hash||'').match(/^#y(\d{4})$/);
+if (h) { const i = CH.findIndex(c => c.year === +h[1]); if (i >= 0) idx = i; }
+
+// ---------- 지도 ----------
+const svg = d3.select('#map'), box = document.querySelector('.mapbox');
+const gRoot = svg.append('g'), gSea = gRoot.append('g'), gLand = gRoot.append('g'), gLab = svg.append('g').attr('class','labs');
+const outline = d3.geoGraticule().extent([[-180,-58],[180,84]]).outline();
+let W=0, H=0, Hw=0, proj, path, feats=[], zt=d3.zoomIdentity;
+const cache = {};
+const load = y => cache[y] ||= fetch(`data/${y}.json`).then(r=>r.json()).then(t=>topojson.feature(t,t.objects.w).features.map(rewind));
+function rewind(f){
+  const gm=f.geometry; if(!gm) return f;
+  const polys=gm.type==='Polygon'?[gm.coordinates]:gm.type==='MultiPolygon'?gm.coordinates:[];
+  for(const poly of polys) for(let i=0;i<poly.length;i++){ if(d3.geoArea({type:'Polygon',coordinates:[poly[i]]})>2*Math.PI) poly[i]=poly[i].slice().reverse(); }
+  return f;
+}
+const zoom = d3.zoom().scaleExtent([1,12]).on('zoom', e => { zt=e.transform; gRoot.attr('transform', zt); placeLabels(); });
+svg.call(zoom).on('dblclick.zoom', null);
+
+function size(){
+  W = box.clientWidth; H = box.clientHeight;
+  proj = d3.geoNaturalEarth1().fitSize([W, W*0.5], outline);
+  path = d3.geoPath(proj);
+  const b = path.bounds(outline); Hw = b[1][1];
+  svg.attr('viewBox', `0 0 ${W} ${H}`);
+  zoom.scaleExtent([1, 12]).translateExtent([[b[0][0]-W*0.1, 0],[b[1][0]+W*0.1, Hw]]);
+  gSea.selectAll('path').data([outline]).join('path').attr('class','sea').attr('d', path);
+  draw(false);
+}
+function draw(animate){
+  gLand.selectAll('path').data(feats, (d,i)=>i).join('path')
+    .attr('d', path).attr('class', d => d.properties.k ? 'star' : 'rest')
+    .style('fill', d => pc(d.properties.k))
+    .on('click', (e,d) => { e.stopPropagation(); showTip(d.properties.k, e); });
+  computeLabels();
+  fitStars(animate);
+}
+function boundsOf(keys){
+  let x0=Infinity,y0=Infinity,x1=-Infinity,y1=-Infinity;
+  for(const f of feats){ if(!f.properties.k || (keys && !keys.includes(f.properties.k))) continue;
+    for(const p of mainParts(f)){ const b=path.bounds(p); x0=Math.min(x0,b[0][0]); y0=Math.min(y0,b[0][1]); x1=Math.max(x1,b[1][0]); y1=Math.max(y1,b[1][1]); } }
+  return x0<Infinity ? [[x0,y0],[x1,y1]] : path.bounds(outline);
+}
+// 넓은 땅 위주로 화면을 맞춘다(작은 섬·거점 때문에 세계 전체로 물러나지 않도록)
+function mainParts(f){
+  const gm=f.geometry; if(!gm) return [];
+  const polys = gm.type==='Polygon'?[gm.coordinates]:gm.coordinates;
+  const parts = polys.map(c=>({type:'Polygon',coordinates:c})).map(p=>[p,path.area(p)]);
+  const tot = d3.sum(parts, p=>p[1]);
+  return parts.filter(p=>p[1] >= tot*0.04).map(p=>p[0]);
+}
+function fitStars(animate, keys){
+  const [[x0,y0],[x1,y1]] = boundsOf(keys);
+  let k = Math.min(12, 0.72*W/(x1-x0), 0.8*H/(y1-y0));
+  k = Math.max(1, Math.min(k, keys ? 8 : 4));
+  const t = d3.zoomIdentity.translate(W/2 - k*(x0+x1)/2, H/2 - k*(y0+y1)/2).scale(k);
+  (animate ? svg.transition().duration(650) : svg).call(zoom.transform, t);
+}
+// 나라 이름: 가장 넓은 조각의 중심(그릴 때 한 번 계산하고, 줌할 때는 위치만 옮긴다)
+let labBase=[];
+function computeLabels(){
+  labBase = feats.filter(f=>f.properties.k).map(f=>{
+    let best=null, ba=0;
+    for(const p of mainParts(f)){ const a=path.area(p); if(a>ba){ba=a;best=p;} }
+    return {k:f.properties.k, c: best ? path.centroid(best) : [NaN,NaN]};
+  }).filter(d=>isFinite(d.c[0]));
+  const ch = CH[idx];
+  gLab.selectAll('text').data(labBase, d=>d.k).join('text').text(d=>nameOf(ch, d.k))
+    .on('click', (e,d) => { e.stopPropagation(); showTip(d.k, e); });
+  placeLabels();
+}
+// 겹치는 이름은 아래위로 비켜 놓는다
+function placeLabels(){
+  const t = gLab.selectAll('text').attr('x', d=>zt.applyX(d.c[0])).attr('y', d=>zt.applyY(d.c[1])).nodes();
+  const boxes = t.map(n => ({n, b:n.getBBox(), dy:0})).sort((a,b)=>a.b.y-b.b.y);
+  for(let i=0;i<boxes.length;i++) for(let j=0;j<i;j++){
+    const a=boxes[j], c=boxes[i];
+    const ax0=a.b.x, ax1=a.b.x+a.b.width, ay0=a.b.y+a.dy, ay1=ay0+a.b.height;
+    const cx0=c.b.x, cx1=c.b.x+c.b.width, cy0=c.b.y+c.dy, cy1=cy0+c.b.height;
+    if (cx0<ax1 && ax0<cx1 && cy0<ay1 && ay0<cy1) c.dy += ay1-cy0+1;
+  }
+  for(const o of boxes){
+    if(o.dy) o.n.setAttribute('y', +o.n.getAttribute('y') + o.dy);
+    const hw=o.b.width/2+4, x=+o.n.getAttribute('x');   // 화면 밖으로 나가지 않게
+    o.n.setAttribute('x', Math.min(W-hw, Math.max(hw, x)));
+  }
+}
+const tip = document.getElementById('tip');
+function showTip(k, e){
+  const ch = CH[idx];
+  tip.innerHTML = k ? `<b><i class="sw" style="background:${pc(k)}"></i>${esc(nameOf(ch,k))}</b><span>${esc(ch.stars[k])}</span>`
+                    : `<b>${esc(UI.others)}</b><span>${esc(UI.othersLong)}</span>`;
+  tip.hidden = false;
+  document.querySelectorAll('.chips button').forEach(b => b.classList.toggle('on', b.dataset.k===k));
+}
+svg.on('click', () => { tip.hidden = true; document.querySelectorAll('.chips button.on').forEach(b=>b.classList.remove('on')); });
+document.getElementById('reset').onclick = () => { tip.hidden = true; fitStars(true); };
+
+// ---------- 카드 ----------
+const card = document.getElementById('card');
+function renderCard(){
+  const ch = CH[idx];
+  const why = ch.why.map((s,i)=>`<li><span class="n">${i+1}</span><p>${esc(s)}</p></li>`).join('');
+  const chips = Object.keys(ch.stars).map(k=>`<li><button type="button" data-k="${k}"><i class="sw" style="background:${pc(k)}"></i>${esc(nameOf(ch,k))}</button><p>${esc(ch.stars[k])}</p></li>`).join('');
+  const words = ch.words.map(([t,d])=>`<details><summary>${esc(t)}</summary><p>${esc(d)}</p></details>`).join('');
+  const more = ch.from.map(y=>`<a href="../atlas/#y${y}">${esc(fmt(UI.moreYear,{year:y}))}</a>`).join(' · ');
+  card.innerHTML =
+    `<p class="era">${esc(fmt(UI.chapter,{n:idx+1,total:N}))} · ${esc(fmt(UI.era,{year:ch.year}))}</p>`+
+    `<h2>${esc(ch.title)}</h2>`+
+    `<p class="sum">${esc(ch.sum)}</p>`+
+    `<h3>${esc(UI.why)}</h3><ol class="why">${why}</ol>`+
+    `<h3>${esc(UI.stars)}</h3><ul class="chips">${chips}</ul>`+
+    (words ? `<h3>${esc(UI.words)}</h3><div class="words">${words}</div>` : '')+
+    `<p class="more">${esc(UI.more)}: ${more}</p>`+
+    `<div class="endnav">${idx>0?`<button type="button" data-d="-1">‹ ${CH[idx-1].year}</button>`:'<span></span>'}${idx<N-1?`<button type="button" data-d="1">${CH[idx+1].year} ›</button>`:''}</div>`;
+  card.querySelectorAll('.endnav button').forEach(b => b.onclick = () => { go(idx + +b.dataset.d); window.scrollTo({top:0, behavior:'smooth'}); });
+  card.querySelectorAll('.chips button').forEach(b => b.onclick = () => {
+    const on = !b.classList.contains('on');
+    if (on) { showTip(b.dataset.k); fitStars(true, [b.dataset.k]); if (window.innerWidth <= 860) box.scrollIntoView({behavior:'smooth', block:'nearest'}); }
+    else { tip.hidden = true; b.classList.remove('on'); fitStars(true); }
+  });
+}
+const dots = document.getElementById('dots');
+dots.innerHTML = CH.map((c,i)=>`<button type="button" data-i="${i}" aria-label="${c.year}"><span>${c.year}</span></button>`).join('');
+dots.querySelectorAll('button').forEach(b => b.onclick = () => go(+b.dataset.i));
+document.getElementById('prev').onclick = () => go(idx-1);
+document.getElementById('next').onclick = () => go(idx+1);
+document.addEventListener('keydown', e => { if (e.target.closest('input,textarea')) return; if (e.key==='ArrowLeft') go(idx-1); if (e.key==='ArrowRight') go(idx+1); });
+// 카드를 좌우로 밀어 장 넘기기
+let sx=0, sy=0;
+card.addEventListener('touchstart', e => { sx=e.touches[0].clientX; sy=e.touches[0].clientY; }, {passive:true});
+card.addEventListener('touchend', e => { const dx=e.changedTouches[0].clientX-sx, dy=e.changedTouches[0].clientY-sy;
+  if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy)*1.5) go(idx + (dx<0 ? 1 : -1)); }, {passive:true});
+
+async function go(i, first){
+  if (i<0 || i>=N || (i===idx && !first)) return;
+  idx = i; const ch = CH[idx];
+  tip.hidden = true;
+  document.getElementById('badge').textContent = fmt(UI.era,{year:ch.year});
+  document.getElementById('prev').disabled = idx===0;
+  document.getElementById('next').disabled = idx===N-1;
+  dots.querySelectorAll('button').forEach((b,j)=>{ b.classList.toggle('on', j===idx); b.setAttribute('aria-current', j===idx?'step':'false'); });
+  dots.children[idx].scrollIntoView({block:'nearest', inline:'center'});
+  renderCard();
+  if (!first) { card.scrollTop = 0; if (window.innerWidth > 860) card.scrollIntoView({block:'nearest'}); }
+  try{ history.replaceState(null,'','#y'+ch.year); }catch(e){}
+  const f = await load(ch.year);
+  if (CH[idx] !== ch) return;
+  feats = f; document.getElementById('loading').hidden = true;
+  draw(!first);
+  if (CH[idx+1]) load(CH[idx+1].year);
+}
+new ResizeObserver(() => { if (box.clientWidth && (box.clientWidth!==W || box.clientHeight!==H)) size(); }).observe(box);
+size();
+go(idx, true);
+})();
+</script>
+</body>
+</html>
