@@ -150,3 +150,7 @@ main{padding-top:18px}
 .think{margin-top:12px;border-radius:12px;padding:12px 14px;background:var(--surface);border:1px solid var(--line)}
 .think>b{display:block;font-size:13px;color:var(--ink2)}
 .think p{font-weight:500}
+
+/* 아직 다투는 것: 좋은 점도 나쁜 점도 아닌 줄. 점선은 범례의 "논쟁 중"과 같은 뜻 */
+.debate{margin-top:12px;padding-top:10px;border-top:1px dashed var(--line);font-size:16px;color:var(--ink2)}
+.debate b{display:block;font-size:13px;color:var(--muted)}

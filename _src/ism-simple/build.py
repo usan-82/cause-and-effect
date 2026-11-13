@@ -104,6 +104,10 @@ def check(lang, struct, txt, pg, ism):
                     if not filled(r.get(f)):
                         e(f"people.{side}[{i}].{f} 없음")
 
+        # 아직 다투는 것: 없어도 되지만, 있으면 글이 있어야 함
+        if "debate" in c and not filled(c["debate"]):
+            e("debate 비어 있음")
+
         # 대결
         sd = ch.get("duels") if isinstance(ch.get("duels"), list) else []
         td = c.get("duels") if isinstance(c.get("duels"), list) else []
@@ -236,7 +240,9 @@ def render_chapter(ch, c, inherit, pg, names, era="", inherit_kind="sure", inher
     out.append(arrow(1))
     out.append(box("box-people", ui["people"],
                    '<div class="people">' + _people(c["people"]["good"], ui["good"], "good")
-                   + _people(c["people"]["bad"], ui["bad"], "bad") + "</div>"))
+                   + _people(c["people"]["bad"], ui["bad"], "bad") + "</div>"
+                   + (f'<p class="debate"><b>{esc(ui["debate"])}</b> {esc(c["debate"])}</p>'
+                      if c.get("debate") else "")))
     out.append(arrow(2))
     out.append(box("box-duel", ui["duel"],
                    "".join(_duel(s, t, ui, names) for s, t in zip(ch["duels"], c["duels"]))))

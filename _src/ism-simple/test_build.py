@@ -181,6 +181,13 @@ class CheckTest(unittest.TestCase):
             tx["chapters"]["industrial"][f] = "  "
             self.assertHas(self.run_check(st, tx, pg), f"{f} 없음")
 
+    def test_debate_is_optional_but_not_blank(self):
+        st, tx, pg = good()
+        tx["chapters"]["industrial"]["debate"] = "임금은 결국 올랐어요. 언제부터인지는 다퉈요."
+        self.assertEqual(fatal(self.run_check(st, tx, pg)), [])
+        tx["chapters"]["industrial"]["debate"] = "  "
+        self.assertHas(self.run_check(st, tx, pg), "debate 비어 있음")
+
     def test_shift_needs_both(self):
         st, tx, pg = good()
         tx["chapters"]["industrial"]["shift"] = {"before": "전에는 그랬어요."}
@@ -348,6 +355,14 @@ class RenderTest(unittest.TestCase):
         self.assertIn('class="think"', h)
         self.assertLess(h.index(CHAPTER["next"]), h.index(CHAPTER["think"]))
         self.assertLess(h.index(CHAPTER["think"]), h.index('class="words"'))
+
+    def test_debate_sits_under_people_not_in_the_lists(self):
+        text = "임금은 결국 올랐어요. 언제부터인지는 다퉈요."
+        h = self.render(lambda ch, c: c.update(debate=text))
+        box = h[h.index('class="box box-people"'):h.index('class="box box-duel"')]
+        self.assertIn("학자들은 아직 다퉈요", box)
+        self.assertLess(box.rindex("</ul>"), box.index(text))
+        self.assertNotIn('class="debate"', self.render())
 
     def test_escapes_text(self):
         def m(ch, c):
