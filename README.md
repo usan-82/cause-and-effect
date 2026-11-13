@@ -34,15 +34,17 @@
 
 소스와 빌드 방법은 [`_src/hegemony/map/`](_src/hegemony/map/README.md).
 
-## 사상의 분기점, 쉽게 읽기 / ism-simple (시안)
+## 사상의 분기점, 쉽게 읽기 / ism-simple
 
-중학생용으로 다시 쓰는 사상의 분기점. 분기점마다 "사건 → 바뀐 생각 → 사람들의 삶 → 맞붙은 두 생각 → 벌어진 일"을 화살표와 이유 문장으로 잇는다. 지금은 시안으로 산업혁명 한 장(한국어)만 있다.
+중학생용으로 다시 쓴 사상의 분기점. 분기점 8개를 장마다 "사건 → 바뀐 생각 → 사람들의 삶 → 맞붙은 두 생각 → 벌어진 일"로 잇고, 화살표마다 이유 문장을 붙였다. 여러 원인 중 하나이거나 학자들이 다투는 고리는 점선으로 그리고 다른 원인을 함께 적는다. 53개 사상의 전체 지도는 [사상의 분기점](#사상의-분기점--ism-인터랙티브-페이지)에 있다.
 
 | 언어 | 경로 | 공개 주소 |
 |---|---|---|
 | 한국어 | [`ko/ism-simple/`](ko/ism-simple/index.html) | https://usan-82.github.io/cause-and-effect/ko/ism-simple/ |
+| English | [`en/ism-simple/`](en/ism-simple/index.html) | https://usan-82.github.io/cause-and-effect/en/ism-simple/ |
+| Bahasa Indonesia | [`id/ism-simple/`](id/ism-simple/index.html) | https://usan-82.github.io/cause-and-effect/id/ism-simple/ |
 
-소스와 빌드 방법은 [`_src/ism-simple/`](_src/ism-simple/README.md), 사실의 출처는 [`research/04-사상-분기점-근거.md`](research/04-사상-분기점-근거.md).
+소스와 빌드 방법은 [`_src/ism-simple/`](_src/ism-simple/README.md), 본문 사실의 출처는 [`research/04-사상-분기점-근거.md`](research/04-사상-분기점-근거.md), 조사 원본 기록은 [`docs/research-notes/ism-simple/`](docs/research-notes/ism-simple/).
 
 ## 패권의 지도 / hegemony/atlas (인터랙티브 지도)
 

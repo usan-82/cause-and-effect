@@ -1,0 +1,1033 @@
+{
+ "chapters": {
+  "premodern": {
+   "title": "Mesin cetak menyebarkan buku dan gagasan ke mana-mana",
+   "scene": "Kalau ingin tahu sesuatu, kamu bisa mencarinya sendiri di buku atau internet.",
+   "q": "Mengapa dahulu orang sulit mencari tahu sendiri?",
+   "event": "Sekitar tahun 1450 di Eropa, Gutenberg mulai mencetak buku dengan huruf cetak logam. Huruf cetak logam sudah lebih dulu ada di Goryeo, sebuah negara di Semenanjung Korea. Buku Jikji, yang dicetak di Goryeo pada 1377, masih ada sampai sekarang. Di Eropa, percetakan bertambah dengan cepat. Dalam lima puluh tahun, harga buku turun menjadi sepertiganya.",
+   "shift": {
+    "before": "Buku disalin dengan tangan dan sangat berharga. Sebagian besar ditulis dalam bahasa Latin. Pengetahuan disampaikan oleh Gereja dan para cendekiawan, yang membacanya dari buku.",
+    "after": "Tulisan kuno dan Alkitab bisa dibaca langsung. Setiap orang harus bisa membacanya dalam bahasanya sendiri."
+   },
+   "people": {
+    "good": [
+     {
+      "who": "Orang kota yang bisa membaca",
+      "text": "Mereka membeli buku dan belajar sendiri. Ratusan judul buku berhitung untuk pedagang dicetak."
+     },
+     {
+      "who": "Orang yang kini bisa membaca Alkitab",
+      "text": "Perjanjian Baru berbahasa Jerman, yang terbit sesudah Reformasi Gereja dimulai, terjual 5.000 eksemplar dalam tiga bulan. Harganya tergolong mahal."
+     }
+    ],
+    "bad": [
+     {
+      "who": "Penulis dan pencetak buku",
+      "text": "Gereja dan para penguasa hanya mengizinkan pencetakan buku yang sudah disetujui. Di kemudian hari, mereka juga membuat daftar buku yang tidak boleh dibaca."
+     },
+     {
+      "who": "Para penyalin buku",
+      "text": "Pekerjaan menyalin dengan tangan berkurang karena kalah dari percetakan. Meski begitu, buku tulisan tangan masih dibuat untuk waktu yang lama."
+     }
+    ]
+   },
+   "debate": "Mesin cetak juga mencetak buku tentang cara mencari penyihir dan menjalankan pengadilan penyihir. Sedikitnya 80.000 orang diadili dan separuhnya dihukum mati. Para ahli berbeda pendapat tentang seberapa besar peran buku itu.",
+   "why": [
+    "Sebab buku yang sama kini bisa dicetak banyak dan murah. Makin banyak orang membeli dan membaca buku sendiri. Banyak pula buku terbit dalam bahasa mereka sendiri.",
+    "Sebab makin banyak orang ingin membaca sendiri, sehingga buku makin laris. Gereja dan para penguasa menganggap berbahaya jika sembarang buku tersebar.",
+    "Karena pembaca bertambah, seruan untuk membaca dan belajar sendiri makin keras. Pihak yang selama ini menjaga pengetahuan menganggap membaca sesuka hati bisa menyesatkan.",
+    "Sebab pertentangan dua gagasan itu menyebar ke banyak kota lewat barang cetakan. Pertentangan gagasan itu ikut mendorong terpecahnya Gereja."
+   ],
+   "whyOthers": [
+    "Gagasan baru sudah tumbuh sebelum ada percetakan. Ada cendekiawan yang ingin menghidupkan kembali tulisan kuno. Tulisan yang menyerukan pembaruan Gereja juga tersebar lewat salinan tangan.",
+    "Sebelum ada mesin cetak pun, Gereja sudah menghukum orang yang mengajarkan hal berbeda. Sebuah sidang Gereja menghukum imam Hus dengan dibakar sampai mati.",
+    "Kritik terhadap cara belajar lama di universitas sudah muncul sebelum mesin cetak. Gereja menjual surat indulgensi dengan imbalan uang, dan hal ini juga menambah rasa tidak puas."
+   ],
+   "duels": [
+    {
+     "a": "Hal yang diketahui lewat akal dan hal yang diketahui lewat iman tidak bertentangan. Belajar berarti menguji setiap hal satu per satu dengan logika.",
+     "b": "Tulisan kuno harus dibaca langsung dalam bahasa aslinya. Cara hidup yang benar lebih penting daripada logika yang rumit.",
+     "bName": "Humanisme",
+     "clash": "Ada dua jawaban berbeda tentang apa yang harus dipelajari dan bagaimana cara mempelajarinya.",
+     "events": [
+      "Terbitnya Perjanjian Baru berbahasa Yunani",
+      "Perdebatan tentang cara belajar di universitas"
+     ],
+     "others": "Banyak kaum humanis juga orang Kristen yang taat. Penerbitan Alkitab edisi baru juga dimaksudkan untuk memperbaiki Gereja."
+    },
+    {
+     "a": "Makna Alkitab ditafsirkan oleh Gereja. Ajaran yang diwariskan sejak lama juga menjadi pegangan iman.",
+     "b": "Hanya Alkitab yang menjadi pegangan iman. Orang beriman dapat membaca dan menilainya sendiri.",
+     "clash": "Dua jawaban berhadapan tentang siapa yang menafsirkan Alkitab.",
+     "events": [
+      "95 Dalil dan Reformasi Gereja",
+      "Pembaruan Gereja Katolik",
+      "Perang karena iman dan kekuasaan"
+     ],
+     "others": "Kemarahan atas penjualan surat indulgensi oleh Gereja juga menjadi penyebab. Raja-raja yang bersaing kuasa dengan Gereja juga punya kepentingan sendiri. Sebelumnya sudah ada orang yang berusaha memperbaiki Gereja, seperti Wycliffe dan Hus. Bagi banyak orang yang buta huruf, khotbahlah yang menyampaikan kabar."
+    }
+   ],
+   "result": "Pada 1517 Luther, seorang profesor universitas di Jerman, menulis 95 Dalil yang mempersoalkan penjualan surat indulgensi. Gereja di Eropa terpecah menjadi Katolik dan Protestan. Gereja Katolik juga memperbaiki diri dan melarang penjualan surat indulgensi. Kedua pihak sama-sama menganiaya orang yang berbeda keyakinan. Perang yang bercampur dengan soal iman dan perebutan kekuasaan berulang selama lebih dari seratus tahun. Dalam satu perang yang berlangsung tiga puluh tahun saja, sedikitnya 5 juta orang tewas.",
+   "today": "Dahulu buku disalin dengan tangan. Menyalin satu Alkitab bisa memakan waktu lima belas bulan. Sebagian besar buku berbahasa Latin. Laki-laki yang bisa menulis tidak sampai satu dari sepuluh. Percetakan menambah jumlah buku, tetapi kebanyakan orang tetap buta huruf. Negara yang hampir semua penduduknya bisa membaca baru muncul ratusan tahun kemudian.",
+   "now": "Sampai sekarang, sedikitnya 739 juta orang dewasa belum bisa membaca dan menulis. Dua pertiga dari mereka adalah perempuan.",
+   "think": "Sekarang siapa pun bisa menulis dan menyebarkan tulisannya secara luas. Siapa yang seharusnya memilah mana yang bisa dipercaya?",
+   "next": "Buku cetak sampai juga kepada para cendekiawan di tempat yang jauh. Copernicus, seorang ahli astronomi, juga mencetak dan menerbitkan bukunya sendiri.",
+   "nextOthers": "Para ahli berbeda pendapat tentang seberapa besar percetakan mengubah ilmu pengetahuan. Tulisan Yunani kuno yang dihidupkan kembali serta matematika Islam dan India juga menjadi landasannya.",
+   "words": [
+    [
+     "huruf cetak logam",
+     "Cap huruf yang dibuat dari logam. Huruf-huruf itu disusun satu per satu untuk mencetak buku."
+    ],
+    [
+     "bahasa Latin",
+     "Bahasa Romawi kuno. Gereja dan para cendekiawan Eropa memakainya untuk menulis."
+    ],
+    [
+     "Alkitab",
+     "Kitab yang memuat ajaran agama Kristen. Disebut juga Kitab Suci."
+    ],
+    [
+     "Perjanjian Baru",
+     "Bagian akhir Alkitab. Isinya kisah Yesus dan murid-muridnya."
+    ],
+    [
+     "indulgensi",
+     "Surat dari Gereja yang disebut dapat meringankan hukuman atas dosa."
+    ],
+    [
+     "Reformasi Gereja",
+     "Gerakan untuk memperbaiki Gereja. Dari gerakan ini lahir gereja-gereja baru."
+    ],
+    [
+     "Katolik",
+     "Gereja Kristen yang sudah berumur panjang dan berpusat di Roma."
+    ],
+    [
+     "Protestan",
+     "Gereja-gereja yang berpisah dari Gereja Katolik karena Reformasi Gereja."
+    ],
+    [
+     "skolastisisme",
+     "Ilmu abad pertengahan yang berusaha menjelaskan isi iman dengan logika."
+    ],
+    [
+     "humanisme",
+     "Gagasan untuk membaca tulisan Yunani dan Romawi kuno dan mencari cara hidup yang layak sebagai manusia."
+    ],
+    [
+     "pengadilan penyihir",
+     "Pengadilan terhadap orang yang dituduh penyihir karena dianggap mencelakai orang lain dengan sihir."
+    ],
+    [
+     "penganiayaan",
+     "Tindakan menyiksa dan menghukum orang karena keyakinan atau pemikirannya berbeda."
+    ],
+    [
+     "cendekiawan",
+     "Orang yang banyak belajar dan mendalami ilmu."
+    ]
+   ]
+  },
+  "science": {
+   "title": "Orang bertanya apakah sudah diperiksa, bukan siapa yang mengatakannya",
+   "scene": "Buku pelajaran menulis bahwa Bumi mengelilingi Matahari. Namun, tanah di bawah kaki terasa diam.",
+   "q": "Bagaimana cara mengetahui bahwa pernyataan itu benar?",
+   "event": "Pada 1543 Copernicus menerbitkan buku yang menyatakan bahwa Bumi mengelilingi Matahari. Lama sesudah itu, Galileo mengamati langit dengan teleskop. Di Bulan ada gunung, dan Yupiter punya empat bulan. Semua itu tidak ada dalam buku-buku kuno.",
+   "shift": {
+    "before": "Orang menganggap jawaban tentang alam sudah ada dalam buku-buku kuno.",
+    "after": "Siapa pun yang mengatakannya, hal itu diperiksa dengan mengamati dan mengukur sendiri. Orang lain juga harus bisa memeriksanya lagi."
+   },
+   "people": {
+    "good": [
+     {
+      "who": "Ilmuwan yang saling berbagi hasil",
+      "text": "Di London, para ilmuwan berkumpul, melakukan percobaan, dan berbagi hasilnya. Mereka bisa membangun karya baru di atas karya orang sebelumnya."
+     },
+     {
+      "who": "Para pembuat peta",
+      "text": "Mereka menentukan letak tempat di Bumi dengan mengukur waktu ketika bulan-bulan Yupiter tertutup. Peta baru Prancis membetulkan garis pantai yang salah pada peta lama."
+     }
+    ],
+    "bad": [
+     {
+      "who": "Para teolog penafsir Alkitab",
+      "text": "Galileo berkata bahwa bagian Alkitab tentang langit juga bisa ditafsirkan secara berbeda. Para teolog khawatir hal itu melukai iman."
+     },
+     {
+      "who": "Perempuan",
+      "text": "Perkumpulan ilmuwan yang baru hanya menerima laki-laki sebagai anggota. Perempuan juga hampir tidak bisa belajar di universitas."
+     }
+    ]
+   },
+   "why": [
+    "Teleskop memperlihatkan hal yang tidak ada dalam buku-buku kuno. Sekitar enam bulan kemudian, ilmuwan lain juga melihat hal yang sama. Para ahli matematika Gereja pun memastikan bahwa hal itu nyata. Karena itu, orang mulai lebih percaya pada hasil pengamatan dengan alat daripada perkataan cendekiawan kuno.",
+    "Hasil pemeriksaan harus dibagikan dan dicoba lagi oleh orang lain. Karena itu, para ilmuwan membentuk perkumpulan. Cara baru ini juga berbenturan dengan tafsir Alkitab yang sudah lama dipegang. Pada masa itu, kehidupan orang biasa hampir tidak berubah.",
+    "Pertentangan itu lebih dulu muncul dari tafsir Alkitab Galileo. Perkumpulan ilmuwan dan peta baru muncul sesudah pengadilan. Para ilmuwan baru ingin menyatakan hasil pemeriksaan mereka sebagai fakta. Para teolog berpendapat tafsir Alkitab tidak bisa diubah selama pembuktian belum cukup. Kedua pihak sama-sama orang yang taat beriman.",
+    "Meski sudah diperingatkan, Galileo menerbitkan buku yang berpihak pada pendapat bahwa Bumi bergerak. Gereja menganggap hal ini sebagai pelanggaran terhadap peringatan itu. Pertentangan gagasan itu ikut mendorong diadakannya pengadilan."
+   ],
+   "whyOthers": [
+    "Copernicus memakai cara menghitung yang lebih dulu dibuat oleh para ahli astronomi dunia Islam. Angka dari India serta matematika Arab dan Persia juga menjadi dasarnya. Teknik cetak menyebarkan buku secara luas.",
+    "Perkumpulan ilmuwan bergantung pada uang dan perlindungan para raja. Tidak menerima perempuan adalah kebiasaan yang sudah lama.",
+    "Sesudah Reformasi Gereja, Gereja sangat peka terhadap soal siapa yang menafsirkan Alkitab. Pada masa itu juga belum ada bukti pasti bahwa Bumi bergerak."
+   ],
+   "duels": [
+    {
+     "a": "Jika ada pembuktian yang pasti, Alkitab akan ditafsirkan ulang. Sampai sekarang pembuktian seperti itu belum ada.",
+     "b": "Hal-hal tentang alam harus diketahui dengan mengamati, mengukur, dan menalar sendiri. Alkitab bukan buku yang mengajarkan cara langit bergerak.",
+     "clash": "Keduanya berbeda tentang apa yang dianggap pembuktian. Keduanya juga berbeda tentang siapa yang menafsirkan bagian Alkitab tentang langit.",
+     "events": [
+      "Buku Copernicus dilarang",
+      "Peringatan untuk Galileo",
+      "Pengadilan Galileo"
+     ],
+     "others": "Paus adalah sahabat lama Galileo, tetapi hubungan mereka rusak karena buku itu. Gereja juga sedang tegang karena perang besar yang bercampur dengan soal iman dan kekuasaan."
+    }
+   ],
+   "result": "Pada 1633 Galileo diadili oleh Inkuisisi. Ia dikurung di rumahnya sampai meninggal, dan bukunya dilarang. Mendengar kabar ini, ada ilmuwan yang batal menerbitkan bukunya. Meski begitu, cara baru itu tetap menyebar. Pada 1687 Newton menerbitkan buku tentang hukum gerak.",
+   "today": "Hal itu tidak diketahui oleh satu orang dalam sekali pengamatan. Teleskop menguatkan pendapat bahwa Bumi bergerak, tetapi itu bukan pembuktian. Newton menjelaskan gerak di langit dan di Bumi dengan hukum alam yang sama. Jauh kemudian, hal itu dipastikan dengan mengukur letak bintang.",
+   "now": "Lebih dari 350 tahun sesudah pengadilan itu, Paus mengakui bahwa para teolog masa itu keliru menilai. Menurut Paus, kelirunya adalah menentukan hal-hal tentang alam dengan membaca Alkitab kata demi kata.",
+   "think": "Tidak semua hal bisa kamu periksa sendiri. Kalau begitu, perkataan siapa yang patut dipercaya, dan mengapa?",
+   "next": "Cara yang dipakai untuk menyelidiki alam kemudian dipakai juga untuk mempertanyakan masyarakat dan kekuasaan raja. Gagasan ini disebut Pencerahan, dan kelak ikut mendorong Revolusi Prancis.",
+   "nextOthers": "Revolusi Prancis juga disebabkan oleh gagal panen dan kelaparan, kas negara yang kosong, serta perlakuan tidak setara antara golongan.",
+   "words": [
+    [
+     "Alkitab",
+     "Kitab yang memuat ajaran agama Kristen. Disebut juga Kitab Suci."
+    ],
+    [
+     "teolog",
+     "Ahli yang mempelajari ajaran tentang Tuhan dan Alkitab."
+    ],
+    [
+     "pembuktian",
+     "Cara menunjukkan dengan alasan bahwa suatu pernyataan benar."
+    ],
+    [
+     "hukum alam",
+     "Aturan yang selalu berulang dengan cara yang sama di alam."
+    ],
+    [
+     "teknik cetak",
+     "Teknik untuk membuat banyak salinan tulisan dan gambar yang sama persis."
+    ],
+    [
+     "dunia Islam",
+     "Sebutan untuk berbagai wilayah yang banyak penduduknya beragama Islam."
+    ],
+    [
+     "kebiasaan",
+     "Cara yang sudah lama dilakukan sehingga dianggap wajar."
+    ],
+    [
+     "Reformasi Gereja",
+     "Gerakan untuk memperbaiki Gereja. Dari gerakan ini lahir gereja-gereja baru."
+    ],
+    [
+     "Paus",
+     "Pemimpin tertinggi Gereja Katolik."
+    ],
+    [
+     "Inkuisisi",
+     "Pengadilan Gereja yang memeriksa keyakinan yang berbeda dari ajaran Gereja."
+    ],
+    [
+     "skolastisisme",
+     "Ilmu abad pertengahan yang berusaha menjelaskan isi iman dengan logika."
+    ],
+    [
+     "Pencerahan",
+     "Gagasan bahwa orang perlu memeriksa dan menilai sendiri tradisi dan otoritas."
+    ],
+    [
+     "golongan",
+     "Kedudukan dalam masyarakat yang dahulu ditentukan sejak lahir. Ada rohaniwan, bangsawan, dan rakyat biasa."
+    ],
+    [
+     "cendekiawan",
+     "Orang yang banyak belajar dan mendalami ilmu."
+    ],
+    [
+     "revolusi",
+     "Perubahan besar dalam cara negara diperintah yang terjadi dalam waktu singkat."
+    ]
+   ]
+  },
+  "french": {
+   "title": "Rakyat dinyatakan sebagai pemilik negara",
+   "scene": "Di banyak negara, pemimpin negara dipilih lewat pemungutan suara. Pada hari pemilihan umum, orang dewasa mengantre di tempat pemungutan suara.",
+   "q": "Mengapa di banyak negara pemimpinnya adalah orang yang dipilih, bukan anak raja?",
+   "event": "Pada 1789 raja Prancis memanggil wakil-wakil tiap golongan untuk membicarakan pajak baru. Wakil rakyat biasa berkumpul sendiri dan mendirikan Majelis Nasional. Warga Paris merebut Bastille, benteng milik raja. Majelis Nasional mengeluarkan Deklarasi Hak Asasi Manusia dan Warga Negara.",
+   "shift": {
+    "before": "Raja berkata bahwa kekuasaannya diterima dari Tuhan. Kedudukan seseorang sebagian besar ditentukan oleh golongan tempat ia lahir.",
+    "after": "Kekuasaan dinyatakan berasal dari rakyat. Semua orang dinyatakan setara haknya, dan hukum dinyatakan sama bagi semua."
+   },
+   "people": {
+    "good": [
+     {
+      "who": "Para petani",
+      "text": "Perhambaan, yang mengikat petani pada tuan tanah, dihapus tanpa ganti rugi. Kewajiban lainnya baru bisa dilepas dengan membayar uang."
+     },
+     {
+      "who": "Laki-laki rakyat biasa yang berbakat",
+      "text": "Mereka kini berhak memegang jabatan negara, apa pun golongan asalnya."
+     },
+     {
+      "who": "Umat Protestan dan orang Yahudi",
+      "text": "Sesudah umat Protestan, orang Yahudi juga mendapat hak warga negara penuh dua tahun kemudian."
+     }
+    ],
+    "bad": [
+     {
+      "who": "Perempuan",
+      "text": "Mereka tidak boleh memilih dan tidak boleh memegang jabatan negara. Olympe de Gouges menulis Deklarasi Hak Perempuan dan Warga Negara Perempuan. Meski begitu, perkumpulan politik perempuan dilarang."
+     },
+     {
+      "who": "Para budak di koloni",
+      "text": "Deklarasi itu tidak menyebut budak. Di Saint-Domingue saja, salah satu koloni Prancis, ada sekitar 500.000 budak. Perbudakan baru dihapus beberapa tahun kemudian, sesudah para budak memberontak. Sesudah itu, Napoleon menghidupkannya kembali."
+     },
+     {
+      "who": "Bangsawan dan rohaniwan",
+      "text": "Mereka kehilangan hak istimewa dan kedudukan bangsawan. Gereja harus menyerahkan tanahnya kepada negara."
+     }
+    ]
+   },
+   "why": [
+    "Sebab wakil rakyat biasa mendirikan majelis sendiri dan menghapus hak istimewa. Deklarasi itu menuliskan gagasan baru dalam bahasa hukum.",
+    "Sebab gagasan kesetaraan menghapus hak istimewa golongan. Namun, siapa yang mendapat hak itu ditentukan secara terpisah.",
+    "Sebab pihak yang kehilangan hak istimewa ingin mempertahankan tatanan lama. Para pekerja di Paris ingin mendorong revolusi lebih jauh.",
+    "Sebab orang-orang yang berbeda gagasan saling menganggap pihak lain musuh revolusi. Pertentangan ini ikut mendorong hukuman mati raja dan masa Teror."
+   ],
+   "whyOthers": [
+    "Gagal panen, utang negara, dan kemarahan atas perlakuan tidak setara antara golongan juga menggerakkan orang. Para ahli masih berbeda pendapat tentang seberapa besar peran Pencerahan.",
+    "Yang didapat petani juga berkat perlawanan mereka sendiri. Perbudakan tidak segera dihapus karena ada keuntungan dari perdagangan koloni.",
+    "Kedua gagasan itu sudah ada sebelum revolusi. Buku yang memperkenalkan konservatisme terbit sebelum raja dihukum mati."
+   ],
+   "duels": [
+    {
+     "a": "Kekuasaan raja adalah pemberian Tuhan. Melawan raja berarti melawan Tuhan.",
+     "aName": "Hak ilahi raja",
+     "b": "Kekuasaan berasal dari rakyat. Tidak seorang pun boleh memakai kekuasaan yang tidak berasal dari rakyat.",
+     "bName": "Kedaulatan rakyat",
+     "clash": "Ada dua jawaban berbeda tentang dari mana kekuasaan negara berasal.",
+     "events": [
+      "Proklamasi republik",
+      "Hukuman mati Louis XVI"
+     ],
+     "others": "Raja mencoba melarikan diri diam-diam, tertangkap, dan kehilangan kepercayaan. Perang yang dimulai lebih dulu oleh Prancis berjalan buruk, dan harga roti melonjak."
+    },
+    {
+     "a": "Orang yang hidup sekarang tidak terikat pada ketetapan orang zaman dahulu. Bentuk negara ditentukan oleh orang yang hidup sekarang.",
+     "b": "Lembaga yang sudah bertahan lama menyimpan kebijaksanaan. Membongkarnya harus sangat hati-hati, dan memperbaikinya harus sedikit demi sedikit.",
+     "bName": "Konservatisme",
+     "clash": "Keduanya berbeda tentang seberapa cepat dan seberapa besar dunia harus diubah.",
+     "events": [
+      "Masa Teror"
+     ],
+     "others": "Buku yang memperkenalkan konservatisme terbit sebelum masa Teror. Perang, perang saudara, kelaparan, dan pertikaian di antara kaum revolusioner juga menjadi penyebab besar. Para ahli masih berbeda pendapat: apakah penyebabnya gagasan atau keadaan."
+    }
+   ],
+   "result": "Pemerintah revolusi mendirikan republik dan pada 1793 menghukum mati Raja Louis XVI. Pemerintah itu juga berperang melawan beberapa kerajaan di Eropa. Pemerintah revolusi menghukum mati atau memenjarakan puluhan ribu orang yang dianggap musuh. Masa ini disebut masa Teror. Di Vendée, wilayah barat, para petani yang menolak wajib militer memberontak. Tentara pemerintah menumpasnya, dan banyak orang tewas. Para budak di Saint-Domingue berjuang sendiri dan mendirikan Haiti pada 1804. Pada tahun yang sama di Prancis, Jenderal Napoleon menjadi kaisar.",
+   "today": "Sebab gagasan bahwa kekuasaan berasal dari rakyat telah menyebar. Gagasan ini lebih dulu muncul di Inggris dan Amerika Serikat, lalu Revolusi Prancis ikut memperkuatnya. Prancis sendiri tidak lama kemudian kembali diperintah kaisar dan raja. Pemilihan umum baru menjadi ukuran dunia jauh sesudah itu.",
+   "now": "Deklarasi Universal Hak Asasi Manusia menulis bahwa kehendak rakyat adalah dasar kewenangan pemerintah untuk memerintah. Menurut deklarasi itu, kehendak tersebut harus dinyatakan lewat pemilihan umum yang berkala dan sungguh-sungguh.",
+   "think": "Ketika sekarang disebut \"semua orang\", adakah orang yang masih belum termasuk?",
+   "next": "Revolusi Industri dimulai di Inggris, lebih dahulu daripada Revolusi Prancis. Kedua perubahan itu terjadi berdampingan di tempat yang berbeda.",
+   "words": [
+    [
+     "revolusi",
+     "Perubahan besar dalam cara negara diperintah yang terjadi dalam waktu singkat."
+    ],
+    [
+     "golongan",
+     "Kedudukan dalam masyarakat yang dahulu ditentukan sejak lahir. Ada rohaniwan, bangsawan, dan rakyat biasa."
+    ],
+    [
+     "hak istimewa",
+     "Hak khusus yang hanya dimiliki orang tertentu. Contohnya, tidak perlu membayar pajak."
+    ],
+    [
+     "perhambaan",
+     "Aturan lama yang mengikat petani pada tuan tanah sehingga mereka tidak bebas pergi."
+    ],
+    [
+     "Protestan",
+     "Gereja-gereja yang berpisah dari Gereja Katolik karena Reformasi Gereja."
+    ],
+    [
+     "hak warga negara",
+     "Hak seseorang sebagai warga suatu negara, yang dilindungi oleh hukum."
+    ],
+    [
+     "koloni",
+     "Wilayah yang direbut dan diperintah oleh negara lain."
+    ],
+    [
+     "republik",
+     "Negara tanpa raja yang diperintah oleh orang-orang pilihan rakyat."
+    ],
+    [
+     "hak ilahi raja",
+     "Gagasan bahwa kekuasaan raja diberikan oleh Tuhan."
+    ],
+    [
+     "kedaulatan rakyat",
+     "Gagasan bahwa kekuasaan negara berasal dari rakyat."
+    ],
+    [
+     "konservatisme",
+     "Gagasan bahwa lembaga lama perlu dijaga sambil diperbaiki sedikit demi sedikit."
+    ],
+    [
+     "Deklarasi Universal Hak Asasi Manusia",
+     "Naskah tentang hak semua orang yang diumumkan oleh Perserikatan Bangsa-Bangsa (PBB)."
+    ],
+    [
+     "Pencerahan",
+     "Gagasan bahwa orang perlu memeriksa dan menilai sendiri tradisi dan otoritas."
+    ],
+    [
+     "hak asasi manusia",
+     "Hak yang dimiliki setiap orang karena ia manusia."
+    ]
+   ]
+  },
+  "industrial": {
+   "title": "Mesin dan jam mengubah pekerjaan",
+   "scene": "Sekolah, bus, dan toko berjalan menurut jam yang sudah ditentukan. Kalau datang lewat dari jam itu, kamu disebut \"terlambat\".",
+   "q": "Sejak kapan dan mengapa orang hidup mengikuti jam?",
+   "event": "Di Inggris, pabrik yang membuat barang dengan mesin makin banyak. Mesin uap yang disempurnakan Watt pada 1769 dapat juga menggerakkan mesin-mesin pabrik. Banyak orang lalu berkumpul di pabrik dan bekerja di depan mesin.",
+   "shift": {
+    "before": "Pekerjaan mengikuti matahari, musim, dan tugas yang harus diselesaikan hari itu.",
+    "after": "Pekerjaan mengikuti jam. Waktu tidak lagi dilewatkan begitu saja, tetapi menjadi uang yang dibelanjakan."
+   },
+   "people": {
+    "good": [
+     {
+      "who": "Para pembeli barang",
+      "text": "Pabrik membuat banyak barang sehingga harganya turun. Keluarga pekerja pun mampu membeli pakaian dan perabot."
+     },
+     {
+      "who": "Para pemilik pabrik",
+      "text": "Orang yang memiliki mesin dan pabrik mendapat keuntungan. Perbedaan penghasilan makin lebar."
+     }
+    ],
+    "bad": [
+     {
+      "who": "Anak-anak di pabrik",
+      "text": "Ada yang bekerja dua belas jam sehari. Upah mereka sekitar seperempat upah laki-laki dewasa."
+     },
+     {
+      "who": "Perajin kain yang hidup dari keterampilannya",
+      "text": "Ketika hidup mereka makin sulit, mereka menganggap mesin baru sebagai penyebabnya. Ada yang melawan dengan merusak mesin."
+     },
+     {
+      "who": "Keluarga yang pindah ke kota",
+      "text": "Rumah mereka sempit dan penuh sesak. Penyakit seperti kolera sering mewabah."
+     }
+    ]
+   },
+   "debate": "Upah para pekerja pada akhirnya naik. Namun, para ahli berbeda pendapat tentang sejak kapan hidup mereka membaik.",
+   "why": [
+    "Pemilik pabrik membeli waktu para pekerja dengan uang. Karena itu, ia menjaga agar waktu tersebut tidak terbuang sia-sia. Alatnya adalah lonceng, jam, dan denda bagi yang terlambat.",
+    "Karena waktu sudah menjadi uang, para pemilik berusaha memperpanjang jam kerja. Mereka juga memanggil anak-anak, yang upahnya murah, ke pabrik.",
+    "Orang yang hidupnya makin sulit bertanya. Mengapa uang yang dihasilkan mesin hanya menjadi milik pemilik pabrik? Pihak yang beruntung mencari bahan baku yang lebih murah dan pasar yang lebih luas.",
+    "Orang-orang yang berbeda gagasan bersatu dalam kelompok masing-masing lalu bertindak. Pertentangan gagasan itu ikut mendorong mogok kerja, revolusi, dan penaklukan."
+   ],
+   "whyOthers": [
+    "Sebelum ada pabrik pun, sudah ada tempat kerja yang memakai lonceng dan jadwal.",
+    "Harga barang turun karena mesin membuat barang dalam jumlah banyak. Menurut sebagian ahli, anak-anak sudah bekerja berjam-jam lamanya bahkan sebelum ada pabrik.",
+    "Gagasan-gagasan baru itu juga tumbuh dari gagasan zaman sebelumnya."
+   ],
+   "duels": [
+    {
+     "a": "Pabrik adalah milik pemiliknya. Hanya jika ada keuntungan, orang mau menanggung risiko dan memulai usaha.",
+     "aName": "Kapitalisme",
+     "b": "Pabrik harus dimiliki bersama. Hanya dengan begitu, orang yang bekerja juga mendapat bagiannya.",
+     "bName": "Sosialisme",
+     "clash": "Ada dua jawaban berbeda tentang siapa yang memiliki pabrik dan keuntungannya.",
+     "events": [
+      "Serikat pekerja dan mogok kerja",
+      "Gerakan untuk mengurangi jam kerja",
+      "Revolusi 1848 di Eropa"
+     ],
+     "others": "Serikat pekerja bersatu terutama karena soal upah dan jam kerja. Dalam revolusi 1848 ada juga gagal panen, tuntutan hak pilih, dan masalah kebangsaan."
+    },
+    {
+     "a": "Pabrik membutuhkan bahan baku murah dan tempat untuk menjual barang. Karena itu, wilayah yang jauh harus dikuasai.",
+     "aName": "Imperialisme",
+     "b": "Tanah ini milik orang-orang yang tinggal di sini. Siapa yang memerintah juga ditentukan oleh mereka sendiri.",
+     "clash": "Di wilayah yang sama, pihak yang ingin menguasai berhadapan dengan pihak yang ingin mempertahankannya.",
+     "events": [
+      "Sebagian besar Afrika menjadi koloni",
+      "Perlawanan di banyak koloni"
+     ],
+     "others": "Persaingan antarnegara dan senjata baru juga menjadi penyebab. Keyakinan bahwa sebagian manusia lebih unggul daripada yang lain juga ikut berperan."
+    }
+   ],
+   "result": "Para pekerja membentuk serikat pekerja dan melakukan mogok kerja. Inggris mengurangi jam kerja anak-anak dan perempuan dengan undang-undang. Pada 1848 revolusi pecah di banyak tempat di Eropa. Negara-negara yang punya pabrik memperluas koloni mereka di Afrika dan Asia. Di setiap tempat yang dijadikan koloni, penduduknya melawan dan memberontak.",
+   "today": "Pabrik membuat orang bekerja mengikuti jam. Kereta api menyatukan waktu yang tadinya berbeda di tiap kota. Pada 1840 sebuah perusahaan kereta api di Inggris mewajibkan semua stasiunnya memakai waktu London. Tidak lama kemudian, kantor pemerintah dan gereja di Inggris juga mengikuti waktu ini.",
+   "now": "Sampai sekarang, sejumlah negara menetapkan upah minimum sebagai jumlah uang per jam. Dengan cara ini, gagasan bahwa waktu adalah uang juga tetap hidup dalam hukum.",
+   "think": "Kini robot dan AI mulai menggantikan pekerjaan manusia. Siapa yang seharusnya memiliki uang yang dihasilkan dengan cara itu?",
+   "next": "Negara-negara yang punya pabrik berebut koloni untuk mencari bahan baku dan pasar. Perebutan ini kelak menjadi salah satu penyebab perang dunia.",
+   "nextOthers": "Persekutuan antarnegara dan perlombaan memperbesar tentara juga menjadi penyebab.",
+   "words": [
+    [
+     "mesin uap",
+     "Alat yang menggerakkan mesin dengan tenaga uap dari air mendidih."
+    ],
+    [
+     "upah",
+     "Uang yang diterima sebagai bayaran atas pekerjaan."
+    ],
+    [
+     "serikat pekerja",
+     "Perkumpulan pekerja untuk membela upah dan syarat kerja mereka."
+    ],
+    [
+     "mogok kerja",
+     "Tindakan banyak pekerja berhenti bekerja bersama-sama agar tuntutan mereka dipenuhi."
+    ],
+    [
+     "revolusi",
+     "Perubahan besar dalam cara negara diperintah yang terjadi dalam waktu singkat."
+    ],
+    [
+     "bahan baku",
+     "Bahan untuk membuat barang. Contohnya kapas untuk membuat kain."
+    ],
+    [
+     "koloni",
+     "Wilayah yang direbut dan diperintah oleh negara lain."
+    ],
+    [
+     "kapitalisme",
+     "Cara mengatur ekonomi: pabrik dan toko dimiliki perorangan, dan keuntungan dicari lewat jual beli di pasar."
+    ],
+    [
+     "sosialisme",
+     "Gagasan bahwa pabrik dan sejenisnya harus dimiliki bersama oleh masyarakat dan keuntungannya dibagi."
+    ],
+    [
+     "imperialisme",
+     "Gagasan dan gerakan negara kuat untuk merebut dan memerintah wilayah lain."
+    ],
+    [
+     "perang dunia",
+     "Perang besar yang melibatkan banyak negara dari beberapa benua."
+    ],
+    [
+     "upah minimum",
+     "Upah paling rendah yang ditetapkan negara dan wajib dibayarkan kepada pekerja."
+    ],
+    [
+     "AI",
+     "Kecerdasan buatan. Program komputer yang dibuat agar bisa belajar dan menjawab seperti manusia."
+    ]
+   ]
+  },
+  "worldwar": {
+   "title": "Sesudah melewati perang, dunia menjanjikan hak manusia",
+   "scene": "Di berita ada kejadian seperti ini. Ketika suatu negara menindas rakyatnya sendiri, negara-negara lain mempersoalkannya.",
+   "q": "Itu urusan negara lain, jadi mengapa dunia ikut turun tangan?",
+   "event": "Pada 1914 Perang Dunia I pecah. Senapan mesin, meriam, dan gas beracun buatan pabrik dipakai dalam perang ini. Dari kalangan tentara saja, lebih dari 8,5 juta orang tewas. Orang-orang dari koloni juga ikut berperang sebagai prajurit dan pekerja. Selama perang, revolusi pecah di Rusia, lalu berdirilah sebuah negara komunis.",
+   "shift": {
+    "before": "Banyak orang di Eropa percaya bahwa dunia makin lama makin baik. Mereka menganggap hidup akan membaik jika pengetahuan dan teknologi bertambah.",
+    "after": "Keyakinan bahwa dunia membaik dengan sendirinya mulai goyah. Karena seluruh negeri ikut menanggung perang, setiap orang mengharapkan bagiannya."
+   },
+   "people": {
+    "good": [
+     {
+      "who": "Perempuan di beberapa negara",
+      "text": "Perempuan mendapat hak pilih di Inggris dan Jerman pada tahun perang berakhir. Di Amerika Serikat, hak itu didapat dua tahun kemudian. Di Inggris, hak itu hanya untuk perempuan berusia di atas tiga puluh tahun yang memiliki harta. Perempuan Prancis dan Italia menunggu sampai 1945."
+     },
+     {
+      "who": "Orang Polandia",
+      "text": "Polandia, yang lebih dari seratus tahun hilang dari peta, kembali menjadi negara."
+     },
+     {
+      "who": "Para pekerja pabrik",
+      "text": "Sebuah organisasi internasional untuk pekerja didirikan. Kesepakatan pertamanya adalah bekerja 8 jam sehari. Namun, negara yang menerimanya lebih sedikit daripada yang diharapkan."
+     }
+    ],
+    "bad": [
+     {
+      "who": "Penduduk koloni dan Tiongkok",
+      "text": "Asas bahwa setiap bangsa memerintah dirinya sendiri tidak sampai kepada mereka. Negara-negara pemenang membagi koloni milik negara yang kalah. Gerakan 1 Maret di Korea, yang menentang kekuasaan Jepang, tidak berhasil meraih kemerdekaan. Di Tiongkok, Gerakan 4 Mei muncul setelah perjanjian membiarkan Shandong tetap di tangan Jepang."
+     },
+     {
+      "who": "Kelompok minoritas di dalam perbatasan baru",
+      "text": "Perbatasan baru tidak persis sesuai dengan tempat tinggal orang-orang. Janji untuk melindungi kelompok minoritas tidak ditepati dengan baik."
+     },
+     {
+      "who": "Mereka yang merasa tidak mendapat bagian",
+      "text": "Di Italia, orang merasa tidak mendapat wilayah yang seharusnya diterima sebagai imbalan berperang. Di Jerman, kemarahan terhadap perjanjian yang dibuat sesudah kalah perang sangat besar."
+     }
+    ]
+   },
+   "debate": "Jerman diwajibkan membayar uang dalam jumlah besar karena kalah perang. Para ahli berbeda pendapat tentang seberapa berat beban itu.",
+   "why": [
+    "Sebab senjata buatan pabrik membunuh orang dalam jumlah yang tak terhitung. Sebab bukan hanya tentara, melainkan seluruh masyarakat dikerahkan untuk perang.",
+    "Sebab negara-negara sulit menolak tuntutan orang-orang yang sudah ikut membantu perang. Namun, bagian itu tidak terbagi rata.",
+    "Sebab banyak orang merasa tidak mendapat bagiannya. Ketika Depresi Besar juga menghilangkan pekerjaan mereka, janji tentang negara yang kuat makin didengar. Pihak lain menjawab bahwa hak setiap orang harus dilindungi.",
+    "Pihak yang mengutamakan negara menganggap perluasan wilayah sebagai kekuatan negara. Mereka menyingkirkan orang-orang yang dianggap bukan bagian dari negara. Gagasan ini ikut mendorong perang dan pembantaian."
+   ],
+   "whyOthers": [
+    "Yang ada bukan hanya kekecewaan. Besar pula harapan bahwa orang bisa belajar dari perang dan membangun dunia yang lebih baik.",
+    "Gerakan hak pilih perempuan dan tuntutan kerja 8 jam sudah ada sebelum perang. Negara-negara baru lahir juga karena kekaisaran-kekaisaran lama runtuh.",
+    "Fasisme di Italia merebut kekuasaan sebelum Depresi Besar. Hitler di Jerman tidak meraih lebih dari separuh suara. Presidenlah yang mengangkatnya menjadi kanselir, yaitu kepala pemerintahan. Ketakutan terhadap komunisme dan kekecewaan terhadap pemerintahan parlementer juga ikut berperan."
+   ],
+   "duels": [
+    {
+     "a": "Negara adalah yang utama. Seseorang hanya berarti di dalam negara.",
+     "aName": "Fasisme",
+     "b": "Setiap orang lahir bebas dan setara. Hak itu tidak dapat dirampas, bahkan oleh negara.",
+     "bName": "Liberalisme",
+     "clash": "Keduanya berbeda tentang mana yang lebih utama: negara atau perorangan.",
+     "events": [
+      "Perang Dunia II",
+      "Holocaust",
+      "Deklarasi Universal Hak Asasi Manusia"
+     ],
+     "others": "Kesepakatan antarnegara untuk mencegah serangan ke negara lain kehilangan kekuatannya. Di Eropa juga sudah lama ada prasangka benci terhadap orang Yahudi. Di pihak yang melawan fasisme ada juga Uni Soviet, sebuah negara komunis. Negara-negara yang berbicara tentang kebebasan juga membiarkan koloni dan diskriminasi ras tetap ada. Perang di Asia lebih dulu dimulai dari pertempuran antara Jepang dan Tiongkok."
+    }
+   ],
+   "result": "Jerman menyerbu negara tetangganya di Eropa, dan Jepang di Asia. Diperkirakan 55 juta sampai 60 juta orang tewas dalam Perang Dunia II. Jerman Nazi pimpinan Hitler dan pihak-pihak yang membantunya membunuh 6 juta orang Yahudi. Mereka juga membunuh ratusan ribu orang Roma dan penyandang disabilitas. Orang Roma dahulu direndahkan dengan sebutan \"Gipsi\". Tentara Jepang membunuh sangat banyak tawanan perang dan warga sipil di Nanjing, Tiongkok. Bom atom yang dijatuhkan Amerika Serikat di dua kota Jepang menewaskan antara 110.000 dan 210.000 warga sipil. Pada 1945, ketika perang berakhir, Perserikatan Bangsa-Bangsa (PBB) didirikan. Pada 1948 lahirlah Deklarasi Universal Hak Asasi Manusia.",
+   "today": "Sebelum perang, asasnya adalah tidak mencampuri urusan dalam negeri negara lain. Sesudah mengalami pembantaian, negara-negara menyatakan bahwa hak adalah milik semua orang. Karena itu, menyebarlah gagasan bahwa dunia dapat mempersoalkan masalah hak asasi manusia di suatu negara. Namun, deklarasi itu adalah janji, bukan hukum. Sampai sekarang deklarasi itu masih berbenturan dengan asas tidak mencampuri.",
+   "now": "PBB memeriksa keadaan hak asasi manusia di 193 negara anggotanya setiap 4 sampai 5 tahun. Pada saat itu, negara-negara lain menyarankan hal yang perlu diperbaiki.",
+   "think": "Ketika urusan dalam negeri berbenturan dengan hak semua orang, sejauh mana dunia harus turun tangan?",
+   "next": "Sesudah perang berakhir, Amerika Serikat dan Uni Soviet, sebuah negara komunis, menjadi dua negara terkuat. Perbedaan gagasan keduanya kelak menjadi salah satu penyebab dunia terbelah dua.",
+   "nextOthers": "Penyebab lainnya: kedua negara masing-masing menghimpun negara-negara pendukungnya, dan ada perlombaan senjata nuklir.",
+   "words": [
+    [
+     "perang dunia",
+     "Perang besar yang melibatkan banyak negara dari beberapa benua."
+    ],
+    [
+     "koloni",
+     "Wilayah yang direbut dan diperintah oleh negara lain."
+    ],
+    [
+     "revolusi",
+     "Perubahan besar dalam cara negara diperintah yang terjadi dalam waktu singkat."
+    ],
+    [
+     "komunisme",
+     "Sistem yang membuat pabrik dan tanah dimiliki negara, dan ekonomi dijalankan menurut rencana negara."
+    ],
+    [
+     "Uni Soviet",
+     "Negara gabungan lima belas republik, termasuk Rusia. Sekarang negara itu sudah tidak ada."
+    ],
+    [
+     "Depresi Besar",
+     "Masa ketika di banyak negara bank bangkrut dan banyak pekerjaan hilang sekaligus."
+    ],
+    [
+     "fasisme",
+     "Gagasan yang menempatkan negara dan bangsa di atas perorangan dan menuntut rakyat mengikuti satu pemimpin."
+    ],
+    [
+     "liberalisme",
+     "Gagasan yang mengutamakan kebebasan dan hak perorangan serta membatasi kekuasaan dengan hukum."
+    ],
+    [
+     "Holocaust",
+     "Pembantaian 6 juta orang Yahudi oleh Jerman Nazi dan pihak-pihak yang membantunya."
+    ],
+    [
+     "PBB",
+     "Singkatan dari Perserikatan Bangsa-Bangsa. Perkumpulan negara-negara untuk mencegah perang dan melindungi hak asasi manusia."
+    ],
+    [
+     "Deklarasi Universal Hak Asasi Manusia",
+     "Naskah tentang hak semua orang yang diumumkan oleh Perserikatan Bangsa-Bangsa (PBB)."
+    ],
+    [
+     "hak asasi manusia",
+     "Hak yang dimiliki setiap orang karena ia manusia."
+    ],
+    [
+     "kelompok minoritas",
+     "Kelompok bangsa yang jumlah orangnya sedikit di dalam suatu negara."
+    ],
+    [
+     "senjata nuklir",
+     "Bom yang sangat dahsyat dan meledak dengan tenaga atom."
+    ]
+   ]
+  },
+  "coldwar": {
+   "title": "Dunia terbelah menjadi dua kubu",
+   "scene": "Coba cari Korea di peta, kamu akan menemukan dua negara. Keduanya adalah Republik Korea dan Republik Rakyat Demokratik Korea. Orang sering menyebutnya Korea Selatan dan Korea Utara. Di antara keduanya ada garis yang tidak boleh dilewati sesuka hati.",
+   "q": "Mengapa Korea, yang dulu satu negara, terbagi menjadi Korea Utara dan Korea Selatan?",
+   "event": "Pada 1945 perang berakhir. Amerika Serikat dan Uni Soviet, yang tadinya berjuang bersama, punya cara berbeda dalam mengatur negara. Jerman dibagi dan diduduki oleh empat negara. Semenanjung Korea, yang tadinya berada di bawah kekuasaan Jepang, dibagi dan diduduki oleh Amerika Serikat dan Uni Soviet. Kedua tempat itu sama-sama terbelah dua. Pertentangan ini disebut Perang Dingin.",
+   "shift": {
+    "before": "Amerika Serikat dan Uni Soviet berada di pihak yang sama dan melawan musuh yang sama.",
+    "after": "Kedua negara memandang dunia sebagai dua kubu. Berada di kubu mana menjadi hal yang paling penting. Menyebar pula ketakutan bahwa semua orang bisa mati karena senjata nuklir."
+   },
+   "people": {
+    "good": [
+     {
+      "who": "Penduduk Eropa Barat",
+      "text": "Amerika Serikat mengirim uang dalam jumlah besar untuk membantu membangun kembali pabrik dan jalan."
+     },
+     {
+      "who": "Penduduk negara-negara kubu Uni Soviet",
+      "text": "Negara menyediakan pekerjaan, rumah, pendidikan, dan rumah sakit. Taraf hidup mereka lebih rendah daripada di sisi barat."
+     },
+     {
+      "who": "Negara-negara yang baru merdeka",
+      "text": "Kedua negara kuat itu mengirim uang dan teknologi ke negara-negara ini untuk menambah jumlah pendukungnya."
+     }
+    ],
+    "bad": [
+     {
+      "who": "Penduduk Semenanjung Korea",
+      "text": "Perang selama 3 tahun membuat jutaan orang tewas atau terluka. Banyak keluarga tercerai-berai di Selatan dan di Utara."
+     },
+     {
+      "who": "Rakyat Iran",
+      "text": "Amerika Serikat bekerja sama dengan tentara Iran untuk menggulingkan perdana menteri. Polisi rahasia raja, yang didukung Amerika Serikat, menangkap dan menyiksa orang-orang yang menentang."
+     },
+     {
+      "who": "Penduduk Eropa Timur",
+      "text": "Uni Soviet mengirim tentara ke Hungaria untuk mematahkan pembaruan. Di Berlin, orang-orang yang mencoba melewati tembok ditembak."
+     }
+    ]
+   },
+   "debate": "Para ahli sepakat bahwa pihak Utara menyerang lebih dulu. Namun, mereka masih berbeda pendapat apakah akar perang itu ada di dalam atau di luar Semenanjung Korea.",
+   "why": [
+    "Sebab kedua negara berhadapan di banyak tempat dan masing-masing menghimpun negara-negara pendukungnya. Negara lain ditekan agar memilih salah satu kubu. Ketika kedua pihak menimbun senjata nuklir, ketakutan pun bertambah besar.",
+    "Sebab kedua negara kuat itu memakai uang, senjata, dan tentara untuk menambah dan menjaga kubunya. Uang dipakai untuk membangkitkan ekonomi. Senjata dan tentara dipakai untuk perang dan penindasan.",
+    "Pertentangan tentang siapa yang memiliki pabrik sudah ada sejak pabrik-pabrik muncul. Kini dua negara kuat masing-masing memegang satu sisi dan bersaing di panggung dunia. Kaum muda yang lelah dengan pertentangan panjang itu mempertanyakan kedua pihak.",
+    "Kedua kubu sama-sama tidak mau mundur. Pertentangan gagasan itu ikut mendorong krisis, perang, dan unjuk rasa."
+   ],
+   "whyOthers": [
+    "Perbedaan gagasan kedua negara sudah dalam sejak sebelum perang. Ada juga negara-negara yang berusaha tidak memihak kubu mana pun.",
+    "Di dalam Semenanjung Korea sendiri, orang-orang yang berbeda gagasan juga saling melawan. Para ahli berbeda pendapat tentang seberapa besar uang Amerika Serikat membantu kebangkitan Eropa Barat.",
+    "Pertentangan kedua gagasan itu dimulai sebelum Perang Dingin. Jumlah kaum muda yang melonjak dan universitas yang penuh sesak juga menjadi penyebab Gerakan 68."
+   ],
+   "duels": [
+    {
+     "a": "Pemimpin dipilih lewat pemilihan umum, dan setiap orang harus bebas berbicara. Penjual dan pembelilah yang paling tahu barang apa yang perlu dibuat.",
+     "aName": "Liberalisme · ekonomi pasar",
+     "b": "Pabrik dan tanah adalah milik semua orang. Negara harus membuat rencana dan menyediakan pekerjaan, rumah, sekolah, dan rumah sakit bagi semua.",
+     "bName": "Komunisme",
+     "clash": "Keduanya berbeda: apakah ekonomi negara diserahkan kepada pasar atau direncanakan oleh negara.",
+     "events": [
+      "Perlombaan senjata nuklir dan antariksa",
+      "Krisis Rudal Kuba",
+      "Perang Vietnam"
+     ],
+     "others": "Dalam Perang Vietnam ada juga keinginan untuk meraih kemerdekaan. Dalam Krisis Kuba, rudal yang ditempatkan Amerika Serikat di Turki juga menjadi penyebab."
+    },
+    {
+     "a": "Urusan negara harus diputuskan lewat pemilihan umum dan hukum, bukan di jalanan. Kalau ketertiban runtuh, semua orang dirugikan.",
+     "b": "Aku harus ikut serta dalam keputusan yang menentukan hidupku. Aku tidak akan tunduk pada perang, diskriminasi, ataupun pembungkaman.",
+     "clash": "Keduanya berhadapan tentang siapa yang memutuskan urusan negara dan bagaimana caranya.",
+     "events": [
+      "Unjuk rasa di Paris dan Chicago",
+      "Unjuk rasa di Kota Meksiko",
+      "Serbuan tentara Soviet ke Praha"
+     ],
+     "others": "Tuntutannya berbeda di tiap negara. Ada ahli yang menganggap pembagian menjadi dua pihak saja terlalu sederhana."
+    }
+   ],
+   "result": "Di Kuba, kedua kubu sampai di ambang perang nuklir. Di Vietnam, Amerika Serikat mengirim tentara ke sebuah perang panjang yang menewaskan lebih dari 1 juta orang. Gerakan 68 muncul di sisi timur maupun barat. Di Paris dan Chicago gerakan itu ditumpas polisi, di Kota Meksiko oleh tentara, dan di Praha oleh tentara Soviet. Sedikit lebih dari dua puluh tahun kemudian, penduduk Eropa Timur menyingkirkan pemerintahan partai komunis. Tembok Berlin pun dibuka. Dua tahun sesudahnya, Uni Soviet terpecah menjadi lima belas negara. Hal itu terjadi karena ekonomi yang melambat, pembaruan, dan tuntutan kemerdekaan datang bersamaan. Akhir itu bukan sesuatu yang sudah pasti sejak awal.",
+   "today": "Ketika Jepang menyerah pada 1945, Amerika Serikat mengusulkan garis lintang ke-38, dan Uni Soviet menerimanya. Orang Korea tidak ditanya pendapatnya. Tiga tahun kemudian, pemerintahan terpisah berdiri di Selatan dan di Utara. Pada 25 Juni 1950 tentara Utara menyerang Selatan, dan perang pun dimulai. Pada 1953 pertempuran berhenti karena perjanjian gencatan senjata. Garis yang ditetapkan perjanjian itu kini menjadi Garis Demarkasi Militer.",
+   "now": "Sampai sekarang, perjanjian gencatan senjata itu belum diganti dengan perjanjian damai. Zona Demiliterisasi selebar 4 kilometer membentang melintasi Semenanjung Korea.",
+   "think": "Apa bedanya menghentikan pertempuran dengan mewujudkan perdamaian?",
+   "next": "Dengan biaya dari lembaga penelitian Departemen Pertahanan Amerika Serikat, dibuatlah jaringan yang menghubungkan komputer-komputer. Teknologi ini kelak menjadi dasar internet.",
+   "nextOthers": "Sebuah lembaga penelitian di Inggris dan universitas di Amerika Serikat juga meneliti teknologi yang sama secara terpisah. Meluasnya komputer pribadi juga menjadi penyebab besar.",
+   "words": [
+    [
+     "Uni Soviet",
+     "Negara gabungan lima belas republik, termasuk Rusia. Sekarang negara itu sudah tidak ada."
+    ],
+    [
+     "senjata nuklir",
+     "Bom yang sangat dahsyat dan meledak dengan tenaga atom."
+    ],
+    [
+     "pendudukan",
+     "Keadaan ketika tentara masuk ke wilayah negara lain dan memerintah di sana."
+    ],
+    [
+     "Perang Dingin",
+     "Masa panjang ketika kubu Amerika Serikat dan kubu Uni Soviet berhadapan tanpa berperang langsung."
+    ],
+    [
+     "garis lintang ke-38",
+     "Garis pada peta yang mengikuti 38 derajat Lintang Utara."
+    ],
+    [
+     "perjanjian gencatan senjata",
+     "Kesepakatan untuk menghentikan pertempuran. Ini berbeda dari perjanjian damai yang mengakhiri perang."
+    ],
+    [
+     "Garis Demarkasi Militer",
+     "Garis yang ditarik di antara dua tentara menurut perjanjian gencatan senjata."
+    ],
+    [
+     "Zona Demiliterisasi",
+     "Wilayah di kedua sisi Garis Demarkasi Militer yang disepakati bebas dari tentara dan senjata."
+    ],
+    [
+     "Gerakan 68",
+     "Unjuk rasa dan gerakan pembaruan oleh mahasiswa dan warga di banyak negara pada tahun yang sama."
+    ],
+    [
+     "liberalisme",
+     "Gagasan yang mengutamakan kebebasan dan hak perorangan serta membatasi kekuasaan dengan hukum."
+    ],
+    [
+     "ekonomi pasar",
+     "Cara mengatur ekonomi: penjual dan pembeli yang menentukan barang apa dibuat dan berapa harganya."
+    ],
+    [
+     "komunisme",
+     "Sistem yang membuat pabrik dan tanah dimiliki negara, dan ekonomi dijalankan menurut rencana negara."
+    ]
+   ]
+  },
+  "digital": {
+   "title": "Ketika informasi melimpah, perhatian menjadi langka",
+   "scene": "Mesin pencari, video, dan media sosial kamu pakai tanpa membayar.",
+   "q": "Lalu dari mana perusahaan-perusahaan itu mendapat uang?",
+   "event": "Pada 1969 di Amerika Serikat, empat komputer dihubungkan dalam satu jaringan komputer. Pada 1989, di sebuah lembaga penelitian di Swiss, Berners-Lee mengusulkan World Wide Web. Tujuannya agar para ilmuwan mudah berbagi informasi. Empat tahun kemudian, lembaga itu membuka program web agar bisa dipakai siapa pun. Setelah komputer pribadi dan ponsel pintar meluas, banyak orang ikut tersambung.",
+   "shift": {
+    "before": "Informasi itu langka. Perusahaan surat kabar serta stasiun radio dan televisi memilihnya lalu menyampaikannya.",
+    "after": "Informasi melimpah, dan siapa pun bisa membuat dan menyebarkannya. Yang langka bukan informasi, melainkan perhatian orang."
+   },
+   "people": {
+    "good": [
+     {
+      "who": "Orang yang mencari tahu dan belajar",
+      "text": "Wikipedia, yang ditulis para relawan, bisa dibaca dalam 342 bahasa. Artikelnya lebih dari 66 juta, dan tidak ada iklan."
+     },
+     {
+      "who": "Pengguna layanan gratis",
+      "text": "Layanan yang bisa dipakai tanpa membayar makin banyak. Sebuah penelitian menilai hal ini memberi manfaat besar bagi orang-orang."
+     }
+    ],
+    "bad": [
+     {
+      "who": "Perusahaan surat kabar dan wartawan",
+      "text": "Iklan berpindah dari surat kabar ke internet. Di perusahaan surat kabar Amerika Serikat, pekerjaan membuat berita berkurang 57% dalam dua belas tahun."
+     },
+     {
+      "who": "Pengguna yang catatannya dikumpulkan",
+      "text": "Perusahaan mengumpulkan catatan tentang apa yang dilihat dan diklik pengguna. Pengguna sulit mengetahui bagaimana informasi tentang dirinya dipakai."
+     },
+     {
+      "who": "Orang Rohingya di Myanmar",
+      "text": "Ribuan orang tewas atau terluka akibat serangan tentara Myanmar. Tim Pencari Fakta PBB menyatakan bahwa Facebook dipakai untuk menyebarkan kebencian."
+     }
+    ]
+   },
+   "debate": "Para ahli berbeda pendapat apakah media sosial merusak kesehatan jiwa remaja. Satu pihak menilai buktinya sudah cukup, pihak lain menilai buktinya masih kurang.",
+   "why": [
+    "Di jaringan komputer, biaya menyebarkan tulisan dan foto menjadi sangat murah. Karena itu, informasi melimpah. Namun, waktu orang untuk melihat dan membaca tetap sama, dan itulah sebabnya.",
+    "Karena siapa pun bisa menyebarkan informasi, orang-orang menghimpun pengetahuan bersama. Karena perhatian menjadi langka, perusahaan membuka layanan gratis untuk mengumpulkan orang. Uangnya didapat dari iklan. Karena itu, iklan berpindah dari surat kabar ke internet. Agar iklan cocok dengan penggunanya, perusahaan juga mengumpulkan catatan pengguna. Tulisan yang menarik perhatian mudah menyebar walaupun isinya tidak benar.",
+    "Pihak yang menilai web tumbuh karena terbuka meminta agar web tidak dibatasi. Orang yang dirugikan mengkhawatirkan kekuasaan perusahaan yang mengumpulkan informasi. Karena itu, mereka menuntut aturan.",
+    "Gagasan untuk membuka ikut mendorong lahirnya program yang bisa diubah dan dipakai siapa pun. Gagasan yang menginginkan aturan ikut mendorong lahirnya undang-undang pelindungan data pribadi."
+   ],
+   "whyOthers": [
+    "Pernyataan bahwa perhatian akan menjadi kurang sudah muncul sebelum internet meluas. Sekarang beberapa situs besar yang memilih apa yang ditampilkan.",
+    "Perusahaan surat kabar berkurang juga karena perusahaan besar membeli dan menggabungkan surat kabar. Di Myanmar, pemerintah dan tentara menyuburkan kebencian. Wikipedia dibuat oleh para relawan tanpa iklan.",
+    "Gagasan yang menginginkan internet terbuka sudah ada sebelum internet meluas. Di Eropa, aturan data pribadi sudah ada sebelum media sosial muncul."
+   ],
+   "duels": [
+    {
+     "a": "Internet bukan wilayah yang diatur pemerintah. Pengetahuan dan program harus bisa dipakai, diubah, dan dibagikan oleh siapa pun.",
+     "aName": "Internet terbuka",
+     "b": "Layanan gratis menghasilkan uang dengan memakai catatan pengguna sebagai bahannya. Setiap orang harus bisa mengendalikan informasi tentang dirinya sendiri.",
+     "bName": "Kritik platform",
+     "clash": "Keduanya berbeda tentang siapa yang mengatur internet dan informasi di dalamnya.",
+     "events": [
+      "Linux, program yang dibuat bersama",
+      "Undang-undang pelindungan data pribadi di Eropa",
+      "Undang-undang tentang platform besar"
+     ],
+     "others": "Perusahaan juga membuka programnya karena hal itu berguna bagi usahanya. Undang-undang Eropa itu juga bertujuan menyatukan aturan yang berbeda di tiap negara. Perusahaan menyatakan bahwa mereka tidak menjual informasi dan bahwa iklanlah yang membiayai layanan."
+    }
+   ],
+   "result": "Pihak yang ingin membuka bersama-sama membuat program yang bisa diubah dan dipakai siapa pun. Linux juga menjadi dasar program yang menjalankan ponsel pintar. Sebuah perusahaan media sosial mengumumkan bahwa informasi penggunanya mungkin telah berpindah secara tidak semestinya ke perusahaan lain. Informasi itu milik hingga 87 juta orang. Sejumlah negara Eropa bersama-sama memberlakukan undang-undang pelindungan data pribadi. Mereka juga membuat undang-undang untuk mengatur perusahaan platform besar.",
+   "today": "Perusahaan mesin pencari dan media sosial mendapat uang dari iklan. Pada 2025, lebih dari 70% pendapatan Alphabet (Google) berasal dari iklan daring. Pendapatan Meta (Facebook) hampir seluruhnya berasal dari iklan. Catatan tentang apa yang dilihat dan diklik pengguna dipakai untuk mencocokkan iklan.",
+   "now": "Australia memberlakukan undang-undang yang melarang anak di bawah 16 tahun memiliki akun media sosial. Dalam beberapa hari, lebih dari 4,7 juta akun ditutup atau diblokir.",
+   "think": "Apakah adil jika kamu memakai layanan dengan menyerahkan catatan tentang dirimu sebagai pengganti uang?",
+   "next": "Di internet menumpuk sangat banyak tulisan dan foto yang diunggah orang. Semua itu menjadi bahan untuk mengajari AI.",
+   "nextOthers": "Dibutuhkan juga perangkat yang cepat menghitung dan cara menghitung yang baru.",
+   "words": [
+    [
+     "jaringan komputer",
+     "Jalur yang menghubungkan komputer-komputer agar bisa saling bertukar informasi."
+    ],
+    [
+     "World Wide Web",
+     "Cara menampilkan dokumen yang saling terhubung di internet. Disingkat web."
+    ],
+    [
+     "media sosial",
+     "Layanan internet tempat orang mengunggah tulisan dan foto serta saling terhubung."
+    ],
+    [
+     "Wikipedia",
+     "Ensiklopedia di internet yang ditulis bersama oleh para relawan dan bisa dibaca siapa saja."
+    ],
+    [
+     "data pribadi",
+     "Informasi tentang seseorang, seperti nama, tempat tinggal, dan apa yang dilihatnya."
+    ],
+    [
+     "Linux",
+     "Program dasar komputer yang dibuka agar siapa pun bisa mengubah dan memakainya."
+    ],
+    [
+     "platform",
+     "Layanan internet tempat banyak orang berkumpul untuk bertukar tulisan, barang, dan pekerjaan."
+    ],
+    [
+     "Rohingya",
+     "Kelompok orang yang sudah lama tinggal di Myanmar. Banyak dari mereka melarikan diri ke Bangladesh."
+    ],
+    [
+     "Tim Pencari Fakta PBB",
+     "Tim yang dibentuk Dewan Hak Asasi Manusia PBB untuk menyelidiki kejadian di Myanmar."
+    ],
+    [
+     "internet terbuka",
+     "Gagasan bahwa internet dan pengetahuan harus terbuka bagi siapa saja."
+    ],
+    [
+     "kritik platform",
+     "Gagasan yang mengkhawatirkan kekuasaan perusahaan internet besar yang mengumpulkan informasi."
+    ],
+    [
+     "AI",
+     "Kecerdasan buatan. Program komputer yang dibuat agar bisa belajar dan menjawab seperti manusia."
+    ],
+    [
+     "PBB",
+     "Singkatan dari Perserikatan Bangsa-Bangsa. Perkumpulan negara-negara untuk mencegah perang dan melindungi hak asasi manusia."
+    ]
+   ]
+  },
+  "ai": {
+   "title": "Mesin mulai membuat tulisan dan gambar",
+   "scene": "Kalau kamu bertanya kepada AI, tulisan dan gambar langsung muncul. Jawaban pekerjaan rumah juga muncul.",
+   "q": "Pekerjaan rumah yang dikerjakan AI itu sebenarnya hasil kerja siapa?",
+   "event": "Pada 2012, dalam sebuah lomba mengenali foto, satu program unggul jauh dari yang lain. Program itu memakai deep learning, yaitu belajar dengan melihat banyak foto. Foto-fotonya dikumpulkan dari internet. Pada 2022 ChatGPT dirilis, yaitu program yang menjawab pertanyaan dengan bahasa sehari-hari. Siapa pun bisa memakainya secara gratis.",
+   "shift": {
+    "before": "Orang menganggap hanya manusia yang menulis dan menggambar.",
+    "after": "Mesin juga menghasilkan tulisan dan gambar. Kalau begitu, apa yang menjadi tugas manusia?"
+   },
+   "people": {
+    "good": [
+     {
+      "who": "Pekerja pemula yang belum mahir",
+      "text": "Dalam sebuah penelitian, petugas layanan pelanggan memakai asisten AI. Jumlah pertanyaan yang mereka selesaikan per jam naik rata-rata 14%. Pada pekerja yang belum mahir, kenaikannya 34%."
+     },
+     {
+      "who": "Perempuan yang menjalani pemeriksaan kanker",
+      "text": "Dalam sebuah uji coba di Swedia, AI membantu pembacaan foto pemeriksaan kanker payudara. Kanker yang ditemukan 29% lebih banyak."
+     }
+    ],
+    "bad": [
+     {
+      "who": "Penulis dan perusahaan surat kabar",
+      "text": "Perusahaan AI memakai sangat banyak tulisan dan foto untuk pelatihan AI. Penulis dan perusahaan surat kabar mengajukan gugatan karena menurut mereka karya itu dipakai tanpa izin."
+     },
+     {
+      "who": "Pekerja yang memilah data",
+      "text": "Para pekerja di Kenya membaca dan memilah tulisan yang menggambarkan kekerasan dan perlakuan kejam. Mereka dibayar sekitar 1,32 sampai 2 dolar AS per jam."
+     },
+     {
+      "who": "Korban video palsu",
+      "text": "Video palsu yang bersifat seksual terutama menyasar perempuan dan anak perempuan. Dalam survei di 11 negara, sedikitnya 1,2 juta anak melaporkan bahwa mereka menjadi korban."
+     }
+    ]
+   },
+   "debate": "Para ahli ekonomi pun berbeda pendapat apakah AI akan mengurangi atau menambah lapangan kerja. Jumlah pekerjaan secara keseluruhan belum berkurang. Namun, ada penelitian yang menemukan penurunan pada sebagian kelompok usia muda.",
+   "why": [
+    "ChatGPT adalah AI penulis pertama yang tersedia secara luas. Siapa pun cukup bertanya dengan bahasa sehari-hari. Dalam dua bulan, penggunanya diperkirakan mencapai 100 juta orang. Itu karena banyak orang melihat sendiri tulisan yang dibuat mesin.",
+    "Karena menganggap mesin bisa menghasilkan karya, orang mulai membagi pekerjaan dengan AI. Teknik deep learning yang sama juga membaca foto pemeriksaan kesehatan. Sejak AI dibuat, tulisan manusia dan tenaga untuk memilahnya sudah dipakai. Konten palsu yang tampak asli pun jadi mudah dibuat.",
+    "Setelah AI masuk ke dalam kehidupan, sisi baik dan sisi buruknya terlihat jelas. Pihak yang dirugikan meminta agar kerugian saat ini dicegah lebih dulu. Namun, perdebatan terbesar terjadi tentang kecepatan pengembangannya.",
+    "Suara pihak yang lebih dulu melihat bahaya ikut mendorong lahirnya deklarasi dan aturan. Suara pihak yang mengutamakan kecepatan ikut mendorong pelonggaran aturan. Karena itu, tiap negara menempuh jalan yang berbeda."
+   ],
+   "whyOthers": [
+    "Pertanyaan apakah mesin bisa berpikir sudah ada jauh sebelumnya. AI pembuat gambar muncul beberapa bulan sebelum ChatGPT. Manusia mudah merasa bahwa mesin yang berbicara seperti manusia memahami maknanya.",
+    "Pekerjaan memberi label pada foto sudah ada sebelum ChatGPT. Video palsu menyebar lewat aplikasi pesan.",
+    "Kedua gagasan itu sudah ada sebelum ChatGPT muncul. Persaingan antarperusahaan dan antarnegara juga memperbesar perdebatan itu."
+   ],
+   "duels": [
+    {
+     "a": "Jika AI lepas dari kendali manusia, kerugian yang sangat besar bisa terjadi. Langkahnya harus pelan agar keamanannya bisa diperiksa.",
+     "aName": "Keselamatan AI",
+     "b": "AI bisa menyembuhkan penyakit dan menyelamatkan nyawa. Menunda berarti kehilangan sebanyak itu, jadi langkahnya harus lebih cepat.",
+     "bName": "Akselerasionisme",
+     "clash": "Keduanya berbeda tentang seberapa cepat AI dikembangkan dan siapa yang memutuskannya.",
+     "events": [
+      "Surat terbuka yang meminta jeda",
+      "Pencabutan perintah keselamatan di Amerika Serikat",
+      "Perdebatan para pemimpin perusahaan tentang kecepatan"
+     ],
+     "others": "Ada juga orang yang menganggap kerugian saat ini lebih mendesak daripada bahaya di masa depan yang jauh. Yang mereka maksud adalah pemerasan tenaga kerja, pemakaian data tanpa izin, dan kekuasaan yang menumpuk pada beberapa perusahaan. Persaingan antarnegara dan keuntungan perusahaan juga memengaruhi keputusan."
+    }
+   ],
+   "result": "Uni Eropa membuat Undang-Undang AI. Namun, penerapan aturan untuk AI yang berisiko tinggi ditunda lebih dari setahun. Amerika Serikat mengeluarkan perintah keselamatan, lalu mencabutnya setelah pemerintahannya berganti. Pada September 2026 beberapa pemimpin perusahaan AI mengajak memperlambat laju. Pemimpin sebuah perusahaan semikonduktor membalas dengan ajakan untuk melaju lebih cepat. Sampai sekarang belum ada kabar bahwa kesepakatan yang mengikat semua pihak telah dibuat. Persoalan ini belum selesai.",
+   "today": "Belum ada jawaban yang pasti. Kantor Hak Cipta Amerika Serikat menyatakan bahwa karya yang seluruhnya dibuat AI tidak dilindungi hak cipta. Kementerian Pendidikan Korea Selatan mewajibkan siswa menjelaskan prosesnya jika memakai AI dalam penilaian kinerja. Kedua jawaban itu mirip: keduanya berusaha memisahkan bagian yang dikerjakan sendiri oleh manusia.",
+   "now": "Sejak Januari 2026, Korea Selatan mewajibkan perusahaan memberi tanda pada karya yang dibuat dengan AI. Mulai Desember tahun itu, Uni Eropa melarang aplikasi manipulasi gambar yang membuat orang tampak telanjang tanpa izinnya.",
+   "think": "Dalam tulisan yang kamu buat dengan bantuan AI, sampai di mana \"bagian yang kukerjakan sendiri\"?",
+   "words": [
+    [
+     "AI",
+     "Kecerdasan buatan. Program komputer yang dibuat agar bisa belajar dan menjawab seperti manusia."
+    ],
+    [
+     "deep learning",
+     "Cara belajar mesin: melihat banyak data lalu menemukan sendiri polanya."
+    ],
+    [
+     "pelatihan",
+     "Proses AI belajar dengan melihat banyak tulisan dan foto."
+    ],
+    [
+     "pembacaan",
+     "Kegiatan memeriksa foto pemeriksaan untuk mengetahui ada penyakit atau tidak."
+    ],
+    [
+     "gugatan",
+     "Permintaan kepada pengadilan untuk memutuskan siapa yang benar."
+    ],
+    [
+     "manipulasi gambar",
+     "Kegiatan mencampur beberapa foto atau video sehingga terlihat seperti gambar baru."
+    ],
+    [
+     "keselamatan AI",
+     "Gagasan bahwa AI harus dikembangkan sambil dipastikan aman lebih dulu."
+    ],
+    [
+     "akselerasionisme",
+     "Gagasan untuk memajukan AI dan teknologi lebih cepat."
+    ],
+    [
+     "Uni Eropa",
+     "Perkumpulan banyak negara di Eropa. Mereka juga membuat hukum bersama."
+    ],
+    [
+     "semikonduktor",
+     "Bahan untuk komponen kecil yang menjalankan komputer dan AI."
+    ],
+    [
+     "hak cipta",
+     "Hak yang dimiliki pembuat tulisan atau gambar atas karyanya."
+    ],
+    [
+     "penilaian kinerja",
+     "Penilaian di sekolah Korea yang memberi nilai lewat tugas atau presentasi."
+    ]
+   ]
+  }
+ }
+}

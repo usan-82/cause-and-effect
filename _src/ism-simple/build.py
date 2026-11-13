@@ -179,7 +179,7 @@ def esc(s):
 
 
 def _arrow(grade, word, reason, others, ui):
-    extra = f'<p class="others"><b>{esc(ui["others"])}</b> {esc(others)}</p>' if grade == "part" and others else ""
+    extra = f'<p class="others"><b>{esc(ui["others"])}</b> {esc(others)}</p>' if others else ""
     return (f'<div class="arrow {grade}"><b>{esc(word)}</b>'
             f'<p class="reason">{esc(reason)}</p>{extra}</div>')
 
@@ -196,7 +196,7 @@ def _side(say, ism_id, easy, names):
 def _duel(s, t, ui, names):
     grade = s["grade"]
     others = (f'<p class="others"><b>{esc(ui["others"])}</b> {esc(t["others"])}</p>'
-              if grade == "part" and t.get("others") else "")
+              if t.get("others") else "")
     events = "".join(f"<li>{esc(e)}</li>" for e in t["events"])
     return ('<div class="duel"><div class="sides">'
             + _side(t["a"], s.get("a"), t.get("aName"), names)
@@ -213,7 +213,8 @@ def _people(rows, label, cls):
 
 def render_chapter(ch, c, inherit, pg, names, era="", inherit_kind="sure", inherit_others=None):
     """한 장의 사슬. 칸 다섯 개와 그 사이 화살표 네 개.
-    inherit는 앞 장이 넘겨준 글, inherit_kind는 그 고리의 종류(sure/part/parallel)."""
+    inherit는 앞 장이 넘겨준 글, inherit_kind는 그 고리의 종류(sure/part/parallel).
+    "다른 원인도 있어요"는 실선에도 붙는다(원인이 여럿일 수 있다). 점선은 원인인지 다툼이 있다는 뜻."""
     ui = pg["ui"]
     arrows = list(ch["arrows"]) + ["part" if any(d["grade"] == "part" for d in ch["duels"]) else "sure"]
     others = list(c.get("whyOthers") or []) + [None]
@@ -227,7 +228,7 @@ def render_chapter(ch, c, inherit, pg, names, era="", inherit_kind="sure", inher
     if inherit:
         label = ui["parallel"] if inherit_kind == "parallel" else ui["inherit"]
         extra = (f'<p class="others"><b>{esc(ui["others"])}</b> {esc(inherit_others)}</p>'
-                 if inherit_kind == "part" and inherit_others else "")
+                 if inherit_kind != "parallel" and inherit_others else "")
         out.append(f'<aside class="inherit {esc(inherit_kind)}"><b>{esc(label)}</b><p>{esc(inherit)}</p>{extra}</aside>')
     out.append(f'<div class="ask"><span>{esc(ui["scene"])}</span><p class="scene">{esc(c["scene"])}</p>'
                f'<p>{esc(c["q"])}</p></div>')
@@ -255,7 +256,7 @@ def render_chapter(ch, c, inherit, pg, names, era="", inherit_kind="sure", inher
         kind = ch.get("next", "sure")
         label = ui["parallel"] if kind == "parallel" else ui["next"]
         extra = (f'<p class="others"><b>{esc(ui["others"])}</b> {esc(c["nextOthers"])}</p>'
-                 if kind == "part" and c.get("nextOthers") else "")
+                 if kind != "parallel" and c.get("nextOthers") else "")
         out.append(f'<aside class="next {kind}"><b>{esc(label)}</b><p>{esc(c["next"])}</p>{extra}</aside>')
     out.append(f'<aside class="think"><b>{esc(ui["think"])}</b><p>{esc(c["think"])}</p></aside>')
     if c.get("words"):

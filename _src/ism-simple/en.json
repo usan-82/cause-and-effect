@@ -1,0 +1,1041 @@
+{
+ "chapters": {
+  "premodern": {
+   "title": "The printing press spread books and ideas widely",
+   "scene": "When people wonder about something, they look it up for themselves in a book or on the internet.",
+   "q": "Why was it hard for people long ago to look things up for themselves?",
+   "event": "Around 1450 in Europe, Gutenberg began to print books with metal type. Metal type existed even earlier in Goryeo, a country on the Korean Peninsula. A book called Jikji, printed in Goryeo in 1377, still survives today. In Europe the number of printing shops grew fast. Within fifty years, the price of books fell by two-thirds.",
+   "shift": {
+    "before": "Books were precious things copied by hand, and most were in Latin. The Church and scholars read the books and passed the knowledge on.",
+    "after": "People can read the old texts and the Bible for themselves. Everyone should be able to read them in their own language."
+   },
+   "people": {
+    "good": [
+     {
+      "who": "Townspeople who could read",
+      "text": "They bought books and taught themselves. Hundreds of different books that taught arithmetic to merchants were printed."
+     },
+     {
+      "who": "People who could now read the Bible",
+      "text": "A German New Testament that came out after the Reformation began sold 5,000 copies in three months. Its price was fairly high."
+     }
+    ],
+    "bad": [
+     {
+      "who": "People who wrote and printed books",
+      "text": "The Church and rulers allowed only approved books to be printed. Later, they also made a list of books that people must not read."
+     },
+     {
+      "who": "People who copied books by hand",
+      "text": "Printing shops pushed hand copying aside, so there was less work for copyists. Even so, handwritten books went on being made for a long time."
+     }
+    ]
+   },
+   "debate": "The printing press also printed a book on how to find witches and put them on trial. In the witch trials, at least 80,000 people were tried and half of them were executed. Scholars disagree about how much the book was to blame.",
+   "why": [
+    "Because the same book could now be printed in large numbers and cheaply. More people bought books and read them for themselves, and many books appeared in people's own languages.",
+    "Because more people wanted to read for themselves, so more books were sold. The Church and rulers thought it was dangerous if just any book could spread.",
+    "As readers grew in number, the call to read and learn for oneself grew louder. Those who had guarded knowledge thought people would go wrong if they read as they pleased.",
+    "Because the clash between the two ideas travelled in print to many cities. The clash of ideas helped bring about the split in the Church."
+   ],
+   "whyOthers": [
+    "The new ideas began to grow before printing. There were scholars who wanted to revive the old texts. Writings that called for reforming the Church also spread in hand-made copies.",
+    "Even before the printing press, the Church punished people who taught differently. A Church council had the priest Hus burned to death.",
+    "Voices questioning the old university learning were heard before the printing press. The Church's sale of indulgences for money also fed people's discontent."
+   ],
+   "duels": [
+    {
+     "a": "Knowing by reasoning and knowing by faith do not contradict each other. People learn by questioning each point with logic.",
+     "b": "People should read the old texts directly, in the original languages. Living rightly comes before difficult logic.",
+     "bName": "Humanism",
+     "clash": "The two gave different answers about what people should learn, and how.",
+     "events": [
+      "Publication of the Greek New Testament",
+      "Disputes over university learning"
+     ],
+     "others": "Many humanists were also devout Christians. The new edition of the Bible was also meant to help reform the Church."
+    },
+    {
+     "a": "The Church interprets the meaning of the Bible. Long-held teachings are also a standard of faith.",
+     "b": "The Bible alone is the standard of faith. Believers can read it and judge for themselves.",
+     "clash": "The two answers stood against each other over who interprets the Bible.",
+     "events": [
+      "The Ninety-five Theses and the Reformation",
+      "Reform of the Catholic Church",
+      "Wars of faith and power"
+     ],
+     "others": "Anger at the Church's sale of indulgences was also a cause. Kings who were competing with the Church for power had aims of their own. Earlier, people such as Wycliffe and Hus had also tried to reform the Church. For the many people who could not read, sermons carried the news."
+    }
+   ],
+   "result": "In 1517 Luther, a university professor in Germany, wrote the Ninety-five Theses, which questioned the sale of indulgences. The Church in Europe split into Catholic and Protestant churches. The Catholic Church also reformed itself and banned the sale of indulgences. Both sides persecuted people whose faith was different. Wars that mixed faith with struggles for power came again and again for more than a hundred years. In just one of them, which lasted thirty years, at least 5 million people died.",
+   "today": "Long ago books were copied by hand, and one Bible could take fifteen months. Most books were in Latin, and fewer than one man in ten could write. Printing brought more books, but most people still could not read. Countries where nearly everyone can read appeared only hundreds of years later.",
+   "now": "Even today, at least 739 million adults cannot read and write. Two thirds of them are women.",
+   "think": "Today anyone can write something and spread it widely. Who should decide what can be trusted?",
+   "next": "Printed books also reached scholars in faraway places. The astronomer Copernicus also had his own book printed and published.",
+   "nextOthers": "Scholars disagree about how much printing changed science. Revived ancient Greek texts and Islamic and Indian mathematics also prepared the ground.",
+   "words": [
+    [
+     "metal type",
+     "Letter stamps made of metal. They are set together one by one to print a book."
+    ],
+    [
+     "Latin",
+     "The language of ancient Rome. The Church and scholars in Europe used it for writing."
+    ],
+    [
+     "Bible",
+     "The book that holds the teachings of Christianity. It is also called Scripture."
+    ],
+    [
+     "New Testament",
+     "The later part of the Bible. It tells the story of Jesus and his followers."
+    ],
+    [
+     "indulgence",
+     "A certificate given by the Church that was said to reduce the punishment for sins."
+    ],
+    [
+     "Reformation",
+     "A movement to reform the Church. As a result, new churches were formed."
+    ],
+    [
+     "Catholic Church",
+     "The old Christian church that has its centre in Rome."
+    ],
+    [
+     "Protestant churches",
+     "The churches that split from the Catholic Church in the Reformation."
+    ],
+    [
+     "Scholasticism",
+     "A medieval kind of learning that used logic to examine and explain what faith teaches."
+    ],
+    [
+     "humanism",
+     "The idea of reading ancient Greek and Roman texts to find the way to live a truly human life."
+    ],
+    [
+     "witch trial",
+     "A trial of a person accused of being a witch who had harmed others by magic."
+    ],
+    [
+     "persecution",
+     "Harming and punishing people because their faith or ideas are different."
+    ],
+    [
+     "printing",
+     "The technique of making many identical copies of words and pictures."
+    ]
+   ]
+  },
+  "science": {
+   "title": "People asked whether it had been checked, not who had said it",
+   "scene": "Textbooks say that the Earth goes around the Sun. But the ground underfoot seems to stand still.",
+   "q": "How can anyone know whether that is true?",
+   "event": "In 1543 Copernicus published a book saying that the Earth goes around the Sun. Much later, Galileo looked at the sky through a telescope. The Moon had mountains, and Jupiter had four moons. These things were not in the old books.",
+   "shift": {
+    "before": "People thought the old books already held the answers about what nature is like.",
+    "after": "Whoever said it, check it by looking and measuring directly. Other people must be able to check it again."
+   },
+   "people": {
+    "good": [
+     {
+      "who": "Scholars who shared results",
+      "text": "In London, scholars met to do experiments and share the results. They could build new work on what earlier people had done."
+     },
+     {
+      "who": "Map makers",
+      "text": "They timed the moments when Jupiter's moons were hidden and used them to fix positions on land. A new map of France corrected the wrong coastline of the old maps."
+     }
+    ],
+    "bad": [
+     {
+      "who": "Theologians who interpreted the Bible",
+      "text": "Galileo said that what the Bible says about the heavens could also be interpreted differently. The theologians worried that the faith would be harmed."
+     },
+     {
+      "who": "Women",
+      "text": "The new societies of scholars accepted only men as members. Women were hardly able to attend universities either."
+     }
+    ]
+   },
+   "why": [
+    "The telescope showed things that were not in the old books. It took about six months for other scholars to see the same things. The Church's mathematicians also confirmed that they were real. So people began to trust what instruments showed over the words of ancient scholars.",
+    "What had been checked needed to be shared and tried again. So scholars formed societies. The new method also clashed with the old way of interpreting the Bible. At that time, the lives of ordinary people hardly changed.",
+    "The dispute began first over Galileo's interpretation of the Bible. The societies of scholars and the new map came after the trial. The new scholars wanted to state what they had checked as fact. The theologians held that the interpretation of the Bible could not be changed while proof was lacking. Both sides were people of deep faith.",
+    "Even after a warning, Galileo published a book that took the side of a moving Earth. The Church saw this as breaking the warning. The clash of ideas helped bring about the trial."
+   ],
+   "whyOthers": [
+    "Copernicus used methods of calculation that astronomers in the Islamic world had developed earlier. Indian numerals and Arab and Persian mathematics were also a foundation. Printing spread books widely.",
+    "The societies of scholars depended on the money and protection of kings. Keeping women out was a long-standing custom.",
+    "After the Reformation, the Church was sensitive about who interprets the Bible. At that time there was also no firm evidence that the Earth moves."
+   ],
+   "duels": [
+    {
+     "a": "If a sure proof is found, the Bible will be interpreted again. So far there is no such proof.",
+     "b": "The facts of nature must be found by looking, measuring and reasoning. The Bible is not a book that teaches how the heavens move.",
+     "clash": "They differed over what counts as proof, and over who interprets what the Bible says about the heavens.",
+     "events": [
+      "Ban on Copernicus's book",
+      "The warning given to Galileo",
+      "The trial of Galileo"
+     ],
+     "others": "The pope had long been Galileo's friend, but the book broke their friendship. A great war that mixed faith with power had also made the Church tense."
+    }
+   ],
+   "result": "In 1633 Galileo was tried by the Inquisition. He was kept confined in his house until he died, and his book was banned. There was a scholar who gave up publishing a book on hearing this news. Even so, the new method spread. In 1687 Newton published the laws of motion in a book.",
+   "today": "It was not learned by one person looking once. The telescope gave support to the view that the Earth moves, but it was not proof. Newton explained motion in the heavens and on the Earth with the same laws of nature. Much later, it was confirmed by measuring the positions of stars.",
+   "now": "More than 350 years after the trial, the pope admitted that the theologians of that time had judged wrongly. He said the mistake was trying to settle questions of nature by reading the Bible literally.",
+   "think": "No one can check everything in person. In that case, whose word should people trust, and why?",
+   "next": "The method of questioning nature was also used to question society and the power of kings. This way of thinking is called the Enlightenment, and it later helped bring about the French Revolution.",
+   "nextOthers": "Bad harvests and hunger, an empty state treasury and unequal treatment of the estates were also causes of the French Revolution.",
+   "words": [
+    [
+     "Bible",
+     "The book that holds the teachings of Christianity. It is also called Scripture."
+    ],
+    [
+     "theologian",
+     "A scholar who studies God and the teachings of the Bible."
+    ],
+    [
+     "proof",
+     "Showing with reasons that a statement is true."
+    ],
+    [
+     "law of nature",
+     "A rule that nature always follows in the same way, again and again."
+    ],
+    [
+     "printing",
+     "The technique of making many identical copies of words and pictures."
+    ],
+    [
+     "Islamic world",
+     "A name for the many regions where a large number of people follow Islam."
+    ],
+    [
+     "custom",
+     "A way of doing things that people take for granted because it has long been done."
+    ],
+    [
+     "Reformation",
+     "A movement to reform the Church. As a result, new churches were formed."
+    ],
+    [
+     "pope",
+     "The highest leader of the Catholic Church."
+    ],
+    [
+     "Inquisition",
+     "A Church court that searched out beliefs that differed from the teaching of the Church."
+    ],
+    [
+     "Scholasticism",
+     "A medieval kind of learning that used logic to examine and explain what faith teaches."
+    ],
+    [
+     "Enlightenment",
+     "The idea that people should examine tradition and authority for themselves and then judge."
+    ],
+    [
+     "estate",
+     "A person's place in society, which used to be fixed at birth. There were three: clergy, nobles and commoners."
+    ],
+    [
+     "revolution",
+     "A great change, in a short time, in the way a country is ruled."
+    ]
+   ]
+  },
+  "french": {
+   "title": "The people were declared the masters of the country",
+   "scene": "In many countries, people choose who will lead the country by voting. On election day, adults stand in line at polling stations.",
+   "q": "Why, in many countries, does an elected person lead the country instead of a king's child?",
+   "event": "In 1789 the king of France called together representatives of the estates to discuss new taxes. The representatives of the commoners met separately and set up the National Assembly. The people of Paris took the Bastille, a royal fortress. The National Assembly issued the Declaration of the Rights of Man and of the Citizen.",
+   "shift": {
+    "before": "The king said that he had received his power from God. A person's place was set largely by the estate they were born into.",
+    "after": "The new idea was that power comes from the people. It held that people are equal in rights and that the law is the same for all."
+   },
+   "people": {
+    "good": [
+     {
+      "who": "Peasants",
+      "text": "Serfdom, which tied peasants to a landowner, was abolished without payment. Peasants could free themselves from the other dues only by paying money."
+     },
+     {
+      "who": "Talented men who were commoners",
+      "text": "They became eligible for public office, whatever estate they were born into."
+     },
+     {
+      "who": "Protestants and Jews",
+      "text": "After the Protestants, Jews also gained full citizenship two years later."
+     }
+    ],
+    "bad": [
+     {
+      "who": "Women",
+      "text": "They could neither vote nor hold public office. Olympe de Gouges wrote the Declaration of the Rights of Woman and of the Female Citizen. Even so, women's political clubs were banned."
+     },
+     {
+      "who": "Enslaved people in the colonies",
+      "text": "The Declaration said nothing about slaves. In the French colony of Saint-Domingue alone there were about 500,000 enslaved people. Slavery was abolished only a few years later, after the enslaved people rose up. After that, Napoleon brought it back."
+     },
+     {
+      "who": "Nobles and clergy",
+      "text": "They lost their privileges and their noble rank. The Church had to give up its land to the state."
+     }
+    ]
+   },
+   "why": [
+    "Because the representatives of the commoners set up an assembly on their own and abolished privileges. The Declaration wrote the new idea down in the language of law.",
+    "Because the idea of equality did away with the privileges of the estates. But who would be given those rights was decided separately.",
+    "Because those who had lost privileges tried to defend the old order. The working people of Paris tried to push the revolution further.",
+    "Because people whose ideas differed saw each other as enemies of the revolution. This conflict helped bring about the execution of the king and the Reign of Terror."
+   ],
+   "whyOthers": [
+    "Anger at bad harvests, state debt and unequal treatment of the estates also moved people. Scholars still disagree about how large a cause the Enlightenment was.",
+    "What the peasants gained was also thanks to their own uprising. One reason slavery was not abolished at once was the profit from colonial trade.",
+    "The two ideas existed before the revolution. The book that made conservatism known came out before the king was executed."
+   ],
+   "duels": [
+    {
+     "a": "The king's power is given by God. To oppose the king is to oppose God.",
+     "aName": "Divine right of kings",
+     "b": "Power comes from the people. No one may use power that does not come from the people.",
+     "bName": "Popular sovereignty",
+     "clash": "The two gave different answers about where the power of the state comes from.",
+     "events": [
+      "Proclamation of the republic",
+      "Execution of Louis XVI"
+     ],
+     "others": "The king was caught trying to flee in secret and lost people's trust. The war, which France had started, went badly, and the price of bread soared."
+    },
+    {
+     "a": "People living now are not bound by what people of the past decided. The living decide the shape of the country.",
+     "b": "Institutions that have lasted a long time hold hidden wisdom. Pull them down only with infinite caution, and mend them little by little.",
+     "bName": "Conservatism",
+     "clash": "They differed over how fast and how much the world should be changed.",
+     "events": [
+      "The Reign of Terror"
+     ],
+     "others": "The book that made conservatism known came out before the Reign of Terror. War, civil war, hunger and fights among the revolutionaries themselves were also major causes. Scholars still disagree about whether ideas or circumstances were to blame."
+    }
+   ],
+   "result": "The revolutionary government set up a republic and in 1793 executed King Louis XVI. It also fought wars against several kingdoms of Europe. The revolutionary government executed or imprisoned tens of thousands of people it saw as enemies. This time is called the Reign of Terror. In the Vendée, in western France, peasants who refused to be drafted into the army rose up. Government troops crushed the rising, and many people died. The enslaved people of Saint-Domingue fought for themselves and founded Haiti in 1804. In the same year in France, the general Napoleon became emperor.",
+   "today": "Because the idea spread that power comes from the people. This idea appeared first in England and the United States, and the French Revolution added force to it. France itself soon went back to being ruled by an emperor and by kings. Elections became the world's standard only much later.",
+   "now": "The Universal Declaration of Human Rights says that the will of the people is the basis of the authority of government. It says this will must be shown in genuine elections held at regular times.",
+   "think": "When people say “everyone” today, is anyone left out?",
+   "next": "The Industrial Revolution began in Britain before the French Revolution. The two changes happened side by side in different places.",
+   "words": [
+    [
+     "revolution",
+     "A great change, in a short time, in the way a country is ruled."
+    ],
+    [
+     "estate",
+     "A person's place in society, which used to be fixed at birth. There were three: clergy, nobles and commoners."
+    ],
+    [
+     "privilege",
+     "A special right that only some people have, such as not paying taxes."
+    ],
+    [
+     "serfdom",
+     "A system in which peasants were tied to a landowner and could not leave freely."
+    ],
+    [
+     "Protestant churches",
+     "The churches that split from the Catholic Church in the Reformation."
+    ],
+    [
+     "citizenship",
+     "The rights that the law protects for a person as a member of a country."
+    ],
+    [
+     "colony",
+     "A land that another country has taken and rules."
+    ],
+    [
+     "republic",
+     "A country without a king, ruled by people whom the citizens choose."
+    ],
+    [
+     "divine right of kings",
+     "The idea that God gave the king his power."
+    ],
+    [
+     "popular sovereignty",
+     "The idea that the power of the state comes from the people."
+    ],
+    [
+     "conservatism",
+     "The idea that old institutions should be kept and mended little by little."
+    ],
+    [
+     "Universal Declaration of Human Rights",
+     "A text issued by the United Nations (UN) that sets out the rights every person has."
+    ],
+    [
+     "Enlightenment",
+     "The idea that people should examine tradition and authority for themselves and then judge."
+    ],
+    [
+     "human rights",
+     "Rights that every person has, simply by being a person."
+    ],
+    [
+     "clergy",
+     "Priests and other people whose work is to serve the Church."
+    ],
+    [
+     "noble",
+     "A person born into a high-ranking family that had special rights."
+    ],
+    [
+     "commoner",
+     "An ordinary person who was neither a noble nor a member of the clergy."
+    ]
+   ]
+  },
+  "industrial": {
+   "title": "Machines and clocks changed work",
+   "scene": "Schools, buses and shops all run at set times. Coming after the set time is called being “late”.",
+   "q": "When did people start to live by the clock, and why?",
+   "event": "In Britain, factories that made goods with machines grew in number. The steam engine that Watt improved in 1769 could also drive the machines in factories. Many people came together in factories to work at machines.",
+   "shift": {
+    "before": "Work followed the sun, the seasons and the tasks of the day.",
+    "after": "Work followed the clock. Time was no longer something that passes but money that is spent."
+   },
+   "people": {
+    "good": [
+     {
+      "who": "People who bought goods",
+      "text": "Factories made goods in large numbers, so prices fell. Working families could now afford clothes and furniture too."
+     },
+     {
+      "who": "Factory owners",
+      "text": "People who owned machines and factories made profits. The gap in incomes grew wider."
+     }
+    ],
+    "bad": [
+     {
+      "who": "Children in factories",
+      "text": "Some worked twelve hours a day. Their wages were about a quarter of a grown man's."
+     },
+     {
+      "who": "Textile workers who lived by their skill",
+      "text": "When their living became harder, they saw the new machines as the cause. Some fought back by breaking machines."
+     },
+     {
+      "who": "Families who moved to the cities",
+      "text": "Homes were small and crowded. Diseases such as cholera often spread."
+     }
+    ]
+   },
+   "debate": "Workers' wages did rise in the end. But scholars differ on when their living conditions began to improve.",
+   "why": [
+    "Owners paid money to buy people's time. So they made sure that this time was not wasted. Bells, clocks and fines for lateness were their tools.",
+    "Once time was money, owners tried to make working hours longer. They also brought children, whose wages were low, into the factories.",
+    "People whose lives became harder asked a question. Why should the owners alone keep the money that the machines earned? Those who gained looked for cheaper raw materials and wider markets.",
+    "People with different ideas each joined together and acted. The clash of ideas helped bring about strikes, revolutions and conquests."
+   ],
+   "whyOthers": [
+    "Even before there were factories, some workplaces used bells and timetables.",
+    "Prices fell because machines made goods in large numbers. Some scholars think children also worked long hours before there were factories.",
+    "The new ideas also grew out of the ideas of the age before."
+   ],
+   "duels": [
+    {
+     "a": "The factory belongs to its owner. Only when there is profit will someone take the risk of starting a business.",
+     "aName": "Capitalism",
+     "b": "Factories should be owned together. Only then will the people who did the work get their share too.",
+     "bName": "Socialism",
+     "clash": "The two gave different answers about who should own the factories and the profits.",
+     "events": [
+      "Trade unions and strikes",
+      "The movement for shorter working hours",
+      "The revolutions of 1848 in Europe"
+     ],
+     "others": "Trade unions came together above all over wages and working hours. The revolutions of 1848 also involved bad harvests, demands for the vote and national questions."
+    },
+    {
+     "a": "Factories need cheap raw materials and places to sell their goods. So faraway lands must be ruled.",
+     "aName": "Imperialism",
+     "b": "This land belongs to the people who live here. They also decide for themselves who will rule.",
+     "clash": "Over the same land, those who wanted to rule it faced those who wanted to defend it.",
+     "events": [
+      "Most of Africa becomes colonies",
+      "Resistance across the colonies"
+     ],
+     "others": "Rivalry between countries and new weapons were also causes. The belief that some peoples were superior to others also played a part."
+    }
+   ],
+   "result": "Workers formed trade unions and went on strike. Britain cut the working hours of children and women by law. In 1848 revolutions broke out in many parts of Europe. Countries with factories enlarged their colonies in Africa and Asia. In every place that became a colony, people resisted and rose up.",
+   "today": "Factories made people work by the clock. Railways brought the different local times of each town into one. In 1840 a railway company in Britain made all its stations use London time. Before long, public offices and churches in Britain followed this time too.",
+   "now": "Even today, several countries set the minimum wage as an amount per hour. In this way the idea that time is money also lives on in law.",
+   "think": "Now robots and AI have begun to do work in place of people. Who should get the money earned that way?",
+   "next": "Countries with factories competed for colonies in search of raw materials and markets. This rivalry later became one cause of a world war.",
+   "nextOthers": "Alliances between countries and a race to build up armed forces were also causes.",
+   "words": [
+    [
+     "steam engine",
+     "A machine that boils water and uses the force of the steam to drive other machines."
+    ],
+    [
+     "wage",
+     "Money paid for work."
+    ],
+    [
+     "trade union",
+     "A group formed by workers to protect their wages and working conditions."
+    ],
+    [
+     "strike",
+     "When many workers stop work together to press for their demands."
+    ],
+    [
+     "revolution",
+     "A great change, in a short time, in the way a country is ruled."
+    ],
+    [
+     "raw material",
+     "A material used to make goods, such as cotton for making cloth."
+    ],
+    [
+     "colony",
+     "A land that another country has taken and rules."
+    ],
+    [
+     "capitalism",
+     "A system in which individuals own factories and shops and make profit by buying and selling in the market."
+    ],
+    [
+     "socialism",
+     "The idea that society should own things like factories together and share the profits too."
+    ],
+    [
+     "imperialism",
+     "The idea and the drive of strong countries to take other lands and rule them."
+    ],
+    [
+     "world war",
+     "A great war in which many countries on several continents fought."
+    ],
+    [
+     "minimum wage",
+     "The lowest wage, set by the state, that a worker must be paid."
+    ],
+    [
+     "AI",
+     "Artificial intelligence. A computer program made to learn and answer as a person does."
+    ]
+   ]
+  },
+  "worldwar": {
+   "title": "After the wars, the world promised rights to every person",
+   "scene": "The news shows scenes like this. When a country mistreats its own people, other countries question it.",
+   "q": "It is another country's affair, so why does the world step in?",
+   "event": "In 1914 the First World War broke out. Machine guns, heavy guns and poison gas made in factories were used. Among soldiers alone, more than 8.5 million died. People from the colonies also went to the war as soldiers and labourers. During the war a revolution broke out in Russia, and a communist state was then set up.",
+   "shift": {
+    "before": "Many people in Europe believed that the world kept getting better. They thought that as knowledge and technology grew, life would improve too.",
+    "after": "The belief that the world gets better by itself was shaken. Whole countries had fought the war, so everyone expected their share."
+   },
+   "people": {
+    "good": [
+     {
+      "who": "Women in several countries",
+      "text": "In the year the war ended, women gained the vote in Britain and Germany. Women in the United States gained it two years later. In Britain it was only for women over thirty who owned property. Women in France and Italy waited until 1945."
+     },
+     {
+      "who": "The people of Poland",
+      "text": "Poland, which had been gone from the map for more than a hundred years, became a country again."
+     },
+     {
+      "who": "Factory workers",
+      "text": "An international organisation for working people was created. Its first agreement was an eight-hour working day. But fewer countries accepted it than had been hoped."
+     }
+    ],
+    "bad": [
+     {
+      "who": "People in the colonies and in China",
+      "text": "The principle that each nation should rule itself did not reach them. The winning countries shared out the colonies of the losing countries. Korea was under Japanese rule, and its March First Movement against that rule did not win independence. In China, the May Fourth Movement arose when the treaty left Shandong in Japan's hands."
+     },
+     {
+      "who": "National minorities inside the new borders",
+      "text": "The new borders did not exactly match where peoples lived. The promises to protect national minorities were poorly kept."
+     },
+     {
+      "who": "Those who said they had not received their share",
+      "text": "In Italy, people felt they had not received the land owed to them for fighting. In Germany there was great anger at the treaty signed after the defeat."
+     }
+    ]
+   },
+   "debate": "Germany had to pay a large sum as the price of losing the war. Scholars differ on how heavy that burden was.",
+   "why": [
+    "Because weapons made in factories killed people in countless numbers. And because whole societies, not only soldiers, were bound up in the war.",
+    "Because states found it hard to refuse the demands of people who had contributed to the war. But the shares were not handed out evenly.",
+    "Because many people felt they had not received their share. When the Great Depression also took away jobs, promises of a strong country gained support. The other side answered that the rights of each single person must be protected.",
+    "The side that put the state first saw taking more land as the strength of the state. It drove out people who, in its view, did not belong to the nation. This idea helped bring about war and mass killing."
+   ],
+   "whyOthers": [
+    "There was not only disappointment. There was also great hope that people could learn from the war and build a better world.",
+    "The movement for women's right to vote and the demand for eight hours existed before the war. New countries also appeared because the old empires collapsed.",
+    "Fascism in Italy took power before the Great Depression. In Germany, Hitler did not win more than half of the votes, and the president appointed him chancellor. Fear of communism and disappointment with parliamentary government also played a part."
+   ],
+   "duels": [
+    {
+     "a": "The state comes first. A person has meaning only within the state.",
+     "aName": "Fascism",
+     "b": "Every person is born free and equal. Not even the state can take those rights away.",
+     "bName": "Liberalism",
+     "clash": "They differed over which comes first, the state or the single person.",
+     "events": [
+      "The Second World War",
+      "The Holocaust",
+      "The Universal Declaration of Human Rights"
+     ],
+     "others": "The agreements between countries that were meant to stop invasion lost their force. In Europe there was also an old prejudice of hatred towards Jews. The side that fought fascism also included the Soviet Union, a communist state. The countries that spoke of freedom also left colonies and racial discrimination in place. The war in Asia began first with the fighting between Japan and China."
+    }
+   ],
+   "result": "Germany invaded neighbouring countries in Europe, and Japan did so in Asia. An estimated 55 to 60 million people died in the Second World War. Nazi Germany, led by Hitler, and its collaborators killed six million Jews. They also killed hundreds of thousands of Roma and people with disabilities. The Roma were called by the insulting name “Gypsies”. In Nanjing in China, the Japanese army killed great numbers of prisoners of war and civilians. The atomic bombs that the United States dropped on two Japanese cities killed between 110,000 and 210,000 civilians. In 1945, when the war ended, the United Nations was founded. In 1948 the Universal Declaration of Human Rights was issued.",
+   "today": "Before the war, the principle was not to interfere in matters inside another country. After the mass killings, countries declared that rights belong to every person. So the idea spread that the world may question a country about its human rights. But the Declaration is a promise, not a law, and it still clashes with the principle of not interfering.",
+   "now": "The United Nations reviews the human rights situation in its 193 member states every four to five years. In each review, other countries recommend things to improve.",
+   "think": "When a country's internal affairs and the rights of every person clash, how far should the world step in?",
+   "next": "When the war ended, the United States and the Soviet Union, a communist state, were left as the two strongest countries. The difference in their ideas later became one cause of the world splitting in two.",
+   "nextOthers": "Each of the two countries bound the countries on its side together. That and the race for nuclear weapons were also causes.",
+   "words": [
+    [
+     "world war",
+     "A great war in which many countries on several continents fought."
+    ],
+    [
+     "colony",
+     "A land that another country has taken and rules."
+    ],
+    [
+     "revolution",
+     "A great change, in a short time, in the way a country is ruled."
+    ],
+    [
+     "communism",
+     "A system in which the state owns factories and land and runs the economy by plan."
+    ],
+    [
+     "Soviet Union",
+     "A country made up of fifteen republics, including Russia. It no longer exists."
+    ],
+    [
+     "Great Depression",
+     "A time when banks failed and jobs disappeared all at once in many countries."
+    ],
+    [
+     "fascism",
+     "An idea that put the state and the nation above the individual and made people follow one leader."
+    ],
+    [
+     "liberalism",
+     "The idea that puts the freedom and rights of the individual first and limits power by law."
+    ],
+    [
+     "Holocaust",
+     "The mass killing of six million Jews by Nazi Germany and its collaborators."
+    ],
+    [
+     "United Nations",
+     "An organisation formed by countries to prevent war and protect human rights. It is also called the UN."
+    ],
+    [
+     "Universal Declaration of Human Rights",
+     "A text issued by the United Nations (UN) that sets out the rights every person has."
+    ],
+    [
+     "human rights",
+     "Rights that every person has, simply by being a person."
+    ],
+    [
+     "national minority",
+     "A people that is small in number within a country."
+    ],
+    [
+     "nuclear weapon",
+     "A very powerful bomb that explodes with the energy of atoms."
+    ]
+   ]
+  },
+  "coldwar": {
+   "title": "The world split into two sides",
+   "scene": "Look for Korea on a map and you will find two countries. They are the Republic of Korea and the Democratic People's Republic of Korea. People often call them South Korea and North Korea. Between them runs a line that no one may cross freely.",
+   "q": "Why was Korea, once a single country, divided into North Korea and South Korea?",
+   "event": "In 1945 the war ended. The United States and the Soviet Union had fought on the same side, but they ran their countries in different ways. Four countries divided Germany and occupied it. The United States and the Soviet Union divided and occupied the Korean Peninsula, which had been under Japanese rule. Both places were split in two. This stand-off is called the Cold War.",
+   "shift": {
+    "before": "The United States and the Soviet Union were on the same side, fighting the same enemy.",
+    "after": "The two countries saw the world as two sides. Which side a country was on became the most important thing. The fear also spread that nuclear weapons could kill everyone."
+   },
+   "people": {
+    "good": [
+     {
+      "who": "People in Western Europe",
+      "text": "The United States sent large sums of money and helped to rebuild factories and roads."
+     },
+     {
+      "who": "People in countries on the Soviet side",
+      "text": "The state provided jobs, homes, education and hospitals. Living standards were lower than on the western side."
+     },
+     {
+      "who": "Newly independent countries",
+      "text": "To win more countries to their side, the two superpowers sent these countries money and technology."
+     }
+    ],
+    "bad": [
+     {
+      "who": "People on the Korean Peninsula",
+      "text": "In three years of war, millions of people were killed or wounded. Many families were scattered between the South and the North."
+     },
+     {
+      "who": "People in Iran",
+      "text": "The United States joined with members of Iran's military and removed the prime minister. The secret police of the king, whom the United States backed, arrested and tortured people who opposed him."
+     },
+     {
+      "who": "People in Eastern Europe",
+      "text": "The Soviet Union sent troops into Hungary and crushed reforms there. In Berlin, people who tried to cross the Wall were shot."
+     }
+    ]
+   },
+   "debate": "Scholars agree that the North attacked first. But they still disagree on whether the roots of the war lie inside or outside the Korean Peninsula.",
+   "why": [
+    "Because the two countries faced each other in many places, and each bound the countries on its side together. Other countries were pressed to take one side. As both sides piled up nuclear weapons, the fear grew too.",
+    "Because the two superpowers used money, weapons and troops to enlarge and hold their sides. The money was used to rebuild economies. The weapons and troops were used for war and to hold people down.",
+    "The dispute over who should own the factories had existed ever since factories appeared. Now the two superpowers each took one side and competed across the whole world. Young people, tired of the long stand-off, questioned both sides.",
+    "Neither side would step back. The clash of ideas helped bring about crises, wars and protests."
+   ],
+   "whyOthers": [
+    "The difference between the two countries' ideas was already deep before the war. Some countries also tried not to take either side.",
+    "Inside the Korean Peninsula too, people with different ideas fought each other. Scholars disagree about how much the money from the United States helped Western Europe recover.",
+    "The clash between the two ideas began before the Cold War. A large rise in the number of young people and crowded universities were also causes of the '68 movement."
+   ],
+   "duels": [
+    {
+     "a": "Leaders should be chosen by election, and everyone should be free to speak. The people who buy and sell know best what should be made.",
+     "aName": "Liberalism & market economy",
+     "b": "Factories and land belong to everyone. The state should make a plan and give everyone jobs, homes, schools and hospitals.",
+     "bName": "Communism",
+     "clash": "They differed over whether to leave the economy to the market or have the state plan it.",
+     "events": [
+      "The nuclear arms race and the space race",
+      "The Cuban Missile Crisis",
+      "The Vietnam War"
+     ],
+     "others": "The Vietnam War was also about the aim of winning independence. In the Cuban crisis, the missiles that the United States had placed in Turkey were also a cause."
+    },
+    {
+     "a": "A country's affairs should be decided by elections and laws, not in the streets. When order breaks down, everyone gets hurt.",
+     "b": "I should have a part in the decisions that shape my life. I will not go along with war, discrimination or the silencing of speech.",
+     "clash": "They stood against each other over who decides a country's affairs, and how.",
+     "events": [
+      "Protests in Paris and Chicago",
+      "Protests in Mexico City",
+      "The Soviet army's invasion of Prague"
+     ],
+     "others": "The demands were different in each country. Some scholars think that dividing things into just two sides is too simple."
+    }
+   ],
+   "result": "Over Cuba, the two sides came to the very edge of nuclear war. In Vietnam, a long war to which the United States sent troops killed more than one million people. The '68 movement rose in both east and west. Police put it down in Paris and Chicago, the army in Mexico City, and Soviet troops in Prague. A little over twenty years later, people in Eastern Europe drove out their communist governments, and the Berlin Wall was opened. Two years after that, the Soviet Union broke up into fifteen countries. A slowing economy, reforms and demands for independence came together, and this ending was not fixed in advance.",
+   "today": "When Japan surrendered in 1945, the United States proposed the 38th parallel and the Soviet Union accepted it. No one asked the Korean people what they wanted. Three years later, separate governments were set up in the South and the North. On 25 June 1950 the army of the North attacked the South, and the war began. In 1953 the fighting stopped with an armistice. The line fixed by that agreement is today's Military Demarcation Line.",
+   "now": "The armistice has still not been replaced by a peace treaty. A Demilitarized Zone four kilometres wide runs across the Korean Peninsula.",
+   "think": "How is stopping the fighting different from making peace?",
+   "next": "A research agency of the United States Department of Defense paid for a network that linked computers to each other. This technology later became the basis of the internet.",
+   "nextOthers": "A laboratory in Britain and a university in the United States also studied the same technology separately. The wide spread of personal computers was also a major cause.",
+   "words": [
+    [
+     "Soviet Union",
+     "A country made up of fifteen republics, including Russia. It no longer exists."
+    ],
+    [
+     "nuclear weapon",
+     "A very powerful bomb that explodes with the energy of atoms."
+    ],
+    [
+     "occupy",
+     "When an army moves into another country's land and rules it."
+    ],
+    [
+     "Cold War",
+     "The long stand-off in which the United States side and the Soviet side faced each other without fighting directly."
+    ],
+    [
+     "38th parallel",
+     "The line drawn on the map along 38 degrees north latitude."
+    ],
+    [
+     "armistice",
+     "An agreement to stop fighting. It is different from a peace treaty, which ends a war."
+    ],
+    [
+     "Military Demarcation Line",
+     "The line drawn between the two armies under the armistice."
+    ],
+    [
+     "Demilitarized Zone",
+     "The land on both sides of the Military Demarcation Line where no troops or weapons are to be kept."
+    ],
+    [
+     "'68 movement",
+     "Protests and reform movements held by students and citizens in many countries in the same year."
+    ],
+    [
+     "liberalism",
+     "The idea that puts the freedom and rights of the individual first and limits power by law."
+    ],
+    [
+     "market economy",
+     "A system in which the people who buy and sell decide what is made and at what price."
+    ],
+    [
+     "communism",
+     "A system in which the state owns factories and land and runs the economy by plan."
+    ]
+   ]
+  },
+  "digital": {
+   "title": "When information overflowed, attention became precious",
+   "scene": "People use search, videos and social media without paying money.",
+   "q": "How do those companies make money?",
+   "event": "In 1969 four computers in the United States were linked by a computer network. In 1989 Berners-Lee proposed the World Wide Web at a research laboratory in Switzerland. It was meant to let scientists share information easily. Four years later, the laboratory released the web software for anyone to use. As personal computers and smartphones spread, many people went online.",
+   "shift": {
+    "before": "Information was precious. Newspapers and broadcasters chose what to pass on.",
+    "after": "Information overflows, and anyone can make it and spread it. What is precious is not information but people's attention."
+   },
+   "people": {
+    "good": [
+     {
+      "who": "People who look things up and learn",
+      "text": "Wikipedia, written by volunteers, can be read in 342 languages. It has more than 66 million articles and no advertisements."
+     },
+     {
+      "who": "Users of free services",
+      "text": "More and more services could be used without paying. One study concluded that this brought people large benefits."
+     }
+    ],
+    "bad": [
+     {
+      "who": "Newspapers and journalists",
+      "text": "Advertising moved from newspapers to the internet. Jobs making the news at newspapers in the United States fell by 57 percent in twelve years."
+     },
+     {
+      "who": "Users whose records were collected",
+      "text": "Companies collected what users looked at and clicked on. It was hard for users to know how their information was used."
+     },
+     {
+      "who": "The Rohingya people of Myanmar",
+      "text": "Thousands were killed or injured in attacks by the Myanmar army. The UN fact-finding mission said that Facebook was used to spread hatred."
+     }
+    ]
+   },
+   "debate": "Scholars differ on whether social media harms the mental health of young people. One side says there is enough evidence of harm, and the other says there is not yet enough.",
+   "why": [
+    "Because the cost of spreading text and photos on a computer network became very low. So information overflowed. But the time people have for looking and reading stayed the same.",
+    "Once anyone could spread information, people built up knowledge together. Once attention became precious, companies opened their services for free to gather people. They made their money from advertising. So advertising moved from newspapers to the internet. To target the advertisements, they also collected users' records. Eye-catching posts spread well even when they were false.",
+    "Those who thought the web had grown because it was open said it should not be blocked. People whose lives became harder worried about the power of companies that had collected information. So they demanded rules.",
+    "The idea of openness added force to software that anyone can change and use. The idea of wanting rules added force to laws that protect personal data."
+   ],
+   "whyOthers": [
+    "People were already saying that attention would run short before the internet spread. Today a few large sites choose what is shown.",
+    "Newspapers also shrank because large companies bought newspapers and merged them. In Myanmar, the government and the army fed the hatred. Wikipedia is made by volunteers, without advertisements.",
+    "The idea of wanting an open internet existed before the internet spread. Europe had rules on personal data even before social media appeared."
+   ],
+   "duels": [
+    {
+     "a": "The internet is not a place for governments to rule. Everyone should be able to use, change and share knowledge and software.",
+     "aName": "Open internet",
+     "b": "Free services make money by using their users' records as material. People should be able to control their own information.",
+     "bName": "Criticism of platforms",
+     "clash": "They differed over who controls the internet and the information in it.",
+     "events": [
+      "Linux, software made together",
+      "Europe's law to protect personal data",
+      "A law for large platforms"
+     ],
+     "others": "Companies also opened up software because it was useful for their business. The European law was also meant to bring the different rules of each country into one. The companies say that they do not sell information and that advertising pays for the services."
+    }
+   ],
+   "result": "Those who wanted openness worked together to make software that anyone can change and use. Linux also became the basis of the software that runs smartphones. One social media company said that users' information may have been improperly passed to another company. It was the information of up to 87 million people. Many countries of Europe together put a law to protect personal data into effect. They also made a law for large platform companies.",
+   "today": "Search and social media companies make money from advertising. In 2025 more than 70 percent of the money that Alphabet (Google) earned came from online advertising. Almost all of the money that Meta (Facebook) earned came from advertising. Records of what users look at and click on are used to target advertisements.",
+   "now": "Australia put into effect a law that stops people under 16 from having social media accounts. Within days, more than 4.7 million accounts were closed or blocked.",
+   "think": "Is it a fair deal to use a service by giving my records instead of money?",
+   "next": "A huge amount of text and photos posted by people piled up on the internet. This became the material for teaching AI.",
+   "nextOthers": "Devices that calculate fast and new methods of calculation were also needed.",
+   "words": [
+    [
+     "computer network",
+     "A path that links computers to each other so that they can exchange information."
+    ],
+    [
+     "World Wide Web",
+     "A way of showing documents on the internet by linking them to each other. It is called the web for short."
+    ],
+    [
+     "social media",
+     "Internet services where people post text and photos and connect with each other."
+    ],
+    [
+     "Wikipedia",
+     "An internet encyclopedia that volunteers write together and anyone can read."
+    ],
+    [
+     "personal data",
+     "Information about one person, such as their name, where they live and what they have looked at."
+    ],
+    [
+     "Linux",
+     "A basic computer program made public so that anyone can change it and use it."
+    ],
+    [
+     "platform",
+     "An internet service where many people gather and exchange posts, goods and jobs."
+    ],
+    [
+     "Rohingya",
+     "A people who have long lived in Myanmar. Many of them fled to Bangladesh."
+    ],
+    [
+     "UN fact-finding mission",
+     "A team set up by the United Nations Human Rights Council to find out what happened in Myanmar."
+    ],
+    [
+     "open internet",
+     "The idea that the internet and knowledge should be kept open to everyone."
+    ],
+    [
+     "criticism of platforms",
+     "The idea that worries about big internet companies gaining power by collecting information."
+    ],
+    [
+     "AI",
+     "Artificial intelligence. A computer program made to learn and answer as a person does."
+    ]
+   ]
+  },
+  "ai": {
+   "title": "Machines began to make writing and pictures",
+   "scene": "When someone asks AI, writing and pictures come out in moments. Homework answers come out too.",
+   "q": "If AI does someone's homework, who really did it?",
+   "event": "In 2012, in a contest to recognise what is in photos, one program came far ahead. It used deep learning, a method that learns by looking at many photos. The photos were collected from the internet. In 2022 ChatGPT, which takes questions and answers them in words, was released to the public. Anyone could use it for free.",
+   "shift": {
+    "before": "People thought that only humans write texts and draw pictures.",
+    "after": "Machines also produce writing and pictures. So what is the work for people to do?"
+   },
+   "people": {
+    "good": [
+     {
+      "who": "Beginners who were not yet skilled at their work",
+      "text": "In one study, customer support agents used an AI assistant. The number of customer problems they solved per hour rose by 14 percent on average. For workers who were not yet skilled, it rose by 34 percent."
+     },
+     {
+      "who": "Women who had cancer screening",
+      "text": "In a trial in Sweden, AI helped with image reading in breast cancer screening. In the trial, 29 percent more cancers were found."
+     }
+    ],
+    "bad": [
+     {
+      "who": "Authors and newspapers",
+      "text": "AI companies used huge numbers of texts and photos for training AI. Authors and newspapers filed lawsuits, saying their work was used without permission."
+     },
+     {
+      "who": "Workers who sorted the data",
+      "text": "Workers in Kenya read and sorted texts that described violence and abuse. They were paid between about 1.32 and 2 dollars an hour."
+     },
+     {
+      "who": "Victims of fake images and videos",
+      "text": "Fake sexual images and videos mostly target women and girls. In a survey in 11 countries, at least 1.2 million children said this had happened to them."
+     }
+    ]
+   },
+   "debate": "Economists also differ on whether AI will reduce or increase jobs. Total jobs have not fallen so far, but there is research finding a fall for some young workers.",
+   "why": [
+    "ChatGPT was the first writing AI made widely available. Anyone could simply ask it in words. It is estimated that 100 million people used it within two months. This is because many people saw text written by a machine for themselves.",
+    "Once people saw that machines could produce such things, they began to share work with AI. The same deep learning technology also read screening images. From the start, building AI used people's writing and workers to sort it. It also became easy to make fakes that look real.",
+    "Once AI entered daily life, its good and bad sides could be seen. Those who were harmed said the present harms should be stopped first. But the biggest dispute was over the speed of building AI.",
+    "The arguments of the side that saw the risks first added force to declarations and rules. The arguments of the side that put speed first added force to loosening rules. So countries took different paths."
+   ],
+   "whyOthers": [
+    "The question of whether machines can think is much older. AI that makes pictures came out a few months before ChatGPT. People easily feel that a machine that talks like a person understands what it says.",
+    "The work of labelling photos existed before ChatGPT. Fake images and videos spread through messaging apps.",
+    "The two ideas existed before ChatGPT came out. Competition between companies and between countries also made the dispute bigger."
+   ],
+   "duels": [
+    {
+     "a": "If AI slips out of human hands, it could cause very great harm. Progress should be slow enough to check that it is safe.",
+     "aName": "AI safety",
+     "b": "AI can cure diseases and save lives. Slowing down means losing that much, so progress should be faster.",
+     "bName": "Accelerationism",
+     "clash": "They differed over how fast AI should be built, and over who decides that.",
+     "events": [
+      "An open letter calling for a pause",
+      "The United States cancels its safety order",
+      "Company heads debate the pace"
+     ],
+     "others": "Some people say that present harms are more urgent than risks in the far future. They name the exploitation of workers, the use of data without permission, and power gathered in a few companies. Competition between countries and company profits also moved decisions."
+    }
+   ],
+   "result": "The European Union made an AI Act. But it put off the start of its rules for high-risk AI by more than a year. The United States issued a safety order and then cancelled it after the government changed. In September 2026 several heads of AI companies called for slowing down. The head of one semiconductor company answered with a call to go faster. There is still no news of an agreement that binds everyone. This story is not over yet.",
+   "today": "There is no settled answer yet. The United States Copyright Office said that content made entirely by AI is not protected by copyright. South Korea's Ministry of Education said that anyone who uses AI in a performance assessment must show how it was used. The two answers are alike in trying to pick out the part a person did directly.",
+   "now": "Since January 2026, South Korea has required companies to label things made with AI. From December of that year, the European Union bans apps that make synthetic nude images of people without their consent.",
+   "think": "In a text written with help from AI, how far does “the part I did” go?",
+   "words": [
+    [
+     "AI",
+     "Artificial intelligence. A computer program made to learn and answer as a person does."
+    ],
+    [
+     "deep learning",
+     "A method in which a program looks at a great deal of data and finds the rules by itself."
+    ],
+    [
+     "training",
+     "When AI learns by looking at large amounts of text and photos."
+    ],
+    [
+     "image reading",
+     "Looking at a medical test image to tell whether there is a disease."
+    ],
+    [
+     "lawsuit",
+     "Asking a court to decide who is right."
+    ],
+    [
+     "synthetic",
+     "Made by mixing several photos or videos so that the result looks like something new."
+    ],
+    [
+     "AI safety",
+     "The idea that AI should be built while first checking that it is safe."
+    ],
+    [
+     "accelerationism",
+     "The idea that AI and technology should be developed faster."
+    ],
+    [
+     "European Union",
+     "A union formed by many countries of Europe. They also make laws together."
+    ],
+    [
+     "semiconductor",
+     "The material of the small parts that run computers and AI."
+    ],
+    [
+     "copyright",
+     "The right that the maker of a text or picture has over it."
+    ],
+    [
+     "performance assessment",
+     "In schools in Korea, a way of grading students through tasks or presentations."
+    ],
+    [
+     "screening",
+     "A health check to find a disease early, before a person feels ill."
+    ]
+   ]
+  }
+ }
+}

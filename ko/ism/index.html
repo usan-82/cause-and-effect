@@ -181,11 +181,17 @@ footer p{max-width:70ch}
 .langs{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 14px;font-size:13.5px}
 .langs a,.langs span{padding:3px 10px;border-radius:999px;border:1px solid var(--line);text-decoration:none;color:var(--ink);background:var(--surface)}
 .langs span{background:var(--accent);border-color:var(--accent);color:var(--surface);font-weight:600}
+
+/* 쉬운 판 링크, 그리고 붙어 있는 메뉴(nav.jump)에 가리지 않게 */
+.toprow{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin:0 0 14px}
+.toprow .langs{margin:0}
+.simplelink{font-size:13.5px;font-weight:600;text-decoration:none;color:var(--accent);border:1px solid currentColor;border-radius:999px;padding:3px 12px;white-space:nowrap}
+[id^="ism-"],main section[id]{scroll-margin-top:64px}
 </style>
 </head>
 <body>
 <header class="top wrap">
-  <nav class="langs" aria-label="Language"><span aria-current="page">한국어</span><a href="../../en/ism/" hreflang="en" lang="en">English</a><a href="../../id/ism/" hreflang="id" lang="id">Bahasa Indonesia</a></nav>
+  <div class="toprow"><nav class="langs" aria-label="Language"><span aria-current="page">한국어</span><a href="../../en/ism/" hreflang="en" lang="en">English</a><a href="../../id/ism/" hreflang="id" lang="id">Bahasa Indonesia</a></nav><a class="simplelink" href="../ism-simple/">쉬운 판</a></div>
   <div class="eyebrow">인류 사상사 연구 노트</div>
   <h1>사상의 분기점</h1>
   <p class="lead">과학혁명에서 AI혁명까지, 인류가 진리·권력·인간·삶을 판단하는 기준이 바뀐 일곱 번의 순간을 정리했습니다. 각 분기점 앞뒤의 기준 변화, 그때 태어난 사상(ism), 사상끼리의 계승과 반발을 흐름도와 마인드맵으로 따라갈 수 있습니다.</p>
@@ -461,6 +467,23 @@ document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!sheet.hidden)close
 document.addEventListener("click",e=>{const b=e.target.closest("[data-ism]");if(b&&!sheet.contains(b))openIsm(b.dataset.ism)});
 
 drawFlow();drawEra(1);drawMM();
+
+// 주소의 #ism-… 로 들어왔을 때: 카드는 스크립트가 그리고, 글꼴과 그림이 뒤에 들어오며 위쪽 길이가 바뀐다.
+// 그래서 다 그린 뒤, 글꼴이 들어온 뒤, 페이지를 다 읽은 뒤에 다시 그 자리로 간다. 읽는 사람이 먼저 움직이면 멈춘다.
+(function(){
+  let moved=false;
+  const stop=()=>{moved=true};
+  ["wheel","touchstart","keydown","mousedown"].forEach(t=>addEventListener(t,stop,{once:true,passive:true}));
+  const go=()=>{
+    if(moved||!location.hash) return;
+    let id=""; try{id=decodeURIComponent(location.hash.slice(1))}catch(e){return}
+    const el=id&&document.getElementById(id);
+    if(el) el.scrollIntoView({block:"start"});
+  };
+  go();
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(go);
+  addEventListener("load",go,{once:true});
+})();
 </script>
 </body>
 </html>

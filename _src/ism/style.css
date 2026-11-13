@@ -168,3 +168,9 @@ footer p{max-width:70ch}
 .langs{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 14px;font-size:13.5px}
 .langs a,.langs span{padding:3px 10px;border-radius:999px;border:1px solid var(--line);text-decoration:none;color:var(--ink);background:var(--surface)}
 .langs span{background:var(--accent);border-color:var(--accent);color:var(--surface);font-weight:600}
+
+/* 쉬운 판 링크, 그리고 붙어 있는 메뉴(nav.jump)에 가리지 않게 */
+.toprow{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin:0 0 14px}
+.toprow .langs{margin:0}
+.simplelink{font-size:13.5px;font-weight:600;text-decoration:none;color:var(--accent);border:1px solid currentColor;border-radius:999px;padding:3px 12px;white-space:nowrap}
+[id^="ism-"],main section[id]{scroll-margin-top:64px}
