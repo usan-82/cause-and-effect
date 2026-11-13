@@ -171,6 +171,56 @@ class CheckTest(unittest.TestCase):
         tx["chapters"]["industrial"]["event"] = "자본이 힘이 됐어요."
         self.assertHas(self.run_check(st, tx, pg), "'자본' 낱말 풀이 필요")
 
+    # ----- 최종 검토에서 나온 빈틈 -----
+    def test_blank_text_is_missing(self):
+        for f in ("title", "q", "event", "result", "today"):
+            st, tx, pg = good()
+            tx["chapters"]["industrial"][f] = "  "
+            self.assertHas(self.run_check(st, tx, pg), f"{f} 없음")
+
+    def test_shift_needs_both(self):
+        st, tx, pg = good()
+        tx["chapters"]["industrial"]["shift"] = {"before": "전에는 그랬어요."}
+        self.assertHas(self.run_check(st, tx, pg), "shift.after 없음")
+
+    def test_blank_others_not_enough(self):
+        st, tx, pg = good()
+        c = tx["chapters"]["industrial"]
+        ind(st)["arrows"][0] = "part"
+        c["whyOthers"][0] = c["duels"][0]["others"] = c["nextOthers"] = "  "
+        errs = self.run_check(st, tx, pg)
+        for sub in ("whyOthers[0] 필요", "duels[0].others 필요", "nextOthers 필요"):
+            self.assertHas(errs, sub)
+
+    def test_blank_who_and_event(self):
+        st, tx, pg = good()
+        c = tx["chapters"]["industrial"]
+        c["people"]["good"][0]["who"] = " "
+        c["duels"][0]["events"] = [""]
+        errs = self.run_check(st, tx, pg)
+        self.assertHas(errs, "people.good[0].who 없음")
+        self.assertHas(errs, "duels[0].events")
+
+    def test_why_must_be_list(self):
+        st, tx, pg = good()
+        tx["chapters"]["industrial"]["why"] = "네글자예"
+        self.assertHas(self.run_check(st, tx, pg), "why는 4개")
+
+    def test_bad_shapes_report_instead_of_crash(self):
+        for mutate, sub in (
+            (lambda st, c: c["people"].__setitem__("good", ["x"]), "people.good[0]"),
+            (lambda st, c: c.__setitem__("words", [["가", "나", "다"]]), "words[0]"),
+            (lambda st, c: ind(st).__setitem__("tp", "3"), "분기점 번호"),
+        ):
+            st, tx, pg = good()
+            mutate(st, tx["chapters"]["industrial"])
+            self.assertHas(self.run_check(st, tx, pg), sub)
+
+    def test_unwritten_chapter_tp_checked(self):
+        st, tx, pg = good()
+        st["chapters"][0]["tp"] = 99
+        self.assertHas(self.run_check(st, tx, pg), "premodern: 분기점 번호 99 없음")
+
 
 class CliTest(unittest.TestCase):
     def test_check_only_writes_nothing(self):
@@ -262,6 +312,21 @@ class RenderTest(unittest.TestCase):
         self.assertIn("앞에서 넘겨받은 것", h)
         self.assertIn("앞 장이 넘겨준 말이에요.", h)
 
+    def test_inherit_parallel_is_not_a_cause(self):
+        h = build.render_chapter(*self.args(), pg=PGK, names=NAMES, inherit="같은 때 벌어진 일이에요.", inherit_kind="parallel")
+        self.assertIn("같은 때 다른 곳에서", h)
+        self.assertNotIn("앞에서 넘겨받은 것", h)
+
+    def test_inherit_part_shows_others(self):
+        h = build.render_chapter(*self.args(), pg=PGK, names=NAMES, inherit="넘겨준 말이에요.", inherit_kind="part",
+                                 inherit_others="다른 까닭도 있었어요.")
+        self.assertIn('class="inherit part"', h)
+        self.assertIn("다른 까닭도 있었어요.", h)
+
+    def args(self):
+        st, tx, _ = good()
+        return ind(st), tx["chapters"]["industrial"]
+
     def test_escapes_text(self):
         def m(ch, c):
             c["event"] = '<b>1 & 2 "셋"</b>'
@@ -274,6 +339,32 @@ class RenderTest(unittest.TestCase):
         h = build.render_rail(STRUCT, {"industrial"}, names)
         self.assertEqual(h.count('href="#industrial"'), 1)
         self.assertEqual(h.count('class="off"'), 7)
+
+
+class PageTest(unittest.TestCase):
+    ISM_TXT = build.load_ism("ko.json")
+
+    def page(self, st, tx):
+        return build.render_page("ko", st, tx, PGK, self.ISM_TXT, "<x>{{css}}{{chapters}}{{rail}}</x>", "", ["ko"])[0]
+
+    def test_null_previous_chapter_does_not_crash(self):
+        st, tx, _ = good()
+        tx["chapters"]["french"] = None
+        h = self.page(st, tx)
+        self.assertIn('id="industrial"', h)
+        self.assertNotIn("앞에서 넘겨받은 것", h)
+
+    def test_inherit_carries_previous_link_kind(self):
+        st, tx, _ = good()
+        st["chapters"][2].update(arrows=["sure"] * 3, duels=[{"a": None, "b": None, "grade": "sure"}], next="parallel")
+        prev = copy.deepcopy(CHAPTER)
+        prev["duels"] = prev["duels"][:1]
+        prev["next"] = "먼저 시작된 일이에요."
+        tx["chapters"]["french"] = prev
+        h = self.page(st, tx)
+        ind_html = h[h.index('id="industrial"'):]
+        self.assertIn("먼저 시작된 일이에요.", ind_html)
+        self.assertIn('class="inherit parallel"', ind_html)
 
 
 if __name__ == "__main__":

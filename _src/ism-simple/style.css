@@ -140,3 +140,5 @@ main{padding-top:18px}
   .ask p{font-size:20px}
   .ch h2{font-size:23px}
 }
+.inherit.part{border-style:dashed}
+.inherit.parallel{border-color:var(--line)}

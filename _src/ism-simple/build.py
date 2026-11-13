@@ -5,7 +5,6 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ISM_SRC = os.path.join(HERE, "..", "ism")
 GRADES = ("sure", "part")
 NEXTS = ("sure", "part", "parallel")
-FIELDS = ("title", "q", "event", "shift", "people", "why", "whyOthers", "duels", "result", "today", "words")
 YEAR = re.compile(r"(?<!\d)1\d{3}(?!\d)|(?<!\d)20\d{2}(?!\d)")
 
 
@@ -39,6 +38,11 @@ def strings(v):
             yield from strings(x)
 
 
+def filled(x):
+    """빈칸뿐이 아닌 글."""
+    return isinstance(x, str) and bool(x.strip())
+
+
 def check(lang, struct, txt, pg, ism):
     """규칙을 어긴 곳의 목록. '글 없음'으로 끝나는 줄만 치명적이지 않다."""
     errs = []
@@ -49,48 +53,60 @@ def check(lang, struct, txt, pg, ism):
     for n, ch in enumerate(chapters):
         w = f"{lang} {ch['id']}"
         e = lambda msg: errs.append(f"{w}: {msg}")
-        c = txt.get("chapters", {}).get(ch["id"])
+        tp = ch.get("tp")
+        if not (isinstance(tp, int) and 0 <= tp < len(ism["tp"])):
+            e(f"분기점 번호 {tp} 없음")
+        c = (txt.get("chapters") or {}).get(ch["id"])
         if not c:
             e("글 없음")
             continue
         last = n == len(chapters) - 1
-        missing = [f for f in FIELDS if c.get(f) is None]
-        if not last and not c.get("next"):
-            missing.append("next")
-        for f in missing:
-            e(f"{f} 없음")
-        if not 0 <= ch.get("tp", -1) < len(ism["tp"]):
-            e(f"분기점 번호 {ch.get('tp')} 없음")
+
+        # 칸마다 글이 있는가
+        for f in ("title", "q", "event", "result", "today"):
+            if not filled(c.get(f)):
+                e(f"{f} 없음")
+        shift = c.get("shift") if isinstance(c.get("shift"), dict) else {}
+        for f in ("before", "after"):
+            if not filled(shift.get(f)):
+                e(f"shift.{f} 없음")
+        if not last and not filled(c.get("next")):
+            e("next 없음")
 
         # 화살표: 이유 네 개, 점선이면 다른 원인
-        why = c.get("why") or []
+        why = c.get("why") if isinstance(c.get("why"), list) else []
         if len(why) != 4:
             e("why는 4개여야 함")
         for i, s in enumerate(why):
-            if not (s or "").strip():
+            if not filled(s):
                 e(f"why[{i}] 비어 있음")
-        arrows = ch.get("arrows") or []
+        arrows = ch.get("arrows") if isinstance(ch.get("arrows"), list) else []
         if len(arrows) != 3:
             e("arrows는 3개여야 함")
-        others = c.get("whyOthers") or []
+        others = c.get("whyOthers") if isinstance(c.get("whyOthers"), list) else []
         for i, g in enumerate(arrows):
             if g not in GRADES:
                 e(f"arrows[{i}] 값({g})")
-            elif g == "part" and not (i < len(others) and others[i]):
+            elif g == "part" and not (i < len(others) and filled(others[i])):
                 e(f"whyOthers[{i}] 필요")
 
         # 사람들: 좋은 점과 나쁜 점, 누구에게
+        people = c.get("people") if isinstance(c.get("people"), dict) else {}
         for side in ("good", "bad"):
-            rows = (c.get("people") or {}).get(side) or []
+            rows = people.get(side) if isinstance(people.get(side), list) else []
             if not rows:
                 e(f"people.{side} 1개 이상")
             for i, r in enumerate(rows):
+                if not isinstance(r, dict):
+                    e(f"people.{side}[{i}] 모양")
+                    continue
                 for f in ("who", "text"):
-                    if not r.get(f):
+                    if not filled(r.get(f)):
                         e(f"people.{side}[{i}].{f} 없음")
 
         # 대결
-        sd, td = ch.get("duels") or [], c.get("duels") or []
+        sd = ch.get("duels") if isinstance(ch.get("duels"), list) else []
+        td = c.get("duels") if isinstance(c.get("duels"), list) else []
         if len(sd) > 2 or len(td) > 2:
             e("대결은 2쌍 이하")
         if not sd:
@@ -98,30 +114,46 @@ def check(lang, struct, txt, pg, ism):
         if len(sd) != len(td):
             e(f"duels 개수({len(td)}) ≠ struct({len(sd)})")
         for i, (s, t) in enumerate(zip(sd, td)):
+            if not (isinstance(s, dict) and isinstance(t, dict)):
+                e(f"duels[{i}] 모양")
+                continue
             for k in ("a", "b"):
                 if s.get(k) is not None and s[k] not in ism_ids:
                     e(f"사상 id {s[k]} 없음")
-                if not t.get(k):
+                if not filled(t.get(k)):
                     e(f"duels[{i}].{k} 없음")
-            if not t.get("clash"):
+            if not filled(t.get("clash")):
                 e(f"duels[{i}].clash 없음")
-            if not t.get("events"):
+            ev = t.get("events")
+            if not (isinstance(ev, list) and ev and all(filled(x) for x in ev)):
                 e(f"duels[{i}].events 없음")
             if s.get("grade") not in GRADES:
                 e(f"duels[{i}] grade 값({s.get('grade')})")
-            elif s["grade"] == "part" and not t.get("others"):
+            elif s["grade"] == "part" and not filled(t.get("others")):
                 e(f"duels[{i}].others 필요")
 
         # 다음 장으로 가는 고리
         if not last:
             if ch.get("next") not in NEXTS:
                 e(f"next 값({ch.get('next')})")
-            elif ch["next"] == "part" and not c.get("nextOthers"):
+            elif ch["next"] == "part" and not filled(c.get("nextOthers")):
                 e("nextOthers 필요")
 
-        # 문장 길이, 연도 수, 낱말 풀이
+        # 낱말 풀이
+        glosses = []
+        rows = c.get("words")
+        if not isinstance(rows, list):
+            e("words 없음")
+            rows = []
+        for i, r in enumerate(rows):
+            if isinstance(r, list) and len(r) == 2 and all(filled(x) for x in r):
+                glosses.append(r)
+            else:
+                e(f"words[{i}] 모양")
+
+        # 문장 길이, 연도 수, 풀이가 필요한 낱말
         body = list(strings({k: v for k, v in c.items() if k != "words"}))
-        for t in body + [d for _, d in c.get("words") or []]:
+        for t in body + [d for _, d in glosses]:
             for s in sentences(t):
                 if length(s) > pg["maxSentence"]:
                     e(f"문장이 김({length(s)}>{pg['maxSentence']}) — {s}")
@@ -129,14 +161,13 @@ def check(lang, struct, txt, pg, ism):
         years = sorted(set(YEAR.findall(text)))
         if len(years) > pg["maxYears"]:
             e(f"연도가 많음({', '.join(years)})")
-        words = {x[0].lower() for x in c.get("words") or []}
+        have = {x[0].lower() for x in glosses}
         for entry in pg.get("explain") or []:  # 'colony|colonies' → 풀이 낱말은 첫 번째
             key, *alts = entry.split("|")
             pat = (r"\b%s\b" if unit == "word" else r"(^|[^가-힣])%s")
-            if any(re.search(pat % re.escape(t), text, re.I) for t in [key, *alts]) and key.lower() not in words:
+            if any(re.search(pat % re.escape(t), text, re.I) for t in [key, *alts]) and key.lower() not in have:
                 e(f"'{key}' 낱말 풀이 필요")
     return errs
-
 
 # ---------- 화면 ----------
 def esc(s):
@@ -176,8 +207,9 @@ def _people(rows, label, cls):
     return f'<div class="{cls}"><h4>{esc(label)}</h4><ul>{items}</ul></div>'
 
 
-def render_chapter(ch, c, inherit, pg, names, era=""):
-    """한 장의 사슬. 칸 다섯 개와 그 사이 화살표 네 개."""
+def render_chapter(ch, c, inherit, pg, names, era="", inherit_kind="sure", inherit_others=None):
+    """한 장의 사슬. 칸 다섯 개와 그 사이 화살표 네 개.
+    inherit는 앞 장이 넘겨준 글, inherit_kind는 그 고리의 종류(sure/part/parallel)."""
     ui = pg["ui"]
     arrows = list(ch["arrows"]) + ["part" if any(d["grade"] == "part" for d in ch["duels"]) else "sure"]
     others = list(c.get("whyOthers") or []) + [None]
@@ -189,7 +221,10 @@ def render_chapter(ch, c, inherit, pg, names, era=""):
         out.append(f'<p class="era">{esc(era)}</p>')
     out.append(f'<h2>{esc(c["title"])}</h2>')
     if inherit:
-        out.append(f'<aside class="inherit"><b>{esc(ui["inherit"])}</b><p>{esc(inherit)}</p></aside>')
+        label = ui["parallel"] if inherit_kind == "parallel" else ui["inherit"]
+        extra = (f'<p class="others"><b>{esc(ui["others"])}</b> {esc(inherit_others)}</p>'
+                 if inherit_kind == "part" and inherit_others else "")
+        out.append(f'<aside class="inherit {esc(inherit_kind)}"><b>{esc(label)}</b><p>{esc(inherit)}</p>{extra}</aside>')
     out.append(f'<div class="ask"><span>{esc(ui["q"])}</span><p>{esc(c["q"])}</p></div>')
     out.append('<div class="chain">')
     out.append(box("box-event", ui["event"], f'<p>{esc(c["event"])}</p>'))
@@ -239,36 +274,33 @@ def render_rail(struct, written, tp_names, soon=""):
     return "".join(out)
 
 
-def build(lang, out_root, check_only=False):
-    """검사하고, 통과하면 {out_root}/{lang}/ism-simple/index.html을 쓴다. 치명적 오류가 있으면 False."""
-    struct, ism = load("struct.json"), load_ism("struct.json")
-    txt, pg = load(f"{lang}.json"), load(f"{lang}.page.json")
-    if report(check(lang, struct, txt, pg, ism)):
-        return False
-    if check_only:
-        return True
-    ism_txt = load_ism(f"{lang}.json")
+def render_page(lang, struct, txt, pg, ism_txt, tpl, css, ready):
+    """검사를 통과한 글로 한 언어의 페이지 전체를 만든다."""
     names = {k: v["n"] for k, v in ism_txt["isms"].items()}
     tps = ism_txt["tp"]
     chapters = struct["chapters"]
-    written = [ch for ch in chapters if txt["chapters"].get(ch["id"])]
+    text = lambda ch: (txt.get("chapters") or {}).get(ch["id"]) or None
+    written = [ch for ch in chapters if text(ch)]
     parts = []
     for ch in written:
         n = chapters.index(ch)
         before = chapters[n - 1] if n else None
-        inherit = txt["chapters"].get(before["id"], {}).get("next") if before else None
+        prev = text(before) if before else None
         era = f'{tps[ch["tp"]]["n"]} · {tps[ch["tp"]]["y"]}'
-        parts.append(render_chapter(ch, txt["chapters"][ch["id"]], inherit, pg, names, era))
-    ready = [l for l in LANGS if os.path.exists(os.path.join(HERE, f"{l}.json"))]
+        parts.append(render_chapter(
+            ch, text(ch), prev.get("next") if prev else None, pg, names, era,
+            inherit_kind=before.get("next", "sure") if prev else "sure",
+            inherit_others=prev.get("nextOthers") if prev else None))
+    lang_name = lambda l: pg["langName"] if l == lang else load(f"{l}.page.json")["langName"]
     langs = "".join(
-        f'<span aria-current="page">{esc(load(f"{l}.page.json")["langName"])}</span>' if l == lang
-        else f'<a href="../../{l}/ism-simple/" hreflang="{l}" lang="{l}">{esc(load(f"{l}.page.json")["langName"])}</a>'
+        f'<span aria-current="page">{esc(lang_name(l))}</span>' if l == lang
+        else f'<a href="../../{l}/ism-simple/" hreflang="{l}" lang="{l}">{esc(lang_name(l))}</a>'
         for l in ready)
     data = {"order": [ch["id"] for ch in chapters], "written": [ch["id"] for ch in written],
             "chapter": pg["ui"]["chapter"]}
-    css = re.sub(r"\{\{(\w+)\}\}", lambda m: pg[m.group(1)], open(os.path.join(HERE, "style.css"), encoding="utf-8").read())
     fill = {
-        "css": css, "langs": langs, "chapters": "".join(parts),
+        "css": re.sub(r"\{\{(\w+)\}\}", lambda m: pg[m.group(1)], css),
+        "langs": langs, "chapters": "".join(parts),
         "rail": render_rail(struct, {ch["id"] for ch in written}, [t["n"] for t in tps], pg["ui"]["soon"]),
         "data": json.dumps(data, ensure_ascii=False).replace("<", "\\u003c"),
         "footHtml": pg["footHtml"], "fontLink": pg["fontLink"],
@@ -284,14 +316,26 @@ def build(lang, out_root, check_only=False):
             return esc(pg["ui"][k])
         raise KeyError(f"{lang}: 문구 {k} 없음")
 
-    page = re.sub(r"\{\{(\w+)\}\}", sub, open(os.path.join(HERE, "template.html"), encoding="utf-8").read())
+    return re.sub(r"\{\{(\w+)\}\}", sub, tpl), len(written)
+
+
+def build(lang, out_root, check_only=False):
+    """검사하고, 통과하면 {out_root}/{lang}/ism-simple/index.html을 쓴다. 치명적 오류가 있으면 False."""
+    struct, ism = load("struct.json"), load_ism("struct.json")
+    txt, pg = load(f"{lang}.json"), load(f"{lang}.page.json")
+    if report(check(lang, struct, txt, pg, ism)):
+        return False
+    if check_only:
+        return True
+    read = lambda name: open(os.path.join(HERE, name), encoding="utf-8").read()
+    ready = [l for l in LANGS if os.path.exists(os.path.join(HERE, f"{l}.json"))]
+    page, n = render_page(lang, struct, txt, pg, load_ism(f"{lang}.json"), read("template.html"), read("style.css"), ready)
     out_dir = os.path.join(out_root, lang, "ism-simple")
     os.makedirs(out_dir, exist_ok=True)
     with open(os.path.join(out_dir, "index.html"), "w", encoding="utf-8") as f:
         f.write(page)
-    print(f"{lang}: {len(written)}/{len(chapters)}장 → {lang}/ism-simple")
+    print(f"{lang}: {n}/{len(struct['chapters'])}장 → {lang}/ism-simple")
     return True
-
 
 # ---------- 명령 ----------
 LANGS = ("ko", "en", "id")

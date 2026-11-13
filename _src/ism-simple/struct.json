@@ -2,7 +2,7 @@
  {"id": "premodern", "tp": 0},
  {"id": "science", "tp": 1},
  {"id": "french", "tp": 2},
- {"id": "industrial", "tp": 3, "arrows": ["part", "part", "sure"], "duels": [{"a": "classical", "b": "socialism", "grade": "part"}, {"a": "imperialism", "b": null, "grade": "part"}], "next": "part"},
+ {"id": "industrial", "tp": 3, "arrows": ["part", "part", "part"], "duels": [{"a": "classical", "b": "socialism", "grade": "part"}, {"a": "imperialism", "b": null, "grade": "part"}], "next": "part"},
  {"id": "worldwar", "tp": 4},
  {"id": "coldwar", "tp": 5},
  {"id": "digital", "tp": 6},
