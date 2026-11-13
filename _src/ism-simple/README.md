@@ -35,7 +35,9 @@ python3 _src/ism-simple/test_build.py           # 검사기와 화면 검사
 
 | 필드 | 모양 | 뜻 |
 |---|---|---|
-| `title`, `q`, `event`, `result`, `today` | 문자열 | 제목, 여는 질문, ① 사건, ⑤ 벌어진 일, 여는 질문의 답 |
+| `title`, `scene`, `q` | 문자열 | 제목, 오늘의 장면(질문이 나오는 일상의 한 장면), 여는 질문 |
+| `event`, `result` | 문자열 | ① 사건, ⑤ 벌어진 일 |
+| `today`, `now`, `think` | 문자열 | 여는 질문의 답, 지금도 이어지는 사례 한두 문장(출처 필요), 생각해 볼 질문 하나 |
 | `shift` | `{before, after}` | ② 바뀐 생각 |
 | `people` | `{good: [{who, text}], bad: [{who, text}]}` | ③ 누구에게 좋았고 누구에게 나빴나 |
 | `why` | 문자열 4개 | 화살표마다 붙는 이유 |

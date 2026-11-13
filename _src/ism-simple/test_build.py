@@ -16,6 +16,7 @@ STRUCT = {"chapters": [
 ]}
 CHAPTER = {
     "title": "기계가 일을 시작했어요",
+    "scene": "모두가 정해진 시각에 움직여요.",
     "q": "왜 종이 울리면 시작할까요?",
     "event": "공장이 생겼어요.",
     "shift": {"before": "땅이 힘이었어요.", "after": "기계가 힘이 됐어요."},
@@ -31,6 +32,8 @@ CHAPTER = {
     ],
     "result": "여러 일이 벌어졌어요.",
     "today": "그래서 오늘도 그래요.",
+    "now": "지금도 그 흔적이 남아 있어요.",
+    "think": "누가 가져야 할까요?",
     "next": "힘이 밖으로 나갔어요.",
     "nextOthers": "다른 까닭도 있었어요.",
     "words": [["공장", "물건을 만드는 곳이에요."]],
@@ -173,7 +176,7 @@ class CheckTest(unittest.TestCase):
 
     # ----- 최종 검토에서 나온 빈틈 -----
     def test_blank_text_is_missing(self):
-        for f in ("title", "q", "event", "result", "today"):
+        for f in ("title", "scene", "q", "event", "result", "today", "now", "think"):
             st, tx, pg = good()
             tx["chapters"]["industrial"][f] = "  "
             self.assertHas(self.run_check(st, tx, pg), f"{f} 없음")
@@ -326,6 +329,25 @@ class RenderTest(unittest.TestCase):
     def args(self):
         st, tx, _ = good()
         return ind(st), tx["chapters"]["industrial"]
+
+    def test_scene_comes_before_question(self):
+        h = self.render()
+        ask = h[h.index('class="ask"'):h.index('class="chain"')]
+        self.assertIn('class="scene"', ask)
+        self.assertLess(ask.index(CHAPTER["scene"]), ask.index(CHAPTER["q"]))
+
+    def test_now_closes_the_answer_box(self):
+        h = self.render()
+        answer = h[h.index('class="ask answer"'):]
+        answer = answer[:answer.index("</div>")]
+        self.assertLess(answer.index(CHAPTER["today"]), answer.index(CHAPTER["now"]))
+        self.assertIn("지금도 이어져요", answer)
+
+    def test_think_is_the_last_thing_before_words(self):
+        h = self.render()
+        self.assertIn('class="think"', h)
+        self.assertLess(h.index(CHAPTER["next"]), h.index(CHAPTER["think"]))
+        self.assertLess(h.index(CHAPTER["think"]), h.index('class="words"'))
 
     def test_escapes_text(self):
         def m(ch, c):
