@@ -276,7 +276,7 @@ Expected: `ko: 1/8장 → ko/ism-simple`
 - 사슬이 위에서 아래로 한 줄로 읽히고, 실선과 점선이 구별된다.
 - `…/index.html#science`로 열면 산업혁명 장이 보인다.
 - 사상 이름을 누르면 `ko/ism/index.html#ism-classical`의 그 사상 카드로 간다.
-- 결과 파일에 `{{`가 남아 있지 않다: `grep -c '{{' ko/ism-simple/index.html` → `0`.
+- 결과 파일에 채우지 않은 자리표시(여는 중괄호 두 개)가 남아 있지 않다: 여는 중괄호 두 개를 `grep -c`로 세면 `0`.
 
 - [ ] **Step 7: `_src/ism-simple/README.md`를 쓴다**(빌드 명령, 파일별 역할, 데이터 모양 표, 글 원칙, "근거 파일에 없는 사실은 쓰지 않는다"). **`README.md` 색인에 "사상의 분기점, 쉽게 읽기 / ism-simple" 단락을 기존 단락들과 같은 꼴로 더한다**(지금은 한국어 한 줄, 시안이라고 밝힌다).
 

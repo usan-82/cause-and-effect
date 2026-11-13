@@ -1,0 +1,5 @@
+# GitHub Pages(Jekyll) 설정.
+# docs/는 작업용 설계·계획 문서라 사이트에 싣지 않는다. 이 문서들에 중괄호 두 개가 들어가면
+# Jekyll이 Liquid 문법으로 읽어 사이트 빌드 전체가 실패한다.
+exclude:
+  - docs
