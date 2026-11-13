@@ -1,10 +1,10 @@
 {"chapters": [
- {"id": "premodern", "tp": 0},
- {"id": "science", "tp": 1},
- {"id": "french", "tp": 2},
+ {"id": "premodern", "tp": 0, "arrows": ["part", "part", "part"], "duels": [{"a": "scholastic", "b": "humanism", "grade": "part"}, {"a": null, "b": null, "grade": "part"}], "next": "part"},
+ {"id": "science", "tp": 1, "arrows": ["part", "part", "part"], "duels": [{"a": "scholastic", "b": null, "grade": "part"}], "next": "part"},
+ {"id": "french", "tp": 2, "arrows": ["part", "part", "part"], "duels": [{"a": "divine", "b": "republic", "grade": "part"}, {"a": null, "b": "conservatism", "grade": "part"}], "next": "parallel"},
  {"id": "industrial", "tp": 3, "arrows": ["part", "part", "part"], "duels": [{"a": "classical", "b": "socialism", "grade": "part"}, {"a": "imperialism", "b": null, "grade": "part"}], "next": "part"},
- {"id": "worldwar", "tp": 4},
- {"id": "coldwar", "tp": 5},
- {"id": "digital", "tp": 6},
- {"id": "ai", "tp": 7}
+ {"id": "worldwar", "tp": 4, "arrows": ["part", "part", "part"], "duels": [{"a": "totalitarian", "b": "liberalism", "grade": "part"}], "next": "part"},
+ {"id": "coldwar", "tp": 5, "arrows": ["part", "part", "part"], "duels": [{"a": "liberalism", "b": "communism", "grade": "part"}, {"a": null, "b": null, "grade": "part"}], "next": "part"},
+ {"id": "digital", "tp": 6, "arrows": ["part", "part", "part"], "duels": [{"a": "cyberlib", "b": "platform", "grade": "part"}], "next": "part"},
+ {"id": "ai", "tp": 7, "arrows": ["part", "part", "part"], "duels": [{"a": "aisafety", "b": "eacc", "grade": "part"}]}
 ]}

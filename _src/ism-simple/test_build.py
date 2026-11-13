@@ -174,6 +174,23 @@ class CheckTest(unittest.TestCase):
         tx["chapters"]["industrial"]["event"] = "자본이 힘이 됐어요."
         self.assertHas(self.run_check(st, tx, pg), "'자본' 낱말 풀이 필요")
 
+    # ----- 영어·인도네시아어: 낱말 수로 세고, 풀이 낱말은 변화형도 잡는다 -----
+    def test_word_unit_counts_words_not_letters(self):
+        st, tx, pg = good()
+        pg.update(sentenceUnit="word", maxSentence=5)
+        tx["chapters"]["industrial"]["event"] = "Factories grew in many towns."
+        self.assertEqual(fatal(self.run_check(st, tx, pg)), [])
+        tx["chapters"]["industrial"]["event"] = "Factories grew in many more towns."
+        self.assertHas(self.run_check(st, tx, pg), "문장이 김(6>5)")
+
+    def test_word_unit_explain_matches_other_forms(self):
+        st, tx, pg = good()
+        pg.update(sentenceUnit="word", maxSentence=22, explain=["colony|colonies"])
+        tx["chapters"]["industrial"]["event"] = "They took colonies far away."
+        self.assertHas(self.run_check(st, tx, pg), "'colony' 낱말 풀이 필요")
+        tx["chapters"]["industrial"]["words"].append(["Colony", "Land ruled by another country."])
+        self.assertEqual(fatal(self.run_check(st, tx, pg)), [])
+
     # ----- 최종 검토에서 나온 빈틈 -----
     def test_blank_text_is_missing(self):
         for f in ("title", "scene", "q", "event", "result", "today", "now", "think"):
