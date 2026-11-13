@@ -290,14 +290,38 @@ class RenderTest(unittest.TestCase):
         self.assertIn('class="arrow part"', h)
         self.assertIn("흉년도 있었어요.", h)
 
-    def test_sure_arrow_has_no_others(self):
+    # 실선 = 원인으로 인정됨(다른 원인이 함께 있을 수 있음), 점선 = 원인인지 다툼이 있음
+    def test_sure_arrow_shows_others_when_given(self):
+        def m(ch, c):
+            c["whyOthers"][0] = "날씨도 원인이었어요."
+        h = self.render(m)
+        self.assertIn('class="arrow sure"', h)
+        self.assertIn("날씨도 원인이었어요.", h)
+
+    def test_sure_duel_and_next_show_others_when_given(self):
         def m(ch, c):
             ch["next"] = "sure"
             for d in ch["duels"]:
                 d["grade"] = "sure"
         h = self.render(m)
-        self.assertEqual(h.count('class="others"'), 0)
         self.assertNotIn('class="arrow part"', h)
+        self.assertIn(CHAPTER["duels"][0]["others"], h)
+        self.assertIn(CHAPTER["nextOthers"], h)
+        self.assertEqual(h.count('class="others"'), 3)
+
+    def test_sure_without_others_has_none(self):
+        def m(ch, c):
+            ch["next"] = "sure"
+            for d in ch["duels"]:
+                d["grade"] = "sure"
+            for d in c["duels"]:
+                del d["others"]
+            del c["nextOthers"]
+        self.assertEqual(self.render(m).count('class="others"'), 0)
+
+    def test_parallel_link_never_shows_others(self):
+        h = self.render(lambda ch, c: ch.__setitem__("next", "parallel"))
+        self.assertNotIn(CHAPTER["nextOthers"], h)
 
     def test_third_arrow_says_but(self):
         import re
@@ -349,6 +373,12 @@ class RenderTest(unittest.TestCase):
                                  inherit_others="다른 까닭도 있었어요.")
         self.assertIn('class="inherit part"', h)
         self.assertIn("다른 까닭도 있었어요.", h)
+
+    def test_inherit_sure_shows_others(self):
+        h = build.render_chapter(*self.args(), pg=PGK, names=NAMES, inherit="넘겨준 말이에요.", inherit_kind="sure",
+                                 inherit_others="앞 장의 다른 원인이에요.")
+        self.assertIn('class="inherit sure"', h)
+        self.assertIn("앞 장의 다른 원인이에요.", h)
 
     def args(self):
         st, tx, _ = good()

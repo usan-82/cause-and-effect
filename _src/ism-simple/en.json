@@ -39,7 +39,7 @@
     "Because the clash between the two ideas travelled in print to many cities. The clash of ideas helped bring about the split in the Church."
    ],
    "whyOthers": [
-    "The new ideas began to grow before printing. There were scholars who wanted to revive the old texts, and there was also a hand-copied English Bible.",
+    "The new ideas began to grow before printing. There were scholars who wanted to revive the old texts. Writings that called for reforming the Church also spread in hand-made copies.",
     "Even before the printing press, the Church punished people who taught differently. A Church council had the priest Hus burned to death.",
     "Voices questioning the old university learning were heard before the printing press. The Church's sale of indulgences for money also fed people's discontent."
    ],
@@ -665,8 +665,8 @@
   },
   "coldwar": {
    "title": "The world split into two sides",
-   "scene": "On the Korean Peninsula there are the Republic of Korea and the Democratic People's Republic of Korea (North Korea). Between the two countries runs a line that no one may cross freely.",
-   "q": "Why was the Korean Peninsula divided in two?",
+   "scene": "Look for Korea on a map and you will find two countries. They are the Republic of Korea and the Democratic People's Republic of Korea. People often call them South Korea and North Korea. Between them runs a line that no one may cross freely.",
+   "q": "Why was Korea, once a single country, divided into North Korea and South Korea?",
    "event": "In 1945 the war ended. The United States and the Soviet Union had fought on the same side, but they ran their countries in different ways. Four countries divided Germany and occupied it. The United States and the Soviet Union divided and occupied the Korean Peninsula, which had been under Japanese rule. Both places were split in two. This stand-off is called the Cold War.",
    "shift": {
     "before": "The United States and the Soviet Union were on the same side, fighting the same enemy.",
@@ -741,7 +741,7 @@
     }
    ],
    "result": "Over Cuba, the two sides came to the very edge of nuclear war. In Vietnam, a long war to which the United States sent troops killed more than one million people. The '68 movement rose in both east and west. Police put it down in Paris and Chicago, the army in Mexico City, and Soviet troops in Prague. A little over twenty years later, people in Eastern Europe drove out their communist governments, and the Berlin Wall was opened. Two years after that, the Soviet Union broke up into fifteen countries. A slowing economy, reforms and demands for independence came together, and this ending was not fixed in advance.",
-   "today": "When Japan surrendered in 1945, the United States proposed the 38th parallel and the Soviet Union accepted it. No one asked the Korean people what they wanted. Three years later, separate governments were set up in the South and the North. On 25 June 1950 the army of the North attacked the South, and the war began. The line drawn in 1953 where the fighting stopped is today's Military Demarcation Line.",
+   "today": "When Japan surrendered in 1945, the United States proposed the 38th parallel and the Soviet Union accepted it. No one asked the Korean people what they wanted. Three years later, separate governments were set up in the South and the North. On 25 June 1950 the army of the North attacked the South, and the war began. In 1953 the fighting stopped with an armistice. The line fixed by that agreement is today's Military Demarcation Line.",
    "now": "The armistice has still not been replaced by a peace treaty. A Demilitarized Zone four kilometres wide runs across the Korean Peninsula.",
    "think": "How is stopping the fighting different from making peace?",
    "next": "A research agency of the United States Department of Defense paid for a network that linked computers to each other. This technology later became the basis of the internet.",

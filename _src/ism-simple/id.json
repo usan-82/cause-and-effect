@@ -39,7 +39,7 @@
     "Sebab pertentangan dua gagasan itu menyebar ke banyak kota lewat barang cetakan. Pertentangan gagasan itu ikut mendorong terpecahnya Gereja."
    ],
    "whyOthers": [
-    "Gagasan baru sudah tumbuh sebelum ada percetakan. Ada cendekiawan yang ingin menghidupkan kembali tulisan kuno. Ada juga Alkitab berbahasa Inggris yang disalin dengan tangan.",
+    "Gagasan baru sudah tumbuh sebelum ada percetakan. Ada cendekiawan yang ingin menghidupkan kembali tulisan kuno. Tulisan yang menyerukan pembaruan Gereja juga tersebar lewat salinan tangan.",
     "Sebelum ada mesin cetak pun, Gereja sudah menghukum orang yang mengajarkan hal berbeda. Sebuah sidang Gereja menghukum imam Hus dengan dibakar sampai mati.",
     "Kritik terhadap cara belajar lama di universitas sudah muncul sebelum mesin cetak. Gereja menjual surat indulgensi dengan imbalan uang, dan hal ini juga menambah rasa tidak puas."
    ],
@@ -657,8 +657,8 @@
   },
   "coldwar": {
    "title": "Dunia terbelah menjadi dua kubu",
-   "scene": "Di Semenanjung Korea ada Republik Korea dan Republik Rakyat Demokratik Korea (Korea Utara). Di antara kedua negara itu ada garis yang tidak boleh dilewati sesuka hati.",
-   "q": "Mengapa Semenanjung Korea terbagi dua?",
+   "scene": "Coba cari Korea di peta, kamu akan menemukan dua negara. Keduanya adalah Republik Korea dan Republik Rakyat Demokratik Korea. Orang sering menyebutnya Korea Selatan dan Korea Utara. Di antara keduanya ada garis yang tidak boleh dilewati sesuka hati.",
+   "q": "Mengapa Korea, yang dulu satu negara, terbagi menjadi Korea Utara dan Korea Selatan?",
    "event": "Pada 1945 perang berakhir. Amerika Serikat dan Uni Soviet, yang tadinya berjuang bersama, punya cara berbeda dalam mengatur negara. Jerman dibagi dan diduduki oleh empat negara. Semenanjung Korea, yang tadinya berada di bawah kekuasaan Jepang, dibagi dan diduduki oleh Amerika Serikat dan Uni Soviet. Kedua tempat itu sama-sama terbelah dua. Pertentangan ini disebut Perang Dingin.",
    "shift": {
     "before": "Amerika Serikat dan Uni Soviet berada di pihak yang sama dan melawan musuh yang sama.",
@@ -733,7 +733,7 @@
     }
    ],
    "result": "Di Kuba, kedua kubu sampai di ambang perang nuklir. Di Vietnam, Amerika Serikat mengirim tentara ke sebuah perang panjang yang menewaskan lebih dari 1 juta orang. Gerakan 68 muncul di sisi timur maupun barat. Di Paris dan Chicago gerakan itu ditumpas polisi, di Kota Meksiko oleh tentara, dan di Praha oleh tentara Soviet. Sedikit lebih dari dua puluh tahun kemudian, penduduk Eropa Timur menyingkirkan pemerintahan partai komunis. Tembok Berlin pun dibuka. Dua tahun sesudahnya, Uni Soviet terpecah menjadi lima belas negara. Hal itu terjadi karena ekonomi yang melambat, pembaruan, dan tuntutan kemerdekaan datang bersamaan. Akhir itu bukan sesuatu yang sudah pasti sejak awal.",
-   "today": "Ketika Jepang menyerah pada 1945, Amerika Serikat mengusulkan garis lintang ke-38, dan Uni Soviet menerimanya. Orang Korea tidak ditanya pendapatnya. Tiga tahun kemudian, pemerintahan terpisah berdiri di Selatan dan di Utara. Pada 25 Juni 1950 tentara Utara menyerang Selatan, dan perang pun dimulai. Garis yang ditarik pada 1953 di tempat pertempuran berhenti kini menjadi Garis Demarkasi Militer.",
+   "today": "Ketika Jepang menyerah pada 1945, Amerika Serikat mengusulkan garis lintang ke-38, dan Uni Soviet menerimanya. Orang Korea tidak ditanya pendapatnya. Tiga tahun kemudian, pemerintahan terpisah berdiri di Selatan dan di Utara. Pada 25 Juni 1950 tentara Utara menyerang Selatan, dan perang pun dimulai. Pada 1953 pertempuran berhenti karena perjanjian gencatan senjata. Garis yang ditetapkan perjanjian itu kini menjadi Garis Demarkasi Militer.",
    "now": "Sampai sekarang, perjanjian gencatan senjata itu belum diganti dengan perjanjian damai. Zona Demiliterisasi selebar 4 kilometer membentang melintasi Semenanjung Korea.",
    "think": "Apa bedanya menghentikan pertempuran dengan mewujudkan perdamaian?",
    "next": "Dengan biaya dari lembaga penelitian Departemen Pertahanan Amerika Serikat, dibuatlah jaringan yang menghubungkan komputer-komputer. Teknologi ini kelak menjadi dasar internet.",

@@ -29,7 +29,7 @@ python3 _src/ism-simple/test_build.py           # 검사기와 화면 검사
 | `duels` | `[{a, b, grade}]` 1~2개 | `a`·`b`는 `_src/ism`의 사상 id, 맞는 것이 없으면 `null`. `grade`는 `sure`/`part` |
 | `next` | `sure`/`part`/`parallel` | 다음 장으로 가는 고리. 마지막 장에는 없다 |
 
-`sure`는 실선(역사학자들이 대체로 동의), `part`는 점선(여러 원인 중 하나이거나 논쟁 중), `parallel`은 "같은 때 다른 곳에서"(인과 아님).
+`sure`는 실선(출처가 원인으로 말하고, 반박하는 출처를 찾지 못함. 다른 원인이 있으면 함께 적는다), `part`는 점선(원인인지를 두고 출처끼리 엇갈리거나, 이 글의 해석이거나, 출처가 한 곳뿐이거나, 연결이 약함), `parallel`은 "같은 때 다른 곳에서"(인과 아님).
 
 `{lang}.json`의 장:
 
@@ -42,9 +42,9 @@ python3 _src/ism-simple/test_build.py           # 검사기와 화면 검사
 | `shift` | `{before, after}` | ② 바뀐 생각 |
 | `people` | `{good: [{who, text}], bad: [{who, text}]}` | ③ 누구에게 좋았고 누구에게 나빴나 |
 | `why` | 문자열 4개 | 화살표마다 붙는 이유 |
-| `whyOthers` | 3개, 문자열 또는 `null` | 그 화살표가 `part`일 때의 "다른 원인도 있어요" |
-| `duels` | `[{a, b, clash, events, others, aName?, bName?}]` | ④ 대결. `struct`와 같은 순서. `others`는 `part`일 때 필수. `aName`·`bName`은 쉬운 이름(없으면 `_src/ism`의 이름) |
-| `next`, `nextOthers` | 문자열 | 다음 장에 넘겨준 것. `nextOthers`는 `part`일 때 필수 |
+| `whyOthers` | 3개, 문자열 또는 `null` | 그 화살표의 "다른 원인도 있어요". `part`면 필수, `sure`면 다른 원인이 있을 때 쓴다 |
+| `duels` | `[{a, b, clash, events, others, aName?, bName?}]` | ④ 대결. `struct`와 같은 순서. `others`는 `part`일 때 필수, `sure`일 때는 선택. `aName`·`bName`은 쉬운 이름(없으면 `_src/ism`의 이름) |
+| `next`, `nextOthers` | 문자열 | 다음 장에 넘겨준 것. `nextOthers`는 `part`일 때 필수, `sure`일 때는 선택, `parallel`이면 쓰지 않는다 |
 | `words` | `[[낱말, 풀이]]` | 낱말 풀이 |
 
 ## 빌드가 막는 것
@@ -62,4 +62,4 @@ python3 _src/ism-simple/test_build.py           # 검사기와 화면 검사
 - 이유 문장은 순서가 아니라 "왜"를 말한다.
 - 전쟁과 혁명을 사상 하나로 설명하지 않는다. 사상에 옳고 그름을 매기지 않는다. 학살 같은 사실은 흐리지 않는다.
 - 한 낱말의 풀이는 모든 장에서 같은 문장으로 쓴다.
-- **`research/04-사상-분기점-근거.md`에 출처가 있는 사실만 쓴다.** 출처의 등급이 화살표의 세기를 정한다(확실 → `sure`, 유력·논쟁 → `part`).
+- **`research/04-사상-분기점-근거.md`에 출처가 있는 사실만 쓴다.** 출처의 등급이 화살표의 세기를 정한다(확실·유력 → `sure`, 논쟁 → `part`. 유력이라도 이 글의 해석이거나 출처가 한 곳뿐이거나 연결이 약하면 `part`).

@@ -181,11 +181,17 @@ footer p{max-width:70ch}
 .langs{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 14px;font-size:13.5px}
 .langs a,.langs span{padding:3px 10px;border-radius:999px;border:1px solid var(--line);text-decoration:none;color:var(--ink);background:var(--surface)}
 .langs span{background:var(--accent);border-color:var(--accent);color:var(--surface);font-weight:600}
+
+/* 쉬운 판 링크, 그리고 붙어 있는 메뉴(nav.jump)에 가리지 않게 */
+.toprow{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin:0 0 14px}
+.toprow .langs{margin:0}
+.simplelink{font-size:13.5px;font-weight:600;text-decoration:none;color:var(--accent);border:1px solid currentColor;border-radius:999px;padding:3px 12px;white-space:nowrap}
+[id^="ism-"],main section[id]{scroll-margin-top:64px}
 </style>
 </head>
 <body>
 <header class="top wrap">
-  <nav class="langs" aria-label="Language"><a href="../../ko/ism/" hreflang="ko" lang="ko">한국어</a><span aria-current="page">English</span><a href="../../id/ism/" hreflang="id" lang="id">Bahasa Indonesia</a></nav>
+  <div class="toprow"><nav class="langs" aria-label="Language"><a href="../../ko/ism/" hreflang="ko" lang="ko">한국어</a><span aria-current="page">English</span><a href="../../id/ism/" hreflang="id" lang="id">Bahasa Indonesia</a></nav><a class="simplelink" href="../ism-simple/">Simple version</a></div>
   <div class="eyebrow">Research notes on the history of ideas</div>
   <h1>Turning Points of Thought</h1>
   <p class="lead">Seven moments, from the Scientific Revolution to the AI Revolution, when the standards humanity uses to judge truth, power, the human and the good life changed. Follow how standards shifted before and after each turning point, which isms were born, and how they inherited from or reacted against one another.</p>
@@ -461,6 +467,23 @@ document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!sheet.hidden)close
 document.addEventListener("click",e=>{const b=e.target.closest("[data-ism]");if(b&&!sheet.contains(b))openIsm(b.dataset.ism)});
 
 drawFlow();drawEra(1);drawMM();
+
+// 주소의 #ism-… 로 들어왔을 때: 카드는 스크립트가 그리고, 글꼴과 그림이 뒤에 들어오며 위쪽 길이가 바뀐다.
+// 그래서 다 그린 뒤, 글꼴이 들어온 뒤, 페이지를 다 읽은 뒤에 다시 그 자리로 간다. 읽는 사람이 먼저 움직이면 멈춘다.
+(function(){
+  let moved=false;
+  const stop=()=>{moved=true};
+  ["wheel","touchstart","keydown","mousedown"].forEach(t=>addEventListener(t,stop,{once:true,passive:true}));
+  const go=()=>{
+    if(moved||!location.hash) return;
+    let id=""; try{id=decodeURIComponent(location.hash.slice(1))}catch(e){return}
+    const el=id&&document.getElementById(id);
+    if(el) el.scrollIntoView({block:"start"});
+  };
+  go();
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(go);
+  addEventListener("load",go,{once:true});
+})();
 </script>
 </body>
 </html>
