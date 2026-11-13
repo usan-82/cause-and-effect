@@ -174,10 +174,106 @@ class CheckTest(unittest.TestCase):
 
 class CliTest(unittest.TestCase):
     def test_check_only_writes_nothing(self):
-        import tempfile
-        with tempfile.TemporaryDirectory() as d:
+        import contextlib, io, tempfile
+        with tempfile.TemporaryDirectory() as d, contextlib.redirect_stdout(io.StringIO()):
             self.assertEqual(build.main([d, "ko", "--check"]), 0)
             self.assertEqual(os.listdir(d), [])
+
+
+PGK = build.load("ko.page.json")
+NAMES = {"classical": "고전경제학·자본주의", "socialism": "초기 사회주의", "imperialism": "제국주의·사회진화론"}
+BOXES = ["box-event", "box-shift", "box-people", "box-duel", "box-result"]
+
+
+class RenderTest(unittest.TestCase):
+    def render(self, mutate=None, inherit=None):
+        st, tx, _ = good()
+        ch, c = ind(st), tx["chapters"]["industrial"]
+        if mutate:
+            mutate(ch, c)
+        return build.render_chapter(ch, c, inherit, PGK, NAMES)
+
+    def test_chain_order(self):
+        h = self.render()
+        pos = [h.index(f'class="box {b}"') for b in BOXES]
+        self.assertEqual(pos, sorted(pos))
+
+    def test_four_arrows_with_reasons(self):
+        def one_duel(ch, c):
+            ch["duels"].pop(); c["duels"].pop()
+        h = self.render(one_duel)
+        self.assertEqual(h.count('class="reason"'), 4)
+        for w in CHAPTER["why"]:
+            self.assertIn(w, h)
+
+    def test_part_arrow_shows_others(self):
+        def m(ch, c):
+            ch["arrows"][0] = "part"; c["whyOthers"][0] = "흉년도 있었어요."
+        h = self.render(m)
+        self.assertIn('class="arrow part"', h)
+        self.assertIn("흉년도 있었어요.", h)
+
+    def test_sure_arrow_has_no_others(self):
+        def m(ch, c):
+            ch["next"] = "sure"
+            for d in ch["duels"]:
+                d["grade"] = "sure"
+        h = self.render(m)
+        self.assertEqual(h.count('class="others"'), 0)
+        self.assertNotIn('class="arrow part"', h)
+
+    def test_third_arrow_says_but(self):
+        import re
+        words = re.findall(r'<div class="arrow (?:sure|part)"><b>(.*?)</b>', self.render())
+        self.assertEqual(words, ["그래서", "그래서", "그런데", "그래서"])
+
+    def sides(self, h):
+        import re
+        return re.findall(r'<div class="side">(.*?)</div>', h, re.S)
+
+    def test_ism_link(self):
+        s = self.sides(self.render())[0]
+        self.assertIn('href="../ism/#ism-classical"', s)
+        self.assertIn("고전경제학·자본주의", s)
+
+    def test_easy_name_overrides(self):
+        def m(ch, c):
+            c["duels"][0]["aName"] = "자본주의"
+        s = self.sides(self.render(m))[0]
+        self.assertIn(">자본주의</a>", s)
+        self.assertNotIn("고전경제학", s)
+
+    def test_null_ism_has_no_link(self):
+        s = self.sides(self.render())
+        self.assertEqual(len(s), 4)
+        self.assertNotIn('class="ism"', s[3])
+        self.assertIn("<q>여기는 남의 땅이 아니에요</q>", s[3])
+
+    def test_people_show_who(self):
+        h = self.render()
+        for side in ("good", "bad"):
+            for r in CHAPTER["people"][side]:
+                self.assertIn(r["who"], h)
+                self.assertIn(r["text"], h)
+
+    def test_no_inherit_box_without_prev(self):
+        self.assertNotIn("앞에서 넘겨받은 것", self.render())
+        h = self.render(inherit="앞 장이 넘겨준 말이에요.")
+        self.assertIn("앞에서 넘겨받은 것", h)
+        self.assertIn("앞 장이 넘겨준 말이에요.", h)
+
+    def test_escapes_text(self):
+        def m(ch, c):
+            c["event"] = '<b>1 & 2 "셋"</b>'
+        h = self.render(m)
+        self.assertIn("&lt;b&gt;1 &amp; 2 &quot;셋&quot;&lt;/b&gt;", h)
+        self.assertNotIn("<b>1 &", h)
+
+    def test_rail_marks_unwritten(self):
+        names = ["근대 이전", "과학혁명", "프랑스혁명", "산업혁명", "세계대전", "냉전", "디지털", "AI"]
+        h = build.render_rail(STRUCT, {"industrial"}, names)
+        self.assertEqual(h.count('href="#industrial"'), 1)
+        self.assertEqual(h.count('class="off"'), 7)
 
 
 if __name__ == "__main__":

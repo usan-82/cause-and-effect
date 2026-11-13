@@ -1,5 +1,5 @@
 """사상의 분기점, 쉽게 읽기: python3 build.py OUT_ROOT [lang ...] [--check]"""
-import json, os, re
+import html, json, os, re
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ISM_SRC = os.path.join(HERE, "..", "ism")
@@ -138,6 +138,161 @@ def check(lang, struct, txt, pg, ism):
     return errs
 
 
+# ---------- 화면 ----------
+def esc(s):
+    return html.escape(str(s), quote=True)
+
+
+def _arrow(grade, word, reason, others, ui):
+    extra = f'<p class="others"><b>{esc(ui["others"])}</b> {esc(others)}</p>' if grade == "part" and others else ""
+    return (f'<div class="arrow {grade}"><b>{esc(word)}</b>'
+            f'<p class="reason">{esc(reason)}</p>{extra}</div>')
+
+
+def _side(say, ism_id, easy, names):
+    name = easy or (names.get(ism_id) if ism_id else None)
+    if ism_id:
+        tag = f'<a class="ism" href="../ism/#ism-{esc(ism_id)}">{esc(name)}</a>'
+    else:
+        tag = f'<span class="noism">{esc(name)}</span>' if name else ""
+    return f'<div class="side"><q>{esc(say)}</q>{tag}</div>'
+
+
+def _duel(s, t, ui, names):
+    grade = s["grade"]
+    others = (f'<p class="others"><b>{esc(ui["others"])}</b> {esc(t["others"])}</p>'
+              if grade == "part" and t.get("others") else "")
+    events = "".join(f"<li>{esc(e)}</li>" for e in t["events"])
+    return ('<div class="duel"><div class="sides">'
+            + _side(t["a"], s.get("a"), t.get("aName"), names)
+            + f'<span class="vs">{esc(ui["vs"])}</span>'
+            + _side(t["b"], s.get("b"), t.get("bName"), names)
+            + f'</div><p class="clash"><b>{esc(ui["clash"])}</b> {esc(t["clash"])}</p>'
+            + f'<div class="darrow {grade}">{others}<ul class="events">{events}</ul></div></div>')
+
+
+def _people(rows, label, cls):
+    items = "".join(f'<li><b>{esc(r["who"])}</b><span>{esc(r["text"])}</span></li>' for r in rows)
+    return f'<div class="{cls}"><h4>{esc(label)}</h4><ul>{items}</ul></div>'
+
+
+def render_chapter(ch, c, inherit, pg, names, era=""):
+    """한 장의 사슬. 칸 다섯 개와 그 사이 화살표 네 개."""
+    ui = pg["ui"]
+    arrows = list(ch["arrows"]) + ["part" if any(d["grade"] == "part" for d in ch["duels"]) else "sure"]
+    others = list(c.get("whyOthers") or []) + [None]
+    words = [ui["so"], ui["so"], ui["but"], ui["so"]]
+    arrow = lambda i: _arrow(arrows[i], words[i], c["why"][i], others[i] if i < len(others) else None, ui)
+    box = lambda cls, title, body: f'<section class="box {cls}"><h3>{esc(title)}</h3>{body}</section>'
+    out = [f'<article class="ch" id="{esc(ch["id"])}">']
+    if era:
+        out.append(f'<p class="era">{esc(era)}</p>')
+    out.append(f'<h2>{esc(c["title"])}</h2>')
+    if inherit:
+        out.append(f'<aside class="inherit"><b>{esc(ui["inherit"])}</b><p>{esc(inherit)}</p></aside>')
+    out.append(f'<div class="ask"><span>{esc(ui["q"])}</span><p>{esc(c["q"])}</p></div>')
+    out.append('<div class="chain">')
+    out.append(box("box-event", ui["event"], f'<p>{esc(c["event"])}</p>'))
+    out.append(arrow(0))
+    out.append(box("box-shift", ui["shift"],
+                   f'<div class="shift"><div><b>{esc(ui["before"])}</b><p>{esc(c["shift"]["before"])}</p></div>'
+                   f'<div><b>{esc(ui["after"])}</b><p>{esc(c["shift"]["after"])}</p></div></div>'))
+    out.append(arrow(1))
+    out.append(box("box-people", ui["people"],
+                   '<div class="people">' + _people(c["people"]["good"], ui["good"], "good")
+                   + _people(c["people"]["bad"], ui["bad"], "bad") + "</div>"))
+    out.append(arrow(2))
+    out.append(box("box-duel", ui["duel"],
+                   "".join(_duel(s, t, ui, names) for s, t in zip(ch["duels"], c["duels"]))))
+    out.append(arrow(3))
+    out.append(box("box-result", ui["result"], f'<p>{esc(c["result"])}</p>'))
+    out.append("</div>")
+    out.append(f'<div class="ask answer"><span>{esc(ui["today"])}</span><p>{esc(c["today"])}</p></div>')
+    if c.get("next"):
+        kind = ch.get("next", "sure")
+        label = ui["parallel"] if kind == "parallel" else ui["next"]
+        extra = (f'<p class="others"><b>{esc(ui["others"])}</b> {esc(c["nextOthers"])}</p>'
+                 if kind == "part" and c.get("nextOthers") else "")
+        out.append(f'<aside class="next {kind}"><b>{esc(label)}</b><p>{esc(c["next"])}</p>{extra}</aside>')
+    if c.get("words"):
+        rows = "".join(f"<details><summary>{esc(w)}</summary><p>{esc(d)}</p></details>" for w, d in c["words"])
+        out.append(f'<section class="words"><h3>{esc(ui["words"])}</h3>{rows}</section>')
+    out.append("</article>")
+    return "".join(out)
+
+
+def render_rail(struct, written, tp_names, soon=""):
+    """분기점 8칸 줄. 쓰인 장은 링크, 안 쓰인 장은 흐리게. 칸 사이에는 앞 장이 넘긴 고리의 종류."""
+    out, prev = ["<ol>"], None
+    for n, ch in enumerate(struct["chapters"]):
+        if prev is not None:
+            kind = prev.get("next") if prev["id"] in written else None
+            out.append(f'<li class="link {esc(kind)}" aria-hidden="true"></li>' if kind
+                       else '<li class="link" aria-hidden="true"></li>')
+        inner = f"<b>{n + 1}</b><span>{esc(tp_names[ch['tp']])}</span>"
+        if ch["id"] in written:
+            out.append(f'<li><a href="#{esc(ch["id"])}">{inner}</a></li>')
+        else:
+            out.append(f'<li><span class="off" title="{esc(soon)}">{inner}</span></li>')
+        prev = ch
+    out.append("</ol>")
+    return "".join(out)
+
+
+def build(lang, out_root, check_only=False):
+    """검사하고, 통과하면 {out_root}/{lang}/ism-simple/index.html을 쓴다. 치명적 오류가 있으면 False."""
+    struct, ism = load("struct.json"), load_ism("struct.json")
+    txt, pg = load(f"{lang}.json"), load(f"{lang}.page.json")
+    if report(check(lang, struct, txt, pg, ism)):
+        return False
+    if check_only:
+        return True
+    ism_txt = load_ism(f"{lang}.json")
+    names = {k: v["n"] for k, v in ism_txt["isms"].items()}
+    tps = ism_txt["tp"]
+    chapters = struct["chapters"]
+    written = [ch for ch in chapters if txt["chapters"].get(ch["id"])]
+    parts = []
+    for ch in written:
+        n = chapters.index(ch)
+        before = chapters[n - 1] if n else None
+        inherit = txt["chapters"].get(before["id"], {}).get("next") if before else None
+        era = f'{tps[ch["tp"]]["n"]} · {tps[ch["tp"]]["y"]}'
+        parts.append(render_chapter(ch, txt["chapters"][ch["id"]], inherit, pg, names, era))
+    ready = [l for l in LANGS if os.path.exists(os.path.join(HERE, f"{l}.json"))]
+    langs = "".join(
+        f'<span aria-current="page">{esc(load(f"{l}.page.json")["langName"])}</span>' if l == lang
+        else f'<a href="../../{l}/ism-simple/" hreflang="{l}" lang="{l}">{esc(load(f"{l}.page.json")["langName"])}</a>'
+        for l in ready)
+    data = {"order": [ch["id"] for ch in chapters], "written": [ch["id"] for ch in written],
+            "chapter": pg["ui"]["chapter"]}
+    css = re.sub(r"\{\{(\w+)\}\}", lambda m: pg[m.group(1)], open(os.path.join(HERE, "style.css"), encoding="utf-8").read())
+    fill = {
+        "css": css, "langs": langs, "chapters": "".join(parts),
+        "rail": render_rail(struct, {ch["id"] for ch in written}, [t["n"] for t in tps], pg["ui"]["soon"]),
+        "data": json.dumps(data, ensure_ascii=False).replace("<", "\\u003c"),
+        "footHtml": pg["footHtml"], "fontLink": pg["fontLink"],
+    }
+
+    def sub(m):
+        k = m.group(1)
+        if k in fill:
+            return fill[k]
+        if isinstance(pg.get(k), str):
+            return esc(pg[k])
+        if k in pg["ui"]:
+            return esc(pg["ui"][k])
+        raise KeyError(f"{lang}: 문구 {k} 없음")
+
+    page = re.sub(r"\{\{(\w+)\}\}", sub, open(os.path.join(HERE, "template.html"), encoding="utf-8").read())
+    out_dir = os.path.join(out_root, lang, "ism-simple")
+    os.makedirs(out_dir, exist_ok=True)
+    with open(os.path.join(out_dir, "index.html"), "w", encoding="utf-8") as f:
+        f.write(page)
+    print(f"{lang}: {len(written)}/{len(chapters)}장 → {lang}/ism-simple")
+    return True
+
+
 # ---------- 명령 ----------
 LANGS = ("ko", "en", "id")
 
@@ -151,9 +306,7 @@ def report(errs):
 
 def main(argv):
     args = [a for a in argv if not a.startswith("--")]
-    check_only = "--check" in argv
     out_root, only = args[0], args[1:]
-    struct, ism = load("struct.json"), load_ism("struct.json")
     failed = False
     for lang in LANGS:
         if only and lang not in only:
@@ -161,10 +314,7 @@ def main(argv):
         if not os.path.exists(os.path.join(HERE, f"{lang}.json")):
             print(f"{lang}: 글 파일 없음 — 건너뜀")
             continue
-        bad = report(check(lang, struct, load(f"{lang}.json"), load(f"{lang}.page.json"), ism))
-        failed = failed or bad
-        if check_only or bad:
-            continue
+        failed = not build(lang, out_root, "--check" in argv) or failed
     if failed:
         print("검사 실패")
     return 1 if failed else 0

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ko" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>사상의 분기점, 쉽게 읽기</title>
+<meta name="description" content="큰 사건이 사람들의 생각을 어떻게 바꿨고, 바뀐 생각이 어떤 일을 일으켰는지 원인과 결과의 사슬로 쉽게 읽어요.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@700&display=swap" rel="stylesheet">
+<style>:root{
+  --sans:"Noto Sans KR"; --serif:"Noto Serif KR";
+  color-scheme: light;
+  --bg:#f6f4ef; --surface:#fcfcfb; --ink:#1b1a18; --ink2:#55534e; --muted:#8a877f; --line:#e2dfd7; --accent:#2a78d6;
+  --good:#1f7a3a; --bad:#b3372e;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    color-scheme: dark;
+    --bg:#141413; --surface:#1c1c1b; --ink:#f0efec; --ink2:#c3c2b7; --muted:#8f8d85; --line:#2f2e2b; --accent:#4d94ea;
+    --good:#5cc47a; --bad:#f0766c;
+  }
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans),system-ui,sans-serif;font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%}
+:lang(ko){word-break:keep-all;overflow-wrap:anywhere}
+a{color:var(--accent)}
+button{font:inherit;color:inherit}
+[hidden]{display:none!important}
+p{margin:0}
+.top,main,.pager,.foot{max-width:720px;margin:0 auto;padding-left:16px;padding-right:16px}
+
+/* 머리 */
+.top{padding-top:14px}
+.tt{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+h1{font:700 22px/1.3 var(--serif),serif;margin:0}
+.sub{margin-top:6px;color:var(--ink2);font-size:15px}
+.langs{font-size:13px;display:flex;gap:10px;color:var(--muted)}
+.langs span{color:var(--ink);font-weight:500}
+
+/* 분기점 8칸 줄 */
+.rail{margin-top:14px}
+.rail ol{list-style:none;margin:0;padding:0;display:flex;align-items:flex-start}
+.rail li{flex:none}
+.rail li.link{flex:1;min-width:6px;height:0;margin-top:14px;border-top:3px solid var(--line)}
+.rail li.link.sure{border-top-color:var(--ink2)}
+.rail li.link.part{border-top:3px dashed var(--ink2)}
+.rail li.link.parallel{border-top-color:transparent}
+.rail a,.rail .off{display:flex;flex-direction:column;align-items:center;gap:3px;text-decoration:none;color:var(--ink2);width:30px}
+.rail b{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;border:2px solid var(--ink2);background:var(--surface);font-size:14px}
+.rail span span,.rail a span{font-size:11px;line-height:1.25;text-align:center;width:72px}
+.rail .off{color:var(--muted)}
+.rail .off b{border-color:var(--line);border-style:dashed}
+.rail a.on b{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.rail a.on span{color:var(--ink);font-weight:700}
+.legend{list-style:none;margin:10px 0 0;padding:0;font-size:13px;color:var(--ink2)}
+.legend li{display:flex;align-items:center;gap:8px}
+.legend i{flex:none;width:30px;border-top:3px solid var(--ink2)}
+.legend .part i{border-top-style:dashed}
+
+/* 장 */
+main{padding-top:18px}
+.ch+.ch{margin-top:48px}
+.era{color:var(--muted);font-size:14px}
+.ch h2{font:700 26px/1.35 var(--serif),serif;margin:2px 0 12px}
+.ask{border-radius:16px;padding:14px 16px;background:color-mix(in srgb, var(--accent) 11%, var(--surface));border:1px solid color-mix(in srgb, var(--accent) 30%, var(--line))}
+.ask span{display:block;font-size:13px;font-weight:700;color:var(--accent)}
+.ask p{font:700 22px/1.4 var(--serif),serif}
+.ask.answer p{font:500 18px/1.6 var(--sans),sans-serif}
+.inherit,.next{border:2px solid var(--ink2);border-radius:12px;padding:10px 14px;font-size:16px}
+.inherit{margin-bottom:12px}
+.next{margin-top:12px}
+.next.part{border-style:dashed}
+.next.parallel{border-color:var(--line)}
+.inherit>b,.next>b{display:block;font-size:13px;color:var(--ink2)}
+
+/* 사슬: 칸 다섯 개와 화살표 네 개 */
+.chain{counter-reset:box;margin:14px 0}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px 16px}
+.box h3{display:flex;align-items:center;gap:8px;margin:0 0 8px;font-size:15px;color:var(--ink2)}
+.box h3::before{counter-increment:box;content:counter(box);flex:none;display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--ink);color:var(--bg);font-size:14px}
+.arrow{position:relative;margin-left:27px;padding:10px 0 16px 18px;border-left:3px solid var(--ink2)}
+.arrow.part{border-left-style:dashed}
+.arrow::after{content:"";position:absolute;left:-8.5px;bottom:-1px;border-left:7px solid transparent;border-right:7px solid transparent;border-top:9px solid var(--ink2)}
+.arrow>b{display:inline-block;font-size:13px;padding:1px 10px;border-radius:999px;background:var(--ink);color:var(--bg)}
+.reason{margin-top:4px;font-weight:500}
+.others{margin-top:6px;font-size:15px;color:var(--ink2)}
+.others b{display:inline-block;margin-right:4px;font-size:12px;padding:0 8px;border:1px dashed var(--ink2);border-radius:999px;color:var(--ink2)}
+
+.shift{display:grid;grid-template-columns:1fr 28px 1fr;align-items:stretch}
+.shift>div{grid-row:1;border-radius:10px;padding:8px 12px;background:var(--bg)}
+.shift>div:first-child{grid-column:1}
+.shift>div:last-child{grid-column:3;background:color-mix(in srgb, var(--accent) 11%, var(--surface))}
+.shift::before{content:"→";grid-column:2;grid-row:1;align-self:center;text-align:center;color:var(--muted);font-size:20px}
+.shift b{font-size:13px;color:var(--ink2)}
+
+.people{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.people>div{border-left:4px solid;padding-left:12px}
+.people .good{border-color:var(--good)}
+.people .bad{border-color:var(--bad)}
+.people h4{margin:0 0 4px;font-size:14px}
+.people .good h4{color:var(--good)}
+.people .bad h4{color:var(--bad)}
+.people .good h4::before{content:"＋ "}
+.people .bad h4::before{content:"－ "}
+.people ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.people li b{display:block}
+.people li span{color:var(--ink2);font-size:16px}
+
+.duel+.duel{margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
+.sides{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:stretch}
+.side{display:flex;flex-direction:column;align-items:flex-start;gap:8px;border-radius:10px;padding:10px 12px;background:var(--bg)}
+.side q{quotes:"“" "”";font-weight:500}
+.side .ism{margin-top:auto;font-size:14px;font-weight:700;text-decoration:none;padding:1px 10px;border-radius:999px;border:1px solid var(--accent)}
+.vs{align-self:center;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--ink);color:var(--bg);font-size:13px;font-weight:700}
+.clash{margin-top:10px}
+.clash b{font-size:13px;color:var(--ink2);margin-right:4px}
+.darrow{position:relative;margin:8px 0 0 13px;padding:4px 0 2px 14px;border-left:3px solid var(--ink2)}
+.darrow.part{border-left-style:dashed}
+.darrow .others{margin-top:0}
+.events{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.events li{font-size:15px;font-weight:700;padding:2px 12px;border-radius:999px;border:1px solid var(--ink)}
+
+.words{margin-top:22px}
+.words h3{font-size:15px;color:var(--ink2);margin:0 0 6px}
+.words details{border-top:1px solid var(--line);padding:8px 0}
+.words details:last-child{border-bottom:1px solid var(--line)}
+.words summary{cursor:pointer;font-weight:700;min-height:28px}
+.words details p{margin-top:4px;color:var(--ink2)}
+
+.pager{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:22px}
+.pager button{min-height:44px;padding:0 18px;border-radius:999px;border:1px solid var(--line);background:var(--surface);font-weight:700;cursor:pointer}
+.pager button:disabled{opacity:.35;cursor:default}
+.pager span{color:var(--muted);font-size:14px}
+.no-js .pager{display:none}
+.foot{margin-top:18px;padding-bottom:36px;font-size:13px;line-height:1.6;color:var(--muted)}
+
+/* 좁은 화면: 줄의 이름은 감추고(번호만), 나란한 칸은 위아래로 */
+@media (max-width:639px){
+  .rail span span,.rail a span{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+}
+@media (max-width:520px){
+  .shift{grid-template-columns:1fr}
+  .shift>div:first-child{grid-column:1;grid-row:1}
+  .shift::before{content:"↓";grid-column:1;grid-row:2}
+  .shift>div:last-child{grid-column:1;grid-row:3}
+  .people{grid-template-columns:1fr}
+  .sides{grid-template-columns:1fr}
+  .vs{justify-self:center}
+  .ask p{font-size:20px}
+  .ch h2{font-size:23px}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="tt">
+    <h1>사상의 분기점, 쉽게 읽기</h1>
+    <nav class="langs" aria-label="언어"><span aria-current="page">한국어</span><a href="../ism/">자세한 판</a></nav>
+  </div>
+  <p class="sub">큰 사건이 일어나면 사람들의 생각이 바뀌어요. 바뀐 생각은 또 다른 사건을 일으켜요. 그 사슬을 따라가 봐요.</p>
+  <nav class="rail" aria-label="분기점 고르기"><ol><li><span class="off" title="아직 쓰는 중이에요"><b>1</b><span>근대 이전</span></span></li><li class="link" aria-hidden="true"></li><li><span class="off" title="아직 쓰는 중이에요"><b>2</b><span>과학혁명</span></span></li><li class="link" aria-hidden="true"></li><li><span class="off" title="아직 쓰는 중이에요"><b>3</b><span>프랑스혁명</span></span></li><li class="link" aria-hidden="true"></li><li><a href="#industrial"><b>4</b><span>산업혁명</span></a></li><li class="link part" aria-hidden="true"></li><li><span class="off" title="아직 쓰는 중이에요"><b>5</b><span>세계대전</span></span></li><li class="link" aria-hidden="true"></li><li><span class="off" title="아직 쓰는 중이에요"><b>6</b><span>냉전·68혁명·탈냉전</span></span></li><li class="link" aria-hidden="true"></li><li><span class="off" title="아직 쓰는 중이에요"><b>7</b><span>디지털·인터넷 혁명</span></span></li><li class="link" aria-hidden="true"></li><li><span class="off" title="아직 쓰는 중이에요"><b>8</b><span>AI혁명</span></span></li></ol></nav>
+  <ul class="legend">
+    <li class="sure"><i></i>실선: 역사학자들이 대체로 동의하는 원인</li>
+    <li class="part"><i></i>점선: 여러 원인 중 하나이거나 아직 논쟁 중</li>
+  </ul>
+</header>
+<main><article class="ch" id="industrial"><p class="era">산업혁명 · 1760년대–1840년대</p><h2>기계와 시계가 일을 바꿨어요</h2><div class="ask"><span>오늘의 질문</span><p>왜 모두가 같은 시계에 맞춰 살까요?</p></div><div class="chain"><section class="box box-event"><h3>무슨 일이 있었나요?</h3><p>1769년 영국의 와트가 증기기관을 고쳐 특허를 받았어요. 고친 증기기관은 광산뿐 아니라 공장에서도 쓸 수 있었어요. 많은 사람이 공장에 모여 기계 앞에서 일하게 됐어요.</p></section><div class="arrow part"><b>그래서</b><p class="reason">주인은 사람들의 시간을 돈을 주고 샀어요. 그래서 그 시간이 헛되이 쓰이지 않게 했어요. 종과 시계, 지각 벌금이 그 도구였어요.</p><p class="others"><b>다른 원인도 있어요</b> 공장이 생기기 전에도 종과 시간표를 쓴 일터가 있었어요.</p></div><section class="box box-shift"><h3>생각이 이렇게 바뀌었어요</h3><div class="shift"><div><b>전에는</b><p>일은 해와 계절, 그날 할 일을 따랐어요.</p></div><div><b>이제는</b><p>일은 시계를 따랐어요. 시간은 흘려보내는 것이 아니라 쓰는 돈이 됐어요.</p></div></div></section><div class="arrow part"><b>그래서</b><p class="reason">시간이 돈이 되자 주인들은 일하는 시간을 늘리려 했어요. 임금이 싼 아이들도 공장으로 불러들였어요. 그렇게 많이 만든 물건은 값이 내려갔어요.</p><p class="others"><b>다른 원인도 있어요</b> 공장이 생기기 전에도 아이들은 집에서 오래 일했다고 보는 학자도 있어요.</p></div><section class="box box-people"><h3>사람들의 삶</h3><div class="people"><div class="good"><h4>좋아진 사람들</h4><ul><li><b>물건을 사는 사람들</b><span>공장이 물건을 많이 만들어 값이 내려갔어요. 일하는 집도 옷과 가구를 살 수 있게 됐어요.</span></li><li><b>공장 주인들</b><span>기계와 공장을 가진 사람들은 큰 이익을 얻었어요.</span></li><li><b>뒷세대의 노동자들</b><span>시간이 지나자 임금이 올랐어요. 언제부터 올랐는지는 학자마다 생각이 달라요.</span></li></ul></div><div class="bad"><h4>힘들어진 사람들</h4><ul><li><b>공장의 아이들</b><span>하루 열두 시간씩 일하기도 했어요. 임금은 어른 남자의 4분의 1쯤이었어요.</span></li><li><b>솜씨로 먹고살던 직물 기술자들</b><span>새 기계가 들어오며 살림이 어려워졌어요. 기계를 부수며 맞선 사람들도 있었어요.</span></li><li><b>도시로 온 가족들</b><span>집은 좁고 붐볐어요. 콜레라 같은 병이 자주 돌았어요.</span></li></ul></div></div></section><div class="arrow sure"><b>그런데</b><p class="reason">힘들어진 사람들 편에서 새 물음이 나왔어요. 기계가 번 돈을 왜 주인만 갖느냐는 물음이었어요.</p></div><section class="box box-duel"><h3>맞붙은 두 생각</h3><div class="duel"><div class="sides"><div class="side"><q>공장은 주인의 것이에요. 이익이 있어야 누군가 위험을 지고 일을 벌여요.</q><a class="ism" href="../ism/#ism-classical">자본주의</a></div><span class="vs">대</span><div class="side"><q>공장은 함께 가져야 해요. 그래야 일한 사람들도 몫을 받아요.</q><a class="ism" href="../ism/#ism-socialism">사회주의</a></div></div><p class="clash"><b>왜 부딪쳤나요?</b> 공장과 이익을 누가 갖느냐를 두고 두 답이 갈렸어요.</p><div class="darrow part"><p class="others"><b>다른 원인도 있어요</b> 1848년 혁명은 흉년에서 시작됐어요. 투표권 요구와 민족 문제도 큰 원인이었어요.</p><ul class="events"><li>노동조합과 파업</li><li>아이의 노동을 줄이는 법</li><li>1848년 유럽의 혁명</li></ul></div></div><div class="duel"><div class="sides"><div class="side"><q>공장에는 싼 원료와 물건 팔 곳이 필요해요. 그러니 먼 땅을 다스려야 해요.</q><a class="ism" href="../ism/#ism-imperialism">제국주의</a></div><span class="vs">대</span><div class="side"><q>이 땅은 여기 사는 사람들의 것이에요. 다스릴 사람도 스스로 정해요.</q></div></div><p class="clash"><b>왜 부딪쳤나요?</b> 같은 땅을 두고 다스리려는 쪽과 지키려는 쪽이 맞섰어요.</p><div class="darrow part"><p class="others"><b>다른 원인도 있어요</b> 나라끼리의 경쟁과 새 무기도 원인이었어요. 사람에 우열이 있다는 믿음도 한몫했어요.</p><ul class="events"><li>아프리카 땅 대부분이 식민지로</li><li>식민지 곳곳의 저항과 봉기</li></ul></div></div></section><div class="arrow part"><b>그래서</b><p class="reason">생각이 갈린 사람들은 저마다 뭉쳐서 행동에 나섰어요. 말다툼이 파업과 법, 혁명과 정복으로 번졌어요.</p></div><section class="box box-result"><h3>그래서 벌어진 일</h3><p>노동자들은 노동조합을 만들고 파업을 했어요. 영국은 아이의 일하는 시간을 법으로 줄였어요. 1848년에는 유럽 여러 곳에서 혁명이 일어났어요. 공장을 가진 나라들은 아프리카와 아시아에 식민지를 넓혔어요.</p></section></div><div class="ask answer"><span>그래서 오늘</span><p>공장은 사람들을 시계에 맞춰 일하게 했어요. 기차는 도시마다 다르던 시각을 하나로 맞췄어요. 1840년 영국의 한 철도 회사가 모든 역에 런던 시각을 쓰게 했어요. 그 뒤로 같은 시각을 쓰는 곳이 점점 넓어졌어요.</p></div><aside class="next part"><b>다음 분기점으로</b><p>공장을 가진 나라들은 원료와 시장을 찾아 식민지를 다퉜어요. 이 다툼은 훗날 세계대전의 한 원인이 됐어요.</p><p class="others"><b>다른 원인도 있어요</b> 나라끼리 맺은 동맹과 군대를 키우는 경쟁도 원인이었어요.</p></aside><section class="words"><h3>낱말 풀이</h3><details><summary>증기기관</summary><p>물을 끓여 나온 김의 힘으로 기계를 움직이는 장치예요.</p></details><details><summary>특허</summary><p>새 발명을 한동안 혼자 쓸 수 있게 나라가 주는 권리예요.</p></details><details><summary>임금</summary><p>일한 값으로 받는 돈이에요.</p></details><details><summary>노동조합</summary><p>일하는 사람들이 임금과 일하는 조건을 지키려고 만든 모임이에요.</p></details><details><summary>파업</summary><p>요구를 들어 달라며 여럿이 함께 일을 멈추는 거예요.</p></details><details><summary>혁명</summary><p>나라를 다스리는 방식을 짧은 시간에 크게 뒤집는 일이에요.</p></details><details><summary>원료</summary><p>물건을 만드는 데 쓰는 재료예요. 옷감을 만드는 목화 같은 것이에요.</p></details><details><summary>식민지</summary><p>다른 나라가 차지해서 다스리는 땅이에요.</p></details><details><summary>자본주의</summary><p>공장과 가게를 개인이 갖고, 시장에서 사고팔며 이익을 얻는 방식이에요.</p></details><details><summary>사회주의</summary><p>공장 같은 것을 사회가 함께 갖고 이익도 나눠야 한다는 생각이에요.</p></details><details><summary>제국주의</summary><p>힘센 나라가 다른 땅을 차지해 다스리려는 생각과 움직임이에요.</p></details><details><summary>세계대전</summary><p>여러 대륙의 많은 나라가 함께 싸운 큰 전쟁이에요.</p></details></section></article></main>
+<nav class="pager" aria-label="분기점 고르기">
+  <button type="button" id="prev">‹ 이전</button>
+  <span id="pos"></span>
+  <button type="button" id="next">다음 ›</button>
+</nav>
+<footer class="foot">이 글은 유럽에서 시작된 변화를 줄기로 삼았어요. 이슬람, 인도, 중국에서 따로 일어난 생각의 변화는 아직 담지 못했어요. 사상 53개의 전체 지도는 <a href="../ism/">자세한 판</a>에 있어요. 본문의 사실은 <a href="https://github.com/usan-82/cause-and-effect/blob/main/research/04-사상-분기점-근거.md">근거 파일</a>에 출처와 함께 적었어요.</footer>
+<script>
+(function(){
+  var D={"order": ["premodern", "science", "french", "industrial", "worldwar", "coldwar", "digital", "ai"], "written": ["industrial"], "chapter": "{n}장 / {total}장"};
+  document.documentElement.classList.remove('no-js');
+  var chs=[].slice.call(document.querySelectorAll('article.ch'));
+  var links=[].slice.call(document.querySelectorAll('.rail a'));
+  var prev=document.getElementById('prev'), next=document.getElementById('next'), pos=document.getElementById('pos');
+  var cur=null;
+  function show(id, scroll){
+    var t=chs.filter(function(c){return c.id===id})[0]||chs[0];
+    if(!t) return;
+    cur=t.id;
+    chs.forEach(function(c){c.hidden=c!==t});
+    links.forEach(function(a){
+      var on=a.getAttribute('href')==='#'+cur;
+      a.classList.toggle('on',on);
+      if(on) a.setAttribute('aria-current','true'); else a.removeAttribute('aria-current');
+    });
+    var i=D.written.indexOf(cur);
+    prev.disabled=i<=0; next.disabled=i>=D.written.length-1;
+    pos.textContent=D.chapter.replace('{n}',D.order.indexOf(cur)+1).replace('{total}',D.order.length);
+    if(scroll) window.scrollTo(0,0);
+  }
+  function go(d){var id=D.written[D.written.indexOf(cur)+d]; if(id) location.hash=id}
+  prev.onclick=function(){go(-1)}; next.onclick=function(){go(1)};
+  function fromHash(){try{return decodeURIComponent(location.hash.slice(1))}catch(e){return ''}}
+  window.addEventListener('hashchange',function(){show(fromHash(),true)});
+  show(fromHash(),false);
+})();
+</script>
+</body>
+</html>

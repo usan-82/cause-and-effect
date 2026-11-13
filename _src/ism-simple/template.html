@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="{{htmlLang}}" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{title}}</title>
+<meta name="description" content="{{metaDesc}}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="{{fontLink}}" rel="stylesheet">
+<style>{{css}}</style>
+</head>
+<body>
+<header class="top">
+  <div class="tt">
+    <h1>{{title}}</h1>
+    <nav class="langs" aria-label="{{langAria}}">{{langs}}<a href="../ism/">{{full}}</a></nav>
+  </div>
+  <p class="sub">{{subtitle}}</p>
+  <nav class="rail" aria-label="{{railAria}}">{{rail}}</nav>
+  <ul class="legend">
+    <li class="sure"><i></i>{{legendSure}}</li>
+    <li class="part"><i></i>{{legendPart}}</li>
+  </ul>
+</header>
+<main>{{chapters}}</main>
+<nav class="pager" aria-label="{{railAria}}">
+  <button type="button" id="prev">‹ {{prev}}</button>
+  <span id="pos"></span>
+  <button type="button" id="next">{{nextBtn}} ›</button>
+</nav>
+<footer class="foot">{{footHtml}}</footer>
+<script>
+(function(){
+  var D={{data}};
+  document.documentElement.classList.remove('no-js');
+  var chs=[].slice.call(document.querySelectorAll('article.ch'));
+  var links=[].slice.call(document.querySelectorAll('.rail a'));
+  var prev=document.getElementById('prev'), next=document.getElementById('next'), pos=document.getElementById('pos');
+  var cur=null;
+  function show(id, scroll){
+    var t=chs.filter(function(c){return c.id===id})[0]||chs[0];
+    if(!t) return;
+    cur=t.id;
+    chs.forEach(function(c){c.hidden=c!==t});
+    links.forEach(function(a){
+      var on=a.getAttribute('href')==='#'+cur;
+      a.classList.toggle('on',on);
+      if(on) a.setAttribute('aria-current','true'); else a.removeAttribute('aria-current');
+    });
+    var i=D.written.indexOf(cur);
+    prev.disabled=i<=0; next.disabled=i>=D.written.length-1;
+    pos.textContent=D.chapter.replace('{n}',D.order.indexOf(cur)+1).replace('{total}',D.order.length);
+    if(scroll) window.scrollTo(0,0);
+  }
+  function go(d){var id=D.written[D.written.indexOf(cur)+d]; if(id) location.hash=id}
+  prev.onclick=function(){go(-1)}; next.onclick=function(){go(1)};
+  function fromHash(){try{return decodeURIComponent(location.hash.slice(1))}catch(e){return ''}}
+  window.addEventListener('hashchange',function(){show(fromHash(),true)});
+  show(fromHash(),false);
+})();
+</script>
+</body>
+</html>
