@@ -1,13 +1,14 @@
 # 패권의 지도, 사람으로 보기 / hegemony/video 소스
 
-`atlas-simple`의 11장을 인물 열 명의 이야기로 따라가는 3분 영상 시리즈의 콘티와 지시문. 설계는 [`docs/superpowers/specs/2026-11-13-hegemony-video-design.md`](../../../docs/superpowers/specs/2026-11-13-hegemony-video-design.md).
+`atlas-simple`의 11장을 열 편의 인물 이야기로 따라가는 4분 안팎 영상 시리즈의 콘티와 지시문. 설계는 [`docs/superpowers/specs/2026-11-13-hegemony-video-design.md`](../../../docs/superpowers/specs/2026-11-13-hegemony-video-design.md).
 
-상태: 파일럿(1편) 콘티에 1차 검토를 반영했다. 영상과 공개 페이지는 아직 없다.
+상태: 파일럿(1편) 콘티에 1차 검토를 반영했고 그림 지시문을 썼다. 그림, 영상, 공개 페이지는 아직 없다.
 
 ## 파일
 
 - `ep01.md` … — 편별 콘티. 검토 대상이다.
-- `ep01.prompts.md` … — 그림·영상 지시문. 콘티가 승인된 뒤에 확정한다.
+- `ep01.prompts.md` … — 그림 지시문과 쓰는 법.
+- 뽑은 그림은 `hegemony-video-assets` 브랜치의 `_src/hegemony/video/assets/` 아래에 둔다. `main`에는 합치지 않는다.
 - 사실의 출처는 [`research/05-패권-영상-근거.md`](../../../research/05-패권-영상-근거.md).
 
 ## 콘티 읽는 법
