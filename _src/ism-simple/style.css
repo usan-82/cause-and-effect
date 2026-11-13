@@ -142,3 +142,15 @@ main{padding-top:18px}
 }
 .inherit.part{border-style:dashed}
 .inherit.parallel{border-color:var(--line)}
+
+/* 여는 장면, 지금도 이어져요, 생각해 볼 점 */
+.ask .scene{font:400 16px/1.6 var(--sans),sans-serif;color:var(--ink2);margin-bottom:6px}
+.ask.answer .now{margin-top:10px;padding-top:10px;border-top:1px solid color-mix(in srgb, var(--accent) 30%, var(--line));font:400 16px/1.6 var(--sans),sans-serif}
+.now b{display:block;font-size:13px;color:var(--accent)}
+.think{margin-top:12px;border-radius:12px;padding:12px 14px;background:var(--surface);border:1px solid var(--line)}
+.think>b{display:block;font-size:13px;color:var(--ink2)}
+.think p{font-weight:500}
+
+/* 아직 다투는 것: 좋은 점도 나쁜 점도 아닌 줄. 점선은 범례의 "논쟁 중"과 같은 뜻 */
+.debate{margin-top:12px;padding-top:10px;border-top:1px dashed var(--line);font-size:16px;color:var(--ink2)}
+.debate b{display:block;font-size:13px;color:var(--muted)}

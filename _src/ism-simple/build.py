@@ -63,7 +63,7 @@ def check(lang, struct, txt, pg, ism):
         last = n == len(chapters) - 1
 
         # 칸마다 글이 있는가
-        for f in ("title", "q", "event", "result", "today"):
+        for f in ("title", "scene", "q", "event", "result", "today", "now", "think"):
             if not filled(c.get(f)):
                 e(f"{f} 없음")
         shift = c.get("shift") if isinstance(c.get("shift"), dict) else {}
@@ -103,6 +103,10 @@ def check(lang, struct, txt, pg, ism):
                 for f in ("who", "text"):
                     if not filled(r.get(f)):
                         e(f"people.{side}[{i}].{f} 없음")
+
+        # 아직 다투는 것: 없어도 되지만, 있으면 글이 있어야 함
+        if "debate" in c and not filled(c["debate"]):
+            e("debate 비어 있음")
 
         # 대결
         sd = ch.get("duels") if isinstance(ch.get("duels"), list) else []
@@ -225,7 +229,8 @@ def render_chapter(ch, c, inherit, pg, names, era="", inherit_kind="sure", inher
         extra = (f'<p class="others"><b>{esc(ui["others"])}</b> {esc(inherit_others)}</p>'
                  if inherit_kind == "part" and inherit_others else "")
         out.append(f'<aside class="inherit {esc(inherit_kind)}"><b>{esc(label)}</b><p>{esc(inherit)}</p>{extra}</aside>')
-    out.append(f'<div class="ask"><span>{esc(ui["q"])}</span><p>{esc(c["q"])}</p></div>')
+    out.append(f'<div class="ask"><span>{esc(ui["scene"])}</span><p class="scene">{esc(c["scene"])}</p>'
+               f'<p>{esc(c["q"])}</p></div>')
     out.append('<div class="chain">')
     out.append(box("box-event", ui["event"], f'<p>{esc(c["event"])}</p>'))
     out.append(arrow(0))
@@ -235,20 +240,24 @@ def render_chapter(ch, c, inherit, pg, names, era="", inherit_kind="sure", inher
     out.append(arrow(1))
     out.append(box("box-people", ui["people"],
                    '<div class="people">' + _people(c["people"]["good"], ui["good"], "good")
-                   + _people(c["people"]["bad"], ui["bad"], "bad") + "</div>"))
+                   + _people(c["people"]["bad"], ui["bad"], "bad") + "</div>"
+                   + (f'<p class="debate"><b>{esc(ui["debate"])}</b> {esc(c["debate"])}</p>'
+                      if c.get("debate") else "")))
     out.append(arrow(2))
     out.append(box("box-duel", ui["duel"],
                    "".join(_duel(s, t, ui, names) for s, t in zip(ch["duels"], c["duels"]))))
     out.append(arrow(3))
     out.append(box("box-result", ui["result"], f'<p>{esc(c["result"])}</p>'))
     out.append("</div>")
-    out.append(f'<div class="ask answer"><span>{esc(ui["today"])}</span><p>{esc(c["today"])}</p></div>')
+    out.append(f'<div class="ask answer"><span>{esc(ui["today"])}</span><p>{esc(c["today"])}</p>'
+               f'<p class="now"><b>{esc(ui["now"])}</b> {esc(c["now"])}</p></div>')
     if c.get("next"):
         kind = ch.get("next", "sure")
         label = ui["parallel"] if kind == "parallel" else ui["next"]
         extra = (f'<p class="others"><b>{esc(ui["others"])}</b> {esc(c["nextOthers"])}</p>'
                  if kind == "part" and c.get("nextOthers") else "")
         out.append(f'<aside class="next {kind}"><b>{esc(label)}</b><p>{esc(c["next"])}</p>{extra}</aside>')
+    out.append(f'<aside class="think"><b>{esc(ui["think"])}</b><p>{esc(c["think"])}</p></aside>')
     if c.get("words"):
         rows = "".join(f"<details><summary>{esc(w)}</summary><p>{esc(d)}</p></details>" for w, d in c["words"])
         out.append(f'<section class="words"><h3>{esc(ui["words"])}</h3>{rows}</section>')
