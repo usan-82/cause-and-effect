@@ -136,3 +136,40 @@ def check(lang, struct, txt, pg, ism):
             if any(re.search(pat % re.escape(t), text, re.I) for t in [key, *alts]) and key.lower() not in words:
                 e(f"'{key}' 낱말 풀이 필요")
     return errs
+
+
+# ---------- 명령 ----------
+LANGS = ("ko", "en", "id")
+
+
+def report(errs):
+    """오류를 찍고 치명적인 것이 있는지 알려 준다."""
+    for e in errs:
+        print(("  · " if e.endswith("글 없음") else "  ✗ ") + e)
+    return any(not e.endswith("글 없음") for e in errs)
+
+
+def main(argv):
+    args = [a for a in argv if not a.startswith("--")]
+    check_only = "--check" in argv
+    out_root, only = args[0], args[1:]
+    struct, ism = load("struct.json"), load_ism("struct.json")
+    failed = False
+    for lang in LANGS:
+        if only and lang not in only:
+            continue
+        if not os.path.exists(os.path.join(HERE, f"{lang}.json")):
+            print(f"{lang}: 글 파일 없음 — 건너뜀")
+            continue
+        bad = report(check(lang, struct, load(f"{lang}.json"), load(f"{lang}.page.json"), ism))
+        failed = failed or bad
+        if check_only or bad:
+            continue
+    if failed:
+        print("검사 실패")
+    return 1 if failed else 0
+
+
+if __name__ == "__main__":
+    import sys
+    sys.exit(main(sys.argv[1:]))

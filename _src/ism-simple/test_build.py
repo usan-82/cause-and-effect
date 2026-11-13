@@ -172,5 +172,13 @@ class CheckTest(unittest.TestCase):
         self.assertHas(self.run_check(st, tx, pg), "'자본' 낱말 풀이 필요")
 
 
+class CliTest(unittest.TestCase):
+    def test_check_only_writes_nothing(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as d:
+            self.assertEqual(build.main([d, "ko", "--check"]), 0)
+            self.assertEqual(os.listdir(d), [])
+
+
 if __name__ == "__main__":
     unittest.main()
