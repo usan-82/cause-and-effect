@@ -6,6 +6,8 @@
 
 ## 파일
 
+- [`작업-체크리스트.md`](작업-체크리스트.md) — 그림, 음성, 영상, 올리기 단계별로 작성자와 이 세션이 할 일.
+
 - `ep01.md` 정화, `ep02.md` 바스쿠 다 가마 … — 편별 콘티. 검토 대상이다.
 - `ep01.prompts.md` … — 그림 지시문과 쓰는 법.
 - 뽑은 그림은 `hegemony-video-assets` 브랜치의 `_src/hegemony/video/assets/ep01/`, `assets/ep02/` … 에 편별로 둔다. `main`에는 합치지 않는다.
