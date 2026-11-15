@@ -66,6 +66,9 @@ PT_HALL = "a plain stone hall in the Portuguese royal palace with a wooden ceili
 PT_COURT = ("Portuguese noblemen in 1490s dress: long dark gowns or knee-length jerkins over fitted doublets, soft "
             "round bonnets with upturned brims")
 
+ERA_NAME = {MING: "명나라 초 (청나라식 금지)", PORT: "1490년대 포르투갈", KERALA: "1498년 캘리컷 (무굴 이전)",
+            LANKA: "1410년 무렵 스리랑카", SEA: "15세기 말 먼바다"}
+
 # (제목, 참고 이미지, 메모, [시대 블록], 본문, 근거, 검수)
 EP01 = [
  ("설정화 A — 정화", "없음", "가장 먼저 뽑는다. 승인한 그림을 정화가 나오는 모든 컷에 참고 이미지로 올린다. 2번 컷은 이 그림의 정면을 잘라 쓴다.",
@@ -169,6 +172,14 @@ def lint(ep, items):
             errs.append(f"{ep} {title}: 본문에 청나라를 넣지 말고 시대 블록의 부정 조건에 맡긴다")
     return errs
 
+def wrap(text, width=100):
+    """GitHub 화면에서 옆으로 밀지 않고 읽히게 문장마다, 긴 문장은 낱말 경계에서 줄을 바꾼다."""
+    import textwrap
+    lines = []
+    for sent in re.split(r"(?<=[.;])\s+", text.strip()):
+        lines += textwrap.wrap(sent, width, break_on_hyphens=False) or [""]
+    return "\n".join(lines)
+
 def write(ep, items, sheet, maps, cards):
     n = len(items)
     head = f"""# {ep}편 그림 지시문
@@ -177,7 +188,7 @@ def write(ep, items, sheet, maps, cards):
 
 ## 쓰는 법
 
-1. **설정화 {sheet}를 먼저 뽑는다.** 각 항목 아래 회색 상자의 글을 통째로 복사해 그림 도구(ChatGPT, 제미나이 등)에 붙여 넣는다. 상자 오른쪽 위의 복사 단추를 누르면 한 번에 복사된다. 상자 안의 글은 "Flat vector-style illustration"으로 시작해 "central 60% of the frame."으로 끝난다. 그림체, 시대 조건, 공통 조건이 이미 들어 있으니 다른 말을 덧붙이지 않아도 된다.
+1. **설정화 {sheet}를 먼저 뽑는다.** 각 항목 아래 회색 상자의 글을 통째로 복사해 그림 도구(ChatGPT, 제미나이 등)에 붙여 넣는다. 상자 오른쪽 위의 복사 단추를 누르면 한 번에 복사된다. 상자 안의 글은 네 덩어리다: 장면 설명 → 시대 조건 → 그림체 → 공통 조건. 줄바꿈째 그대로 붙여 넣으면 되고, 다른 말을 덧붙이지 않아도 된다.
 2. 마음에 들 때까지 다시 뽑고, 고른 한 장을 저장한다. 세로나 정사각형으로 나오면 "가로로 긴 그림으로 다시 그려 줘"라고 한 번 더 요청한다.
 3. 같은 대화창에서 여러 장을 이어 뽑으면 앞 그림의 잘못(예: 청나라식 옷)이 다음 그림으로 옮겨 갈 수 있다. 시대가 틀린 그림이 한 번 나왔으면 새 대화창에서 다시 뽑는다.
 4. 컷 지시문을 차례로 뽑는다. "참고 이미지"에 설정화가 적힌 컷은 그 그림 파일을 먼저 올린 뒤 지시문을 붙여 넣는다.
@@ -197,9 +208,10 @@ def write(ep, items, sheet, maps, cards):
         out.append(f"## {title}\n")
         out.append(f"- 참고 이미지: {ref}")
         if note: out.append(f"- {note}")
+        out.append(f"- 시대 조건: {', '.join(ERA_NAME[b] for b in blocks)}")
         out.append(f"- 근거: {src}")
         out.append(f"- 검수할 때 볼 것: {chk}\n")
-        out.append("```\n" + " ".join([STYLE] + blocks + [body, TAIL]) + "\n```\n")
+        out.append("```\n" + "\n\n".join(wrap(x) for x in [body] + blocks + [STYLE, TAIL]) + "\n```\n")
     out.append("""## 모든 그림에서 볼 것
 
 - 시대가 맞는가: 중국 장면에 청나라식 옷(변발, 구슬 달린 모자, 말굽 소매, 조주)이 없는가, 포르투갈 장면에 16세기 후반 옷이 없는가, 캘리컷 장면에 무굴풍 건물이 없는가
