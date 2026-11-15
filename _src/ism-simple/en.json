@@ -69,7 +69,7 @@
    ],
    "result": "In 1517 Luther, a university professor in Germany, wrote the Ninety-five Theses, which questioned the sale of indulgences. The Church in Europe split into Catholic and Protestant churches. The Catholic Church also reformed itself and banned the sale of indulgences. Both sides persecuted people whose faith was different. Wars that mixed faith with struggles for power came again and again for more than a hundred years. In just one of them, which lasted thirty years, at least 5 million people died.",
    "today": "Long ago books were copied by hand, and one Bible could take fifteen months. Most books were in Latin, and fewer than one man in ten could write. Printing brought more books, but most people still could not read. Countries where nearly everyone can read appeared only hundreds of years later.",
-   "now": "Even today, at least 739 million adults cannot read and write. Two thirds of them are women.",
+   "now": "When this was written, at least 739 million adults could not read and write. Two thirds of them were women.",
    "think": "Today anyone can write something and spread it widely. Who should decide what can be trusted?",
    "next": "Printed books also reached scholars in faraway places. The astronomer Copernicus also had his own book printed and published.",
    "nextOthers": "Scholars disagree about how much printing changed science. Revived ancient Greek texts and Islamic and Indian mathematics also prepared the ground.",
@@ -742,7 +742,7 @@
    ],
    "result": "Over Cuba, the two sides came to the very edge of nuclear war. In Vietnam, a long war to which the United States sent troops killed more than one million people. The '68 movement rose in both east and west. Police put it down in Paris and Chicago, the army in Mexico City, and Soviet troops in Prague. A little over twenty years later, people in Eastern Europe drove out their communist governments, and the Berlin Wall was opened. Two years after that, the Soviet Union broke up into fifteen countries. A slowing economy, reforms and demands for independence came together, and this ending was not fixed in advance.",
    "today": "When Japan surrendered in 1945, the United States proposed the 38th parallel and the Soviet Union accepted it. No one asked the Korean people what they wanted. Three years later, separate governments were set up in the South and the North. On 25 June 1950 the army of the North attacked the South, and the war began. In 1953 the fighting stopped with an armistice. The line fixed by that agreement is today's Military Demarcation Line.",
-   "now": "The armistice has still not been replaced by a peace treaty. A Demilitarized Zone four kilometres wide runs across the Korean Peninsula.",
+   "now": "When this was written, the armistice had still not been replaced by a peace treaty. A Demilitarized Zone four kilometres wide runs across the Korean Peninsula.",
    "think": "How is stopping the fighting different from making peace?",
    "next": "A research agency of the United States Department of Defense paid for a network that linked computers to each other. This technology later became the basis of the internet.",
    "nextOthers": "A laboratory in Britain and a university in the United States also studied the same technology separately. The wide spread of personal computers was also a major cause.",
@@ -951,7 +951,7 @@
      }
     ]
    },
-   "debate": "Economists also differ on whether AI will reduce or increase jobs. Total jobs have not fallen so far, but there is research finding a fall for some young workers.",
+   "debate": "Economists also differ on whether AI will reduce or increase jobs. When this was written, total jobs had not fallen, but research found a fall for some young workers.",
    "why": [
     "ChatGPT was the first writing AI made widely available. Anyone could simply ask it in words. It is estimated that 100 million people used it within two months. This is because many people saw text written by a machine for themselves.",
     "Once people saw that machines could produce such things, they began to share work with AI. The same deep learning technology also read screening images. From the start, building AI used people's writing and workers to sort it. It also became easy to make fakes that look real.",
@@ -978,9 +978,9 @@
      "others": "Some people say that present harms are more urgent than risks in the far future. They name the exploitation of workers, the use of data without permission, and power gathered in a few companies. Competition between countries and company profits also moved decisions."
     }
    ],
-   "result": "The European Union made an AI Act. But it put off the start of its rules for high-risk AI by more than a year. The United States issued a safety order and then cancelled it after the government changed. In September 2026 several heads of AI companies called for slowing down. The head of one semiconductor company answered with a call to go faster. There is still no news of an agreement that binds everyone. This story is not over yet.",
-   "today": "There is no settled answer yet. The United States Copyright Office said that content made entirely by AI is not protected by copyright. South Korea's Ministry of Education said that anyone who uses AI in a performance assessment must show how it was used. The two answers are alike in trying to pick out the part a person did directly.",
-   "now": "Since January 2026, South Korea has required companies to label things made with AI. From December of that year, the European Union bans apps that make synthetic nude images of people without their consent.",
+   "result": "The European Union made an AI Act. But it put off the start of its rules for high-risk AI by more than a year. The United States issued a safety order and then cancelled it after the government changed. In September 2026 several heads of AI companies called for slowing down. The head of one semiconductor company answered with a call to go faster. By November 2026, when this was written, no agreement binding everyone had been made. Look up for yourself what happened after that.",
+   "today": "When this was written, there was no settled answer. The United States Copyright Office said that content made entirely by AI is not protected by copyright. South Korea's Ministry of Education said that anyone who uses AI in a performance assessment must show how it was used. The two answers are alike in trying to pick out the part a person did directly.",
+   "now": "Since January 2026, South Korea has required companies to label things made with AI. The European Union decided to ban apps that make synthetic nude images without consent, from December that year.",
    "think": "In a text written with help from AI, how far does “the part I did” go?",
    "words": [
     [
