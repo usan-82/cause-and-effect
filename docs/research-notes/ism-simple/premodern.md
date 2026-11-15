@@ -1,4 +1,4 @@
-# premodern (근대 이전, ~16세기 유럽) — 근거 조사
+# premodern (근대 이전, \~16세기 유럽) — 근거 조사
 
 조사일 2026-11-13. 아래 출처는 모두 이날 실제로 열어 본문을 내려받고, 인용문이 그 본문에 글자 그대로 있는지 기계로 대조했다(띄어쓰기·문장부호 차이만 무시). 열지 못한 것은 맨 아래 `[미확인]`에 적었다. 위키백과는 쓰지 않았다.
 
@@ -61,10 +61,10 @@
 | 여는 질문(원래 초안 "왕에게 대들지 못했다") | **틀렸다.** 인쇄 이전에도 농민과 도시 사람들은 봉기했다. 또 이 장의 다툼 상대는 왕이 아니라 교회의 권위이고, 종교개혁은 오히려 제후의 힘을 키웠다. | OS16.4("peasants launched rebellions that further damaged the foundations of feudalism" — 1358 자크리, 1381 영국 농민 봉기를 든다); OS5.1("A prince’s subjects were obliged to support the church he chose.") | 반박됨 |
 | ① 사건 | 1450년 무렵 마인츠에서 구텐베르크가 금속 활자 인쇄소를 열었고, 1455년 무렵 라틴어 성서를 150부 넘게 찍었다. | Dittmar("The first printing press was established in Mainz, Germany, between 1446 and 1450."); LoC-GB("The printing of the Bible was probably completed late in 1455 at Mainz, Germany."); HRC("published more than 150 large-format copies of the Bible in Latin") | 확실 |
 | ① 사건(동아시아가 먼저) | 금속 활자는 고려가 먼저다. 직지는 1377년 청주에서 찍었고 지금 남은 가장 오래된 금속 활자본이다. 중국에는 그보다 앞서 활자가 있었다. 구텐베르크는 "유럽에서" 처음이다. | BnF("It was printed in 1377 in what is now the city of Cheongju (Republic of Korea), 78 years before the Gutenberg Bible."); UNESCO-직지("this book, Jikji, is the world’s oldest movable metal type printing evidence available"); Goldin("movable type was known in China centuries before Gutenberg"); LoC-GB("The Gutenberg Bible is the first great book printed in Western Europe from movable metal type.") | 확실 |
-| ① 사건(얼마나 싸졌나) | 1450~1500년에 책값이 3분의 1로 떨어졌다. (Dittmar가 van Zanden·Clark의 연구를 인용한 값. 원 연구는 열지 못했다.) | Dittmar("Between 1450 and 1500, the price of books fell by two-thirds") | 유력(출처 1곳) |
-| ① 사건(얼마나 많아졌나) | 추정치: 15세기 100년 동안 서유럽에서 손으로 베낀 책이 약 500만 권, 1454~1500년 인쇄된 책이 약 1,260만 권, 1501~1550년에 약 7,900만 권. 1500년까지 유럽 205개 도시에 인쇄소가 생겼다. | OWID-책(자료 파일의 합계: 필사본 1400년대 4,999,160 / 인쇄본 1454–1500 구간 12,587,000 / 1501–1550 구간 79,017,000 — **인용문이 아니라 표의 숫자**, 원 논문은 초록만 봄); Dittmar(표 I 합계 행 "Total 205 1,811" = 역사 도시 1,811곳 중 205곳) | 유력(추정치, 원 논문 미확인) |
+| ① 사건(얼마나 싸졌나) | 1450\~1500년에 책값이 3분의 1로 떨어졌다. (Dittmar가 van Zanden·Clark의 연구를 인용한 값. 원 연구는 열지 못했다.) | Dittmar("Between 1450 and 1500, the price of books fell by two-thirds") | 유력(출처 1곳) |
+| ① 사건(얼마나 많아졌나) | 추정치: 15세기 100년 동안 서유럽에서 손으로 베낀 책이 약 500만 권, 1454\~1500년 인쇄된 책이 약 1,260만 권, 1501\~1550년에 약 7,900만 권. 1500년까지 유럽 205개 도시에 인쇄소가 생겼다. | OWID-책(자료 파일의 합계: 필사본 1400년대 4,999,160 / 인쇄본 1454–1500 구간 12,587,000 / 1501–1550 구간 79,017,000 — **인용문이 아니라 표의 숫자**, 원 논문은 초록만 봄); Dittmar(표 I 합계 행 "Total 205 1,811" = 역사 도시 1,811곳 중 205곳) | 유력(추정치, 원 논문 미확인) |
 | ① 사건(왜 유럽에서 빨리 퍼졌나) | 장사가 됐기 때문이다. 기술을 배운 독일 인쇄공들이 여러 도시로 가서 인쇄소를 차렸고, 길드 규제가 거의 없었고, 도시의 상인·장인·법률가가 책을 샀다. 고려의 직지는 찍은 부수가 적었고, 중국에서는 목판이 더 쌌다. | Dittmar("the printers who established presses in cities across Europe were almost exclusively Germans", "The urban middle classes were the principal purchasers of books."); Cornell("printers surpassed scribes in the marketplace"); UNESCO-직지("the number of copies was limited because of the methods of typesetting and printing"); Goldin("woodblock printing was almost always more economical") | 유력. 동서 비교의 "왜"는 **논쟁**(Hippe는 정부 통제를, Goldin은 비용을 든다) — 본문에는 "왜"를 쓰지 않기를 권한다 |
-| ② 바뀐 생각(전) | 책은 드물고 라틴어였다. 성서의 뜻은 교회가 풀이한다고 했다. | Houston("Until the second half of the seventeenth century the majority of printed books were in Latin." — 라틴어를 배운 사람은 인구의 1~2%라고 적는다); Trent("presume to interpret the said sacred Scripture contrary to that sense which holy mother Church" — 교회가 참뜻을 판단한다는 1546년 교령); Luther1520(반대쪽의 증언: 로마 쪽은 교황만 성서를 풀이할 수 있다고 한다고 썼다) | 확실 |
+| ② 바뀐 생각(전) | 책은 드물고 라틴어였다. 성서의 뜻은 교회가 풀이한다고 했다. | Houston("Until the second half of the seventeenth century the majority of printed books were in Latin." — 라틴어를 배운 사람은 인구의 1\~2%라고 적는다); Trent("presume to interpret the said sacred Scripture contrary to that sense which holy mother Church" — 교회가 참뜻을 판단한다는 1546년 교령); Luther1520(반대쪽의 증언: 로마 쪽은 교황만 성서를 풀이할 수 있다고 한다고 썼다) | 확실 |
 | ② 바뀐 생각(전) — 초안의 "사람의 자리는 정해져 있다" | 기도하는 사람·싸우는 사람·일하는 사람의 세 신분이라는 말은 실제로 있었다. 다만 성직자가 쓴 이상이고, 14세기에 이미 농민이 땅을 떠나고 상인이 힘을 얻고 있었다. | Med3(Ælfric: "in this world three orders are established"); OS16.4(흑사병 뒤 농민 이동·상인 계층 성장) | 유력(출처 약함). **이 장의 사건(인쇄)과 이어지지 않으므로 빼기를 권한다** |
 | ② 바뀐 생각(후) | 누구나 성서를 자기 말로 직접 읽어야 한다. 믿음의 옳고 그름은 신자도 판단할 수 있다. | SEP-Erasmus(에라스뮈스. SEP는 이 구절을 신약 서문 모음(CWE 41권)에서 인용하고, 서문 Paraclesis를 1516년 글로 적는다. 이 구절이 바로 그 글이라는 것은 두 대목을 이은 추정이므로 본문에 연도를 쓰지 말 것: "I would like every woman to read the Gospel, to read the Epistles of Paul.", "How I wish that the farmer at his plow would chant some passage from these books"); Luther1520("how then should we not have the power of discerning and judging what is right or wrong in matters of faith?"); OS5.1("Luther contended that scripture alone should be the source of Christian belief and practice.") | 확실(그런 주장이 나왔다는 사실) |
 | ② 바뀐 생각(후) — 인문주의 | 옛 그리스·로마의 글을 공부하면 사람이 스스로 나아질 수 있다. 인문주의자는 대부분 기독교인이었다. | OS5.1("Humanism stressed the value and dignity of human beings", "people could improve themselves and live a “good life,”", "Italian humanists were often devout Christians"); IEP-Ren("They addressed a general audience in an accessible manner and aimed to bring about an increase in public and private virtue.") | 확실 |
@@ -81,10 +81,10 @@
 | ③ 나쁜 점: 마녀로 몰린 사람들 | 인쇄기는 마녀를 찾아 재판하는 법을 적은 책(『마녀의 망치』)도 찍었고 1669년까지 29판 넘게 나왔다. 마녀재판으로 8만 명쯤이 재판받고 절반이 처형됐다. | Leeson("In 1487 Heinrich Kramer and Jacob Sprenger published Malleus Maleficarum", "no fewer than 80,000 people had been tried for witchcraft, half of them executed"); Glasgow("There were at least twenty-nine editions of the Malleus up to 1669.") | 책과 숫자는 확실. **"그 책 때문에"는 논쟁** — 아래 ②→③ 다른 원인 참조 |
 | ③ 나쁜 점: 손으로 책을 베끼던 사람들 | 인쇄업자가 시장에서 필경사를 앞질렀고, 16세기 말에는 직업 필사가 크게 줄었다. 다만 천천히였다. 손으로 쓴 책은 수백 년 더 만들어졌고, 채색·머리글자 일은 인쇄본에서도 이어졌다. | Cornell("printers surpassed scribes in the marketplace", "By the end of the 16th century, professional manuscript-copying dropped off precipitously."); HRC("books would continue to be written by hand in the years— and centuries—that followed"); Brann("the printing art came out into direct competition with the long-cultivated art of handcopying") | 유력. "일거리가 줄었다"까지만. 실직 규모를 적은 출처는 못 찾음 |
 | ③ 나쁜 점: 봉기한 독일 농민들 | 1525년 농민들은 종교개혁의 생각과 성서를 내세워 봉기했다. 루터는 영주 편에 섰다. | SEP-Luther("partly fuelled by appeal to reformation ideas, and partly by an appeal to scripture which Luther himself had seemed to champion") | 유력(출처 1곳). 사망자 수는 `[미확인]` |
-| ③ (좋은 점·나쁜 점 밖) 대부분은 여전히 글을 몰랐다 | 1500년에 읽고 쓰는 사람은 아주 적었다. 종교개혁 무렵 신성로마제국에서 글을 아는 사람은 5~10%로 본다. 여자는 거의 없었다. 300년 뒤인 18세기에도 책은 대부분에게 너무 비쌌다. | Houston("In 1500 very few people could read and write, but by 1800 a majority of adults in north-western Europe were literate"); Nieden("(five to ten percent of the total population)"); OS7.2("Books were prohibitively expensive and remained well out of the reach of all but the wealthiest members of society.") | 확실 |
+| ③ (좋은 점·나쁜 점 밖) 대부분은 여전히 글을 몰랐다 | 1500년에 읽고 쓰는 사람은 아주 적었다. 종교개혁 무렵 신성로마제국에서 글을 아는 사람은 5\~10%로 본다. 여자는 거의 없었다. 300년 뒤인 18세기에도 책은 대부분에게 너무 비쌌다. | Houston("In 1500 very few people could read and write, but by 1800 a majority of adults in north-western Europe were literate"); Nieden("(five to ten percent of the total population)"); OS7.2("Books were prohibitively expensive and remained well out of the reach of all but the wealthiest members of society.") | 확실 |
 | ③ 유럽 밖 | 아메리카의 첫 인쇄소는 1539년 멕시코시티에 섰고, 첫 책은 나우아틀어와 스페인어로 쓴 가톨릭 교리서였다. 예수회는 유럽 밖 사람들의 개종을 맡았다. 동아시아에는 구텐베르크의 인쇄가 이 시기에 영향을 주지 않았다(자체 인쇄 전통). | LoC-멕시코("His first book, the earliest known to have been published in the Americas, came off the presses in 1539."); OS5.1("They also undertook responsibility for the conversion of non-Christians to Roman Catholicism") | 유력. 좋았는지 나빴는지를 말해 주는 출처는 아님 — 사실로만 쓸 것 |
 | ②→③ | 누구나 읽고 판단할 수 있다는 생각은 읽는 사람에게는 기회였고, 교회와 통치자에게는 다스려야 할 위험이었다. 그래서 검열이 생겼고, 믿음이 갈리자 다른 믿음은 반역으로 여겨졌다. | Trent(자기 재주를 믿고 성서를 제멋대로 풀이하지 못하게 한다는 문장 바로 뒤에 인쇄업자 규제가 나옴: "to impose a restraint, in this matter, also on printers"); Wilke(종교개혁의 소책자 홍수가 제국의 검열을 불렀다고 적음); Houston("Catholic clergy were cautious about unguided reading") | 유력 → `part` |
-| ②→③ 다른 원인 | 박해와 마녀재판은 인쇄 이전에도 있었다. 후스는 1415년에 화형당했고, 15세기 초에 이미 마녀재판과 고문이 있었다. 마녀재판의 88%는 1520~1700년에 몰려 있고, 한 연구는 원인을 가톨릭과 개신교의 경쟁에서 찾는다. 역사가들은 『마녀의 망치』의 영향을 예전만큼 크게 보지 않는다. 상인의 번영은 무역 자체에서도 왔다. | CSL("his controversial execution at the Council of Constance in 1415"); HT("he was burned at the stake in Constance"); Glasgow(15세기 초에 이미 재판과 고문이 있었다고 적음); Leeson(88%가 1520–1700년); Sharpe("Modern academic historians of witchcraft are generally less hyperbolic about the Malleus Maleficarum") | — |
+| ②→③ 다른 원인 | 박해와 마녀재판은 인쇄 이전에도 있었다. 후스는 1415년에 화형당했고, 15세기 초에 이미 마녀재판과 고문이 있었다. 마녀재판의 88%는 1520\~1700년에 몰려 있고, 한 연구는 원인을 가톨릭과 개신교의 경쟁에서 찾는다. 역사가들은 『마녀의 망치』의 영향을 예전만큼 크게 보지 않는다. 상인의 번영은 무역 자체에서도 왔다. | CSL("his controversial execution at the Council of Constance in 1415"); HT("he was burned at the stake in Constance"); Glasgow(15세기 초에 이미 재판과 고문이 있었다고 적음); Leeson(88%가 1520–1700년); Sharpe("Modern academic historians of witchcraft are generally less hyperbolic about the Malleus Maleficarum") | — |
 | ④ 대결 1: 스콜라 쪽 말 | 이성으로 닿는 참이 있고 이성을 넘어서는 믿음의 참이 있다. 둘은 서로 어긋나지 않는다. (스콜라철학은 이성을 낮춘 것이 아니라 논리로 따지는 학문이었다.) | IEP-FR(아퀴나스: "one to which the inquiry of reason can reach, the other which surpasses the whole ability of the human reason", "No contradiction can stand between these two truths.") | 확실(철학 백과 1곳 + 그 안의 1차 인용) |
 | ④ 대결 1: 인문주의 쪽 말 | 중세 주석보다 옛 글을 원래 말로 직접 읽자. 어려운 논리보다 바르게 사는 법과 누구나 알아듣는 말이 먼저다. | IEP-Ren("the preference for ancient authors and commentators over medieval ones", "humanists were unanimous in their condemnation of university education and their contempt for Scholastic logic"); OS5.1 | 확실 |
 | ④ 대결 1의 한계 | 두 쪽 다 기독교인이었고, 인문주의가 스콜라철학을 없애지도 않았다. 인문주의자 에라스뮈스와 루터도 자유 의지를 두고 갈라섰다. 루터는 이성의 힘을 오히려 좁혔다. | IEP-Ren("The humanist movement did not eliminate older approaches to philosophy, but contributed to change them in important ways", "Humanism also supported Christian reform."); IEP-FR("Martin Luther restricted the power of reason to illuminate faith.") | 확실 — "인문주의 = 이성, 스콜라 = 믿음"으로 쓰면 틀린다 |
@@ -97,7 +97,7 @@
 | ⑤ 벌어진 일 | 유럽의 교회가 갈라졌다(루터파, 칼뱅파, 재세례파, 영국 국교회). 1555년 아우크스부르크 화의로 제후가 자기 땅의 종교를 정했다. 가톨릭교회도 스스로 고쳤다(트리엔트 공의회: 면벌부 판매 금지, 예수회). 종교를 둘러싼 전쟁이 100년 넘게 이어졌다. | OS5.1("found Europeans hopelessly divided over matters of faith", "Indulgences were retained, but their sale was forbidden.", "From 1618 to 1648, the Thirty Years’ War between Catholic and Protestant states raged in the Holy Roman Empire") | 확실 |
 | ⑤ 벌어진 일(30년 전쟁) | 30년 전쟁으로 신성로마제국에서 적어도 500만 명, 인구의 5분의 1쯤이 죽었다. 다만 이 전쟁을 종교 전쟁으로만 보는 것은 오해라는 것이 전문가의 견해다(가톨릭 나라 프랑스가 개신교 편에 섰다). | Wilson("At least 5 million people died in the Empire, reducing its population by about a fifth", "we must confront the misconception that it was a primarily a ‘religious war’"); OS5.1("whose people suffered as armies of mercenaries destroyed farms and villages", 프랑스가 개신교 편에 든 까닭은 유럽의 패권) | 숫자는 유력(출처 1곳, 더 높은 추정도 있다고 적음). "종교 때문에"는 논쟁 → `part` |
 | ⑤ 95개조를 문에 못 박았나 | **논쟁.** 루터 자신은 그런 말을 한 적이 없고, 이야기는 현장에 없던 멜란히톤이 루터 사후에 적은 것이다. 대주교에게 보낸 것은 확실하다. | CHI("Luther himself never reported having engaged in such an act of protest."); OS5.1("according to many historians, he then nailed the Ninety-five Theses to the door of the castle church at Wittenberg") | 논쟁 — "문에 붙였다"는 쓰지 말고 "95개조를 써서 보냈다/발표했다"로 |
-| 그래서 오늘(여는 질문의 답) | 옛날에는 책이 드물고 비싸고 라틴어였고, 글을 아는 사람이 적었다. 인쇄로 책이 싸지고 자기 말 책이 늘었다. 그래도 대부분이 글을 읽게 된 것은 훨씬 뒤(19~20세기)다. 지금은 세계 어른의 88%가 글을 읽는다. | OWID-문해("It was only in the 19th and 20th centuries that rates of literacy approached universality in early-industrialized countries."); UNESCO-문해("the global adult literacy rate (aged 15+) from 65% to 88%"); Houston | 확실 |
+| 그래서 오늘(여는 질문의 답) | 옛날에는 책이 드물고 비싸고 라틴어였고, 글을 아는 사람이 적었다. 인쇄로 책이 싸지고 자기 말 책이 늘었다. 그래도 대부분이 글을 읽게 된 것은 훨씬 뒤(19\~20세기)다. 지금은 세계 어른의 88%가 글을 읽는다. | OWID-문해("It was only in the 19th and 20th centuries that rates of literacy approached universality in early-industrialized countries."); UNESCO-문해("the global adult literacy rate (aged 15+) from 65% to 88%"); Houston | 확실 |
 | 지금도 이어져요 | 지금도 어른 7억 3,900만 명이 글을 읽고 쓰지 못하고, 그중 3분의 2가 여성이다. 22억 명은 인터넷을 쓰지 못한다. | UNESCO-문해("worldwide at least 739 million adults still cannot read and write, two thirds of them women" — UIS 2025 기준); ITU("2.2 billion people remain offline") | 확실(국제기구 통계) |
 | 지금도 이어져요(대안: 정보 금지) | 교황청 금서 목록은 1966년에야 없어졌다. 한 민간단체의 조사에서 세계 인터넷 자유는 15년째 나빠졌다. | Wilke("This Index was only abolished in 1966 by Pope Paul VI"); FH("Global internet freedom declined for the 15th consecutive year.") | 금서 목록은 확실. FH는 미국의 민간 단체 한 곳의 평가라 유력 — 쓴다면 "한 단체의 조사로는"을 붙일 것 |
 | 다음 분기점으로 | 코페르니쿠스의 첫 글은 손으로 베껴 돌았고 인쇄되지 않았다. 1543년의 책은 뉘른베르크에서 인쇄됐다. 인쇄가 같은 글·표·그림을 많은 학자 손에 쥐여 과학을 바꿨다는 것이 아이젠슈타인의 주장이다. | SEP-Cop("It was a small manuscript that was circulated but never printed.", "Rheticus oversaw most of the printing of the book, and on 24 May 1543 Copernicus held a copy of the finished work on his deathbed."); Johns(아이젠슈타인 요약: "this elemental power fomented radical transformations in every field of life from religious experience to the technical sciences") | 유력 → `part` |
@@ -112,16 +112,16 @@
 - "스스로 찾아보지 못했을까요?"는 세 가지 확인된 사실로 답할 수 있다: 책이 손으로 베낀 것이라 드물고 비쌌다 / 라틴어였다 / 글을 아는 사람이 적었다.
 - 다만 두 군데를 다듬기를 권한다.
   - "못했을까요"는 너무 세다. 수도원·대학의 사람들은 찾아봤다. → **"옛날에는 왜 궁금한 것을 스스로 찾아보기 어려웠을까요?"**
-  - 답(그래서 오늘)에서 "인쇄술 덕분에 누구나 찾아보게 됐다"고 쓰면 틀린다. 1500년대에 글을 아는 사람은 5~10%였고, 대부분이 읽게 된 것은 19~20세기다. → "인쇄는 첫걸음이었어요. 대부분의 사람이 글을 읽게 된 것은 그 뒤로도 수백 년이 걸렸어요."
+  - 답(그래서 오늘)에서 "인쇄술 덕분에 누구나 찾아보게 됐다"고 쓰면 틀린다. 1500년대에 글을 아는 사람은 5\~10%였고, 대부분이 읽게 된 것은 19\~20세기다. → "인쇄는 첫걸음이었어요. 대부분의 사람이 글을 읽게 된 것은 그 뒤로도 수백 년이 걸렸어요."
 - 장면 문장 "책이나 인터넷에서 스스로 찾아봐요"는 그대로 써도 된다. "지금도 이어져요"의 통계(글을 못 읽는 어른 7억 3,900만, 인터넷 밖 22억)와 잘 맞물린다.
 
 ### 2. ① 사건 — "구텐베르크가 금속 활자 인쇄를 시작했다"에 "유럽에서"를 꼭 붙일 것
 
 - 직지 1377(확실), 중국의 활자는 그보다 앞섬(확실). 초안의 괄호 내용은 맞다.
-- 쓸 수 있는 숫자: 책값 3분의 1로(1450~1500), 인쇄소 도시 205곳(1500년까지), 인쇄본 약 1,260만 권(1454~1500, 추정). 중학생에게는 **"한 사람이 성서 한 권을 베끼는 데 15개월"(마인츠, 1452~53)과 "구텐베르크의 인쇄소가 같은 도시에서 성서를 150부 넘게"** 를 나란히 놓는 것이 가장 쉽다(둘 다 도서관·박물관 출처).
+- 쓸 수 있는 숫자: 책값 3분의 1로(1450\~1500), 인쇄소 도시 205곳(1500년까지), 인쇄본 약 1,260만 권(1454\~1500, 추정). 중학생에게는 **"한 사람이 성서 한 권을 베끼는 데 15개월"(마인츠, 1452\~53)과 "구텐베르크의 인쇄소가 같은 도시에서 성서를 150부 넘게"** 를 나란히 놓는 것이 가장 쉽다(둘 다 도서관·박물관 출처).
 - "책이 싸졌다"는 맞지만 "누구나 살 수 있게 됐다"는 틀리다. 루터의 신약(1.5굴덴)도 비싼 값이었고, 18세기에도 책은 대부분에게 너무 비쌌다.
 - "왜 유럽에서 빨리 퍼졌나"는 유럽 쪽 이유(인쇄공의 이동, 장사가 됨, 규제 없음)만 유력하다. **"왜 고려·조선에서는 안 퍼졌나"는 쓰지 말 것** — 출처가 엇갈리고(정부 통제 vs 비용), 내가 연 출처 중 한국 인쇄사를 전공한 사람의 글이 없다.
-- 연도 3개 권고: **1377(직지), 1450년 무렵(구텐베르크), 1517(95개조)**. 나머지(1555, 1618~1648)는 "수십 년 뒤", "100년 넘게"로 푼다.
+- 연도 3개 권고: **1377(직지), 1450년 무렵(구텐베르크), 1517(95개조)**. 나머지(1555, 1618\~1648)는 "수십 년 뒤", "100년 넘게"로 푼다.
 
 ### 3. ② 바뀐 생각 — 피코를 빼고 에라스뮈스로, "자기 자리" 문장은 삭제
 
@@ -187,7 +187,7 @@
 - `[미확인]` 조선에서 금속 활자가 널리 퍼지지 않은 까닭. Hippe(경제학 작업 논문)만 있고 한국 인쇄사 전공 출처가 없다.
 - `[미확인]` 『마녀의 망치』 첫 인쇄 연도: Leeson은 1487, Glasgow는 1486. 본문에 연도를 쓰지 말 것.
 - `[미확인]` 금서 목록 첫 해: Wilke 1557, Fordham 1559(첫 공식 목록)·1557(첫 판). 본문에 연도를 쓰지 말 것.
-- `[미확인]` 구텐베르크 인쇄의 시작 연도: Dittmar "1446~1450", OWID "around 1440", HRC "1430년대부터 개발했을 수 있음". "1450년 무렵"이 안전하다.
+- `[미확인]` 구텐베르크 인쇄의 시작 연도: Dittmar "1446\~1450", OWID "around 1440", HRC "1430년대부터 개발했을 수 있음". "1450년 무렵"이 안전하다.
 
 통념이지만 반박되거나 다투는 이야기(쓰지 말 것)
 
@@ -195,8 +195,8 @@
 - "루터가 95개조를 교회 문에 못 박았다" → 루터 본인의 기록이 없고 다툼이 있다. "나는 여기 서 있다"는 말도 실제로 했는지 의심된다(SEP-Luther).
 - "피코의 연설은 르네상스 인간 존엄 선언이다" → SEP가 반박.
 - "중세 교회는 성서를 자기 말로 읽지 못하게 했고 루터가 처음 번역했다" → 루터 이전에 독일어 성서가 있었고 위클리프의 영어 성서(1382)도 있었다. 다만 교회가 위클리프와 후스를 이단으로 단죄한 것은 사실.
-- "『마녀의 망치』가 마녀사냥을 일으켰다" / "마녀사냥은 중세의 일이다" → 재판의 대부분은 1520~1700년. 책의 영향은 낮춰 보는 추세. 스페인·포르투갈 종교재판소는 마녀를 거의 처형하지 않았다(Leeson).
-- "인쇄술 덕분에 사람들이 글을 읽게 됐다" → 1500년대 문해율 5~10%. 대중 문해는 19~20세기.
+- "『마녀의 망치』가 마녀사냥을 일으켰다" / "마녀사냥은 중세의 일이다" → 재판의 대부분은 1520\~1700년. 책의 영향은 낮춰 보는 추세. 스페인·포르투갈 종교재판소는 마녀를 거의 처형하지 않았다(Leeson).
+- "인쇄술 덕분에 사람들이 글을 읽게 됐다" → 1500년대 문해율 5\~10%. 대중 문해는 19\~20세기.
 - "인문주의는 이성, 스콜라철학은 맹목적 믿음" → 스콜라철학은 논리의 학문이었고 인문주의자 대부분은 독실한 기독교인.
 - "30년 전쟁은 종교 전쟁이다" → 전문가(Wilson)는 오해라고 한다.
 - "옛날 사람들은 권력에 대들지 못했다" → 1358년, 1381년의 봉기.
