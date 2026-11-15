@@ -19,7 +19,7 @@ mkdir out
 python3 sample.py ./sherpa-onnx-supertonic-3-tts-int8-2026-05-11 ./out ./sample-text.json 0
 ```
 
-- `out/voices-ko.wav`: 목소리 0~9번이 같은 한국어 문장을 차례로 읽는다.
+- `out/voices-ko.wav`: 목소리 0\~9번이 같은 한국어 문장을 차례로 읽는다.
 - `out/sample-{ko,en,id}.wav`: 1편 첫머리 해설을 세 언어로, 마지막 인자의 목소리 번호로 읽는다.
 - 견본(mp3)은 `hegemony-video-assets` 브랜치의 `_src/hegemony/video/assets/tts-samples/`에 있다.
 

@@ -1,7 +1,7 @@
 # 무료 해설 TTS 조사 보고 (확인일 2026-11-14)
 
 ## 결론
-- **1순위는 Google Cloud Text-to-Speech의 기존 음성(WaveNet·Neural2·Standard)입니다.** 한 도구로 세 언어를 처리할 수 있고, 월 무료 한도가 필요량(4만~6만 자)보다 수십 배 큽니다. 출처 표시 의무가 없고, 이 클라우드 세션에서 API까지 연결되는 것도 확인했습니다. 단점은 결제 계정(카드)이 필요하다는 점입니다.
+- **1순위는 Google Cloud Text-to-Speech의 기존 음성(WaveNet·Neural2·Standard)입니다.** 한 도구로 세 언어를 처리할 수 있고, 월 무료 한도가 필요량(4만\~6만 자)보다 수십 배 큽니다. 출처 표시 의무가 없고, 이 클라우드 세션에서 API까지 연결되는 것도 확인했습니다. 단점은 결제 계정(카드)이 필요하다는 점입니다.
 - **2순위는 Supertonic 3입니다.** sherpa-onnx가 만든 int8 패키지로 받습니다. 모델 하나가 한·영·인니를 모두 지원하고 CPU로 돌아갑니다. 가중치는 GitHub 릴리스에서 받을 수 있어 이 세션에서도 가능하고, 계정·카드가 필요 없습니다. 라이선스는 OpenRAIL-M(상업 이용 허용, 용도 제한 있음)입니다. 다만 저장소가 보관(archived) 상태이고, 품질 근거는 개발사 자체 벤치마크뿐입니다.
 - 영어만 따로 보면 **Kokoro(kokoro-onnx, Apache-2.0)**가 로컬 대안으로 가장 강합니다.
 - **중학생 대상이라 직접 걸리는 위험이 있습니다.** 구글은 "18세 미만을 대상으로 하거나 18세 미만이 쓸 가능성이 높은 웹사이트·앱·온라인 서비스의 일부로 생성형 AI를 쓰지 말라"는 조항을 두고 있습니다. 이 조항이 Gemini TTS(무료 API)와 Chirp 3 HD에 적용되는지는 공식 답이 없습니다.
@@ -35,14 +35,14 @@
 - Cloudflare: api.cloudflare.com, developers.cloudflare.com
 - 기타: *.github.io, kaggle
 - GitHub 저장소 웹페이지와 API는 이 세션에 붙지 않은 저장소라 프록시가 403을 냅니다. raw 파일과 릴리스 다운로드는 됩니다.
-- 프록시 로그에는 10:06~10:08에 설치 시험 쪽의 시도도 남아 있습니다. huggingface.co, speech.platform.bing.com, api.elevenlabs.io, eastus.tts.speech.microsoft.com이 모두 403으로 거부됐습니다.
+- 프록시 로그에는 10:06\~10:08에 설치 시험 쪽의 시도도 남아 있습니다. huggingface.co, speech.platform.bing.com, api.elevenlabs.io, eastus.tts.speech.microsoft.com이 모두 403으로 거부됐습니다.
 
 ## 1-A. 클라우드·서비스 비교
 
 | 후보 | 한/영/인니 | 무료 범위 | 가입·카드 | 광고 붙는 공개 영상에 사용 | 출처 표시 | 이 세션 | 근거 |
 |---|---|---|---|---|---|---|---|
-| **Google Cloud TTS 기존 음성**(Standard·WaveNet·Neural2) | ○/○/○. 인니에 Neural2가 있는지는 [미확인]이라 voices.list로 확인 필요 | 매월 Standard·WaveNet 0~400만 자, Neural2 0~100만 자 무료. 초과분 WaveNet·Standard $4/100만 자, Neural2 $16. SSML 태그도 글자 수에 포함 [직접] | 결제 사용 설정 필수("You must enable billing")이므로 카드 등 결제수단 필요 [직접] | 가능. 서비스 약관에 TTS 산출물 사용 제한 조항이 없음. 산출물로 유사 모델을 만들거나 개선하는 것만 금지(§17) [직접]. 기존 음성은 '생성형 AI' 조항 밖이라고 보는 편이 자연스러움 [해석] | 없음(약관에 조항 없음) [직접]. 커뮤니티 답변도 같음 [2차 자료] | **가능**(API 키 필요) | G1, G2 |
-| Google Cloud TTS **Chirp 3: HD** | ○/○/○ [스니펫] | 매월 0~100만 자 무료, 초과 $30/100만 자 [직접] | 위와 같음 | 산출물 소유권은 고객(§20a). 다만 §20(d)가 18세 미만 대상·접근 가능 서비스에서 생성형 AI 사용을 금지함. 서비스 요약은 "모든 서비스의 생성형 AI 기능"까지 생성형 AI로 포함함 [직접]. 요금표가 Chirp 3 HD를 "LLM 기반" 최신 모델로 분류하므로 적용될 소지가 있음 [해석] | 없음 | **가능** | G1–G4 |
+| **Google Cloud TTS 기존 음성**(Standard·WaveNet·Neural2) | ○/○/○. 인니에 Neural2가 있는지는 [미확인]이라 voices.list로 확인 필요 | 매월 Standard·WaveNet 0\~400만 자, Neural2 0\~100만 자 무료. 초과분 WaveNet·Standard $4/100만 자, Neural2 $16. SSML 태그도 글자 수에 포함 [직접] | 결제 사용 설정 필수("You must enable billing")이므로 카드 등 결제수단 필요 [직접] | 가능. 서비스 약관에 TTS 산출물 사용 제한 조항이 없음. 산출물로 유사 모델을 만들거나 개선하는 것만 금지(§17) [직접]. 기존 음성은 '생성형 AI' 조항 밖이라고 보는 편이 자연스러움 [해석] | 없음(약관에 조항 없음) [직접]. 커뮤니티 답변도 같음 [2차 자료] | **가능**(API 키 필요) | G1, G2 |
+| Google Cloud TTS **Chirp 3: HD** | ○/○/○ [스니펫] | 매월 0\~100만 자 무료, 초과 $30/100만 자 [직접] | 위와 같음 | 산출물 소유권은 고객(§20a). 다만 §20(d)가 18세 미만 대상·접근 가능 서비스에서 생성형 AI 사용을 금지함. 서비스 요약은 "모든 서비스의 생성형 AI 기능"까지 생성형 AI로 포함함 [직접]. 요금표가 Chirp 3 HD를 "LLM 기반" 최신 모델로 분류하므로 적용될 소지가 있음 [해석] | 없음 | **가능** | G1–G4 |
 | **Gemini API TTS**(AI Studio 무료 등급, gemini-3.8-flash-tts 등) | ○/○/○. 3.8 Flash TTS는 130개 언어 [스니펫] | 무료 등급은 입·출력 "Free of charge" [2차 자료]. 무료 한도는 공식 문서에서 표가 빠지고 AI Studio 화면에만 표시 [2차 자료]. 예전 2.5 Flash TTS 무료 한도는 분당 3회·하루 15회 [2차 자료] | 구글 계정과 API 키만, 카드 불필요 [2차 자료] | **불명확, 비권장.** ① 18세 이상만 사용 가능하고, 18세 미만 대상·접근 가능 서비스에 사용 금지 [스니펫]. 미리 만든 어린이용 유튜브 영상·앱 오디오에 써도 되느냐는 포럼 질문이 여러 건 있으나, 구글은 "법률 안내 불가"로만 답함 [GA4] ② 무료 등급의 입력·출력은 구글 제품 개선에 쓰임 [스니펫] ③ 산출물 소유권은 주장하지 않음 [스니펫] | 명시된 의무 없음 [스니펫] | 가능(generativelanguage 도달, 키 필요). 문서는 막힘 | GA1–GA5 |
 | Cloud TTS의 Gemini-TTS(유료 전용) | ○/○/○ [스니펫] | 무료 없음("Not available"). 3.8 Flash TTS는 2026-12-31까지 입력 $0.5·출력 $9(100만 토큰당), 2027-01-01부터 $1·$18 [직접] | 카드 | §20(d) 그대로 적용 | 없음 | 가능 | G1, G2 |
 | **Azure AI Speech F0** | ○/○/○. id-ID Gadis·Ardi, ko-KR SunHi 등 [스니펫] | 신경망 음성 월 50만 자 [스니펫] | 가입 시 카드 본인확인, 선불·가상카드 불가 [스니펫] | **비권장.** Product Terms 원문: "For Customers of the **paid tier** TTS Service only, Customer may use the audio output of prebuilt neural voices… including for commercial purposes." [직접]. 무료 등급에는 이 권리가 명시되지 않음. MS Q&A 답변도 엇갈림 [2차 자료] | [미확인] | 불가(음성 서버 막힘) | M1–M5 |
