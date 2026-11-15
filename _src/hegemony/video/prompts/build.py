@@ -115,7 +115,7 @@ EP02 = [
  ("컷 3 — 큰 함대와 작은 배", "없음", "화면이 둘로 나뉜다.",
   [MING, PORT], "Split composition divided by a thin vertical line, both halves seen from high above the sea in the same morning light. Left half: a vast fleet of " + JUNK + ", filling the sea to the horizon. Right half: only four " + NAU + ", alone on a wide empty ocean. The contrast in number is the point of the image. The Chinese ships are larger than the Portuguese ships but not gigantic.",
   "V5 V11", "중국 배에 유럽식 돛이 섞이지 않았는가 · 중국 배가 터무니없이 크지 않은가 · 돛대가 다섯을 넘지 않는가"),
- ("컷 9 — 왕과 신하들", "없음", "왕의 얼굴은 그리지 않는다(마누엘 1세의 모습은 조사하지 않았다).",
+ ("컷 11 — 왕과 신하들", "없음", "왕의 얼굴은 그리지 않는다(마누엘 1세의 모습은 조사하지 않았다).",
   [PORT], "Inside " + PT_HALL + ", 1495. " + MANUEL[0].upper() + MANUEL[1:] + ", sits in a high-backed wooden chair. Around him stand a few " + PT_COURT + ". Two of them shake their heads and raise their hands as if objecting; the others listen. No crowns on the advisers.",
   "V17 · D11", "왕의 얼굴이 보이지 않는가 · 16세기 후반 옷이 없는가"),
  ("컷 13 — 깃발을 받다", "설정화 B", "",
@@ -133,13 +133,13 @@ EP02 = [
  ("컷 20 — 돌아가는 배", "설정화 B", "",
   [SEA, PORT], "The deck of a small Portuguese ship at sea, 1499, seen from the stern. The deck is nearly empty: only three thin tired sailors handle the ropes. Sacks and bundles of spices are stacked by the mast. " + VG + ", now with a longer untrimmed beard, stands at the rail looking ahead. Above them a square white sail bearing a red cross with flared arms. Grey sea, low sun.",
   "V10 V11 · D18", "갑판에 사람이 적은가 · 조타륜이 없는가"),
- ("컷 22 — 상을 받다", "설정화 B", "왕의 얼굴은 그리지 않는다.",
+ ("컷 21 — 상을 받다", "설정화 B", "왕의 얼굴은 그리지 않는다.",
   [PORT], "Inside " + PT_HALL + ", 1502. " + VG + ", now with a longer beard, bows slightly as he receives a folded parchment document with a hanging wax seal from " + MANUEL + ". A few " + PT_COURT + " look on. He is not an old man and wears no cross emblem on his clothes. No readable writing on the document.",
   "V10 V17 · D19", "옷에 십자가가 없는가 · 문서에 글자가 없는가"),
- ("컷 23 — 1502년 ▶", "없음", "확정한 수위: 멀리서 본 연기만, 사람은 그리지 않는다.",
+ ("컷 22 — 1502년 ▶", "없음", "확정한 수위: 멀리서 본 연기만, 사람은 그리지 않는다.",
   [KERALA, PORT], "Seen from a palm-lined beach near Calicut, 1502. Far out at sea lies a fleet of more than ten " + NAU + "; small white puffs of smoke rise from guns on their decks. Much farther away a single ship burns, a tall column of dark smoke rising into the sky. The beach in the foreground is empty. No people visible anywhere, on shore, on the ships or in the water.",
   "V11 V12 · B6", "사람이 전혀 보이지 않는가 · 배 옆구리에 포문이 줄지어 있지 않은가"),
- ("컷 27 — 두 사람의 뒷모습", "설정화 A(1편), 설정화 B", "두 설정화를 함께 올린다. 설정화 A는 1편에서 뽑은 것을 쓴다.",
+ ("컷 29 — 두 사람의 뒷모습", "설정화 A(1편), 설정화 B", "두 설정화를 함께 올린다. 설정화 A는 1편에서 뽑은 것을 쓴다.",
   [MING, PORT], "Two men seen from behind, standing apart on a wide empty plain at dusk, each facing away from us toward a faint pale building far on the horizon. On the left, " + ZH + " faces a distant Ming Chinese palace hall with a sweeping tiled roof. On the right, " + VG + " faces a distant Portuguese hilltop castle. The two buildings are small, pale and hazy. We do not see either man's face.",
   "V2 V10", "두 사람의 옷이 설정화와 같은가 · 건물이 흐릿하고 작은가"),
 ]
@@ -229,5 +229,5 @@ if __name__ == "__main__":
     if errs:
         print("\n".join(errs)); sys.exit(1)
     write(1, EP01, "A", "1, 13, 23", "3, 7, 9, 10, 12, 21, 22, 밝힘")
-    write(2, EP02, "B", "1, 5, 7, 8, 12, 17, 21, 24, 28", "4, 6, 10, 11, 14, 15, 25, 26, 밝힘")
+    write(2, EP02, "B", "1, 5, 7, 8, 9, 10, 17, 23, 30", "4, 6, 12, 14, 15, 24, 25, 26, 27, 28, 밝힘")
     print("ok", len(EP01), len(EP02))
