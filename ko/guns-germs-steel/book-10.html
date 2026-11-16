@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>10. 문자·기술·국가 · 책 정리 · 『총, 균, 쇠』 크게 읽기</title>
+<meta name="description" content="『총, 균, 쇠』 크게 읽기 — 책 정리 11/15">
+<meta property="og:title" content="10. 문자·기술·국가 · 책 정리 · 『총, 균, 쇠』 크게 읽기">
+<meta property="og:description" content="『총, 균, 쇠』 크게 읽기 — 책 정리 11/15">
+<meta property="og:type" content="article">
+<meta name="theme-color" content="#fbf8f1">
+<style>:root{
+  color-scheme: light;
+  --bg:#fbf8f1; --surface:#ffffff; --ink:#111111; --ink2:#3a3a3a; --line:#d9d3c5;
+  --accent:#0b4fb3; --accent-ink:#ffffff;
+  --word:#eaf1fb; --word-line:#9db7e0;
+  --think:#fff3d6; --think-line:#e0b85c;
+  --note:#f1eee6;
+  --host:#0b4fb3; --kid:#1d7a3a; --panel:#7a5a1d;
+  --bar:#c2410c; --land:#d9cfb8; --lat:#8a8170;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    color-scheme: dark;
+    --bg:#141414; --surface:#1e1e1e; --ink:#f2f2f2; --ink2:#d0d0d0; --line:#3d3d3d;
+    --accent:#8ab4ff; --accent-ink:#0d1b33;
+    --word:#18243a; --word-line:#3c5a8a;
+    --think:#2e2610; --think-line:#8a6d1f;
+    --note:#222222;
+    --host:#8ab4ff; --kid:#7ed69a; --panel:#e0c07a;
+    --bar:#ff9a5c; --land:#4a4538; --lat:#9a917f;
+  }
+}
+/* 기본 글자를 크게 잡는다(다른 페이지는 17px). 단추로 20–34px 사이를 고른다 */
+html{font-size:22px;-webkit-text-size-adjust:100%}
+html[data-size="0"]{font-size:20px}
+html[data-size="1"]{font-size:22px}
+html[data-size="2"]{font-size:25px}
+html[data-size="3"]{font-size:28px}
+html[data-size="4"]{font-size:31px}
+html[data-size="5"]{font-size:34px}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;line-height:1.85;word-break:keep-all;overflow-wrap:anywhere}
+main{max-width:38rem;margin:0 auto;padding:4px 18px 48px}
+a{color:var(--accent);text-underline-offset:.18em}
+strong{font-weight:800}
+
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:10px;max-width:38rem;margin:0 auto;padding:10px 14px;font-size:18px}
+.topbar .home{font-weight:700;font-size:20px;padding:10px 4px}
+.size{display:flex;gap:8px}
+.size button{min-width:64px;min-height:52px;border:2px solid var(--ink2);border-radius:12px;background:var(--surface);color:var(--ink);font-size:22px;font-weight:800;line-height:1;cursor:pointer}
+.size button small{font-size:16px;margin-left:2px}
+.size button b{font-size:22px;margin-left:2px}
+
+.where{margin:8px 0 0;color:var(--ink2);font-size:.82rem}
+h1{font-size:1.5rem;line-height:1.4;margin:.3em 0 .5em}
+h1 .sub{display:block;font-size:.72em;font-weight:600;color:var(--ink2);margin-top:.25em}
+.from{margin:-.4em 0 1em;color:var(--ink2);font-size:.85rem}
+h2{font-size:1.2rem;line-height:1.45;margin:1.6em 0 .5em;padding-top:.6em;border-top:3px solid var(--line)}
+h3{font-size:1.08rem;line-height:1.45;margin:1.3em 0 .4em}
+p{margin:0 0 1em}
+ul,ol{padding-left:1.4em;margin:0 0 1em}
+li{margin:0 0 .6em}
+
+.note{background:var(--note);border-left:6px solid var(--line);border-radius:8px;padding:.8em 1em;margin:0 0 1.2em}
+.note p:last-child{margin-bottom:0}
+
+.words,.think{border-radius:12px;padding:.8em 1em;margin:0 0 1.4em;font-size:.95rem}
+.words{background:var(--word);border:2px solid var(--word-line)}
+.think{background:var(--think);border:2px solid var(--think-line)}
+.box-t{font-weight:800;font-size:.9rem;margin-bottom:.4em}
+.words dl{margin:0}
+.words dt{font-weight:800}
+.words dd{margin:0 0 .7em}
+.words dd:last-child,.think li:last-child{margin-bottom:0}
+.think ul{margin:0;padding-left:1.2em}
+
+.say{margin:0 0 1.2em;padding-left:.8em;border-left:6px solid var(--panel)}
+.say .who{font-weight:800;color:var(--panel);font-size:.9rem;line-height:1.5}
+.say .who small{font-weight:600;font-size:.85em}
+.say p{margin:0}
+.say.host{border-color:var(--host)} .say.host .who{color:var(--host)}
+.say.kid{border-color:var(--kid)} .say.kid .who{color:var(--kid)}
+
+figure{margin:0 0 1.4em}
+figcaption{font-weight:800;margin-bottom:.5em}
+.flow ol{list-style:none;padding:0;margin:0}
+.flow > ol > li{background:var(--surface);border:2px solid var(--line);border-radius:12px;padding:.6em .9em;margin:0;position:relative}
+.flow > ol > li + li{margin-top:2.2em}
+.flow > ol > li + li::before{content:"↓";position:absolute;left:50%;top:-1.9em;transform:translateX(-50%);font-size:1.3rem;font-weight:800;color:var(--ink2);line-height:1.6}
+.flow > ol > li.hi{border-color:var(--accent);border-width:3px;font-weight:700}
+.flow ul{margin:.4em 0 0;padding-left:1.2em}
+.flow ul li{margin:0 0 .3em}
+
+.bar-l{font-weight:700}
+.bars .bar{margin:0 0 1em}
+.bar-t{height:1.1em;background:var(--note);border-radius:6px;overflow:hidden;border:1px solid var(--line)}
+.bar-t span{display:block;height:100%;background:var(--bar)}
+.bar-n{font-size:.85rem;color:var(--ink2)}
+
+.map svg{width:100%;height:auto;display:block}
+.map .land{fill:var(--land)}
+.map .lat{stroke:var(--lat);stroke-width:1.5;stroke-dasharray:6 6}
+.map .lb{font-size:23px;font-weight:800;fill:var(--ink);text-anchor:middle;dominant-baseline:middle}
+.map .arw{stroke:var(--ink2);stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.map .cap{font-size:20px;font-weight:700;fill:var(--ink2);text-anchor:middle;dominant-baseline:middle}
+.map figcaption{font-weight:400;margin-top:.5em}
+
+.card{background:var(--surface);border:2px solid var(--line);border-radius:12px;padding:.2em 1em .4em;margin:0 0 1.2em}
+.card h3{margin-top:.6em}
+
+details{margin:0 0 1.2em;border:2px solid var(--line);border-radius:12px;padding:.4em .9em;background:var(--surface)}
+summary{cursor:pointer;font-weight:700;min-height:48px;display:flex;align-items:center}
+details[open] summary{margin-bottom:.6em}
+
+.pager{display:flex;flex-direction:column;gap:14px;margin-top:2.4em}
+.btn{display:block;text-decoration:none;border-radius:14px;padding:.7em 1em;font-weight:800;font-size:1.1rem;line-height:1.4;text-align:center;border:3px solid var(--accent)}
+.btn span{display:block;font-weight:600;font-size:.8rem;margin-top:.15em}
+.btn.next{background:var(--accent);color:var(--accent-ink)}
+.btn.prev{background:var(--surface);color:var(--accent)}
+
+.entry{background:var(--surface);border:2px solid var(--line);border-radius:16px;padding:.2em 1em 1em;margin:1.4em 0}
+.entry h2{border-top:0;padding-top:0;margin-top:.8em}
+.entry details{margin:1em 0 0}
+.toc{margin:0;padding-left:1.6em}
+.toc li{margin:0 0 .5em}
+#resume{margin:1em 0}
+#resume .btn{border-color:var(--kid);background:var(--kid);color:var(--bg)}
+</style>
+<script>(function(){
+  var KEY_SIZE = 'gss-size', KEY_LAST = 'gss-last';
+  function get(k){ try { return localStorage.getItem(k); } catch(e){ return null; } }
+  function set(k, v){ try { localStorage.setItem(k, v); } catch(e){} }
+  var size = parseInt(get(KEY_SIZE), 10);
+  if (!(size >= 0 && size <= 5)) size = 1;
+  document.documentElement.setAttribute('data-size', size);
+  document.addEventListener('DOMContentLoaded', function(){
+    var btns = document.querySelectorAll('[data-size]');
+    for (var i = 0; i < btns.length; i++) btns[i].addEventListener('click', function(){
+      size = Math.max(0, Math.min(5, size + parseInt(this.getAttribute('data-size'), 10)));
+      document.documentElement.setAttribute('data-size', size);
+      set(KEY_SIZE, size);
+    });
+    var page = document.body.getAttribute('data-page');
+    if (page) { set(KEY_LAST, JSON.stringify({ href: page, title: document.querySelector('h1').firstChild.textContent, where: document.querySelector('.where').textContent })); return; }
+    var box = document.getElementById('resume'), last = null;
+    try { last = JSON.parse(get(KEY_LAST)); } catch(e){}
+    if (box && last && last.href) {
+      var a = document.createElement('a');
+      a.className = 'btn next'; a.href = last.href;
+      a.textContent = '읽던 곳 이어 읽기';
+      var s = document.createElement('span'); s.textContent = last.where + ' · ' + last.title;
+      a.appendChild(s); box.appendChild(a); box.hidden = false;
+    }
+  });
+})();
+</script>
+</head>
+<body data-book="book" data-page="book-10.html">
+<header class="topbar">
+  <a class="home" href="./">처음 화면</a>
+  <span class="size"><button type="button" data-size="-1" aria-label="글자 작게">가<small>−</small></button><button type="button" data-size="1" aria-label="글자 크게">가<b>+</b></button></span>
+</header>
+<main>
+<p class="where">책 정리 · <b>11</b> / 15</p>
+<h1>10. 문자·기술·국가<span class="sub">식량에서 총과 쇠까지</span></h1>
+<p class="from">책에서는 3부 12–14장</p>
+<h2>무슨 주장</h2>
+<p>문자, 기술, 중앙 정부는 모두 식량 생산이 만든 「많은 사람과 남는 식량」 위에서 자라고, 유라시아에서는 8번의 넓은 길을 따라 서로 빌려 쓰며 빨리 쌓였다.</p>
+<h2>왜 그렇게 보나</h2>
+<p>셋을 따로 본다.</p>
+<p><strong>문자.</strong> 책은 문자가 세계에서 독립적으로 발명된 것은 아주 적다고 본다. 확실한 것은 기원전 3000년 무렵 수메르와 기원전 600년 무렵 메소아메리카이고, 이집트와 중국은 독립 발명인지 영향을 받았는지 논쟁이 있다고 적는다. 나머지는 모두 「베끼거나 아이디어를 빌린」 것이다. 알파벳은 한 번 생긴 뒤 유라시아 서쪽 전체로 퍼졌다. 문자는 처음에 왕의 세금 기록과 명령에 쓰였다. 즉 문자를 가지려면 먼저 기록할 것이 있는 사회(저장된 식량, 세금, 관리)가 있어야 했다.</p>
+<p><strong>기술.</strong> 「필요는 발명의 어머니」라는 말을 책은 뒤집는다. 발명은 대개 호기심이나 우연에서 먼저 나오고, 쓸모는 나중에 발견된다(에디슨의 축음기, 처음엔 쓸 데를 몰랐던 자동차). 그렇다면 발명이 많이 나오는 조건은 「필요」가 아니라 <strong>사람이 많고, 서로 연결되어 있고, 남의 발명을 받아들이는 사회</strong>다. 기술은 기술을 낳는다(쇠를 다루면 더 좋은 화로가, 그것이 더 좋은 쇠를 만든다). 유라시아는 사람도 많고 연결도 넓었다. 호주 원주민이 기술을 거의 쌓지 못한 것은 능력이 아니라 <strong>적은 인구와 완전한 고립</strong> 때문이라고 본다. 태즈메이니아 섬은 1만 년 고립 끝에 조상이 가졌던 뼈 도구마저 잃었다.</p>
+<p><strong>국가.</strong> 사람이 수십 명이면 모두가 서로를 알아 지도자가 필요 없다. 수천 명이 되면 모르는 사람끼리 다툼이 생기고, 그것을 풀 사람(족장)과 규칙이 필요하다. 수만·수십만이 되면 세금을 거두고 군대를 유지하고 신분을 나누는 국가가 된다. 책은 지도자가 거둔 것을 자기 것으로 하는 성격을 비꼬아 「도둑 정치(kleptocracy)」라 부르면서도, 그런 조직이 종교와 애국심으로 사람을 묶어 큰 전쟁과 큰 공사를 할 수 있게 했다고 본다. 168명의 스페인 병사 뒤에는 그런 국가가 있었다.</p>
+<aside class="words"><div class="box-t">낱말 풀이</div><dl><dt>수메르</dt><dd>지금의 이라크 남부에 있던 가장 오래된 문명 중 하나. 쐐기 모양 글자(쐐기문자)를 썼다.</dd></dl></aside>
+<h2>무엇으로 이어지나</h2>
+<p>여기까지가 「유라시아 대 다른 대륙」의 설명이다. 그런데 유라시아 안에서 왜 중국이나 인도가 아니라 <strong>유럽</strong>이었나? 책은 에필로그에서 조심스럽게 답한다. 중국은 기원전 221년에 통일된 뒤 한 결정이 온 나라를 움직였다. 1433년 명나라가 정화의 대함대를 멈추자 중국의 바다 진출은 그대로 끝났다. 유럽은 수백 개 나라로 갈라져 있어서, 콜럼버스는 한 왕에게 거절당하면 다른 왕을 찾아갔고 결국 후원을 얻었다. 저자는 이것을 「적당한 분열」이 유리했다고 보지만, 이 부분은 책에서 가장 가설에 가깝다고 스스로 인정한다.</p>
+<aside class="words"><div class="box-t">낱말 풀이</div><dl><dt>정화</dt><dd>15세기 초 명나라의 제독. 수백 척의 함대로 동남아시아·인도·아프리카 동해안까지 일곱 번 항해했다.</dd></dl></aside>
+<aside class="think"><div class="box-t">생각해 볼 질문</div><ul><li>「필요가 발명을 낳는다」와 「발명이 필요를 낳는다」 중 지금 우리 주변의 물건은 어느 쪽에 가까울까?</li><li>하나로 통일된 나라와 여러 나라로 갈라진 땅 중 어느 쪽이 새로운 시도에 유리할까 — 통일이 유리한 경우는 없을까?</li><li>「도둑 정치」라는 말이 맞다면 사람들은 왜 그것을 받아들였을까?</li></ul></aside>
+<nav class="pager">
+<a class="btn next" href="book-11.html">다음 쪽 →<span>11. 세계 한 바퀴</span></a>
+<a class="btn prev" href="book-09.html">← 앞 쪽<span>9. 가축의 치명적 선물</span></a>
+</nav>
+</main>
+</body>
+</html>

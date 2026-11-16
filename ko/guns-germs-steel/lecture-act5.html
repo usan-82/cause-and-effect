@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>5막. 가축이 되는 조건 · 강연 정리 · 『총, 균, 쇠』 크게 읽기</title>
+<meta name="description" content="『총, 균, 쇠』 크게 읽기 — 강연 정리 7/11">
+<meta property="og:title" content="5막. 가축이 되는 조건 · 강연 정리 · 『총, 균, 쇠』 크게 읽기">
+<meta property="og:description" content="『총, 균, 쇠』 크게 읽기 — 강연 정리 7/11">
+<meta property="og:type" content="article">
+<meta name="theme-color" content="#fbf8f1">
+<style>:root{
+  color-scheme: light;
+  --bg:#fbf8f1; --surface:#ffffff; --ink:#111111; --ink2:#3a3a3a; --line:#d9d3c5;
+  --accent:#0b4fb3; --accent-ink:#ffffff;
+  --word:#eaf1fb; --word-line:#9db7e0;
+  --think:#fff3d6; --think-line:#e0b85c;
+  --note:#f1eee6;
+  --host:#0b4fb3; --kid:#1d7a3a; --panel:#7a5a1d;
+  --bar:#c2410c; --land:#d9cfb8; --lat:#8a8170;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    color-scheme: dark;
+    --bg:#141414; --surface:#1e1e1e; --ink:#f2f2f2; --ink2:#d0d0d0; --line:#3d3d3d;
+    --accent:#8ab4ff; --accent-ink:#0d1b33;
+    --word:#18243a; --word-line:#3c5a8a;
+    --think:#2e2610; --think-line:#8a6d1f;
+    --note:#222222;
+    --host:#8ab4ff; --kid:#7ed69a; --panel:#e0c07a;
+    --bar:#ff9a5c; --land:#4a4538; --lat:#9a917f;
+  }
+}
+/* 기본 글자를 크게 잡는다(다른 페이지는 17px). 단추로 20–34px 사이를 고른다 */
+html{font-size:22px;-webkit-text-size-adjust:100%}
+html[data-size="0"]{font-size:20px}
+html[data-size="1"]{font-size:22px}
+html[data-size="2"]{font-size:25px}
+html[data-size="3"]{font-size:28px}
+html[data-size="4"]{font-size:31px}
+html[data-size="5"]{font-size:34px}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;line-height:1.85;word-break:keep-all;overflow-wrap:anywhere}
+main{max-width:38rem;margin:0 auto;padding:4px 18px 48px}
+a{color:var(--accent);text-underline-offset:.18em}
+strong{font-weight:800}
+
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:10px;max-width:38rem;margin:0 auto;padding:10px 14px;font-size:18px}
+.topbar .home{font-weight:700;font-size:20px;padding:10px 4px}
+.size{display:flex;gap:8px}
+.size button{min-width:64px;min-height:52px;border:2px solid var(--ink2);border-radius:12px;background:var(--surface);color:var(--ink);font-size:22px;font-weight:800;line-height:1;cursor:pointer}
+.size button small{font-size:16px;margin-left:2px}
+.size button b{font-size:22px;margin-left:2px}
+
+.where{margin:8px 0 0;color:var(--ink2);font-size:.82rem}
+h1{font-size:1.5rem;line-height:1.4;margin:.3em 0 .5em}
+h1 .sub{display:block;font-size:.72em;font-weight:600;color:var(--ink2);margin-top:.25em}
+.from{margin:-.4em 0 1em;color:var(--ink2);font-size:.85rem}
+h2{font-size:1.2rem;line-height:1.45;margin:1.6em 0 .5em;padding-top:.6em;border-top:3px solid var(--line)}
+h3{font-size:1.08rem;line-height:1.45;margin:1.3em 0 .4em}
+p{margin:0 0 1em}
+ul,ol{padding-left:1.4em;margin:0 0 1em}
+li{margin:0 0 .6em}
+
+.note{background:var(--note);border-left:6px solid var(--line);border-radius:8px;padding:.8em 1em;margin:0 0 1.2em}
+.note p:last-child{margin-bottom:0}
+
+.words,.think{border-radius:12px;padding:.8em 1em;margin:0 0 1.4em;font-size:.95rem}
+.words{background:var(--word);border:2px solid var(--word-line)}
+.think{background:var(--think);border:2px solid var(--think-line)}
+.box-t{font-weight:800;font-size:.9rem;margin-bottom:.4em}
+.words dl{margin:0}
+.words dt{font-weight:800}
+.words dd{margin:0 0 .7em}
+.words dd:last-child,.think li:last-child{margin-bottom:0}
+.think ul{margin:0;padding-left:1.2em}
+
+.say{margin:0 0 1.2em;padding-left:.8em;border-left:6px solid var(--panel)}
+.say .who{font-weight:800;color:var(--panel);font-size:.9rem;line-height:1.5}
+.say .who small{font-weight:600;font-size:.85em}
+.say p{margin:0}
+.say.host{border-color:var(--host)} .say.host .who{color:var(--host)}
+.say.kid{border-color:var(--kid)} .say.kid .who{color:var(--kid)}
+
+figure{margin:0 0 1.4em}
+figcaption{font-weight:800;margin-bottom:.5em}
+.flow ol{list-style:none;padding:0;margin:0}
+.flow > ol > li{background:var(--surface);border:2px solid var(--line);border-radius:12px;padding:.6em .9em;margin:0;position:relative}
+.flow > ol > li + li{margin-top:2.2em}
+.flow > ol > li + li::before{content:"↓";position:absolute;left:50%;top:-1.9em;transform:translateX(-50%);font-size:1.3rem;font-weight:800;color:var(--ink2);line-height:1.6}
+.flow > ol > li.hi{border-color:var(--accent);border-width:3px;font-weight:700}
+.flow ul{margin:.4em 0 0;padding-left:1.2em}
+.flow ul li{margin:0 0 .3em}
+
+.bar-l{font-weight:700}
+.bars .bar{margin:0 0 1em}
+.bar-t{height:1.1em;background:var(--note);border-radius:6px;overflow:hidden;border:1px solid var(--line)}
+.bar-t span{display:block;height:100%;background:var(--bar)}
+.bar-n{font-size:.85rem;color:var(--ink2)}
+
+.map svg{width:100%;height:auto;display:block}
+.map .land{fill:var(--land)}
+.map .lat{stroke:var(--lat);stroke-width:1.5;stroke-dasharray:6 6}
+.map .lb{font-size:23px;font-weight:800;fill:var(--ink);text-anchor:middle;dominant-baseline:middle}
+.map .arw{stroke:var(--ink2);stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.map .cap{font-size:20px;font-weight:700;fill:var(--ink2);text-anchor:middle;dominant-baseline:middle}
+.map figcaption{font-weight:400;margin-top:.5em}
+
+.card{background:var(--surface);border:2px solid var(--line);border-radius:12px;padding:.2em 1em .4em;margin:0 0 1.2em}
+.card h3{margin-top:.6em}
+
+details{margin:0 0 1.2em;border:2px solid var(--line);border-radius:12px;padding:.4em .9em;background:var(--surface)}
+summary{cursor:pointer;font-weight:700;min-height:48px;display:flex;align-items:center}
+details[open] summary{margin-bottom:.6em}
+
+.pager{display:flex;flex-direction:column;gap:14px;margin-top:2.4em}
+.btn{display:block;text-decoration:none;border-radius:14px;padding:.7em 1em;font-weight:800;font-size:1.1rem;line-height:1.4;text-align:center;border:3px solid var(--accent)}
+.btn span{display:block;font-weight:600;font-size:.8rem;margin-top:.15em}
+.btn.next{background:var(--accent);color:var(--accent-ink)}
+.btn.prev{background:var(--surface);color:var(--accent)}
+
+.entry{background:var(--surface);border:2px solid var(--line);border-radius:16px;padding:.2em 1em 1em;margin:1.4em 0}
+.entry h2{border-top:0;padding-top:0;margin-top:.8em}
+.entry details{margin:1em 0 0}
+.toc{margin:0;padding-left:1.6em}
+.toc li{margin:0 0 .5em}
+#resume{margin:1em 0}
+#resume .btn{border-color:var(--kid);background:var(--kid);color:var(--bg)}
+</style>
+<script>(function(){
+  var KEY_SIZE = 'gss-size', KEY_LAST = 'gss-last';
+  function get(k){ try { return localStorage.getItem(k); } catch(e){ return null; } }
+  function set(k, v){ try { localStorage.setItem(k, v); } catch(e){} }
+  var size = parseInt(get(KEY_SIZE), 10);
+  if (!(size >= 0 && size <= 5)) size = 1;
+  document.documentElement.setAttribute('data-size', size);
+  document.addEventListener('DOMContentLoaded', function(){
+    var btns = document.querySelectorAll('[data-size]');
+    for (var i = 0; i < btns.length; i++) btns[i].addEventListener('click', function(){
+      size = Math.max(0, Math.min(5, size + parseInt(this.getAttribute('data-size'), 10)));
+      document.documentElement.setAttribute('data-size', size);
+      set(KEY_SIZE, size);
+    });
+    var page = document.body.getAttribute('data-page');
+    if (page) { set(KEY_LAST, JSON.stringify({ href: page, title: document.querySelector('h1').firstChild.textContent, where: document.querySelector('.where').textContent })); return; }
+    var box = document.getElementById('resume'), last = null;
+    try { last = JSON.parse(get(KEY_LAST)); } catch(e){}
+    if (box && last && last.href) {
+      var a = document.createElement('a');
+      a.className = 'btn next'; a.href = last.href;
+      a.textContent = '읽던 곳 이어 읽기';
+      var s = document.createElement('span'); s.textContent = last.where + ' · ' + last.title;
+      a.appendChild(s); box.appendChild(a); box.hidden = false;
+    }
+  });
+})();
+</script>
+</head>
+<body data-book="lecture" data-page="lecture-act5.html">
+<header class="topbar">
+  <a class="home" href="./">처음 화면</a>
+  <span class="size"><button type="button" data-size="-1" aria-label="글자 작게">가<small>−</small></button><button type="button" data-size="1" aria-label="글자 크게">가<b>+</b></button></span>
+</header>
+<main>
+<p class="where">강연 정리 · <b>7</b> / 11</p>
+<h1>5막. 가축이 되는 조건<span class="sub">소는 되고 사자는 안 되는 이유</span></h1>
+
+<div class="say host"><div class="who">설민석</div><p>또 하나의 행운은 <strong>가축으로 쓸 수 있는 동물이 많은 땅</strong>에서 태어났다는 거예요. 아프리카와 아메리카에 가축이 없는 이유는 농사를 안 지어서가 아니라 <strong>가축이 될 만한 동물이 없어서</strong>입니다. 현무 씨, 어떤 동물이 가축이 될 수 있을까요?</p></div>
+<div class="say panel"><div class="who">현무</div><p>사람이 이끄는 대로 따라야 하고… 성격이 순해야 하고… 적절한 때 죽어 줘야죠.</p></div>
+<div class="say host"><div class="who">설민석</div><p>거의 다 맞췄어요. 강독에서는 네 가지로 정리합니다.</p></div>
+<section class="card"><h3>가축이 되는 네 가지 조건</h3><ol><li><strong>식성</strong> — 기르는 데 드는 먹이가 싸야 한다. 소는 되고, 사자는 안 된다.</li><li><strong>성장 속도</strong> — 빨리 자라야 한다. 고릴라·코끼리는 안 된다(15년).</li><li><strong>성격</strong> — 사납지 않아야 한다. 회색곰·아프리카 들소는 안 된다.</li><li><strong>순종</strong> — 사람을 따라야 한다. 소·말·양은 된다.</li></ol></section>
+<h2>식성 — 소와 사자</h2>
+<div class="say host"><div class="who">설민석</div><p>다이아몬드가 소와 사자를 비교해요. 사자가 가축이 안 된 건 성격 때문이 아니라 <strong>식성</strong> 때문이라는 겁니다. 소도 사자도 <strong>450kg</strong>이라고 해 봅시다. 소 한 마리를 잡아먹을 크기로 키우려면 <strong>옥수수 4,500kg</strong>이 필요해요.</p></div>
+<div class="say host"><div class="who">설민석</div><p>사자는 뭘 먹죠? 소를 먹어요. 사자 한 마리를 그 크기로 키우려면 <strong>소 열 마리</strong>, 즉 옥수수 <strong>45,000kg</strong>이 필요합니다.</p></div>
+<figure class="bars"><figcaption>한 마리를 키우는 데 드는 옥수수</figcaption><div class="bar"><div class="bar-l">소 1마리</div><div class="bar-t"><span style="width:10.00%"></span></div><div class="bar-n">옥수수 4,500kg</div></div><div class="bar"><div class="bar-l">사자 1마리</div><div class="bar-t"><span style="width:100.00%"></span></div><div class="bar-n">옥수수 45,000kg (열 배)</div></div></figure>
+<div class="say panel"><div class="who">이적</div><p>사자도 맛있을 수는 있는데…</p></div>
+<div class="say host"><div class="who">설민석</div><p>맛은 있을 수 있죠. 그런데 <strong>열 배</strong>가 드는 겁니다. 가성비가 안 나와요.</p></div>
+<h2>성장 속도 — 고릴라와 코끼리</h2>
+<div class="say host"><div class="who">설민석</div><p>고릴라와 코끼리는 고기를 많이 줍니다. 그런데 <strong>다 자라는 데 15년</strong>이 걸려요. 한 마리 잡아먹으려고 15년을 기다리는 건 말이 안 되죠.</p></div>
+<h2>성격 — 회색곰</h2>
+<div class="say host"><div class="who">설민석</div><p>마지막은 성격이에요. 회색곰은 몸무게 <strong>770kg</strong>, 소의 두 배 넘는 고기를 주고, 비교적 빨리 자라고, 풀도 잘 먹습니다. 문제는 <strong>성격이 정말 사납다</strong>는 거예요. 아프리카 들소도 마찬가지입니다. 책에는 「아프리카 들소를 가축으로 만들려는 미치광이 같은 짓은 하지 않는 게 좋다」는 식으로 쓰여 있어요.</p></div>
+<h2>가축이 준 선물</h2>
+<div class="say host"><div class="who">설민석</div><p>유라시아는 운 좋게 이런 조건을 다 갖춘 동물이 많았어요. 그 가축에게서 무엇을 얻었을까요?</p></div>
+<div class="say panel"><div class="who">패널 <small>(차례로)</small></div><p>비료요. 털이요. 노동력. 군사용. 고기와 가죽.</p></div>
+<div class="say host"><div class="who">설민석</div><p>전부 맞아요. 그런데 <strong>이 선물을 다 합쳐도 이것만큼 중요한 건 없었습니다.</strong> 유럽인에게 가축이 준 가장 큰 선물, <strong>균</strong>이에요. 다양한 가축 덕분에 유럽인은 균을 품었고, 그 덕분에 아메리카를 지배할 수 있었다는 겁니다.</p></div>
+<figure class="flow"><figcaption>가축이 준 선물</figcaption><ol><li>가축</li><li>여러 가지 선물<ul><li>비료</li><li>털과 가죽</li><li>노동력, 군사용 말</li><li>고기와 젖</li></ul></li><li class="hi">가장 큰 선물: 균 → 항체</li></ol></figure>
+<nav class="pager">
+<a class="btn next" href="lecture-act6.html">다음 쪽 →<span>6막. 그런데 왜 중국이 아니었나</span></a>
+<a class="btn prev" href="lecture-act4.html">← 앞 쪽<span>4막. 왜 거기서는 퍼지지 않았나</span></a>
+</nav>
+</main>
+</body>
+</html>

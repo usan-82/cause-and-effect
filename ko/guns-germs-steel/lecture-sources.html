@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>사실 확인 · 강연 정리 · 『총, 균, 쇠』 크게 읽기</title>
+<meta name="description" content="『총, 균, 쇠』 크게 읽기 — 강연 정리 11/11">
+<meta property="og:title" content="사실 확인 · 강연 정리 · 『총, 균, 쇠』 크게 읽기">
+<meta property="og:description" content="『총, 균, 쇠』 크게 읽기 — 강연 정리 11/11">
+<meta property="og:type" content="article">
+<meta name="theme-color" content="#fbf8f1">
+<style>:root{
+  color-scheme: light;
+  --bg:#fbf8f1; --surface:#ffffff; --ink:#111111; --ink2:#3a3a3a; --line:#d9d3c5;
+  --accent:#0b4fb3; --accent-ink:#ffffff;
+  --word:#eaf1fb; --word-line:#9db7e0;
+  --think:#fff3d6; --think-line:#e0b85c;
+  --note:#f1eee6;
+  --host:#0b4fb3; --kid:#1d7a3a; --panel:#7a5a1d;
+  --bar:#c2410c; --land:#d9cfb8; --lat:#8a8170;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    color-scheme: dark;
+    --bg:#141414; --surface:#1e1e1e; --ink:#f2f2f2; --ink2:#d0d0d0; --line:#3d3d3d;
+    --accent:#8ab4ff; --accent-ink:#0d1b33;
+    --word:#18243a; --word-line:#3c5a8a;
+    --think:#2e2610; --think-line:#8a6d1f;
+    --note:#222222;
+    --host:#8ab4ff; --kid:#7ed69a; --panel:#e0c07a;
+    --bar:#ff9a5c; --land:#4a4538; --lat:#9a917f;
+  }
+}
+/* 기본 글자를 크게 잡는다(다른 페이지는 17px). 단추로 20–34px 사이를 고른다 */
+html{font-size:22px;-webkit-text-size-adjust:100%}
+html[data-size="0"]{font-size:20px}
+html[data-size="1"]{font-size:22px}
+html[data-size="2"]{font-size:25px}
+html[data-size="3"]{font-size:28px}
+html[data-size="4"]{font-size:31px}
+html[data-size="5"]{font-size:34px}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;line-height:1.85;word-break:keep-all;overflow-wrap:anywhere}
+main{max-width:38rem;margin:0 auto;padding:4px 18px 48px}
+a{color:var(--accent);text-underline-offset:.18em}
+strong{font-weight:800}
+
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:10px;max-width:38rem;margin:0 auto;padding:10px 14px;font-size:18px}
+.topbar .home{font-weight:700;font-size:20px;padding:10px 4px}
+.size{display:flex;gap:8px}
+.size button{min-width:64px;min-height:52px;border:2px solid var(--ink2);border-radius:12px;background:var(--surface);color:var(--ink);font-size:22px;font-weight:800;line-height:1;cursor:pointer}
+.size button small{font-size:16px;margin-left:2px}
+.size button b{font-size:22px;margin-left:2px}
+
+.where{margin:8px 0 0;color:var(--ink2);font-size:.82rem}
+h1{font-size:1.5rem;line-height:1.4;margin:.3em 0 .5em}
+h1 .sub{display:block;font-size:.72em;font-weight:600;color:var(--ink2);margin-top:.25em}
+.from{margin:-.4em 0 1em;color:var(--ink2);font-size:.85rem}
+h2{font-size:1.2rem;line-height:1.45;margin:1.6em 0 .5em;padding-top:.6em;border-top:3px solid var(--line)}
+h3{font-size:1.08rem;line-height:1.45;margin:1.3em 0 .4em}
+p{margin:0 0 1em}
+ul,ol{padding-left:1.4em;margin:0 0 1em}
+li{margin:0 0 .6em}
+
+.note{background:var(--note);border-left:6px solid var(--line);border-radius:8px;padding:.8em 1em;margin:0 0 1.2em}
+.note p:last-child{margin-bottom:0}
+
+.words,.think{border-radius:12px;padding:.8em 1em;margin:0 0 1.4em;font-size:.95rem}
+.words{background:var(--word);border:2px solid var(--word-line)}
+.think{background:var(--think);border:2px solid var(--think-line)}
+.box-t{font-weight:800;font-size:.9rem;margin-bottom:.4em}
+.words dl{margin:0}
+.words dt{font-weight:800}
+.words dd{margin:0 0 .7em}
+.words dd:last-child,.think li:last-child{margin-bottom:0}
+.think ul{margin:0;padding-left:1.2em}
+
+.say{margin:0 0 1.2em;padding-left:.8em;border-left:6px solid var(--panel)}
+.say .who{font-weight:800;color:var(--panel);font-size:.9rem;line-height:1.5}
+.say .who small{font-weight:600;font-size:.85em}
+.say p{margin:0}
+.say.host{border-color:var(--host)} .say.host .who{color:var(--host)}
+.say.kid{border-color:var(--kid)} .say.kid .who{color:var(--kid)}
+
+figure{margin:0 0 1.4em}
+figcaption{font-weight:800;margin-bottom:.5em}
+.flow ol{list-style:none;padding:0;margin:0}
+.flow > ol > li{background:var(--surface);border:2px solid var(--line);border-radius:12px;padding:.6em .9em;margin:0;position:relative}
+.flow > ol > li + li{margin-top:2.2em}
+.flow > ol > li + li::before{content:"↓";position:absolute;left:50%;top:-1.9em;transform:translateX(-50%);font-size:1.3rem;font-weight:800;color:var(--ink2);line-height:1.6}
+.flow > ol > li.hi{border-color:var(--accent);border-width:3px;font-weight:700}
+.flow ul{margin:.4em 0 0;padding-left:1.2em}
+.flow ul li{margin:0 0 .3em}
+
+.bar-l{font-weight:700}
+.bars .bar{margin:0 0 1em}
+.bar-t{height:1.1em;background:var(--note);border-radius:6px;overflow:hidden;border:1px solid var(--line)}
+.bar-t span{display:block;height:100%;background:var(--bar)}
+.bar-n{font-size:.85rem;color:var(--ink2)}
+
+.map svg{width:100%;height:auto;display:block}
+.map .land{fill:var(--land)}
+.map .lat{stroke:var(--lat);stroke-width:1.5;stroke-dasharray:6 6}
+.map .lb{font-size:23px;font-weight:800;fill:var(--ink);text-anchor:middle;dominant-baseline:middle}
+.map .arw{stroke:var(--ink2);stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.map .cap{font-size:20px;font-weight:700;fill:var(--ink2);text-anchor:middle;dominant-baseline:middle}
+.map figcaption{font-weight:400;margin-top:.5em}
+
+.card{background:var(--surface);border:2px solid var(--line);border-radius:12px;padding:.2em 1em .4em;margin:0 0 1.2em}
+.card h3{margin-top:.6em}
+
+details{margin:0 0 1.2em;border:2px solid var(--line);border-radius:12px;padding:.4em .9em;background:var(--surface)}
+summary{cursor:pointer;font-weight:700;min-height:48px;display:flex;align-items:center}
+details[open] summary{margin-bottom:.6em}
+
+.pager{display:flex;flex-direction:column;gap:14px;margin-top:2.4em}
+.btn{display:block;text-decoration:none;border-radius:14px;padding:.7em 1em;font-weight:800;font-size:1.1rem;line-height:1.4;text-align:center;border:3px solid var(--accent)}
+.btn span{display:block;font-weight:600;font-size:.8rem;margin-top:.15em}
+.btn.next{background:var(--accent);color:var(--accent-ink)}
+.btn.prev{background:var(--surface);color:var(--accent)}
+
+.entry{background:var(--surface);border:2px solid var(--line);border-radius:16px;padding:.2em 1em 1em;margin:1.4em 0}
+.entry h2{border-top:0;padding-top:0;margin-top:.8em}
+.entry details{margin:1em 0 0}
+.toc{margin:0;padding-left:1.6em}
+.toc li{margin:0 0 .5em}
+#resume{margin:1em 0}
+#resume .btn{border-color:var(--kid);background:var(--kid);color:var(--bg)}
+</style>
+<script>(function(){
+  var KEY_SIZE = 'gss-size', KEY_LAST = 'gss-last';
+  function get(k){ try { return localStorage.getItem(k); } catch(e){ return null; } }
+  function set(k, v){ try { localStorage.setItem(k, v); } catch(e){} }
+  var size = parseInt(get(KEY_SIZE), 10);
+  if (!(size >= 0 && size <= 5)) size = 1;
+  document.documentElement.setAttribute('data-size', size);
+  document.addEventListener('DOMContentLoaded', function(){
+    var btns = document.querySelectorAll('[data-size]');
+    for (var i = 0; i < btns.length; i++) btns[i].addEventListener('click', function(){
+      size = Math.max(0, Math.min(5, size + parseInt(this.getAttribute('data-size'), 10)));
+      document.documentElement.setAttribute('data-size', size);
+      set(KEY_SIZE, size);
+    });
+    var page = document.body.getAttribute('data-page');
+    if (page) { set(KEY_LAST, JSON.stringify({ href: page, title: document.querySelector('h1').firstChild.textContent, where: document.querySelector('.where').textContent })); return; }
+    var box = document.getElementById('resume'), last = null;
+    try { last = JSON.parse(get(KEY_LAST)); } catch(e){}
+    if (box && last && last.href) {
+      var a = document.createElement('a');
+      a.className = 'btn next'; a.href = last.href;
+      a.textContent = '읽던 곳 이어 읽기';
+      var s = document.createElement('span'); s.textContent = last.where + ' · ' + last.title;
+      a.appendChild(s); box.appendChild(a); box.hidden = false;
+    }
+  });
+})();
+</script>
+</head>
+<body data-book="lecture" data-page="lecture-sources.html">
+<header class="topbar">
+  <a class="home" href="./">처음 화면</a>
+  <span class="size"><button type="button" data-size="-1" aria-label="글자 작게">가<small>−</small></button><button type="button" data-size="1" aria-label="글자 크게">가<b>+</b></button></span>
+</header>
+<main>
+<p class="where">강연 정리 · <b>11</b> / 11</p>
+<h1>사실 확인<span class="sub">강연이 단순하게 말한 곳</span></h1>
+
+<p>강독은 책을 27분에 풀어 주느라 숫자와 순서를 단순하게 말한 곳이 있다. 책 또는 일반적인 설명과 다른 자리를 적는다. 책의 수치 자체에 대한 대조는 <a href="book-sources.html">책 정리의 「출처와 확인」</a>에 있다.</p>
+<ul><li><strong>얄리:</strong> 강독은 「흑인 정치가」라고 했다. 이 정리는 「뉴기니의 정치가 얄리」로 적었다. 얄리의 말 속 「백인」은 책에서 얄리가 쓴 말이라 책 정리에서는 그대로 두었고, 여기서는 「당신네 사람들」로 옮겼다.</li><li><strong>가축의 조건 4가지:</strong> 강독은 식성·성장 속도·성격(·순종)으로 말했다. 책은 <strong>여섯 가지</strong>(먹이, 성장 속도, 갇힌 채 번식, 성격, 놀라는 성질, 무리의 서열)를 든다. 「안나 카레니나 원칙」이라는 이름도 강독에는 나오지 않는다. (<a href="book-07.html">책 정리 7번</a>)</li><li><strong>「13종」:</strong> 강독은 유라시아의 가축 13종과 「13종류의 균」을 섞어 말했다. 책에서 13은 <strong>가축이 된 큰 포유류 14종 중 유라시아에 조상이 살던 종의 수</strong>다. 사람에게 넘어온 병의 수는 따로 세지 않는다.</li><li><strong>95%:</strong> 책은 지역에 따라 「95%까지」라고 쓴다. 학자들의 추정은 50%에서 90% 넘게까지 갈린다. 「원주민의 95%가 죽었다」는 한 숫자로 못 박기 어렵다.</li><li><strong>7천 명:</strong> 강독은 그날 7천 명이 죽었다고 했다. 기록마다 수천 명 단위로 다르다. 이 정리는 「수천 명」으로 적었다.</li><li><strong>코르테스 「13년 전」:</strong> 코르테스의 아스테카 정복은 1519–1521년, 카하마르카는 1532년이다. 11–13년 차이로 강독의 어림과 맞는다.</li><li><strong>「1860년 무릎」:</strong> 제2차 아편전쟁의 베이징 조약(1860)을 말한 것으로 읽힌다.</li><li><strong>인류의 기원:</strong> 강독은 「오스트랄로피테쿠스가 침팬지의 변종으로 등장」이라고 했다. 일반적인 설명은 사람과 침팬지가 <strong>공통 조상</strong>에서 갈라졌다는 것이고, 오스트랄로피테쿠스는 침팬지의 변종이 아니다. 이 정리는 「사람의 조상은 아프리카에서 처음 나타났다」로만 적었다.</li><li><strong>「쇄국정책」:</strong> 강독은 중국이 문을 닫았다고 했다. 책은 1433년 정화 함대의 중단처럼 <strong>통일된 나라의 한 결정</strong>이 온 나라를 움직였다는 데 초점을 둔다. 「통일 때문 / 분열 때문」은 책 에필로그의 가설이고, 저자도 가장 확신이 적은 부분이라고 했다.</li><li><strong>에디슨:</strong> 강독은 「전기」라고 했지만 책의 예는 <strong>백열전구</strong>다. 에디슨 이전에 전구를 만든 사람이 여럿 있었고 에디슨은 개량해 퍼뜨렸다는 것이 책의 설명이다.</li><li><strong>「세상의 중심은 아시아」·「4대 성인」:</strong> 강독자의 비유다. 책의 주장은 아니다.</li><li><strong>대사:</strong> 설민석의 대사는 영상의 말을 다듬은 것이고, 현무·이적의 대사는 자막에 반응이 있는 자리에만 넣었다. <strong>민지는 가상 인물</strong>이다.</li></ul>
+<h2>표현에 대하여</h2>
+<p>강독은 「백인 / 흑인 / 인디언」이라는 말을 자주 쓴다. 이 정리는 「유럽인 / 아프리카 사람 / 아메리카 원주민」으로 옮겼다.</p>
+<p>강독의 마지막 한 줄(「백인은 좋은 땅에서 태어났고 흑인·원주민은 불리한 땅에서 태어났다」)도 같은 뜻을 「유럽 사람들 / 아메리카와 아프리카의 사람들」로 적었다. 노예로 끌려온 일은 사실이므로 지우지 않고 「강제로 데려왔다」로 적었다.</p>
+<p>사람 집단의 능력을 비교하는 문장은 강독자가 부정하는 맥락에서만 나오며, 그 맥락을 그대로 두었다.</p>
+<h2>이어서 읽기</h2>
+<p>강독은 책의 1·2·3부를 전투 장면 중심으로 풀었고, 4부(대륙별 검증)와 책 밖의 비판은 짧게 지나갔다. 책 전체의 열두 이야기, 「안나 카레니나 원칙」의 여섯 조건, 그리고 환경 결정론·제도론·유럽 중심주의 비판은 다음 <strong>책 정리</strong>에서 이어진다.</p>
+<nav class="pager">
+<a class="btn next" href="book-intro.html">다 읽었어요<span>이제 책 정리로 넘어가기</span></a>
+<a class="btn prev" href="lecture-words.html">← 앞 쪽<span>키워드 정리</span></a>
+</nav>
+</main>
+</body>
+</html>
