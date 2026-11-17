@@ -10,6 +10,7 @@
 <style>
 {{css}}
 </style>
+<script>try{var s=+localStorage.getItem('cae-fs');if(s>0&&s<6)document.documentElement.style.setProperty('--fs',[1,1.2,1.4,1.6,1.8,2][s])}catch(e){}</script>
 </head>
 <body>
 <div class="wrap">
@@ -31,13 +32,31 @@
         <div class="hint">{{hint}}</div>
       </div>
     </div>
-    <aside class="card sheet" id="sheet" data-s="peek"><button class="grab" id="grab"><i></i><span id="grablbl"></span></button><div class="sheetscroll" id="sheetscroll"><div id="sheetinfo"></div><div class="panel" id="panel"></div></div></aside>
+    <aside class="card sheet" id="sheet" data-s="peek"><button class="grab" id="grab"><i></i><span id="grablbl"></span></button><div class="fsz" role="group" aria-label="{{fsGroup}}"><button type="button" data-step="-1" aria-label="{{fsSmaller}}" title="{{fsSmaller}}">{{fsGlyph}}<small>−</small></button><button type="button" data-step="1" aria-label="{{fsLarger}}" title="{{fsLarger}}">{{fsGlyph}}<b>+</b></button></div><div class="sheetscroll" id="sheetscroll"><div id="sheetinfo"></div><div class="panel" id="panel"></div></div></aside>
   </div>
   <div class="foot">{{footHtml}}</div>
   <div class="srcs"><h4>{{sourcesTitle}}</h4>{{sourcesHtml}}</div>
   <div class="srcs gloss"><h4>{{glossTitle}}</h4>{{glossHtml}}</div>
 </div>
 <div class="help" id="help" role="dialog" aria-modal="true" hidden><button class="helpx" id="helpx">×</button><div id="helpbody"></div></div>
+<script>
+// 글자 크기 단추: 읽는 글만 키운다(style.css 끝). 고른 단계는 이 기기에 남고 패권의 지도와 같이 쓴다.
+(function(){
+  var S=[1,1.2,1.4,1.6,1.8,2], K='cae-fs', i=0;
+  try{ i=+localStorage.getItem(K)||0; }catch(e){}
+  if(!(i>=0&&i<S.length)) i=0;
+  var bs=document.querySelectorAll('.fsz button');
+  function apply(){
+    document.documentElement.style.setProperty('--fs',S[i]);
+    for(var j=0;j<bs.length;j++){ var st=+bs[j].getAttribute('data-step'); bs[j].disabled=(st<0&&i===0)||(st>0&&i===S.length-1); }
+  }
+  for(var j=0;j<bs.length;j++) bs[j].addEventListener('click',function(){
+    i=Math.max(0,Math.min(S.length-1,i+(+this.getAttribute('data-step'))));
+    apply(); try{ localStorage.setItem(K,i); }catch(e){}
+  });
+  apply();
+})();
+</script>
 <script src="lib/d3.min.js"></script>
 <script src="lib/topojson-client.min.js"></script>
 <script>

@@ -206,3 +206,18 @@ body.m .help .hint{padding:0;font-size:13.5px;color:var(--ink2);margin-bottom:8p
 body.m .help .foot{font-size:13px}
 body.m .lgtitle{display:none}
 body.m .legend .chip{min-height:34px}
+
+/* ---- 글자 크기(가−/가+, 2026-11-17) ----
+   --fs 는 1–2배. 읽는 글(본문 판·정보 상자·주석·출처)만 zoom 으로 키운다. 패딩·태그 칸까지 함께 커져 모양이 그대로다.
+   지도 이름표·연도 단추·범례·머리글은 그대로 둔다 — 휴대폰 글 판 높이를 「화면 − 272px」로 계산하고 있어서 그쪽이 커지면 화면이 깨진다.
+   zoom 은 겹치면 곱해지므로 서로 품지 않는 덩어리에만 건다. 휴대폰에서 도움말로 옮겨지는 안내·주석·출처도 덩어리째 옮겨져 그대로 한 번만 커지고,
+   같이 옮겨지는 언어 링크(nav.langs)는 키우지 않는다. */
+:root{--fs:1}
+.panel,.info,.hint,.foot,.srcs{zoom:var(--fs);overflow-wrap:break-word}
+.fsz{display:flex;justify-content:flex-end;gap:6px;padding:10px 12px 0}
+.fsz button{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;min-width:46px;height:38px;font:700 16px var(--sans),sans-serif;cursor:pointer;line-height:1}
+.fsz button small,.fsz button b{font-size:14px;margin-left:1px}
+.fsz button:disabled{opacity:.35;cursor:default}
+body.m .sheet{position:relative}
+body.m .fsz{position:absolute;right:8px;top:7px;padding:0;z-index:2}
+body.m .grab{padding-left:112px;padding-right:112px}

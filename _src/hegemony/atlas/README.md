@@ -12,6 +12,7 @@ REUSE=1 npm run build        # 글만 고쳤을 때: 지도·면적 계산을 �
 ```
 
 - `template.html`, `style.css` — 공통 화면(지도, 시간축, 탭, 요충지 레이어)
+- 글자 크기 단추(가−/가+, en·id는 A−/A+): 글 판 위에 있다. 읽는 글(본문 판·정보 상자·안내·주석·출처)만 CSS `zoom`으로 1–2배 키우고, 지도 이름표·연도·범례·머리글은 그대로 둔다(휴대폰 글 판 높이가 그쪽 크기에 맞춰 계산돼 있다). 고른 단계는 `localStorage`의 `cae-fs`에 남고 세계 영토 지도(`hegemony/map`)와 같이 쓴다. 문구는 `{lang}.page.json`의 `fsGroup`·`fsSmaller`·`fsLarger`·`fsGlyph`
 - `struct.json` — 언어와 무관한 구조:
   - `years`: 시점별 패권 경쟁 주역(`rivals`)과 더 읽기 링크
   - `powers`: 세력별·시점별 상태(`rise` 부상 / `peak` 전성 / `hold` 유지 / `decline` 쇠퇴·흔들림 / `exit` 패권 퇴장·국가 존속 / `end` 소멸). 지도 색의 진하기와 빗금을 정한다
