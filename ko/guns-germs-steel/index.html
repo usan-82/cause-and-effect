@@ -135,9 +135,9 @@ details[open] summary{margin-bottom:.6em}
   if (!(size >= 0 && size <= 5)) size = 1;
   document.documentElement.setAttribute('data-size', size);
   document.addEventListener('DOMContentLoaded', function(){
-    var btns = document.querySelectorAll('[data-size]');
+    var btns = document.querySelectorAll('button[data-step]');
     for (var i = 0; i < btns.length; i++) btns[i].addEventListener('click', function(){
-      size = Math.max(0, Math.min(5, size + parseInt(this.getAttribute('data-size'), 10)));
+      size = Math.max(0, Math.min(5, size + parseInt(this.getAttribute('data-step'), 10)));
       document.documentElement.setAttribute('data-size', size);
       set(KEY_SIZE, size);
     });
@@ -159,7 +159,7 @@ details[open] summary{margin-bottom:.6em}
 <body data-book="" data-page="">
 <header class="topbar">
   <span class="home"></span>
-  <span class="size"><button type="button" data-size="-1" aria-label="글자 작게">가<small>−</small></button><button type="button" data-size="1" aria-label="글자 크게">가<b>+</b></button></span>
+  <span class="size"><button type="button" data-step="-1" aria-label="글자 작게">가<small>−</small></button><button type="button" data-step="1" aria-label="글자 크게">가<b>+</b></button></span>
 </header>
 <main>
 <h1>『총, 균, 쇠』 크게 읽기<span class="sub">왜 어떤 나라는 다른 나라를 정복할 힘을 먼저 가졌을까</span></h1>

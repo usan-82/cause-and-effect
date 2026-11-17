@@ -6,9 +6,9 @@
   if (!(size >= 0 && size <= 5)) size = 1;
   document.documentElement.setAttribute('data-size', size);
   document.addEventListener('DOMContentLoaded', function(){
-    var btns = document.querySelectorAll('[data-size]');
+    var btns = document.querySelectorAll('button[data-step]');
     for (var i = 0; i < btns.length; i++) btns[i].addEventListener('click', function(){
-      size = Math.max(0, Math.min(5, size + parseInt(this.getAttribute('data-size'), 10)));
+      size = Math.max(0, Math.min(5, size + parseInt(this.getAttribute('data-step'), 10)));
       document.documentElement.setAttribute('data-size', size);
       set(KEY_SIZE, size);
     });

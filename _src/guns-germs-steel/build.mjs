@@ -175,7 +175,7 @@ function shell({ title, desc, body, bookKey = '', pageId = '' }) {
 <body data-book="${bookKey}" data-page="${pageId}">
 <header class="topbar">
   <a class="home" href="./">처음 화면</a>
-  <span class="size"><button type="button" data-size="-1" aria-label="글자 작게">가<small>−</small></button><button type="button" data-size="1" aria-label="글자 크게">가<b>+</b></button></span>
+  <span class="size"><button type="button" data-step="-1" aria-label="글자 작게">가<small>−</small></button><button type="button" data-step="1" aria-label="글자 크게">가<b>+</b></button></span>
 </header>
 <main>
 ${body}
