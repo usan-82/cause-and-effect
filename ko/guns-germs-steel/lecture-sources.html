@@ -135,9 +135,9 @@ details[open] summary{margin-bottom:.6em}
   if (!(size >= 0 && size <= 5)) size = 1;
   document.documentElement.setAttribute('data-size', size);
   document.addEventListener('DOMContentLoaded', function(){
-    var btns = document.querySelectorAll('[data-size]');
+    var btns = document.querySelectorAll('button[data-step]');
     for (var i = 0; i < btns.length; i++) btns[i].addEventListener('click', function(){
-      size = Math.max(0, Math.min(5, size + parseInt(this.getAttribute('data-size'), 10)));
+      size = Math.max(0, Math.min(5, size + parseInt(this.getAttribute('data-step'), 10)));
       document.documentElement.setAttribute('data-size', size);
       set(KEY_SIZE, size);
     });
@@ -159,7 +159,7 @@ details[open] summary{margin-bottom:.6em}
 <body data-book="lecture" data-page="lecture-sources.html">
 <header class="topbar">
   <a class="home" href="./">처음 화면</a>
-  <span class="size"><button type="button" data-size="-1" aria-label="글자 작게">가<small>−</small></button><button type="button" data-size="1" aria-label="글자 크게">가<b>+</b></button></span>
+  <span class="size"><button type="button" data-step="-1" aria-label="글자 작게">가<small>−</small></button><button type="button" data-step="1" aria-label="글자 크게">가<b>+</b></button></span>
 </header>
 <main>
 <p class="where">강연 정리 · <b>11</b> / 11</p>
