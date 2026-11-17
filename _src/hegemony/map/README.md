@@ -8,6 +8,7 @@ npm install
 npm run prepare-data   # 원본 국경 데이터를 받아 시점별로 단순화 → raw/
 npm run clip           # fixes.json의 clip 항목(경계 교정)을 Cliopatria에서 잘라 raw/clip/ 에 만든다
 npm run build          # {ko,en,id}/hegemony/map/ 생성 (약 2분). LANGS=ko 처럼 언어를 고를 수 있다
+HTML_ONLY=1 npm run build  # template.html·style.css·{lang}.page.json 만 고쳤을 때: raw/ 없이 index.html 만 다시 쓴다(지도 데이터는 그대로)
 npm run verify         # 완성된 지도를 Cliopatria와 교차검증 → verify.json, 보충 층 → raw/sup/ (몇 분)
 npm run build          # 검증 결과와 보충 층을 페이지에 싣기
 ```
@@ -56,3 +57,7 @@ npm run build          # 검증 결과와 보충 층을 페이지에 싣기
 - 지도는 화면에 고정하고 세로를 꽉 채운다(`preserveAspectRatio="xMidYMid slice"`). 좌우로 끌어 나머지를 보고, 두 손가락으로 확대·축소한다. 확대·축소 버튼은 숨기고 ‘원래대로’만 남긴다
 - 목록·해설 패널은 아래에서 끌어올리는 시트(`#sheet`, 상태 `peek`/`half`/`full`)가 된다. 손잡이를 누르거나 끌어 높이를 바꾸고, 지도에서 영역을 누르면 설명이 시트 맨 위에 나온다
 - 언어 전환, 안내문, 유의사항, 출처, 용어 풀이는 오른쪽 위 `?` 버튼의 도움말 화면으로 옮긴다(DOM을 옮겼다가 넓은 화면으로 돌아오면 제자리에 되돌린다)
+
+## 글자 크기 단추
+
+글 판 위의 가−/가+(en·id는 A−/A+)가 읽는 글(본문 판·정보 상자·안내·주석·출처)만 CSS `zoom`으로 1–2배 키운다. 지도 이름표·연도 막대·범례·머리글은 그대로 둔다(휴대폰 글 판 높이가 그쪽 크기에 맞춰 계산돼 있다). 고른 단계는 `localStorage`의 `cae-fs`에 남고 패권의 지도(`hegemony/atlas`)와 같이 쓴다.

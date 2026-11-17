@@ -10,6 +10,22 @@ const J=f=>JSON.parse(fs.readFileSync(path.join(HERE,f),'utf8'));
 const TX=J('ko.json'); // 구조(문화권 판정, 색 묶음)와 한국어 이름. 언어별 글은 {lang}.json · {lang}.page.json · fixes.{lang}.json
 const LANGS=[['ko','한국어'],['en','English'],['id','Bahasa Indonesia']].filter(([c])=>!process.env.LANGS||process.env.LANGS.split(',').includes(c));
 
+// ---- 페이지 HTML: 틀(template.html·style.css)과 화면 문구({lang}.page.json)만으로 만든다. 지도 데이터와 무관하다
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function pageHtml(lang){
+  const PG=J(lang+'.page.json');
+  const langs=[['ko','한국어'],['en','English'],['id','Bahasa Indonesia']].map(([c,n])=>c===lang?`<span aria-current="page">${esc(n)}</span>`:`<a href="../../../${c}/hegemony/map/" hreflang="${c}" lang="${c}">${esc(n)}</a>`).join('');
+  let html=fs.readFileSync(path.join(HERE,'template.html'),'utf8').replace('{{css}}',fs.readFileSync(path.join(HERE,'style.css'),'utf8')).replace('{{ui}}',JSON.stringify(PG.ui).replace(/</g,'\\u003c'))
+    .replace('{{langs}}',langs).split('{{lang}}').join(lang)
+    .replace('{{sourcesHtml}}',`<ol>${PG.sources.map(([t,u])=>`<li><a href="${esc(u)}" target="_blank" rel="noopener">${esc(t)}</a></li>`).join('')}</ol>`);
+  html=html.replace('{{glossHtml}}',`<dl>${PG.glossary.map(([t,d])=>`<dt>${esc(t)}</dt><dd>${esc(d)}</dd>`).join('')}</dl>`);
+  for(const [k,v] of Object.entries(PG)) if(typeof v==='string') html=html.split('{{'+k+'}}').join(k.endsWith('Html')?v:esc(v));
+  if(html.includes('{{')) throw new Error(lang+': 치환 안 된 자리표시자 '+html.match(/\{\{\w+\}\}/)[0]);
+  return html;
+}
+// HTML_ONLY=1: 틀·화면 문구만 고쳤을 때 raw/ 지도 데이터를 다시 만들지 않고 index.html 만 새로 쓴다
+if(process.env.HTML_ONLY){ for(const [lang] of LANGS){ fs.writeFileSync(path.join(ROOT,lang,'hegemony','map','index.html'),pageHtml(lang)); console.log('html',lang); } process.exit(0); }
+
 // ---- 시점 목록
 const HB=[-3000,-2000,-1500,-1000,-700,-500,-400,-323,-300,-200,-100,-1,100,200,300,400,500,600,700,800,900,1000,1100,1200,1279,1300,1400,1492,1500,1530,1600,1650,1700,1715,1783,1815,1880];
 const CS={1886:'1886-01-01',1900:'1900-07-01',1914:'1914-07-01',1920:'1920-07-01',1930:'1930-07-01',1938:'1938-12-31',1945:'1945-09-02',1950:'1950-07-01',1960:'1960-12-31',1970:'1970-07-01',1980:'1980-07-01',1991:'1991-12-31',2000:'2000-07-01',2010:'2010-07-01',2019:'2019-12-31'};
@@ -205,7 +221,6 @@ console.log('disputed areas',disp.length,'with UN note',disp.filter(d=>TX.unRule
 { const diff={}; for(let lat=-89.75;lat<90;lat+=0.5)for(let lon=-179.75;lon<180;lon+=0.5){const a=at(IU,lon,lat),b=at(IK,lon,lat); const x=a?.f.properties.SOVEREIGNT||'-', y=b?.f.properties.SOVEREIGNT||'-'; if(x!==y){const k=x+' ↔ '+y; diff[k]=(diff[k]||0)+1;}} console.log('USA vs KOR POV differences (cells):',JSON.stringify(diff)); }
 
 // ---- 5) 출력
-const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const VER=fs.existsSync(path.join(HERE,'verify.json'))?J('verify.json'):{};
 const usedFx=new Set(out.flatMap(s=>s.F.map(f=>f.fx).filter(Boolean)));
 const land=fs.readFileSync(path.join(HERE,'node_modules/world-atlas/land-110m.json'));
@@ -235,13 +250,7 @@ for(const [lang] of LANGS){
   fs.writeFileSync(path.join(OUT,'data','land.json'),land);
   fs.copyFileSync(path.join(HERE,'node_modules/d3/dist/d3.min.js'),path.join(OUT,'lib/d3.min.js'));
   fs.copyFileSync(path.join(HERE,'node_modules/topojson-client/dist/topojson-client.min.js'),path.join(OUT,'lib/topojson-client.min.js'));
-  const langs=[['ko','한국어'],['en','English'],['id','Bahasa Indonesia']].map(([c,n])=>c===lang?`<span aria-current="page">${esc(n)}</span>`:`<a href="../../../${c}/hegemony/map/" hreflang="${c}" lang="${c}">${esc(n)}</a>`).join('');
-  let html=fs.readFileSync(path.join(HERE,'template.html'),'utf8').replace('{{css}}',fs.readFileSync(path.join(HERE,'style.css'),'utf8')).replace('{{ui}}',JSON.stringify(PG.ui).replace(/</g,'\\u003c'))
-    .replace('{{langs}}',langs).split('{{lang}}').join(lang)
-    .replace('{{sourcesHtml}}',`<ol>${PG.sources.map(([t,u])=>`<li><a href="${esc(u)}" target="_blank" rel="noopener">${esc(t)}</a></li>`).join('')}</ol>`);
-  html=html.replace('{{glossHtml}}',`<dl>${PG.glossary.map(([t,d])=>`<dt>${esc(t)}</dt><dd>${esc(d)}</dd>`).join('')}</dl>`);
-  for(const [k,v] of Object.entries(PG)) if(typeof v==='string') html=html.split('{{'+k+'}}').join(k.endsWith('Html')?v:esc(v));
-  if(html.includes('{{')) throw new Error(lang+': 치환 안 된 자리표시자 '+html.match(/\{\{\w+\}\}/)[0]);
+  const html=pageHtml(lang);
   fs.writeFileSync(path.join(OUT,'index.html'),html);
   const noName=E.filter(e=>!index.ents[e.id].ko).length;
   console.log(lang,'data bytes',(bytes/1e6).toFixed(1)+'MB','supplement',(sbytes/1e6).toFixed(2)+'MB','index',(JSON.stringify(index).length/1e3).toFixed(0)+'KB', lang==='en'?'':'현지어 이름 없는 주체 '+noName+'/'+E.length);

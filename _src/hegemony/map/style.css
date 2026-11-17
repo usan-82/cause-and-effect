@@ -130,3 +130,17 @@ body.m .help a.to{display:block;margin:0 0 12px;font-size:14px}
 body.m .help .key{padding:0;margin:0 0 8px}
 body.m .help .hint{padding:0;font-size:13.5px;color:var(--ink2);margin-bottom:6px}
 body.m .help .foot{font-size:13px}
+
+/* ---- 글자 크기(가−/가+, 2026-11-17) — 패권의 지도(atlas)와 같은 방식 ----
+   --fs 는 1–2배. 읽는 글(본문 판·정보 상자·안내·주석·출처)만 zoom 으로 키운다. 패딩까지 함께 커져 모양이 그대로다.
+   지도 이름표·연도 막대·범례·머리글은 그대로 둔다 — 휴대폰 글 판 높이를 「화면 − 226px」로 계산하고 있어서 그쪽이 커지면 화면이 깨진다.
+   zoom 은 겹치면 곱해지므로 서로 품지 않는 덩어리에만 건다. 휴대폰에서 도움말로 옮겨지는 안내·주석·출처도 덩어리째 옮겨져 한 번만 커진다. */
+:root{--fs:1}
+.panel,.info,.hint,.foot,.srcs{zoom:var(--fs);overflow-wrap:break-word}
+.fsz{display:flex;justify-content:flex-end;gap:6px;padding:10px 12px 0}
+.fsz button{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;min-width:46px;height:38px;font:700 16px var(--sans),sans-serif;cursor:pointer;line-height:1}
+.fsz button small,.fsz button b{font-size:14px;margin-left:1px}
+.fsz button:disabled{opacity:.35;cursor:default}
+body.m .sheet{position:relative}
+body.m .fsz{position:absolute;right:8px;top:7px;padding:0;z-index:2}
+body.m .grab{padding-left:112px;padding-right:112px}
