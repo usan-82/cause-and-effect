@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>1. 얄리의 질문 · 책 정리 · 『총, 균, 쇠』 크게 읽기</title>
+<meta name="description" content="『총, 균, 쇠』 크게 읽기 — 책 정리 2/15">
+<meta property="og:title" content="1. 얄리의 질문 · 책 정리 · 『총, 균, 쇠』 크게 읽기">
+<meta property="og:description" content="『총, 균, 쇠』 크게 읽기 — 책 정리 2/15">
+<meta property="og:type" content="article">
+<meta name="theme-color" content="#fbf8f1">
+<style>:root{
+  color-scheme: light;
+  --bg:#fbf8f1; --surface:#ffffff; --ink:#111111; --ink2:#3a3a3a; --line:#d9d3c5;
+  --accent:#0b4fb3; --accent-ink:#ffffff;
+  --word:#eaf1fb; --word-line:#9db7e0;
+  --think:#fff3d6; --think-line:#e0b85c;
+  --note:#f1eee6;
+  --host:#0b4fb3; --kid:#1d7a3a; --panel:#7a5a1d;
+  --bar:#c2410c; --land:#d9cfb8; --lat:#8a8170;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    color-scheme: dark;
+    --bg:#141414; --surface:#1e1e1e; --ink:#f2f2f2; --ink2:#d0d0d0; --line:#3d3d3d;
+    --accent:#8ab4ff; --accent-ink:#0d1b33;
+    --word:#18243a; --word-line:#3c5a8a;
+    --think:#2e2610; --think-line:#8a6d1f;
+    --note:#222222;
+    --host:#8ab4ff; --kid:#7ed69a; --panel:#e0c07a;
+    --bar:#ff9a5c; --land:#4a4538; --lat:#9a917f;
+  }
+}
+/* 기본 글자를 크게 잡는다(다른 페이지는 17px). 단추로 20–34px 사이를 고른다 */
+html{font-size:22px;-webkit-text-size-adjust:100%}
+html[data-size="0"]{font-size:20px}
+html[data-size="1"]{font-size:22px}
+html[data-size="2"]{font-size:25px}
+html[data-size="3"]{font-size:28px}
+html[data-size="4"]{font-size:31px}
+html[data-size="5"]{font-size:34px}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;line-height:1.85;word-break:keep-all;overflow-wrap:anywhere}
+main{max-width:38rem;margin:0 auto;padding:4px 18px 48px}
+a{color:var(--accent);text-underline-offset:.18em}
+strong{font-weight:800}
+
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:10px;max-width:38rem;margin:0 auto;padding:10px 14px;font-size:18px}
+.topbar .home{font-weight:700;font-size:20px;padding:10px 4px}
+.size{display:flex;gap:8px}
+.size button{min-width:64px;min-height:52px;border:2px solid var(--ink2);border-radius:12px;background:var(--surface);color:var(--ink);font-size:22px;font-weight:800;line-height:1;cursor:pointer}
+.size button small{font-size:16px;margin-left:2px}
+.size button b{font-size:22px;margin-left:2px}
+
+.where{margin:8px 0 0;color:var(--ink2);font-size:.82rem}
+h1{font-size:1.5rem;line-height:1.4;margin:.3em 0 .5em}
+h1 .sub{display:block;font-size:.72em;font-weight:600;color:var(--ink2);margin-top:.25em}
+.from{margin:-.4em 0 1em;color:var(--ink2);font-size:.85rem}
+h2{font-size:1.2rem;line-height:1.45;margin:1.6em 0 .5em;padding-top:.6em;border-top:3px solid var(--line)}
+h3{font-size:1.08rem;line-height:1.45;margin:1.3em 0 .4em}
+p{margin:0 0 1em}
+ul,ol{padding-left:1.4em;margin:0 0 1em}
+li{margin:0 0 .6em}
+
+.note{background:var(--note);border-left:6px solid var(--line);border-radius:8px;padding:.8em 1em;margin:0 0 1.2em}
+.note p:last-child{margin-bottom:0}
+
+.words,.think{border-radius:12px;padding:.8em 1em;margin:0 0 1.4em;font-size:.95rem}
+.words{background:var(--word);border:2px solid var(--word-line)}
+.think{background:var(--think);border:2px solid var(--think-line)}
+.box-t{font-weight:800;font-size:.9rem;margin-bottom:.4em}
+.words dl{margin:0}
+.words dt{font-weight:800}
+.words dd{margin:0 0 .7em}
+.words dd:last-child,.think li:last-child{margin-bottom:0}
+.think ul{margin:0;padding-left:1.2em}
+
+.say{margin:0 0 1.2em;padding-left:.8em;border-left:6px solid var(--panel)}
+.say .who{font-weight:800;color:var(--panel);font-size:.9rem;line-height:1.5}
+.say .who small{font-weight:600;font-size:.85em}
+.say p{margin:0}
+.say.host{border-color:var(--host)} .say.host .who{color:var(--host)}
+.say.kid{border-color:var(--kid)} .say.kid .who{color:var(--kid)}
+
+figure{margin:0 0 1.4em}
+figcaption{font-weight:800;margin-bottom:.5em}
+.flow ol{list-style:none;padding:0;margin:0}
+.flow > ol > li{background:var(--surface);border:2px solid var(--line);border-radius:12px;padding:.6em .9em;margin:0;position:relative}
+.flow > ol > li + li{margin-top:2.2em}
+.flow > ol > li + li::before{content:"↓";position:absolute;left:50%;top:-1.9em;transform:translateX(-50%);font-size:1.3rem;font-weight:800;color:var(--ink2);line-height:1.6}
+.flow > ol > li.hi{border-color:var(--accent);border-width:3px;font-weight:700}
+.flow ul{margin:.4em 0 0;padding-left:1.2em}
+.flow ul li{margin:0 0 .3em}
+
+.bar-l{font-weight:700}
+.bars .bar{margin:0 0 1em}
+.bar-t{height:1.1em;background:var(--note);border-radius:6px;overflow:hidden;border:1px solid var(--line)}
+.bar-t span{display:block;height:100%;background:var(--bar)}
+.bar-n{font-size:.85rem;color:var(--ink2)}
+
+.map svg{width:100%;height:auto;display:block}
+.map .land{fill:var(--land)}
+.map .lat{stroke:var(--lat);stroke-width:1.5;stroke-dasharray:6 6}
+.map .lb{font-size:23px;font-weight:800;fill:var(--ink);text-anchor:middle;dominant-baseline:middle}
+.map .arw{stroke:var(--ink2);stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.map .cap{font-size:20px;font-weight:700;fill:var(--ink2);text-anchor:middle;dominant-baseline:middle}
+.map figcaption{font-weight:400;margin-top:.5em}
+
+.card{background:var(--surface);border:2px solid var(--line);border-radius:12px;padding:.2em 1em .4em;margin:0 0 1.2em}
+.card h3{margin-top:.6em}
+
+details{margin:0 0 1.2em;border:2px solid var(--line);border-radius:12px;padding:.4em .9em;background:var(--surface)}
+summary{cursor:pointer;font-weight:700;min-height:48px;display:flex;align-items:center}
+details[open] summary{margin-bottom:.6em}
+
+.pager{display:flex;flex-direction:column;gap:14px;margin-top:2.4em}
+.btn{display:block;text-decoration:none;border-radius:14px;padding:.7em 1em;font-weight:800;font-size:1.1rem;line-height:1.4;text-align:center;border:3px solid var(--accent)}
+.btn span{display:block;font-weight:600;font-size:.8rem;margin-top:.15em}
+.btn.next{background:var(--accent);color:var(--accent-ink)}
+.btn.prev{background:var(--surface);color:var(--accent)}
+
+.entry{background:var(--surface);border:2px solid var(--line);border-radius:16px;padding:.2em 1em 1em;margin:1.4em 0}
+.entry h2{border-top:0;padding-top:0;margin-top:.8em}
+.entry details{margin:1em 0 0}
+.toc{margin:0;padding-left:1.6em}
+.toc li{margin:0 0 .5em}
+#resume{margin:1em 0}
+#resume .btn{border-color:var(--kid);background:var(--kid);color:var(--bg)}
+</style>
+<script>(function(){
+  var KEY_SIZE = 'gss-size', KEY_LAST = 'gss-last';
+  function get(k){ try { return localStorage.getItem(k); } catch(e){ return null; } }
+  function set(k, v){ try { localStorage.setItem(k, v); } catch(e){} }
+  var size = parseInt(get(KEY_SIZE), 10);
+  if (!(size >= 0 && size <= 5)) size = 1;
+  document.documentElement.setAttribute('data-size', size);
+  document.addEventListener('DOMContentLoaded', function(){
+    var btns = document.querySelectorAll('[data-size]');
+    for (var i = 0; i < btns.length; i++) btns[i].addEventListener('click', function(){
+      size = Math.max(0, Math.min(5, size + parseInt(this.getAttribute('data-size'), 10)));
+      document.documentElement.setAttribute('data-size', size);
+      set(KEY_SIZE, size);
+    });
+    var page = document.body.getAttribute('data-page');
+    if (page) { set(KEY_LAST, JSON.stringify({ href: page, title: document.querySelector('h1').firstChild.textContent, where: document.querySelector('.where').textContent })); return; }
+    var box = document.getElementById('resume'), last = null;
+    try { last = JSON.parse(get(KEY_LAST)); } catch(e){}
+    if (box && last && last.href) {
+      var a = document.createElement('a');
+      a.className = 'btn next'; a.href = last.href;
+      a.textContent = '읽던 곳 이어 읽기';
+      var s = document.createElement('span'); s.textContent = last.where + ' · ' + last.title;
+      a.appendChild(s); box.appendChild(a); box.hidden = false;
+    }
+  });
+})();
+</script>
+</head>
+<body data-book="book" data-page="book-01.html">
+<header class="topbar">
+  <a class="home" href="./">처음 화면</a>
+  <span class="size"><button type="button" data-size="-1" aria-label="글자 작게">가<small>−</small></button><button type="button" data-size="1" aria-label="글자 크게">가<b>+</b></button></span>
+</header>
+<main>
+<p class="where">책 정리 · <b>2</b> / 15</p>
+<h1>1. 얄리의 질문<span class="sub">책이 묻는 것</span></h1>
+<p class="from">책에서는 프롤로그</p>
+<h2>무슨 주장</h2>
+<p>지난 500년 동안 세계의 부와 힘은 유라시아, 특히 유럽 출신 사회에 몰렸다. 저자는 이것을 「왜 유라시아 사람들이 아메리카·호주·아프리카를 정복하고 식민지로 삼았으며, 그 반대가 아니었나」라는 한 문장으로 바꿔 묻는다.</p>
+<h2>왜 그렇게 묻나</h2>
+<p>흔한 대답은 두 가지였다. 하나는 「유럽 사람이 더 뛰어나서」이고, 하나는 「대답할 수 없는 질문」이라는 회피다. 저자는 둘 다 거부한다.</p>
+<p>① 뉴기니에서 33년을 일한 경험으로, 뉴기니 사람들이 지능에서 뒤진다는 생각은 자기가 본 것과 맞지 않았다.</p>
+<p>② 「질문에 답하지 않으면 「뛰어나서」라는 잘못된 답이 그 자리를 차지한다」고 봤다. 그래서 답을 생물학이 아니라 <strong>지리와 생태</strong>에서 찾겠다고 선언한다.</p>
+<aside class="words"><div class="box-t">낱말 풀이</div><dl><dt>생태</dt><dd>생물이 어떤 환경에서 어떻게 살아가는지, 생물과 환경이 어떻게 얽혀 있는지를 보는 눈.</dd></dl></aside>
+<h2>무엇으로 이어지나</h2>
+<p>이 질문이 책 전체의 설계도다. 2–4번은 「차이가 언제 어떻게 드러났나」, 5–10번은 「차이가 어디서 생겼나」, 11번은 「그 설명이 대륙마다 들어맞나」를 본다.</p>
+<aside class="think"><div class="box-t">생각해 볼 질문</div><ul><li>「왜 우리는 가난하고 저들은 부자인가」라는 질문은 누가 던질 때 가장 위험할까?</li><li>질문에 답하지 않는 것도 하나의 답이 된다면, 어떤 답이 그 자리를 차지할까?</li><li>얄리가 말한 「화물」에는 무엇이 들어가고 무엇이 빠져 있을까?</li></ul></aside>
+<nav class="pager">
+<a class="btn next" href="book-02.html">다음 쪽 →<span>2. 출발선</span></a>
+<a class="btn prev" href="book-intro.html">← 앞 쪽<span>이 정리를 읽는 법</span></a>
+</nav>
+</main>
+</body>
+</html>

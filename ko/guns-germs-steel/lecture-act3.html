@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>3막. 뿌리 · 강연 정리 · 『총, 균, 쇠』 크게 읽기</title>
+<meta name="description" content="『총, 균, 쇠』 크게 읽기 — 강연 정리 5/11">
+<meta property="og:title" content="3막. 뿌리 · 강연 정리 · 『총, 균, 쇠』 크게 읽기">
+<meta property="og:description" content="『총, 균, 쇠』 크게 읽기 — 강연 정리 5/11">
+<meta property="og:type" content="article">
+<meta name="theme-color" content="#fbf8f1">
+<style>:root{
+  color-scheme: light;
+  --bg:#fbf8f1; --surface:#ffffff; --ink:#111111; --ink2:#3a3a3a; --line:#d9d3c5;
+  --accent:#0b4fb3; --accent-ink:#ffffff;
+  --word:#eaf1fb; --word-line:#9db7e0;
+  --think:#fff3d6; --think-line:#e0b85c;
+  --note:#f1eee6;
+  --host:#0b4fb3; --kid:#1d7a3a; --panel:#7a5a1d;
+  --bar:#c2410c; --land:#d9cfb8; --lat:#8a8170;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    color-scheme: dark;
+    --bg:#141414; --surface:#1e1e1e; --ink:#f2f2f2; --ink2:#d0d0d0; --line:#3d3d3d;
+    --accent:#8ab4ff; --accent-ink:#0d1b33;
+    --word:#18243a; --word-line:#3c5a8a;
+    --think:#2e2610; --think-line:#8a6d1f;
+    --note:#222222;
+    --host:#8ab4ff; --kid:#7ed69a; --panel:#e0c07a;
+    --bar:#ff9a5c; --land:#4a4538; --lat:#9a917f;
+  }
+}
+/* 기본 글자를 크게 잡는다(다른 페이지는 17px). 단추로 20–34px 사이를 고른다 */
+html{font-size:22px;-webkit-text-size-adjust:100%}
+html[data-size="0"]{font-size:20px}
+html[data-size="1"]{font-size:22px}
+html[data-size="2"]{font-size:25px}
+html[data-size="3"]{font-size:28px}
+html[data-size="4"]{font-size:31px}
+html[data-size="5"]{font-size:34px}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;line-height:1.85;word-break:keep-all;overflow-wrap:anywhere}
+main{max-width:38rem;margin:0 auto;padding:4px 18px 48px}
+a{color:var(--accent);text-underline-offset:.18em}
+strong{font-weight:800}
+
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:10px;max-width:38rem;margin:0 auto;padding:10px 14px;font-size:18px}
+.topbar .home{font-weight:700;font-size:20px;padding:10px 4px}
+.size{display:flex;gap:8px}
+.size button{min-width:64px;min-height:52px;border:2px solid var(--ink2);border-radius:12px;background:var(--surface);color:var(--ink);font-size:22px;font-weight:800;line-height:1;cursor:pointer}
+.size button small{font-size:16px;margin-left:2px}
+.size button b{font-size:22px;margin-left:2px}
+
+.where{margin:8px 0 0;color:var(--ink2);font-size:.82rem}
+h1{font-size:1.5rem;line-height:1.4;margin:.3em 0 .5em}
+h1 .sub{display:block;font-size:.72em;font-weight:600;color:var(--ink2);margin-top:.25em}
+.from{margin:-.4em 0 1em;color:var(--ink2);font-size:.85rem}
+h2{font-size:1.2rem;line-height:1.45;margin:1.6em 0 .5em;padding-top:.6em;border-top:3px solid var(--line)}
+h3{font-size:1.08rem;line-height:1.45;margin:1.3em 0 .4em}
+p{margin:0 0 1em}
+ul,ol{padding-left:1.4em;margin:0 0 1em}
+li{margin:0 0 .6em}
+
+.note{background:var(--note);border-left:6px solid var(--line);border-radius:8px;padding:.8em 1em;margin:0 0 1.2em}
+.note p:last-child{margin-bottom:0}
+
+.words,.think{border-radius:12px;padding:.8em 1em;margin:0 0 1.4em;font-size:.95rem}
+.words{background:var(--word);border:2px solid var(--word-line)}
+.think{background:var(--think);border:2px solid var(--think-line)}
+.box-t{font-weight:800;font-size:.9rem;margin-bottom:.4em}
+.words dl{margin:0}
+.words dt{font-weight:800}
+.words dd{margin:0 0 .7em}
+.words dd:last-child,.think li:last-child{margin-bottom:0}
+.think ul{margin:0;padding-left:1.2em}
+
+.say{margin:0 0 1.2em;padding-left:.8em;border-left:6px solid var(--panel)}
+.say .who{font-weight:800;color:var(--panel);font-size:.9rem;line-height:1.5}
+.say .who small{font-weight:600;font-size:.85em}
+.say p{margin:0}
+.say.host{border-color:var(--host)} .say.host .who{color:var(--host)}
+.say.kid{border-color:var(--kid)} .say.kid .who{color:var(--kid)}
+
+figure{margin:0 0 1.4em}
+figcaption{font-weight:800;margin-bottom:.5em}
+.flow ol{list-style:none;padding:0;margin:0}
+.flow > ol > li{background:var(--surface);border:2px solid var(--line);border-radius:12px;padding:.6em .9em;margin:0;position:relative}
+.flow > ol > li + li{margin-top:2.2em}
+.flow > ol > li + li::before{content:"↓";position:absolute;left:50%;top:-1.9em;transform:translateX(-50%);font-size:1.3rem;font-weight:800;color:var(--ink2);line-height:1.6}
+.flow > ol > li.hi{border-color:var(--accent);border-width:3px;font-weight:700}
+.flow ul{margin:.4em 0 0;padding-left:1.2em}
+.flow ul li{margin:0 0 .3em}
+
+.bar-l{font-weight:700}
+.bars .bar{margin:0 0 1em}
+.bar-t{height:1.1em;background:var(--note);border-radius:6px;overflow:hidden;border:1px solid var(--line)}
+.bar-t span{display:block;height:100%;background:var(--bar)}
+.bar-n{font-size:.85rem;color:var(--ink2)}
+
+.map svg{width:100%;height:auto;display:block}
+.map .land{fill:var(--land)}
+.map .lat{stroke:var(--lat);stroke-width:1.5;stroke-dasharray:6 6}
+.map .lb{font-size:23px;font-weight:800;fill:var(--ink);text-anchor:middle;dominant-baseline:middle}
+.map .arw{stroke:var(--ink2);stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.map .cap{font-size:20px;font-weight:700;fill:var(--ink2);text-anchor:middle;dominant-baseline:middle}
+.map figcaption{font-weight:400;margin-top:.5em}
+
+.card{background:var(--surface);border:2px solid var(--line);border-radius:12px;padding:.2em 1em .4em;margin:0 0 1.2em}
+.card h3{margin-top:.6em}
+
+details{margin:0 0 1.2em;border:2px solid var(--line);border-radius:12px;padding:.4em .9em;background:var(--surface)}
+summary{cursor:pointer;font-weight:700;min-height:48px;display:flex;align-items:center}
+details[open] summary{margin-bottom:.6em}
+
+.pager{display:flex;flex-direction:column;gap:14px;margin-top:2.4em}
+.btn{display:block;text-decoration:none;border-radius:14px;padding:.7em 1em;font-weight:800;font-size:1.1rem;line-height:1.4;text-align:center;border:3px solid var(--accent)}
+.btn span{display:block;font-weight:600;font-size:.8rem;margin-top:.15em}
+.btn.next{background:var(--accent);color:var(--accent-ink)}
+.btn.prev{background:var(--surface);color:var(--accent)}
+
+.entry{background:var(--surface);border:2px solid var(--line);border-radius:16px;padding:.2em 1em 1em;margin:1.4em 0}
+.entry h2{border-top:0;padding-top:0;margin-top:.8em}
+.entry details{margin:1em 0 0}
+.toc{margin:0;padding-left:1.6em}
+.toc li{margin:0 0 .5em}
+#resume{margin:1em 0}
+#resume .btn{border-color:var(--kid);background:var(--kid);color:var(--bg)}
+</style>
+<script>(function(){
+  var KEY_SIZE = 'gss-size', KEY_LAST = 'gss-last';
+  function get(k){ try { return localStorage.getItem(k); } catch(e){ return null; } }
+  function set(k, v){ try { localStorage.setItem(k, v); } catch(e){} }
+  var size = parseInt(get(KEY_SIZE), 10);
+  if (!(size >= 0 && size <= 5)) size = 1;
+  document.documentElement.setAttribute('data-size', size);
+  document.addEventListener('DOMContentLoaded', function(){
+    var btns = document.querySelectorAll('[data-size]');
+    for (var i = 0; i < btns.length; i++) btns[i].addEventListener('click', function(){
+      size = Math.max(0, Math.min(5, size + parseInt(this.getAttribute('data-size'), 10)));
+      document.documentElement.setAttribute('data-size', size);
+      set(KEY_SIZE, size);
+    });
+    var page = document.body.getAttribute('data-page');
+    if (page) { set(KEY_LAST, JSON.stringify({ href: page, title: document.querySelector('h1').firstChild.textContent, where: document.querySelector('.where').textContent })); return; }
+    var box = document.getElementById('resume'), last = null;
+    try { last = JSON.parse(get(KEY_LAST)); } catch(e){}
+    if (box && last && last.href) {
+      var a = document.createElement('a');
+      a.className = 'btn next'; a.href = last.href;
+      a.textContent = '읽던 곳 이어 읽기';
+      var s = document.createElement('span'); s.textContent = last.where + ' · ' + last.title;
+      a.appendChild(s); box.appendChild(a); box.hidden = false;
+    }
+  });
+})();
+</script>
+</head>
+<body data-book="lecture" data-page="lecture-act3.html">
+<header class="topbar">
+  <a class="home" href="./">처음 화면</a>
+  <span class="size"><button type="button" data-size="-1" aria-label="글자 작게">가<small>−</small></button><button type="button" data-size="1" aria-label="글자 크게">가<b>+</b></button></span>
+</header>
+<main>
+<p class="where">강연 정리 · <b>5</b> / 11</p>
+<h1>3막. 뿌리<span class="sub">농사가 모든 것을 낳았다</span></h1>
+
+<div class="say host"><div class="who">설민석</div><p>유럽인의 기술이 더 발전한 이유, 먼저 맞혀 보세요.</p></div>
+<div class="say panel"><div class="who">현무</div><p>환경 때문 아닐까요?</p></div>
+<div class="say host"><div class="who">설민석</div><p>맞습니다. 그런데 그 환경이 좋아서 <strong>무엇이</strong> 먼저 생겼을까요? 힌트를 드릴게요. 지난번 『사피엔스』 때 유발 하라리는 이걸 「인류 최대의 사기극」이라고 했어요.</p></div>
+<div class="say panel"><div class="who">이적</div><p>농사요?</p></div>
+<div class="say host"><div class="who">설민석</div><p><strong>농업혁명</strong>입니다. 하라리는 농업혁명의 나쁜 면을 강조했는데, 다이아몬드는 <strong>좋은 면</strong>을 강조합니다. 한번 따라가 봅시다.</p></div>
+<div class="say host"><div class="who">설민석</div><p>농사는 혼자 못 지어요. 사람들이 <strong>모여서 협업</strong>해야 합니다. 그리고 곡식이 <strong>안정적으로</strong> 나오니까 아이를 낳고 키우는 게 가능해지고, 그래서 <strong>인구가 늘어요.</strong> 부족이 도시가 되고, 도시가 제국이 됩니다.</p></div>
+<div class="say host"><div class="who">설민석</div><p>좁은 땅에 사람이 많아지면 뭐가 생길까요? <strong>분업</strong>입니다. 현무 씨는 농사보다 말을 잘하니까 아나운서가 되고, 이적 씨는 노래를 잘하니까 가수가 되고. 사람이 많아지니 분업이 생기고, 분업 때문에 <strong>전문가</strong>가 생기고, 그래서 <strong>기술</strong>이 발전한 겁니다.</p></div>
+<figure class="flow"><figcaption>농사에서 기술까지</figcaption><ol><li>농사</li><li>모여 살며 함께 일함</li><li>식량이 안정됨 → 아이를 낳고 키울 수 있음</li><li>인구가 늚<ul><li>부족 → 도시 → 제국</li><li>분업 → 전문가 → 기술 발전</li></ul></li></ol></figure>
+<h2>문자는 왜 생겼나</h2>
+<div class="say host"><div class="who">설민석</div><p>농업 때문에 생긴 위대한 것이 하나 더 있어요. 지금까지 발견된 <strong>가장 오래된 문자</strong>는 수메르 문자인데, 한 문장을 이룹니다. 어떤 내용일까요? 왕의 명령? 아니에요. 「<strong>보리 몇 짝, 곡식 몇 짝</strong>」. 곡식을 거두면 <strong>저장하고 계산하고 나눠야</strong> 하는데 표현할 방법이 없으니 표시를 만든 거죠. <strong>문자는 농업혁명 때문에 생겼습니다.</strong></p></div>
+<div class="say host"><div class="who">설민석</div><p>그런데 이 문자가 괴물 같은 일을 합니다. <strong>시행착오를 기록</strong>하기 시작한 거예요. 실패와 성공이 쌓이고 쌓여서 데이터베이스가 되고, 그걸 바탕으로 칼과 창과 활을 거쳐 <strong>총</strong>까지 만들게 됐다는 겁니다. 이 모든 것의 시작이 <strong>농업</strong>이에요.</p></div>
+<h2>가축, 그리고 균</h2>
+<div class="say host"><div class="who">설민석</div><p>농업은 또 하나를 가져옵니다. <strong>가축</strong>이에요. 사냥하며 살면 가축을 키울 이유가 없죠. 가축은 <strong>농사짓는 삶에서만 필요한 것</strong>입니다.</p></div>
+<div class="say host"><div class="who">설민석</div><p>남아메리카에는 가축이 될 수 있는 큰 동물이 <strong>라마 한 종</strong>밖에 없었어요. 유라시아 대륙에는 소·말·돼지·양·염소… <strong>13종 이상</strong>이 있었습니다.</p></div>
+<div class="say host"><div class="who">설민석</div><p>그러면 균은 어디서 왔을까요? 천연두는 소에서, 조류 독감은 새에서. 균은 대부분 <strong>가축에서 사람으로</strong> 넘어왔어요. 유럽 사람들도 처음에는 이 병으로 고생했겠죠. 죽고 아프고 하면서 <strong>항체</strong>가 생긴 겁니다. 그 균들을 온몸에 품은 유럽인이 아메리카 땅을 밟았는데, 아메리카 사람들에게는 한 종에 대한 항체도 없었습니다.</p></div>
+<figure class="bars"><figcaption>가축의 수가 균과 항체를 갈랐다</figcaption><div class="bar"><div class="bar-l">유라시아 가축 13종</div><div class="bar-t"><span style="width:100.00%"></span></div><div class="bar-n">가축에서 온 균 여러 종 → 항체 있음</div></div><div class="bar"><div class="bar-l">남아메리카 가축 1종</div><div class="bar-t"><span style="width:7.69%"></span></div><div class="bar-n">균 거의 없음 → 항체 없음</div></div></figure>
+<nav class="pager">
+<a class="btn next" href="lecture-act4.html">다음 쪽 →<span>4막. 왜 거기서는 퍼지지 않았나</span></a>
+<a class="btn prev" href="lecture-act2.html">← 앞 쪽<span>2막. 더 무서운 무기</span></a>
+</nav>
+</main>
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>9. 가축의 치명적 선물 · 책 정리 · 『총, 균, 쇠』 크게 읽기</title>
+<meta name="description" content="『총, 균, 쇠』 크게 읽기 — 책 정리 10/15">
+<meta property="og:title" content="9. 가축의 치명적 선물 · 책 정리 · 『총, 균, 쇠』 크게 읽기">
+<meta property="og:description" content="『총, 균, 쇠』 크게 읽기 — 책 정리 10/15">
+<meta property="og:type" content="article">
+<meta name="theme-color" content="#fbf8f1">
+<style>:root{
+  color-scheme: light;
+  --bg:#fbf8f1; --surface:#ffffff; --ink:#111111; --ink2:#3a3a3a; --line:#d9d3c5;
+  --accent:#0b4fb3; --accent-ink:#ffffff;
+  --word:#eaf1fb; --word-line:#9db7e0;
+  --think:#fff3d6; --think-line:#e0b85c;
+  --note:#f1eee6;
+  --host:#0b4fb3; --kid:#1d7a3a; --panel:#7a5a1d;
+  --bar:#c2410c; --land:#d9cfb8; --lat:#8a8170;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    color-scheme: dark;
+    --bg:#141414; --surface:#1e1e1e; --ink:#f2f2f2; --ink2:#d0d0d0; --line:#3d3d3d;
+    --accent:#8ab4ff; --accent-ink:#0d1b33;
+    --word:#18243a; --word-line:#3c5a8a;
+    --think:#2e2610; --think-line:#8a6d1f;
+    --note:#222222;
+    --host:#8ab4ff; --kid:#7ed69a; --panel:#e0c07a;
+    --bar:#ff9a5c; --land:#4a4538; --lat:#9a917f;
+  }
+}
+/* 기본 글자를 크게 잡는다(다른 페이지는 17px). 단추로 20–34px 사이를 고른다 */
+html{font-size:22px;-webkit-text-size-adjust:100%}
+html[data-size="0"]{font-size:20px}
+html[data-size="1"]{font-size:22px}
+html[data-size="2"]{font-size:25px}
+html[data-size="3"]{font-size:28px}
+html[data-size="4"]{font-size:31px}
+html[data-size="5"]{font-size:34px}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;line-height:1.85;word-break:keep-all;overflow-wrap:anywhere}
+main{max-width:38rem;margin:0 auto;padding:4px 18px 48px}
+a{color:var(--accent);text-underline-offset:.18em}
+strong{font-weight:800}
+
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:10px;max-width:38rem;margin:0 auto;padding:10px 14px;font-size:18px}
+.topbar .home{font-weight:700;font-size:20px;padding:10px 4px}
+.size{display:flex;gap:8px}
+.size button{min-width:64px;min-height:52px;border:2px solid var(--ink2);border-radius:12px;background:var(--surface);color:var(--ink);font-size:22px;font-weight:800;line-height:1;cursor:pointer}
+.size button small{font-size:16px;margin-left:2px}
+.size button b{font-size:22px;margin-left:2px}
+
+.where{margin:8px 0 0;color:var(--ink2);font-size:.82rem}
+h1{font-size:1.5rem;line-height:1.4;margin:.3em 0 .5em}
+h1 .sub{display:block;font-size:.72em;font-weight:600;color:var(--ink2);margin-top:.25em}
+.from{margin:-.4em 0 1em;color:var(--ink2);font-size:.85rem}
+h2{font-size:1.2rem;line-height:1.45;margin:1.6em 0 .5em;padding-top:.6em;border-top:3px solid var(--line)}
+h3{font-size:1.08rem;line-height:1.45;margin:1.3em 0 .4em}
+p{margin:0 0 1em}
+ul,ol{padding-left:1.4em;margin:0 0 1em}
+li{margin:0 0 .6em}
+
+.note{background:var(--note);border-left:6px solid var(--line);border-radius:8px;padding:.8em 1em;margin:0 0 1.2em}
+.note p:last-child{margin-bottom:0}
+
+.words,.think{border-radius:12px;padding:.8em 1em;margin:0 0 1.4em;font-size:.95rem}
+.words{background:var(--word);border:2px solid var(--word-line)}
+.think{background:var(--think);border:2px solid var(--think-line)}
+.box-t{font-weight:800;font-size:.9rem;margin-bottom:.4em}
+.words dl{margin:0}
+.words dt{font-weight:800}
+.words dd{margin:0 0 .7em}
+.words dd:last-child,.think li:last-child{margin-bottom:0}
+.think ul{margin:0;padding-left:1.2em}
+
+.say{margin:0 0 1.2em;padding-left:.8em;border-left:6px solid var(--panel)}
+.say .who{font-weight:800;color:var(--panel);font-size:.9rem;line-height:1.5}
+.say .who small{font-weight:600;font-size:.85em}
+.say p{margin:0}
+.say.host{border-color:var(--host)} .say.host .who{color:var(--host)}
+.say.kid{border-color:var(--kid)} .say.kid .who{color:var(--kid)}
+
+figure{margin:0 0 1.4em}
+figcaption{font-weight:800;margin-bottom:.5em}
+.flow ol{list-style:none;padding:0;margin:0}
+.flow > ol > li{background:var(--surface);border:2px solid var(--line);border-radius:12px;padding:.6em .9em;margin:0;position:relative}
+.flow > ol > li + li{margin-top:2.2em}
+.flow > ol > li + li::before{content:"↓";position:absolute;left:50%;top:-1.9em;transform:translateX(-50%);font-size:1.3rem;font-weight:800;color:var(--ink2);line-height:1.6}
+.flow > ol > li.hi{border-color:var(--accent);border-width:3px;font-weight:700}
+.flow ul{margin:.4em 0 0;padding-left:1.2em}
+.flow ul li{margin:0 0 .3em}
+
+.bar-l{font-weight:700}
+.bars .bar{margin:0 0 1em}
+.bar-t{height:1.1em;background:var(--note);border-radius:6px;overflow:hidden;border:1px solid var(--line)}
+.bar-t span{display:block;height:100%;background:var(--bar)}
+.bar-n{font-size:.85rem;color:var(--ink2)}
+
+.map svg{width:100%;height:auto;display:block}
+.map .land{fill:var(--land)}
+.map .lat{stroke:var(--lat);stroke-width:1.5;stroke-dasharray:6 6}
+.map .lb{font-size:23px;font-weight:800;fill:var(--ink);text-anchor:middle;dominant-baseline:middle}
+.map .arw{stroke:var(--ink2);stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.map .cap{font-size:20px;font-weight:700;fill:var(--ink2);text-anchor:middle;dominant-baseline:middle}
+.map figcaption{font-weight:400;margin-top:.5em}
+
+.card{background:var(--surface);border:2px solid var(--line);border-radius:12px;padding:.2em 1em .4em;margin:0 0 1.2em}
+.card h3{margin-top:.6em}
+
+details{margin:0 0 1.2em;border:2px solid var(--line);border-radius:12px;padding:.4em .9em;background:var(--surface)}
+summary{cursor:pointer;font-weight:700;min-height:48px;display:flex;align-items:center}
+details[open] summary{margin-bottom:.6em}
+
+.pager{display:flex;flex-direction:column;gap:14px;margin-top:2.4em}
+.btn{display:block;text-decoration:none;border-radius:14px;padding:.7em 1em;font-weight:800;font-size:1.1rem;line-height:1.4;text-align:center;border:3px solid var(--accent)}
+.btn span{display:block;font-weight:600;font-size:.8rem;margin-top:.15em}
+.btn.next{background:var(--accent);color:var(--accent-ink)}
+.btn.prev{background:var(--surface);color:var(--accent)}
+
+.entry{background:var(--surface);border:2px solid var(--line);border-radius:16px;padding:.2em 1em 1em;margin:1.4em 0}
+.entry h2{border-top:0;padding-top:0;margin-top:.8em}
+.entry details{margin:1em 0 0}
+.toc{margin:0;padding-left:1.6em}
+.toc li{margin:0 0 .5em}
+#resume{margin:1em 0}
+#resume .btn{border-color:var(--kid);background:var(--kid);color:var(--bg)}
+</style>
+<script>(function(){
+  var KEY_SIZE = 'gss-size', KEY_LAST = 'gss-last';
+  function get(k){ try { return localStorage.getItem(k); } catch(e){ return null; } }
+  function set(k, v){ try { localStorage.setItem(k, v); } catch(e){} }
+  var size = parseInt(get(KEY_SIZE), 10);
+  if (!(size >= 0 && size <= 5)) size = 1;
+  document.documentElement.setAttribute('data-size', size);
+  document.addEventListener('DOMContentLoaded', function(){
+    var btns = document.querySelectorAll('[data-size]');
+    for (var i = 0; i < btns.length; i++) btns[i].addEventListener('click', function(){
+      size = Math.max(0, Math.min(5, size + parseInt(this.getAttribute('data-size'), 10)));
+      document.documentElement.setAttribute('data-size', size);
+      set(KEY_SIZE, size);
+    });
+    var page = document.body.getAttribute('data-page');
+    if (page) { set(KEY_LAST, JSON.stringify({ href: page, title: document.querySelector('h1').firstChild.textContent, where: document.querySelector('.where').textContent })); return; }
+    var box = document.getElementById('resume'), last = null;
+    try { last = JSON.parse(get(KEY_LAST)); } catch(e){}
+    if (box && last && last.href) {
+      var a = document.createElement('a');
+      a.className = 'btn next'; a.href = last.href;
+      a.textContent = '읽던 곳 이어 읽기';
+      var s = document.createElement('span'); s.textContent = last.where + ' · ' + last.title;
+      a.appendChild(s); box.appendChild(a); box.hidden = false;
+    }
+  });
+})();
+</script>
+</head>
+<body data-book="book" data-page="book-09.html">
+<header class="topbar">
+  <a class="home" href="./">처음 화면</a>
+  <span class="size"><button type="button" data-size="-1" aria-label="글자 작게">가<small>−</small></button><button type="button" data-size="1" aria-label="글자 크게">가<b>+</b></button></span>
+</header>
+<main>
+<p class="where">책 정리 · <b>10</b> / 15</p>
+<h1>9. 가축의 치명적 선물<span class="sub">균은 어디서 왔나</span></h1>
+<p class="from">책에서는 3부 11장</p>
+<h2>무슨 주장</h2>
+<p>아메리카 원주민을 가장 많이 죽인 것은 총이 아니라 병이었다. 그 병은 대부분 유라시아의 가축에서 사람으로 옮겨 온 것이고, 가축이 적었던 아메리카에는 반대로 유럽에 줄 병이 거의 없었다.</p>
+<h2>왜 그렇게 보나</h2>
+<p>① 천연두·홍역·독감·결핵·페스트처럼 사람 사이에 빠르게 퍼지는 병은 <strong>사람이 많이 모여 사는 곳</strong>에서만 유지된다. 작은 집단에서는 다 걸리고 나면 병이 사라진다. 그래서 이런 병은 농사로 사람이 늘어난 뒤에야 생겼다.</p>
+<p>② 책은 이 병들의 가까운 친척이 가축의 병이라고 본다. 홍역은 소의 병, 독감은 돼지·오리의 병과 가깝다. 수천 년 동안 가축과 한 지붕 밑에 살면서 병이 사람 쪽으로 넘어왔다.</p>
+<p>③ 유라시아 사람들은 그 병들을 수천 년 겪으며 살아남은 사람의 후손이다. 다 걸려도 어릴 때 걸려 면역을 가진 어른이 많았다.</p>
+<p>④ 아메리카에는 큰 가축이 거의 없었으니(7번) 사람에게 넘어올 병도 없었다. 1492년 뒤 천연두·홍역·독감이 한 번도 겪지 않은 사람들에게 들어가자, 마을 전체가 한꺼번에 앓았고 간호할 사람조차 없었다. 책은 지역에 따라 인구의 대부분이 죽었다고 보며, 학자들의 추정은 50%에서 90% 넘게까지 갈린다.</p>
+<p>⑤ 반대 방향으로 간 병은 거의 없었다. 매독의 기원은 논쟁이 있다고 책도 적는다.</p>
+<aside class="words"><div class="box-t">낱말 풀이</div><dl><dt>면역</dt><dd>한 번 병을 겪거나 예방주사를 맞은 뒤 몸이 그 병을 기억해 다시 잘 걸리지 않게 되는 힘.</dd></dl></aside>
+<h2>무엇으로 이어지나</h2>
+<p>4번의 카하마르카에서 천연두가 군대보다 먼저 도착한 이유가 여기 있다. 또 저자는 유라시아 안에서도 이 규칙이 작용했다고 본다. 가축을 가장 오래 기른 사회가 병에도 가장 익숙했다.</p>
+<aside class="think"><div class="box-t">생각해 볼 질문</div><ul><li>「병에 강한 사회」는 좋은 사회였을까, 아니면 수천 년 동안 많이 죽은 사회였을까?</li><li>균이 역사에서 한 일이 이렇게 큰데, 우리는 왜 장군의 이름은 외우고 병의 이름은 외우지 않을까?</li><li>2020년의 전염병은 이 장의 이야기와 어디가 같고 어디가 다를까?</li></ul></aside>
+<nav class="pager">
+<a class="btn next" href="book-10.html">다음 쪽 →<span>10. 문자·기술·국가</span></a>
+<a class="btn prev" href="book-08.html">← 앞 쪽<span>8. 기울어진 축</span></a>
+</nav>
+</main>
+</body>
+</html>

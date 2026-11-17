@@ -71,3 +71,13 @@
 | Bahasa Indonesia | [`id/hegemony/atlas-simple/`](id/hegemony/atlas-simple/index.html) | https://usan-82.github.io/cause-and-effect/id/hegemony/atlas-simple/ |
 
 소스와 빌드 방법은 [`_src/hegemony/atlas-simple/`](_src/hegemony/atlas-simple/README.md).
+
+## 『총, 균, 쇠』 크게 읽기 / guns-germs-steel
+
+재레드 다이아몬드의 『총, 균, 쇠』를 강연 정리(설민석 강독을 대화 형식으로)와 책 정리(열두 이야기와 비판)로 읽는 페이지. 시력이 나쁜 사람도 휴대폰으로 읽을 수 있게 기본 글자를 크게 잡고(22px, 단추로 34px까지), 한 장을 한 쪽으로 나눠 큰 「다음 쪽」 단추로 넘긴다. 각주·표·그림은 낱말 풀이 상자·목록·세로 사슬로 바꿨다.
+
+| 언어 | 파일 | 웹 |
+|---|---|---|
+| 한국어 | [`ko/guns-germs-steel/`](ko/guns-germs-steel/index.html) | https://usan-82.github.io/cause-and-effect/ko/guns-germs-steel/ |
+
+소스와 빌드 방법은 [`_src/guns-germs-steel/`](_src/guns-germs-steel/README.md).

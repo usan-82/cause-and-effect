@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>1막. 카하마르카 · 강연 정리 · 『총, 균, 쇠』 크게 읽기</title>
+<meta name="description" content="『총, 균, 쇠』 크게 읽기 — 강연 정리 3/11">
+<meta property="og:title" content="1막. 카하마르카 · 강연 정리 · 『총, 균, 쇠』 크게 읽기">
+<meta property="og:description" content="『총, 균, 쇠』 크게 읽기 — 강연 정리 3/11">
+<meta property="og:type" content="article">
+<meta name="theme-color" content="#fbf8f1">
+<style>:root{
+  color-scheme: light;
+  --bg:#fbf8f1; --surface:#ffffff; --ink:#111111; --ink2:#3a3a3a; --line:#d9d3c5;
+  --accent:#0b4fb3; --accent-ink:#ffffff;
+  --word:#eaf1fb; --word-line:#9db7e0;
+  --think:#fff3d6; --think-line:#e0b85c;
+  --note:#f1eee6;
+  --host:#0b4fb3; --kid:#1d7a3a; --panel:#7a5a1d;
+  --bar:#c2410c; --land:#d9cfb8; --lat:#8a8170;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    color-scheme: dark;
+    --bg:#141414; --surface:#1e1e1e; --ink:#f2f2f2; --ink2:#d0d0d0; --line:#3d3d3d;
+    --accent:#8ab4ff; --accent-ink:#0d1b33;
+    --word:#18243a; --word-line:#3c5a8a;
+    --think:#2e2610; --think-line:#8a6d1f;
+    --note:#222222;
+    --host:#8ab4ff; --kid:#7ed69a; --panel:#e0c07a;
+    --bar:#ff9a5c; --land:#4a4538; --lat:#9a917f;
+  }
+}
+/* 기본 글자를 크게 잡는다(다른 페이지는 17px). 단추로 20–34px 사이를 고른다 */
+html{font-size:22px;-webkit-text-size-adjust:100%}
+html[data-size="0"]{font-size:20px}
+html[data-size="1"]{font-size:22px}
+html[data-size="2"]{font-size:25px}
+html[data-size="3"]{font-size:28px}
+html[data-size="4"]{font-size:31px}
+html[data-size="5"]{font-size:34px}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;line-height:1.85;word-break:keep-all;overflow-wrap:anywhere}
+main{max-width:38rem;margin:0 auto;padding:4px 18px 48px}
+a{color:var(--accent);text-underline-offset:.18em}
+strong{font-weight:800}
+
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:10px;max-width:38rem;margin:0 auto;padding:10px 14px;font-size:18px}
+.topbar .home{font-weight:700;font-size:20px;padding:10px 4px}
+.size{display:flex;gap:8px}
+.size button{min-width:64px;min-height:52px;border:2px solid var(--ink2);border-radius:12px;background:var(--surface);color:var(--ink);font-size:22px;font-weight:800;line-height:1;cursor:pointer}
+.size button small{font-size:16px;margin-left:2px}
+.size button b{font-size:22px;margin-left:2px}
+
+.where{margin:8px 0 0;color:var(--ink2);font-size:.82rem}
+h1{font-size:1.5rem;line-height:1.4;margin:.3em 0 .5em}
+h1 .sub{display:block;font-size:.72em;font-weight:600;color:var(--ink2);margin-top:.25em}
+.from{margin:-.4em 0 1em;color:var(--ink2);font-size:.85rem}
+h2{font-size:1.2rem;line-height:1.45;margin:1.6em 0 .5em;padding-top:.6em;border-top:3px solid var(--line)}
+h3{font-size:1.08rem;line-height:1.45;margin:1.3em 0 .4em}
+p{margin:0 0 1em}
+ul,ol{padding-left:1.4em;margin:0 0 1em}
+li{margin:0 0 .6em}
+
+.note{background:var(--note);border-left:6px solid var(--line);border-radius:8px;padding:.8em 1em;margin:0 0 1.2em}
+.note p:last-child{margin-bottom:0}
+
+.words,.think{border-radius:12px;padding:.8em 1em;margin:0 0 1.4em;font-size:.95rem}
+.words{background:var(--word);border:2px solid var(--word-line)}
+.think{background:var(--think);border:2px solid var(--think-line)}
+.box-t{font-weight:800;font-size:.9rem;margin-bottom:.4em}
+.words dl{margin:0}
+.words dt{font-weight:800}
+.words dd{margin:0 0 .7em}
+.words dd:last-child,.think li:last-child{margin-bottom:0}
+.think ul{margin:0;padding-left:1.2em}
+
+.say{margin:0 0 1.2em;padding-left:.8em;border-left:6px solid var(--panel)}
+.say .who{font-weight:800;color:var(--panel);font-size:.9rem;line-height:1.5}
+.say .who small{font-weight:600;font-size:.85em}
+.say p{margin:0}
+.say.host{border-color:var(--host)} .say.host .who{color:var(--host)}
+.say.kid{border-color:var(--kid)} .say.kid .who{color:var(--kid)}
+
+figure{margin:0 0 1.4em}
+figcaption{font-weight:800;margin-bottom:.5em}
+.flow ol{list-style:none;padding:0;margin:0}
+.flow > ol > li{background:var(--surface);border:2px solid var(--line);border-radius:12px;padding:.6em .9em;margin:0;position:relative}
+.flow > ol > li + li{margin-top:2.2em}
+.flow > ol > li + li::before{content:"↓";position:absolute;left:50%;top:-1.9em;transform:translateX(-50%);font-size:1.3rem;font-weight:800;color:var(--ink2);line-height:1.6}
+.flow > ol > li.hi{border-color:var(--accent);border-width:3px;font-weight:700}
+.flow ul{margin:.4em 0 0;padding-left:1.2em}
+.flow ul li{margin:0 0 .3em}
+
+.bar-l{font-weight:700}
+.bars .bar{margin:0 0 1em}
+.bar-t{height:1.1em;background:var(--note);border-radius:6px;overflow:hidden;border:1px solid var(--line)}
+.bar-t span{display:block;height:100%;background:var(--bar)}
+.bar-n{font-size:.85rem;color:var(--ink2)}
+
+.map svg{width:100%;height:auto;display:block}
+.map .land{fill:var(--land)}
+.map .lat{stroke:var(--lat);stroke-width:1.5;stroke-dasharray:6 6}
+.map .lb{font-size:23px;font-weight:800;fill:var(--ink);text-anchor:middle;dominant-baseline:middle}
+.map .arw{stroke:var(--ink2);stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.map .cap{font-size:20px;font-weight:700;fill:var(--ink2);text-anchor:middle;dominant-baseline:middle}
+.map figcaption{font-weight:400;margin-top:.5em}
+
+.card{background:var(--surface);border:2px solid var(--line);border-radius:12px;padding:.2em 1em .4em;margin:0 0 1.2em}
+.card h3{margin-top:.6em}
+
+details{margin:0 0 1.2em;border:2px solid var(--line);border-radius:12px;padding:.4em .9em;background:var(--surface)}
+summary{cursor:pointer;font-weight:700;min-height:48px;display:flex;align-items:center}
+details[open] summary{margin-bottom:.6em}
+
+.pager{display:flex;flex-direction:column;gap:14px;margin-top:2.4em}
+.btn{display:block;text-decoration:none;border-radius:14px;padding:.7em 1em;font-weight:800;font-size:1.1rem;line-height:1.4;text-align:center;border:3px solid var(--accent)}
+.btn span{display:block;font-weight:600;font-size:.8rem;margin-top:.15em}
+.btn.next{background:var(--accent);color:var(--accent-ink)}
+.btn.prev{background:var(--surface);color:var(--accent)}
+
+.entry{background:var(--surface);border:2px solid var(--line);border-radius:16px;padding:.2em 1em 1em;margin:1.4em 0}
+.entry h2{border-top:0;padding-top:0;margin-top:.8em}
+.entry details{margin:1em 0 0}
+.toc{margin:0;padding-left:1.6em}
+.toc li{margin:0 0 .5em}
+#resume{margin:1em 0}
+#resume .btn{border-color:var(--kid);background:var(--kid);color:var(--bg)}
+</style>
+<script>(function(){
+  var KEY_SIZE = 'gss-size', KEY_LAST = 'gss-last';
+  function get(k){ try { return localStorage.getItem(k); } catch(e){ return null; } }
+  function set(k, v){ try { localStorage.setItem(k, v); } catch(e){} }
+  var size = parseInt(get(KEY_SIZE), 10);
+  if (!(size >= 0 && size <= 5)) size = 1;
+  document.documentElement.setAttribute('data-size', size);
+  document.addEventListener('DOMContentLoaded', function(){
+    var btns = document.querySelectorAll('[data-size]');
+    for (var i = 0; i < btns.length; i++) btns[i].addEventListener('click', function(){
+      size = Math.max(0, Math.min(5, size + parseInt(this.getAttribute('data-size'), 10)));
+      document.documentElement.setAttribute('data-size', size);
+      set(KEY_SIZE, size);
+    });
+    var page = document.body.getAttribute('data-page');
+    if (page) { set(KEY_LAST, JSON.stringify({ href: page, title: document.querySelector('h1').firstChild.textContent, where: document.querySelector('.where').textContent })); return; }
+    var box = document.getElementById('resume'), last = null;
+    try { last = JSON.parse(get(KEY_LAST)); } catch(e){}
+    if (box && last && last.href) {
+      var a = document.createElement('a');
+      a.className = 'btn next'; a.href = last.href;
+      a.textContent = '읽던 곳 이어 읽기';
+      var s = document.createElement('span'); s.textContent = last.where + ' · ' + last.title;
+      a.appendChild(s); box.appendChild(a); box.hidden = false;
+    }
+  });
+})();
+</script>
+</head>
+<body data-book="lecture" data-page="lecture-act1.html">
+<header class="topbar">
+  <a class="home" href="./">처음 화면</a>
+  <span class="size"><button type="button" data-size="-1" aria-label="글자 작게">가<small>−</small></button><button type="button" data-size="1" aria-label="글자 크게">가<b>+</b></button></span>
+</header>
+<main>
+<p class="where">강연 정리 · <b>3</b> / 11</p>
+<h1>1막. 카하마르카<span class="sub">168명 대 8만 명</span></h1>
+
+<div class="say host"><div class="who">설민석</div><p>한쪽에 168명이 있습니다. 반대쪽에 8만 명이 있어요. 지금 같은 전쟁이 아니라 칼과 창으로 맞붙는 전투입니다. 누가 이길 것 같습니까?</p></div>
+<figure class="bars"><figcaption>두 군대의 크기</figcaption><div class="bar"><div class="bar-l">스페인 168명</div><div class="bar-t"><span style="width:0.60%"></span></div></div><div class="bar"><div class="bar-l">잉카 8만 명</div><div class="bar-t"><span style="width:100.00%"></span></div><div class="bar-n">약 476배</div></div></figure>
+<div class="say panel"><div class="who">현무</div><p>8만 명이요. 당연하죠.</p></div>
+<div class="say host"><div class="who">설민석</div><p>그런데 168명이 이겼습니다. 「죽기 살기로 싸워서」가 아니에요. 이순신 장군이 12척으로 이긴 것도 대단하지만, 이건 차원이 다릅니다. 1 대 500이에요. 방법은 <strong>용기가 아니라 네 가지</strong>였습니다.</p></div>
+<div class="say host"><div class="who">설민석</div><p>168명은 <strong>스페인</strong> 사람들이고, 이끄는 사람은 <strong>피사로</strong>. 8만 명은 지금의 페루, <strong>잉카 제국</strong>의 군대고 황제는 <strong>아타우알파</strong>입니다.</p></div>
+<h2>첫째, 정보</h2>
+<div class="say host"><div class="who">설민석</div><p>피사로는 쳐들어올 때 이미 <strong>정보</strong>를 가지고 왔어요. 13년쯤 전에 같은 스페인 사람 <strong>코르테스</strong>가 멕시코의 아스테카 제국을 무너뜨렸고, 그 과정을 <strong>글로 기록</strong>해서 퍼뜨렸거든요. 「이 사람들은 이런 지형에서 이렇게 싸우고, 이렇게 하면 제압된다.」 피사로는 그걸 읽고 왔습니다.</p></div>
+<div class="say host"><div class="who">설민석</div><p>반대로 아타우알파는 유럽인에 대해 <strong>아무것도</strong> 몰랐어요. 어느 정도였냐면, 바로 북쪽 멕시코가 13년 전에 스페인 사람들 손에 무너졌다는 사실조차 몰랐습니다. <strong>글자를 가진 쪽과 말로만 전하는 쪽의 차이</strong>예요.</p></div>
+<div class="say kid"><div class="who">민지</div><p>그래서 황제는 어떻게 나왔어요?</p></div>
+<div class="say host"><div class="who">설민석</div><p>전쟁 준비를 하고 나온 게 아니라 <strong>손님을 환영하러</strong> 나왔습니다. 화려한 옷을 입은 수천 명의 행렬, 보석으로 치장한 가마. 손에 무기를 들지 않은 사람이 많았어요. 한쪽은 전쟁을 준비했고, 한쪽은 전쟁을 상상도 못 했습니다.</p></div>
+<h2>둘째, 총소리</h2>
+<div class="say host"><div class="who">설민석</div><p>피사로는 떨지 않습니다. 사람을 보내 성경을 건넵니다. 아타우알파가 그걸 받아 보더니 던져 버려요. 그 순간 신호가 떨어지고, 숨어 있던 스페인 병사들이 뛰쳐나옵니다. 8만 명이 <strong>상상도 못 한 소리</strong>를 듣습니다. <strong>총소리</strong>예요.</p></div>
+<div class="say host"><div class="who">설민석</div><p>이때 총은 지금처럼 정확하게 사람을 맞히는 무기가 아니었어요. <strong>마른 하늘에 천둥</strong>이 치는 겁니다. 심리적인 공포가 목적이었죠.</p></div>
+<h2>셋째, 말</h2>
+<div class="say host"><div class="who">설민석</div><p>두 번째로 본 것은 <strong>말을 탄 사람</strong>입니다. 여러분, 그때 아메리카 대륙에는 <strong>말이 한 마리도 없었어요.</strong></p></div>
+<div class="say panel"><div class="who">이적</div><p>말이 없었다고요?</p></div>
+<div class="say host"><div class="who">설민석</div><p>네. 있는 건 <strong>라마와 알파카</strong>뿐이었습니다. 처음 보는 큰 동물 위에 사람이 올라타고, 나팔을 불고, 방울을 달아 요란하게 뛰어다닙니다. 8만 명이 소리만 듣고 흩어져 달아납니다.</p></div>
+<h2>넷째, 쇠</h2>
+<div class="say host"><div class="who">설민석</div><p>그다음은 일방적이었어요. 쇠칼로 찌르기 시작하는데, 책에는 「밤이 오지 않았으면 다 죽었을 것」이라고 쓰여 있습니다. 수천 명이 그날 죽었어요. 피사로는 가마로 곧장 달려가 가마꾼들을 베고, 부하들이 가마를 타고 올라가 황제를 끌어내립니다. <strong>황제 생포</strong>. 여기서 끝난 거죠.</p></div>
+<div class="say host"><div class="who">설민석</div><p>임진왜란 때 선조 임금은 피란이라도 갔잖아요. 아타우알파는 도망갈 생각조차 못 했어요. 상황이 이해가 안 되는 겁니다.</p></div>
+<figure class="flow"><figcaption>168명이 이긴 이유</figcaption><ol><li>이긴 이유 네 가지<ul><li>정보: 코르테스의 기록을 읽은 피사로</li><li>총소리: 천둥 같은 공포</li><li>말: 아메리카에 없던 동물</li><li>쇠칼과 쇠갑옷</li></ul></li><li class="hi">1532년 11월, 황제를 사로잡음</li></ol></figure>
+<nav class="pager">
+<a class="btn next" href="lecture-act2.html">다음 쪽 →<span>2막. 더 무서운 무기</span></a>
+<a class="btn prev" href="lecture-prologue.html">← 앞 쪽<span>프롤로그</span></a>
+</nav>
+</main>
+</body>
+</html>

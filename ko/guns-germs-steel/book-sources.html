@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>출처와 확인 · 책 정리 · 『총, 균, 쇠』 크게 읽기</title>
+<meta name="description" content="『총, 균, 쇠』 크게 읽기 — 책 정리 15/15">
+<meta property="og:title" content="출처와 확인 · 책 정리 · 『총, 균, 쇠』 크게 읽기">
+<meta property="og:description" content="『총, 균, 쇠』 크게 읽기 — 책 정리 15/15">
+<meta property="og:type" content="article">
+<meta name="theme-color" content="#fbf8f1">
+<style>:root{
+  color-scheme: light;
+  --bg:#fbf8f1; --surface:#ffffff; --ink:#111111; --ink2:#3a3a3a; --line:#d9d3c5;
+  --accent:#0b4fb3; --accent-ink:#ffffff;
+  --word:#eaf1fb; --word-line:#9db7e0;
+  --think:#fff3d6; --think-line:#e0b85c;
+  --note:#f1eee6;
+  --host:#0b4fb3; --kid:#1d7a3a; --panel:#7a5a1d;
+  --bar:#c2410c; --land:#d9cfb8; --lat:#8a8170;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    color-scheme: dark;
+    --bg:#141414; --surface:#1e1e1e; --ink:#f2f2f2; --ink2:#d0d0d0; --line:#3d3d3d;
+    --accent:#8ab4ff; --accent-ink:#0d1b33;
+    --word:#18243a; --word-line:#3c5a8a;
+    --think:#2e2610; --think-line:#8a6d1f;
+    --note:#222222;
+    --host:#8ab4ff; --kid:#7ed69a; --panel:#e0c07a;
+    --bar:#ff9a5c; --land:#4a4538; --lat:#9a917f;
+  }
+}
+/* 기본 글자를 크게 잡는다(다른 페이지는 17px). 단추로 20–34px 사이를 고른다 */
+html{font-size:22px;-webkit-text-size-adjust:100%}
+html[data-size="0"]{font-size:20px}
+html[data-size="1"]{font-size:22px}
+html[data-size="2"]{font-size:25px}
+html[data-size="3"]{font-size:28px}
+html[data-size="4"]{font-size:31px}
+html[data-size="5"]{font-size:34px}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;line-height:1.85;word-break:keep-all;overflow-wrap:anywhere}
+main{max-width:38rem;margin:0 auto;padding:4px 18px 48px}
+a{color:var(--accent);text-underline-offset:.18em}
+strong{font-weight:800}
+
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:10px;max-width:38rem;margin:0 auto;padding:10px 14px;font-size:18px}
+.topbar .home{font-weight:700;font-size:20px;padding:10px 4px}
+.size{display:flex;gap:8px}
+.size button{min-width:64px;min-height:52px;border:2px solid var(--ink2);border-radius:12px;background:var(--surface);color:var(--ink);font-size:22px;font-weight:800;line-height:1;cursor:pointer}
+.size button small{font-size:16px;margin-left:2px}
+.size button b{font-size:22px;margin-left:2px}
+
+.where{margin:8px 0 0;color:var(--ink2);font-size:.82rem}
+h1{font-size:1.5rem;line-height:1.4;margin:.3em 0 .5em}
+h1 .sub{display:block;font-size:.72em;font-weight:600;color:var(--ink2);margin-top:.25em}
+.from{margin:-.4em 0 1em;color:var(--ink2);font-size:.85rem}
+h2{font-size:1.2rem;line-height:1.45;margin:1.6em 0 .5em;padding-top:.6em;border-top:3px solid var(--line)}
+h3{font-size:1.08rem;line-height:1.45;margin:1.3em 0 .4em}
+p{margin:0 0 1em}
+ul,ol{padding-left:1.4em;margin:0 0 1em}
+li{margin:0 0 .6em}
+
+.note{background:var(--note);border-left:6px solid var(--line);border-radius:8px;padding:.8em 1em;margin:0 0 1.2em}
+.note p:last-child{margin-bottom:0}
+
+.words,.think{border-radius:12px;padding:.8em 1em;margin:0 0 1.4em;font-size:.95rem}
+.words{background:var(--word);border:2px solid var(--word-line)}
+.think{background:var(--think);border:2px solid var(--think-line)}
+.box-t{font-weight:800;font-size:.9rem;margin-bottom:.4em}
+.words dl{margin:0}
+.words dt{font-weight:800}
+.words dd{margin:0 0 .7em}
+.words dd:last-child,.think li:last-child{margin-bottom:0}
+.think ul{margin:0;padding-left:1.2em}
+
+.say{margin:0 0 1.2em;padding-left:.8em;border-left:6px solid var(--panel)}
+.say .who{font-weight:800;color:var(--panel);font-size:.9rem;line-height:1.5}
+.say .who small{font-weight:600;font-size:.85em}
+.say p{margin:0}
+.say.host{border-color:var(--host)} .say.host .who{color:var(--host)}
+.say.kid{border-color:var(--kid)} .say.kid .who{color:var(--kid)}
+
+figure{margin:0 0 1.4em}
+figcaption{font-weight:800;margin-bottom:.5em}
+.flow ol{list-style:none;padding:0;margin:0}
+.flow > ol > li{background:var(--surface);border:2px solid var(--line);border-radius:12px;padding:.6em .9em;margin:0;position:relative}
+.flow > ol > li + li{margin-top:2.2em}
+.flow > ol > li + li::before{content:"↓";position:absolute;left:50%;top:-1.9em;transform:translateX(-50%);font-size:1.3rem;font-weight:800;color:var(--ink2);line-height:1.6}
+.flow > ol > li.hi{border-color:var(--accent);border-width:3px;font-weight:700}
+.flow ul{margin:.4em 0 0;padding-left:1.2em}
+.flow ul li{margin:0 0 .3em}
+
+.bar-l{font-weight:700}
+.bars .bar{margin:0 0 1em}
+.bar-t{height:1.1em;background:var(--note);border-radius:6px;overflow:hidden;border:1px solid var(--line)}
+.bar-t span{display:block;height:100%;background:var(--bar)}
+.bar-n{font-size:.85rem;color:var(--ink2)}
+
+.map svg{width:100%;height:auto;display:block}
+.map .land{fill:var(--land)}
+.map .lat{stroke:var(--lat);stroke-width:1.5;stroke-dasharray:6 6}
+.map .lb{font-size:23px;font-weight:800;fill:var(--ink);text-anchor:middle;dominant-baseline:middle}
+.map .arw{stroke:var(--ink2);stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.map .cap{font-size:20px;font-weight:700;fill:var(--ink2);text-anchor:middle;dominant-baseline:middle}
+.map figcaption{font-weight:400;margin-top:.5em}
+
+.card{background:var(--surface);border:2px solid var(--line);border-radius:12px;padding:.2em 1em .4em;margin:0 0 1.2em}
+.card h3{margin-top:.6em}
+
+details{margin:0 0 1.2em;border:2px solid var(--line);border-radius:12px;padding:.4em .9em;background:var(--surface)}
+summary{cursor:pointer;font-weight:700;min-height:48px;display:flex;align-items:center}
+details[open] summary{margin-bottom:.6em}
+
+.pager{display:flex;flex-direction:column;gap:14px;margin-top:2.4em}
+.btn{display:block;text-decoration:none;border-radius:14px;padding:.7em 1em;font-weight:800;font-size:1.1rem;line-height:1.4;text-align:center;border:3px solid var(--accent)}
+.btn span{display:block;font-weight:600;font-size:.8rem;margin-top:.15em}
+.btn.next{background:var(--accent);color:var(--accent-ink)}
+.btn.prev{background:var(--surface);color:var(--accent)}
+
+.entry{background:var(--surface);border:2px solid var(--line);border-radius:16px;padding:.2em 1em 1em;margin:1.4em 0}
+.entry h2{border-top:0;padding-top:0;margin-top:.8em}
+.entry details{margin:1em 0 0}
+.toc{margin:0;padding-left:1.6em}
+.toc li{margin:0 0 .5em}
+#resume{margin:1em 0}
+#resume .btn{border-color:var(--kid);background:var(--kid);color:var(--bg)}
+</style>
+<script>(function(){
+  var KEY_SIZE = 'gss-size', KEY_LAST = 'gss-last';
+  function get(k){ try { return localStorage.getItem(k); } catch(e){ return null; } }
+  function set(k, v){ try { localStorage.setItem(k, v); } catch(e){} }
+  var size = parseInt(get(KEY_SIZE), 10);
+  if (!(size >= 0 && size <= 5)) size = 1;
+  document.documentElement.setAttribute('data-size', size);
+  document.addEventListener('DOMContentLoaded', function(){
+    var btns = document.querySelectorAll('[data-size]');
+    for (var i = 0; i < btns.length; i++) btns[i].addEventListener('click', function(){
+      size = Math.max(0, Math.min(5, size + parseInt(this.getAttribute('data-size'), 10)));
+      document.documentElement.setAttribute('data-size', size);
+      set(KEY_SIZE, size);
+    });
+    var page = document.body.getAttribute('data-page');
+    if (page) { set(KEY_LAST, JSON.stringify({ href: page, title: document.querySelector('h1').firstChild.textContent, where: document.querySelector('.where').textContent })); return; }
+    var box = document.getElementById('resume'), last = null;
+    try { last = JSON.parse(get(KEY_LAST)); } catch(e){}
+    if (box && last && last.href) {
+      var a = document.createElement('a');
+      a.className = 'btn next'; a.href = last.href;
+      a.textContent = '읽던 곳 이어 읽기';
+      var s = document.createElement('span'); s.textContent = last.where + ' · ' + last.title;
+      a.appendChild(s); box.appendChild(a); box.hidden = false;
+    }
+  });
+})();
+</script>
+</head>
+<body data-book="book" data-page="book-sources.html">
+<header class="topbar">
+  <a class="home" href="./">처음 화면</a>
+  <span class="size"><button type="button" data-size="-1" aria-label="글자 작게">가<small>−</small></button><button type="button" data-size="1" aria-label="글자 크게">가<b>+</b></button></span>
+</header>
+<main>
+<p class="where">책 정리 · <b>15</b> / 15</p>
+<h1>출처와 확인<span class="sub">이 정리를 어떻게 썼나</span></h1>
+
+<h2>이 정리를 쓴 방법</h2>
+<p>이 정리본은 책 본문을 옆에 놓고 쓴 것이 아니다. Claude(AI)가 아는 책의 구성과 주장, 그리고 공개된 학계 평가를 바탕으로 썼다(2026-11-05). 그래서 책의 수치는 「책은 …로 본다」로 적어 책의 주장과 일반적 사실을 갈랐다. 핵심 숫자는 기관·대학 자료와 따로 대조했다(아래).</p>
+<h2>사실 확인 메모</h2>
+<ul><li><strong>얄리의 질문 문장:</strong> 책의 영어 원문을 우리말로 옮긴 것이다. 「백인」이라는 말은 얄리의 말을 그대로 전한 것으로, 이 정리본의 표현이 아니다.</li><li><strong>168명·8만 명(1532):</strong> 168명은 책과 대부분의 역사 서술이 같다. 잉카 군대 「약 8만 명」은 당시 스페인 쪽 기록에 기댄 책의 수치이고, 실제 숫자는 알 수 없다. 그날 죽은 잉카 사람 수도 기록마다 수천 명 단위로 갈린다.</li><li><strong>인구 감소 50–90% 넘게:</strong> 1492년 뒤 아메리카 원주민 인구가 얼마나 줄었는지는 출발 인구 추정이 크게 달라 학자마다 차이가 크다. 책은 지역에 따라 95%까지 든다. 이 정리본은 범위를 그대로 적고 한 숫자로 못 박지 않았다.</li><li><strong>아메리카 사람 유입 시점:</strong> 책은 기원전 1만 2천 년 무렵(클로비스 문화)으로 적었다. 그 뒤 칠레 몬테베르데 등 더 이른 유적이 널리 인정되어 지금은 1만 5천 년 전 이전으로 보는 쪽이 많다. 책의 큰 주장(아메리카가 가장 늦게 사람이 들어간 큰 대륙)은 그대로 성립한다.</li><li><strong>농사 시작 연대(기원전 8500·7500·3500·2500년):</strong> 책의 표에 있는 「길들인 흔적이 확인된 가장 이른 시점」이다. 그 뒤 연구로 몇 백 년에서 천 년씩 앞당겨진 지역이 있다. 지역 사이의 순서는 크게 바뀌지 않았다.</li><li><strong>56종 중 32종, 148종 중 14종, 13종이 유라시아:</strong> 책이 인용한 식물학·동물학 자료의 수치다. 「큰 씨」 「45kg 이상」 같은 기준을 어떻게 잡느냐에 따라 수가 달라질 수 있다.</li><li><strong>문자의 독립 발명:</strong> 수메르와 메소아메리카는 책도 학계도 독립 발명으로 본다. 이집트와 중국은 책이 「논쟁 중」으로 적었고 지금도 그렇다.</li><li><strong>정화의 항해 중단(1433):</strong> 마지막 항해가 1433년에 끝난 것은 일반적 서술과 같다. 「그 결정 하나로 중국의 바다 진출이 끝났다」는 것은 책의 해석이다.</li><li><strong>비판 부분:</strong> 애쓰모글루·로빈슨의 「운명의 역전」 논지와 환경 결정론·유럽 중심주의 비판은 공개된 논의를 요약한 것이다. 특정 학자의 문장을 그대로 인용한 곳은 없다.</li></ul>
+<h2>표현에 대하여</h2>
+<p>이 책은 「누가 누구를 정복했나」를 다루므로 나라·민족·인종에 관한 말이 많이 나온다. 이 정리본은 다음 원칙으로 썼다.</p>
+<p>사람 집단을 능력으로 비교하는 문장은 책의 주장을 소개할 때도 「저자는 …를 거부한다」처럼 간접으로 썼다. 「원시적」 「미개한」 같은 말은 쓰지 않았고, 「수렵채집으로 살았다」처럼 생활 방식으로 적었다.</p>
+<p>「백인」 「흑인」은 얄리의 말을 전하는 한 곳 외에는 쓰지 않았고, 책의 장 제목(「아프리카는 어떻게 흑인의 땅이 되었나」)도 「아프리카」로만 옮겼다. 정복·학살은 사실이므로 지우지 않았고, 그것을 자연스러운 결과처럼 읽히게 하는 표현은 피했다. 12번에서 그 위험을 따로 적었다.</p>
+<h2>기관·대학 자료와 대조한 숫자 (확인일 2026-11-05)</h2>
+<p>위키백과, 브리태니커, 대학 도서관, 국사편찬위원회 같은 공개 자료를 직접 읽고 핵심 숫자 8개를 대조했다. 두 곳 넘게 같은 내용을 확인하고 반대 자료가 없으면 「교차 확인」이다. 근거 문장과 주소는 각 항목을 누르면 보인다.</p>
+<details><summary>『총, 균, 쇠』는 1997년에 나왔고 1998년 퓰리처상(일반 논픽션)을 받았다 — 교차 확인(출간 연도), 퓰리처상은 출처 1곳만 확인</summary><p>위키백과: 「1997년 출간되었다 … 1998년 일반 논픽션 부문으로 퓰리처상을 수상했다」. 브리태니커: &quot;published in 1997&quot;.</p>
+<p><a href="https://ko.wikipedia.org/wiki/%EC%B4%9D,_%EA%B7%A0,_%EC%87%A0" rel="noopener">위키백과: 총, 균, 쇠</a> · <a href="https://www.britannica.com/topic/Guns-Germs-and-Steel" rel="noopener">Britannica: Guns, Germs, and Steel</a></p></details>
+<details><summary>재레드 다이아몬드는 UCLA 지리학 교수다 — 교차 확인</summary><p>브리태니커: &quot;American biophysicist and geographer … University of California, Los Angeles professor Jared Diamond&quot;. 하버드 가제트: &quot;University of California, Los Angeles (UCLA), Professor Jared Diamond&quot;. 위키백과: 「UCLA 의과대학 생리학/지리학 교수로 재직중」.</p>
+<p><a href="https://www.britannica.com/biography/Jared-Diamond" rel="noopener">Britannica: Jared Diamond</a> · <a href="https://news.harvard.edu/gazette/story/2006/03/a-tour-of-human-history-with-guide-jared-diamond/" rel="noopener">Harvard Gazette 2006</a> · <a href="https://ko.wikipedia.org/wiki/%EC%9E%AC%EB%9F%AC%EB%93%9C_%EB%8B%A4%EC%9D%B4%EC%95%84%EB%AA%AC%EB%93%9C" rel="noopener">위키백과: 재러드 다이아몬드</a></p></details>
+<details><summary>비옥한 초승달 지대에서 약 1만 1천 년 전에 농경이 시작됐다 — 교차 확인, 시점 차이 있음</summary><p>브리태니커: &quot;one of the oldest transitions from hunting and gathering to agriculture has been identified as dating to between 14,500 and 12,000 BP in Southwest Asia&quot;, &quot;The first agriculture appears to have developed at the closing of the last Pleistocene glacial period … (about 11,700 years ago)&quot;. 옥스퍼드(ORA): &quot;The origins of agriculture, 10 000 years ago&quot;. 스탠퍼드 도서관: &quot;the domestication of plants and animals in the Near East — that occurred 10,500 years ago&quot;.</p>
+<p>국사편찬위원회 교과서: 「‘비옥한 초승달’ 지대에서 기원전 7000년 경에 농경과 목축이 시작되었다」 — 더 늦은 연대를 적은 시점 차이. 책의 기원전 8500년은 기관·대학 자료의 범위 안에 있다.</p>
+<p><a href="https://www.britannica.com/topic/agriculture/Earliest-beginnings" rel="noopener">Britannica: Origins of agriculture</a> · <a href="https://ora.ox.ac.uk/objects/uuid:6d7c4e47-2e1a-428c-8911-08a509884f12" rel="noopener">Oxford ORA</a> · <a href="https://searchworks.stanford.edu/view/14191517" rel="noopener">Stanford SearchWorks</a> · <a href="https://contents.history.go.kr/front/ta/print.do?levelId=ta_h32_0030_0010_0020_0020" rel="noopener">국사편찬위원회: 신석기 혁명</a></p></details>
+<details><summary>1532년 피사로는 168명으로 카하마르카에서 아타우알파를 사로잡았다 — 교차 확인</summary><p>브리태니커: &quot;On November 14, 1532, a small force of 168 Spanish soldiers and auxiliaries, led by the conquistador Francisco Pizarro, arrived in the valley of Cajamarca … an estimated 80,000 Inca soldiers&quot;. 위키백과: 「168명의 에스파냐인 정복자들 … 1532년 카하마르카 전투에서 사파 잉카 아타우알파를 포로로 잡고」. 스탠퍼드 도서관(사르미엔토 연대기 차례): &quot;The Spaniards reach Cajamarca and capture Atahualpa&quot;.</p>
+<p>브리태니커는 11월 14일 도착·다음 날 전투로 적어 날짜가 흔히 쓰는 16일과 다르다. 이 정리본은 「1532년 11월」로만 썼다.</p>
+<p><a href="https://www.britannica.com/event/Battle-of-Cajamarca-1532" rel="noopener">Britannica: Battle of Cajamarca</a> · <a href="https://ko.wikipedia.org/wiki/%ED%8E%98%EB%A3%A8_%EC%A0%95%EB%B3%B5" rel="noopener">위키백과: 페루 정복</a> · <a href="https://searchworks.stanford.edu/view/6783557" rel="noopener">Stanford SearchWorks</a></p></details>
+<details><summary>유럽인이 들여온 천연두 등 전염병이 아메리카 원주민 인구를 크게 줄였다 — 교차 확인</summary><p>브리태니커: &quot;these populations had no prior exposure or immunity to illnesses such as smallpox, measles, and influenza … mortality rates could reach as high as 95 percent&quot;. 스미소니언 국립미국사박물관: &quot;The continent's population actually declined in this period, as Old World diseases swept through Native populations that lacked immunity&quot;. 위키백과: 「홍역, 천연두, 매독 같이 의도하지 않게 미생물과 감염병도 옮겨지며 신대륙에 급격한 인구 감소를 초래」.</p>
+<p><a href="https://www.britannica.com/event/Why-did-European-diseases-cause-such-a-massive-decline-in-Indigenous-populations-during-the-Columbian-Exchange" rel="noopener">Britannica</a> · <a href="https://www.americanhistory.si.edu/explore/exhibitions/many-voices/online/unsettling-continent-1492-1776" rel="noopener">Smithsonian NMAH</a> · <a href="https://ko.wikipedia.org/wiki/%EC%BD%9C%EB%9F%BC%EB%B2%84%EC%8A%A4%EC%9D%98_%EA%B5%90%ED%99%98" rel="noopener">위키백과: 콜럼버스의 교환</a></p></details>
+<details><summary>가축화된 대형 포유류 14종 가운데 13종의 조상이 유라시아에 살았다 — 미검증</summary><p>두 번 검색해 기관·대학 문서 3건을 열었지만 이 숫자를 담은 문장이 없었다. 스미소니언 도서관 목록은 책의 차례만 보여 준다. 책의 수치로만 둔다. 틀렸다는 뜻이 아니다.</p>
+<p><a href="https://www.si.edu/object/siris_sil_770631" rel="noopener">Smithsonian Libraries 목록</a></p></details>
+<details><summary>유라시아의 주축은 동서, 아메리카·아프리카의 주축은 남북이다 — 책의 주장이라는 점은 교차 확인, 비판 있음</summary><p>브리태니커: &quot;Eurasia's east-west orientation allowed domesticated plants and animals to spread easily across similar climates, unlike in Africa and the Americas&quot;. 컬럼비아대 게재 블로트 논문: &quot;A continental landmass with an 'east-west axis' supposedly is more favorable for the rise of agriculture than a continent with a 'north-south axis'&quot; — 주장을 소개하면서 비판한다. 책이 그렇게 주장한다는 점은 확인됐고, 주장의 타당성은 논쟁 중이다(12번).</p>
+<p><a href="https://www.britannica.com/topic/Guns-Germs-and-Steel" rel="noopener">Britannica</a> · <a href="https://www.columbia.edu/~lnp3/mydocs/Blaut/diamond.htm" rel="noopener">Columbia: Blaut, Environmentalism and Eurocentrism</a></p></details>
+<details><summary>기원전 221년 진나라가 중국을 통일했다 — 교차 확인</summary><p>브리태니커: &quot;When Qin succeeded in unifying China in 221 BCE, its king claimed the title of 'First Sovereign Emperor'&quot;. 스탠퍼드 도서관: &quot;The short-lived Qin dynasty unified China in 221 BC&quot;. 위키백과: 「기원전 221년에 진 시황제에 의해 전국 시대를 통일하면서 중국 역사상 최초의 통일 국가가 되었다」.</p>
+<p><a href="https://www.britannica.com/place/China/The-Qin-empire-221-207-bce" rel="noopener">Britannica: Qin empire</a> · <a href="https://searchworks.stanford.edu/view/8385423" rel="noopener">Stanford SearchWorks</a> · <a href="https://ko.wikipedia.org/wiki/%EC%A7%84%EB%82%98%EB%9D%BC" rel="noopener">위키백과: 진나라</a></p></details>
+<p>집계: 교차 확인 7(그중 1건은 「책이 그렇게 주장한다」는 사실의 확인), 미검증 1.</p>
+<nav class="pager">
+<a class="btn next" href="./">다 읽었어요<span>처음 화면으로</span></a>
+<a class="btn prev" href="book-flow.html">← 앞 쪽<span>큰 흐름으로 다시 보기</span></a>
+</nav>
+</main>
+</body>
+</html>
